@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <title>Principal</title>
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../jquery/jquery331.js"></script>
+    <script language="javascript">
+        var cursor;
+        if (document.all) {
+            // Está utilizando EXPLORER
+            cursor = 'hand';
+        } else {
+            // Está utilizando MOZILLA/NETSCAPE
+            cursor = 'pointer';
+        }
+
+        $(document).ready(function() {
+            //get lot code from Url hash on last page.
+            var lot = window.location.hash.substring(1);
+
+            //Set Title for page
+            var titulo = "Modificar el lote: " + lot;
+            $('#tituloForm').html(titulo);
+
+            //Retrive lot data
+            $.getJSON("buscalotamod.php", {
+                    lote: lot
+                },
+                function(data) {
+
+                    $('#codarticulo').val(data.codlote);
+                    $('#nombrearticulo').val(data.articulo);
+                    $('#cantidad').val(data.cantidad);
+                    $('#fechai').val(data.fechai);
+                    $('#horai').val(data.horai);
+                    $('select[name="estado"]').val(data.status);
+                });
+            //when we press clean button
+            $('#btnlimpiar').click(function() {
+
+                $('#cantidad, #hidecantidad').val('');
+                $('#hideestado').val('0');
+                $('select[name="estado"]').val('0');
+
+            });
+
+            $('#btnaceptar').click(function() {
+                $.get("guardarmodificacion.php", {
+                        codlote: document.getElementById('hidenombrearticulo').value,
+                        cantidad: document.getElementById('cantidad').value,
+                        estado: document.getElementById('fechai').value,
+
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                    });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="pagina">
+        <div id="zonaContenido">
+            <div align="center">
+                <div id="tituloForm" class="header">Modificar Lote</div>
+
+                <div id="frmBusqueda">
+                    <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
+                        <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+
+                            <tr>
+
+                                <td width="20%">Codigo de Lote <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15" readonly></td>
+                                <td width="20%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45" readonly=""></td>
+
+                            </tr>
+                            <tr>
+                                <td>Cantidad</td>
+                                <td><input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"></td>
+                            </tr>
+                            <tr>
+                                <td>Fecha de inicio</td>
+                                <td><input NAME="fechai" type="text" class="cajaMediana" id="fechai" size="25" maxlength="25" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>Hora de inicio</td>
+                                <td><input id="horai" type="text" class="cajaPequena" NAME="horai" maxlength="20" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>Estado</td>
+                                <td>
+                                    <select id="estado" name="estado" class="comboMedio">
+                                    <option value="0">Inizializado</option>
+                                    <option value="1">Finalizado</option>
+                                    <option value="2">Descartado</option>
+                                    
+                                </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                </div>
+                <div id="botonBusqueda">
+                    <img src="../img/botonaceptar.jpg" width="75" height="22" id="btnaceptar" onMouseOver="style.cursor=cursor">
+                    <img src="../img/botonlimpiar.jpg" width="75" height="22" id="btnlimpiar" onMouseOver="style.cursor=cursor">
+
+                </div>
+                <input id="hidecantidad" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                <input id="hideestado" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                </form>
+                <div id="lineaResultado">
+                    <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
+                        <tr>
+                            <td width="50%" align="left">N de Articulos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                            <td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+		          </select></td>
+                    </table>
+                </div>
+
+
+                <div ID="div_datos" name="div_datos"> </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
