@@ -6,6 +6,8 @@
     <script type="text/javascript" src="../jquery/jquery331.js"></script>
     <script language="javascript">
         var cursor;
+        var estadoInicial;
+        var cantidadInicial;
         if (document.all) {
             // Está utilizando EXPLORER
             cursor = 'hand';
@@ -22,18 +24,28 @@
             var titulo = "Modificar el lote: " + lot;
             $('#tituloForm').html(titulo);
 
+            //retrive fechaf and horaf
+            $.getJSON("../funciones/currentdatetime.php",
+                function(data) {
+                    $('#fechaf').val(data.dia);
+                    $('#horaf').val(data.hora);
+
+                });
+
             //Retrive lot data
             $.getJSON("buscalotamod.php", {
                     lote: lot
                 },
                 function(data) {
-
-                    $('#codarticulo').val(data.codlote);
+                    cantidadInicial = data.cantidad;
+                    estadoInicial = data.status;
+                    $('#codlote').val(data.codlote);
                     $('#nombrearticulo').val(data.articulo);
-                    $('#cantidad').val(data.cantidad);
+                    $('#cantidad').val(cantidadInicial);
                     $('#fechai').val(data.fechai);
                     $('#horai').val(data.horai);
-                    $('select[name="estado"]').val(data.status);
+                    $('select[name="estado"]').val(estadoInicial);
+                    $('#codarticulo').val(data.codarticulo);
                 });
             //when we press clean button
             $('#btnlimpiar').click(function() {
@@ -43,17 +55,28 @@
                 $('select[name="estado"]').val('0');
 
             });
-
+            //when we press accept button
             $('#btnaceptar').click(function() {
-                $.get("guardarmodificacion.php", {
-                        codlote: document.getElementById('hidenombrearticulo').value,
-                        cantidad: document.getElementById('cantidad').value,
-                        estado: document.getElementById('fechai').value,
-
-                    },
-                    function(data) {
-                        $('#div_datos').html(data);
-                    });
+                var cantidadaMod = document.getElementById('cantidad').value;
+                var estadoaMod = document.getElementById('estado').value;
+                alert(estadoaMod);
+                if (cantidadInicial != cantidadaMod || estadoInicial != estadoaMod) {
+                    if (estadoaMod == "1" & cantidadaMod != "0" || estadoaMod != "1") {
+                        $.get("guardarmodificacion.php", {
+                                codlote: document.getElementById('codlote').value,
+                                cantidad: cantidadaMod,
+                                estado: estadoaMod,
+                                fechaf: document.getElementById('fechaf').value,
+                                horaf: document.getElementById('horaf').value
+                                codarticulo: document.getElementById('codarticulo').value
+                            },
+                            function(data) {
+                                $('#div_datos').html(data);
+                            });
+                    } else {
+                        alert("Es necesario insertar una cantidad para finalizar un lote!");
+                    }
+                }
             });
         });
     </script>
@@ -71,7 +94,7 @@
 
                             <tr>
 
-                                <td width="20%">Codigo de Lote <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15" readonly></td>
+                                <td width="20%">Codigo de Lote <input id="codlote" type="text" class="cajaPequena" NAME="codlote" maxlength="15" readonly></td>
                                 <td width="20%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45" readonly=""></td>
 
                             </tr>
@@ -110,8 +133,9 @@
                     <img src="../img/botonlimpiar.jpg" width="75" height="22" id="btnlimpiar" onMouseOver="style.cursor=cursor">
 
                 </div>
-                <input id="hidecantidad" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
-                <input id="hideestado" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                <input id="fechaf" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                <input id="horaf" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                <input id="codarticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
                 </form>
                 <div id="lineaResultado">
                     <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>

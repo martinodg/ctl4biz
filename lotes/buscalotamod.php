@@ -4,7 +4,7 @@ include ("../conectar7.php");
 
     $lote=$_GET["lote"];
     
-    $consulta="SELECT lote.codlote, articulos.referencia, lote.cantidad, lote.fechai, lote.horai, lote.codstatus FROM lote, articulos WHERE lote.codlote =".$lote." AND lote.codarticulo=articulos.codarticulo AND lote.codstatus!=1 AND lote.borrado=0";
+    $consulta="SELECT lote.codlote, articulos.referencia, lote.cantidad, lote.fechai, lote.horai, lote.codstatus lote.codarticulo FROM lote, articulos WHERE lote.codlote =".$lote." AND lote.codarticulo=articulos.codarticulo AND lote.codstatus!=1 AND lote.borrado=0";
   /*  echo $consulta;*/
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
@@ -17,7 +17,7 @@ include ("../conectar7.php");
                                     $data['fechai']= $row[3];
                                     $data['horai']= $row[4];
                                     $data['status']= $row[5];
-
+                                    $data['codarticulo']= $row[6];
                                     echo json_encode($data);
                               
                         $nr_lotes--;
