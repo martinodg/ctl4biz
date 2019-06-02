@@ -11,17 +11,17 @@ include ("../mysqli_result.php");
     $codigo=$_GET["codarticulo"];
     
    
-    If ($estado="2"){
+    If ($estado=="2"){
                     //Set query for discharged status
-                    $query_operacion="UPDATE lote SET cantidad = $cantidad, fechaf='$fechaf', horaf='$horaf', codstatus=$estado WHERE codlote=$codlote;";		
+                    $query_operacion="UPDATE lote SET cantidad = $cantidad, fechaf='$fechaf', horaf='$horaf', codstatus='2' WHERE codlote=$codlote;";		
                     }    
-    if ($estado="1"){	
+    if ($estado=="1"){	
                     //Set query for ended status    
-                    $query_articulos="UPDATE lote, articulos SET articulos.stock=articulos.stock+$cantidad, lote.cantidad=$cantidad, lote.fechaf='$fechaf', lote.horaf='$horaf', lote.codstatus=$estado WHERE lote.codlote=$codlote AND articulos.codarticulo=$codigo;";
+                    $query_operacion="UPDATE lote, articulos SET articulos.stock=articulos.stock+$cantidad, lote.cantidad=$cantidad, lote.fechaf='$fechaf', lote.horaf='$horaf', lote.codstatus='1' WHERE lote.codlote=$codlote AND articulos.codarticulo=$codigo;";
                     }   
-    if ($estado="0"){                                    
+    if ($estado=="0"){                                    
                     //Set query for iniciated status, so quantity modification only
-                    $query_operacion="UPDATE lote SET cantidad = $cantidad, fechaf='0000-00-00', horaf='00:00', codstatus=$estado WHERE codlote=$codlote;";			
+                    $query_operacion="UPDATE lote SET cantidad = $cantidad, fechaf='0000-00-00', horaf='00:00', codstatus='0' WHERE codlote=$codlote;";			
                     }
     if (!mysqli_query($conexion,$query_operacion)){
                

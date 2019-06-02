@@ -44,9 +44,11 @@
                     $('#cantidad').val(cantidadInicial);
                     $('#fechai').val(data.fechai);
                     $('#horai').val(data.horai);
-                    $('select[name="estado"]').val(estadoInicial);
                     $('#codarticulo').val(data.codarticulo);
-                });
+                    $('select[name="estado"]').val(estadoInicial);
+
+                }
+            );
             //when we press clean button
             $('#btnlimpiar').click(function() {
 
@@ -67,7 +69,7 @@
                                 cantidad: cantidadaMod,
                                 estado: estadoaMod,
                                 fechaf: document.getElementById('fechaf').value,
-                                horaf: document.getElementById('horaf').value
+                                horaf: document.getElementById('horaf').value,
                                 codarticulo: document.getElementById('codarticulo').value
                             },
                             function(data) {
