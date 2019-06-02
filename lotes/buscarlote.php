@@ -53,10 +53,10 @@ include ("../conectar7.php");
                                                         echo '<td width="6%"><div align="center">'.$row[8].'</div></td>';
                                                         if ($row[7]<>1){
                                                             echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.png" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';
-                                                            echo '<td width="5%"><div align="center"><a href="#"><img src="../img/end.png" width="16" height="16" border="0" title="Visualizar"></a></div></td>';
+                                                            echo '<td width="5%"><div align="center">&nbsp;</div></td>';
                                                         }else{
-                                                             echo '<td width="5%"><div align="center">&nbsp;</div></td>';
-                                                             echo '<td width="5%"><div align="center">&nbsp;</div></td>';
+                                                            echo '<td width="5%"><div align="center"><img src="../img/end.png" width="16" height="16" border="0" title="Visualizar"></a></div></td>';  
+                                                            echo '<td width="5%"><div align="center">&nbsp;</div></td>';                                                             
                                                         }
                               echo '</tr>';
                         echo '</table>';
