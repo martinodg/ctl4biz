@@ -57,11 +57,15 @@
                 $('select[name="estado"]').val('0');
 
             });
+            //when we press cancel button
+            $('#btncancelar').click(function() {
+                location.href = "index.php";
+            });
             //when we press accept button
             $('#btnaceptar').click(function() {
                 var cantidadaMod = document.getElementById('cantidad').value;
                 var estadoaMod = document.getElementById('estado').value;
-                alert(estadoaMod);
+                /*alert(estadoaMod);*/
                 if (cantidadInicial != cantidadaMod || estadoInicial != estadoaMod) {
                     if (estadoaMod == "1" & cantidadaMod != "0" || estadoaMod != "1") {
                         $.get("guardarmodificacion.php", {
@@ -133,6 +137,7 @@
                 <div id="botonBusqueda">
                     <img src="../img/botonaceptar.jpg" width="75" height="22" id="btnaceptar" onMouseOver="style.cursor=cursor">
                     <img src="../img/botonlimpiar.jpg" width="75" height="22" id="btnlimpiar" onMouseOver="style.cursor=cursor">
+                    <img src="../img/botoncerrar.jpg" width="75" height="22" id="btncancelar" border="1" onMouseOver="style.cursor=cursor">
 
                 </div>
                 <input id="fechaf" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>

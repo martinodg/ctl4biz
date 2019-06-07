@@ -43,7 +43,10 @@
                         $('#div_datos').html(data);
                     });
             });
-
+            //when we press cancel button
+            $('#btncancelar').click(function() {
+                location.href = "index.php";
+            });
 
 
         });
@@ -96,7 +99,7 @@
                 <div id="botonBusqueda">
                     <img src="../img/botoninicio.jpg" width="75" height="22" id="btninicio" border="1" onMouseOver="style.cursor=cursor">
                     <img src="../img/botonlimpiar.jpg" width="75" height="22" id="btnlimpiar" border="1" onMouseOver="style.cursor=cursor">
-                    <img src="../img/botoncancelar.jpg" width="75" height="22" id="btncancelar" border="1" onMouseOver="style.cursor=cursor">
+                    <img src="../img/botoncerrar.jpg" width="75" height="22" id="btncancelar" border="1" onMouseOver="style.cursor=cursor">
 
                 </div>
                 <input id="hidecodarticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
