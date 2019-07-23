@@ -1,285 +1,214 @@
-<?php 
-include ("../conectar7.php"); 
 
-$fechahoy=date("Y-m-d");
-$sel_proc="INSERT INTO procesostmp (codproceso,fecha) VALUE ('','$fechahoy')";
-$rs_proc=mysqli_query($conexion,$sel_proc);
-$codprocesotmp=mysqli_insert_id($conexion);
+<?php
+$language="spanish";
+$Busqueda="Busqueda de proceso";
+
+if ($language<>"spanish"){$Busqueda="Search for proceso";}
 ?>
 <html>
-	<head>
-		<title>Principal</title>
-		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
+    <head>
+	
+	<title>procesos</title>
+	<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
-		<script language="javascript">
-		var cursor;
-		if (document.all) {
-		// Está utilizando EXPLORER
-		cursor='hand';
-		} else {
-		// Está utilizando MOZILLA/NETSCAPE
-		cursor='pointer';
-		}
-		
-		var miPopup
-		function abreVentana(){
-			miPopup = window.open("ver_empleados.php","miwin","width=700,height=380,scrollbars=yes");
-			miPopup.focus();
-		}
-		
-		function ventanaArticulos(){
-			var codigo=document.getElementById("codcliente").value;
-			if (codigo=="") {
-				alert ("Debe introducir el codigo del cliente");
-			} else {
-				miPopup = window.open("ver_articulos.php","miwin","width=700,height=500,scrollbars=yes");
-				miPopup.focus();
-			}
-		}
-		function VentanaBatch(){
-			miPopup = window.open("ver_batch.php","miwin","width=700,height=380,scrollbars=yes");
-			miPopup.focus();
-		}
-		function validarbatch(){
-			var codigo=document.getElementById("codbatch").value;
-			miPopup = window.open("comprobarbatch.php?codbatch="+codigo,"frame_datos","width=700,height=80,scrollbars=yes");
-		}
-        function validarestacion(){
-			var codigo=document.getElementById("codestacion").value;
-			miPopup = window.open("comprobarestacion.php?codestacion="+codigo,"frame_datos","width=700,height=80,scrollbars=yes");
-		}
-        function validarempleado(){
-			var codigo=document.getElementById("codempleado").value;
-			miPopup = window.open("comprobarempleado.php?codempleado="+codigo,"frame_datos","width=700,height=80,scrollbars=yes");
-		}
-		function validarArticulo(){
-			var codigo=document.getElementById("codbarras").value;
-			miPopup = window.open("comprobararticulo.php?codbarras="+codigo,"frame_datos","width=700,height=80,scrollbars=yes");
-		}		
-		
-		function cancelar() {
-			location.href="index.php";
-		}
-		
-		function limpiarcaja() {
-			document.getElementById("nombre").value="";
-		}
-		
-		function actualizar_importe()
-			{
-				var precio=document.getElementById("precio").value;
-				var cantidad=document.getElementById("cantidad").value;
-				var descuento=document.getElementById("descuento").value;
-				descuento=descuento/100;
-				total=precio*cantidad;
-				descuento=total*descuento;
-				total=total-descuento;
-				var original=parseFloat(total);
-				var result=Math.round(original*100)/100 ;
-				document.getElementById("importe").value=result;
-			}
-			
-		function validar_cabecera()
-			{
-				var mensaje="";
-				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
-				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
-				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
-				} else {
-					document.getElementById("formulario").submit();
-				}
-			}	
-		
-		function validar() 
-			{
-				var mensaje="";
-				var entero=0;
-				var enteroo=0;
-		
-				if (document.getElementById("codbarras").value=="") mensaje="  - Codigo de barras\n";
-				if (document.getElementById("descripcion").value=="") mensaje+="  - Descripcion\n";
-				if (document.getElementById("precio").value=="") { 
-							mensaje+="  - Falta el precio\n"; 
-						} else {
-							if (isNaN(document.getElementById("precio").value)==true) {
-								mensaje+="  - El precio debe ser numerico\n";
-							}
-						}
-				if (document.getElementById("cantidad").value=="") 
-						{ 
-						mensaje+="  - Falta la cantidad\n";
-						} else {
-							enteroo=parseInt(document.getElementById("cantidad").value);
-							if (isNaN(enteroo)==true) {
-								mensaje+="  - La cantidad debe ser numerica\n";
-							} else {
-									document.getElementById("cantidad").value=enteroo;
-								}
-						}
-				if (document.getElementById("descuento").value=="") 
-						{ 
-						document.getElementById("descuento").value=0 
-						} else {
-							entero=parseInt(document.getElementById("descuento").value);
-							if (isNaN(entero)==true) {
-								mensaje+="  - El descuento debe ser numerico\n";
-							} else {
-								document.getElementById("descuento").value=entero;
-							}
-						} 
-				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
-				
-				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
-				} else {
-					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);	
-					cambio_iva();
-					document.getElementById("formulario_lineas").submit();
-					document.getElementById("codbarras").value="";
-					document.getElementById("descripcion").value="";
-					document.getElementById("precio").value="";
-					document.getElementById("cantidad").value=1;
-					document.getElementById("importe").value="";
-					document.getElementById("descuento").value=0;						
-				}
-			}
-		
-		function inicio() {
-			document.getElementById("codcliente").value="1";
-			document.getElementById("nombre").value="Venta Mostrador";
-			document.getElementById("codbarras").focus();
-		}
-			
-		function cambio_iva() {
-			var original=parseFloat(document.getElementById("baseimponible").value);
-			var result=Math.round(original*100)/100 ;
-			document.getElementById("baseimponible").value=result;
-	
-			document.getElementById("baseimpuestos").value=parseFloat(result * parseFloat(document.getElementById("iva").value / 100));
-			var original1=parseFloat(document.getElementById("baseimpuestos").value);
-			var result1=Math.round(original1*100)/100 ;
-			document.getElementById("baseimpuestos").value=result1;
-			var original2=parseFloat(result + result1);
-			var result2=Math.round(original2*100)/100 ;
-			document.getElementById("preciototal").value=result2;
-		}	
-		</script>
-	</head>
-	<body onload=inicio()>
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+       
+        <script language="javascript">
+          
+          //---------------------------------------------------------------------------------------------------           
+          //procs search fucnction
+          function buscaproceso(){
+                                    $.get( "buscarproceso.php" , { criterio1 : 'codstatus',
+                                                                    parametro1 : document.getElementById('param1').value,
+                                                                    criterio2 : document.getElementById('crit2').value,
+                                                                    parametro2 : document.getElementById('param2').value,
+                                                                    criterio3 : document.getElementById('crit3').value,
+                                                                    parametro3 : document.getElementById('param3').value
+                                                              },function ( data ) { 
+                                                                                        $('#div_datos').html( data );
+                                                                                  }
+                                         );
+                              }
+          //---------------------------------------------------------------------------------------------------         
+          //modify proc function
+          function modificar(codproc) {
+                                        location.href="modificarproceso.html" + "#" +codproc;
+                                  }
+          //---------------------------------------------------------------------------------------------------             
+          //set mouse cursor for different browsers
+          var cursor;
+		  if (document.all) {
+		                        // Está utilizando EXPLORER
+		                        cursor='hand';
+		                     } else {
+		                                // Está utilizando MOZILLA/NETSCAPE
+		                                cursor='pointer';
+		                             }
+          //---------------------------------------------------------------------------------------------------   
+          //Perform when DOM is full loaded
+          $( document ).ready(function(){
+            
+                //Load procs data
+                buscaproceso();
+                //---------------------------------------------------------------------------------------------------   
+                //Add or remove calendar for cirt1
+                $('#crit2, #crit3').change(function(){
+                    var seleccion=$(this).val();
+                    var campo="param"+$(this).attr('name');
+                    var agregar="#entrada"+$(this).attr('name');
+                    var calend="calendario"+$(this).attr('name');
+                    var calendid="#calendario"+$(this).attr('name');
+                    if (seleccion == "fechai" || seleccion == "fechaf") {
+                                                                         if ($(calendid).length == 0) {
+                                                                                                            //Add it to the dom
+                                                                                                            $(agregar).append("\
+                                                                                                            <img src='../img/calendario.png' name='"+calend+"' width='16' height='16' border='0' id='"+calend+"' onMouseOver='this.style.cursor=&apos;pointer&apos;'>");
+                                                                                                            Calendar.setup(
+					                                                                                                        {
+					                                                                                                            inputField : campo,
+					                                                                                                            ifFormat   : "%Y-%m-%d",
+                                                                                                                                button     : calend,
+                                                                                                                                onUpdate    : function() {
+                                                                                                                                                         buscaproceso();
+                                                                                                                                                        
+                                                                                                                                                        }       
+					                                                                                                        }
+                                                                                                                           )
+                                                                                                            ;
+                                                                                                            }
+                                                                        }else{
+                                                                                $(calendid).detach();
+                                                                                $('#'+campo).val('');
+                                                                                buscaproceso();
+                                                                        }
+                                             }
+                                            )
+                ;
+                //---------------------------------------------------------------------------------------------------
+                //filter for procs search   
+                $('#param1, #param2').on("change", buscaproceso);
+                $('#param2, #param3').on("input", buscaproceso);
+                
+                //---------------------------------------------------------------------------------------------------
+                //when we press clean button
+                $('#btnlimpiar').click(function(){
+                                                    document.getElementById("form_busqueda").reset();
+                                                 }
+                                      )
+                ;
+                //---------------------------------------------------------------------------------------------------
+                //when we press new button
+                $('#btnnuevo').click(function(){
+                                                    location.href="nuevoproceso.html";
+                                                }
+                                    )
+                ;
+                //---------------------------------------------------------------------------------------------------
+                //when we press print button
+                $('#btnimprimir').click(function(){
+                                                        document.getElementById("form_busqueda").reset();
+                                                  }
+                                        )
+                ;
+               
+             
+            });
+            //-----------------------------END Perform when DOM is full loaded----------------------------------------------------------------------
+            //---------------------------------------------------------------------------------------------------
+          
+	 </script>
+    </head>
+	<body>
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">NUEVO PROCESO #<? echo $codprocesotmp;?></div>
+				<div id="tituloForm" class="header"><?echo $Busqueda;?> </div>
 				<div id="frmBusqueda">
-				<form id="formulario" name="formulario" method="post" action="guardar_proceso.php">
+				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="15%">C&oacute;digo de Batch </td>
-					      <td colspan="3"><input NAME="codbatch" type="text" class="cajaMediana" id="codbatch" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.png" width="16" height="16" onClick="VentanaBatch()" title="Buscar Batch" onMouseOver="style.cursor=cursor"> <img src="../img/batch.png" width="16" height="16" onClick="validarbatch()" title="Validar batch" onMouseOver="style.cursor=cursor"></td>					
+							<td width="20%">Estado </td>
+						
+                            <td id="entrada1" with="20%">
+                          
+                                  <select id='param1' name='param1' class='comboMedio'>
+                                    <option value='' selected >Todos los estados</option>
+                                    <option value='0'>Inicializado</option>
+                                    <option value='1'>Finalizado</option>
+                                    <option value='2'>Descartado</option>
+                                </select>
+                             
+                            </td>
+                            <td width="20%">&nbsp;</td>
+							<td width="40%">&nbsp;</td>
+							
 						</tr>
-                        <tr>
-							<td width="15%">C&oacute;digo de Estacion de trabajo </td>
-					      <td colspan="3"><input NAME="codestacion" type="text" class="cajaPequena" id="codestacion" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar estacion de trabajo" onMouseOver="style.cursor=cursor"> <img src="../img/workbench.png" width="16" height="16" onClick="validarestacion()" title="Validar estacion" onMouseOver="style.cursor=cursor"></td>					
+<tr>
+							<td width="20%">Criterio de busqueda #2 </td>
+							<td width="20%"> 
+                                <select id="crit2" name="2" class="comboMedio" >
+                                    <option value="codarticulo">Articulo del proceso</option>
+                                    <option value="codproceso">Codigo de proceso</option>
+                                    <option value="cantidad">Cantidad</option>
+                                    <option value="fechai">Fecha de inicio</option>
+                                    <option value="horai">Hora de inicio</option>
+                                    <option value="fechaf">Fecha de finalizacion</option>
+                                    <option value="horaf">Hora de finalizacion</option>
+                                </select>
+                            </td>
+                            <td id="entrada2" with="20%">
+                           <input id="param2" name="param2" type="text" class="cajaMediana datepicker" maxlength="45" >
+        
+                            </td>
+							<td width="40%">&nbsp;</td>
 						</tr>
-                        <tr>
-							<td width="15%">C&oacute;digo de Empleado </td>
-					      <td colspan="3"><input NAME="codempleado" type="text" class="cajaPequena" id="codempleado" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar empleado" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.png" width="16" height="16" onClick="validarempleado()" title="Validar empleado" onMouseOver="style.cursor=cursor"></td>					
+<tr>
+							<td width="20%">Criterio de busqueda #3 </td>
+							<td width="20%"> 
+                                <select id="crit3" name="3" class="comboMedio" >
+                                    <option value="codproceso">Codigo de proceso</option>
+                                    <option value="codarticulo">Articulo del proceso</option>
+                                    <option value="cantidad">Cantidad</option>
+                                    <option value="fechai">Fecha de inicio</option>
+                                    <option value="horai">Hora de inicio</option>
+                                    <option value="fechaf">Fecha de finalizacion</option>
+                                    <option value="horaf">Hora de finalizacion</option>
+                                </select>
+                            </td>
+                            <td id="entrada3" with="20%">
+                           <input id="param3" name="param3" type="text" class="cajaMediana" maxlength="45" ">
+                            </td>
+							<td width="40%">&nbsp;</td>
 						</tr>
-						<tr>
-							<td width="6%">Decripcion del Proceso </td>
-						    <td width="27%"><input NAME="descripcion" type="text" class="cajaGrande" id="descripcion" size="45" maxlength="45" readonly></td>
-				            <td width="3%"></td>
-				            <td width="64%"></td>
-						</tr>
-						<? $hoy=date("d/m/Y"); ?>
-						<tr>
-							<td width="6%">Fecha de Inicio</td>
-						    <td width="27%"><input NAME="fechai" type="text" class="cajaPequena" id="fechai" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
-        <script type="text/javascript">
-					Calendar.setup(
-					  {
-					inputField : "fecha",
-					ifFormat   : "%d/%m/%Y",
-					button     : "Image1"
-					  }
-					);
-		</script></td>
-                            <? $hora=date("H:i:s", time()); ?>
-				            <td width="10%">Hora de inicio</td>
-				            <td width="27%"><input NAME="horai" type="text" class="cajaPequena" id="horai" size="10" maxlength="10" value="<? echo $hora;?>" onChange="cambio_horai()"></td>
-						</tr>
-					</table>										
+						
+						
+					</table>
 			  </div>
-			  <input id="codprocesotmp" name="codprocesotmp" value="<? echo $codprocesotmp?>" type="hidden">
-			  <input id="baseimpuestos2" name="baseimpuestos" value="<? echo $baseimpuestos?>" type="hidden">
-			  <input id="baseimponible2" name="baseimponible" value="<? echo $baseimponible?>" type="hidden">
-			  <input id="preciototal2" name="preciototal" value="<? echo $preciototal?>" type="hidden">
-			  <input id="accion" name="accion" value="alta" type="hidden">
-			  </form>
-			  <br>
-			  <div id="frmBusqueda">
-				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
-				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
-				  <tr>
-                    <td width="11%">Materias primas del proceso </td>
+		 	  <div id="botonBusqueda">
+                                         <img src="../img/botonlimpiar.jpg" width="69" height="22" border="1" id="btnlimpiar" onMouseOver="style.cursor=cursor">
+					 <img src="../img/botonnuevo.jpg" width="58" height="22" border="1" id="btnnuevo" onMouseOver="style.cursor=cursor">
+					<img src="../img/botonimprimir.jpg" width="79" height="22" border="1" id="btnimprimir" onMouseOver="style.cursor=cursor"></div>
+			  <div id="lineaResultado">
+			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
+			  	<tr>
+				<td width="50%" align="left">N de procesos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+		          </select></td>
                 </tr>
-                <tr>
-					<td width="11%">Codigo barras </td>
-					<td colspan="10" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15"> <img src="../img/calculadora.jpg" border="1" align="absmiddle" onClick="validarArticulo()" onMouseOver="style.cursor=cursor" title="Validar codigo de barras">     <img src="../img/ver.png" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor" title="Buscar articulo"></td>
-				  </tr>
-				  <tr>
-					<td>Descripcion</td>
-					<td width="19%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
-					<td width="5%">Cantidad</td>
-					<td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
-					
-				    <td width="15%"><img src="../img/botonagregar.jpg" border="1" align="absbottom" onClick="validar()" onMouseOver="style.cursor=cursor"></td>
-				  </tr>
-				</table>
+			  </table>
+                               <div ID="div_datos" name="div_datos" > </div> 
 				</div>
-				<br>
-				<div id="frmBusqueda">
-				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
-						<tr class="cabeceraTabla">
-							<td width="5%">ITEM</td>
-							<td width="12%">FAMILIA</td>
-							<td width="14%">DESCRIPCION</td>
-							<td width="8%">CANTIDAD</td>
-							<td width="3%">&nbsp;</td>
-						</tr>
-				</table>
-				<div id="lineaResultado">
-					<iframe width="100%" height="250" id="frame_lineas" name="frame_lineas" frameborder="0">
-						<ilayer width="100%" height="250" id="frame_lineas" name="frame_lineas"></ilayer>
-					</iframe>
-				</div>					
-			  </div>
-			  <div id="frmBusqueda">
+				
+				<input type="hidden" id="iniciopagina" name="iniciopagina">
+				<input type="hidden" id="cadena_busqueda" name="cadena_busqueda">
+			</form>
+                       	
 			
-			  </div>
-				<div id="botonBusqueda">					
-				  <div align="center">
-				    <img src="../img/botoninicio.jpg" width="85" height="22" onClick="validar_cabecera()" border="1" onMouseOver="style.cursor=cursor">
-                    <img src="../img/botonfinalizar.jpg" width="85" height="22" onClick="validar_cabecera()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
-				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
-				    <input id="codprocesotmp" name="codprocesotmp" value="<? echo $codprocesotmp?>" type="hidden">	
-					<input id="preciototal2" name="preciototal" value="<? echo $preciototal?>" type="hidden">			    
-			      </div>
-				</div>
-			  		<iframe id="frame_datos" name="frame_datos" width="0" height="0" frameborder="0">
-					<ilayer width="0" height="0" id="frame_datos" name="frame_datos"></ilayer>
-					</iframe>
-			  </form>
-			 </div>
+			</div>
 		  </div>
 		</div>
 	</body>
-</html>
+

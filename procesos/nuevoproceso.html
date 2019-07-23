@@ -19,7 +19,7 @@
                 $.get("../articulos/buscararticulo.php", {
                         codart: document.getElementById('codarticulo').value,
                         nombreart: document.getElementById('nombrearticulo').value,
-                        codfamilia: "3"
+                        codfamilia: "2"
                     },
                     function(data) {
                         $('#div_datos').html(data);
@@ -33,12 +33,12 @@
 
             //when we press start button
             $('#btninicio').click(function() {
-                $.get("iniciarlote.php", {
+                $.get("iniciarbatch.php", {
                         codart: document.getElementById('hidecodarticulo').value,
                         nombreart: document.getElementById('hidenombrearticulo').value,
                         cantidadart: document.getElementById('cantidad').value,
-                        fechailote: document.getElementById('fechai').value,
-                        horailote: document.getElementById('horai').value
+                        fechaibatch: document.getElementById('fechai').value,
+                        horaibatch: document.getElementById('horai').value
                     },
                     function(data) {
                         $('#div_datos').html(data);
@@ -66,7 +66,7 @@
     <div id="pagina">
         <div id="zonaContenido">
             <div align="center">
-                <div id="tituloForm" class="header">Nuevo Lote </div>
+                <div id="tituloForm" class="header">Nuevo batch </div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">

@@ -1,176 +1,214 @@
+
 <?php
-include ("../conectar7.php");
+$language="spanish";
+$Busqueda="Busqueda de Batch";
 
-$cadena_busqueda=$_GET["cadena_busqueda"];
-
-if (!isset($cadena_busqueda)) { $cadena_busqueda=""; } else { $cadena_busqueda=str_replace("",",",$cadena_busqueda); }
-
-if ($cadena_busqueda<>"") {
-	$array_cadena_busqueda=split("~",$cadena_busqueda);
-	$codtrabajador=$array_cadena_busqueda[1];
-	$nombre=$array_cadena_busqueda[2];
-	$nif=$array_cadena_busqueda[3];
-} else {
-	$codtrabajador="";
-	$nombre="";
-	$nif="";
-	$provincia="";
-	$localidad="";
-	$telefono="";
-}
-
+if ($language<>"spanish"){$Busqueda="Search for batch";}
 ?>
 <html>
-	<head>
-		<title>Trabajadores</title>
-		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<script language="javascript">
-
-		var cursor;
-		if (document.all) {
-		// Está utilizando EXPLORER
-		cursor='hand';
-		} else {
-		// Está utilizando MOZILLA/NETSCAPE
-		cursor='pointer';
-		}
-
-		function inicio() {
-			document.getElementById("form_busqueda").submit();
-		}
-
-		function nuevo_trabajador() {
-			location.href="nuevo_trabajador.php";
-		}
-
-		function imprimir() {
-			var codtrabajador=document.getElementById("codtrabajador").value;
-			var nombre=document.getElementById("nombre").value;
-			var nif=document.getElementById("nif").value;
-			var provincia=document.getElementById("cboProvincias").value;
-			var localidad=document.getElementById("localidad").value;
-			var telefono=document.getElementById("telefono").value;
-			window.open("../fpdf/trabajadores.php?codtrabajador="+codtrabajador+"&nombre="+nombre+"&nif="+nif+"&provincia="+provincia+"&localidad="+localidad+"&telefono="+telefono);
-		}
-
-		function buscar() {
-			var cadena;
-			cadena=hacer_cadena_busqueda();
-			document.getElementById("cadena_busqueda").value=cadena;
-			if (document.getElementById("iniciopagina").value=="") {
-				document.getElementById("iniciopagina").value=1;
-			} else {
-				document.getElementById("iniciopagina").value=document.getElementById("paginas").value;
-			}
-			document.getElementById("form_busqueda").submit();
-		}
-
-		function paginar() {
-			document.getElementById("iniciopagina").value=document.getElementById("paginas").value;
-			document.getElementById("form_busqueda").submit();
-		}
-
-		function hacer_cadena_busqueda() {
-			var codtrabajador=document.getElementById("codtrabajador").value;
-			var nombre=document.getElementById("nombre").value;
-			var nif=document.getElementById("nif").value;
-			var cadena="";
-			cadena="~"+codtrabajador+"~"+nombre+"~"+nif+"~";
-			return cadena;
-			}
-
-		function limpiar() {
-			document.getElementById("form_busqueda").reset();
-		}
-
-		function abreVentana(){
-			miPopup = window.open("ventana_trabajadores.php","miwin","width=700,height=380,scrollbars=yes");
-			miPopup.focus();
-		}
-
-		function validartrabajador(){
-			var codigo=document.getElementById("codtrabajador").value;
-			miPopup = window.open("comprobartrabajador.php?codtrabajador="+codigo,"frame_datos","width=700,height=80,scrollbars=yes");
-		}
-
-		</script>
-	</head>
-	<body onLoad="inicio()">
+    <head>
+	
+	<title>batchs</title>
+	<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
+		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
+		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+       
+        <script language="javascript">
+          
+          //---------------------------------------------------------------------------------------------------           
+          //lots search fucnction
+          function buscabatch(){
+                                    $.get( "buscarbatch.php" , { criterio1 : 'codstatus',
+                                                                    parametro1 : document.getElementById('param1').value,
+                                                                    criterio2 : document.getElementById('crit2').value,
+                                                                    parametro2 : document.getElementById('param2').value,
+                                                                    criterio3 : document.getElementById('crit3').value,
+                                                                    parametro3 : document.getElementById('param3').value
+                                                              },function ( data ) { 
+                                                                                        $('#div_datos').html( data );
+                                                                                  }
+                                         );
+                              }
+          //---------------------------------------------------------------------------------------------------         
+          //modify lot function
+          function modificar(codbt) {
+                                        location.href="modificarbatch.html" + "#" +codbt;
+                                  }
+          //---------------------------------------------------------------------------------------------------             
+          //set mouse cursor for different browsers
+          var cursor;
+		  if (document.all) {
+		                        // Está utilizando EXPLORER
+		                        cursor='hand';
+		                     } else {
+		                                // Está utilizando MOZILLA/NETSCAPE
+		                                cursor='pointer';
+		                             }
+          //---------------------------------------------------------------------------------------------------   
+          //Perform when DOM is full loaded
+          $( document ).ready(function(){
+            
+                //Load lots data
+                buscabatch();
+                //---------------------------------------------------------------------------------------------------   
+                //Add or remove calendar for cirt1
+                $('#crit2, #crit3').change(function(){
+                    var seleccion=$(this).val();
+                    var campo="param"+$(this).attr('name');
+                    var agregar="#entrada"+$(this).attr('name');
+                    var calend="calendario"+$(this).attr('name');
+                    var calendid="#calendario"+$(this).attr('name');
+                    if (seleccion == "fechai" || seleccion == "fechaf") {
+                                                                         if ($(calendid).length == 0) {
+                                                                                                            //Add it to the dom
+                                                                                                            $(agregar).append("\
+                                                                                                            <img src='../img/calendario.png' name='"+calend+"' width='16' height='16' border='0' id='"+calend+"' onMouseOver='this.style.cursor=&apos;pointer&apos;'>");
+                                                                                                            Calendar.setup(
+					                                                                                                        {
+					                                                                                                            inputField : campo,
+					                                                                                                            ifFormat   : "%Y-%m-%d",
+                                                                                                                                button     : calend,
+                                                                                                                                onUpdate    : function() {
+                                                                                                                                                         buscabatch();
+                                                                                                                                                        
+                                                                                                                                                        }       
+					                                                                                                        }
+                                                                                                                           )
+                                                                                                            ;
+                                                                                                            }
+                                                                        }else{
+                                                                                $(calendid).detach();
+                                                                                $('#'+campo).val('');
+                                                                                buscabatch();
+                                                                        }
+                                             }
+                                            )
+                ;
+                //---------------------------------------------------------------------------------------------------
+                //filter for lots search   
+                $('#param1, #param2').on("change", buscabatch);
+                $('#param2, #param3').on("input", buscabatch);
+                
+                //---------------------------------------------------------------------------------------------------
+                //when we press clean button
+                $('#btnlimpiar').click(function(){
+                                                    document.getElementById("form_busqueda").reset();
+                                                 }
+                                      )
+                ;
+                //---------------------------------------------------------------------------------------------------
+                //when we press new button
+                $('#btnnuevo').click(function(){
+                                                    location.href="nuevobatch.html";
+                                                }
+                                    )
+                ;
+                //---------------------------------------------------------------------------------------------------
+                //when we press print button
+                $('#btnimprimir').click(function(){
+                                                        document.getElementById("form_busqueda").reset();
+                                                  }
+                                        )
+                ;
+               
+             
+            });
+            //-----------------------------END Perform when DOM is full loaded----------------------------------------------------------------------
+            //---------------------------------------------------------------------------------------------------
+          
+	 </script>
+    </head>
+	<body>
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Buscar TRABAJADOR </div>
+				<div id="tituloForm" class="header"><?echo $Busqueda;?> </div>
 				<div id="frmBusqueda">
-				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
+				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="16%">Codigo de trabajador </td>
-							<td width="68%"><input id="codtrabajador" type="text" class="cajaPequena" NAME="codtrabajador" maxlength="10" value="<? echo $codtrabajador?>"> <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar trabajador" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.png" width="16" height="16" onClick="validartrabajador()" title="Validar trabajador" onMouseOver="style.cursor=cursor"></td>
-							<td width="5%">&nbsp;</td>
-							<td width="5%">&nbsp;</td>
-							<td width="6%" align="right"></td>
+							<td width="20%">Estado </td>
+						
+                            <td id="entrada1" with="20%">
+                          
+                                  <select id='param1' name='param1' class='comboMedio'>
+                                    <option value='' selected >Todos los estados</option>
+                                    <option value='0'>Inicializado</option>
+                                    <option value='1'>Finalizado</option>
+                                    <option value='2'>Descartado</option>
+                                </select>
+                             
+                            </td>
+                            <td width="20%">&nbsp;</td>
+							<td width="40%">&nbsp;</td>
+							
 						</tr>
-						<tr>
-							<td>Nombre</td>
-							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="45" value="<? echo $nombre?>"></td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
+<tr>
+							<td width="20%">Criterio de busqueda #2 </td>
+							<td width="20%"> 
+                                <select id="crit2" name="2" class="comboMedio" >
+                                    <option value="codarticulo">Articulo del batch</option>
+                                    <option value="codbatch">Codigo de batch</option>
+                                    <option value="cantidad">Cantidad</option>
+                                    <option value="fechai">Fecha de inicio</option>
+                                    <option value="horai">Hora de inicio</option>
+                                    <option value="fechaf">Fecha de finalizacion</option>
+                                    <option value="horaf">Hora de finalizacion</option>
+                                </select>
+                            </td>
+                            <td id="entrada2" with="20%">
+                           <input id="param2" name="param2" type="text" class="cajaMediana datepicker" maxlength="45" >
+        
+                            </td>
+							<td width="40%">&nbsp;</td>
 						</tr>
-						<tr>
-						  <td>NIF / CIF</td>
-						  <td><input id="nif" type="text" class="cajaPequena" NAME="nif" maxlength="15" value="<? echo $nif?>"></td>
-						  <td>&nbsp;</td>
-						  <td>&nbsp;</td>
-						  <td>&nbsp;</td>
-					  </tr>
-						<?php
-					  	$query_provincias="SELECT * FROM provincias ORDER BY nombreprovincia ASC";
-						$res_provincias=mysqli_query($conexion,$query_provincias);
-						$contador=0;
-					  ?>
+<tr>
+							<td width="20%">Criterio de busqueda #3 </td>
+							<td width="20%"> 
+                                <select id="crit3" name="3" class="comboMedio" >
+                                    <option value="codbatch">Codigo de batch</option>
+                                    <option value="codarticulo">Articulo del batch</option>
+                                    <option value="cantidad">Cantidad</option>
+                                    <option value="fechai">Fecha de inicio</option>
+                                    <option value="horai">Hora de inicio</option>
+                                    <option value="fechaf">Fecha de finalizacion</option>
+                                    <option value="horaf">Hora de finalizacion</option>
+                                </select>
+                            </td>
+                            <td id="entrada3" with="20%">
+                           <input id="param3" name="param3" type="text" class="cajaMediana" maxlength="45" ">
+                            </td>
+							<td width="40%">&nbsp;</td>
+						</tr>
+						
+						
 					</table>
 			  </div>
-		 	  <div id="botonBusqueda"><img src="../img/botonbuscar.jpg" width="69" height="22" border="1" onClick="buscar()" onMouseOver="style.cursor=cursor">
-			 	  <img src="../img/botonlimpiar.jpg" width="69" height="22" border="1" onClick="limpiar()" onMouseOver="style.cursor=cursor">
-					 <img src="../img/botonnuevo.jpg" width="58" height="22" border="1" onClick="nuevo_trabajador()" onMouseOver="style.cursor=cursor">
-					<img src="../img/botonimprimir.jpg" width="79" height="22" border="1" onClick="imprimir()" onMouseOver="style.cursor=cursor"></div>
+		 	  <div id="botonBusqueda">
+                                         <img src="../img/botonlimpiar.jpg" width="69" height="22" border="1" id="btnlimpiar" onMouseOver="style.cursor=cursor">
+					 <img src="../img/botonnuevo.jpg" width="58" height="22" border="1" id="btnnuevo" onMouseOver="style.cursor=cursor">
+					<img src="../img/botonimprimir.jpg" width="79" height="22" border="1" id="btnimprimir" onMouseOver="style.cursor=cursor"></div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" align="left">N de trabajadores encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" align="left">N de batchs encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
+                </tr>
 			  </table>
+                               <div ID="div_datos" name="div_datos" > </div> 
 				</div>
-				<div id="cabeceraResultado" class="header">
-					relacion de TRABAJADORES </div>
-				<div id="frmResultado">
-				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
-						<tr class="cabeceraTabla">
-							<td width="8%">ITEM</td>
-							<td width="6%">CODIGO</td>
-							<td width="38%">NOMBRE </td>
-							<td width="13%">NIF/CIF</td>
-							<td width="19%">TELEFONO</td>
-							<td width="5%">&nbsp;</td>
-							<td width="5%">&nbsp;</td>
-							<td width="6%">&nbsp;</td>
-						</tr>
-				</table>
-				</div>
+				
 				<input type="hidden" id="iniciopagina" name="iniciopagina">
 				<input type="hidden" id="cadena_busqueda" name="cadena_busqueda">
 			</form>
-				<div id="lineaResultado">
-					<iframe width="100%" height="250" id="frame_rejilla" name="frame_rejilla" frameborder="0">
-						<ilayer width="100%" height="250" id="frame_rejilla" name="frame_rejilla"></ilayer>
-					</iframe>
-					<iframe id="frame_datos" name="frame_datos" width="0" height="0" frameborder="0">
-					<ilayer width="0" height="0" id="frame_datos" name="frame_datos"></ilayer>
-					</iframe>
-				</div>
+                       	
+			
 			</div>
 		  </div>
 		</div>
 	</body>
-</html>
+
