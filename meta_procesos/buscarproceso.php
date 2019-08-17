@@ -8,32 +8,28 @@ include ("../conectar7.php");
     $parametro2=$_GET["parametro2"];
     $criterio3=$_GET["criterio3"];
     $parametro3=$_GET["parametro3"];
-    $donde="procesos.codstatus=estado.codestado AND procesos.codtrabajador=trabajadores.codtrabajador AND procesos.codestacion=estaciones.codestacion AND ";
+    $donde="tipoproceso.codtipo=metaprocesos.esbatch AND ";
     if ($parametro1<>""){ $donde=$donde."procesos.".$criterio1."='".$parametro1."' AND ";}
     if ($parametro2<>""){ $donde=$donde."procesos.".$criterio2."='".$parametro2."' AND ";}
     if ($parametro3<>""){ $donde=$donde."procesos.".$criterio3."='".$parametro3."' AND ";}
 
     echo '                      <div id="cabeceraResultado" class="header"> 
-     					relacion de procesoS </div>';
+     					relacion de procesos definidos </div>';
     echo '				<div id="frmResultado">';
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="8%">CODIGO</td>';
     echo '						<td width="38%">NOMBRE</td>';
-    echo '						<td width="6%">FECHA DE INICIO</td>';
-    echo '						<td width="6%">HORA DE INICIO</td>';
-    echo '                      <td width="6%">FECHA DE FIN</td>';
-    echo '						<td width="6%">HORA DE FIN</td>';
-    echo '                      <td width="6%">ESTACION</td>';
-    echo '                      <td width="6%">TRABAJADOR</td>';
-    echo '						<td width="6%">ESTADO</td>';
+    echo '						<td width="18%">TIPO DE PROCESO</td>';
+    echo '						<td width="18%">ESTADO</td>';
+    echo '						<td width="6%">&nbsp;</td>';
     echo '						<td width="5%">&nbsp;</td>';
     echo '					</tr>';
     echo '			</table>';
     echo '			</div>';
     
     
-	$consulta="SELECT procesos.codproceso, procesos.nombre, procesos.fechai, procesos.horai, procesos.fechaf, procesos.horaf, estaciones.nombre, trabajadores.nombre, estado.estado FROM procesos, trabajadores, estaciones, estado WHERE ".$donde."procesos.borrado=0";
+	$consulta="SELECT metaprocesos.codproceso, metaprocesos.nombre, tipoproceso.nombre, estado.estado FROM metaprocesos, tipoproceso, estado WHERE ".$donde."estado.codestado=metaprocesos.codstatus";
     /*echo $consulta;*/
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
@@ -64,5 +60,5 @@ include ("../conectar7.php");
                        /*     echo "<script type='text/javascript'>console.error('$row');</script>";*/
                             $nr_procesos--;
                         }
-	
+mysqli_close($conexion); 
 ?>

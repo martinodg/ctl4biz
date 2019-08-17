@@ -5,13 +5,23 @@
     <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="../jquery/jquery331.js"></script>
     <script language="javascript">
-        $(document).ready(function() {
-            //Assign current date & time
-            $.getJSON("../funciones/currentdatetime.php",
-                function(data) {
-                    $('#fechai').val(data.dia);
-                    $('#horai').val(data.hora);
+        //Get the number of next meta-process to create.
+        var proximomproc = window.location.hash.substring(1);
 
+        //Perform when DOM is full loaded
+        $(document).ready(function() {
+
+            //show new meta-process number on codmproceso field
+            $('#codmproceso').val(proximomproc);
+
+            //show meta-process items 
+            $.get("./mostrararticulometaproceso.php", {
+                    codmetap: proximomproc,
+                    nombremetap: document.getElementById('nombremproceso').value
+
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
                 });
             //filter for search   
             $('#codarticulo, #nombrearticulo').keyup(function() {
@@ -40,8 +50,24 @@
                         fechaiproceso: document.getElementById('fechai').value,
                         horaiproceso: document.getElementById('horai').value
                     },
+                    function(data2) {
+                        $('#div_datos').html(data2);
+                    });
+            });
+
+            //when we press add button
+            $('#btnagregar').click(function() {
+                $.get("agregararticulo.php", {
+                        codmproceso: document.getElementById('codmproceso').value,
+                        nombremproceso: document.getElementById('nombremproceso').value,
+                        batch: document.getElementById('batch').value,
+                        codart: document.getElementById('hidecodarticulo').value,
+                        nombreart: document.getElementById('hidenombrearticulo').value,
+                        cantidadart: document.getElementById('cantidad').value
+                    },
                     function(data) {
                         $('#div_datos').html(data);
+
                     });
             });
             //when we press cancel button
@@ -66,7 +92,40 @@
     <div id="pagina">
         <div id="zonaContenido">
             <div align="center">
-                <div id="tituloForm" class="header">Nuevo proceso </div>
+                <div id="tituloForm" class="header">Definir meta-proceso </div>
+
+                <div id="frmBusqueda">
+                    <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
+                        <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+
+                            <tr>
+
+                                <td width="30%">Codigo del meta-proceso <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15"></td>
+                                <td width="15%">Lote <label class="switch"> <input type="checkbox" id="batch" name="batch" value="01" checked> <span class="slider round"></span> </label> Batch</td>
+                                <td width="55%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
+
+                            </tr>
+
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                </div>
+                <div id="botonBusqueda">
+                    <img src="../img/botonaceptar.jpg" width="75" height="22" id="btninicio" border="1" onMouseOver="style.cursor=cursor">
+
+                    <img src="../img/botoncancelar.jpg" width="75" height="22" id="btncancelar" border="1" onMouseOver="style.cursor=cursor">
+
+                </div>
+
+                </form>
+                <div id="lineaResultado">
+
+                </div>
+                <div id="tituloForm" class="header">Agregar articulo </div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
@@ -79,17 +138,11 @@
 
                             </tr>
                             <tr>
-                                <td>Cantidad</td>
-                                <td><input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"></td>
+                                <td>&nbsp;</td>
+                                <td>Cantidad <input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"></td>
+                                <td>&nbsp;</td>
                             </tr>
-                            <tr>
-                                <td>Fecha de inicio</td>
-                                <td><input NAME="fechai" type="text" class="cajaMediana" id="fechai" size="25" maxlength="25" readonly></td>
-                            </tr>
-                            <tr>
-                                <td>Hora de inicio</td>
-                                <td><input id="horai" type="text" class="cajaPequena" NAME="horai" maxlength="20" readonly></td>
-                            </tr>
+
 
                             <tr>
                                 <td>&nbsp;</td>
@@ -98,9 +151,8 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <img src="../img/botoninicio.jpg" width="75" height="22" id="btninicio" border="1" onMouseOver="style.cursor=cursor">
-                    <img src="../img/botonlimpiar.jpg" width="75" height="22" id="btnlimpiar" border="1" onMouseOver="style.cursor=cursor">
-                    <img src="../img/botoncerrar.jpg" width="75" height="22" id="btncancelar" border="1" onMouseOver="style.cursor=cursor">
+                    <img src="../img/botonagregar.jpg" width="75" height="22" id="btnagregar" border="1" onMouseOver="style.cursor=cursor">
+
 
                 </div>
                 <input id="hidecodarticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
@@ -117,6 +169,7 @@
 
 
                 <div ID="div_datos" name="div_datos"> </div>
+                <div ID="div_datos2" name="div_datos2"> </div>
             </div>
         </div>
     </div>

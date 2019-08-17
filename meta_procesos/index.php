@@ -1,7 +1,7 @@
 
 <?php
 $language="spanish";
-$Busqueda="Busqueda de procesos";
+$Busqueda="Busqueda de procesos Definidos";
 
 if ($language<>"spanish"){$Busqueda="Search for processes";}
 ?>
@@ -48,6 +48,14 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 		                                cursor='pointer';
 		                             }
           //---------------------------------------------------------------------------------------------------   
+          var nuevomproc;
+          $.getJSON("./proximometap.php", function(data){
+                nuevomproc = data.codmproc;
+                //alert(nuevomproc);
+          });
+          //alert(nuevomproc);
+          //---------------------------------------------------------------------------------------------------   
+
           //Perform when DOM is full loaded
           $( document ).ready(function(){
             
@@ -102,7 +110,7 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
                 //---------------------------------------------------------------------------------------------------
                 //when we press new button
                 $('#btnnuevo').click(function(){
-                                                    location.href="nuevoproceso.html";
+                                                    location.href="nuevoproceso.html" + "#" +nuevomproc;
                                                 }
                                     )
                 ;
@@ -136,9 +144,9 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
                           
                                   <select id='param1' name='param1' class='comboMedio'>
                                     <option value='' selected >Todos los estados</option>
-                                    <option value='0'>Inicializado</option>
-                                    <option value='1'>Finalizado</option>
-                                    <option value='2'>Descartado</option>
+                                    <option value='4'>activado</option>
+                                    <option value='5'>desactivado</option>
+                                    
                                 </select>
                              
                             </td>
@@ -152,13 +160,7 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
                                 <select id="crit2" name="2" class="comboMedio" >
                                     <option value="nombre">Nobre del Proceso</option>
                                     <option value="codproceso">Codigo de proceso</option>
-                                    <option value="fechai">Fecha de inicio</option>
-                                    <option value="horai">Hora de inicio</option>
-                                    <option value="fechaf">Fecha de finalizacion</option>
-                                    <option value="horaf">Hora de finalizacion</option>
-                                    <option value="codestacion">Estacion de Trabajo</option>
-                                    <option value="codtrabajador">Nombre del empleado</option>
-
+                                    
 
                                 </select>
                             </td>
@@ -173,12 +175,8 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 							<td width="20%"> 
                                 <select id="crit3" name="3" class="comboMedio" >
                                     <option value="codproceso">Codigo de proceso</option>
-                                    <option value="codarticulo">Articulo del proceso</option>
-                                    <option value="cantidad">Cantidad</option>
-                                    <option value="fechai">Fecha de inicio</option>
-                                    <option value="horai">Hora de inicio</option>
-                                    <option value="fechaf">Fecha de finalizacion</option>
-                                    <option value="horaf">Hora de finalizacion</option>
+                                    <option value="nombre">Nombre del proceso</option>
+                                   
                                 </select>
                             </td>
                             <td id="entrada3" with="20%">
