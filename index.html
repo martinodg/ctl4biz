@@ -82,12 +82,68 @@
             });
             $('#remitoscompras').click(function() {
                 $('#icono').html('<img class="imgicon" src="./img/remito-compras.svg">');
-                $('#bottombar3').html('Compras>Remitos de Compras');
+                $('#bottombar').html('Compras>Remitos de Compras');
             });
 
             $('#facturarremitoscompras').click(function() {
                 $('#icono').html('<img class="imgicon" src="./img/facturarremito-compras.svg">');
                 $('#bottombar').html('Compras>Facturar Remitos de Compras');
+            });
+            /*----------------------------------------------------------------------------------------------------------------------------------------*/
+            /* Administracion                                                                                                                              */
+            /*----------------------------------------------------------------------------------------------------------------------------------------*/
+            $('#cobros').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/cobros.svg">');
+                $('#bottombar').html('Administracion>Cobros');
+            });
+            $('#pagos').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/pagos.svg">');
+                $('#bottombar').html('Administracion>Pagos');
+            });
+
+            $('#caja').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/caja.svg">');
+                $('#bottombar').html('Administracion>Caja Diaria');
+            });
+            $('#librodiario').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/librodiario.svg">');
+                $('#bottombar').html('Administracion>Libro Diario');
+            });
+            $('#recursoshumanos').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/hr.svg">');
+                $('#bottombar').html('Administracion>Recursos Humanos');
+            });
+            /*----------------------------------------------------------------------------------------------------------------------------------------*/
+            /* Configuracion                                                                                                                              */
+            /*----------------------------------------------------------------------------------------------------------------------------------------*/
+            $('#empleados').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/empleados.svg">');
+                $('#bottombar').html('Configuracion>Empleados');
+            });
+            $('#etiquetas').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/etiquetas.svg">');
+                $('#bottombar').html('Configuracion>Etiquetas');
+            });
+            $('#impuestos').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/impuestos.svg">');
+                $('#bottombar').html('Configuracion>Impuestos');
+            });
+            $('#entidades').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/entidades.svg">');
+                $('#bottombar').html('Configuracion>Entidades Bancarias');
+            });
+
+            $('#ubicaciones').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/ubicaciones.svg">');
+                $('#bottombar').html('Configuracion>Ubicaciones');
+            });
+            $('#embalajes').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/embalajes.svg">');
+                $('#bottombar').html('Configuracion>Embalajes');
+            });
+            $('#formaspagos').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/formadepago.svg">');
+                $('#bottombar').html('Configuracion>Formas de Pago');
             });
             /*----------------------------------------------------------------------------------------------------------------------------------------*/
             /* side menu                                                                                                                              */
@@ -151,7 +207,7 @@
                         <li><a href="./cobros/index.php" target="principal" id="cobros">Cobros</a></li>
                         <li><a href="./pagos/index.php" target="principal" id="pagos">Pagos</a></li>
                         <li><a href="./cerrarcaja/index.php" target="principal" id="caja">Caja Diaria</a></li>
-                        <li><a href="./librodiario/index.php" target="principal" id="libordiario">Libro Diraio</a></li>
+                        <li><a href="./librodiario/index.php" target="principal" id="librodiario">Libro Diraio</a></li>
                         <li><a href="./partes_trabajo/index.php" target="principal" id="recursoshumanos">Recursos Humanos</a></li>
                     </ul>
                 </li>
