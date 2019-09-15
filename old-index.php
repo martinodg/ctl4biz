@@ -64,7 +64,7 @@ var MenuPrincipal = [
 
 --></script>
   <style type="text/css">
-  body { background-image: linear-gradient(to bottom right, #1eae65, #75c8fd);
+  body { background-image: linear-gradient(to bottom right, #333333, #333333);
 }
     background-image: url(images/superior.png);
     background-repeat: no-repeat;

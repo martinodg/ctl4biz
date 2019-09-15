@@ -101,7 +101,7 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 		<div id="pagina">
 			<div id="zonaContenido">
 			<div align="center">
-			<table class="fuente8" width="87%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
+			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 			<input type="hidden" name="numfilas" id="numfilas" value="<? echo $filas?>">
 				<? $iniciopagina=$_POST["iniciopagina"];
 				if (empty($iniciopagina)) { $iniciopagina=$_GET["iniciopagina"]; } else { $iniciopagina=$iniciopagina-1;}
@@ -129,7 +129,7 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 							<td width="10%"><div align="center"><? echo $estado?></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.png" width="16" height="16" border="0" onClick="modificar_parte(<?php echo mysql_result($res_resultado,$contador,"codtrabajo")?>)" title="Modificar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.png" width="16" height="16" border="0" onClick="ver_parte(<?php echo mysql_result($res_resultado,$contador,"codtrabajo")?>)" title="Visualizar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0" onClick="if (confirm('¿Está seguro de eliminar el parte de trabajo?')) { eliminar_parte(<?php echo mysql_result($res_resultado,$contador,"codtrabajo")?>) }" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0" onClick="if (confirm('ï¿½Estï¿½ seguro de eliminar el parte de trabajo?')) { eliminar_parte(<?php echo mysql_result($res_resultado,$contador,"codtrabajo")?>) }" title="Eliminar"></a></div></td>
 <!--							<td width="5%"><div align="center"><a href="#"><img src="../img/imprimir.png" width="16" height="16" border="0" onClick="imprimir_etiquetas(<?php echo mysql_result($res_resultado,$contador,"codalbaran")?>)" title="Imprimir etiquetas"></a></div></td> -->
 						</tr>
 						<? $contador++;
@@ -137,7 +137,7 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 						?>
 					</table>
 					<? } else { ?>
-					<table class="fuente8" width="87%" cellspacing=0 cellpadding=3 border=0>
+					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
 							<td width="100%" class="mensaje"><?php echo "No hay ning&uacute;n parte que cumpla con los criterios de b&uacute;squeda";?></td>
 					    </tr>

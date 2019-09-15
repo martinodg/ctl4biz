@@ -64,7 +64,7 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 			if (marcaestado==1) {
 				parent.location.href="convertir_presupuesto.php?codpresupuesto=" + codpresupuesto + "&cadena_busqueda=<? echo $cadena_busqueda?>";
 			} else {
-				alert ("No se puede convertir en albarán un presupuesto ya albaranado");
+				alert ("No se puede convertir en albarï¿½n un presupuesto ya albaranado");
 			}
 		}
 
@@ -101,7 +101,7 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 		<div id="pagina">
 			<div id="zonaContenido">
 			<div align="center">
-			<table class="fuente8" width="87%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
+			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 			<input type="hidden" name="numfilas" id="numfilas" value="<? echo $filas?>">
 				<? $iniciopagina=$_POST["iniciopagina"];
 				if (empty($iniciopagina)) { $iniciopagina=$_GET["iniciopagina"]; } else { $iniciopagina=$iniciopagina-1;}
@@ -135,7 +135,7 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 						?>
 					</table>
 					<? } else { ?>
-					<table class="fuente8" width="87%" cellspacing=0 cellpadding=3 border=0>
+					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
 							<td width="100%" class="mensaje"><?php echo "No hay ning&uacute;n presupuesto que cumpla con los criterios de b&uacute;squeda";?></td>
 					    </tr>

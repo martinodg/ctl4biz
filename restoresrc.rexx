@@ -14,6 +14,6 @@ comando4 = "sed -i 's/mysqli_query\(\mysqli_query\($conexion\,/g' "||linestr
 
 /*comando = "cp " sourcedir " " linestr*/
 say comando
-address cmd comando 
+/*address cmd comando */
 end 
 

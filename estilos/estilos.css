@@ -1,7 +1,7 @@
 /*****************************************/
 
 
-/* clases relativas a contenedores       */
+/* clases relativas a conteneores       */
 
 #pagina {
     position: absolute;
@@ -10,11 +10,12 @@
     /*background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
     /* Resize the background image to cover the entire container */
-    background-color: #1e7891;
+    /*background-color: #1e7891;*/
+    background-color: #333333;
     font-family: helvetica;
     font-size: 8pt;
-    left: 4%;
-    width: 90%;
+    left: 0%;
+    width: 100%;
 }
 
 #zonaLogo {
@@ -32,7 +33,7 @@
     position: absolute;
     top: 150px;
     left: 0em;
-    width: 95%;
+    width: 100%;
     height: 100%;
     background-color: #fff;
 }
@@ -48,42 +49,42 @@
 #localizacion {
     position: relative;
     top: 3%;
-    left: 1%;
+    left: 0%;
     width: 100%;
 }
 
 #tituloForm {
     position: relative;
     top: 4%;
-    left: 1%;
-    width: 80%;
+    left: 0%;
+    width: 100%;
 }
 
 #tituloForm2 {
     position: relative;
     top: 4%;
-    left: 1%;
+    left: 0%;
     width: 100%;
 }
 
 #frmBusqueda {
     position: relative;
     top: 5%;
-    left: 1%;
-    width: 80%;
-    background-color: #fff;
-    border-top: solid 1px #fff;
-    border-left: solid 1px #fff;
-    border-right: solid 1px #fff;
-    border-bottom: solid 1px #fff;
+    left: 0%;
+    width: 100%;
+    background-color: #ccc;
+    border-top: solid 1px #ccc;
+    border-left: solid 1px #ccc;
+    border-right: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
 }
 
 #frmBusqueda2 {
     position: relative;
     top: 5%;
-    left: 1%;
+    left: 0%;
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: #dcdcdc;
     border-top: solid 1px #dcdcdc;
     border-left: solid 1px #dcdcdc;
     border-right: solid 1px #696969;
@@ -112,8 +113,8 @@
 #botonBusqueda {
     position: relative;
     top: 5%;
-    left: 1%;
-    width: 80%;
+    left: 0%;
+    width: 100%;
     text-align: right;
     margin-top: .5em;
     padding-top: 1em;
@@ -123,21 +124,21 @@
 #lineaResultado {
     position: relative;
     top: 10%;
-    left: 1%;
+    left: 0%;
     width: 100%;
 }
 
 #cabeceraResultado {
     position: relative;
     top: 11%;
-    left: 1%;
-    width: 80%;
+    left: 0%;
+    width: 100%;
 }
 
 #cabeceraResultado2 {
     position: relative;
     top: 11%;
-    left: 1%;
+    left: 0%;
     width: 100%;
 }
 
@@ -146,11 +147,15 @@
     color: #fff;
 }
 
+.paginar {
+    color: #ff8c00;
+}
+
 #frmResultado {
     position: relative;
     top: 11%;
-    left: 1%;
-    width: 80%;
+    left: 0%;
+    width: 100%;
     /*
 	background-color:#f5f5f5;
 	border-top:solid 1px #dcdcdc;
@@ -167,8 +172,8 @@
 /* clases relativas a tablas             */
 
 .header {
-    background-image: linear-gradient(to bottom, #74736f, #b5b3aa);
-    color: #fff;
+    background-image: linear-gradient(to bottom, #0c0c0b, #2d2e2c);
+    color: #f5f5f5;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -198,7 +203,7 @@
 
 .cabeceraTabla {
     background-color: #5f5f5f;
-    color: #fff;
+    color: #3dfbfd;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -209,7 +214,7 @@
 }
 
 .itemImparTabla {
-    background-color: #f5f5f5;
+    background-color: #dcdcdc;
 }
 
 
@@ -284,7 +289,7 @@ a:hover {
 }
 
 .cajaMediana {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     color: #000;
     width: 100px;
@@ -296,7 +301,7 @@ a:hover {
 }
 
 .cajaPequena {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     color: #000;
     width: 75px;
@@ -308,7 +313,7 @@ a:hover {
 }
 
 .cajaPequena2 {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     color: #000;
     width: 55px;
@@ -320,7 +325,7 @@ a:hover {
 }
 
 .cajaMinima {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     color: #000;
     width: 30px;
@@ -345,7 +350,7 @@ a:hover {
 }
 
 .cajaMedia {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     text-transform: uppercase;
     color: #000;
@@ -358,7 +363,7 @@ a:hover {
 }
 
 .cajaGrande {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     text-transform: uppercase;
     color: #000;
@@ -371,7 +376,7 @@ a:hover {
 }
 
 .comboPequeno {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     color: #000;
     width: 75px;
@@ -383,7 +388,7 @@ a:hover {
 }
 
 .comboMedio {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     color: #000;
     width: 150px;
@@ -395,7 +400,7 @@ a:hover {
 }
 
 .comboGrande {
-    background-color: #fff;
+    background-color: #dcdcdc;
     font: 8pt helvetica;
     color: #000;
     width: 250px;

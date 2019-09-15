@@ -88,6 +88,16 @@
     <td><div align="center" class="Estilo6">Harish Chauhan</div></td>
     <td>&nbsp;</td>
   </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="center" class="Estilo7">Icons Design by</div></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="center" class="Estilo6"> <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div></td>
+    <td>&nbsp;</td>
+  </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>

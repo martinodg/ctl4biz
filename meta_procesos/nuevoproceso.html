@@ -8,28 +8,30 @@
         //Get the number of next meta-process to create.
         var proximomproc = window.location.hash.substring(1);
 
+        function mostrararticulo(proximomproc) {
+            //show meta-process items 
+            $.get("./mostrararticulometaproceso.php", {
+                    codmetap: proximomproc
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
+                });
+        }
         //Perform when DOM is full loaded
         $(document).ready(function() {
 
             //show new meta-process number on codmproceso field
             $('#codmproceso').val(proximomproc);
+            //show items of the meta-process
+            mostrararticulo(proximomproc);
 
-            //show meta-process items 
-            $.get("./mostrararticulometaproceso.php", {
-                    codmetap: proximomproc,
-                    nombremetap: document.getElementById('nombremproceso').value
-
-                },
-                function(data) {
-                    $('#div_datos2').html(data);
-                });
             //filter for search   
             $('#codarticulo, #nombrearticulo').keyup(function() {
                 /*  console.log($(this));*/
                 $.get("../articulos/buscararticulo.php", {
                         codart: document.getElementById('codarticulo').value,
                         nombreart: document.getElementById('nombrearticulo').value,
-                        codfamilia: "2"
+                        codfamilia: ""
                     },
                     function(data) {
                         $('#div_datos').html(data);
@@ -67,6 +69,8 @@
                     },
                     function(data) {
                         $('#div_datos').html(data);
+                        $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+                        mostrararticulo(proximomproc);
 
                     });
             });
@@ -84,6 +88,7 @@
             $('#nombrearticulo').val(nombre);
             $('#hidecodarticulo').val(codigo);
             $('#hidenombrearticulo').val(nombre);
+            $('#div_datos').empty();
         }
     </script>
 </head>
@@ -159,7 +164,7 @@
                 <input id="hidenombrearticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
                 </form>
                 <div id="lineaResultado">
-                    <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
+                    <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                         <tr>
                             <td width="50%" align="left">N de Articulos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
                             <td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">

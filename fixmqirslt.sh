@@ -8,16 +8,16 @@ getArray() {
     done < "$1"
 }
 echo "Now I will read your file"
-getArray "msqliresult.txt" 
+getArray "treeprint.txt" 
 
 #How to use your array :
 # Print the file (print each element of the array)
-getArray "msqliresult.txt"
+getArray  "treeprint.txt" 
 for e in "${array[@]}"
 do
     echo "$e"
     getArray "$e"
-	sed -i '/include ("../conectar7.php");/a include ("../mysqli_result.php");' "$e"
+	#sed -i '/include ("../conectar7.php");/a include ("../mysqli_result.php");' "$e"
 done
 
 

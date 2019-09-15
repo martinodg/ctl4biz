@@ -41,7 +41,7 @@ include ("../conectar7.php");
                  while ($nr_batchs > 0) {
                              if ($nr_batchs % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }
                             $row = mysqli_fetch_row($rs_tabla);
-                        echo '<table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
+                        echo '<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
                               echo '<tr class="'.$fondolinea.'">';
 							echo '<td width="8%"><div align="center">'.$row[0].'</td>';
 							echo '<td width="38%"><div align="center">'.$row[1].'</div></td>';

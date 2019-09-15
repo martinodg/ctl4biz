@@ -68,7 +68,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 		<div id="pagina">
 			<div id="zonaContenido">
 			<div align="center">
-			<table class="fuente8" width="87%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
+			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 			<input type="hidden" name="numfilas" id="numfilas" value="<? echo $filas?>">
 				<? $iniciopagina=$_POST["iniciopagina"];
 				if (empty($iniciopagina)) { $iniciopagina=$_GET["iniciopagina"]; } else { $iniciopagina=$iniciopagina-1;}
@@ -89,14 +89,14 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td class="aDerecha" width="19%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"telefono")?></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.png" width="16" height="16" border="0" onClick="modificar_trabajador(<?php echo mysqli_result($res_resultado,$contador,"codtrabajador")?>)" title="Modificar"></a></div></td>
 														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.png" width="16" height="16" border="0" onClick="ver_trabajador(<?php echo mysqli_result($res_resultado,$contador,"codtrabajador")?>)" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0" onClick="if (confirm('¿Está seguro de eliminar el trabajador? Podrían quedar partes de trabajo huérfanos!')) { eliminar_trabajador(<?php echo mysqli_result($res_resultado,$contador,"codtrabajador")?>) }" title="Eliminar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0" onClick="if (confirm('ï¿½Estï¿½ seguro de eliminar el trabajador? Podrï¿½an quedar partes de trabajo huï¿½rfanos!')) { eliminar_trabajador(<?php echo mysqli_result($res_resultado,$contador,"codtrabajador")?>) }" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}
 						?>
 					</table>
 					<? } else { ?>
-					<table class="fuente8" width="87%" cellspacing=0 cellpadding=3 border=0>
+					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
 							<td width="100%" class="mensaje"><?php echo "No hay ning&uacute;n trabajador que cumpla con los criterios de b&uacute;squeda";?></td>
 					    </tr>

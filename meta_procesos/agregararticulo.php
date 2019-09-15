@@ -11,22 +11,29 @@ include ("../mysqli_result.php");
     
     
     If ($nombreproceso and $codarticulo and $nombrearticulo and $cantidad<>""){
+
+        //verify last pocess on the process table
+        $consultaprevio = "SELECT max(codproceso) as maximo FROM metaprocesos";
+        $rs_consultaprevio=mysqli_query($conexion,$consultaprevio);
+        $ultimoproceso=mysqli_result($rs_consultaprevio,0,"maximo");
+        echo "<div class=\"header\">codigo proceso en form: '$codmproc'!!</div>";
+        echo "<div class=\"header\">ultimo proceso en tabla es: '$ultimoproceso'!!</div>";
+       
     //if no code of meta-process is defined then no metaproces exist for this entry and we will create it at following.  
-        if ($codmproc==""){
-                                //Ask for last codproceso and assing new value
-        	                    $consultaprevia = "SELECT max(codproceso) as maximo FROM metaprocesos";
-		                        $rs_consultaprevia=mysqli_query($conexion,$consultaprevia);
-		                        $codproceso=mysqli_result($rs_consultaprevia,0,"maximo");
+        if ($codmproc==""||$codmproc>$ultimoproceso){
+            echo "<div class=\"header\">dado que el proceso pasado en el form es nulo o menora al ultimo proceso entro al if!!</div>";
+                                $codproceso=$ultimoproceso;
                                 //If the result of the query is null then this will be the rist entry on the table and 0 is assigned as previews entry code.
                                 if ($codproceso=="") { $codproceso=0;} 
                                 $codproceso++;
                                 //insert the new entry on meta-process table.
-                                $query_creamproceso="INSERT INTO metaprocesos (codproceso, esbatch, nombre, codstatus) VALUES ('$codproceso','$batch','$nombreproceso','0')";
+                                $query_creamproceso="INSERT INTO metaprocesos (codproceso, esbatch, nombre, codstatus) VALUES ('$codproceso','$batch','$nombreproceso','4')";
                                 $rs_creaproceso=mysqli_query($conexion,$query_creamproceso);
                                 $data2['codmproc']= $codproceso;
                                 echo json_encode($data2); 
                         }else{
                                 $codproceso=$codmproc;
+
                         }
 
                 

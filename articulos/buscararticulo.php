@@ -5,7 +5,8 @@ include ("../conectar7.php");
     $codarticulo=$_GET["codart"];
     $nombrearticulo=$_GET["nombreart"];
     $codfamilia=$_GET["codfamilia"];
-    $donde="articulos.codfamilia=familias.codfamilia AND articulos.codfamilia=".$codfamilia." AND ";
+    $donde="articulos.codfamilia=familias.codfamilia AND ";
+    if ($codfamilia<>""){ $donde=$donde."articulos.codfamilia=".$codfamilia." AND ";}
     if ($codarticulo<>""){ $donde=$donde."articulos.codarticulo=".$codarticulo." AND ";}
     if ($nombrearticulo<>""){ $donde=$donde."articulos.referencia LIKE '".$nombrearticulo."%' AND ";}
     

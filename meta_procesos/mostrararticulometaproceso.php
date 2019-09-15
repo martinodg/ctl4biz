@@ -3,10 +3,9 @@ include ("../conectar7.php");
 
 
     $codmproceso=$_GET["codmetap"];
-    $nombremproceso=$_GET["nombremetap"];
+   /* echo "<div class=\"header\">ATENCION: El meta-proceso pasado al php es: '$codmproceso'!!</div>";*/
     $donde="articulos.codarticulo=metaprocesoslinea.codarticulo AND ";
     if ($codmproceso<>""){ $donde=$donde."metaprocesos.codproceso=".$codmproceso." AND ";}
-    if ($nombremproceso<>""){ $donde=$donde."metaprocesos.nombre LIKE '".$nombremproceso."%' AND ";}
     
 
     

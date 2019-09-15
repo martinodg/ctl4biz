@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            /*background-color: #333333;*/
+        }
+        
+        .sidenav {
+            height: 100%;
+            width: 50px;
+            background-repeat: repeat-y;
+            position: absolute z-index: 0;
+            top: 48;
+            bottom: 0px;
+            left: 0;
+            background-color: #1e1e1e;
+            overflow-x: hidden;
+            padding-top: 20px;
+            margin-top: : after .topnav;
+        }
+        
+        .sidenav a {
+            padding: 6px 6px 6px 13px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+        
+        .sidenav a:hover {
+            color: #f1f1f1;
+            background-color: #d9d9d9;
+        }
+        
+        .main {
+            margin-left: 50px;
+            overflow: auto;
+            background-color: #333333;
+            /* Same as the width of the sidenav */
+        }
+        
+        .topnav {
+            overflow: auto;
+            background-color: #d9d9d9;
+            z-index: 0;
+            display: block;
+        }
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: #2b2b2b;
+            text-align: center;
+            padding-top: 20px;
+            text-decoration: none;
+            font-size: 10px;
+        }
+        
+        .active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .topnav .icon {
+            display: none;
+        }
+        
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+            font-size: 10px;
+            border: none;
+            outline: none;
+            color: #2b2b2b;
+            padding-top: 20px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .topnav a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #75ea27;
+            color: black;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: rgb(78, 202, 233);
+            color: black;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .downbar {
+            height: 27px;
+            width: 100%;
+            position: absolute;
+            z-index: 0;
+            down: 0;
+            left: 0;
+            background-color: #b25dc7;
+            overflow-x: hidden;
+            padding-top: 20px;
+            margin-top: : after .topnav;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .topnav a:not(:first-child),
+            .dropdown .dropbtn {
+                display: none;
+            }
+            .topnav a.icon {
+                float: right;
+                display: block;
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            .topnav.responsive {
+                position: relative;
+            }
+            .topnav.responsive .icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .topnav.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .topnav.responsive .dropdown {
+                float: none;
+            }
+            .topnav.responsive .dropdown-content {
+                position: relative;
+            }
+            .topnav.responsive .dropdown .dropbtn {
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+    <title>e-moon The Simple Cloud ERP</title>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+
+        <div class="dropdown">
+            <button class="dropbtn">Inter. Comerciales
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+            <div class="dropdown-content">
+                <a href="./proveedores/index.php" target="principal">Proveedores</a>
+                <a href="./clientes/index.php" target="principal">Clientes</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Produccion 
+                        <i class="fa fa-caret-down"></i>
+                      </button>
+            <div class="dropdown-content">
+                <a href="./familias/index.php" target="principal">Tipo de Articulos</a>
+                <a href="./articulos/index.php" target="principal">Articulos</a>
+                <a href="./meta_procesos/index.php" target="principal">Meta-Procesos</a>
+                <a href="./procesos/index.php" target="principal">Procesos de Produccion</a>
+                <a href="./batch/index.php" target="principal">Batch de Produccion</a>
+                <a href="./lotes/index.php" target="principal">Lotes de Produccion</a>
+                <a href="./estaciones/index.php" target="principal">Estaciones de trabajo</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Ventas
+                        <i class="fa fa-caret-down"></i>
+                      </button>
+            <div class="dropdown-content">
+                <a href="./ventas_mostrador/index.php" target="principal">Venta a Mostrador</a>
+                <a href="./facturas_clientes/index.php" target="principal">Facturas</a>
+                <a href="./albaranes_clientes/index.php" target="principal">Remitos</a>
+                <a href="./lote_albaranes_clientes/index.php" target="principal">Facturar Remitos</a>
+                <a href="./presupuestos_clientes/index.php" target="principal">Presupuesto</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Compras
+                            <i class="fa fa-caret-down"></i>
+                          </button>
+            <div class="dropdown-content">
+                <a href="./facturas_proveedores/index.php" target="principal">Facturas</a>
+                <a href="./albaranes_proveedores/index.php" target="principal">Remitos</a>
+                <a href="./lote_albaranes_proveedores/index.php" target="principal">Facturar Remitos</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Administracion
+                                <i class="fa fa-caret-down"></i>
+                              </button>
+            <div class="dropdown-content">
+                <a href="./cobros/index.php" target="principal">Cobros</a>
+                <a href="./pagos/index.php" target="principal">Pagos</a>
+                <a href="./cerrarcaja/index.php" target="principal">Caja Diaria</a>
+                <a href="./librodiario/index.php" target="principal">Libro Diraio</a>
+                <a href="./partes_trabajo/index.php" target="principal">Recursos Humanos</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Configuracion
+                                    <i class="fa fa-caret-down"></i>
+                                  </button>
+            <div class="dropdown-content">
+                <a href="./trabajadores/index.php" target="principal">Empleados</a>
+                <a href="./etiquetas/index.php" target="principal">Etiquetas</a>
+                <a href="./impuestos/index.php" target="principal">Impuestos</a>
+                <a href="./entidades/index.php" target="principal">Entidades Bancarias</a>
+                <a href="./ubicaciones/index.php" target="principal">Ubicaciones</a>
+                <a href="./embalajes/index.php" target="principal">Embalajes</a>
+                <a href="./formaspago/index.php" target="principal">Formas de Pago</a>
+            </div>
+        </div>
+
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <div class="sidenav">
+        <a href="./central2.php" target="principal"><img src="./img/home.svg" width="24" height="24" alt="inizio"></a>
+        <a href="#" target="principal"><img src="./img/settings.svg" width="24" height="24" alt="settings"></a>
+        <a href="./creditos.php" target="principal"><img src="./img/help.svg" width="24" height="24" alt="help"></a>
+    </div>
+
+    <div class="main">
+
+        <iframe src="central2.php" name="principal" title="principal" width="100%" height="1050px" frameborder=0 scrolling="no" style="margin-left: 0px; margin-right: 0px; margin-top: 2px; margin-bottom: 0px;"></iframe>
+    </div>
+    <div class="downbar" id="myDownBar">
+    </div>
+</body>
+
+</html>
