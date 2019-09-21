@@ -7,35 +7,29 @@ body {
     margin-bottom: 0PX
 }
 
-
-/* Hide Hamburger */
-
-#page-nav label,
-[id^=hamburger] {
-    display: none;
-}
-
 #header {
     width: 100%;
+    margin-top: 0px;
+    margin-left: 50px;
     height: 34px;
     background: #d9d9d9;
     position: fixed;
 }
 
-.menuicon {
-    height: 24px;
-    width: 24px;
-    padding: 5px 13px;
+.menu {
+    display: none;
 }
 
 #icono {
     background: rgb(48, 38, 46);
     height: 34px;
     width: 50px;
+    left: 0px;
+    top: 0px;
     display: block;
-    float: left;
+    float: right;
     padding: 0px;
-    position: relative;
+    position: fixed;
     text-decoration: none;
     transition-duration: 0.5s;
 }
@@ -44,6 +38,7 @@ body {
     height: 24px;
     width: 24px;
     padding: 5px 13px;
+    fill: #ccc;
 }
 
 .logo {
@@ -51,15 +46,22 @@ body {
     height: 30px;
     width: 90px;
     display: block;
-    left: 50%;
+    left: 45%;
+    top: 0px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.menuicon {
+    height: 24px;
+    width: 24px;
+    padding: 5px 13px;
 }
 
 #left_side {
     width: 50px;
     margin-top: 34px;
-    height: 678px;
+    height: 728px;
     background: #1e1e1e;
     background-repeat: repeat-y;
     overflow: hidden;
@@ -67,7 +69,7 @@ body {
 }
 
 .iconolado {
-    padding: 13px;
+    padding: 5px 13px;
     height: 24px;
     width: 24px;
 }
@@ -77,7 +79,7 @@ body {
 }
 
 #content {
-    height: 672px;
+    height: 742px;
     overflow: auto;
     padding: 0px;
     margin-left: 50px;
@@ -87,74 +89,74 @@ body {
 }
 
 #bottombar {
+    bottom: 0px;
     width: 100%;
     height: 24px;
     background: #d4d381;
-    margin-bottom: 0px;
-    position: absolute;
+    position: fixed;
 }
 
-a {
-    text-decoration: none;
-}
-
-nav {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
-}
-
-ul {
-    background: #d9d9d9;
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-    min-width: 150px;
-}
-
-li {
-    color: #fff;
-    background: #d9d9d9;
-    display: block;
-    float: left;
-    position: relative;
-    text-decoration: none;
-    transition-duration: 0.2s;
-    padding: 13px 10px 7px 10px;
-}
-
-li a {
-    color: rgb(27, 25, 25);
-}
-
-li:hover {
-    background: #737473;
-    cursor: pointer;
-}
-
-ul li ul {
-    background: orange;
-    visibility: hidden;
-    opacity: 0;
-    min-width: 150px;
-    position: absolute;
-    transition: all 0.5s ease;
-    margin-top: 6px;
-    left: 0;
+[id^=hamburger] {
     display: none;
 }
 
-ul li:hover>ul,
-ul li ul:hover {
-    visibility: visible;
-    opacity: 1;
+#page-nav label {
+    display: inline-block;
+}
+
+
+/* Break down menu items into vertical */
+
+#page-nav ul li {
     display: block;
 }
 
-ul li ul li {
-    clear: both;
-    width: 100%;
+#page-nav ul li {
+    border-top: 1px solid #333;
 }
 
-ul li ul li:hover {
-    background: #737473;
+
+/* Toggle show/hide menu on checkbox click */
+
+#page-nav ul {
+    display: none;
+}
+
+#page-nav input:checked~ul {
+    display: block;
+}
+
+[id^=hamburger] ul {
+    display: none;
+}
+
+[id^=hamburger] input:checked~ul {
+    display: block;
+}
+
+
+/* Menu Items */
+
+#page-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;
+}
+
+#page-nav ul li {
+    display: block padding: 20px;
+    box-sizing: border-box;
+    background: #ccc;
+    font-size: 20px;
+    color: #000;
+}
+
+#page-nav ul li a {
+    color: #1e1e1e;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+#page-nav ul:hover {
+    background: rgb(211, 94, 94):
 }
