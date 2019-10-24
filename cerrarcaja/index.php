@@ -26,10 +26,10 @@ $hoy=date("d/m/Y");
 		
 		var cursor;
 		if (document.all) {
-		// Está utilizando EXPLORER
+		// Estï¿½ utilizando EXPLORER
 		cursor='hand';
 		} else {
-		// Está utilizando MOZILLA/NETSCAPE
+		// Estï¿½ utilizando MOZILLA/NETSCAPE
 		cursor='pointer';
 		}
 		
@@ -62,7 +62,7 @@ $hoy=date("d/m/Y");
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 					  <tr>
 						  <td>Fecha de cierre</td>
-						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
+						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {

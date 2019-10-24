@@ -69,7 +69,7 @@ for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
 				<td width="8%" class="aCentro"><? echo $precio?></td>
 				<td width="7%" class="aCentro"><? echo $descuento?></td>
 				<td width="8%" class="aCentro"><? echo $importe?></td>
-				<td width="3%"><a href="javascript:eliminar_linea(<?php echo $codfacturatmp?>,<?php echo $numlinea?>,<?php echo $importe ?>)"><img src="../img/eliminar.png" border="0"></a></td>
+				<td width="3%"><a href="javascript:eliminar_linea(<?php echo $codfacturatmp?>,<?php echo $numlinea?>,<?php echo $importe ?>)"><img src="../img/eliminar.svg" border="0"></a></td>
 			</tr>
 <? } ?>
 </table>

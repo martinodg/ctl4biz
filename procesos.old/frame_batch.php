@@ -53,7 +53,7 @@ include ("../mysqli_result.php");?>
 					<td>
         <div align="left"><?php echo utf8_encode($descripcion);?></div></td>
 					<td><div align="center"><?php echo $cantidad;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codbatch?>,'<?php echo $descripcion?>')"><img src="../img/convertir.png" border="0" title="Seleccionar"></a></div></td>					
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codbatch?>,'<?php echo $descripcion?>')"><img src="../img/convertir.svg" border="0" title="Seleccionar"></a></div></td>					
 				</tr>
 			<?php }
 		?>

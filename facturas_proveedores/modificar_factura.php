@@ -191,7 +191,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 						<? $hoy=date("d/m/Y"); ?>
 						<tr>
 							<td width="6%">Fecha</td>
-						    <td width="27%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo implota($fecha)?>" readonly> <img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
+						    <td width="27%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo implota($fecha)?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
@@ -223,7 +223,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
 					<td width="11%">Referencia</td>
-					<td colspan="10"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15" readonly> <img src="../img/ver.png" width="16" height="16" onClick="ventanaArticulos()" title="Buscar articulos"></td>
+					<td colspan="10"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15" readonly> <img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()" title="Buscar articulos"></td>
 				  </tr>
 				  <tr>
 					<td>Descripcion</td>

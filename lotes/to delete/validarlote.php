@@ -30,9 +30,9 @@ include ("../conectar7.php");
 							echo '<td class="aDerecha" width="6%"><div align="center">'.$row[4].'</div></td>';
                                                         echo '<td class="aDerecha" width="6%"><div align="center">'.$row[5].'</div></td>';
                                                         echo '<td class="aDerecha" width="6%"><div align="center">'.$row[6].'</div></td>';
-							echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.png" width="16" height="16" border="0"  title="Modificar"></a></div></td>';
-							echo '	<td width="5%"><div align="center"><a href="#"><img src="../img/ver.png" width="16" height="16" border="0" title="Visualizar"></a></div></td>';
-						        echo '<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0"  title="Eliminar"></a></div></td>';
+							echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  title="Modificar"></a></div></td>';
+							echo '	<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" title="Visualizar"></a></div></td>';
+						        echo '<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0"  title="Eliminar"></a></div></td>';
                               echo '</tr>';
                         echo '</table>';
                            /* echo "Codigo de lote: ",$row[0], " Articulo: ",$row[1]," Cantidad: ",$row[2], " Fecha de inizio: ",$row[3]," Hora de inicio: ",$row[4]," Fecha de finalizacion: ".$row[5],"Hora de finalizacion: ",$row[6];*/

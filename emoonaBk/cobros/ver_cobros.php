@@ -109,7 +109,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						</tr>	
 						<tr>
 							<td width="15%">Fecha de vencimiento</td>
-						    <td width="43%"><input id="fechavencimiento" type="text" class="cajaPequena" NAME="fechavencimiento" maxlength="10" value="<? echo $fechavencimiento?>" readonly><img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
+						    <td width="43%"><input id="fechavencimiento" type="text" class="cajaPequena" NAME="fechavencimiento" maxlength="10" value="<? echo $fechavencimiento?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
@@ -130,7 +130,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
 							<td width="15%">Fecha de cobro</td>
-						    <td width="35%"><input id="fechacobro" type="text" class="cajaPequena" NAME="fechacobro" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
+						    <td width="35%"><input id="fechacobro" type="text" class="cajaPequena" NAME="fechacobro" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {

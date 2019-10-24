@@ -121,7 +121,7 @@ if ($cadena_busqueda<>"") {
                                     <option value="horaf">Hora de finalizacion</option>
                                 </select>
                            <input id="parametro1" name="parametro1" type="text" class="cajaMediana" maxlength="45" value="<? echo $parametro1?>">
-                                <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar" onMouseOver="style.cursor=cursor"> <img src="../img/validacion.png" width="20" height="20" onClick="validar1()" title="Validar" onMouseOver="style.cursor=cursor">
+                                <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar" onMouseOver="style.cursor=cursor"> <img src="../img/validacion.svg" width="20" height="20" onClick="validar1()" title="Validar" onMouseOver="style.cursor=cursor">
                             </td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
@@ -140,7 +140,7 @@ if ($cadena_busqueda<>"") {
                                     <option value="horaf">Hora de finalizacion</option>
                                 </select>
                            <input id="parametro2" name="parametro2" type="text" class="cajaMediana" maxlength="45" value="<? echo $parametro2?>">
-                                <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar" onMouseOver="style.cursor=cursor"> <img src="../img/validacion.png" width="20" height="20" onClick="validar1()" title="Validar" onMouseOver="style.cursor=cursor">
+                                <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar" onMouseOver="style.cursor=cursor"> <img src="../img/validacion.svg" width="20" height="20" onClick="validar1()" title="Validar" onMouseOver="style.cursor=cursor">
                             </td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
@@ -159,7 +159,7 @@ if ($cadena_busqueda<>"") {
                                     <option value="horaf">Hora de finalizacion</option>
                                 </select>
                            <input id="parametro3" name="parametro3" type="text" class="cajaMediana" maxlength="45" value="<? echo $parametro3?>">
-                                <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar" onMouseOver="style.cursor=cursor"> <img src="../img/validacion.png" width="20" height="20" onClick="validar1()" title="Validar" onMouseOver="style.cursor=cursor">
+                                <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar" onMouseOver="style.cursor=cursor"> <img src="../img/validacion.svg" width="20" height="20" onClick="validar1()" title="Validar" onMouseOver="style.cursor=cursor">
                             </td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>

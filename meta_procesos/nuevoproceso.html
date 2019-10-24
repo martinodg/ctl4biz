@@ -25,6 +25,17 @@
             //show items of the meta-process
             mostrararticulo(proximomproc);
 
+            //assign value to batch
+            var estadobatch;
+            $('input[type="checkbox"]').on('change', function() {
+                if ($(this).prop('checked')) {
+                    estadobatch = "1";
+                } else {
+                    estadobatch = "0";
+                }
+                /*alert(estadobatch);*/
+            });
+
             //filter for search   
             $('#codarticulo, #nombrearticulo').keyup(function() {
                 /*  console.log($(this));*/
@@ -59,10 +70,11 @@
 
             //when we press add button
             $('#btnagregar').click(function() {
+
                 $.get("agregararticulo.php", {
                         codmproceso: document.getElementById('codmproceso').value,
                         nombremproceso: document.getElementById('nombremproceso').value,
-                        batch: document.getElementById('batch').value,
+                        batch: estadobatch,
                         codart: document.getElementById('hidecodarticulo').value,
                         nombreart: document.getElementById('hidenombrearticulo').value,
                         cantidadart: document.getElementById('cantidad').value
@@ -106,7 +118,7 @@
                             <tr>
 
                                 <td width="30%">Codigo del meta-proceso <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15"></td>
-                                <td width="15%">Lote <label class="switch"> <input type="checkbox" id="batch" name="batch" value="01" checked> <span class="slider round"></span> </label> Batch</td>
+                                <td width="15%">Lote <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Batch</td>
                                 <td width="55%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
 
                             </tr>

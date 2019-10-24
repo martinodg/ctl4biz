@@ -80,9 +80,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td class="aCentro" width="12%"><? echo $contador+1;?></td>
 							<td width="20%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codentidad")?></div></td>
 							<td width="50%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombreentidad")?></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.png" width="16" height="16" border="0" onClick="modificar_entidad(<?php echo mysqli_result($res_resultado,$contador,"codentidad")?>)" title="Modificar"></a></div></td>
-														<td width="6%"><div align="center"><a href="#"><img src="../img/ver.png" width="16" height="16" border="0" onClick="ver_entidad(<?php echo mysqli_result($res_resultado,$contador,"codentidad")?>)" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0" onClick="eliminar_entidad(<?php echo mysqli_result($res_resultado,$contador,"codentidad")?>)" title="Eliminar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_entidad(<?php echo mysqli_result($res_resultado,$contador,"codentidad")?>)" title="Modificar"></a></div></td>
+														<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_entidad(<?php echo mysqli_result($res_resultado,$contador,"codentidad")?>)" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_entidad(<?php echo mysqli_result($res_resultado,$contador,"codentidad")?>)" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

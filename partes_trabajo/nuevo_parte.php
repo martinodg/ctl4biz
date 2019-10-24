@@ -170,7 +170,7 @@ $fechahoy=date("Y-m-d");
 						<tr>
 							<td width="15%">C&oacute;digo Trabajador </td>
 					      <td colspan="3"><input NAME="codtrabajador" type="text" class="cajaPequena" id="codtrabajador" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar trabajador" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.png" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar trabajador" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
 							<td width="15%">Nombre</td>
@@ -213,7 +213,7 @@ $fechahoy=date("Y-m-d");
 <tr>
 <td>Fecha Comienzo</td>
 <td><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly>
-<img src="../img/calendario.png" alt="" name="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
+<img src="../img/calendario.svg" alt="" name="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
 <script type="text/javascript">
 					Calendar.setup(
 					  {

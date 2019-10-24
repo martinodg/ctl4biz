@@ -124,10 +124,10 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 							<td width="10%"><div align="center"><? echo number_format(mysql_result($res_resultado,$contador,"totalpresupuesto"),2,",",".")?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysql_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td width="10%"><div align="center"><? echo $estado?></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.png" width="16" height="16" border="0" onClick="modificar_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.png" width="16" height="16" border="0" onClick="ver_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>)" title="Visualizar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0" onClick="eliminar_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Eliminar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.png" width="16" height="16" border="0" onClick="convertir_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Albaranar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>)" title="Visualizar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16" height="16" border="0" onClick="convertir_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Albaranar"></a></div></td>
 <!--							<td width="5%"><div align="center"><a href="#"><img src="../img/imprimir.png" width="16" height="16" border="0" onClick="imprimir_etiquetas(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>)" title="Imprimir etiquetas"></a></div></td> -->
 						</tr>
 						<? $contador++;

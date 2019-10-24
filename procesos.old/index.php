@@ -180,17 +180,17 @@ $codprocesotmp=mysqli_insert_id($conexion);
 						<tr>
 							<td width="15%">C&oacute;digo de Batch </td>
 					      <td colspan="3"><input NAME="codbatch" type="text" class="cajaMediana" id="codbatch" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.png" width="16" height="16" onClick="VentanaBatch()" title="Buscar Batch" onMouseOver="style.cursor=cursor"> <img src="../img/batch.png" width="16" height="16" onClick="validarbatch()" title="Validar batch" onMouseOver="style.cursor=cursor"></td>					
+					        <img src="../img/ver.svg" width="16" height="16" onClick="VentanaBatch()" title="Buscar Batch" onMouseOver="style.cursor=cursor"> <img src="../img/batch.png" width="16" height="16" onClick="validarbatch()" title="Validar batch" onMouseOver="style.cursor=cursor"></td>					
 						</tr>
                         <tr>
 							<td width="15%">C&oacute;digo de Estacion de trabajo </td>
 					      <td colspan="3"><input NAME="codestacion" type="text" class="cajaPequena" id="codestacion" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar estacion de trabajo" onMouseOver="style.cursor=cursor"> <img src="../img/workbench.png" width="16" height="16" onClick="validarestacion()" title="Validar estacion" onMouseOver="style.cursor=cursor"></td>					
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar estacion de trabajo" onMouseOver="style.cursor=cursor"> <img src="../img/workbench.png" width="16" height="16" onClick="validarestacion()" title="Validar estacion" onMouseOver="style.cursor=cursor"></td>					
 						</tr>
                         <tr>
 							<td width="15%">C&oacute;digo de Empleado </td>
 					      <td colspan="3"><input NAME="codempleado" type="text" class="cajaPequena" id="codempleado" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar empleado" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.png" width="16" height="16" onClick="validarempleado()" title="Validar empleado" onMouseOver="style.cursor=cursor"></td>					
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar empleado" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarempleado()" title="Validar empleado" onMouseOver="style.cursor=cursor"></td>					
 						</tr>
 						<tr>
 							<td width="6%">Decripcion del Proceso </td>
@@ -201,7 +201,7 @@ $codprocesotmp=mysqli_insert_id($conexion);
 						<? $hoy=date("d/m/Y"); ?>
 						<tr>
 							<td width="6%">Fecha de Inicio</td>
-						    <td width="27%"><input NAME="fechai" type="text" class="cajaPequena" id="fechai" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
+						    <td width="27%"><input NAME="fechai" type="text" class="cajaPequena" id="fechai" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
@@ -232,7 +232,7 @@ $codprocesotmp=mysqli_insert_id($conexion);
                 </tr>
                 <tr>
 					<td width="11%">Codigo barras </td>
-					<td colspan="10" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15"> <img src="../img/calculadora.jpg" border="1" align="absmiddle" onClick="validarArticulo()" onMouseOver="style.cursor=cursor" title="Validar codigo de barras">     <img src="../img/ver.png" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor" title="Buscar articulo"></td>
+					<td colspan="10" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15"> <img src="../img/calculadora.svg" border="1" align="absmiddle" onClick="validarArticulo()" onMouseOver="style.cursor=cursor" title="Validar codigo de barras">     <img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor" title="Buscar articulo"></td>
 				  </tr>
 				  <tr>
 					<td>Descripcion</td>

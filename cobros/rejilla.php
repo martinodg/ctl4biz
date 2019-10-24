@@ -96,7 +96,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo $estado?></div></td>							
 							<td width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fechavencimiento"));?></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/dinero.jpg" width="16" height="16" border="0" onClick="ver_cobros(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" title="Ver Cobros"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/dinero.svg" width="16" height="16" border="0" onClick="ver_cobros(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" title="Ver Cobros"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

@@ -42,7 +42,7 @@ include ("../conectar7.php");
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
 					<td width="15%">Codigo barras </td>
-					<td colspan="8" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15" readonly><img src="../img/ver.png" width="16" height="16" onClick="ventanaArticulos()"></td>
+					<td colspan="8" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15" readonly><img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()"></td>
 				    <td valign="middle">&nbsp;</td>
 				    <td rowspan="2" valign="bottom"><div align="center"><img src="../img/codigobarras.jpg" border="1" align="absbottom" onClick="imprimir()" onMouseOver="style.cursor=cursor"></div></td>
 				  </tr>

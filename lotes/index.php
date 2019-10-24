@@ -65,7 +65,7 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
                                                                          if ($(calendid).length == 0) {
                                                                                                             //Add it to the dom
                                                                                                             $(agregar).append("\
-                                                                                                            <img src='../img/calendario.png' name='"+calend+"' width='16' height='16' border='0' id='"+calend+"' onMouseOver='this.style.cursor=&apos;pointer&apos;'>");
+                                                                                                            <img src='../img/calendario.svg' name='"+calend+"' width='16' height='16' border='0' id='"+calend+"' onMouseOver='this.style.cursor=&apos;pointer&apos;'>");
                                                                                                             Calendar.setup(
 					                                                                                                        {
 					                                                                                                            inputField : campo,

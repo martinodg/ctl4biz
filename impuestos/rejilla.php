@@ -81,9 +81,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="20%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codimpuesto")?></div></td>
 							<td width="30%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
 							<td width="20%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"valor")?></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.png" width="16" height="16" border="0" onClick="modificar_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Modificar"></a></div></td>
-														<td width="6%"><div align="center"><a href="#"><img src="../img/ver.png" width="16" height="16" border="0" onClick="ver_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0" onClick="eliminar_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Eliminar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Modificar"></a></div></td>
+														<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

@@ -96,7 +96,7 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 			            </tr>
 						<tr>
 							<td>Pagado</td>
-						    <td><input NAME="pagado" type="text" class="cajaPequena" id="pagado" size="10" maxlength="10"> &#8364; <img src="../img/dinero.jpg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Pagado" onClick="actualizarimportedevolver()"></td>
+						    <td><input NAME="pagado" type="text" class="cajaPequena" id="pagado" size="10" maxlength="10"> &#8364; <img src="../img/dinero.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Pagado" onClick="actualizarimportedevolver()"></td>
 			            </tr>
 						<tr>
 							<td>A devolver</td>
@@ -128,7 +128,7 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 						<? $hoy=date("d/m/Y"); ?>
 						<tr>
 							<td>Fecha de cobro</td>
-						    <td><input NAME="fechacobro" type="text" class="cajaPequena" id="fechacobro" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
+						    <td><input NAME="fechacobro" type="text" class="cajaPequena" id="fechacobro" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
 					  {

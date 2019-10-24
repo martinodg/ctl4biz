@@ -100,9 +100,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							</div></td>
 							<td class="aCentro" width="11%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"precio_tienda")?></div></td>
 							<td class="aCentro" width="5%"><? echo mysqli_result($res_resultado,$contador,"stock")?></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.png" width="16" height="16" border="0" onClick="modificar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Modificar"></a></div></td>
-														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.png" width="16" height="16" border="0" onClick="ver_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Visualizar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.png" width="16" height="16" border="0" onClick="eliminar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Modificar"></a></div></td>
+														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Visualizar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}
