@@ -53,6 +53,10 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 				window.open("../fpdf/codigocontinuo.php?codalbaran="+codalbaran);
 		}
 		
+		function imprimir(codalbaran) {
+			window.open("../fpdf/imprimir_albaran.php?codalbaran="+codalbaran);
+		}
+		
 		function modificar_albaran(codalbaran,marcaestado) {
 			if (marcaestado==1) {
 				parent.location.href="modificar_albaran.php?codalbaran=" + codalbaran + "&cadena_busqueda=<? echo $cadena_busqueda?>";
@@ -128,8 +132,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>)" title="Visualizar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" title="Eliminar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16" height="16" border="0" onClick="convertir_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" title="Facturar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/imprimir.png" width="16" height="16" border="0" onClick="imprimir_etiquetas(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>)" title="Imprimir etiquetas"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16px" height="16px" width="16" height="16" border="0" onClick="convertir_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" title="Facturar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/printer.svg" width="16" height="16" border="0" onClick="imprimir(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>)" title="Imprimir etiquetas"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

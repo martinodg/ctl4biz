@@ -1,14 +1,15 @@
 <?php
 define('FPDF_FONTPATH','font/');
 require('fpdf.php');
-include("../conectar.php");
+include("../conectar7.php");
+include("../mysqli_result.php");
 //require('code39.php');
 
 $codalbaran=$_GET["codalbaran"];
 $sel_lineas="SELECT sum(cantidad) as suma FROM albalinea WHERE codalbaran='$codalbaran'";
-$rs_lineas=mysql_query($sel_lineas);
+$rs_lineas=mysqli_query($conexion,$sel_lineas);
 
-$numetiquetas=mysql_result($rs_lineas,0,"suma");
+$numetiquetas=mysqli_result($rs_lineas,0,"suma");
 
 class PDF extends FPDF
 {
@@ -110,24 +111,24 @@ $ancho=29;
 //Este largo es el largo de cada pagina, ten en cuenta que cada etiqueta con espacios y demas
 //son 27
 $largo=540;
-$pdf=new PDF (P,mm,array($ancho,$largo) );
-$pdf->Open();
+$pdf=new PDF ('P','mm',array($ancho,$largo) );
+
 $pdf->AddPage();
 
 $sel_lineas="SELECT * FROM albalinea INNER JOIN articulos ON albalinea.codigo=articulos.codarticulo WHERE codalbaran='$codalbaran'";
-$rs_lineas=mysql_query($sel_lineas);
+$rs_lineas=mysqli_query($conexion,$sel_lineas);
 $contador=0;
 $desplazamiento=0;
 $contador20=0;
 
-while ($contador < mysql_num_rows($rs_lineas)) {
-	$descripcion=mysql_result($rs_lineas,$contador,"descripcion_corta");
-	$referencia=mysql_result($rs_lineas,$contador,"referencia");
-	$codigobarras=mysql_result($rs_lineas,$contador,"codigobarras");
+while ($contador < mysqli_num_rows($rs_lineas)) {
+	$descripcion=mysqli_result($rs_lineas,$contador,"descripcion_corta");
+	$referencia=mysqli_result($rs_lineas,$contador,"referencia");
+	$codigobarras=mysqli_result($rs_lineas,$contador,"codigobarras");
 	$descripcion=substr($descripcion,0,31);
-	$precio=mysql_result($rs_lineas,$contador,"precio_tienda");
+	$precio=mysqli_result($rs_lineas,$contador,"precio_tienda");
 	$precio=number_format($precio,2,",",".");
-	$cantidad=mysql_result($rs_lineas,$contador,"cantidad");
+	$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
 	$contador2=0;
 	while ($contador2 < $cantidad) {
 		$contador20++;
@@ -171,4 +172,5 @@ $pdf->Text(1,49,"Referencia: ".$referencia);
 $pdf->SetFont('Arial','',8);    
 $pdf->Text(22,49,"PVP: ".$precio." Eur.");*/
 $pdf->Output();
+ob_end_flush(); 
 ?>

@@ -1,3 +1,7 @@
+<? 
+include ("../conectar7.php"); 
+include ("../mysqli_result.php"); 
+?>
 <html>
 <head>
 <title>Buscador de Clientes</title>
@@ -34,7 +38,7 @@ body {
 }
 -->
 </style></head>
-<? include ("../conectar7.php"); ?>
+
 <body onLoad="buscar()">
 <form name="form1" id="form1" method="post" action="frame_clientes.php" target="frame_resultado" onSubmit="buscar()">
   <table width="95%" id="tabla_resultado" name="tabla_resultado" style="display:none" align="center">
@@ -50,7 +54,7 @@ body {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <img src="../img/botoncerrar.jpg" width="70" height="22" onClick="window.close()" border="1" onMouseOver="style.cursor=cursor">
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

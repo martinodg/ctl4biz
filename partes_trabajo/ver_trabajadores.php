@@ -50,7 +50,7 @@ body {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <img src="../img/botoncerrar.jpg" width="70" height="22" onClick="window.close()" border="1" onMouseOver="style.cursor=cursor">
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

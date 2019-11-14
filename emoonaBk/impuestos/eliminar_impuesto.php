@@ -58,7 +58,7 @@ $rs_query=mysqli_query($conexion,$query);
 			  </div>
 				<div id="botonBusqueda">
 					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar(<? echo $codimpuesto?>)" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 			  </div>
 			 </div>
 		  </div>

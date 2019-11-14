@@ -113,8 +113,9 @@ $hoy=date("d/m/Y");
 			  </div>
 				<div id="botonBusqueda">
 					<input type="hidden" name="id" id="id" value="">
-					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar(formulario,true)" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 					<input id="accion" name="accion" value="convertir" type="hidden">
 					<input id="albaranes" name="albaranes" value="<? echo $albaranes?>" type="hidden">
 					<input id="iva" name="iva" value="<? echo $iva?>" type="hidden">

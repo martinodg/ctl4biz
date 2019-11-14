@@ -3,8 +3,8 @@ include ("../conectar.php");
 
 $fechahoy=date("Y-m-d");
 #$sel_albaran="INSERT INTO albaranestmp (codalbaran,fecha) VALUE ('','$fechahoy')";
-#$rs_albaran=mysql_query($sel_albaran);
-#$codalbarantmp=mysql_insert_id();
+#$rs_albaran=mysqli_query($conexion,$sel_albaran);
+#$codalbarantmp=mysqli_insert_id($conexion);
 ?>
 <html>
 	<head>
@@ -246,8 +246,8 @@ $fechahoy=date("Y-m-d");
 
 				<input name="codarticulo" value="<? echo $codarticulo?>" type="hidden" id="codarticulo">
   <div align="center">
-				    <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar_cabecera()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+				    <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codalbarantmp" name="codalbarantmp" value="<? echo $codalbarantmp?>" type="hidden">
 </div>

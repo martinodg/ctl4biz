@@ -1,36 +1,37 @@
 <?php
-include ("../conectar.php");
+include ("../conectar7.php");
+include ("../mysqli_result.php");
 include ("../funciones/fechas.php");
 
 $codpresupuesto=$_GET["codpresupuesto"];
 $sel_alb="SELECT * FROM presupuestos WHERE codpresupuesto='$codpresupuesto'";
-$rs_alb=mysql_query($sel_alb);
-$codcliente=mysql_result($rs_alb,0,"codcliente");
-$iva=mysql_result($rs_alb,0,"iva");
-$fecha=mysql_result($rs_alb,0,"fecha");
+$rs_alb=mysqli_query($conexion,$sel_alb);
+$codcliente=mysqli_result($rs_alb,0,"codcliente");
+$iva=mysqli_result($rs_alb,0,"iva");
+$fecha=mysqli_result($rs_alb,0,"fecha");
 $sel_cliente="SELECT nombre,nif FROM clientes WHERE codcliente='$codcliente'";
-$rs_cliente=mysql_query($sel_cliente);
-$nombre=mysql_result($rs_cliente,0,"nombre");
-$nif=mysql_result($rs_cliente,0,"nif");
+$rs_cliente=mysqli_query($conexion,$sel_cliente);
+$nombre=mysqli_result($rs_cliente,0,"nombre");
+$nif=mysqli_result($rs_cliente,0,"nif");
 
 $fechahoy=date("Y-m-d");
 $sel_presupuesto="INSERT INTO presupuestostmp (codpresupuesto,fecha) VALUE ('','$fechahoy')";
-$rs_presupuesto=mysql_query($sel_presupuesto);
-$codpresupuestotmp=mysql_insert_id();
+$rs_presupuesto=mysqli_query($conexion,$sel_presupuesto);
+$codpresupuestotmp=mysqli_insert_id($conexion);
 
 $sel_lineas="SELECT * FROM presulinea WHERE codpresupuesto='$codpresupuesto' ORDER BY numlinea ASC";
-$rs_lineas=mysql_query($sel_lineas);
+$rs_lineas=mysqli_query($conexion,$sel_lineas);
 $contador=0;
-while ($contador < mysql_num_rows($rs_lineas)) {
-	$codfamilia=mysql_result($rs_lineas,$contador,"codfamilia");
-	$codigo=mysql_result($rs_lineas,$contador,"codigo");
-	$cantidad=mysql_result($rs_lineas,$contador,"cantidad");
-	$precio=mysql_result($rs_lineas,$contador,"precio");
-	$importe=mysql_result($rs_lineas,$contador,"importe");
+while ($contador < mysqli_num_rows($rs_lineas)) {
+	$codfamilia=mysqli_result($rs_lineas,$contador,"codfamilia");
+	$codigo=mysqli_result($rs_lineas,$contador,"codigo");
+	$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
+	$precio=mysqli_result($rs_lineas,$contador,"precio");
+	$importe=mysqli_result($rs_lineas,$contador,"importe");
 	$baseimponible=$baseimponible+$importe;
-	$dcto=mysql_result($rs_lineas,$contador,"dcto");
+	$dcto=mysqli_result($rs_lineas,$contador,"dcto");
 	$sel_tmp="INSERT INTO presulineatmp (codpresupuesto,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES ('$codpresupuestotmp','','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
-	$rs_tmp=mysql_query($sel_tmp);
+	$rs_tmp=mysqli_query($conexion,$sel_tmp);
 	$contador++;
 }
 
@@ -249,7 +250,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
 					<td width="5%">Importe</td>
 					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" readonly> &#8364;</td>
-					<td width="15%"><img src="../img/botonagregar.jpg" width="72" height="22" border="1" onClick="validar()" onMouseOver="style.cursor=cursor" title="Agregar articulo"></td>
+					<td width="15%"><button type="button" id="btnagregar" onClick="validar()"  onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button></td>
 				  </tr>
 				</table>
 				</div>
@@ -298,8 +299,8 @@ $preciototal=$baseimponible+$baseimpuestos;
 			  </div>
 				<div id="botonBusqueda">
 				  <div align="center">
-				   <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar_cabecera()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+				   <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codpresupuestotmp" name="codpresupuestotmp" value="<? echo $codpresupuestotmp?>" type="hidden">
 					<input id="modif" name="modif" value="0" type="hidden">

@@ -4,7 +4,7 @@ include ("../conectar7.php");
 $fechahoy=date("Y-m-d");
 $sel_albaran="INSERT INTO albaranesptmp (codalbaran,fecha) VALUE ('','$fechahoy')";
 $rs_albaran=mysqli_query($conexion,$sel_albaran);
-$codalbarantmp=mysqli_insert_id();
+$codalbarantmp=mysqli_insert_id($conexion);
 ?>
 <html>
 	<head>
@@ -232,7 +232,7 @@ $codalbarantmp=mysqli_insert_id();
 					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
 					<td width="5%">Importe</td>
 					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" readonly> &#8364;</td>
-					<td width="15%"><img src="../img/botonagregar.jpg" width="72" height="22" border="1" onClick="validar()" onMouseOver="style.cursor=cursor" title="Agregar articulo"></td>
+					<td width="15%"><button type="button" id="btnagregar" onClick="validar()"  onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button></td>
 				  </tr>
 				</table>
 				</div>
@@ -281,8 +281,8 @@ $codalbarantmp=mysqli_insert_id();
 			  </div>
 				<div id="botonBusqueda">					
 				  <div align="center">
-				    <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar_cabecera()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+				    <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codalbarantmp" name="codalbarantmp" value="<? echo $codalbarantmp?>" type="hidden">				    
 			      </div>

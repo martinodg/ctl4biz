@@ -1,15 +1,11 @@
 <?php
-
-
+<?php
+ob_start();
 define('FPDF_FONTPATH','font/');
-require('mysql_table.php');
-
-include("comunes.php");
-
-include ("../conectar.php");  
-
+require ('mysqli_table.php');
+include ("../conectar7.php");  include ("../mysqli_result.php"); include ("comunes.php");
 $pdf=new PDF();
-$pdf->Open();
+$pdf->AddPage();
 $pdf->AddPage();
 
 //Nombre del Listado
@@ -17,7 +13,7 @@ $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',16);
 $pdf->SetY(20);
 $pdf->SetX(0);
-$pdf->MultiCell(290,6,"Total Costo Almacen",0,C,0);
+$pdf->MultiCell(290,6,"Total Costo Almacen",0,'C',0);
 
 $pdf->Ln();    
 	
@@ -36,12 +32,12 @@ $sel_articulos="SELECT *
 FROM articulos LEFT JOIN familias ON
 articulos.codfamilia = familias.codfamilia WHERE articulos.borrado =0
 ORDER  BY familias.codfamilia ASC , articulos.codarticulo ASC ";
-$rs_articulos=mysql_query($sel_articulos);
+$rs_articulos=mysqli_query($conexion,$sel_articulos);
 
 $contador=0;
 $item=1;
 $valortotal=0;
-$numero_articulos=mysql_num_rows($rs_articulos);
+$numero_articulos=mysqli_num_rows($rs_articulos);
 		if ($numero_articulos>0) {		
 			$pdf->SetFont('Arial','',8);
 			$pdf->MultiCell(220,6,$row["nombre"],0,L,0);
@@ -62,14 +58,14 @@ $numero_articulos=mysql_num_rows($rs_articulos);
 				$pdf->Cell($w[$i],7,$header[$i],1,0,'C',1);
 			$pdf->Ln();
 			$pdf->SetFont('Arial','',8);
-			while ($contador < mysql_num_rows($rs_articulos)) {
+			while ($contador < mysqli_num_rows($rs_articulos)) {
 				$pdf->Cell($w[0],5,$item,'LRTB',0,'C');
-				$pdf->Cell($w[1],5,mysql_result($rs_articulos,$contador,"nombre"),'LRTB',0,'C');
-				$pdf->Cell($w[2],5,mysql_result($rs_articulos,$contador,"referencia"),'LRTB',0,'C');
-				$pdf->Cell($w[3],5,mysql_result($rs_articulos,$contador,"descripcion"),'LRTB',0,'L');
-				$pdf->Cell($w[4],5,mysql_result($rs_articulos,$contador,"precio_almacen"),'LRTB',0,'C');
-				$pdf->Cell($w[5],5,mysql_result($rs_articulos,$contador,"stock"),'LRTB',0,'C');
-				$total=mysql_result($rs_articulos,$contador,"precio_almacen") * mysql_result($rs_articulos,$contador,"stock");
+				$pdf->Cell($w[1],5,mysqli_result($rs_articulos,$contador,"nombre"),'LRTB',0,'C');
+				$pdf->Cell($w[2],5,mysqli_result($rs_articulos,$contador,"referencia"),'LRTB',0,'C');
+				$pdf->Cell($w[3],5,mysqli_result($rs_articulos,$contador,"descripcion"),'LRTB',0,'L');
+				$pdf->Cell($w[4],5,mysqli_result($rs_articulos,$contador,"precio_almacen"),'LRTB',0,'C');
+				$pdf->Cell($w[5],5,mysqli_result($rs_articulos,$contador,"stock"),'LRTB',0,'C');
+				$total=mysqli_result($rs_articulos,$contador,"precio_almacen") * mysqli_result($rs_articulos,$contador,"stock");
 				$pdf->Cell($w[6],5,number_format($total,2,",","."),'LRTB',0,'C');
 				$valortotal=$valortotal+$total;
 				$pdf->Ln();
@@ -95,4 +91,5 @@ $numero_articulos=mysql_num_rows($rs_articulos);
 	$pdf->Ln(4);
 			
 $pdf->Output();
+ob_end_flush(); 
 ?> 

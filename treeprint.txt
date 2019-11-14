@@ -278,7 +278,7 @@
 ./fpdf/makefont/koi8-r.map
 ./fpdf/makefont/koi8-u.map
 ./fpdf/makefont/makefont.php
-./fpdf/mysql_table.php
+./fpdf/mysqli_table.php
 ./fpdf/proveedores.php
 ./fpdf/ubicaciones.php
 ./funciones/currentdatetime.php

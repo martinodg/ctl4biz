@@ -1,6 +1,8 @@
 <?php
 header('Cache-Control: no-cache');
 header('Pragma: no-cache'); 
+include ("../conectar7.php"); 
+include ("../mysqli_result.php");
 ?>
 <html>
 <head>
@@ -15,8 +17,7 @@ function pon_prefijo(pref,nombre) {
 }
 
 </script>
-<? include ("../conectar7.php"); ?>
-include ("../mysqli_result.php");
+
 <body>
 <?
 	
@@ -47,7 +48,7 @@ include ("../mysqli_result.php");
 					<td>
         <div align="left"><?php echo utf8_encode($nombre);?></div></td>
 					<td><div align="center"><?php echo $nif;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>')"><img src="../img/convertir.svg" border="0" title="Seleccionar"></a></div></td>					
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
 				</tr>
 			<?php }
 		?>

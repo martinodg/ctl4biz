@@ -68,7 +68,7 @@ include ("../mysqli_result.php");
                     <td>
         <div align="center"><?php echo $horaf;?></div></td>
         
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codlote?>,'<?php echo $codarticulo?>','<?php echo $cantidad?>')"><img src="../img/convertir.svg" border="0" title="Seleccionar"></a></div></td>
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codlote?>,'<?php echo $codarticulo?>','<?php echo $cantidad?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>
 				</tr>
 			<?php }
 		?>

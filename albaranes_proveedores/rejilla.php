@@ -66,7 +66,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 		function eliminar_albaran(codalbaran,codproveedor) {
 			parent.location.href="eliminar_albaran.php?codalbaran=" + codalbaran + "&codproveedor=" + codproveedor + "&cadena_busqueda=<? echo $cadena_busqueda?>";
 		}
-
+		function imprimir(codalbaran,codproveedor) {
+			window.open("../fpdf/imprimir_albaran_proveedor.php?codalbaran="+codalbaran+ "&codproveedor=" + codproveedor);
+		}
 		function inicio() {
 			var numfilas=document.getElementById("numfilas").value;
 			var indi=parent.document.getElementById("iniciopagina").value;
@@ -115,14 +117,15 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 						<tr class="<?php echo $fondolinea?>">
 							<td class="aCentro" width="8%"><? echo $contador+1;?></td>
 							<td width="8%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codalbaran")?></div></td>
-							<td width="30%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>							
+							<td width="29%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>							
 							<td width="10%"><div align="center"><? echo number_format(mysqli_result($res_resultado,$contador,"totalalbaran"),2,",",".")?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td width="10%"><div align="center"><? echo $estado?></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Eliminar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16" height="16" border="0" onClick="convertir_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<? echo $marcaestado?>)" title="Facturar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Visualizar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16px" height="16px" border="0" onClick="convertir_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<? echo $marcaestado?>)" title="Facturar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/printer.svg" width="16px" height="16px" border="0" onClick="imprimir('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="imprimir"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

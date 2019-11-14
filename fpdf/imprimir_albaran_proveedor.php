@@ -2,26 +2,25 @@
 
 
 define('FPDF_FONTPATH','font/');
-require('mysql_table.php');
+require('mysqli_table.php');
 include("comunes.php");
-include ("../conectar.php");
+include ("../conectar7.php");
+include ("../mysqli_result.php");
 include ("../funciones/fechas.php"); 
 
 $pdf=new PDF();
-$pdf->Open();
 $pdf->AddPage();
 
-$pdf->Ln(10);
+$pdf->Ln(25);
 
 
-include ("../conectar.php");
   
 $codalbaran=$_GET["codalbaran"];
 $codproveedor=$_GET["codproveedor"];
   
 $consulta = "Select * from albaranesp,proveedores where albaranesp.codalbaran='$codalbaran' and albaranesp.codproveedor='$codproveedor' and albaranesp.codproveedor=proveedores.codproveedor";
-$resultado = mysql_query($consulta, $conexion);
-$lafila=mysql_fetch_array($resultado);
+$resultado = mysqli_query($conexion,$consulta);
+$lafila=mysqli_fetch_array($resultado);
 	$pdf->Cell(95);
     $pdf->Cell(80,4,"",'',0,'C');
     $pdf->Ln(4);
@@ -50,8 +49,8 @@ $lafila=mysql_fetch_array($resultado);
 	//Calculamos la provincia
 	$codigoprovincia=$lafila["codprovincia"];
 	$consulta="select * from provincias where codprovincia='$codigoprovincia'";
-	$query=mysql_query($consulta);
-	$row=mysql_fetch_array($query);
+	$query=mysqli_query($conexion,$consulta);
+	$row=mysqli_fetch_array($query);
 
 	$pdf->Cell(95);
     $pdf->Cell(80,4,$lafila["codpostal"] . "  " . $lafila["localidad"] . "  (" . $row["nombreprovincia"] . ")",'LR',0,'L',1);
@@ -120,44 +119,44 @@ $lafila=mysql_fetch_array($resultado);
 
 	
 	$consulta2 = "Select * from albalineap where codalbaran='$codalbaran' and codproveedor='$codproveedor' order by numlinea";
-    $resultado2 = mysql_query($consulta2, $conexion);
+    $resultado2 = mysqli_query($conexion,$consulta2);
     
 	$contador=1;
-	while ($row=mysql_fetch_array($resultado2))
+	while ($row=mysqli_fetch_array($resultado2))
 	{
 	  $pdf->Cell(1);
 	  $contador++;
-	  $codarticulo=mysql_result($resultado2,$lineas,"codigo");
-	  $codfamilia=mysql_result($resultado2,$lineas,"codfamilia");
+	  $codarticulo=mysqli_result($resultado2,$lineas,"codigo");
+	  $codfamilia=mysqli_result($resultado2,$lineas,"codfamilia");
 	  $sel_articulos="SELECT * FROM articulos WHERE codarticulo='$codarticulo' AND codfamilia='$codfamilia'";
-	  $rs_articulos=mysql_query($sel_articulos);
-	  $pdf->Cell(40,4,mysql_result($rs_articulos,0,"referencia"),'LR',0,'L');
+	  $rs_articulos=mysqli_query($conexion,$sel_articulos);
+	  $pdf->Cell(40,4,mysqli_result($rs_articulos,0,"referencia"),'LR',0,'L');
 	  
-	  $acotado = substr(mysql_result($rs_articulos,0,"descripcion"), 0, 45);
+	  $acotado = substr(mysqli_result($rs_articulos,0,"descripcion"), 0, 45);
 	  $pdf->Cell(80,4,$acotado,'LR',0,'L');
 	  
-	  $pdf->Cell(20,4,mysql_result($resultado2,$lineas,"cantidad"),'LR',0,'C');	
+	  $pdf->Cell(20,4,mysqli_result($resultado2,$lineas,"cantidad"),'LR',0,'C');	
 	  
-	  $precio2= number_format(mysql_result($resultado2,$lineas,"precio"),2,",",".");	  
+	  $precio2= number_format(mysqli_result($resultado2,$lineas,"precio"),2,",",".");	  
 	  $pdf->Cell(15,4,$precio2,'LR',0,'R');
 	  
-	  if (mysql_result($resultado2,$lineas,"dcto")==0) 
+	  if (mysqli_result($resultado2,$lineas,"dcto")==0) 
 	  {
 	  $pdf->Cell(15,4,"",'LR',0,'C');
 	  } 
 	  else 
 	   { 
-		$pdf->Cell(15,4,mysql_result($resultado2,$lineas,"dcto") . " %",'LR',0,'C');
+		$pdf->Cell(15,4,mysqli_result($resultado2,$lineas,"dcto") . " %",'LR',0,'C');
 	   }
 	  
-	  $importe2= number_format(mysql_result($resultado2,$lineas,"importe"),2,",",".");	  
+	  $importe2= number_format(mysqli_result($resultado2,$lineas,"importe"),2,",",".");	  
 	  
 	  $pdf->Cell(20,4,$importe2,'LR',0,'R');
 	  $pdf->Ln(4);	
 
 
 	  //vamos acumulando el importe
-	  $importe=$importe + mysql_result($resultado2,$lineas,"importe");
+	  $importe=$importe + mysqli_result($resultado2,$lineas,"importe");
 	  $contador=$contador + 1;
 	  $lineas=$lineas + 1;
 	  
@@ -227,10 +226,11 @@ $lafila=mysql_fetch_array($resultado);
 	$pdf->Ln(4);
 
 
-      @mysql_free_result($resultado); 
-      @mysql_free_result($query);
-	  @mysql_free_result($resultado2); 
-	  @mysql_free_result($query3);
+      @mysqli_free_result($resultado); 
+      @mysqli_free_result($query);
+	  @mysqli_free_result($resultado2); 
+	  @mysqli_free_result($query3);
 
 $pdf->Output();
+ob_end_flush(); 
 ?> 

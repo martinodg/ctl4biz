@@ -27,7 +27,7 @@ include ("../mysqli_result.php");
                                 if ($codproceso=="") { $codproceso=0;} 
                                 $codproceso++;
                                 //insert the new entry on meta-process table.
-                                $query_creamproceso="INSERT INTO metaprocesos (codproceso, esbatch, nombre, codstatus) VALUES ('$codproceso','$batch','$nombreproceso','4')";
+                                $query_creamproceso="INSERT INTO metaprocesos (codproceso, esbatch, codarticulo, nombre, codstatus) VALUES ('$codproceso','$batch','$codarticulo','$nombreproceso','4')";
                                 $rs_creaproceso=mysqli_query($conexion,$query_creamproceso);
                                 $data2['codmproc']= $codproceso;
                                 echo json_encode($data2); 
@@ -50,7 +50,7 @@ include ("../mysqli_result.php");
 
                         $rs_operacion=mysqli_query($conexion,$query_operacion);
 		
-	                    /*	$codproceso=mysqli_insert_id(); */
+	                    /*	$codproceso=mysqli_insert_id($conexion); */
                                     
                 
             

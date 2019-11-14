@@ -1,7 +1,7 @@
 /*****************************************/
 
 
-/* clases relativas a conteneores       */
+/* clases relativas a contenedores       */
 
 #pagina {
     position: absolute;
@@ -110,6 +110,29 @@
     vertical-align: middle;
 }
 
+button {
+    padding: 3px 2px 3px 2px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+button>img {
+    height: 16px;
+    width: 16px;
+}
+
+button>span {
+    text-size-adjust: 8px;
+}
+
+
+/* Add this to align vertically */
+
+button>img,
+button>span {
+    vertical-align: middle;
+}
+
 #botonBusqueda {
     position: relative;
     top: 5%;
@@ -118,6 +141,19 @@
     text-align: right;
     margin-top: .5em;
     padding-top: 1em;
+    margin-right: .5em;
+    /*	border-top:solid 1px #696969;	*/
+}
+
+#botonCerrar {
+    position: relative;
+    top: 5%;
+    left: 0%;
+    width: 100%;
+    text-align: right;
+    margin-top: .5em;
+    padding-top: 1em;
+    margin-right: .5em;
     /*	border-top:solid 1px #696969;	*/
 }
 
@@ -144,8 +180,11 @@
 
 .totalResultado {
     background-color: #ff8c00;
-    color: #fff;
+    color: #dcdcdc;
 }
+
+
+/* Pagination text*/
 
 .paginar {
     color: #ff8c00;
@@ -183,7 +222,7 @@
 
 .mensaje {
     background-color: #FF0000;
-    color: #fff;
+    color: ##dcdcdc;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -193,7 +232,7 @@
 
 .mensajeminimo {
     background-color: #FF0000;
-    color: #fff;
+    color: ##dcdcdc;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -203,7 +242,7 @@
 
 .cabeceraTabla {
     background-color: #5f5f5f;
-    color: #3dfbfd;
+    color: #7aaedc;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -294,7 +333,7 @@ a:hover {
     color: #000;
     width: 100px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -306,7 +345,7 @@ a:hover {
     color: #000;
     width: 75px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -318,7 +357,7 @@ a:hover {
     color: #000;
     width: 55px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -330,7 +369,7 @@ a:hover {
     color: #000;
     width: 30px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -356,7 +395,7 @@ a:hover {
     color: #000;
     width: 150px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -369,7 +408,19 @@ a:hover {
     color: #000;
     width: 250px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
+    border-style: solid;
+    border-width: 1px;
+    height: 15pt;
+}
+
+.cboUnidadmedida {
+    background-color: #dcdcdc;
+    font: 8pt helvetica;
+    color: #000;
+    width: 80px;
+    border-radius: 5px;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -381,7 +432,7 @@ a:hover {
     color: #000;
     width: 75px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -393,7 +444,7 @@ a:hover {
     color: #000;
     width: 150px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -405,7 +456,7 @@ a:hover {
     color: #000;
     width: 250px;
     border-radius: 5px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
     height: 15pt;
@@ -437,7 +488,7 @@ a:hover {
     left: 0;
     right: 1;
     bottom: 0;
-    background-color: white;
+    background-color: #dcdcdc;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -449,13 +500,13 @@ a:hover {
     width: 12px;
     left: 0px;
     bottom: 0px;
-    background-color: #00a9ff;
+    background-color: #7aaedc;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 input:checked+.slider {
-    background-color: white;
+    background-color: #dcdcdc;
 }
 
 
@@ -474,14 +525,14 @@ input:checked+.slider:before {
 
 .slider.round {
     border-radius: 20px;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 2px;
 }
 
 .slider.round:before {
     border-radius: 50%;
-    border-color: #00a9ff;
+    border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
 }

@@ -20,8 +20,9 @@ function limpiar() {
 }
 
 </script>
-<? include ("../conectar7.php"); ?>
+<? include ("../conectar7.php"); 
 include ("../mysqli_result.php");
+?>
 <body>
 <?
 	$codcliente=$_GET["codcliente"];

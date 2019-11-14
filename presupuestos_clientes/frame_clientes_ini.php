@@ -1,6 +1,8 @@
 <?php
 header('Cache-Control: no-cache');
 header('Pragma: no-cache'); 
+include ("../conectar7.php"); 
+include ("../mysqli_result.php"); 
 ?>
 <html>
 <head>
@@ -15,13 +17,12 @@ function pon_prefijo(pref,nombre) {
 }
 
 </script>
-<? include ("../conectar.php"); ?>
 <body>
 <?
 	
 	$consulta="SELECT * FROM clientes WHERE borrado=0 ORDER BY codcliente ASC";
-	$rs_tabla = mysql_query($consulta);
-	$nrs=mysql_num_rows($rs_tabla);
+	$rs_tabla = mysqli_query($conexion,$consulta);
+	$nrs=mysqli_num_rows($rs_tabla);
 ?>
 <div id="tituloForm2" class="header">
 <div align="center">
@@ -35,10 +36,10 @@ function pon_prefijo(pref,nombre) {
 			<td width="10%"><div align="center"></td>
 		  </tr>
 		<?php
-			for ($i = 0; $i < mysql_num_rows($rs_tabla); $i++) {
-				$codcliente=mysql_result($rs_tabla,$i,"codcliente");
-				$nombre=mysql_result($rs_tabla,$i,"nombre");
-				$nif=mysql_result($rs_tabla,$i,"nif");
+			for ($i = 0; $i < mysqli_num_rows($rs_tabla); $i++) {
+				$codcliente=mysqli_result($rs_tabla,$i,"codcliente");
+				$nombre=mysqli_result($rs_tabla,$i,"nombre");
+				$nif=mysqli_result($rs_tabla,$i,"nif");
 				 if ($i % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }?>
 						<tr class="<?php echo $fondolinea?>">
 					<td>
@@ -46,7 +47,7 @@ function pon_prefijo(pref,nombre) {
 					<td>
         <div align="left"><?php echo utf8_encode($nombre);?></div></td>
 					<td><div align="center"><?php echo $nif;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>')"><img src="../img/convertir.svg" border="0" title="Seleccionar"></a></div></td>					
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
 				</tr>
 			<?php }
 		?>

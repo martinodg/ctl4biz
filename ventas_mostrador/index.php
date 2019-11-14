@@ -14,6 +14,8 @@ $codfacturatmp=mysqli_insert_id($conexion);
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -23,7 +25,15 @@ $codfacturatmp=mysqli_insert_id($conexion);
 		// Está utilizando MOZILLA/NETSCAPE
 		cursor='pointer';
 		}
-		
+		//Perform when DOM is full loaded
+		$( document ).ready(function(){
+            
+			//load process combo
+			$.get("../sel_unidadmedida.php", function(data) {
+            	    $('.cboUnidadmedida').html(data);
+            });
+		});
+/*----------------------------------------------------------------------------------------------------------------------*/
 		var miPopup
 		function abreVentana(){
 			miPopup = window.open("ver_clientes.php","miwin","width=700,height=380,scrollbars=yes");
@@ -62,6 +72,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 			{
 				var precio=document.getElementById("precio").value;
 				var cantidad=document.getElementById("cantidad").value;
+				var cantidad=document.getElementById("umnstock").value;
 				var descuento=document.getElementById("descuento").value;
 				descuento=descuento/100;
 				total=precio*cantidad;
@@ -207,21 +218,24 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
-					<td width="11%">Codigo barras </td>
+					<td width="10%">Codigo barras </td>
 					<td colspan="10" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15"> <img src="../img/calculadora.svg" width="16" height="16" border="1" align="absmiddle" onClick="validarArticulo()" onMouseOver="style.cursor=cursor" title="Validar codigo de barras">     <img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor" title="Buscar articulo"></td>
 				  </tr>
 				  <tr>
 					<td>Descripcion</td>
-					<td width="19%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
+					<td width="17%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
 					<td width="5%">Precio</td>
-					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
+					<td width="10%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
 					<td width="5%">Cantidad</td>
-					<td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
+					<td width="10%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()">
+					<select id="umnstock" class="cboUnidadmedida" name="umnstock" onChange="actualizar_importe()" >
+                                
+								</select></td>
 					<td width="4%">Dcto.</td>
-					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
+					<td width="8%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
 					<td width="5%">Importe</td>
 					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" readonly> &#8364;</td>
-				    <td width="15%"><img src="../img/botonagregar.jpg" border="1" align="absbottom" onClick="validar()" onMouseOver="style.cursor=cursor"></td>
+					<td width="15%"><button type="button" id="btnagregar" onClick="validar()" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button></td>
 				  </tr>
 				</table>
 				</div>
@@ -270,8 +284,8 @@ $codfacturatmp=mysqli_insert_id($conexion);
 			  </div>
 				<div id="botonBusqueda">					
 				  <div align="center">
-				    <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar_cabecera()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+				  	<button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()"onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codfacturatmp" name="codfacturatmp" value="<? echo $codfacturatmp?>" type="hidden">	
 					<input id="preciototal2" name="preciototal" value="<? echo $preciototal?>" type="hidden">			    

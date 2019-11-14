@@ -8,7 +8,7 @@ $codalbaran=$_GET["codalbarantmp"];
 $numlinea=$_GET["numlinea"];
 
 $consulta = "DELETE FROM albalineatmp WHERE codalbaran ='".$codalbaran."' AND numlinea='".$numlinea."'";
-$rs_consulta = mysql_query($consulta);
+$rs_consulta = mysqli_query($conexion,$consulta);
 echo "<script>parent.location.href='frame_lineas.php?codalbarantmp=".$codalbaran."';</script>";
 
 ?>

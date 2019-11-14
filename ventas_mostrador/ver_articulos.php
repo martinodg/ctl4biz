@@ -67,7 +67,7 @@ body {
 		  <?
 		    $consultafamilia="select * from familias where borrado=0 order by nombre ASC";
 			$queryfamilia=mysqli_query($conexion,$consultafamilia);
-			?><option value=0>Todos los articulos</option><?
+			?><option value=3>Productos Terminados</option><?
 			while ($rowfamilia=mysqli_fetch_row($queryfamilia))
 			  { 
 			  	if ($anterior==$rowfamilia[0]) { ?>
@@ -85,7 +85,7 @@ body {
 	    <td width="64%"><input name="descripcion" type="text" id="descripcion" size="50" class="cajaGrande"></td></tr>
 		<tr>
 		  <td class="busqueda">&nbsp;</td>
-		  <td><img src="../img/botonbuscar.jpg" width="69" height="22" border="1" onClick="enviar()" onMouseOver="style.cursor=cursor"></td>
+		  <td><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button></td>
 	  </tr>
 </table>
 </div>
@@ -102,7 +102,7 @@ body {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <img src="../img/botoncerrar.jpg" width="70" height="22" onClick="window.close()" border="1" onMouseOver="style.cursor=cursor">
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

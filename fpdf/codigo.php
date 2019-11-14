@@ -6,13 +6,13 @@ include("../conectar.php");
 
 $codigo=$_GET["codigo"];
 $sel_articulo="SELECT * FROM articulos WHERE codigobarras='$codigo'";
-$rs_articulo=mysql_query($sel_articulo);
+$rs_articulo=mysqli_query($conexion,$sel_articulo);
 
-$descripcion=mysql_result($rs_articulo,0,"descripcion_corta");
-$referencia=mysql_result($rs_articulo,0,"referencia");
-$codigobarras=mysql_result($rs_articulo,0,"codigobarras");
+$descripcion=mysqli_result($rs_articulo,0,"descripcion_corta");
+$referencia=mysqli_result($rs_articulo,0,"referencia");
+$codigobarras=mysqli_result($rs_articulo,0,"codigobarras");
 $descripcion=substr($descripcion,0,31);
-$precio=mysql_result($rs_articulo,0,"precio_tienda");
+$precio=mysqli_result($rs_articulo,0,"precio_tienda");
 $precio=number_format($precio,2,",",".");
 
 class PDF extends FPDF
@@ -123,4 +123,5 @@ $pdf->SetFont('Arial','',9);
 $pdf->Text(5,23,"PVP: ".$precio." ".EURO);
 
 $pdf->Output();
+ob_end_flush(); 
 ?>

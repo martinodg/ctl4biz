@@ -88,7 +88,7 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 			            </tr>
 						<tr>
 							<td>Importe vale</td>
-						    <td><input NAME="importevale" type="text" class="cajaPequena" id="importevale" size="10" maxlength="10" value="0"> &#8364; <img src="../img/disco.png" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Aplicar Vale" onClick="actualizarimporte()"></td>
+						    <td><input NAME="importevale" type="text" class="cajaPequena" id="importevale" size="10" maxlength="10" value="0"> &#8364; <img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Aplicar Vale" onClick="actualizarimporte()"></td>
 			            </tr>
 						<tr>
 							<td>A pagar</td>
@@ -143,9 +143,10 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 			  </div>
 			  <br><br>
 			  <div align="center">
-			  <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="enviar()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botonimprimirticket.jpg" width="122" height="22" onClick="imprimir(<? echo $codfactura?>)" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="window.close()" border="1" onMouseOver="style.cursor=cursor">
+			  					<button type="button" id="btnaceptar" onClick="enviar()"onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+
+					<button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir Tkt</span> </button>
+					<button type="button" id="btncancelar"  onClick="window.close()"  onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 				</div>
 			  <input id="codfactura" name="codfactura" value="<? echo $codfactura?>" type="hidden">
 			  <input id="codcliente" name="codcliente" value="<? echo $codcliente?>" type="hidden">

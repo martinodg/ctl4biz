@@ -1,11 +1,12 @@
 <?php
-include ("../conectar.php");
+include ("../conectar7.php");
+include ("../mysqli_result.php");
 include ("../funciones/fechas.php");
 
 $codpresupuesto=$_GET["codpresupuesto"];
 $sel_presupuesto="SELECT fecha FROM presupuestos WHERE codpresupuesto='$codpresupuesto'";
-$rs_presupuesto=mysql_query($sel_presupuesto);
-$fecha=mysql_result($rs_presupuesto,0,"fecha");
+$rs_presupuesto=mysqli_query($conexion,$sel_presupuesto);
+$fecha=mysqli_result($rs_presupuesto,0,"fecha");
 $fecha=implota($fecha);
 ?>
 <html>
@@ -69,9 +70,10 @@ $fecha=implota($fecha);
 			  </div>
 				<div id="botonBusqueda">
 					<input type="hidden" name="id" id="id" value="">
-					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar(formulario,true)" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botonlimpiar.jpg" width="69" height="22" onClick="limpiar()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+
+					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 					<input id="accion" name="accion" value="convertir" type="hidden">
 					<input id="codpresupuesto" name="codpresupuesto" value="<? echo $codpresupuesto?>" type="hidden">
 			  </div>

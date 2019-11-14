@@ -1,3 +1,6 @@
+<? include ("../conectar7.php"); 
+   include ("../mysqli_result.php"); 
+?>
 <html>
 <head>
 <title>Buscador de Articulos</title>
@@ -58,7 +61,7 @@ body {
 }
 -->
 </style></head>
-<? include ("../conectar7.php"); ?>
+
 <body onLoad="buscar()">
 <div align="center">
 <form name="form1" id="form1" method="post" action="frame_articulos.php" target="frame_resultado" onSubmit="buscar()">
@@ -68,7 +71,7 @@ body {
 	    <td width="36%">Familia:</td>
 	    <td width="64%">
 		  <select id="cmbfamilia" name="cmbfamilia" class="comboGrande">
-		  <?
+		  <?php
 		    $consultafamilia="select * from familias where borrado=0 order by nombre ASC";
 			$queryfamilia=mysqli_query($conexion,$consultafamilia);
 			?><option value=0>Todos los articulos</option><?
@@ -88,7 +91,7 @@ body {
 		<tr><td width="36%" class="busqueda">Descripci&oacute;n:</td>
 	    <td width="64%"><input name="descripcion" type="text" id="descripcion" size="50" class="cajaGrande"></td></tr>
 		<tr>
-		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><img src="../img/botonbuscar.jpg" width="69" height="22" border="1" onClick="enviar()" onMouseOver="style.cursor=cursor"></div></td>
+		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button></div></td>
 	    </tr>
 </table>
 </div>
@@ -105,7 +108,7 @@ body {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <img src="../img/botoncerrar.jpg" width="70" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+      <button type="button" id="btncerrar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

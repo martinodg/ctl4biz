@@ -5,7 +5,33 @@
     <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="../jquery/jquery331.js"></script>
     <script language="javascript">
+        //---------------------------------------------------------------------------------------------------             
+        //set mouse cursor for different browsers
+        var cursor;
+        if (document.all) {
+            // Está utilizando EXPLORER
+            cursor = 'hand';
+        } else {
+            // Está utilizando MOZILLA/NETSCAPE
+            cursor = 'pointer';
+        }
+        //---------------------------------------------------------------------------------------------------   
         $(document).ready(function() {
+            //create new cod process
+            $.getJSON("calcularcodproceso.php", function(data) {
+                $('#codproceso').val(data.codproceso);
+            });
+
+            //load process combo
+            $.get("sel_procesos.php", function(data) {
+                $('#cbomProceso').html(data);
+            });
+
+            //selection on process combo        
+            $('#cboProceso').change(function() {
+                console.log($(this));
+
+            });
             //Assign current date & time
             $.getJSON("../funciones/currentdatetime.php",
                 function(data) {
@@ -22,7 +48,7 @@
                         codfamilia: "2"
                     },
                     function(data) {
-                        $('#div_datos').html(data);
+                        $('#div_datos2').html(data);
                     });
             });
             //when we press clean button
@@ -34,9 +60,8 @@
             //when we press start button
             $('#btninicio').click(function() {
                 $.get("iniciarproceso.php", {
-                        codart: document.getElementById('hidecodarticulo').value,
-                        nombreart: document.getElementById('hidenombrearticulo').value,
-                        cantidadart: document.getElementById('cantidad').value,
+                        codproceso: document.getElementById('codproceso').value,
+                        codigomproceso: document.getElementById('cbomProceso').value,
                         fechaiproceso: document.getElementById('fechai').value,
                         horaiproceso: document.getElementById('horai').value
                     },
@@ -50,14 +75,57 @@
             });
 
 
+
         });
+        //when we validate every line of the process items
+        function validararticuloproceso(codigo, cantidad, unique) {
+            var uniquevar = "cantidada" + unique;
+            var refresco = document.getElementById(uniquevar).value;
+            //alert if amount of item to validate had changed or if we validate the standard amount
+            if (cantidad != refresco) {
+                alert("La cantidad del articulo validado ha cambiado del valor standard " + cantidad + " a " + refresco + ". Se procede con la validacion!");
+            } else {
+                alert("Se procede a la validacion del articulo por la cantidad de: " + cantidad);
+            }
+            //call the process validation code
+            $.get("validararticuloproceso.php", {
+                    codproceso: document.getElementById('codproceso').value,
+                    codarticulo: codigo,
+                    refresco: refresco
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
+                });
 
-        function validararticulo(codigo, nombre) {
 
-            $('#codarticulo').val(codigo);
-            $('#nombrearticulo').val(nombre);
-            $('#hidecodarticulo').val(codigo);
-            $('#hidenombrearticulo').val(nombre);
+        }
+
+        //when we press accept button
+        function aceptar() {
+            //$dato = document.getElementById('codbolasoc').value;
+            var cbolasoc = $("input[name='codbolasoc']:checked").val();
+            //alert($codbolasoc);
+            $.get("completarproceso.php", {
+                    codproceso: document.getElementById('codproceso').value,
+                    codmproceso: document.getElementById('cbomProceso').value,
+                    bolasoc: cbolasoc
+                },
+                function(data) {
+                    $('#div_datos').html(data);
+                });
+        }
+
+        //when we press end button
+        function finalizar() {
+
+            $.get("finalizarproceso.php", {
+                    codproceso: document.getElementById('codproceso').value,
+                    codmproceso: document.getElementById('cbomProceso').value,
+                    cantproceso: document.getElementById('cantidadproceso').value
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
+                });
         }
     </script>
 </head>
@@ -73,15 +141,16 @@
                         <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 
                             <tr>
-                                <td width="10%">Asignar articulo por:</td>
-                                <td width="20%">Codigo de articulo <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
-                                <td width="20%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
+                                <td width="10%">Seleccionar datos del Proceso:</td>
+                                <td width="20%">Codigo de Proceso <input id="codproceso" type="text" class="cajaPequena" NAME="codproceso" maxlength="15" readonly></td>
+                                <td>Seleccione Proceso</td>
+                                <td><select id="cbomProceso" name="cbomProceso" class="comboMedio">
+                                
+                                    </select> </td>
+
 
                             </tr>
-                            <tr>
-                                <td>Cantidad</td>
-                                <td><input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"></td>
-                            </tr>
+
                             <tr>
                                 <td>Fecha de inicio</td>
                                 <td><input NAME="fechai" type="text" class="cajaMediana" id="fechai" size="25" maxlength="25" readonly></td>
@@ -98,10 +167,8 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <img src="../img/botoninicio.jpg" width="75" height="22" id="btninicio" border="1" onMouseOver="style.cursor=cursor">
-                    <img src="../img/botonlimpiar.jpg" width="75" height="22" id="btnlimpiar" border="1" onMouseOver="style.cursor=cursor">
-                    <img src="../img/botoncerrar.jpg" width="75" height="22" id="btncancelar" border="1" onMouseOver="style.cursor=cursor">
-
+                    <button type="button" id="btninicio" onMouseOver="style.cursor=cursor"> <img src="../img/iniciar.svg" alt="iniciar" /> <span>Iniciar</span> </button>
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cerrar" /> <span>cerrar</span> </button>
                 </div>
                 <input id="hidecodarticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
                 <input id="hidenombrearticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
@@ -109,14 +176,16 @@
                 <div id="lineaResultado">
                     <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                         <tr>
-                            <td width="50%" align="left">N de Articulos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-                            <td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+                            <td width="50%" class="paginar" align="left">N de Articulos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                            <td width="50%" class="paginar" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                     </table>
                 </div>
 
 
                 <div ID="div_datos" name="div_datos"> </div>
+                <div ID="div_datos2" name="div_datos2"> </div>
+
             </div>
         </div>
     </div>

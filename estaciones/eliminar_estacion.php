@@ -51,12 +51,12 @@ $rs_query=mysqli_query($conexion,$query);
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_query,0,"nombre")?></td>
 					    </tr>
 					</table>
-			  </div>
+			  	</div>
 				<div id="botonBusqueda">
-					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar(<? echo $codestacion?>)" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
-			  </div>
-			 </div>
+					<button type="button" id="btnaceptar" onClick="aceptar(<? echo $codestacion?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
+				 </div>
+				 </div>
 		  </div>
 		</div>
 	</body>

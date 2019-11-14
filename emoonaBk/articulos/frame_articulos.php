@@ -59,7 +59,7 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
         <div align="left"><?php echo $referencia;?></div></td>
 					<td><div align="center"><?php echo $descripcion;?></div></td>
 					<td><div align="center"><?php echo $precio;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<? echo $codarticulo?>)"><img src="../img/convertir.svg" border="0" title="Seleccionar"></a></div></td>					
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<? echo $codarticulo?>)"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
 				</tr>
 			<?php }
 		?>

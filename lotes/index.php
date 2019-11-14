@@ -15,9 +15,18 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
 		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
         <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/paginar.js"></script>
+
        
         <script language="javascript">
-          
+          //---------------------------------------------------------------------------------------------------           
+
+            //this function setup pagination and reload 
+          function paginar() {
+            //alert(document.getElementById("paginas").value);
+            document.getElementById("iniciopagina").value = document.getElementById("paginas").value;
+            buscalote();
+          }
           //---------------------------------------------------------------------------------------------------           
           //lots search fucnction
           function buscalote(){
@@ -26,9 +35,12 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
                                                                     criterio2 : document.getElementById('crit2').value,
                                                                     parametro2 : document.getElementById('param2').value,
                                                                     criterio3 : document.getElementById('crit3').value,
-                                                                    parametro3 : document.getElementById('param3').value
+                                                                    parametro3 : document.getElementById('param3').value,
+                                                                    paginainicio: document.getElementById('iniciopagina').value
                                                               },function ( data ) { 
                                                                                         $('#div_datos').html( data );
+                                                                                        calculaPaginacion();
+
                                                                                   }
                                          );
                               }
@@ -130,21 +142,21 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
 				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="20%">Estado </td>
+                        <td width="20%">Estado </td>
 						
-                            <td id="entrada1" with="20%">
-                          
-                                  <select id='param1' name='param1' class='comboMedio'>
-                                    <option value='' selected >Todos los estados</option>
-                                    <option value='0'>Inicializado</option>
-                                    <option value='1'>Finalizado</option>
-                                    <option value='2'>Descartado</option>
-                                </select>
-                             
-                            </td>
-                            <td width="20%">&nbsp;</td>
-							<td width="40%">&nbsp;</td>
-							
+                        <td id="entrada1" with="20%">
+                      
+                              <select id='param1' name='param1' class='comboMedio'>
+                                <option value='' selected >Todos los estados</option>
+                                <option value='0'>Inicializado</option>
+                                <option value='1'>Finalizado</option>
+                                <option value='2'>Descartado</option>
+                            </select>
+                         
+                        </td>
+                        <td width="20%">&nbsp;</td>
+                        <td width="40%">&nbsp;</td>
+                        
 						</tr>
 <tr>
 							<td width="20%">Criterio de busqueda #2 </td>
@@ -188,9 +200,10 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
 					</table>
 			  </div>
 		 	  <div id="botonBusqueda">
-                                         <img src="../img/botonlimpiar.jpg" width="69" height="22" border="1" id="btnlimpiar" onMouseOver="style.cursor=cursor">
-					 <img src="../img/botonnuevo.jpg" width="58" height="22" border="1" id="btnnuevo" onMouseOver="style.cursor=cursor">
-					<img src="../img/botonimprimir.jpg" width="79" height="22" border="1" id="btnimprimir" onMouseOver="style.cursor=cursor"></div>
+                    <button type="button" id="btnlimpiar" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+               		<button type="button" id="btnnuevo" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span>Nuevo</span> </button>
+               		<button type="button" id="btnimprimir" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
+              </div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
@@ -202,7 +215,7 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
                                <div ID="div_datos" name="div_datos" > </div> 
 				</div>
 				
-				<input type="hidden" id="iniciopagina" name="iniciopagina">
+				<input type="hidden" id="iniciopagina" name="iniciopagina" value="0">
 				<input type="hidden" id="cadena_busqueda" name="cadena_busqueda">
 			</form>
                        	

@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -38,12 +38,12 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1005"
+     inkscape:window-height="1006"
      id="namedview18"
      showgrid="false"
      inkscape:zoom="0.36875"
-     inkscape:cx="320"
-     inkscape:cy="298.30508"
+     inkscape:cx="-222.37288"
+     inkscape:cy="276.61016"
      inkscape:window-x="0"
      inkscape:window-y="50"
      inkscape:window-maximized="1"
@@ -51,41 +51,41 @@
   <path
      d="M 240.81356,0 H -47.186441 c -13.601562,0 -24,10.398438 -24,24 v 432 c 0,13.60156 10.398438,24 24,24 H 172.01278 l 92.80078,-92.80078 V 24 c 0,-13.601562 -10.39844,-24 -24,-24 z m 8,380.80078 -72,72 V 400 c 0,-4.80078 3.19922,-8 8,-8 h 40 v -16 h -40 c -13.60156,0 -24,10.39844 -24,24 v 64 H -47.186441 c -4.800781,0 -8,-3.19922 -8,-8 V 24 c 0,-4.800781 3.199219,-8 8,-8 H 240.81356 c 4.80078,0 8,3.199219 8,8 z m 0,0"
      id="path2"
-     style="fill:#7fff7f"
+     style="fill:#8dcaff;fill-opacity:1"
      inkscape:connector-curvature="0" />
   <path
      d="M 48.813559,48 H 144.81356 V 64 H 48.813559 Z m 0,0"
      id="path4"
-     style="fill:#7fff7f"
+     style="fill:#8dcaff;fill-opacity:1"
      inkscape:connector-curvature="0" />
   <path
      d="M -7.1864407,264 H 200.81356 v 16 H -7.1864407 Z m 0,0"
      id="path6"
-     style="fill:#7fff7f"
+     style="fill:#8dcaff;fill-opacity:1"
      inkscape:connector-curvature="0" />
   <path
      d="M -7.1864407,304 H 200.81356 v 16 H -7.1864407 Z m 0,0"
      id="path8"
-     style="fill:#7fff7f"
+     style="fill:#8dcaff;fill-opacity:1"
      inkscape:connector-curvature="0" />
   <path
      d="M -7.1864407,344 H 200.81356 v 16 H -7.1864407 Z m 0,0"
      id="path10"
-     style="fill:#7fff7f"
+     style="fill:#8dcaff;fill-opacity:1"
      inkscape:connector-curvature="0" />
   <path
      d="M -7.1864407,384 H 128.81356 v 16 H -7.1864407 Z m 0,0"
      id="path12"
-     style="fill:#7fff7f"
+     style="fill:#8dcaff;fill-opacity:1"
      inkscape:connector-curvature="0" />
   <path
      d="m 168.81356,212.80078 v -97.60156 l -72.000001,-36.000001 -72,36.000001 v 97.60156 l 72,36 z m -72.000001,-62.40234 -20,-12 48.000001,-27.19922 20,9.60156 z m 10.398441,-48 -45.59766,26.40234 -12.800781,-8 48,-23.999999 z m -66.398441,32 48,29.60156 v 46.39844 H 104.81356 V 164 l 48,-29.60156 v 68.80078 l -56.000001,28 -56,-28 z m 0,0"
      id="path14"
-     style="fill:#7fff7f"
+     style="fill:#8dcaff;fill-opacity:1"
      inkscape:connector-curvature="0" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:43.86433029px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#7fff7f;fill-opacity:1;stroke:none;stroke-width:1.09660828;"
+     style="font-style:normal;font-weight:normal;font-size:43.86433029px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#8dcaff;fill-opacity:1;stroke:none;stroke-width:1.09660828;"
      x="258.63092"
      y="133.23915"
      id="text15"
@@ -94,5 +94,5 @@
        id="tspan13"
        x="258.63092"
        y="133.23915"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:210.54878235px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:1.09660828;fill:#7fff7f;">+</tspan></text>
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:210.54878235px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:1.09660828;fill:#8dcaff;fill-opacity:1;">+</tspan></text>
 </svg>

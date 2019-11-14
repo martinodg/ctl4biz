@@ -4,23 +4,23 @@ include ("../funciones/fechas.php");
 
 $codtrabajo=$_GET["codtrabajo"];
 $sel_parte="SELECT * FROM partestrabajo WHERE codtrabajo='$codtrabajo'";
-$rs_parte=mysql_query($sel_parte);
-$codpresupuesto=mysql_result($rs_parte,0,"codpresupuesto");
-$codtrabajador=mysql_result($rs_parte,0,"codtrabajador");
-$fechacomienzo=mysql_result($rs_parte,0,"fechacomienzo");
-$fechalectura=mysql_result($rs_parte,0,"fechalectura");
-$fechafinalizacion=mysql_result($rs_parte,0,"fechafinalizacion");
-$titulo=mysql_result($rs_parte,0,"titulo");
-$descripcion=mysql_result($rs_parte,0,"descripcion");
-$horasprevistas=mysql_result($rs_parte,0,"horasprevistas");
-$horasinvertidas=mysql_result($rs_parte,0,"horasinvertidas");
-$preciohora=mysql_result($rs_parte,0,"preciohora");
-$estado=mysql_result($rs_parte,0,"estado");
+$rs_parte=mysqli_query($conexion,$sel_parte);
+$codpresupuesto=mysqli_result($rs_parte,0,"codpresupuesto");
+$codtrabajador=mysqli_result($rs_parte,0,"codtrabajador");
+$fechacomienzo=mysqli_result($rs_parte,0,"fechacomienzo");
+$fechalectura=mysqli_result($rs_parte,0,"fechalectura");
+$fechafinalizacion=mysqli_result($rs_parte,0,"fechafinalizacion");
+$titulo=mysqli_result($rs_parte,0,"titulo");
+$descripcion=mysqli_result($rs_parte,0,"descripcion");
+$horasprevistas=mysqli_result($rs_parte,0,"horasprevistas");
+$horasinvertidas=mysqli_result($rs_parte,0,"horasinvertidas");
+$preciohora=mysqli_result($rs_parte,0,"preciohora");
+$estado=mysqli_result($rs_parte,0,"estado");
 
 $sel_trabajador="SELECT * FROM trabajadores WHERE codtrabajador='$codtrabajador'";
-$rs_trabajador=mysql_query($sel_trabajador);
-$nombre=mysql_result($rs_trabajador,0,"nombre");
-$nif=mysql_result($rs_trabajador,0,"nif");
+$rs_trabajador=mysqli_query($conexion,$sel_trabajador);
+$nombre=mysqli_result($rs_trabajador,0,"nombre");
+$nif=mysqli_result($rs_trabajador,0,"nif");
 
 ?>
 <html>
@@ -299,8 +299,8 @@ foreach ($estados_partestrabajo as $k => $v) {
 				<input name="codarticulo" value="<? echo $codarticulo?>" type="hidden" id="codarticulo">
 				<br>
   <div align="center">
-				   <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar_cabecera()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+				   <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codalbarantmp" name="codalbarantmp" value="<? echo $codalbarantmp?>" type="hidden">
 					<input id="modif" name="modif" value="0" type="hidden">

@@ -82,12 +82,12 @@ $rs_borrar=mysqli_query($conexion,$sel_borrar);
   </tr>
   <tr height="200px">
     <td>&nbsp;</td>
-    <td><div align="center"><img src="img/yulelogo.svg" width="550" height="200" border="0" /></div></td>
+    <td><div align="center"><img src="img/ctl4bizlogo.svg" width="200" height="200" border="0" /></div></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><div align="center" class="Estilo6">Yulee your Cloud ERP System</div></td>
+    <td><div align="center" class="Estilo6">ConTroL for my business. Cloud ERP System</div></td>
     <td>&nbsp;</td>
   </tr>
   <tr>

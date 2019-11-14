@@ -21,7 +21,7 @@ function pon_prefijo(pref,nombre,nif) {
 <?
 	$codcliente=$_GET["codcliente"];
 	$consulta="SELECT * FROM clientes WHERE codcliente='$codcliente' AND borrado=0";
-	$rs_tabla = mysql_query($consulta);
+	$rs_tabla = mysqli_query($conexion,$consulta);
 ?>
 <div id="tituloForm" class="header">
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -31,10 +31,10 @@ function pon_prefijo(pref,nombre,nif) {
 			<td width="20%"><div align="center"><b>NIF/CIF</b></div></td>
 			<td width="10%"><div align="center"></td>
 		  </tr>
-		<?php if (mysql_num_rows($rs_tabla) > 0) { 
-				$codcliente=mysql_result($rs_tabla,$i,"codcliente");
-				$nombre=mysql_result($rs_tabla,$i,"nombre");
-				$nif=mysql_result($rs_tabla,$i,"nif"); ?>
+		<?php if (mysqli_num_rows($rs_tabla) > 0) { 
+				$codcliente=mysqli_result($rs_tabla,$i,"codcliente");
+				$nombre=mysqli_result($rs_tabla,$i,"nombre");
+				$nif=mysqli_result($rs_tabla,$i,"nif"); ?>
 			<tr class="itemParTabla">
 				<tr>
 					<td>
@@ -42,7 +42,7 @@ function pon_prefijo(pref,nombre,nif) {
 					<td>
         <div align="left"><?php echo utf8_encode($nombre);?></div></td>
 					<td><div align="center"><?php echo $nif;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>','<?php echo $nif?>')"><img src="../img/convertir.svg" border="0" title="Seleccionar"></a></div></td>					
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>','<?php echo $nif?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
 				</tr>
 		<?php } else { ?>
 			<tr>

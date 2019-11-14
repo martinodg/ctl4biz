@@ -1,5 +1,5 @@
 <?php
-include ("../conectar.php");
+include ("../conectar7.php");
 include ("../funciones/fechas.php");
 
 $fechainicio=$_GET["fechainicio"];
@@ -11,7 +11,12 @@ $total=$_GET["total"];
 $contado=$_GET["contado"];
 $tarjeta=$_GET["tarjeta"];
 
- 
+function formatter($value) { return number_format(floatval($value)); }
+$fl_neto=formatter($neto);
+$fl_total=formatter($total);
+$fl_tarjeta=formatter($tarjeta);
+$fl_contado=formatter($contado);
+
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,7 +37,7 @@ function imprimir() {
 -->
 </style>
 
-<table width="85%" border="0">
+<table width="100%" border="0">
   <tr>
     <td><span class="Estilo3">CODEKA</span></td>
   </tr>
@@ -49,10 +54,10 @@ function imprimir() {
     <td><span class="Estilo3">DEL TICKET N.: <? echo $minimo?> AL TICKET N.: <? echo $maximo?></span></td>
   </tr>
   <tr>
-    <td><span class="Estilo3">NETO: <? echo number_format($neto,2,",",".")?> + 16% IVA: <? echo number_format($iva,2,",",".")?></span></td>
+    <td><span class="Estilo3">NETO: <? echo number_format($fl_neto,2,",",".")?> + 16% IVA: <? echo number_format($iva,2,",",".")?></span></td>
   </tr>
   <tr>
-    <td><span class="Estilo3">TOTAL: <? echo number_format($total,2,",",".")?> euros</span></td>
+    <td><span class="Estilo3">TOTAL: <? echo number_format($fl_total,2,",",".")?> euros</span></td>
   </tr>
    <tr>
     <td><span class="Estilo3">TOTAL CONTADO: <? echo number_format($contado,2,",",".")?> euros</span></td>
@@ -61,7 +66,7 @@ function imprimir() {
     <td><span class="Estilo3">TOTAL TARJETA: <? echo number_format($tarjeta,2,",",".")?> euros</span></td>
   </tr>
    <tr>
-    <td><span class="Estilo3">TOTAL: <? echo number_format($total,2,",",".")?> euros</span></td>
+    <td><span class="Estilo3">TOTAL: <? echo number_format($fl_total,2,",",".")?> euros</span></td>
   </tr>
 </table>
 </body>

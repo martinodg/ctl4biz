@@ -79,7 +79,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 				if (empty($iniciopagina)) { $iniciopagina=0; }
 				if ($iniciopagina>$filas) { $iniciopagina=0; }
 					if ($filas > 0) { ?>
-						<? $sel_resultado="SELECT * FROM articulos WHERE borrado=0 AND ".$where;
+						<? $sel_resultado="SELECT articulos.*, unidadesmedidas.nombre AS unidaddemedida FROM articulos, unidadesmedidas WHERE articulos.codunidadmedida=unidadesmedidas.codunidadmedida AND borrado=0 AND ".$where;
 						   $sel_resultado=$sel_resultado."  limit ".$iniciopagina.",10";
 						   $res_resultado=mysqli_query($conexion,$sel_resultado);
 						   $contador=0;
@@ -89,8 +89,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td class="aCentro" width="4%"><? echo $contador+1;?></td>
 							<td width="5%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codarticulo")?></div></td>
 							<td width="19%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"referencia")?></div></td>
-							<td width="30%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"descripcion")?></div></td>
-							<td width="11%"><div align="left">
+							<td width="25%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"descripcion")?></div></td>
+							<td width="11%"><div align="center">
 							<? $codfamilia=mysqli_result($res_resultado,$contador,"codfamilia");
 							$query_familia="SELECT nombre FROM familias WHERE codfamilia='$codfamilia'";
 							$rs_familia=mysqli_query($conexion,$query_familia);
@@ -100,6 +100,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							</div></td>
 							<td class="aCentro" width="11%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"precio_tienda")?></div></td>
 							<td class="aCentro" width="5%"><? echo mysqli_result($res_resultado,$contador,"stock")?></td>
+							<td class="aCentro" width="5%"><? echo mysqli_result($res_resultado,$contador,"unidaddemedida")?></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Modificar"></a></div></td>
 														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Visualizar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" title="Eliminar"></a></div></td>

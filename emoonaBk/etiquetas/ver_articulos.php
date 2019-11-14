@@ -88,7 +88,7 @@ body {
 		<tr><td width="36%" class="busqueda">Descripci&oacute;n:</td>
 	    <td width="64%"><input name="descripcion" type="text" id="descripcion" size="50" class="cajaGrande"></td></tr>
 		<tr>
-		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><img src="../img/botonbuscar.jpg" width="69" height="22" border="1" onClick="enviar()" onMouseOver="style.cursor=cursor"></div></td>
+		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button></div></td>
 	    </tr>
 </table>
 </div>

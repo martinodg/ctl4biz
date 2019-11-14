@@ -12,7 +12,7 @@ body {
     margin-top: 0px;
     margin-left: 50px;
     height: 34px;
-    background: #d9d9d9;
+    background: #083b66;
     position: fixed;
 }
 
@@ -21,7 +21,8 @@ body {
 }
 
 #icono {
-    background: rgb(48, 38, 46);
+    /*background: rgb(48, 38, 46);*/
+    background: #083b66;
     height: 34px;
     width: 50px;
     left: 0px;
@@ -88,6 +89,20 @@ body {
     background: #333333;
 }
 
+#content_login {
+    height: 742px;
+    overflow: auto;
+    padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    background: #333333;
+}
+
+.logo_login {
+    margin-top: 100px;
+}
+
 #bottombar {
     bottom: 0px;
     width: 100%;
@@ -132,6 +147,7 @@ body {
 
 [id^=hamburger] input:checked~ul {
     display: block;
+    color: #ccc;
 }
 
 

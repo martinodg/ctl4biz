@@ -123,7 +123,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					button     : "Image1"
 					  }
 					);
-		</script><img src="../img/disco.png" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Guardar fecha" onClick="cambiar_vencimiento()"></td>
+		</script><img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Guardar fecha" onClick="cambiar_vencimiento()"></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>										
 					</table>
@@ -187,8 +187,9 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					<input type="hidden" name="accion" id="accion" value="insertar">
 					<input type="hidden" name="codproveedor" id="codproveedor" value="<? echo $codproveedor?>">
 					<input type="hidden" name="codfactura" id="codfactura" value="<? echo $codfactura?>">
-					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar(formulario,true)" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 			  </div>
 			  </form>
 			  <br>

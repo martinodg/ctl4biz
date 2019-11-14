@@ -132,9 +132,9 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <img src="../img/botonaceptar.jpg" width="75" height="22" id="btninicio" border="1" onMouseOver="style.cursor=cursor">
+                    <button type="button" id="btninicio" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
 
-                    <img src="../img/botoncancelar.jpg" width="75" height="22" id="btncancelar" border="1" onMouseOver="style.cursor=cursor">
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 
                 </div>
 
@@ -168,7 +168,7 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <img src="../img/botonagregar.jpg" width="75" height="22" id="btnagregar" border="1" onMouseOver="style.cursor=cursor">
+                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button>
 
 
                 </div>
@@ -178,8 +178,8 @@
                 <div id="lineaResultado">
                     <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                         <tr>
-                            <td width="50%" align="left">N de Articulos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-                            <td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+                            <td width="50%" class="paginar" align="left">N de Articulos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                            <td width="50%" class="paginar" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                     </table>
                 </div>

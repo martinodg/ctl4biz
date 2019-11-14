@@ -11,8 +11,8 @@ body {
     width: 100%;
     margin-top: 34px;
     margin-left: 0px;
-    height: 24px;
-    background: #d9d9d9;
+    height: 60px;
+    background: #083b66;
     position: fixed;
 }
 
@@ -21,9 +21,9 @@ body {
 }
 
 .menuicon {
-    height: 14px;
-    width: 14px;
-    padding: 5px 13px;
+    height: 40px;
+    width: 40px;
+    padding: 10px 13px;
 }
 
 #icono {
@@ -48,11 +48,11 @@ body {
 
 .logo {
     position: fixed;
-    height: 20px;
-    width: 60px;
+    height: 60px;
+    width: 180px;
     display: block;
-    left: 45%;
-    top: 36px;
+    right: 0.5%;
+    top: 30px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -85,6 +85,20 @@ body {
     margin-right: 0px;
     padding-top: 70px;
     background: #333333;
+}
+
+#content_login {
+    height: 712px;
+    overflow: auto;
+    padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    background: #333333;
+}
+
+.logo_login {
+    margin-top: 100px;
 }
 
 #bottombar {

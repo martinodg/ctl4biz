@@ -4,7 +4,7 @@ include ("../conectar7.php");
 $fechahoy=date("Y-m-d");
 $sel_fact="INSERT INTO facturastmp (codfactura,fecha) VALUE ('','$fechahoy')";
 $rs_fact=mysqli_query($conexion,$sel_fact);
-$codfacturatmp=mysqli_insert_id();
+$codfacturatmp=mysqli_insert_id($conexion);
 ?>
 <html>
 	<head>
@@ -270,8 +270,8 @@ $codfacturatmp=mysqli_insert_id();
 			  </div>
 				<div id="botonBusqueda">					
 				  <div align="center">
-				    <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar_cabecera()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+				    <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codfacturatmp" name="codfacturatmp" value="<? echo $codfacturatmp?>" type="hidden">	
 					<input id="preciototal2" name="preciototal" value="<? echo $preciototal?>" type="hidden">			    

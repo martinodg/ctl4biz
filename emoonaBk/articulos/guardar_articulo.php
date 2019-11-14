@@ -66,7 +66,7 @@ if ($accion=="alta") {
 						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$stock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '$foto_name','', '0')";				
 		$rs_operacion=mysqli_query($conexion,$query_operacion);
 		
-		$codarticulo=mysqli_insert_id();
+		$codarticulo=mysqli_insert_id($conexion);
 		
 		$codaux=$codarticulo;
 		while (strlen($codaux)<6) {
@@ -335,7 +335,7 @@ if ($accion=="baja") {
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
 			  </div>
 			 </div>
 		  </div>

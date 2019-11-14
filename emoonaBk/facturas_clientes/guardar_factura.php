@@ -15,7 +15,7 @@ $minimo=0;
 if ($accion=="alta") {
 	$query_operacion="INSERT INTO facturas (codfactura, fecha, iva, codcliente, estado, borrado) VALUES ('', '$fecha', '$iva', '$codcliente', '1', '0')";					
 	$rs_operacion=mysqli_query($conexion,$query_operacion);
-	$codfactura=mysqli_insert_id();
+	$codfactura=mysqli_insert_id($conexion);
 	if ($rs_operacion) { $mensaje="La factura ha sido dada de alta correctamente"; }
 	$query_tmp="SELECT * FROM factulineatmp WHERE codfactura='$codfacturatmp' ORDER BY numlinea ASC";
 	$rs_tmp=mysqli_query($conexion,$query_tmp);
@@ -281,7 +281,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 			  </div>
 				<div id="botonBusqueda">
 					<div align="center">
-					  <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
+					  <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
 					   <img src="../img/botonimprimir.jpg" width="79" height="22" border="1" onClick="imprimir(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor">
 				        </div>
 					</div>

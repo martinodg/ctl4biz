@@ -11,7 +11,8 @@ include("../barcode/barcode.php");
 $codarticulo=$_GET["codarticulo"];
 $cadena_busqueda=$_GET["cadena_busqueda"];
 
-$query="SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
+//$query="SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
+$query="SELECT a.*, (SELECT b1.nombre FROM unidadesmedidas b1 WHERE b1.codunidadmedida = a.codunidadmedida ) AS umstock, (SELECT b2.nombre FROM unidadesmedidas b2 WHERE b2.codunidadmedida = a.codumstock_minimo ) AS umstock_min, (SELECT b3.nombre FROM unidadesmedidas b3 WHERE b3.codunidadmedida = a.codumunidades_caja ) AS umunidades_caja FROM articulos a WHERE codarticulo='$codarticulo'";
 $rs_query=mysqli_query($conexion,$query);
 $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 
@@ -120,11 +121,11 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 				        </tr>
 						<tr>
 							<td>Stock</td>
-							<td><?php echo mysqli_result($rs_query,0,"stock")?> unidades</td>
+							<td><?php echo mysqli_result($rs_query,0,"stock")?> <?php echo mysqli_result($rs_query,0,"umstock")?></td>
 					    </tr>
 						<tr>
 							<td>Stock minimo</td>
-							<td><?php echo mysqli_result($rs_query,0,"stock_minimo")?> unidades</td>
+							<td><?php echo mysqli_result($rs_query,0,"stock_minimo")?> <?php echo mysqli_result($rs_query,0,"umstock_min")?></td>
 					    </tr>
 						<tr>
 							<td>Aviso M&iacute;nimo</td>
@@ -154,7 +155,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 					    </tr>
 						<tr>
 							<td>Unidades por caja</td>
-							<td colspan="2"><?php echo mysqli_result($rs_query,0,"unidades_caja")?> unidades</td>
+							<td colspan="2"><?php echo mysqli_result($rs_query,0,"unidades_caja")?> <?php echo mysqli_result($rs_query,0,"umunidades_caja")?></td>
 						</tr>
 						<tr>
 							<td>Preguntar precio ticket</td>
@@ -195,7 +196,8 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> <span>Acpetar</span> </button>
+
 			  </div>
 			 </div>
 		  </div>

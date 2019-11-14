@@ -15,9 +15,20 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
         <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/paginar.js"></script>
        
         <script language="javascript">
           
+         //---------------------------------------------------------------------------------------------------           
+          
+          //this function setup pagination and reload 
+          function paginar(){
+            //alert(document.getElementById("paginas").value);
+            document.getElementById("iniciopagina").value=document.getElementById("paginas").value;
+            buscaproceso();
+          }
+          //---------------------------------------------------------------------------------------------------         
+          //modify proc function
           //---------------------------------------------------------------------------------------------------           
           //procs search fucnction
           function buscaproceso(){
@@ -26,11 +37,14 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
                                                                     criterio2 : document.getElementById('crit2').value,
                                                                     parametro2 : document.getElementById('param2').value,
                                                                     criterio3 : document.getElementById('crit3').value,
-                                                                    parametro3 : document.getElementById('param3').value
+                                                                    parametro3 : document.getElementById('param3').value,
+                                                                    paginainicio : document.getElementById('iniciopagina').value
                                                               },function ( data ) { 
                                                                                         $('#div_datos').html( data );
+                                                                                        calculaPaginacion();
                                                                                   }
                                          );
+                                    
                               }
           //---------------------------------------------------------------------------------------------------         
           //modify proc function
@@ -158,7 +172,7 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 							<td width="20%">Criterio de busqueda #2 </td>
 							<td width="20%"> 
                                 <select id="crit2" name="2" class="comboMedio" >
-                                    <option value="nombre">Nobre del Proceso</option>
+                                    <option value="nombre">Nombre del Proceso</option>
                                     <option value="codproceso">Codigo de proceso</option>
                                     
 
@@ -189,21 +203,22 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 					</table>
 			  </div>
 		 	  <div id="botonBusqueda">
-                                         <img src="../img/botonlimpiar.jpg" width="69" height="22" border="1" id="btnlimpiar" onMouseOver="style.cursor=cursor">
-					 <img src="../img/botonnuevo.jpg" width="58" height="22" border="1" id="btnnuevo" onMouseOver="style.cursor=cursor">
-					<img src="../img/botonimprimir.jpg" width="79" height="22" border="1" id="btnimprimir" onMouseOver="style.cursor=cursor"></div>
+					<button type="button" id="btnlimpiar" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+               		<button type="button" id="btnnuevo" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span>Nuevo</span> </button>
+               		<button type="button" id="btnimprimir" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
+			  </div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
-			  	<tr>
-				<td width="50%" align="left">N de procesos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+                <tr>
+				<td width="50%" class="paginar" align="left">N de procesos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                 </tr>
 			  </table>
                                <div ID="div_datos" name="div_datos" > </div> 
 				</div>
 				
-				<input type="hidden" id="iniciopagina" name="iniciopagina">
+				<input type="hidden" id="iniciopagina" name="iniciopagina" value="0">
 				<input type="hidden" id="cadena_busqueda" name="cadena_busqueda">
 			</form>
                        	

@@ -164,15 +164,19 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">
-				<img src="../img/botonbuscar.jpg" width="69" height="22" border="1" onClick="buscar()" onMouseOver="style.cursor=cursor">
-			 	  <img src="../img/botonlimpiar.jpg" width="69" height="22" border="1" onClick="limpiar()" onMouseOver="style.cursor=cursor">
-					 <img src="../img/botonnuevoalbaran.jpg" width="106" height="22" border="1" onClick="nuevo_albaran()" onMouseOver="style.cursor=cursor">			
+				                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button>
+
+			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+
+
+					 					<button type="button" id="btnnuevo"  onClick="nuevo_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span>Nuevo Proveedor</span> </button>
+			
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" align="left">N de albaranes encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="left">N de albaranes encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
@@ -183,14 +187,15 @@ if ($cadena_busqueda<>"") {
 						<tr class="cabeceraTabla">
 							<td width="8%">ITEM</td>
 							<td width="8%">N. ALBARAN</td>
-							<td width="30%">PROVEEDORES</td>
+							<td width="29%">PROVEEDORES</td>
 							<td width="10%">IMPORTE</td>
 							<td width="10%">FECHA</td>
 							<td width="10%">ESTADO</td>
-							<td width="6%">&nbsp;</td>
-							<td width="6%">&nbsp;</td>
-							<td width="6%">&nbsp;</td>
-							<td width="6%">&nbsp;</td>
+							<td width="5%">&nbsp;</td>
+							<td width="5%">&nbsp;</td>
+							<td width="5%">&nbsp;</td>
+							<td width="5%">&nbsp;</td>
+							<td width="5%">&nbsp;</td>
 						</tr>
 				</table>
 				</div>

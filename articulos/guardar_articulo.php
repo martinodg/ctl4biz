@@ -20,7 +20,9 @@ $codproveedor2=$_POST["acboProveedores2"];
 $descripcion_corta=$_POST["Adescripcion_corta"];
 $codubicacion=$_POST["AcboUbicacion"];
 $stock_minimo=$_POST["nstock_minimo"];
+$umstock_minimo=$_POST["umnstock_minimo"];
 $stock=$_POST["nstock"];
+$umstock=$_POST["umnstock"];
 $aviso_minimo=$_POST["aaviso_minimo"];
 $datos=$_POST["adatos"];
 $fecha=$_POST["fecha"];
@@ -28,6 +30,7 @@ $fechalis=$fecha;
 if ($fecha<>"") { $fecha=explota($fecha); } else { $fecha="0000-00-00"; }
 $codembalaje=$_POST["AcboEmbalaje"];
 $unidades_caja=$_POST["nunidades_caja"];
+$umunidades_caja=$_POST["umnunidades_caja"];
 $precio_ticket=$_POST["aprecio_ticket"];
 $modif_descrip=$_POST["amodif_descrip"];
 $observaciones=$_POST["aobservaciones"];
@@ -62,11 +65,11 @@ if ($accion=="alta") {
 			};
 		};
 		
-		$query_operacion="INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, stock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, imagen, codigobarras, borrado) 
-						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$stock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '$foto_name','', '0')";				
+		$query_operacion="INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, imagen, codigobarras, borrado) 
+						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '$foto_name','', '0')";				
 		$rs_operacion=mysqli_query($conexion,$query_operacion);
 		
-		$codarticulo=mysqli_insert_id();
+		$codarticulo=mysqli_insert_id($conexion);
 		
 		$codaux=$codarticulo;
 		while (strlen($codaux)<6) {
@@ -108,7 +111,7 @@ if ($accion=="modificar") {
 		  echo "<h2>No se ha podido copiar el archivo</h2>\n";
 		};
 	};
-	$query="UPDATE articulos SET codfamilia='$codfamilia', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock', stock_minimo='$stock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', ".$cadena." borrado=0 WHERE codarticulo='$codarticulo'";
+	$query="UPDATE articulos SET codfamilia='$codfamilia', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', codumunidades_caja='$umunidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', ".$cadena." borrado=0 WHERE codarticulo='$codarticulo'";
 	$rs_query=mysqli_query($conexion,$query);
 	if ($rs_query) { $mensaje="Los datos del articulo han sido modificados correctamente"; }
 	$cabecera1="Inicio >> Articulos &gt;&gt; Modificar Articulo ";
@@ -335,7 +338,7 @@ if ($accion=="baja") {
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="Aceptar" /> <span>Acpetar</span> </button>
 			  </div>
 			 </div>
 		  </div>

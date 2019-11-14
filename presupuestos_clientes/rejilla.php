@@ -1,5 +1,6 @@
 <?php
-include ("../conectar.php");
+include ("../conectar7.php");
+include ("../mysqli_result.php");
 include ("../funciones/fechas.php");
 
 $codcliente=$_POST["codcliente"];
@@ -33,8 +34,8 @@ if (($fechainicio<>"") and ($fechafin<>"")) {
 $where.=" ORDER BY codpresupuesto DESC";
 $query_busqueda="SELECT count(*) as filas FROM presupuestos,clientes WHERE presupuestos.borrado=0 AND presupuestos.codcliente=clientes.codcliente AND ".$where;
 
-$rs_busqueda=mysql_query($query_busqueda);
-$filas=mysql_result($rs_busqueda,0,"filas");
+$rs_busqueda=mysqli_query($conexion,$query_busqueda);
+$filas=mysqli_result($rs_busqueda,0,"filas");
 
 ?>
 <html>
@@ -50,6 +51,10 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 
 		function imprimir_etiquetas(codpresupuesto) {
 				window.open("../fpdf/codigocontinuo.php?codpresupuesto="+codpresupuesto);
+		}
+
+		function imprimir(codpresuspuesto) {
+			window.open("../fpdf/imprimir_presupuesto.php?codpresupuesto="+codpresuspuesto);
 		}
 
 		function modificar_presupuesto(codpresupuesto,marcaestado) {
@@ -110,25 +115,25 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 					if ($filas > 0) { ?>
 						<? $sel_resultado="SELECT codpresupuesto,clientes.nombre as nombre,presupuestos.fecha as fecha,totalpresupuesto,estado FROM presupuestos,clientes WHERE presupuestos.borrado=0 AND presupuestos.codcliente=clientes.codcliente AND ".$where;
 						   $sel_resultado=$sel_resultado."  limit ".$iniciopagina.",50";
-						   $res_resultado=mysql_query($sel_resultado);
+						   $res_resultado=mysqli_query($conexion,$sel_resultado);
 						   $contador=0;
 						   $marcaestado=0;
-						   while ($contador < mysql_num_rows($res_resultado)) {
-						   		$marcaestado=mysql_result($res_resultado,$contador,"estado");
-								if (mysql_result($res_resultado,$contador,"estado")==1) { $estado="Pendiente"; } else { $estado="Aceptado"; }
+						   while ($contador < mysqli_num_rows($res_resultado)) {
+						   		$marcaestado=mysqli_result($res_resultado,$contador,"estado");
+								if (mysqli_result($res_resultado,$contador,"estado")==1) { $estado="Pendiente"; } else { $estado="Aceptado"; }
 								if ($contador % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }?>
 						<tr class="<?php echo $fondolinea?>">
 							<td class="aCentro" width="8%"><? echo $contador+1;?></td>
-							<td width="8%"><div align="center"><? echo mysql_result($res_resultado,$contador,"codpresupuesto")?></div></td>
-							<td width="29%"><div align="left"><? echo mysql_result($res_resultado,$contador,"nombre")?></div></td>
-							<td width="10%"><div align="center"><? echo number_format(mysql_result($res_resultado,$contador,"totalpresupuesto"),2,",",".")?></div></td>
-							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysql_result($res_resultado,$contador,"fecha"))?></div></td>
+							<td width="8%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codpresupuesto")?></div></td>
+							<td width="29%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
+							<td width="10%"><div align="center"><? echo number_format(mysqli_result($res_resultado,$contador,"totalpresupuesto"),2,",",".")?></div></td>
+							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td width="10%"><div align="center"><? echo $estado?></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>)" title="Visualizar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Eliminar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16" height="16" border="0" onClick="convertir_presupuesto(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Albaranar"></a></div></td>
-<!--							<td width="5%"><div align="center"><a href="#"><img src="../img/imprimir.png" width="16" height="16" border="0" onClick="imprimir_etiquetas(<?php echo mysql_result($res_resultado,$contador,"codpresupuesto")?>)" title="Imprimir etiquetas"></a></div></td> -->
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>)" title="Visualizar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16px" height="16px" width="16" height="16" border="0" onClick="convertir_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Albaranar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/printer.svg" width="16" height="16" border="0" onClick="imprimir(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>)" title="Imprimir"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

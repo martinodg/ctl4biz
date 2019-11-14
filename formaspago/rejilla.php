@@ -63,7 +63,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 		<div id="pagina">
 			<div id="zonaContenido">
 			<div align="center">
-			<table class="fuente8" width="85%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
+			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 			<input type="hidden" name="numfilas" id="numfilas" value="<? echo $filas?>">
 				<? $iniciopagina=$_POST["iniciopagina"];
 				if (empty($iniciopagina)) { $iniciopagina=$_GET["iniciopagina"]; } else { $iniciopagina=$iniciopagina-1;}
@@ -89,7 +89,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 						?>			
 					</table>
 					<? } else { ?>
-					<table class="fuente8" width="85%" cellspacing=0 cellpadding=3 border=0>
+					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
 							<td width="100%" class="mensaje"><?php echo "No hay ninguna forma de pago que cumpla con los criterios de b&uacute;squeda";?></td>
 					    </tr>

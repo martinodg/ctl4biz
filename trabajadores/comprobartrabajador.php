@@ -25,11 +25,11 @@ function limpiar() {
 <?
 	$codtrabajador=$_GET["codtrabajador"];
 	$consulta="SELECT * FROM trabajadores WHERE codtrabajador='$codtrabajador' AND borrado=0";
-	$rs_tabla = mysql_query($consulta);
-	if (mysql_num_rows($rs_tabla)>0) {
+	$rs_tabla = mysqli_query($conexion,$consulta);
+	if (mysqli_num_rows($rs_tabla)>0) {
 		?>
 		<script languaje="javascript">
-		pon_prefijo("<? echo mysql_result($rs_tabla,0,nombre) ?>","<? echo mysql_result($rs_tabla,0,nif) ?>");
+		pon_prefijo("<? echo mysqli_result($rs_tabla,0,nombre) ?>","<? echo mysqli_result($rs_tabla,0,nif) ?>");
 		</script>
 		<?
 	} else { ?>

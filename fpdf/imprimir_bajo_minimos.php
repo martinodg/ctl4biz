@@ -2,7 +2,7 @@
 
 
 define('FPDF_FONTPATH','font/');
-require('mysql_table.php');
+require('mysqli_table.php');
 
 $empresa=$_POST["cmbempresa"];
 if ($empresa==0) { include("comunes.php"); }
@@ -27,7 +27,7 @@ $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',16);
 $pdf->SetY(50);
 $pdf->SetX(0);
-$pdf->MultiCell(220,6,"Listado de Articulos bajo mnimos",0,C,0);
+$pdf->MultiCell(220,6,"Listado de Articulos bajo mnimos",0,'C',0);
 
 $pdf->Ln();    
 
@@ -61,9 +61,9 @@ $consulta = "select articulos.codigo as cod,articulos.descripcion,articulos.stoc
 			from articulos,familia where articulos.borrado=0 AND familia.borrado=0 AND
 			articulos.codfamilia=familia.id AND articulos.stock<=articulos.bajominimo AND articulos.bajominimo > 0 
 			ORDER BY familia ASC,cod ASC";
-$query = mysql_query($consulta);
+$query = mysqli_query($conexion,$consulta);
 $item=1; 	  
-while ($row = mysql_fetch_array($query))
+while ($row = mysqli_fetch_array($query))
         {
 
 		  //imprimo el articulo
@@ -91,4 +91,5 @@ while ($row = mysql_fetch_array($query))
 
 $pdf->Cell(array_sum($w),0,'','T');			
 $pdf->Output();
+ob_end_flush(); 
 ?> 

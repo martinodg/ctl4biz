@@ -37,8 +37,8 @@ $where.=" ORDER BY fechacomienzo,codtrabajo DESC";
 $query_busqueda="SELECT count(*) as filas FROM partestrabajo,trabajadores WHERE partestrabajo.codtrabajador=trabajadores.codtrabajador AND ".$where;
 #echo "SQL: $query_busqueda <br>";
 
-$rs_busqueda=mysql_query($query_busqueda);
-$filas=mysql_result($rs_busqueda,0,"filas");
+$rs_busqueda=mysqli_query($conexion,$query_busqueda);
+$filas=mysqli_result($rs_busqueda,0,"filas");
 
 ?>
 <html>
@@ -111,26 +111,26 @@ $filas=mysql_result($rs_busqueda,0,"filas");
 						<? $sel_resultado =  "SELECT titulo, horasprevistas, preciohora, codtrabajo,trabajadores.nombre as nombre,partestrabajo.fechacomienzo as fechacomienzo,estado FROM partestrabajo,trabajadores WHERE partestrabajo.codtrabajador=trabajadores.codtrabajador AND ".$where;
 						   $sel_resultado .= " LIMIT ".$iniciopagina.",50";
 #						   echo "SQL: $sel_resultado <br>";
-						   $res_resultado=mysql_query($sel_resultado);
+						   $res_resultado=mysqli_query($conexion,$sel_resultado);
 						   $contador=0;
 						   $marcaestado=0;
-						   while ($contador < mysql_num_rows($res_resultado)) {
-						   		$marcaestado=mysql_result($res_resultado,$contador,"estado");
-								$estado = $estados_partestrabajo[mysql_result($res_resultado,$contador,"estado")];
+						   while ($contador < mysqli_num_rows($res_resultado)) {
+						   		$marcaestado=mysqli_result($res_resultado,$contador,"estado");
+								$estado = $estados_partestrabajo[mysqli_result($res_resultado,$contador,"estado")];
 								if ($contador % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }?>
 						<tr class="<?php echo $fondolinea?>">
 							<td class="aCentro" width="8%"><? echo $contador+1;?></td>
-							<td width="8%"><div align="center"><? echo mysql_result($res_resultado,$contador,"codtrabajo")?></div></td>
-							<td width="12%"><div align="left"><? echo mysql_result($res_resultado,$contador,"nombre")?></div></td>
-							<td width="20%"><div align="center"><?php echo mysql_result($res_resultado,$contador,"titulo"); ?></div></td>
-							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysql_result($res_resultado,$contador,"fechacomienzo"))?></div></td>
-							<td width="10%"><div align="center"><? echo mysql_result($res_resultado,$contador,"horasprevistas"); ?></div></td>
-							<td width="10%"><div align="center"><? echo mysql_result($res_resultado,$contador,"preciohora"); ?></div></td>
+							<td width="8%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codtrabajo")?></div></td>
+							<td width="12%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
+							<td width="20%"><div align="center"><?php echo mysqli_result($res_resultado,$contador,"titulo"); ?></div></td>
+							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fechacomienzo"))?></div></td>
+							<td width="10%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"horasprevistas"); ?></div></td>
+							<td width="10%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"preciohora"); ?></div></td>
 							<td width="10%"><div align="center"><? echo $estado?></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_parte(<?php echo mysql_result($res_resultado,$contador,"codtrabajo")?>)" title="Modificar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_parte(<?php echo mysql_result($res_resultado,$contador,"codtrabajo")?>)" title="Visualizar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="if (confirm('�Est� seguro de eliminar el parte de trabajo?')) { eliminar_parte(<?php echo mysql_result($res_resultado,$contador,"codtrabajo")?>) }" title="Eliminar"></a></div></td>
-<!--							<td width="5%"><div align="center"><a href="#"><img src="../img/imprimir.png" width="16" height="16" border="0" onClick="imprimir_etiquetas(<?php echo mysql_result($res_resultado,$contador,"codalbaran")?>)" title="Imprimir etiquetas"></a></div></td> -->
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_parte(<?php echo mysqli_result($res_resultado,$contador,"codtrabajo")?>)" title="Modificar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_parte(<?php echo mysqli_result($res_resultado,$contador,"codtrabajo")?>)" title="Visualizar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="if (confirm('�Est� seguro de eliminar el parte de trabajo?')) { eliminar_parte(<?php echo mysqli_result($res_resultado,$contador,"codtrabajo")?>) }" title="Eliminar"></a></div></td>
+<!--							<td width="5%"><div align="center"><a href="#"><img src="../img/printer.svg" width="16" height="16" border="0" onClick="imprimir_etiquetas(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>)" title="Imprimir etiquetas"></a></div></td> -->
 						</tr>
 						<? $contador++;
 							}

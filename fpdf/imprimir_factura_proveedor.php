@@ -1,17 +1,17 @@
 <?php
 
 define('FPDF_FONTPATH','font/');
-require('mysql_table.php');
+require('mysqli_table.php');
 include("comunes.php");
 include ("../conectar7.php");
 include ("../mysqli_result.php");
 include ("../funciones/fechas.php"); 
 
 $pdf=new PDF();
-$pdf->Open();
+
 $pdf->AddPage();
 
-$pdf->Ln(10);
+$pdf->Ln(25);
 
 
 include ("../conectar7.php");
@@ -233,4 +233,5 @@ $lafila=mysqli_fetch_array($resultado);
 	  @mysqli_free_result($query3);
 
 $pdf->Output();
+ob_end_flush(); 
 ?> 

@@ -22,6 +22,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript" src="../funciones/validar.js"></script>
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
 		<script language="javascript">
 		
 		var cursor;
@@ -32,7 +33,15 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 		// Está utilizando MOZILLA/NETSCAPE
 		cursor='pointer';
 		}
-		
+//Perform when DOM is full loaded
+$( document ).ready(function(){
+            
+			//load process combo
+			$.get("../sel_unidadmedida.php", function(data) {
+            	    $('.cboUnidadmedida').html(data);
+            });
+		});
+/*----------------------------------------------------------------------------------------------------------------------*/
 		function cancelar() {
 			location.href="index.php?cadena_busqueda=<? echo $cadena_busqueda?>";
 		}
@@ -204,11 +213,17 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 					    </tr>
 						<tr>
 						 <td>Stock</td>
-						  <td colspan="2"><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"stock")?>"> unidades</td>
+						  <td colspan="2"><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"stock")?>"> 
+						  <select id="umnstock" class="cboUnidadmedida" name="umnstock" >
+                                
+								</select> </td>
 				      </tr>
 					  	<tr>
 						 <td>Stock m&iacute;nimo</td>
-						  <td colspan="2"><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8" value="<?php echo mysqli_result($rs_query,0,"stock_minimo")?>"> unidades</td>
+						  <td colspan="2"><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8" value="<?php echo mysqli_result($rs_query,0,"stock_minimo")?>">   
+						  <select id="umnstock_minimo" class="cboUnidadmedida" name="umnstock_minimo">
+                                
+								</select> </td>
 				      </tr>
 					  	<tr>
 						 <td>Aviso m&iacute;nimo</td>
@@ -262,7 +277,10 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 					    </tr>
 						<tr>
 						 <td>Unidades por caja</td>
-						  <td colspan="2"><input NAME="nunidades_caja" type="text" class="cajaPequena" id="unidades_caja" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"unidades_caja")?>"> unidades</td>
+						  <td colspan="2"><input NAME="nunidades_caja" type="text" class="cajaPequena" id="unidades_caja" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"unidades_caja")?>">  
+						  <select id="umnunidades_caja" class="cboUnidadmedida" name="umnunidades_caja" >
+                                
+								</select> </td>
 				      </tr>
 					  <tr>
 						 <td>Preguntar precio ticket</td>
@@ -329,10 +347,11 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-				<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar(formulario,true)" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botonlimpiar.jpg" width="69" height="22" onClick="limpiar()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">					
-			  </div>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> <span>Acpetar</span> </button>
+					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
+								
+			    </div>
 			  </form>
 			 </div>				
 		  </div>

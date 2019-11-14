@@ -32,8 +32,8 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
 <?
 	
 	$consulta="SELECT articulos.*,familias.nombre as nombrefamilia FROM articulos,familias WHERE ".$where." AND articulos.codfamilia=familias.codfamilia AND articulos.borrado=0 ORDER BY articulos.codfamilia ASC,articulos.descripcion ASC";
-	$rs_tabla = mysql_query($consulta);
-	$nrs=mysql_num_rows($rs_tabla);
+	$rs_tabla = mysqli_query($conexion,$consulta);
+	$nrs=mysqli_num_rows($rs_tabla);
 ?>
 <div id="tituloForm2" class="header">
 <div align="center">
@@ -48,13 +48,13 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
 			<td width="10%"><div align="center"></td>
 		  </tr>
 		<?php
-			for ($i = 0; $i < mysql_num_rows($rs_tabla); $i++) {
-				$codfamilia=mysql_result($rs_tabla,$i,"codfamilia");
-				$nombrefamilia=mysql_result($rs_tabla,$i,"nombrefamilia");
-				$codarticulo=mysql_result($rs_tabla,$i,"codarticulo");
-				$referencia=mysql_result($rs_tabla,$i,"referencia");				
-				$descripcion=mysql_result($rs_tabla,$i,"descripcion");
-				$precio=mysql_result($rs_tabla,$i,"precio_almacen");
+			for ($i = 0; $i < mysqli_num_rows($rs_tabla); $i++) {
+				$codfamilia=mysqli_result($rs_tabla,$i,"codfamilia");
+				$nombrefamilia=mysqli_result($rs_tabla,$i,"nombrefamilia");
+				$codarticulo=mysqli_result($rs_tabla,$i,"codarticulo");
+				$referencia=mysqli_result($rs_tabla,$i,"referencia");				
+				$descripcion=mysqli_result($rs_tabla,$i,"descripcion");
+				$precio=mysqli_result($rs_tabla,$i,"precio_almacen");
 				 if ($i % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }?>
 						<tr class="<?php echo $fondolinea?>">
 					<td>
@@ -63,7 +63,7 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
         <div align="left"><?php echo $referencia;?></div></td>
 					<td><div align="center"><?php echo $descripcion;?></div></td>
 					<td><div align="center"><?php echo $precio;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $referencia?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>',<? echo $codarticulo?>)"><img src="../img/convertir.svg" border="0" title="Seleccionar"></a></div></td>					
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $referencia?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>',<? echo $codarticulo?>)"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
 				</tr>
 			<?php }
 		?>

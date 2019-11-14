@@ -14,6 +14,7 @@ include ("../mysqli_result.php");
 		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="../funciones/validar.js"></script>
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
 		<script language="javascript">
 		
 		function cancelar() {
@@ -28,7 +29,16 @@ include ("../mysqli_result.php");
 		// Está utilizando MOZILLA/NETSCAPE
 		cursor='pointer';
 		}
-		
+
+		//Perform when DOM is full loaded
+		$( document ).ready(function(){
+            
+			//load process combo
+			$.get("../sel_unidadmedida.php", function(data) {
+            	    $('.cboUnidadmedida').html(data);
+            });
+		});
+/*----------------------------------------------------------------------------------------------------------------------*/
 		function limpiar() {
 			document.getElementById("referencia").value="";
 			document.getElementById("descripcion").value="";
@@ -175,11 +185,17 @@ include ("../mysqli_result.php");
 					    </tr>
 						<tr>
 						 <td>Stock</td>
-						  <td><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10"> unidades</td>
+						  <td><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10"> 
+						  <select id="umnstock" class="cboUnidadmedida" name="umnstock" >
+                                
+								</select> </td>
 				      </tr>
 					  	<tr>
 						 <td>Stock m&iacute;nimo</td>
-						  <td><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8"> unidades</td>
+						  <td><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8">  
+						  <select id="umnstock_minimo" class="cboUnidadmedida" name="umnstock_minimo">
+                                
+								</select> </td>
 				      </tr>
 					  	<tr>
 						 <td>Aviso m&iacute;nimo</td>
@@ -227,7 +243,10 @@ include ("../mysqli_result.php");
 					    </tr>
 						<tr>
 						 <td>Unidades por caja</td>
-						  <td><input NAME="nunidades_caja" type="text" class="cajaPequena" id="unidades_caja" size="10" maxlength="10"> unidades</td>
+						  <td><input NAME="nunidades_caja" type="text" class="cajaPequena" id="unidades_caja" size="10" maxlength="10">  
+						  <select id="umnunidades_caja" class="cboUnidadmedida" name="umnunidades_caja" >
+                                
+								</select> </td>
 				      </tr>
 					  <tr>
 						 <td>Preguntar precio ticket</td>
@@ -274,9 +293,10 @@ include ("../mysqli_result.php");
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-				<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="validar(formulario,true)" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botonlimpiar.jpg" width="69" height="22" onClick="limpiar()" border="1" onMouseOver="style.cursor=cursor">
-					<img src="../img/botoncancelar.jpg" width="85" height="22" onClick="cancelar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> <span>Acpetar</span> </button>
+					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
+				
 					<input type="hidden" name="id" id="id" value="">					
 			  </div>
 			  </form>	

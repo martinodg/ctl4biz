@@ -8,6 +8,16 @@ include ("../conectar7.php");
     $parametro2=$_GET["parametro2"];
     $criterio3=$_GET["criterio3"];
     $parametro3=$_GET["parametro3"];
+    $paginainicio=$_GET["paginainicio"];
+
+    $query_nroLineas="SELECT codbatch FROM batch";
+    /*echo $consulta;*/
+        
+	$rs_nroLineas = mysqli_query($conexion,$query_nroLineas);
+    $nr_Lineas= mysqli_num_rows($rs_nroLineas);
+    echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
+
+
     $donde="batch.codarticulo=articulos.codarticulo AND batch.codstatus=estado.codestado AND ";
     if ($parametro1<>""){ $donde=$donde."batch.".$criterio1."='".$parametro1."' AND ";}
     if ($parametro2<>""){ $donde=$donde."batch.".$criterio2."='".$parametro2."' AND ";}
@@ -33,8 +43,8 @@ include ("../conectar7.php");
     echo '			</div>';
     
     
-	$consulta="SELECT batch.codbatch, articulos.referencia, batch.cantidad, batch.fechai, batch.horai, batch.fechaf, batch.horaf, batch.codstatus, estado.estado FROM batch, articulos,estado WHERE ".$donde."batch.borrado=0";
-    /*echo $consulta;*/
+	$consulta="SELECT batch.codbatch, articulos.referencia, batch.cantidad, batch.fechai, batch.horai, batch.fechaf, batch.horaf, batch.codstatus, estado.estado FROM batch, articulos,estado WHERE ".$donde."batch.borrado=0 ORDER BY batch.codbatch LIMIT ".$paginainicio.",10;";
+    //echo $consulta;
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
 	$nr_batchs= mysqli_num_rows($rs_tabla);

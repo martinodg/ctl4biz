@@ -191,7 +191,7 @@ $query_comprobar="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND cod
 				  </div>
 					<div id="botonBusqueda">
 						<div align="center">
-						<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
+						<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
 					    <img src="../img/botonimprimir.jpg" width="79" height="22" border="1" onClick="imprimir('<? echo $codfactura?>',<? echo $codproveedor?>)" onMouseOver="style.cursor=cursor">
 							</div>
 						</div>

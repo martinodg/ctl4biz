@@ -74,7 +74,7 @@ if ($cadena_busqueda<>"") {
 				<div id="tituloForm" class="header">Buscar MOVIMIENTOS </div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="rejilla.php" target="frame_rejilla">
-					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
+					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>					
 					  <tr>
 						  <td>Fecha de inicio</td>
 						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
@@ -109,14 +109,17 @@ if ($cadena_busqueda<>"") {
 					  </tr>
 					</table>
 			  </div>
-					<div id="botonBusqueda"><img src="../img/botonbuscar.jpg" width="69" height="22" border="1" onClick="buscar()" onMouseOver="style.cursor=cursor">
-			 	  <img src="../img/botonlimpiar.jpg" width="69" height="22" border="1" onClick="limpiar()" onMouseOver="style.cursor=cursor">	
+					<div id="botonBusqueda">                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button>
+
+			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+
+	
 				</div>
 			  <div id="lineaResultado">
-			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
+			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" align="left">N de movimientos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="left">N de movimientos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
@@ -140,12 +143,12 @@ if ($cadena_busqueda<>"") {
 				<input type="hidden" id="cadena_busqueda" name="cadena_busqueda">
 			</form>
 				<div id="lineaResultado">
-					<iframe width="80%" height="230" id="frame_rejilla" name="frame_rejilla" frameborder="0">
-						<ilayer width="80%" height="230" id="frame_rejilla" name="frame_rejilla"></ilayer>
+					<iframe width="100%" height="230" id="frame_rejilla" name="frame_rejilla" frameborder="0">
+						<ilayer width="100%" height="230" id="frame_rejilla" name="frame_rejilla"></ilayer>
 					</iframe>
 				</div>
-				<iframe id="frame_datos" name="frame_datos" width="0" height="0" frameborder="0">
-					<ilayer width="0" height="0" id="frame_datos" name="frame_datos"></ilayer>
+				<iframe id="frame_datos" name="frame_datos" width="100%" height="0" frameborder="0">
+					<ilayer width="100%" height="0" id="frame_datos" name="frame_datos"></ilayer>
 					</iframe>
 				</div>
 		  </div>			

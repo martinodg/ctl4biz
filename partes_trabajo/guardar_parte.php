@@ -20,8 +20,8 @@ $minimo=0;
 if ($accion=="alta") {
 	$query_operacion  = "INSERT INTO partestrabajo ( codpresupuesto, codtrabajador, nombre, titulo, descripcion, estado, horasprevistas, preciohora, fechacreacion, fechacomienzo) ";
 	$query_operacion .= "VALUES ('$codpresupuesto', '$codtrabajador', '$nombre', '$titulo', '$descripcion', '$estado', '$horasprevistas', '$preciohora', '$fechacreacion', '$fechacomienzo' )";
-	$rs_operacion=mysql_query($query_operacion);
-	$codparte=mysql_insert_id();
+	$rs_operacion=mysqli_query($conexion,$query_operacion);
+	$codparte=mysqli_insert_id($conexion);
 	$cabecera1="Inicio >> Partes de Trabajo &gt;&gt; Nuevo Parte ";
 	$cabecera2="PARTE DE TRABAJO CREADO ";
 }
@@ -39,7 +39,7 @@ if ( $_POST["fechafinalizacion"] <> "" ) { $fechafinalizacion=explota($_POST["fe
 
 $act_albaran =  "UPDATE partestrabajo SET codpresupuesto='$codpresupuesto', codtrabajador='$codtrabajador', nombre='$nombre', titulo='$titulo', descripcion='$descripcion', estado='$estado', preciohora='$preciohora', horasprevistas='$horasprevistas', horasinvertidas='$horasinvertidas', fechalectura='$fechalectura', fechacomienzo='$fechacomienzo', fechafinalizacion='$fechafinalizacion' ";
 $act_albaran .= "WHERE codtrabajo='$codtrabajo'";
-	$rs_albaran=mysql_query($act_albaran);
+	$rs_albaran=mysqli_query($conexion,$act_albaran);
 #echo "SQL: $act_albaran <br>";
 	$mensaje="Los datos del parte de trabajo han sido modificados correctamente";
 	$cabecera1="Inicio >> Ventas &gt;&gt; Modificar Albar&aacute;n ";
@@ -49,7 +49,7 @@ $act_albaran .= "WHERE codtrabajo='$codtrabajo'";
 if ($accion=="baja") {
 	$codtrabajo=$_GET["codtrabajo"];
 	$query="DELETE FROM partestrabajo WHERE codtrabajo='$codtrabajo'";
-	$rs_query=mysql_query($query);
+	$rs_query=mysqli_query($conexion,$query);
 	$mensaje="El parte de trabajo ha sido eliminado correctamente";
 	$cabecera1="Inicio >> Partes de Trabajo &gt;&gt; Eliminar Parte de Trabajo";
 	$cabecera2="PARTE DE TRABAJO ELIMINADO";
@@ -61,23 +61,23 @@ if ($_GET['accion'] =="ver") {
 $accion = "modificar";
 $codtrabajo=$_GET["codtrabajo"];
 $sel_parte="SELECT * FROM partestrabajo WHERE codtrabajo='$codtrabajo'";
-$rs_parte=mysql_query($sel_parte);
-$codpresupuesto=mysql_result($rs_parte,0,"codpresupuesto");
-$codtrabajador=mysql_result($rs_parte,0,"codtrabajador");
-$fechacomienzo=mysql_result($rs_parte,0,"fechacomienzo");
-$fechalectura=mysql_result($rs_parte,0,"fechalectura");
-$fechafinalizacion=mysql_result($rs_parte,0,"fechafinalizacion");
-$titulo=mysql_result($rs_parte,0,"titulo");
-$descripcion=mysql_result($rs_parte,0,"descripcion");
-$horasprevistas=mysql_result($rs_parte,0,"horasprevistas");
-$horasinvertidas=mysql_result($rs_parte,0,"horasinvertidas");
-$preciohora=mysql_result($rs_parte,0,"preciohora");
-$estado=mysql_result($rs_parte,0,"estado");
+$rs_parte=mysqli_query($conexion,$sel_parte);
+$codpresupuesto=mysqli_result($rs_parte,0,"codpresupuesto");
+$codtrabajador=mysqli_result($rs_parte,0,"codtrabajador");
+$fechacomienzo=mysqli_result($rs_parte,0,"fechacomienzo");
+$fechalectura=mysqli_result($rs_parte,0,"fechalectura");
+$fechafinalizacion=mysqli_result($rs_parte,0,"fechafinalizacion");
+$titulo=mysqli_result($rs_parte,0,"titulo");
+$descripcion=mysqli_result($rs_parte,0,"descripcion");
+$horasprevistas=mysqli_result($rs_parte,0,"horasprevistas");
+$horasinvertidas=mysqli_result($rs_parte,0,"horasinvertidas");
+$preciohora=mysqli_result($rs_parte,0,"preciohora");
+$estado=mysqli_result($rs_parte,0,"estado");
 
 $sel_trabajador="SELECT * FROM trabajadores WHERE codtrabajador='$codtrabajador'";
-$rs_trabajador=mysql_query($sel_trabajador);
-$nombre=mysql_result($rs_trabajador,0,"nombre");
-$nif=mysql_result($rs_trabajador,0,"nif");
+$rs_trabajador=mysqli_query($conexion,$sel_trabajador);
+$nombre=mysqli_result($rs_trabajador,0,"nombre");
+$nif=mysqli_result($rs_trabajador,0,"nif");
 
 
 	$cabecera1="Inicio >> Partes de Trabajo &gt;&gt; Ver Parte";
@@ -132,10 +132,10 @@ $nif=mysql_result($rs_trabajador,0,"nif");
 					    </tr>
 						<? }
 						 $sel_trabajador="SELECT * FROM trabajadores WHERE codtrabajador='$codtrabajador'";
-						  $rs_trabajador=mysql_query($sel_trabajador); ?>
+						  $rs_trabajador=mysqli_query($conexion,$sel_trabajador); ?>
 						<tr>
 							<td width="15%">Trabajador</td>
-							<td width="85%" colspan="2"><?php echo mysql_result($rs_trabajador,0,"nombre"); ?></td>
+							<td width="85%" colspan="2"><?php echo mysqli_result($rs_trabajador,0,"nombre"); ?></td>
 					    </tr>
 						<tr>
 							<td width="15%">C&oacute;digo Presupuesto</td>
@@ -197,8 +197,8 @@ $nif=mysql_result($rs_trabajador,0,"nif");
 </div>
 <div id="botonBusqueda">
 <div align="center">
-					 <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
-<img src="../img/botonimprimir.jpg" width="79" height="22" border="1" onClick="window.print();" onMouseOver="style.cursor=cursor">
+					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+<button type="button" id="btnimprimir"  onClick="window.print();" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
 				        </div>
 					</div>
 			  </div>

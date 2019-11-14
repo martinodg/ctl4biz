@@ -25,12 +25,12 @@
   </tr>
   <tr height="200px">
     <td>&nbsp;</td>
-    <td><div align="center"><img src="img/yulelogo.svg" width="550" height="200" border="0" /></div></td>
+    <td><div align="center"><img src="img/ctl4bizlogo.svg" width="200" height="200" border="0" /></div></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><div align="center" class="Estilo7">Yulee Creator</div></td>
+    <td><div align="center" class="Estilo7">ConTroL for my business Creator</div></td>
      <td>&nbsp;</td>
   </tr>
    <tr>
@@ -40,7 +40,7 @@
   </tr>
     <tr>
     <td>&nbsp;</td>
-    <td><div align="center" class="Estilo7">Yulee Web Design</div></td>
+    <td><div align="center" class="Estilo7">ConTroL for my business Web Design</div></td>
     <td>&nbsp;</td>
   </tr>
    <tr>
@@ -50,7 +50,7 @@
   </tr>
     <tr>
     <td>&nbsp;</td>
-    <td><div align="center" class="Estilo7">Yulee is based on Codeka by </div></td>
+    <td><div align="center" class="Estilo7">ConTroL for my business is based on Codeka by </div></td>
     <td>&nbsp;</td>
   </tr>
   <tr>

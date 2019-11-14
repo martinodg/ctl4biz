@@ -7,6 +7,8 @@
     <script language="javascript">
         var cursor;
         var estadoInicial;
+        //get metaproceso code from Url hash on last page.
+        var metaproceso = window.location.hash.substring(1);
 
         if (document.all) {
             // Está utilizando EXPLORER
@@ -25,10 +27,57 @@
                     $('#div_datos2').html(data);
                 });
         }
+        //function to validate a line modification
+        function validarlinea(codigo, linea, cantidad) {
 
+            var cantidaddeinteres = "cantidad" + linea;
+            alert($cantidaddeinteres);
+            var nuevacantidad = document.getElementById('cantidad' + linea).value;
+            var viejacantidad = cantidad;
+            //$mensaje = "la vieja cantidad es: " + $viejacantidad + " la nueva cantidad es: " + $nuevacantidad;
+            // alert($mensaje);
+            if (viejacantidad != nuevacantidad) {
+                //alert("como son distintas se procede a modificar la tabla");
+                $.get("modificarlineamp.php", {
+                        codmproceso: codigo,
+                        lineamproceso: linea,
+                        cantidadarticulo: nuevacantidad
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                        $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+
+
+                    });
+                mostrararticulo(metaproceso);
+            }
+
+        }
+        // function to delete line of mentaprocess
+        function borrarlineamp(codigo, linea) {
+            $.get("borrarlineamp.php", {
+                    codmproceso: codigo,
+                    lineamproceso: linea,
+
+                },
+                function(data) {
+                    $('#div_datos3').html(data);
+
+
+                });
+            mostrararticulo(metaproceso);
+        }
+        // function to validate an item
+        function validararticulo(codigo, nombre) {
+
+            $('#codarticulo').val(codigo);
+            $('#nombrearticulo').val(nombre);
+            $('#hidecodarticulo').val(codigo);
+            $('#hidenombrearticulo').val(nombre);
+            $('#div_datos').empty();
+        }
         $(document).ready(function() {
-            //get metaproceso code from Url hash on last page.
-            var metaproceso = window.location.hash.substring(1);
+
 
             //Set Title for page
             var titulo = "Modificar el meta-proceso: " + metaproceso;
@@ -90,29 +139,8 @@
             $('#btncancelar').click(function() {
                 location.href = "index.php";
             });
-            //when we press accept button
-            $('#btnaceptar').click(function() {
-                var cantidadaMod = document.getElementById('cantidad').value;
-                var estadoaMod = document.getElementById('estado').value;
-                /*alert(estadoaMod);*/
-                if (cantidadInicial != cantidadaMod || estadoInicial != estadoaMod) {
-                    if (estadoaMod == "1" & cantidadaMod != "0" || estadoaMod != "1") {
-                        $.get("guardarmodificacion.php", {
-                                codproceso: document.getElementById('codproceso').value,
-                                cantidad: cantidadaMod,
-                                estado: estadoaMod,
-                                fechaf: document.getElementById('fechaf').value,
-                                horaf: document.getElementById('horaf').value,
-                                codarticulo: document.getElementById('codarticulo').value
-                            },
-                            function(data) {
-                                $('#div_datos').html(data);
-                            });
-                    } else {
-                        alert("Es necesario insertar una cantidad para finalizar un proceso!");
-                    }
-                }
-            });
+
+
             //when we press add button
             $('#btnagregar').click(function() {
 
@@ -125,22 +153,27 @@
                         cantidadart: document.getElementById('cantidad').value
                     },
                     function(data) {
-                        $('#div_datos').html(data);
+                        $('#div_datos3').html(data);
                         $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
-                        mostrararticulo(proximomproc);
 
                     });
+                mostrararticulo(metaproceso);
             });
+
+            //when we press accept button
+            $('#btnaceptar').click(function() {
+
+                $.get("modificarcabeceramp.php", {
+                        codmproceso: document.getElementById('codmproceso').value,
+                        nombremproceso: document.getElementById('nombremproceso').value,
+                        batch: estadobatch
+                    },
+                    function(data) {
+                        $('#div_datos3').html(data);
+                    });
+            });
+
         });
-
-        function validararticulo(codigo, nombre) {
-
-            $('#codarticulo').val(codigo);
-            $('#nombrearticulo').val(nombre);
-            $('#hidecodarticulo').val(codigo);
-            $('#hidenombrearticulo').val(nombre);
-            $('#div_datos').empty();
-        }
     </script>
 </head>
 
@@ -171,9 +204,10 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <img src="../img/botonaceptar.jpg" width="75" height="22" id="btninicio" border="1" onMouseOver="style.cursor=cursor">
 
-                    <img src="../img/botoncancelar.jpg" width="75" height="22" id="btncancelar" border="1" onMouseOver="style.cursor=cursor">
+                    <br>
+                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+                    <br>
 
                 </div>
 
@@ -207,7 +241,7 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <img src="../img/botonagregar.jpg" width="75" height="22" id="btnagregar" border="1" onMouseOver="style.cursor=cursor">
+                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button>
 
 
                 </div>
@@ -217,8 +251,8 @@
                 <div id="lineaResultado">
                     <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                         <tr>
-                            <td width="50%" align="left">N de Articulos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-                            <td width="50%" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+                            <td width="50%" class="paginar" align="left">N de Articulos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                            <td width="50%" class="paginar" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                     </table>
                 </div>
@@ -226,7 +260,14 @@
 
                 <div ID="div_datos" name="div_datos"> </div>
                 <div ID="div_datos2" name="div_datos2"> </div>
+                <div id="botonCerrar">
+                    <br>
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cerrar" /> <span>cerrar</span> </button>
+                    <br>
+
+                </div>
             </div>
+            <div ID="div_datos3" name="div_datos3"> </div>
         </div>
     </div>
     </div>

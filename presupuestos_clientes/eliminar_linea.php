@@ -8,7 +8,7 @@ $codpresupuesto=$_GET["codpresupuestotmp"];
 $numlinea=$_GET["numlinea"];
 
 $consulta = "DELETE FROM presulineatmp WHERE codpresupuesto ='".$codpresupuesto."' AND numlinea='".$numlinea."'";
-$rs_consulta = mysql_query($consulta);
+$rs_consulta = mysqli_query($conexion,$consulta);
 echo "<script>parent.location.href='frame_lineas.php?codpresupuestotmp=".$codpresupuesto."';</script>";
 
 ?>

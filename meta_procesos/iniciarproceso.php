@@ -25,7 +25,7 @@ include ("../mysqli_result.php");
 
                 $rs_operacion=mysqli_query($conexion,$query_operacion);
 		
-	/*	$codproceso=mysqli_insert_id(); */
+	/*	$codproceso=mysqli_insert_id($conexion); */
                 
                 
                 

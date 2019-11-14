@@ -57,9 +57,9 @@ body {
 		  <select id="cmbfamilia" name="cmbfamilia" class="comboGrande">
 		  <?
 		    $consultafamilia="select * from familias where borrado=0 order by nombre ASC";
-			$queryfamilia=mysql_query($consultafamilia);
+			$queryfamilia=mysqli_query($conexion,$consultafamilia);
 			?><option value=0>Todos los articulos</option><?
-			while ($rowfamilia=mysql_fetch_row($queryfamilia))
+			while ($rowfamilia=mysqli_fetch_row($queryfamilia))
 			  { 
 			  	if ($anterior==$rowfamilia[0]) { ?>
 					<option value="<? echo $rowfamilia[0]?>" selected><? echo utf8_encode($rowfamilia[1])?></option>
@@ -75,7 +75,7 @@ body {
 		<tr><td width="36%" class="busqueda">Descripci&oacute;n:</td>
 	    <td width="64%"><input name="descripcion" type="text" id="descripcion" size="50" class="cajaGrande"></td></tr>
 		<tr>
-		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><img src="../img/botonbuscar.jpg" width="69" height="22" border="1" onClick="enviar()" onMouseOver="style.cursor=cursor"></div></td>
+		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button></div></td>
 	  </tr>
 </table>
 </div>
@@ -92,7 +92,7 @@ body {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <img src="../img/botoncerrar.jpg" width="70" height="22" onClick="window.close()" border="1" onMouseOver="style.cursor=cursor">
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

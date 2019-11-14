@@ -21,7 +21,7 @@ $primero=substr($DirBase,0,1);
 if ($primero=="/") {
 	$DirBase="mysqldump";
 } else {
-	$DirBase=$DirBase."\bin\mysqldump";
+	$DirBase=$DirBase."mysqldump";
 }
 
 $executa = "$DirBase -h $Servidor -u $Usuario --password=$Password --opt --ignore-table=$BaseDeDatos.tabbackup $BaseDeDatos > $archivo";
@@ -29,7 +29,7 @@ $executa = "$DirBase -h $Servidor -u $Usuario --password=$Password --opt --ignor
 system($executa, $resultado);
 
 
-if ($resultado) { echo "<H1>Error ejecutando comando: $executa</H1>\n"; } 
+if ($resultado) { echo "<H1>Error ejecutando comando:$executa </H1>\n"; } 
 
 
 if ($resultado) {
@@ -93,7 +93,7 @@ if ($resultado) {
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
 			  </div>
 		  </div>
 		</div>

@@ -1,5 +1,6 @@
 <?
-include ("../conectar.php");
+include ("../conectar7.php");
+include ("../mysqli_result.php");
 include ("../funciones/fechas.php");
 
 $accion=$_POST["accion"];
@@ -13,33 +14,33 @@ $minimo=0;
 
 if ($accion=="alta") {
 	$query_operacion="INSERT INTO presupuestos (codpresupuesto, codfactura, fecha, iva, codcliente, estado, borrado) VALUES ('', '0', '$fecha', '$iva', '$codcliente', '1', '0')";
-	$rs_operacion=mysql_query($query_operacion);
-	$codpresupuesto=mysql_insert_id();
+	$rs_operacion=mysqli_query($conexion,$query_operacion);
+	$codpresupuesto=mysqli_insert_id($conexion);
 	if ($rs_operacion) { $mensaje="El presupuesto ha sido dado de alta correctamente"; }
 	$query_tmp="SELECT * FROM presulineatmp WHERE codpresupuesto='$codpresupuestotmp' ORDER BY numlinea ASC";
-	$rs_tmp=mysql_query($query_tmp);
+	$rs_tmp=mysqli_query($conexion,$query_tmp);
 	$contador=0;
 	$baseimponible=0;
-	while ($contador < mysql_num_rows($rs_tmp)) {
-		$codfamilia=mysql_result($rs_tmp,$contador,"codfamilia");
-		$numlinea=mysql_result($rs_tmp,$contador,"numlinea");
-		$codigo=mysql_result($rs_tmp,$contador,"codigo");
-		$cantidad=mysql_result($rs_tmp,$contador,"cantidad");
-		$precio=mysql_result($rs_tmp,$contador,"precio");
-		$importe=mysql_result($rs_tmp,$contador,"importe");
+	while ($contador < mysqli_num_rows($rs_tmp)) {
+		$codfamilia=mysqli_result($rs_tmp,$contador,"codfamilia");
+		$numlinea=mysqli_result($rs_tmp,$contador,"numlinea");
+		$codigo=mysqli_result($rs_tmp,$contador,"codigo");
+		$cantidad=mysqli_result($rs_tmp,$contador,"cantidad");
+		$precio=mysqli_result($rs_tmp,$contador,"precio");
+		$importe=mysqli_result($rs_tmp,$contador,"importe");
 		$baseimponible=$baseimponible+$importe;
-		$dcto=mysql_result($rs_tmp,$contador,"dcto");
+		$dcto=mysqli_result($rs_tmp,$contador,"dcto");
 		$sel_insertar="INSERT INTO presulinea (codpresupuesto,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES
 		('$codpresupuesto','$numlinea','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
-		$rs_insertar=mysql_query($sel_insertar);
+		$rs_insertar=mysqli_query($conexion,$sel_insertar);
 // No se controla el stock en los presupuestos
 //		$sel_articulos="UPDATE articulos SET stock=(stock-'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_articulos=mysql_query($sel_articulos);
+		//$rs_articulos=mysqli_query($conexion,$sel_articulos);
 		$sel_minimos = "SELECT stock,stock_minimo,descripcion FROM articulos where codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_minimos= mysql_query($sel_minimos);
-		if ((mysql_result($rs_minimos,0,"stock") < mysql_result($rs_minimos,0,"stock_minimo")) or (mysql_result($rs_minimos,0,"stock") <= 0))
+		$rs_minimos= mysqli_query($conexion,$sel_minimos);
+		if ((mysqli_result($rs_minimos,0,"stock") < mysqli_result($rs_minimos,0,"stock_minimo")) or (mysqli_result($rs_minimos,0,"stock") <= 0))
 	   		{
-		  		$mensaje_minimo=$mensaje_minimo . " " . mysql_result($rs_minimos,0,"descripcion")."<br>";
+		  		$mensaje_minimo=$mensaje_minimo . " " . mysqli_result($rs_minimos,0,"descripcion")."<br>";
 				$minimo=1;
    			};
 		$contador++;
@@ -48,7 +49,7 @@ if ($accion=="alta") {
 	$preciototal=$baseimponible+$baseimpuestos;
 	//$preciototal=number_format($preciototal,2);
 	$sel_act="UPDATE presupuestos SET totalpresupuesto='$preciototal' WHERE codpresupuesto='$codpresupuesto'";
-	$rs_act=mysql_query($sel_act);
+	$rs_act=mysqli_query($conexion,$sel_act);
 	$baseimponible=0;
 	$preciototal=0;
 	$baseimpuestos=0;
@@ -59,45 +60,45 @@ if ($accion=="alta") {
 if ($accion=="modificar") {
 	$codpresupuesto=$_POST["codpresupuesto"];
 	$act_presupuesto="UPDATE presupuestos SET codcliente='$codcliente', fecha='$fecha', iva='$iva' WHERE codpresupuesto='$codpresupuesto'";
-	$rs_presupuesto=mysql_query($act_presupuesto);
+	$rs_presupuesto=mysqli_query($conexion,$act_presupuesto);
 	$sel_lineas = "SELECT codigo,codfamilia,cantidad FROM presulinea WHERE codpresupuesto='$codpresupuesto' order by numlinea";
-	$rs_lineas = mysql_query($sel_lineas);
+	$rs_lineas = mysqli_query($conexion,$sel_lineas);
 	$contador=0;
-	while ($contador < mysql_num_rows($rs_lineas)) {
-		$codigo=mysql_result($rs_lineas,$contador,"codigo");
-		$codfamilia=mysql_result($rs_lineas,$contador,"codfamilia");
-		$cantidad=mysql_result($rs_lineas,$contador,"cantidad");
+	while ($contador < mysqli_num_rows($rs_lineas)) {
+		$codigo=mysqli_result($rs_lineas,$contador,"codigo");
+		$codfamilia=mysqli_result($rs_lineas,$contador,"codfamilia");
+		$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
 //		$sel_actualizar="UPDATE `articulos` SET stock=(stock+'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_actualizar = mysql_query($sel_actualizar);
+		$rs_actualizar = mysqli_query($conexion,$sel_actualizar);
 		$contador++;
 	}
 	$sel_borrar = "DELETE FROM presulinea WHERE codpresupuesto='$codpresupuesto'";
-	$rs_borrar = mysql_query($sel_borrar);
+	$rs_borrar = mysqli_query($conexion,$sel_borrar);
 	$sel_lineastmp = "SELECT * FROM presulineatmp WHERE codpresupuesto='$codpresupuestotmp' ORDER BY numlinea";
-	$rs_lineastmp = mysql_query($sel_lineastmp);
+	$rs_lineastmp = mysqli_query($conexion,$sel_lineastmp);
 	$contador=0;
 	$baseimponible=0;
-	while ($contador < mysql_num_rows($rs_lineastmp)) {
-		$numlinea=mysql_result($rs_lineastmp,$contador,"numlinea");
-		$codigo=mysql_result($rs_lineastmp,$contador,"codigo");
-		$codfamilia=mysql_result($rs_lineastmp,$contador,"codfamilia");
-		$cantidad=mysql_result($rs_lineastmp,$contador,"cantidad");
-		$precio=mysql_result($rs_lineastmp,$contador,"precio");
-		$importe=mysql_result($rs_lineastmp,$contador,"importe");
+	while ($contador < mysqli_num_rows($rs_lineastmp)) {
+		$numlinea=mysqli_result($rs_lineastmp,$contador,"numlinea");
+		$codigo=mysqli_result($rs_lineastmp,$contador,"codigo");
+		$codfamilia=mysqli_result($rs_lineastmp,$contador,"codfamilia");
+		$cantidad=mysqli_result($rs_lineastmp,$contador,"cantidad");
+		$precio=mysqli_result($rs_lineastmp,$contador,"precio");
+		$importe=mysqli_result($rs_lineastmp,$contador,"importe");
 		$baseimponible=$baseimponible+$importe;
-		$dcto=mysql_result($rs_lineastmp,$contador,"dcto");
+		$dcto=mysqli_result($rs_lineastmp,$contador,"dcto");
 
 		$sel_insert = "INSERT INTO presulinea (codpresupuesto,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto)
 		VALUES ('$codpresupuesto','','$codigo','$codfamilia','$cantidad','$precio','$importe','$dcto')";
-		$rs_insert = mysql_query($sel_insert);
+		$rs_insert = mysqli_query($conexion,$sel_insert);
 
 //		$sel_actualiza="UPDATE articulos SET stock=(stock-'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_actualiza = mysql_query($sel_actualiza);
+		$rs_actualiza = mysqli_query($conexion,$sel_actualiza);
 		$sel_bajominimo = "SELECT codarticulo,codfamilia,stock,stock_minimo,descripcion FROM articulos WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_bajominimo= mysql_query($sel_bajominimo);
-		$stock=mysql_result($rs_bajominimo,0,"stock");
-		$stock_minimo=mysql_result($rs_bajominimo,0,"stock_minimo");
-		$descripcion=mysql_result($rs_bajominimo,0,"descripcion");
+		$rs_bajominimo= mysqli_query($conexion,$sel_bajominimo);
+		$stock=mysqli_result($rs_bajominimo,0,"stock");
+		$stock_minimo=mysqli_result($rs_bajominimo,0,"stock_minimo");
+		$descripcion=mysqli_result($rs_bajominimo,0,"descripcion");
 
 		if (($stock < $stock_minimo) or ($stock <= 0))
 		   {
@@ -110,7 +111,7 @@ if ($accion=="modificar") {
 	$preciototal=$baseimponible+$baseimpuestos;
 	//$preciototal=number_format($preciototal,2);
 	$sel_act="UPDATE presupuestos SET totalpresupuesto='$preciototal' WHERE codpresupuesto='$codpresupuesto'";
-	$rs_act=mysql_query($sel_act);
+	$rs_act=mysqli_query($conexion,$sel_act);
 	$baseimponible=0;
 	$preciototal=0;
 	$baseimpuestos=0;
@@ -122,27 +123,27 @@ if ($accion=="modificar") {
 if ($accion=="baja") {
 	$codpresupuesto=$_GET["codpresupuesto"];
 	$query="UPDATE presupuestos SET borrado=1 WHERE codpresupuesto='$codpresupuesto'";
-	$rs_query=mysql_query($query);
+	$rs_query=mysqli_query($conexion,$query);
 	$query="SELECT * FROM presulinea WHERE codpresupuesto='$codpresupuesto' ORDER BY numlinea ASC";
-	$rs_tmp=mysql_query($query);
+	$rs_tmp=mysqli_query($conexion,$query);
 	$contador=0;
 	$baseimponible=0;
-	while ($contador < mysql_num_rows($rs_tmp)) {
-		$codfamilia=mysql_result($rs_tmp,$contador,"codfamilia");
-		$codigo=mysql_result($rs_tmp,$contador,"codigo");
-		$cantidad=mysql_result($rs_tmp,$contador,"cantidad");
+	while ($contador < mysqli_num_rows($rs_tmp)) {
+		$codfamilia=mysqli_result($rs_tmp,$contador,"codfamilia");
+		$codigo=mysqli_result($rs_tmp,$contador,"codigo");
+		$cantidad=mysqli_result($rs_tmp,$contador,"cantidad");
 //		$sel_articulos="UPDATE articulos SET stock=(stock+'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_articulos=mysql_query($sel_articulos);
+		$rs_articulos=mysqli_query($conexion,$sel_articulos);
 		$contador++;
 	}
 	if ($rs_query) { $mensaje="El presupuesto ha sido eliminado correctamente"; }
 	$cabecera1="Inicio >> Ventas &gt;&gt; Eliminar presupuesto";
 	$cabecera2="ELIMINAR PRESUPUESTO";
 	$query_mostrar="SELECT * FROM presupuestos WHERE codpresupuesto='$codpresupuesto'";
-	$rs_mostrar=mysql_query($query_mostrar);
-	$codcliente=mysql_result($rs_mostrar,0,"codcliente");
-	$fecha=mysql_result($rs_mostrar,0,"fecha");
-	$iva=mysql_result($rs_mostrar,0,"iva");
+	$rs_mostrar=mysqli_query($conexion,$query_mostrar);
+	$codcliente=mysqli_result($rs_mostrar,0,"codcliente");
+	$fecha=mysqli_result($rs_mostrar,0,"fecha");
+	$iva=mysqli_result($rs_mostrar,0,"iva");
 }
 
 if ($accion=="convertir") {
@@ -150,29 +151,29 @@ if ($accion=="convertir") {
 	$fecha=$_POST["fecha"];
 	$fecha=explota($fecha);
 	$sel_presupuesto="SELECT * FROM presupuestos WHERE codpresupuesto='$codpresupuesto'";
-	$rs_presupuesto=mysql_query($sel_presupuesto);
-	$iva=mysql_result($rs_presupuesto,0,"iva");
-	$codcliente=mysql_result($rs_presupuesto,0,"codcliente");
-	$totalfactura=mysql_result($rs_presupuesto,0,"totalpresupuesto");
+	$rs_presupuesto=mysqli_query($conexion,$sel_presupuesto);
+	$iva=mysqli_result($rs_presupuesto,0,"iva");
+	$codcliente=mysqli_result($rs_presupuesto,0,"codcliente");
+	$totalfactura=mysqli_result($rs_presupuesto,0,"totalpresupuesto");
 	$sel_factura="INSERT INTO albaranes (codalbaran,fecha,iva,codcliente,estado,totalalbaran,borrado) VALUES
 		('','$fecha','$iva','$codcliente','1','$totalfactura','0')";
-	$rs_factura=mysql_query($sel_factura);
-	$codfactura=mysql_insert_id();
+	$rs_factura=mysqli_query($conexion,$sel_factura);
+	$codfactura=mysqli_insert_id($conexion);
 	$act_presupuesto="UPDATE presupuestos SET codfactura='$codfactura',estado='2' WHERE codpresupuesto='$codpresupuesto'";
-	$rs_act=mysql_query($act_presupuesto);
+	$rs_act=mysqli_query($conexion,$act_presupuesto);
 	$sel_lineas="SELECT * FROM presulinea WHERE codpresupuesto='$codpresupuesto' ORDER BY numlinea ASC";
-	$rs_lineas=mysql_query($sel_lineas);
+	$rs_lineas=mysqli_query($conexion,$sel_lineas);
 	$contador=0;
-	while ($contador < mysql_num_rows($rs_lineas)) {
-		$codfamilia=mysql_result($rs_lineas,$contador,"codfamilia");
-		$codigo=mysql_result($rs_lineas,$contador,"codigo");
-		$cantidad=mysql_result($rs_lineas,$contador,"cantidad");
-		$precio=mysql_result($rs_lineas,$contador,"precio");
-		$importe=mysql_result($rs_lineas,$contador,"importe");
-		$dcto=mysql_result($rs_lineas,$contador,"dcto");
+	while ($contador < mysqli_num_rows($rs_lineas)) {
+		$codfamilia=mysqli_result($rs_lineas,$contador,"codfamilia");
+		$codigo=mysqli_result($rs_lineas,$contador,"codigo");
+		$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
+		$precio=mysqli_result($rs_lineas,$contador,"precio");
+		$importe=mysqli_result($rs_lineas,$contador,"importe");
+		$dcto=mysqli_result($rs_lineas,$contador,"dcto");
 		$sel_insert="INSERT INTO albalinea (codalbaran,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES
 			('$codfactura','','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
-		$rs_insert=mysql_query($sel_insert);
+		$rs_insert=mysqli_query($conexion,$sel_insert);
 		$contador++;
 	}
 	$mensaje="El presupuesto ha sido convertido correctamente";
@@ -228,18 +229,18 @@ if ($accion=="convertir") {
 					    </tr>
 						<? }
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'";
-						  $rs_cliente=mysql_query($sel_cliente); ?>
+						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
 							<td width="15%">Cliente</td>
-							<td width="85%" colspan="2"><?php echo mysql_result($rs_cliente,0,"nombre");?></td>
+							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
 							<td width="15%">NIF / CIF</td>
-						    <td width="85%" colspan="2"><?php echo mysql_result($rs_cliente,0,"nif");?></td>
+						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nif");?></td>
 					    </tr>
 						<tr>
 						  <td>Direcci&oacute;n</td>
-						  <td colspan="2"><?php echo mysql_result($rs_cliente,0,"direccion"); ?></td>
+						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 					  <? if ($accion=="convertir") { ?>
 						<tr>
@@ -278,19 +279,19 @@ if ($accion=="convertir") {
 					</table>
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 					  <? $sel_lineas="SELECT presulinea.*,articulos.*,familias.nombre as nombrefamilia FROM presulinea,articulos,familias WHERE presulinea.codpresupuesto='$codpresupuesto' AND presulinea.codigo=articulos.codarticulo AND presulinea.codfamilia=articulos.codfamilia AND articulos.codfamilia=familias.codfamilia ORDER BY presulinea.numlinea ASC";
-$rs_lineas=mysql_query($sel_lineas);
-						for ($i = 0; $i < mysql_num_rows($rs_lineas); $i++) {
-							$numlinea=mysql_result($rs_lineas,$i,"numlinea");
-							$codfamilia=mysql_result($rs_lineas,$i,"codfamilia");
-							$nombrefamilia=mysql_result($rs_lineas,$i,"nombrefamilia");
-							$codarticulo=mysql_result($rs_lineas,$i,"codarticulo");
-							$referencia=mysql_result($rs_lineas,$i,"referencia");
-							$descripcion=mysql_result($rs_lineas,$i,"descripcion");
-							$cantidad=mysql_result($rs_lineas,$i,"cantidad");
-							$precio=mysql_result($rs_lineas,$i,"precio");
-							$importe=mysql_result($rs_lineas,$i,"importe");
+$rs_lineas=mysqli_query($conexion,$sel_lineas);
+						for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
+							$numlinea=mysqli_result($rs_lineas,$i,"numlinea");
+							$codfamilia=mysqli_result($rs_lineas,$i,"codfamilia");
+							$nombrefamilia=mysqli_result($rs_lineas,$i,"nombrefamilia");
+							$codarticulo=mysqli_result($rs_lineas,$i,"codarticulo");
+							$referencia=mysqli_result($rs_lineas,$i,"referencia");
+							$descripcion=mysqli_result($rs_lineas,$i,"descripcion");
+							$cantidad=mysqli_result($rs_lineas,$i,"cantidad");
+							$precio=mysqli_result($rs_lineas,$i,"precio");
+							$importe=mysqli_result($rs_lineas,$i,"importe");
 							$baseimponible=$baseimponible+$importe;
-							$descuento=mysql_result($rs_lineas,$i,"dcto");
+							$descuento=mysqli_result($rs_lineas,$i,"dcto");
 							if ($i % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; } ?>
 									<tr class="<? echo $fondolinea?>">
 										<td width="5%" class="aCentro"><? echo $i+1?></td>
@@ -327,11 +328,11 @@ $rs_lineas=mysql_query($sel_lineas);
 			  </div>
 				<div id="botonBusqueda">
 					<div align="center">
-					 <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
+					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
 					  <? if ($accion=="convertir") { ?>
-					   <img src="../img/botonimprimir.jpg" width="79" height="22" border="1" onClick="imprimirf(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor">
+					   <button type="button" id="btnimprimir" onClick="imprimirf(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
 					   <? } else { ?>
-					   <img src="../img/botonimprimir.jpg" width="79" height="22" border="1" onClick="imprimir(<? echo $codpresupuesto?>)" onMouseOver="style.cursor=cursor">
+					   <button type="button" id="btnimprimir" onClick="imprimir(<? echo $codpresupuesto?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
 					   <? } ?>
 				        </div>
 					</div>

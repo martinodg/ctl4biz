@@ -1,24 +1,17 @@
 <?php
-
-
+ob_start();
 define('FPDF_FONTPATH','font/');
-require('mysql_table.php');
-
-include("comunes.php");
-
-include ("../conectar.php");  
-
+require ('mysqli_table.php');
+include ("../conectar7.php");  include ("../mysqli_result.php"); include ("comunes.php");
 $pdf=new PDF();
-$pdf->Open();
 $pdf->AddPage();
-
 //Nombre del Listado
 $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',16);
 $pdf->SetY(40);
 $pdf->SetX(0);
     
-$pdf->MultiCell(290,6,"Listado de Articulos",0,C,0);
+$pdf->MultiCell(290,6,"Listado de Articulos",0,'C',0);
 
 $pdf->Ln();    
 	
@@ -61,17 +54,18 @@ for($i=0;$i<count($header);$i++)
 $pdf->Ln();
 $pdf->SetFont('Arial','',8);
 $sel_resultado="SELECT * FROM articulos LEFT JOIN familias ON articulos.codfamilia=familias.codfamilia WHERE articulos.borrado=0 AND ".$where;
-$res_resultado=mysql_query($sel_resultado);
+$res_resultado=mysqli_query($conexion,$sel_resultado);
 $contador=0;
-while ($contador < mysql_num_rows($res_resultado)) {
-	$pdf->Cell($w[0],5,mysql_result($res_resultado,$contador,"familias.nombre"),'LRTB',0,'L');
-	$pdf->Cell($w[1],5,mysql_result($res_resultado,$contador,"referencia"),'LRTB',0,'C');
-	$pdf->Cell($w[2],5,mysql_result($res_resultado,$contador,"descripcion_corta"),'LRTB',0,'L');
-	$pdf->Cell($w[3],5,mysql_result($res_resultado,$contador,"precio_tienda"),'LRTB',0,'R');
-	$pdf->Cell($w[4],5,mysql_result($res_resultado,$contador,"stock"),'LRTB',0,'R');
+while ($contador < mysqli_num_rows($res_resultado)) {
+	$pdf->Cell($w[0],5,mysqli_result($res_resultado,$contador,"familias.nombre"),'LRTB',0,'L');
+	$pdf->Cell($w[1],5,mysqli_result($res_resultado,$contador,"referencia"),'LRTB',0,'C');
+	$pdf->Cell($w[2],5,mysqli_result($res_resultado,$contador,"descripcion_corta"),'LRTB',0,'L');
+	$pdf->Cell($w[3],5,mysqli_result($res_resultado,$contador,"precio_tienda"),'LRTB',0,'R');
+	$pdf->Cell($w[4],5,mysqli_result($res_resultado,$contador,"stock"),'LRTB',0,'R');
 	$pdf->Ln();
 	$contador++;
 };
 			
 $pdf->Output();
+ob_end_flush(); 
 ?> 

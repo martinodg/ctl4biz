@@ -36,7 +36,7 @@ if ($modif<>1) {
 				$descuento=$_POST["descuento"];
 				
 				$sel_insert="INSERT INTO albalineatmp (codalbaran,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codalbarantmp','','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
-				$rs_insert=mysql_query($sel_insert);
+				$rs_insert=mysqli_query($conexion,$sel_insert);
 		}
 }
 ?>
@@ -44,18 +44,18 @@ if ($modif<>1) {
 <?php
 $sel_lineas="SELECT albalineatmp.*,articulos.*,familias.nombre as nombrefamilia FROM albalineatmp,articulos,familias WHERE albalineatmp.codalbaran='$codalbarantmp' AND albalineatmp.codigo=articulos.codarticulo AND albalineatmp.codfamilia=articulos.codfamilia AND articulos.codfamilia=familias.codfamilia ORDER BY albalineatmp.numlinea ASC";
 
-$rs_lineas=mysql_query($sel_lineas);
-for ($i = 0; $i < mysql_num_rows($rs_lineas); $i++) {
-	$numlinea=mysql_result($rs_lineas,$i,"numlinea");
-	$codfamilia=mysql_result($rs_lineas,$i,"codfamilia");
-	$nombrefamilia=mysql_result($rs_lineas,$i,"nombrefamilia");
-	$codarticulo=mysql_result($rs_lineas,$i,"codarticulo");
-	$descripcion=mysql_result($rs_lineas,$i,"descripcion");
-	$cantidad=mysql_result($rs_lineas,$i,"cantidad");
-	$referencia=mysql_result($rs_lineas,$i,"referencia");
-	$precio=mysql_result($rs_lineas,$i,"precio");
-	$importe=mysql_result($rs_lineas,$i,"importe");
-	$descuento=mysql_result($rs_lineas,$i,"dcto");
+$rs_lineas=mysqli_query($conexion,$sel_lineas);
+for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
+	$numlinea=mysqli_result($rs_lineas,$i,"numlinea");
+	$codfamilia=mysqli_result($rs_lineas,$i,"codfamilia");
+	$nombrefamilia=mysqli_result($rs_lineas,$i,"nombrefamilia");
+	$codarticulo=mysqli_result($rs_lineas,$i,"codarticulo");
+	$descripcion=mysqli_result($rs_lineas,$i,"descripcion");
+	$cantidad=mysqli_result($rs_lineas,$i,"cantidad");
+	$referencia=mysqli_result($rs_lineas,$i,"referencia");
+	$precio=mysqli_result($rs_lineas,$i,"precio");
+	$importe=mysqli_result($rs_lineas,$i,"importe");
+	$descuento=mysqli_result($rs_lineas,$i,"dcto");
 	if ($i % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; } ?>
 			<tr class="<? echo $fondolinea?>">
 				<td width="5%"><? echo $i+1?></td>
@@ -65,7 +65,7 @@ for ($i = 0; $i < mysql_num_rows($rs_lineas); $i++) {
 				<td width="8%" class="aCentro"><? echo $precio?></td>
 				<td width="7%" class="aCentro"><? echo $descuento?></td>
 				<td width="8%" class="aCentro"><? echo $importe?></td>
-				<td width="3%"><a href="javascript:eliminar_linea(<?php echo $codalbarantmp?>,<?php echo $numlinea?>,<?php echo $importe ?>)"><img src="../img/eliminar.svg" border="0"></a></td>
+				<td width="3%"><a href="javascript:eliminar_linea(<?php echo $codalbarantmp?>,<?php echo $numlinea?>,<?php echo $importe ?>)"><img src="../img/eliminar.svg" height="16px" width="16px" border="0"></a></td>
 			</tr>
 <? } ?>
 </table>

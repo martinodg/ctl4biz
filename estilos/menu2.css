@@ -16,9 +16,10 @@ body {
 }
 
 #header {
+    color: white;
     width: 100%;
     height: 34px;
-    background: #d9d9d9;
+    background: #083b66;
     position: fixed;
 }
 
@@ -29,7 +30,8 @@ body {
 }
 
 #icono {
-    background: rgb(48, 38, 46);
+    /*background: rgb(28, 31, 73);*/
+    background: #083b66;
     height: 34px;
     width: 50px;
     display: block;
@@ -48,8 +50,8 @@ body {
 
 .logo {
     position: fixed;
-    height: 30px;
-    width: 90px;
+    height: 34px;
+    width: 134px;
     display: block;
     left: 50%;
     margin-left: auto;
@@ -86,6 +88,20 @@ body {
     background: #333333;
 }
 
+#content_login {
+    height: 672px;
+    overflow: auto;
+    padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    background: #333333;
+}
+
+.logo_login {
+    margin-top: 100px;
+}
+
 #bottombar {
     width: 100%;
     height: 24px;
@@ -95,6 +111,7 @@ body {
 }
 
 a {
+    color: white;
     text-decoration: none;
 }
 
@@ -104,7 +121,7 @@ nav {
 }
 
 ul {
-    background: #d9d9d9;
+    background: #083b66;
     list-style: none;
     margin: 0;
     padding-left: 0;
@@ -113,7 +130,7 @@ ul {
 
 li {
     color: #fff;
-    background: #d9d9d9;
+    background: #083b66;
     display: block;
     float: left;
     position: relative;
@@ -123,7 +140,7 @@ li {
 }
 
 li a {
-    color: rgb(27, 25, 25);
+    color: #fff;
 }
 
 li:hover {

@@ -122,7 +122,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
 							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Visualizar"></a></div></td>
 							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Eliminar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16" height="16" border="0" onClick="convertir_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<? echo $marcaestado?>)" title="Facturar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16px" height="16px" width="16" height="16" border="0" onClick="convertir_albaran('<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>',<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<? echo $marcaestado?>)" title="Facturar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

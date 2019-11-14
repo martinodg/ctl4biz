@@ -15,7 +15,7 @@ $minimo=0;
 if ($accion=="alta") {
 	$query_operacion="INSERT INTO albaranes (codalbaran, codfactura, fecha, iva, codcliente, estado, borrado) VALUES ('', '0', '$fecha', '$iva', '$codcliente', '1', '0')";					
 	$rs_operacion=mysqli_query($conexion,$query_operacion);
-	$codalbaran=mysqli_insert_id();
+	$codalbaran=mysqli_insert_id($conexion);
 	if ($rs_operacion) { $mensaje="El albar&aacute;n ha sido dado de alta correctamente"; }
 	$query_tmp="SELECT * FROM albalineatmp WHERE codalbaran='$codalbarantmp' ORDER BY numlinea ASC";
 	$rs_tmp=mysqli_query($conexion,$query_tmp);
@@ -157,7 +157,7 @@ if ($accion=="convertir") {
 	$sel_factura="INSERT INTO facturas (codfactura,fecha,iva,codcliente,estado,totalfactura,borrado) VALUES 
 		('','$fecha','$iva','$codcliente','1','$totalfactura','0')";
 	$rs_factura=mysqli_query($conexion,$sel_factura);
-	$codfactura=mysqli_insert_id();
+	$codfactura=mysqli_insert_id($conexion);
 	$act_albaran="UPDATE albaranes SET codfactura='$codfactura',estado='2' WHERE codalbaran='$codalbaran'";
 	$rs_act=mysqli_query($conexion,$act_albaran);
 	$sel_lineas="SELECT * FROM albalinea WHERE codalbaran='$codalbaran' ORDER BY numlinea ASC";
@@ -327,11 +327,11 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 			  </div>
 				<div id="botonBusqueda">
 					<div align="center">
-					 <img src="../img/botonaceptar.jpg" width="85" height="22" onClick="aceptar()" border="1" onMouseOver="style.cursor=cursor">
+					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
 					  <? if ($accion=="convertir") { ?>
-					   <img src="../img/botonimprimir.jpg" width="79" height="22" border="1" onClick="imprimirf(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor">
+						<button type="button" id="btnimprimir"  onClick="imprimirf(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
 					   <? } else { ?>
-					   <img src="../img/botonimprimir.jpg" width="79" height="22" border="1" onClick="imprimir(<? echo $codalbaran?>)" onMouseOver="style.cursor=cursor">
+						<button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codalbaran?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
 					   <? } ?>
 				        </div>
 					</div>
