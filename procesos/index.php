@@ -134,7 +134,7 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
     </head>
 	<body>
     <?php
-    if($_SESSION["name"]) {
+    if($_SESSION["id"]) {
     ?>
 		<div id="pagina">
 			<div id="zonaContenido">
@@ -231,11 +231,10 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
         </div>
         <?php
     }else{
-        echo"<script>
-                    parent.changeURL('logout.php');
-            </script>";
-       // echo'<iframe src="login.php" name="principal" title="principal" width="100%" height="1050px" frameborder=0 scrolling="no" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;"></iframe>';
-       
+       ?> <script>
+                    parent.changeURL('../login/logout.php');
+            </script>
+    <?      
     } 
     ?>
 	</body>

@@ -96,7 +96,7 @@ session_start();
                 $('#bottombar').html('Compras>Facturar Remitos de Compras');
             });
             /*----------------------------------------------------------------------------------------------------------------------------------------*/
-            /* Administracion                                                                                                                              */
+            /* Contabilidad                                                                                                                              */
             /*----------------------------------------------------------------------------------------------------------------------------------------*/
             $('#cobros').click(function() {
                 $('#icono').html('<img class="imgicon" src="./img/cobros.svg">');
@@ -115,21 +115,10 @@ session_start();
                 $('#icono').html('<img class="imgicon" src="./img/librodiario.svg">');
                 $('#bottombar').html('Administracion>Libro Diario');
             });
-            $('#recursoshumanos').click(function() {
-                $('#icono').html('<img class="imgicon" src="./img/hr.svg">');
-                $('#bottombar').html('Administracion>Recursos Humanos');
-            });
-            /*----------------------------------------------------------------------------------------------------------------------------------------*/
-            /* Configuracion                                                                                                                              */
-            /*----------------------------------------------------------------------------------------------------------------------------------------*/
-            $('#empleados').click(function() {
-                $('#icono').html('<img class="imgicon" src="./img/empleados.svg">');
-                $('#bottombar').html('Configuracion>Empleados');
-            });
-            $('#etiquetas').click(function() {
-                $('#icono').html('<img class="imgicon" src="./img/etiquetas.svg">');
-                $('#bottombar').html('Configuracion>Etiquetas');
-            });
+            $('#formaspagos').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/formadepago.svg">');
+                $('#bottombar').html('Configuracion>Formas de Pago');
+            });    
             $('#impuestos').click(function() {
                 $('#icono').html('<img class="imgicon" src="./img/impuestos.svg">');
                 $('#bottombar').html('Configuracion>Impuestos');
@@ -138,7 +127,25 @@ session_start();
                 $('#icono').html('<img class="imgicon" src="./img/entidades.svg">');
                 $('#bottombar').html('Configuracion>Entidades Bancarias');
             });
-
+            /*----------------------------------------------------------------------------------------------------------------------------------------*/
+            /* Recursos Humanos                                                                                                                             */
+            /*----------------------------------------------------------------------------------------------------------------------------------------*/
+            $('#recursoshumanos').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/hr.svg">');
+                $('#bottombar').html('Recursos Humanos>Partes de Trabajo');
+            });
+            $('#empleados').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/empleados.svg">');
+                $('#bottombar').html('Recursos Humanos>Empleados');
+            });
+            /*----------------------------------------------------------------------------------------------------------------------------------------*/
+            /* Configuracion                                                                                                                              */
+            /*----------------------------------------------------------------------------------------------------------------------------------------*/
+            
+            $('#etiquetas').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/etiquetas.svg">');
+                $('#bottombar').html('Configuracion>Etiquetas');
+            });
             $('#ubicaciones').click(function() {
                 $('#icono').html('<img class="imgicon" src="./img/ubicaciones.svg">');
                 $('#bottombar').html('Configuracion>Ubicaciones');
@@ -147,10 +154,7 @@ session_start();
                 $('#icono').html('<img class="imgicon" src="./img/embalajes.svg">');
                 $('#bottombar').html('Configuracion>Embalajes');
             });
-            $('#formaspagos').click(function() {
-                $('#icono').html('<img class="imgicon" src="./img/formadepago.svg">');
-                $('#bottombar').html('Configuracion>Formas de Pago');
-            });
+            
             /*----------------------------------------------------------------------------------------------------------------------------------------*/
             /* side menu                                                                                                                              */
             /*----------------------------------------------------------------------------------------------------------------------------------------*/
@@ -177,7 +181,7 @@ session_start();
 
 <body>
 <?php
-if($_SESSION["name"]) {
+if($_SESSION["id"]) {
 ?>
     <div id="header">
         <div id="icono"><img class="imgicon" src="./img/homeg.svg"></div>
@@ -232,15 +236,26 @@ if($_SESSION["name"]) {
                     </ul>
                 </li>
                 <li>
-                    <label for="hamburger-5">Administracion +</label>
-                    <a class="menu" href="#">Administracion</a>
+                    <label for="hamburger-5">Contabilidad +</label>
+                    <a class="menu" href="#">Contabilidad</a>
                     <input type="checkbox" id="hamburger-5" />
                     <ul class="dropdown">
                         <li><a href="./cobros/index.php" target="principal" id="cobros">Cobros</a></li>
                         <li><a href="./pagos/index.php" target="principal" id="pagos">Pagos</a></li>
                         <li><a href="./cerrarcaja/index.php" target="principal" id="caja">Caja Diaria</a></li>
                         <li><a href="./librodiario/index.php" target="principal" id="librodiario">Libro Diraio</a></li>
-                        <li><a href="./partes_trabajo/index.php" target="principal" id="recursoshumanos">Recursos Humanos</a></li>
+                        <li><a href="./formaspago/index.php" target="principal" id="formaspagos">Formas de Pago</a></li>
+                        <li><a href="./impuestos/index.php" target="principal" id="impuestos">Impuestos</a></li>
+                        <li><a href="./entidades/index.php" target="principal" id="entidades">Entidades Bancarias</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <label for="hamburger-6">Recursos Humanos +</label>
+                    <a class="menu" href="#">Recursos Humanos</a>
+                    <input type="checkbox" id="hamburger-6" />
+                    <ul class="dropdown">
+                        <li><a href="./partes_trabajo/index.php" target="principal" id="recursoshumanos">Partes de Trabajo</a></li>
+                        <li><a href="./trabajadores/index.php" target="principal" id="empleados">Empleados</a></li>                        
                     </ul>
                 </li>
                 <li>
@@ -248,13 +263,10 @@ if($_SESSION["name"]) {
                     <a class="menu" href="#">Configuracion</a>
                     <input type="checkbox" id="hamburger-6" />
                     <ul class="dropdown">
-                        <li><a href="./trabajadores/index.php" target="principal" id="empleados">Empleados</a></li>
                         <li><a href="./etiquetas/index.php" target="principal" id="etiquetas">Etiquetas</a></li>
-                        <li><a href="./impuestos/index.php" target="principal" id="impuestos">Impuestos</a></li>
-                        <li><a href="./entidades/index.php" target="principal" id="entidades">Entidades Bancarias</a></li>
                         <li><a href="./ubicaciones/index.php" target="principal" id="ubicaciones">Ubicaciones</a></li>
                         <li><a href="./embalajes/index.php" target="principal" id="embalajes">Embalajes</a></li>
-                        <li><a href="./formaspago/index.php" target="principal" id="formaspagos">Formas de Pago</a></li>
+                        
                     </ul>
                 </li>
 
@@ -265,9 +277,9 @@ if($_SESSION["name"]) {
     </div>
     <div id="left_side">
         <a href="./central2.php" target="principal" id="home"><img src="./img/home.svg" class="iconolado" alt="inizio"></a>
-        <a href="./settings.php" target="principal" id="settings"><img src="./img/settings.svg" class="iconolado" alt="settings"></a>
-        <a href="./creditos.php" target="principal" id="ayuda"><img src="./img/help.svg" class="iconolado" alt="help"></a>
-        <a href="./logout.php" target="principal" id="logout"><img src="./img/cerrar.svg" class="iconolado" alt="help"></a>
+        <a href="./settings/settings.php" target="principal" id="settings"><img src="./img/settings.svg" class="iconolado" alt="settings"></a>
+        <a href="./ayuda/creditos.php" target="principal" id="ayuda"><img src="./img/help.svg" class="iconolado" alt="help"></a>
+        <a href="./login/logout.php" target="principal" id="logout"><img src="./img/cerrar.svg" class="iconolado" alt="help"></a>
        
     </div>
     <div id="content">
@@ -276,10 +288,10 @@ if($_SESSION["name"]) {
     <div id="bottombar"></div>
     <?php
     }else{ 
-       ?> <script>
-   parent.changeURL('login.php');
-</script><?
-       // header("Location:login.php");    
+    ?>      <script>
+                parent.changeURL('./login/login.php');
+            </script>
+    <?
     } 
     ?>
 </body>

@@ -23,7 +23,7 @@ include ("../conectar7.php");
     if ($parametro3<>""){ $donde=$donde."procesos.".$criterio3."='".$parametro3."' AND ";}
    
     $consulta="SELECT procesos.codproceso, procesos.codmproceso, metaprocesos.nombre, procesos.cantidad, unidadesmedidas.nombre, procesos.fechai, procesos.horai, procesos.fechaf, procesos.horaf, estado.estado, estaciones.nombre, trabajadores.nombre, procesos.codstatus FROM procesos, estado, metaprocesos, unidadesmedidas, estaciones, trabajadores WHERE ".$donde."procesos.borrado=0 ORDER BY metaprocesos.nombre LIMIT ".$paginainicio.",10;";
-    //echo $consulta;
+    echo $consulta;
         
     echo '      <div id="cabeceraResultado" class="header">relacion de procesos </div>';
     echo '		<div id="frmResultado">';

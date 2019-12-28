@@ -5,6 +5,7 @@ include ("../conectar7.php");
     $codarticulo=$_GET["codart"];
     $nombrearticulo=$_GET["nombreart"];
     $codfamilia=$_GET["codfamilia"];
+    $destino=$_GET["destino"];
     $donde="articulos.codfamilia=familias.codfamilia AND ";
     if ($codfamilia<>""){ $donde=$donde."articulos.codfamilia=".$codfamilia." AND ";}
     if ($codarticulo<>""){ $donde=$donde."articulos.codarticulo=".$codarticulo." AND ";}
@@ -17,7 +18,7 @@ include ("../conectar7.php");
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
 	$nr_lotes= mysqli_num_rows($rs_tabla);
-        echo ' <div id="cabeceraResultado" class="header">Articulo del lote </div>';
+        echo ' <div id="cabeceraResultado" class="header">Seleccionar Articulo</div>';
 					
 			echo '	<div id="frmResultado">';
 			echo '	<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
@@ -27,7 +28,7 @@ include ("../conectar7.php");
                         echo '                                <td width="16%">Nombre</td>';
                         echo '                               <td width="16%">Descripcion</td>';
                          echo '                               <td width="16%">Stock</td>';
-			echo '				<td width="15%">Validar</td>';
+			echo '				<td width="15%">Selecciona</td>';
 							
 			echo '			</tr>';
 			echo '	</table> ';     
@@ -42,7 +43,7 @@ include ("../conectar7.php");
 							echo '<td width="16%"><div align="center">'.$row[2].'</div></td>';
 							echo '<td width="16%"><div align="center">'.$row[3].'</div></td>';
 							echo '<td width="16%"><div align="center">'.$row[4].'</div></td>';
-							echo '<td width="15%"><div align="center"><a href="#"><img src="../img/validacion.svg" width="16" height="16" border="0"  onClick="validararticulo(' .$row[0]. ',&apos;' .$row[2]. '&apos;)"></a></div></td>';
+							echo '<td width="15%"><div align="center"><a href="#"><img src="../img/validacion.svg" width="16" height="16" border="0"  onClick="validararticulo(' .$row[0]. ',&apos;' .$row[2]. '&apos;,&apos;'.$destino.'&apos;)"></a></div></td>';
 							
                               echo '</tr>';
                         echo '</table>';

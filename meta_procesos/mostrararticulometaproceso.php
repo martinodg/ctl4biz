@@ -10,11 +10,11 @@ include ("../conectar7.php");
 
     
 	$consulta="SELECT metaprocesos.codproceso, metaprocesos.nombre, metaprocesoslinea.codlinea, metaprocesoslinea.codarticulo, articulos.referencia, metaprocesoslinea.cantidad FROM metaprocesoslinea, articulos, metaprocesos WHERE ".$donde."metaprocesos.codproceso=metaprocesoslinea.codproceso";
-  /* echo $consulta; */
+   //echo $consulta; 
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
 	$nr_lotes= mysqli_num_rows($rs_tabla);
-        echo ' <div id="cabeceraResultado" class="header">Articulo del lote </div>';
+        echo ' <div id="cabeceraResultado" class="header">Materias primas del meta-proceso </div>';
 					
 			echo '	<div id="frmResultado">';
 			echo '	<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
@@ -41,8 +41,8 @@ include ("../conectar7.php");
 							echo '<td width="8%"><div align="center">'.$row[3].'</div></td>';
                             echo '<td width="16%"><div align="center">'.$row[4].'</div></td>';
                             echo '<td width="8%"><div align="center"><input id="cantidad'.$row[2].'" type="text" class="cajaPequena" NAME="cantidad'.$row[2].'" align="center" value="'.$row[5].'" maxlength="15"></div></td>';
-                            echo '<td width="15%"><div align="center"><a href="#"><img src="../img/validacion.svg" width="16" height="16" border="0"  onClick="validarlinea(&apos;' .$row[0]. '&apos;,&apos;' .$row[2]. '&apos;,&apos;' .$row[5]. '&apos;)"></a>
-                            <a href="#"><img src="../img/borrar.svg" width="16" height="16" border="0"  onClick="borrarlineamp(&apos;' .$row[0]. '&apos;,&apos;' .$row[2]. '&apos;)"></a>
+                            echo '<td width="15%"><div align="center"><a href="#"><img src="../img/validacion.svg" width="16" height="16" border="0" onClick="validarlinea(&apos;'.$row[0].'&apos;,&apos;'.$row[2].'&apos;,&apos;'.$row[5].'&apos;)"></a>
+                            <a href="#"><img src="../img/borrar.svg" width="16" height="16" border="0"  onClick="borrarlineamp(&apos;'.$row[0].'&apos;,&apos;'.$row[2].'&apos;)"></a>
                             </div></td>';
 							
                               echo '</tr>';

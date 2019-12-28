@@ -16,7 +16,7 @@
 
 
 //insert in DB
-$query_creaproceso="INSERT INTO procesos (codproceso, unidadmedida, codstatus, codestacion, codtrabajador, borrado) VALUES ('$codproceso', '1', '5', '1', '1', '0')";		
+$query_creaproceso="INSERT INTO procesos (codproceso, codunidadmedida, codstatus, codestacion, codtrabajador, borrado) VALUES ('$codproceso', '1', '5', '1', '1', '0');";		
 $rs_operacion=mysqli_query($conexion,$query_creaproceso);
 //return codproceso as json
 $codigo['codproceso']=$codproceso;

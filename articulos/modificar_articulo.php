@@ -40,7 +40,7 @@ $( document ).ready(function(){
 			$.get("../sel_unidadmedida.php", function(data) {
             	    $('.cboUnidadmedida').html(data);
             });
-		});
+});
 /*----------------------------------------------------------------------------------------------------------------------*/
 		function cancelar() {
 			location.href="index.php?cadena_busqueda=<? echo $cadena_busqueda?>";

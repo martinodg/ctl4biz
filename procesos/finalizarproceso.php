@@ -10,6 +10,7 @@ $cantproceso=$_GET["cantproceso"];
 //verify if process validation match with metaprocesline
 //verify lines numbers on proclinea
 $query_verificanlineas_proclinea="SELECT proclinea.codarticulo, proclinea.cantidad, metaprocesos.codarticulo as articulo_mproc FROM proclinea, metaprocesos WHERE proclinea.codproceso = '$codproceso' AND metaprocesos.codproceso='$codmproceso' ;";
+echo $query_verificanlineas_proclinea;
 $rs_verificanlineas_proclinea=mysqli_query($conexion,$query_verificanlineas_proclinea);
 $nlineas_proclinea= mysqli_num_rows($rs_verificanlineas_proclinea);
 

@@ -1,0 +1,316 @@
+/* Create three equal columns that floats next to each other */
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px;
+    /* Should be removed. Only for demonstration */
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+* {
+    padding: 0;
+    margin: 0 auto;
+    -webkit-appearance: none;
+    box-sizing: inherit;
+}
+
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+
+/*Login-register page */
+
+.loginText {
+    color: #000;
+    font-size: 18px;
+}
+
+.loginTitle {
+    align-content: center;
+    color: rgb(15, 20, 88);
+    font-size: 20px;
+}
+
+
+/*--------------------------------------------*/
+
+
+/*----Language button-------------------------*/
+
+nav {
+    margin: 0;
+    background-color: #fff;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li {
+    display: inline-block;
+    background-color: #fff;
+}
+
+nav a {
+    display: block;
+    padding: 0 10px;
+    color: #000;
+    font-size: 20px;
+    line-height: 60px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #7aaedc;
+    color: fff;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+}
+
+nav ul li:hover>ul {
+    display: inherit;
+}
+
+nav ul ul li {
+    width: 230px;
+    float: none;
+    display: list-item;
+    position: relative;
+}
+
+nav ul ul ul li {
+    position: relative;
+    top: -60px;
+    left: 230px;
+}
+
+nav ul ul li {
+    border: 1px solid white;
+}
+
+
+/*---------------------------------------------------*/
+
+button {
+    height: 50px;
+    width: 270px;
+    cursor: pointer;
+    background-color: #e4e4e3;
+    /*border: none;*/
+    border-radius: 5px;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button img {
+    height: 16px;
+    width: 16px;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+.bg-red {
+    background-color: #e74c3c !important;
+}
+
+.bg-orange {
+    background-color: #e67e22 !important;
+}
+
+.bg-green {
+    background-color: #2ecc71 !important;
+}
+
+body {
+    background-color: #fff;
+}
+
+body .input-wrapper {
+    position: relative;
+    width: 80%;
+    height: 50px;
+    max-width: 270px;
+    border-radius: 5px;
+    background-color: #ddd;
+    overflow: hidden;
+}
+
+body .input-wrapper {
+    border: none;
+    padding: 10px 15px;
+    font: small-caption;
+    font-size: 18px;
+    font-size: 1.8rem;
+    width: 100%;
+    /*color: #34495e;*/
+    outline: none;
+    line-height: 1.5;
+}
+
+body .password-wrapper {
+    position: relative;
+    width: 80%;
+    max-width: 270px;
+    border-radius: 5px;
+    background-color: #ddd;
+    overflow: hidden;
+}
+
+body .password-wrapper .input {
+    border: none;
+    padding: 10px 15px;
+    font: small-caption;
+    font-size: 18px;
+    font-size: 1.8rem;
+    width: calc(100% - 50px);
+    /*color: #34495e;*/
+    outline: none;
+    line-height: 1.5;
+    background-color: #ddd;
+}
+
+body .password-wrapper .icon-wrapper {
+    position: relative;
+    /*display: inline;*/
+    float: right;
+    width: 50px;
+    height: 53px;
+    z-index: auto;
+    /*background-color: #34495e;*/
+    /*transition: background-color 0.25s ease-out;*/
+    cursor: pointer;
+}
+
+.pass {
+    background-image: url(../img/viewpass.svg);
+}
+
+.view {
+    background-image: url(../img/obscurepass.svg);
+}
+
+
+/*
+body .password-wrapper .icon-wrapper:hover .pass,
+body .password-wrapper .icon-wrapper:hover .view {
+    color: #3498db;
+    transition: color 0.25s ease-in;
+}
+*/
+
+body .password-validation-wrapper,
+body .email-validation-wrapper {
+    position: relative;
+    width: 80%;
+    max-width: 270px;
+    border-radius: 5px;
+    background-color: #ddd;
+    overflow: hidden;
+}
+
+body .password-validation-wrapper .input,
+body .email-validation-wrapper .input {
+    border: none;
+    padding: 10px 15px;
+    font: small-caption;
+    font-size: 18px;
+    font-size: 1.8rem;
+    width: calc(100% - 50px);
+    /*color: #34495e;*/
+    outline: none;
+    line-height: 1.5;
+    background-color: #ddd;
+}
+
+body .password-validation-wrapper .validation-icon-wrapper,
+body .email-validation-wrapper .email-validation-icon-wrapper {
+    position: relative;
+    display: inline;
+    float: right;
+    width: 50px;
+    height: 50px;
+    /*background-color: #34495e;*/
+    /*transition: background-color 0.25s ease-out;*/
+}
+
+.passigual {
+    background-image: url(../img/passigual.svg);
+}
+
+.passdistinta {
+    background-image: url(../img/passdistinta.svg);
+}
+
+body .password-wrapper .strength-lines {
+    position: relative;
+    float: left;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    width: calc(100% - 50px);
+    height: 6px;
+    z-index: 3;
+}
+
+body .password-wrapper .strength-lines .line {
+    position: absolute;
+    background-color: transparent;
+    height: 6px;
+    border-radius: 2px;
+    transition: background-color 0.25s ease-in;
+}
+
+body .password-wrapper .strength-lines .line:not(:first-of-type):not(:last-of-type) {
+    left: 33%;
+    right: 33%;
+}
+
+body .password-wrapper .strength-lines .line:first-of-type {
+    left: 4px;
+    right: 68%;
+}
+
+body .password-wrapper .strength-lines .line:last-of-type {
+    left: 68%;
+    right: 4px;
+}

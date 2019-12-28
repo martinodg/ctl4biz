@@ -29,13 +29,12 @@
         }
         //function to validate a line modification
         function validarlinea(codigo, linea, cantidad) {
-
-            var cantidaddeinteres = "cantidad" + linea;
-            alert($cantidaddeinteres);
+            //var cantidaddeinteres = "'cantidad" + linea + "'";
+            //alert(cantidaddeinteres);
             var nuevacantidad = document.getElementById('cantidad' + linea).value;
             var viejacantidad = cantidad;
-            //$mensaje = "la vieja cantidad es: " + $viejacantidad + " la nueva cantidad es: " + $nuevacantidad;
-            // alert($mensaje);
+            //var mensaje = "la vieja cantidad es: " + viejacantidad + " la nueva cantidad es: " + nuevacantidad;
+            //alert(mensaje);
             if (viejacantidad != nuevacantidad) {
                 //alert("como son distintas se procede a modificar la tabla");
                 $.get("modificarlineamp.php", {
@@ -89,9 +88,11 @@
                     mproceso: metaproceso
                 },
                 function(data) {
-
+                    /*alert(data);*/
                     $('#codmproceso').val(data.codproceso);
                     $('#nombremproceso').val(data.nombre);
+                    $('#nombreArticuloCreado').val(data.nombrearticulo);
+                    $('#cantidadEstimada').val(data.cantidadestimada);
                     var batchres = data.esbatch;
                     if (batchres == "1") {
                         $('input[type="checkbox"]').attr('checked', true);
@@ -140,7 +141,29 @@
                 location.href = "index.php";
             });
 
+            //when we press assign button
+            $('#btnasignar').click(function() {
 
+                $.get("asignararticulo.php", {
+                        codmproceso: document.getElementById('codmproceso').value,
+                        nombremproceso: $('#nombremproceso').val(),
+                        batch: $('#batch').val(),
+                        codart: document.getElementById('hidecodarticulo').value,
+                        cantidadart: document.getElementById('cantidad').value
+                    },
+                    function(data) {
+                        $('#div_datos3').html(data);
+
+                    });
+                var nomb = document.getElementById('hidenombrearticulo').value;
+                var cant = document.getElementById('cantidad').value;
+                $('#nombreArticuloCreado').val(nomb);
+                $('#cantidadEstimada').val(cant);
+
+
+                $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+
+            });
             //when we press add button
             $('#btnagregar').click(function() {
 
@@ -189,13 +212,17 @@
 
                             <tr>
 
-                                <td width="30%">Codigo del meta-proceso <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15"></td>
+                                <td width="25%">Codigo del meta-proceso <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15"></td>
                                 <td width="15%">Lote <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Batch</td>
-                                <td width="55%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
+                                <td width="30%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
 
                             </tr>
 
-
+                            <tr>
+                                <td width="25%">Articulo creado por el proceso <input id="nombreArticuloCreado" type="text" class="cajaGrande" NAME="nombreArticuloCreado" maxlength="45"></td>
+                                <td width="15%">Cantidad estimada a producir <input id="cantidadEstimada" type="text" class="cajaPequena" NAME="cantidadEstimada" maxlength="15"></td>
+                                <td>&nbsp;</td>
+                            </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -241,7 +268,8 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button>
+                    <button type="button" id="btnasignar" onMouseOver="style.cursor=cursor"> <img src="../img/convertir.svg" alt="agregar" /> <span>Asignar articulo al proceso</span> </button>
+                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar articulo como materia prima</span> </button>
 
 
                 </div>
