@@ -13,15 +13,15 @@ include ("../mysqli_result.php");
    
     If ($estado=="2"){
                     //Set query for discharged status
-                    $query_operacion="UPDATE proceso SET cantidad = $cantidad, fechaf='$fechaf', horaf='$horaf', codstatus='2' WHERE codproceso=$codproceso;";		
+                    $query_operacion="UPDATE procesos SET cantidad = $cantidad, fechaf='$fechaf', horaf='$horaf', codstatus='2' WHERE codproceso=$codproceso;";		
                     }    
     if ($estado=="1"){	
                     //Set query for ended status    
-                    $query_operacion="UPDATE proceso, articulos SET articulos.stock=articulos.stock+$cantidad, proceso.cantidad=$cantidad, proceso.fechaf='$fechaf', proceso.horaf='$horaf', proceso.codstatus='1' WHERE proceso.codproceso=$codproceso AND articulos.codarticulo=$codigo;";
+                    $query_operacion="UPDATE procesos, articulos SET articulos.stock=articulos.stock+$cantidad, procesos.cantidad=$cantidad, procesos.fechaf='$fechaf', procesos.horaf='$horaf', procesos.codstatus='1' WHERE procesos.codproceso=$codproceso AND articulos.codarticulo=$codigo;";
                     }   
     if ($estado=="0"){                                    
                     //Set query for iniciated status, so quantity modification only
-                    $query_operacion="UPDATE proceso SET cantidad = $cantidad, fechaf='0000-00-00', horaf='00:00', codstatus='0' WHERE codproceso=$codproceso;";			
+                    $query_operacion="UPDATE procesos SET cantidad = $cantidad, fechaf='0000-00-00', horaf='00:00', codstatus='0' WHERE codproceso=$codproceso;";			
                     }
     if (!mysqli_query($conexion,$query_operacion)){
                

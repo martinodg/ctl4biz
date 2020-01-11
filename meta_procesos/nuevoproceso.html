@@ -26,8 +26,8 @@
             $('#nombreArticuloCreado').keyup(function() {
                 /*  console.log($(this));*/
                 $.get("../articulos/buscararticulo.php", {
-                        codart: document.getElementById('codarticulo').value,
-                        nombreart: document.getElementById('nombrearticulo').value,
+                        codart: "",
+                        nombreart: document.getElementById('nombreArticuloCreado').value,
                         codfamilia: "",
                         destino: "outcome"
                     },

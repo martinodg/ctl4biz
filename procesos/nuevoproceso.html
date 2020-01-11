@@ -116,12 +116,13 @@
         }
 
         //when we press end button
-        function finalizar() {
-
+        function finalizar(codproc, codmproc, unidadmedida) {
+            //alert(unidadmedida);
             $.get("finalizarproceso.php", {
-                    codproceso: document.getElementById('codproceso').value,
-                    codmproceso: document.getElementById('cbomProceso').value,
-                    cantproceso: document.getElementById('cantidadproceso').value
+                    codproceso: codproc,
+                    codmproceso: codmproc,
+                    cantproceso: document.getElementById('cantidadproceso').value,
+                    umcantfinal: unidadmedida
                 },
                 function(data) {
                     $('#div_datos2').html(data);

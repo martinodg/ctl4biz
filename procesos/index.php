@@ -150,9 +150,9 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
                           
                                   <select id='param1' name='param1' class='comboMedio'>
                                     <option value='' selected >Todos los estados</option>
-                                    <option value='0'>Inicializado</option>
-                                    <option value='1'>Finalizado</option>
-                                    <option value='2'>Descartado</option>
+                                    <option value='1'>Inicializado</option>
+                                    <option value='2'>Finalizado</option>
+                                    <option value='3'>Descartado</option>
                                 </select>
                              
                             </td>

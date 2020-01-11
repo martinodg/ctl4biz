@@ -4,7 +4,7 @@
 
  include "./conectar7.php";
 
- $query_unidadesmedidas="SELECT codunidadmedida, nombre FROM unidadesmedidas ORDER BY nombre ASC";
+ $query_unidadesmedidas="SELECT codunidadmedida, nombre FROM unidadesmedidas ORDER BY codunidadmedida ASC";
 				$res_unidadesmedidas=mysqli_query($conexion,$query_unidadesmedidas);
                 $nr_unidadesmedidas= mysqli_num_rows($res_unidadesmedidas);
                  while ($nr_unidadesmedidas > 0) {

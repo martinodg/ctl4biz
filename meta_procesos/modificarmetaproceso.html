@@ -17,7 +17,35 @@
             // Está utilizando MOZILLA/NETSCAPE
             cursor = 'pointer';
         }
+        //modify mesure unites of the articles
+        function cambiaunmedida(mproceso, linea, umedida) {
+            //show meta-process items 
+            $.get("./cambiaumedida.php", {
+                    metaproceso: mproceso,
+                    nlinea: linea,
+                    unmedida: umedida
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
+                });
+        }
+        //accept mesure unit change
+        function aceptarcumedida(mproceso, linea) {
+            var nuevaum = document.getElementById('umselect').value;
+            //alert(nuevaum);
+            $.get("./nuevaum.php", {
+                    metaproceso: mproceso,
+                    nlinea: linea,
+                    unmedida: nuevaum
+                },
+                function(data) {
+                    $('#div_datos3').html(data);
+                    mostrararticulo(metaproceso);
+                });
+        }
 
+
+        //show items used as raw material
         function mostrararticulo(proximomproc) {
             //show meta-process items 
             $.get("./mostrararticulometaproceso.php", {
@@ -66,17 +94,27 @@
                 });
             mostrararticulo(metaproceso);
         }
-        // function to validate an item
-        function validararticulo(codigo, nombre) {
 
-            $('#codarticulo').val(codigo);
-            $('#nombrearticulo').val(nombre);
-            $('#hidecodarticulo').val(codigo);
-            $('#hidenombrearticulo').val(nombre);
-            $('#div_datos').empty();
+        function validararticulo(codigo, nombre, destino) {
+            if (destino == "materiaprima") {
+                $('#codarticulo').val(codigo);
+                $('#nombrearticulo').val(nombre);
+                $('#hidecodarticulo').val(codigo);
+                $('#hidenombrearticulo').val(nombre);
+                $('#div_datos').empty();
+            }
+            if (destino == "outcome") {
+                $('#codArticuloCreado').val(codigo);
+                $('#nombreArticuloCreado').val(nombre);
+                $('#div_datos').empty();
+            }
         }
         $(document).ready(function() {
 
+            //load unidades de medida combo
+            $.get("../sel_unidadmedida.php", function(data) {
+                $('.cboUnidadmedida').html(data);
+            });
 
             //Set Title for page
             var titulo = "Modificar el meta-proceso: " + metaproceso;
@@ -93,6 +131,7 @@
                     $('#nombremproceso').val(data.nombre);
                     $('#nombreArticuloCreado').val(data.nombrearticulo);
                     $('#cantidadEstimada').val(data.cantidadestimada);
+                    $('#umcantidadest').val(data.codunidadmedida);
                     var batchres = data.esbatch;
                     if (batchres == "1") {
                         $('input[type="checkbox"]').attr('checked', true);
@@ -116,18 +155,20 @@
             //show items of the meta-process
             mostrararticulo(metaproceso);
 
+
+            //Search Item for raw material
             $('#codarticulo, #nombrearticulo').keyup(function() {
                 /*  console.log($(this));*/
                 $.get("../articulos/buscararticulo.php", {
                         codart: document.getElementById('codarticulo').value,
                         nombreart: document.getElementById('nombrearticulo').value,
-                        codfamilia: ""
+                        codfamilia: "",
+                        destino: "materiaprima"
                     },
                     function(data) {
                         $('#div_datos').html(data);
                     });
             });
-
             //when we press clean button
             $('#btnlimpiar').click(function() {
 
@@ -140,30 +181,20 @@
             $('#btncancelar').click(function() {
                 location.href = "index.php";
             });
-
-            //when we press assign button
-            $('#btnasignar').click(function() {
-
-                $.get("asignararticulo.php", {
-                        codmproceso: document.getElementById('codmproceso').value,
-                        nombremproceso: $('#nombremproceso').val(),
-                        batch: $('#batch').val(),
-                        codart: document.getElementById('hidecodarticulo').value,
-                        cantidadart: document.getElementById('cantidad').value
+            //search process outcome item
+            $('#nombreArticuloCreado').keyup(function() {
+                /*  console.log($(this));*/
+                $.get("../articulos/buscararticulo.php", {
+                        codart: "",
+                        nombreart: document.getElementById('nombreArticuloCreado').value,
+                        codfamilia: "",
+                        destino: "outcome"
                     },
                     function(data) {
-                        $('#div_datos3').html(data);
-
+                        $('#div_datos').html(data);
                     });
-                var nomb = document.getElementById('hidenombrearticulo').value;
-                var cant = document.getElementById('cantidad').value;
-                $('#nombreArticuloCreado').val(nomb);
-                $('#cantidadEstimada').val(cant);
-
-
-                $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
-
             });
+
             //when we press add button
             $('#btnagregar').click(function() {
 
@@ -189,7 +220,10 @@
                 $.get("modificarcabeceramp.php", {
                         codmproceso: document.getElementById('codmproceso').value,
                         nombremproceso: document.getElementById('nombremproceso').value,
-                        batch: estadobatch
+                        batch: estadobatch,
+                        codarticulocreado: document.getElementById('codArticuloCreado').value,
+                        cantidadest: document.getElementById('cantidadEstimada').value,
+                        unmedida: document.getElementById('umcantidadest').value
                     },
                     function(data) {
                         $('#div_datos3').html(data);
@@ -212,16 +246,16 @@
 
                             <tr>
 
-                                <td width="25%">Codigo del meta-proceso <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15"></td>
-                                <td width="15%">Lote <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Batch</td>
-                                <td width="30%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
+                                <td width="20%">Codigo del meta-proceso <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15" readonly></td>
+                                <td width="40%">Producto Final <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Producto Intermedio</td>
+                                <td width="40%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
 
                             </tr>
 
                             <tr>
-                                <td width="25%">Articulo creado por el proceso <input id="nombreArticuloCreado" type="text" class="cajaGrande" NAME="nombreArticuloCreado" maxlength="45"></td>
-                                <td width="15%">Cantidad estimada a producir <input id="cantidadEstimada" type="text" class="cajaPequena" NAME="cantidadEstimada" maxlength="15"></td>
-                                <td>&nbsp;</td>
+                                <td width="20%"> <input id="codArticuloCreado" type="text" class="cajaGrande" NAME="codArticuloCreado" maxlength="45" style="display:none" readonly></td>
+                                <td width="40%">Articulo creado por el proceso <input id="nombreArticuloCreado" type="text" class="cajaGrande" NAME="nombreArticuloCreado" maxlength="45"></td>
+                                <td width="40%">Cantidad estimada a producir <input id="cantidadEstimada" type="text" class="cajaPequena" NAME="cantidadEstimada" maxlength="15"><select id="umcantidadest" class="cboUnidadmedida"></select></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
@@ -249,15 +283,9 @@
                         <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 
                             <tr>
-                                <td width="10%">Asignar articulo por:</td>
                                 <td width="20%">Codigo de articulo <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
-                                <td width="20%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
-
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>Cantidad <input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"></td>
-                                <td>&nbsp;</td>
+                                <td width="40%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
+                                <td width="40%">Cantidad <input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"><select id="umcantidadmprima" class="cboUnidadmedida"></select></td>
                             </tr>
 
 
@@ -268,7 +296,6 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btnasignar" onMouseOver="style.cursor=cursor"> <img src="../img/convertir.svg" alt="agregar" /> <span>Asignar articulo al proceso</span> </button>
                     <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar articulo como materia prima</span> </button>
 
 

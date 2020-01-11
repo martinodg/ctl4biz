@@ -17,24 +17,19 @@
         }
 
         $(document).ready(function() {
-            //get lot code from Url hash on last page.
-            var lot = window.location.hash.substring(1);
+            //get proceso code from Url hash on last page.
+            var proceso = window.location.hash.substring(1);
 
             //Set Title for page
-            var titulo = "Modificar el proceso: " + lot;
+            var titulo = "Modificar el proceso: " + proceso;
             $('#tituloForm').html(titulo);
 
-            //retrive fechaf and horaf
-            $.getJSON("../funciones/currentdatetime.php",
-                function(data) {
-                    $('#fechaf').val(data.dia);
-                    $('#horaf').val(data.hora);
+            //show items of the meta-process
+            mostrararticulo(proceso);
 
-                });
-
-            //Retrive lot data
-            $.getJSON("buscalotamod.php", {
-                    proceso: lot
+            //Retrive proceso data
+            $.getJSON("buscaprocesoamod.php", {
+                    proceso: proceso
                 },
                 function(data) {
                     cantidadInicial = data.cantidad;
@@ -42,6 +37,7 @@
                     $('#codproceso').val(data.codproceso);
                     $('#nombrearticulo').val(data.articulo);
                     $('#cantidad').val(cantidadInicial);
+                    $('#unidadmedida').html(data.unidadmedida);
                     $('#fechai').val(data.fechai);
                     $('#horai').val(data.horai);
                     $('#codarticulo').val(data.codarticulo);
@@ -63,6 +59,13 @@
             });
             //when we press accept button
             $('#btnaceptar').click(function() {
+                //retrive fechaf and horaf
+                $.getJSON("../funciones/currentdatetime.php",
+                    function(data) {
+                        $('#fechaf').val(data.dia);
+                        $('#horaf').val(data.hora);
+
+                    });
                 var cantidadaMod = document.getElementById('cantidad').value;
                 var estadoaMod = document.getElementById('estado').value;
                 /*alert(estadoaMod);*/
@@ -85,6 +88,55 @@
                 }
             });
         });
+        //show items used as raw material
+        function mostrararticulo(proceso) {
+            //show meta-process items 
+            $.get("./mostrararticuloproceso.php", {
+                    codproc: proceso
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
+                });
+        }
+        //function to validate a line modification
+        function validarlinea(codigo, linea, cantidad) {
+            //var cantidaddeinteres = "'cantidad" + linea + "'";
+            //alert(cantidaddeinteres);
+            var nuevacantidad = document.getElementById('cantidad' + linea).value;
+            var viejacantidad = cantidad;
+            //var mensaje = "la vieja cantidad es: " + viejacantidad + " la nueva cantidad es: " + nuevacantidad;
+            //alert(mensaje);
+            if (viejacantidad != nuevacantidad) {
+                //alert("como son distintas se procede a modificar la tabla");
+                $.get("modificarlineap.php", {
+                        codmproceso: codigo,
+                        lineamproceso: linea,
+                        cantidadarticulo: nuevacantidad
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                        $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+
+
+                    });
+                mostrararticulo(proceso);
+            }
+
+        }
+        // function to delete line of mentaprocess
+        function borrarlineap(codigo, linea) {
+            $.get("borrarlineap.php", {
+                    codmproceso: codigo,
+                    lineamproceso: linea,
+
+                },
+                function(data) {
+                    $('#div_datos3').html(data);
+
+
+                });
+            mostrararticulo(metaproceso);
+        }
     </script>
 </head>
 
@@ -101,12 +153,14 @@
                             <tr>
 
                                 <td width="20%">Codigo de proceso <input id="codproceso" type="text" class="cajaPequena" NAME="codproceso" maxlength="15" readonly></td>
+                                <td width="20%">Codigo de articulo <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15" readonly></td>
+
                                 <td width="20%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45" readonly=""></td>
 
                             </tr>
                             <tr>
                                 <td>Cantidad</td>
-                                <td><input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"></td>
+                                <td><input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"> <span id="unidadmedida"></span></td>
                             </tr>
                             <tr>
                                 <td>Fecha de inicio</td>
@@ -117,12 +171,20 @@
                                 <td><input id="horai" type="text" class="cajaPequena" NAME="horai" maxlength="20" readonly></td>
                             </tr>
                             <tr>
+                                <td>Fecha de Finalizacion</td>
+                                <td><input NAME="fechaf" type="text" class="cajaMediana" id="fechaf" size="25" maxlength="25" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>Hora de Finalizacion</td>
+                                <td><input id="horaf" type="text" class="cajaPequena" NAME="horaf" maxlength="20" readonly></td>
+                            </tr>
+                            <tr>
                                 <td>Estado</td>
                                 <td>
                                     <select id="estado" name="estado" class="comboMedio">
-                                    <option value="0">Inizializado</option>
-                                    <option value="1">Finalizado</option>
-                                    <option value="2">Descartado</option>
+                                    <option value="1">Inizializado</option>
+                                    <option value="2">Finalizado</option>
+                                    <option value="3">Descartado</option>
                                     
                                 </select>
                                 </td>
@@ -135,7 +197,7 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="nuevolote" /> <span>Aceptar</span> </button>
+                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="nuevoprocesoe" /> <span>Aceptar</span> </button>
                     <button type="button" id="btnlimpiar" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
                     <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cerrar" /> <span>cerrar</span> </button>
                 </div>
@@ -154,9 +216,12 @@
 
 
                 <div ID="div_datos" name="div_datos"> </div>
+                <div ID="div_datos2" name="div_datos2"> </div>
             </div>
         </div>
     </div>
+    <div ID="div_datos3" name="div_datos3"> </div>
+
     </div>
 </body>
 

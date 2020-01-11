@@ -23,7 +23,7 @@ include ("../conectar7.php");
     if ($parametro3<>""){ $donde=$donde."procesos.".$criterio3."='".$parametro3."' AND ";}
    
     $consulta="SELECT procesos.codproceso, procesos.codmproceso, metaprocesos.nombre, procesos.cantidad, unidadesmedidas.nombre, procesos.fechai, procesos.horai, procesos.fechaf, procesos.horaf, estado.estado, estaciones.nombre, trabajadores.nombre, procesos.codstatus FROM procesos, estado, metaprocesos, unidadesmedidas, estaciones, trabajadores WHERE ".$donde."procesos.borrado=0 ORDER BY metaprocesos.nombre LIMIT ".$paginainicio.",10;";
-    echo $consulta;
+    //echo $consulta;
         
     echo '      <div id="cabeceraResultado" class="header">relacion de procesos </div>';
     echo '		<div id="frmResultado">';
@@ -66,7 +66,7 @@ include ("../conectar7.php");
                                     echo '<td width="5%"><div align="center">'.$row[8].'</div></td>';
                                     echo '<td width="8%"><div align="center">'.$row[9].'</div></td>';
 
-                                    if ($row[12]<>1){
+                                    if ($row[12]<>2){
                                             echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';                 
                                     }else{
                                         echo '<td width="5%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" title="Visualizar"></a></div></td>';                                                                     

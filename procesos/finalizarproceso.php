@@ -5,12 +5,14 @@ include ("../mysqli_result.php");
 $codproceso=$_GET["codproceso"];
 $codmproceso=$_GET["codmproceso"];
 $cantproceso=$_GET["cantproceso"];
+$umcantfinal=$_GET["umcantfinal"];
 
+//echo '<script>alert("'.$umcantfinal.'");</script>';
 
 //verify if process validation match with metaprocesline
 //verify lines numbers on proclinea
 $query_verificanlineas_proclinea="SELECT proclinea.codarticulo, proclinea.cantidad, metaprocesos.codarticulo as articulo_mproc FROM proclinea, metaprocesos WHERE proclinea.codproceso = '$codproceso' AND metaprocesos.codproceso='$codmproceso' ;";
-echo $query_verificanlineas_proclinea;
+//echo $query_verificanlineas_proclinea;
 $rs_verificanlineas_proclinea=mysqli_query($conexion,$query_verificanlineas_proclinea);
 $nlineas_proclinea= mysqli_num_rows($rs_verificanlineas_proclinea);
 
@@ -28,7 +30,7 @@ if ($nlineas_metaprocesoslinea==$nlineas_proclinea && $cantproceso>'0'){
     //if the number of lines match
     $fechafin= date('Y/m/d');
     $horafin= date('H:i:s');
-    $query_finalizar="UPDATE procesos SET cantidad='$cantproceso', horaf='$horafin', fechaf='$fechafin', codstatus='1' WHERE codproceso='$codproceso'";
+    $query_finalizar="UPDATE procesos SET cantidad='$cantproceso', codunidadmedida='$umcantfinal', horaf='$horafin', fechaf='$fechafin', codstatus='2' WHERE codproceso='$codproceso'";
     $rs_finalizar=mysqli_query($conexion,$query_finalizar);
 
     echo '<div class="mensaje"><span>El proceso ha sido finalizado con data:'.$fechafin.' y hora:'.$horafin.'. Por una cantidad de:'.$cantproceso.'.</span></div> ';

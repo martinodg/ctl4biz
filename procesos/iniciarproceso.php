@@ -14,7 +14,7 @@ include ("../mysqli_result.php");
         	
                 
                 //insert in DB
-                $query_iniciarproceso="UPDATE procesos SET codmproceso='$codigomproceso', fechai='$fechai', horai='$horai', codstatus='0' WHERE codproceso='$codproceso';";
+                $query_iniciarproceso="UPDATE procesos SET codmproceso='$codigomproceso', fechai='$fechai', horai='$horai', codstatus='1' WHERE codproceso='$codproceso';";
 		/*echo $query_operacion;*/
 
                 $rs_iniciarproceso=mysqli_query($conexion,$query_iniciarproceso);

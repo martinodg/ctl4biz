@@ -4,7 +4,7 @@ include ("../conectar7.php");
 
     $mproceso=$_GET["mproceso"];
     
-    $consulta="SELECT metaprocesos.codproceso, metaprocesos.nombre, metaprocesos.esbatch, metaprocesos.codstatus, articulos.referencia, metaprocesos.cantidad FROM metaprocesos, articulos WHERE metaprocesos.codarticulo = articulos.codarticulo AND metaprocesos.codproceso =".$mproceso.";";
+    $consulta="SELECT metaprocesos.codproceso, metaprocesos.nombre, metaprocesos.esbatch, metaprocesos.codstatus, articulos.referencia, metaprocesos.cantidad, metaprocesos.codunidadmedida FROM metaprocesos, articulos WHERE metaprocesos.codarticulo = articulos.codarticulo AND metaprocesos.codproceso =".$mproceso.";";
     /*echo $consulta;*/
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
@@ -17,6 +17,7 @@ include ("../conectar7.php");
                                     $data['codstatus']= $row[3];
                                     $data['nombrearticulo']= $row[4];
                                     $data['cantidadestimada']= $row[5];
+                                    $data['codunidadmedida']= $row[6];
                                     echo json_encode($data);
                               
                         $nr_procesos--;
