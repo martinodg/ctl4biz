@@ -25,7 +25,7 @@
   </tr>
   <tr height="200px">
     <td>&nbsp;</td>
-    <td><div align="center"><img src="img/ctl4bizlogo.svg" width="200" height="200" border="0" /></div></td>
+    <td><div align="center"><img src="../img/ctl4bizlogo.svg" width="200" height="200" border="0" /></div></td>
     <td>&nbsp;</td>
   </tr>
   <tr>

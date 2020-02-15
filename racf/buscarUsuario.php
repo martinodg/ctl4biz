@@ -6,7 +6,10 @@ include ("../conectar7.php");
     $parametro1=$_GET["parametro1"];
     $criterio2=$_GET["criterio2"];
     $parametro2=$_GET["parametro2"];
+    $criterio3=$_GET["criterio3"];
+    $parametro3=$_GET["parametro3"];
     $paginainicio=$_GET["paginainicio"];
+    
     
     $query_nroLineas="SELECT id_intUser FROM internalUsersTable";
     //echo $query_nroLineas;
@@ -19,16 +22,17 @@ include ("../conectar7.php");
     $donde="internalUsersTable.codstatus=estado.codestado AND ";
     if ($parametro1<>""){ $donde=$donde."internalUsersTable.".$criterio1." LIKE '".$parametro1."%' AND ";}
     if ($parametro2<>""){ $donde=$donde."internalUsersTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
+    if ($parametro3<>""){ $donde=$donde."internalUsersTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
 
     echo '                      <div id="cabeceraResultado" class="header"> 
-     					relacion de LOTES </div>';
+     					Listado de Usuarios </div>';
     echo '				<div id="frmResultado">';
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="40%">NOMBRE DE USUARIO</td>';
     echo '						<td width="40%">E-MAIL DEL USUARIO</td>';
     echo '						<td width="10%">ESTADO</td>';
-    echo '						<td width="10%">&nbsp;</td>';					
+    echo '						<td width="10%">MODIFICAR</td>';				
     echo '					</tr>';
     echo '			</table>';
     echo '			</div>';
@@ -48,11 +52,9 @@ include ("../conectar7.php");
 							echo '<td width="40%"><div align="center">'.$row[2].'</div></td>';
 							echo '<td width="10%"><div align="center">'.$row[3].'</div></td>';
                                                         if ($row[3]<>1){
-                                                            echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';
-                                                            echo '<td width="5%"><div align="center">&nbsp;</div></td>';
+                                                            echo '<td width="10%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';
                                                         }else{
-                                                            echo '<td width="5%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" title="Visualizar"></a></div></td>';  
-                                                            echo '<td width="5%"><div align="center">&nbsp;</div></td>';                                                             
+                                                            echo '<td width="10%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" title="Visualizar"></a></div></td>';  
                                                         }
                               echo '</tr>';
                         echo '</table>';
