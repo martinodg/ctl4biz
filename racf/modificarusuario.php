@@ -9,10 +9,6 @@
     <script type="text/javascript" src="../funciones/login.js"></script>
     <script language="javascript">
 
-        function cancelar() {
-            location.href="index.php";
-        }
-
         var cursor;
         if (document.all) {
                 // Está utilizando EXPLORER
@@ -26,8 +22,12 @@
             document.getElementById("formulario").reset();
         }
 
-        function creausuario() {
-            $.get( "guardarusuario.php" , { accion : 'alta',
+        function cancelar() {
+            location.href="index.php";
+        }
+
+        function modificausuario() {
+            $.get( "guardarusuario.php" , { accion : 'modificar',
                                             name : document.getElementById('name').value,
                                             email : document.getElementById('email-field').value,
                                             password : document.getElementById('password-field').value
@@ -37,16 +37,34 @@
                                                             }
                 );                            
         }
-        
+        //search user
+        function buscausuario(usuario) {
+            //alert(usuario);
+            $.getJSON("./buscarUsuario.php", {
+                                                    criterio1 : 'id_intUser',
+                                                    parametro1 : usuario,
+                                                    paginainicio: '0',
+                                                    tipoBusqueda: 'modificar'
+                                                },
+                                                function(data) {
+                                                                //alert(data.nombre);
+                                                                $('#name').val(data.nombre);
+                                                                $('#password-field').val(data.clave);
+                                                                $('#email-field').val(data.mail);
+                                                                $('#password-validation-field').val(data.clave);
+                                                                $('#email-validation-field').val(data.mail);
+                                                                //$('#div_datos').html( data );
+                                                                //calculaPaginacion();
+                                                                }
+                        );                        
+        }
         $(document).ready(function() {
               //get proceso code from Url hash on last page.
               var usuario = window.location.hash.substring(1);
-        }
+              buscausuario(usuario);
+        });
     </script>
 
-
-
-    <!link href="../estilos/menu2.css" type="text/css" rel="stylesheet">
     <title>Registration form</title>
 </head>
 
@@ -62,7 +80,7 @@
                         </div>
                         <br> <br>
                         <span id="nombre" class="loginText">Nombre de Usuario:</span><br>
-                        <input class="input-wrapper" type="text" id="name" name="name">
+                        <input class="input-wrapper" type="text" id="name" name="name" readonly>
                         <br> <br>
 
                         <span class="loginText">e-mail:</span><br>
@@ -101,6 +119,8 @@
                             <span toggle="#password-validation-field" class="field-icon toggle-password"></span>
                         </div>
                     </div>
+                    <div>Activado <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Desactivado</div>
+
                     <input type="hidden" id="language" name="language" value="0">
 
 
@@ -108,7 +128,7 @@
             </div>
 
             <div id="botonBusqueda" align="right">
-                <button type="button" id="btnsubmit" onClick="creausuario()" onMouseOver="style.cursor=cursor" disabled=""> <img src="../img/nuevo.svg" alt="Nuevo" /> <span>Crear Nuevo Usuario</span> </button>
+                <button type="button" id="btnsubmit" onClick="modificausuario()" onMouseOver="style.cursor=cursor" disabled=""> <img src="../img/disco.svg" alt="Nuevo" /> <span>Guardar modificacion</span> </button>
 
             </div>
 

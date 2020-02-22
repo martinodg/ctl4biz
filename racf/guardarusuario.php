@@ -2,10 +2,11 @@
 include ("../conectar7.php");
 
 $accion=$_GET["accion"];
+$codusuario=$GET["codusuario"];
 $nombre=$_GET["name"];
 $mail=$_GET["email"];
 $password=$_GET["password"];
-
+echo $codusuario;
 
 if ($accion=="alta") {
 	$query_operacion="INSERT INTO internalUsersTable (intUserName, intUserMail, intUserPass, codstatus, borrado) VALUES ('$nombre','$mail', '$password', '4', '0')";
@@ -17,11 +18,11 @@ if ($accion=="alta") {
 
 if ($accion=="modificar") {
 	$codtrabajador=$_POST["codtrabajador"];
-	$query="UPDATE trabajadores SET nombre='$nombre', nif='$nif', password='$password', telefono='$telefono', movil='$movil', movilavisos='$movilavisos', email='$email', emailavisos='$emailavisos' WHERE codtrabajador='$codtrabajador'";
+	$query="UPDATE internalUsersTable SET intUserMail='$mail', intUserPass='$password'WHERE intUserName='$nombre'";
 	$rs_query=mysqli_query($conexion,$query);
-	if ($rs_query) { $mensaje="Los datos del trabajador han sido modificados correctamente"; }
-	$cabecera1="Inicio >> Trabajadores &gt;&gt; Modificar Trabajador ";
-	$cabecera2="MODIFICAR TRABAJADOR ";
+	if ($rs_query) { $mensaje="Los datos del usuario han sido modificados correctamente"; }
+	$cabecera1="Settings >> Modificar Usuarios &gt;&gt; Modificar Usuarios ";
+	$cabecera2="MODIFICAR Usuarios ";
 }
 
 if ($_GET['accion']=="ver") {

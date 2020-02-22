@@ -37,6 +37,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
                                                                     parametro2 : document.getElementById('param2').value,
                                                                     criterio3 : document.getElementById('crit3').value,
                                                                     parametro3 : document.getElementById('param3').value,
+                                                                    tipoBusqueda: 'listar',
                                                                     paginainicio : document.getElementById('iniciopagina').value
                                                               },function ( data ) { 
                                                                                         $('#div_datos').html( data );
