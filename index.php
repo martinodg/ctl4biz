@@ -12,6 +12,7 @@ session_start();
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/menu2.css' />
     <!link href="../estilos/menu2.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="./jquery/jquery331.js"></script>
+    <script type="text/javascript" src="./funciones/languages/changelanguage.js"></script>
 
     <script language="javascript">
         $(document).ready(function() {
@@ -273,16 +274,18 @@ if($_SESSION["intUser"]) {
                 </li>
 
             </ul>
+           
         </nav>
         <div><img class="logo" src="./img/ctl4bizlogo-long.svg"></div>
+       
+
 
     </div>
     <div id="left_side">
         <a href="./central2.php" target="principal" id="home"><img src="./img/home.svg" class="iconolado" alt="inizio"></a>
         <a href="./settings/settings.php" target="principal" id="settings"><img src="./img/settings.svg" class="iconolado" alt="settings"></a>
         <a href="./ayuda/creditos.php" target="principal" id="ayuda"><img src="./img/help.svg" class="iconolado" alt="help"></a>
-        <a href="./login/logout.php" target="principal" id="logout"><img src="./img/cerrar.svg" class="iconolado" alt="help"></a>
-       
+        <a href="./login/logout.php" target="principal" id="logout"><img src="./img/cerrar.svg" class="iconolado" alt="help"></a>      
     </div>
     <div id="content">
         <iframe src="central2.php" name="principal" title="principal" width="100%" height="1500px" frameborder=0 scrolling="no" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;"></iframe>

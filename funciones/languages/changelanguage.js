@@ -33,7 +33,7 @@ function langchange(idioma) {
 }
 
 $(document).ready(function() {
-
+    
     //Set languages on load
     var lang = localStorage.getItem('language');
     if (lang == "") {
@@ -70,4 +70,7 @@ $(document).ready(function() {
         lang = localStorage.getItem('language');
         langchange(lang);
     });
-}
+
+
+});
+    

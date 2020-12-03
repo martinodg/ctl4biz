@@ -61,7 +61,7 @@ if(isset($_SESSION["intUser"])) {
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/login.css' />
     <script type="text/javascript" src="../jquery/jquery331.js"></script>
     <script type="text/javascript" src="../funciones/login.js"></script>
-    <script type="text/javascript" src="../funciones/changelanguage.js"></script>
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
  
     
     

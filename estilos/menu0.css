@@ -11,7 +11,7 @@ body {
     width: 100%;
     margin-top: 34px;
     margin-left: 0px;
-    height: 60px;
+    height: 70px;
     background: #083b66;
     position: fixed;
 }
@@ -55,6 +55,11 @@ body {
     top: 30px;
     margin-left: auto;
     margin-right: auto;
+}
+.language {
+    height: 60px;
+    width: 24px;
+    padding: 5px 13px;
 }
 
 #left_side {
