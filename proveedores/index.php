@@ -4,9 +4,11 @@ require_once("../mysqli_result.php");
 $id_resource='1';
 $id_sresource='1';
 require_once("../racf/purePhpVerify.php");
+if(array_key_exists('cadena_busqueda', $_GET)){
+	$cadena_busqueda=$_GET["cadena_busqueda"];
+}
 
-$cadena_busqueda=$_GET["cadena_busqueda"];
-
+    
 if (!isset($cadena_busqueda)) { $cadena_busqueda=""; } else { $cadena_busqueda=str_replace("",",",$cadena_busqueda); }
 
 if ($cadena_busqueda<>"") {
@@ -235,7 +237,7 @@ if ($cadena_busqueda<>"") {
 				<input type="hidden" id="cadena_busqueda" name="cadena_busqueda">
 			</form>
 				<div id="lineaResultado">
-					<iframe width="100%" height="250" id="frame_rejilla" name="frame_rejilla" frameborder="0">
+					<iframe width="100%" height="300" id="frame_rejilla" name="frame_rejilla" frameborder="0">
 						<ilayer width="100%" height="300" id="frame_rejilla" name="frame_rejilla"></ilayer>
 					</iframe>
 					<iframe id="frame_datos" name="frame_datos" width="0" height="0" frameborder="0">

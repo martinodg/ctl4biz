@@ -7,7 +7,7 @@ require_once("../../conectar7.php");
     $tipoBusqueda=$_GET["tipoBusqueda"];
     
     
-    //$query_nroLineas="SELECT id_intUser FROM internalUsersTable";
+    //$query_nroLineas="SELECT id_intUser FROM intUsersTable";
     //echo $query_nroLineas;
         
 	//$rs_nroLineas = mysqli_query($conexion,$query_nroLineas);
@@ -19,11 +19,11 @@ require_once("../../conectar7.php");
     if ($parametro2<>""){ $donde=$donde."rolesTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
     if ($parametro3<>""){ $donde=$donde."rolesTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
     $consulta="SELECT rolesToUsersTable.id_role , rolesToUsersTable.id_intUser, rolesTable.roleName FROM rolesTable, rolesToUsersTable WHERE ".$donde."rolesTable.id_role=rolesToUsersTable.id_role AND rolesToUsersTable.borrado=0;";
-    //SELECT rolesToUsersTable.id_role, internalUsersTable.id_intUser, rolesTable.roleName FROM internalUsersTable, rolesTable, rolesToUsersTable WHERE internalUsersTable.id_intUser='2' AND rolesToUsersTable.id_role=rolesTable.id_role 
-    //ORDER BY internalUsersTable.intUserName LIMIT ".$paginainicio.",10
+    //SELECT rolesToUsersTable.id_role, intUsersTable.id_intUser, rolesTable.roleName FROM intUsersTable, rolesTable, rolesToUsersTable WHERE intUsersTable.id_intUser='2' AND rolesToUsersTable.id_role=rolesTable.id_role 
+    //ORDER BY intUsersTable.intUserName LIMIT ".$paginainicio.",10
     //echo $consulta;
     //$donde2="";
-    //if ($parametro1<>""){ $donde2=$donde2."internalUsersTable.".$criterio1." <> '".$parametro1."' AND ";}
+    //if ($parametro1<>""){ $donde2=$donde2."intUsersTable.".$criterio1." <> '".$parametro1."' AND ";}
     $consulta2="SELECT rolesTable.id_role as id, rolesTable.roleName as name FROM rolesTable EXCEPT (SELECT rolesToUsersTable.id_role as id, rolesTable.roleName as name FROM rolesToUsersTable, rolesTable WHERE rolesToUsersTable.id_intUser=".$parametro1." AND rolesToUsersTable.borrado=0);";  
     //echo $consulta2;
     

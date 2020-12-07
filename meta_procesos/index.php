@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 $id_resource='2';
 $id_sresource='5';
 require_once("../racf/purePhpVerify.php");

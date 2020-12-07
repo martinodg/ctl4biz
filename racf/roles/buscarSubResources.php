@@ -13,11 +13,11 @@ require_once("../../conectar7.php");
     if ($parametro2<>""){ $donde=$donde."rolesTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
     if ($parametro3<>""){ $donde=$donde."rolesTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
     $consulta="SELECT resourcesTable.id_resource , resourcesTable.resourceName FROM resourcesTable;";
-    //SELECT rolesToUsersTable.id_role, internalUsersTable.id_intUser, rolesTable.roleName FROM internalUsersTable, rolesTable, rolesToUsersTable WHERE internalUsersTable.id_intUser='2' AND rolesToUsersTable.id_role=rolesTable.id_role 
-    //ORDER BY internalUsersTable.intUserName LIMIT ".$paginainicio.",10
+    //SELECT rolesToUsersTable.id_role, intUsersTable.id_intUser, rolesTable.roleName FROM intUsersTable, rolesTable, rolesToUsersTable WHERE intUsersTable.id_intUser='2' AND rolesToUsersTable.id_role=rolesTable.id_role 
+    //ORDER BY intUsersTable.intUserName LIMIT ".$paginainicio.",10
     //echo $consulta;
     //$donde2="";
-    //if ($parametro1<>""){ $donde2=$donde2."internalUsersTable.".$criterio1." <> '".$parametro1."' AND ";}
+    //if ($parametro1<>""){ $donde2=$donde2."intUsersTable.".$criterio1." <> '".$parametro1."' AND ";}
     //echo $consulta2;
     
     

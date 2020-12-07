@@ -39,18 +39,18 @@
             </ul>
 	</nav>
 	<div align="center">
-				    <div id="tituloForm" class="header">Copias de Respaldo </div>
+				    <div id="copiasRespaldo" class="header">Copias de Respaldo </div>
 				    
 				
 					    			
 						  
 							   
-								<button type="button" class="fullwidth" id="btnhacerrespaldo" onClick="window.location.href = '../backup/hacerbak.php';" onMouseOver="style.cursor=cursor"> <img src="../img/upload.svg" alt="limpiar" /> <span>Hacer copia de respaldo</span> </button>
+								<button type="button" class="fullwidth" id="hacerrespaldo" onClick="window.location.href = '../backup/hacerbak.php';" onMouseOver="style.cursor=cursor"> <img src="../img/upload.svg" alt="limpiar" /> <span>Hacer copia de respaldo</span> </button>
 								
 							  
 								<br>						   
 								
-								<button type="button" class="fullwidth" id="btnrestaurarrespaldo" onClick="window.location.href = '../backup/restaurarbak.php';" onMouseOver="style.cursor=cursor"> <img src="../img/download.svg" alt="limpiar" /> <span>Restaurar copia</span> </button> 
+								<button type="button" class="fullwidth" id="restaurarrespaldo" onClick="window.location.href = '../backup/restaurarbak.php';" onMouseOver="style.cursor=cursor"> <img src="../img/download.svg" alt="limpiar" /> <span>Restaurar copia</span> </button> 
 						   
                     
 				
@@ -59,13 +59,13 @@
                     
                     
                     
-					<div id="tituloForm" class="header">Administracion de Seguridad </div>
+					<div id="AdminSeguridad" class="header">Administracion de Seguridad </div>
 					
-               				<button type="button" class="fullwidth" id="btnusuarios" onClick="window.location.href = '../racf/intUsers/index.php';" onMouseOver="style.cursor=cursor"> <img src="../img/usuarios.svg" alt="limpiar" /> <span>Usuarios</span> </button>
+               				<button type="button" class="fullwidth" id="usuarios" onClick="window.location.href = '../racf/intUsers/index.php';" onMouseOver="style.cursor=cursor"> <img src="../img/usuarios.svg" alt="limpiar" /> <span>Usuarios</span> </button>
 							<br>  
-							<button type="button" class="fullwidth" id="btnroles" onClick="window.location.href = '../racf/roles/index.php';" onMouseOver="style.cursor=cursor"> <img src="../img/roles.svg" alt="nuevo" /> <span>Roles</span> </button>
+							<button type="button" class="fullwidth" id="roles" onClick="window.location.href = '../racf/roles/index.php';" onMouseOver="style.cursor=cursor"> <img src="../img/roles.svg" alt="nuevo" /> <span>Roles</span> </button>
 							<br>
-							<button type="button" class="fullwidth" id="btnrecursos" onClick="window.location.href = '../racf/recursos/index.php';" onMouseOver="style.cursor=cursor"> <img src="../img/resources.svg" alt="nuevo" /> <span>Recursos</span> </button>
+							<button type="button" class="fullwidth" id="recursos" onClick="window.location.href = '../racf/recursos/index.php';" onMouseOver="style.cursor=cursor"> <img src="../img/resources.svg" alt="nuevo" /> <span>Recursos</span> </button>
 
 				</div>
 				

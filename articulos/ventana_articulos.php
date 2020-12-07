@@ -1,3 +1,6 @@
+<?
+require_once("../conectar7.php"); 
+?>
 <html>
 <head>
 <title>Buscador de Articulos</title>
@@ -35,17 +38,10 @@ function enviar() {
 
 </script>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
-<!--
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
--->
-</style></head>
-<? require_once("../conectar7.php"); ?>
+
+</style>
+</head>
+
 <body onLoad="buscar()">
 <form name="form1" id="form1" method="post" action="frame_articulos.php" target="frame_resultado" onSubmit="buscar()">	
  <div id="frmBusqueda2">

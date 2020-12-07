@@ -1,6 +1,8 @@
 <?
  if(session_id() == ''){
+    if(session_id() == '') {
     session_start();
+}
  }
 
 $id_intUser=$_SESSION["id"];

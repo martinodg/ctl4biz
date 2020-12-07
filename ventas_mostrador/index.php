@@ -1,6 +1,8 @@
 <?php 
 require_once("../conectar7.php"); 
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 $id_resource='3';
 $id_sresource='10';
 require_once("../racf/purePhpVerify.php");

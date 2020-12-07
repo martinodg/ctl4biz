@@ -6,7 +6,7 @@ require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
 
-require_once("../barcode/barcode.php");
+//intUsersrequire_once("../barcode/barcode.php");Table
 
 $codarticulo=$_GET["codarticulo"];
 $cadena_busqueda=$_GET["cadena_busqueda"];

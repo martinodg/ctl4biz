@@ -1,22 +1,34 @@
 <?php
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
-
-$codproveedor=$_POST["codproveedor"];
-$nombre=$_POST["nombre"];
-$nif=$_POST["nif"];
-$codprovincia=$_POST["cboProvincias"];
-$localidad=$_POST["localidad"];
-$telefono=$_POST["telefono"];
-$cadena_busqueda=$_POST["cadena_busqueda"];
-
-$where="1=1";
-if ($codproveedor <> "") { $where.=" AND codproveedor='$codproveedor'"; }
-if ($nombre <> "") { $where.=" AND nombre like '%".$nombre."%'"; }
-if ($nif <> "") { $where.=" AND nif like '%".$nif."%'"; }
-if ($codprovincia > "0") { $where.=" AND codprovincia='$codprovincia'"; }
-if ($localidad <> "") { $where.=" AND localidad like '%".$localidad."%'"; }
-if ($telefono <> "") { $where.=" AND telefono like '%".$telefono."%'"; }
+$where='1=1';
+if(array_key_exists('codproveedor', $_POST)){
+	$codproveedor=$_POST["codproveedor"];
+	if ($codproveedor <> "") { $where.=" AND codproveedor='$codproveedor'"; }
+}
+if(array_key_exists('nombre', $_POST)){
+	$nombre=$_POST["nombre"];
+	if ($nombre <> "") { $where.=" AND nombre like '%".$nombre."%'"; }
+}
+if(array_key_exists('nif', $_POST)){
+	$nif=$_POST["nif"];
+	if ($nif <> "") { $where.=" AND nif like '%".$nif."%'"; }
+}
+if(array_key_exists('codprovincia', $_POST)){
+	$codprovincia=$_POST["codprovincia"];
+	if ($codprovincia > "0") { $where.=" AND codprovincia='$codprovincia'"; }
+}
+if(array_key_exists('localidad', $_POST)){
+	$localidad=$_POST["localidad"];
+	if ($localidad <> "") { $where.=" AND localidad like '%".$localidad."%'"; }
+}
+if(array_key_exists('telefono', $_POST)){
+	$telefono=$_POST["telefono"];
+	if ($telefono <> "") { $where.=" AND telefono like '%".$telefono."%'"; }
+}
+if(array_key_exists('cadena_busqueda', $_POST)){
+	$cadena_busqueda=$_POST["cadena_busqueda"];
+}
 
 $where.=" ORDER BY nombre ASC";
 $query_busqueda="SELECT count(*) as filas FROM proveedores WHERE borrado=0 AND ".$where;
@@ -28,6 +40,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 	<head>
 		<title>Proveedores</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="../funciones/paginar.js"></script>
 		<script language="javascript">
 		
 		function ver_proveedor(codproveedor) {
@@ -41,7 +54,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 		function eliminar_proveedor(codproveedor) {
 			parent.location.href="eliminar_proveedor.php?codproveedor=" + codproveedor + "&cadena_busqueda=<? echo $cadena_busqueda?>";
 		}
-
+		//Hay que reemplazar por funcion paginar
 		function inicio() {
 			var numfilas=document.getElementById("numfilas").value;
 			var indi=parent.document.getElementById("iniciopagina").value;
@@ -73,13 +86,22 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 			<div align="center">
 			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1" align="center">
 			<input type="hidden" name="numfilas" id="numfilas" value="<? echo $filas?>">
-				<? $iniciopagina=$_POST["iniciopagina"];
-				if (empty($iniciopagina)) { $iniciopagina=$_GET["iniciopagina"]; } else { $iniciopagina=$iniciopagina-1;}
+				<?
+				
+				if(array_key_exists('iniciopagina', $_POST)){
+					$iniciopagina=$_POST["iniciopagina"];
+					if(intval($iniciopagina)>=1){$iniciopagina=$iniciopagina-1;}
+				} else {
+					    if(array_key_exists('iniciopagina', $_GET)){
+							$iniciopagina=$_GET["iniciopagina"];
+							if(intval($iniciopagina)>=1){$iniciopagina=$iniciopagina-1;}	
+						} 
+				}
 				if (empty($iniciopagina)) { $iniciopagina=0; }
-				if ($iniciopagina>$filas) { $iniciopagina=0; }
-					if ($filas > 0) { ?>
-						<? $sel_resultado="SELECT * FROM proveedores WHERE borrado=0 AND ".$where;
-						   $sel_resultado=$sel_resultado."  limit ".$iniciopagina.",10";
+				
+					if ($filas > 0) { 
+						   $sel_resultado="SELECT * FROM proveedores WHERE borrado=0 AND ".$where;
+						   $sel_resultado=$sel_resultado."  limit 10 OFFSET $iniciopagina";
 						   $res_resultado=mysqli_query($conexion,$sel_resultado);
 						   $contador=0;
 						   while ($contador < mysqli_num_rows($res_resultado)) {

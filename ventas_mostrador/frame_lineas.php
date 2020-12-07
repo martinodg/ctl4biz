@@ -1,3 +1,7 @@
+<?
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
+?>
 <script>
 function eliminar_linea(codfacturatmp,numlinea,importe)
 {
@@ -20,8 +24,7 @@ function eliminar_linea(codfacturatmp,numlinea,importe)
 </script>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 <?php 
-require_once("../conectar7.php");
-require_once("../mysqli_result.php");
+
 $codfacturatmp=$_POST["codfacturatmp"];
 $retorno=0;
 if ($modif<>1) {

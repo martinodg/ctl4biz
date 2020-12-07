@@ -164,7 +164,7 @@
                 <center>
                     <form name="frmUser" align="center">
                         <div class="message">
-                            <?php if($message!="") { echo $message; } ?>
+                            <?php if((isset($message))!="") { echo $message; } ?>
                         </div>
                         <br> <br>
                         <span id="nombre" class="loginText">Nombre de Usuario:</span><br>

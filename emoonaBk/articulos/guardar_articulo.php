@@ -6,7 +6,7 @@ require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
 
-require_once("../barcode/barcode.php");
+//intUsersrequire_once("../barcode/barcode.php");Table
 
 $accion=$_POST["accion"];
 if (!isset($accion)) { $accion=$_GET["accion"]; }

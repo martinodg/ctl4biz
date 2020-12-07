@@ -10,7 +10,7 @@ $estado=$_GET["estado"];
 echo $codusuario;
 
 if ($accion=="alta") {
-	$query_operacion="INSERT INTO internalUsersTable (intUserName, intUserMail, intUserPass, codstatus, borrado) VALUES ('$nombre','$mail', '$password', '4', '0')";
+	$query_operacion="INSERT INTO intUsersTable (intUser_name, user_name, password, codstatus, borrado) VALUES ('$nombre','$mail', '$password', '4', '0')";
 	$rs_operacion=mysqli_query($conexion,$query_operacion);
 	if ($rs_operacion) { $mensaje="El Usuario ha sido dado de alta correctamente"; }
 	
@@ -18,7 +18,7 @@ if ($accion=="alta") {
 }
 
 if ($accion=="modificar") {
-	$query="UPDATE internalUsersTable SET user_name='$mail', password='$password', codstatus='$estado' WHERE intUser_name='$nombre'";
+	$query="UPDATE intUsersTable SET user_name='$mail', password='$password', codstatus='$estado' WHERE intUser_name='$nombre'";
 	$rs_query=mysqli_query($conexion,$query);
 	if ($rs_query) { $mensaje="Los datos del usuario han sido modificados correctamente"; }
 	$cabecera1="Settings >> Modificar Usuarios &gt;&gt; Modificar Usuarios ";

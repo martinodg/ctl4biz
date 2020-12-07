@@ -12,18 +12,18 @@ require_once("../../conectar7.php");
     $paginainicio=$_GET["paginainicio"];
     
     
-    $query_nroLineas="SELECT id_intUser FROM internalUsersTable";
+    $query_nroLineas="SELECT id_intUser FROM intUsersTable";
     //echo $query_nroLineas;
         
 	$rs_nroLineas = mysqli_query($conexion,$query_nroLineas);
     $nr_Lineas= mysqli_num_rows($rs_nroLineas);
 
 
-    $donde="internalUsersTable.codstatus=estado.codestado AND ";
-    if ($parametro1<>""){ $donde=$donde."internalUsersTable.".$criterio1." LIKE '".$parametro1."%' AND ";}
-    if ($parametro2<>""){ $donde=$donde."internalUsersTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
-    if ($parametro3<>""){ $donde=$donde."internalUsersTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
-    $consulta="SELECT internalUsersTable.id_intUser, internalUsersTable.intUser_name, internalUsersTable.user_name, estado.estado, internalUsersTable.password, internalUsersTable.codstatus FROM internalUsersTable, estado WHERE ".$donde."internalUsersTable.borrado=0 ORDER BY internalUsersTable.intUser_name LIMIT ".$paginainicio.",10;";
+    $donde="intUsersTable.codstatus=estado.codestado AND ";
+    if ($parametro1<>""){ $donde=$donde."intUsersTable.".$criterio1." LIKE '".$parametro1."%' AND ";}
+    if ($parametro2<>""){ $donde=$donde."intUsersTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
+    if ($parametro3<>""){ $donde=$donde."intUsersTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
+    $consulta="SELECT intUsersTable.id_intUser, intUsersTable.intUser_name, intUsersTable.user_name, estado.estado, intUsersTable.password, intUsersTable.codstatus FROM intUsersTable, estado WHERE ".$donde."intUsersTable.borrado=0 ORDER BY intUsersTable.intUser_name LIMIT ".$paginainicio.",10;";
     //echo $consulta;
         
 	$rs_tabla = mysqli_query($conexion,$consulta);

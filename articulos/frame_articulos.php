@@ -1,11 +1,14 @@
 <?php
 header('Cache-Control: no-cache');
 header('Pragma: no-cache'); 
+require_once("../conectar7.php"); 
+require_once("../mysqli_result.php");
+
 ?>
 <html>
 <head>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-</head>
+
 <script language="javascript">
 
 function pon_prefijo(codarticulo) {
@@ -14,8 +17,12 @@ function pon_prefijo(codarticulo) {
 }
 
 </script>
-<? require_once("../conectar7.php"); 
-require_once("../mysqli_result.php");
+<
+
+
+</head>
+<body>
+<?
 $familia=$_POST["cmbfamilia"];
 $referencia=$_POST["referencia"];
 $descripcion=$_POST["descripcion"];
@@ -23,9 +30,7 @@ $where="1=1";
 
 if ($familia<>0) { $where.=" AND articulos.codfamilia='$familia'"; }
 if ($referencia<>"") { $where.=" AND referencia like '%$referencia%'"; }
-if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
-<body>
-<?
+if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } 
 	
 	$consulta="SELECT articulos.*,familias.nombre as nombrefamilia FROM articulos,familias WHERE ".$where." AND articulos.codfamilia=familias.codfamilia AND articulos.borrado=0 ORDER BY articulos.codfamilia ASC,articulos.descripcion ASC";
 	$rs_tabla = mysqli_query($conexion,$consulta);

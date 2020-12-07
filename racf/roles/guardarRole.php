@@ -8,7 +8,7 @@ $estado=$_GET["estado"];
 
 
 if ($accion=="alta") {
-	$query_operacion="INSERT INTO internalUsersTable (intUserName, intUserMail, intUserPass, codstatus, borrado) VALUES ('$nombre','$mail', '$password', '4', '0')";
+	$query_operacion="INSERT INTO intUsersTable (intUserName, intUserMail, intUserPass, codstatus, borrado) VALUES ('$nombre','$mail', '$password', '4', '0')";
 	$rs_operacion=mysqli_query($conexion,$query_operacion);
 	if ($rs_operacion) { $mensaje="El Usuario ha sido dado de alta correctamente"; }
 	

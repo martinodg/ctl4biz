@@ -1,6 +1,8 @@
 <?php
 header('Cache-Control: no-cache');
 header('Pragma: no-cache'); 
+require_once("../conectar7.php"); 
+require_once("../mysqli_result.php");
 ?>
 <html>
 <head>
@@ -15,8 +17,7 @@ function pon_prefijo(pref,nombre) {
 }
 
 </script>
-<? require_once("../conectar7.php"); ?>
-require_once("../mysqli_result.php");
+
 <body>
 <?
 	

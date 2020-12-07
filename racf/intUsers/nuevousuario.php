@@ -33,7 +33,7 @@
                                             password : document.getElementById('password-field').value
                                         }, function ( data ) { 
                                                             $('#div_datos').html( data );
-                                                            location.href="index.php";
+                                                            //location.href="index.php";
                                                             }
                 );                            
         }

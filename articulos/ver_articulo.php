@@ -6,7 +6,7 @@ require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
 
-require_once("../barcode/barcode.php");
+////intUsersrequire_once("../barcode/barcode.php");Table
 
 $codarticulo=$_GET["codarticulo"];
 $cadena_busqueda=$_GET["cadena_busqueda"];
@@ -190,8 +190,8 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"precio_iva")?> &#8364;</td>
 						</tr>
 						<tr>
-							<td>Codigo de barras</td>
-							<td colspan="2"><?php echo "<img src='../barcode/barcode.php?encode=EAN-13&bdata=".$codigobarras."&height=50&scale=2&bgcolor=%23FFFFEC&color=%23333366&type=jpg'>"; ?></td>
+							<!--td>Codigo de barras</td>
+							<td colspan="2"><?php //echo "<img src='../barcode/barcode.php?encode=EAN-13&bdata=".$codigobarras."&height=50&scale=2&bgcolor=%23FFFFEC&color=%23333366&type=jpg'>"; ?></td-->
 						</tr>
 					</table>
 			  </div>

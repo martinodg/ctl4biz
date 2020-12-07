@@ -1,5 +1,10 @@
 <?php
-session_start();
+if(session_id() == '') {
+    session_start();
+}
+
+// Turn off all error reporting
+error_reporting(0);
 
 ?>
 <!DOCTYPE html>

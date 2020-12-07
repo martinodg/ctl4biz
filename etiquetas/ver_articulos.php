@@ -1,5 +1,6 @@
-<? require_once("../conectar7.php"); 
-   require_once("../mysqli_result.php"); 
+<? 
+require_once("../conectar7.php"); 
+require_once("../mysqli_result.php"); 
 ?>
 <html>
 <head>
@@ -51,16 +52,7 @@ function cancelar() {
 
 </script>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
-<!--
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
--->
-</style></head>
+</head>
 
 <body onLoad="buscar()">
 <div align="center">

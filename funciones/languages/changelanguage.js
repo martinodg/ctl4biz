@@ -11,7 +11,13 @@ var details = ["Enter Login Details", "Complete los datos de Acceso","Wprrowadz 
 var companyCode = ["Company code:", "Codigo de la compania:","kod frimowy"];
 var signin = ["Sign in Now!", "Inscribete ahora!","Spewam teraz"];
 var noMember = ["Not a member yet?", "Aun no eres miembro?","nie jestes jeszcze chlonkiem"];
-
+var copiasRespaldo = ["Backups management", "Gestionar copias de respaldo","zarzadzanie kolpiami zapasowymi"];
+var hacerrespaldo = ["Create Backup Copy", "Hacer copias de respaldo","Tworzenie kopii zapasowych"];
+var restaurarrespaldo = ["Restore Backup", "Restaurar copia de respaldo","przywracanie kopii zapasowych"];
+var AdminSeguridad = ["Security Administration", "Configuracion de Seguridad","administrowanie bezpieczeństwem"];
+var usuarios = ["Users", "Usuarios","użytkowników"];
+var roles = ["Roles", "Roles","role"];
+var recursos = ["Resources", "recursos","zasoby"];
 
 //language change function
 function langchange(idioma) {
@@ -28,6 +34,14 @@ function langchange(idioma) {
     $("#signin").text(signin[idioma]);
     $("#companyCode").text(companyCode[idioma]);
     $("#noMember").text(noMember[idioma]);
+    $("#copiasRespaldo").text(copiasRespaldo[idioma]);
+    $("#hacerrespaldo").text(hacerrespaldo[idioma]);
+    $("#restaurarrespaldo").text(restaurarrespaldo[idioma]);
+    $("#AdminSeguridad").text(AdminSeguridad[idioma]);
+    $("#usuarios").text(usuarios[idioma]);
+    $("#roles").text(roles[idioma]);
+    $("#recursos").text(recursos[idioma]);
+
 
 
 }

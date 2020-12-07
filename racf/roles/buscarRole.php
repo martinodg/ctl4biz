@@ -21,8 +21,8 @@ require_once("../../conectar7.php");
 
     $donde="rolesTable.codstatus=estado.codestado AND ";
     if ($parametro1<>""){ $donde=$donde."rolesTable.".$criterio1." LIKE '".$parametro1."%' AND ";}
-    if ($parametro2<>""){ $donde=$donde."internalUsersTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
-    if ($parametro3<>""){ $donde=$donde."internalUsersTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
+    if ($parametro2<>""){ $donde=$donde."intUsersTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
+    if ($parametro3<>""){ $donde=$donde."intUsersTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
     $consulta="SELECT rolesTable.id_role, rolesTable.roleName, estado.estado, rolesTable.codstatus FROM rolesTable, estado WHERE ".$donde."rolesTable.borrado=0 ORDER BY rolesTable.roleName LIMIT ".$paginainicio.",10;";
     //echo $consulta;
         

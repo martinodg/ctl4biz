@@ -3,7 +3,9 @@ $usuarios_sesion="prueba";
 
 session_name($usuarios_sesion);
 
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 
 session_destroy();
 

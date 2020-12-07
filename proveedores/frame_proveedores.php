@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 header('Cache-Control: no-cache');
 header('Pragma: no-cache'); 
 ?>

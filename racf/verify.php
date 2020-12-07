@@ -1,5 +1,7 @@
 <?
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 require_once("../conectar7.php");
 
 $id_resource=$_GET["idResource"];

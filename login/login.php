@@ -1,14 +1,24 @@
 <?php
+ini_set('display_errors', '0');
+//echo ini_get('display_errors');
+
+
+
+
 require_once("../conectar.php"); 
+
+
 $companycode=$_POST["company_code"];
 $usuario=$_POST["user_name"];
 $clave=$_POST["password"];
 
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 $message="";
 if(count($_POST)>0) {
    
-    $query_DB="SELECT db_user, db_password, id_company FROM login_user WHERE master_user='".$usuario."' or id_company='".$companycode."';";
+    $query_DB="SELECT db_user, db_password, id_company FROM login_data WHERE master_user='".$usuario."' or id_company='".$companycode."';";
     $result = mysqli_query($conexion,$query_DB);
 
     if (!$result) {
@@ -27,7 +37,7 @@ if(count($_POST)>0) {
     mysqli_close($conexion);
    
     $conexion2=mysqli_connect('database',$Usuario_DB,$Password_DB,$BaseDeDatos) or die("Error: El servidor no puede conectar con la base de datos");
-    $query_login="SELECT * FROM internalUsersTable WHERE user_name='".$usuario."' and password='".$clave."';";
+    $query_login="SELECT * FROM intUsersTable WHERE user_name='".$usuario."' and password='".$clave."';";
     $result_login = mysqli_query($conexion2,$query_login);
     if (!$result_login) {
         die('Query 2 failed');
