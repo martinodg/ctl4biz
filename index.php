@@ -21,6 +21,12 @@ error_reporting(0);
 
     <script language="javascript">
         $(document).ready(function() {
+            $.get("getcompanyname.php", 
+                    function(data) {
+                        $('#nombreCompania').html(data);
+                        
+
+                    });
             /*----------------------------------------------------------------------------------------------------------------------------------------*/
             /* Intermediarios Comerciales                                                                                                             */
             /*----------------------------------------------------------------------------------------------------------------------------------------*/
@@ -281,8 +287,9 @@ if($_SESSION["intUser"]) {
             </ul>
            
         </nav>
+        
         <div><img class="logo" src="./img/ctl4bizlogo-long.svg"></div>
-       
+       <div id="nombreCompania" class="company"></div>
 
 
     </div>

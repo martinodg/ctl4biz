@@ -63,6 +63,15 @@ body {
     padding: 5px 13px;
 }
 
+.company {
+     display: block padding: active;
+    box-sizing: border-box;
+    padding-top: 6px;
+    padding-left: 15%;
+    font-size: 20px;
+    color: #ff7f00;
+}
+
 .logo {
     position: fixed;
     height: 34px;

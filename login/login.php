@@ -18,7 +18,7 @@ if(session_id() == '') {
 $message="";
 if(count($_POST)>0) {
    
-    $query_DB="SELECT db_user, db_password, id_company FROM login_data WHERE master_user='".$usuario."' or id_company='".$companycode."';";
+    $query_DB="SELECT db_user, db_password, id_company, company_name FROM login_data WHERE master_user='".$usuario."' or id_company='".$companycode."';";
     $result = mysqli_query($conexion,$query_DB);
 
     if (!$result) {
@@ -29,6 +29,7 @@ if(count($_POST)>0) {
             $BaseDeDatos = $row['id_company'];
             $Usuario_DB = $row['db_user'];
             $Password_DB = $row['db_password'];
+            $Company_name= $row['company_name'];
             
         } else {
             $message = "Invalid Username or Comapany name!";
@@ -50,6 +51,7 @@ if(count($_POST)>0) {
             $_SESSION['Password_DB'] = $Password_DB;
             $_SESSION['intUser'] = $row_login['user_name'];
             $_SESSION['id'] = $row_login['id_intUser'];
+            $_SESSION['company_name']= $Company_name;
         } else {
             $message = "Invalid Username or Comapany name!";
         }
