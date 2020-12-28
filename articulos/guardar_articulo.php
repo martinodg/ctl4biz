@@ -7,10 +7,19 @@ require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
 
 //require_once("../barcode/barcode.php");
+function getumtext(int $valor) {
+	global $conexion;	
+	$getum_query="SELECT nombre FROM unidadesmedidas WHERE codunidadmedida=$valor";
+	$rs_getum=mysqli_query($conexion,$getum_query);
+	$txt=mysqli_fetch_array($rs_getum);
+	return $txt['nombre'];
+}
+
 
 $accion=$_POST["accion"];
 if (!isset($accion)) { $accion=$_GET["accion"]; }
 
+$codigobarras=$_POST["codigobarras"];
 $referencia=$_POST["Areferencia"];
 $codfamilia=$_POST["AcboFamilias"];
 $descripcion=$_POST["Adescripcion"];
@@ -39,6 +48,11 @@ $precio_almacen=$_POST["qprecio_almacen"];
 $precio_tienda=$_POST["qprecio_tienda"];
 //$pvp=$_POST["qpvp"];
 $precio_iva=$_POST["qprecio_iva"];
+
+
+$txtumstock=getumtext($umstock);
+$txtumstock_minimo=getumtext($umstock_minimo);
+$txtumunidades_caja=getumtext($umunidades_caja);
 
 
 if ($accion=="alta") {
@@ -99,8 +113,8 @@ if ($accion=="alta") {
 
 if ($accion=="modificar") {
 	$codarticulo=$_POST["id"];
-	$cadena=""; ?>
-	<?
+	$cadena="";
+	
 	if ($foto_name<>"")
 	 {   
 	   $foto_name="foto".$codarticulo.".jpg"; 
@@ -111,7 +125,7 @@ if ($accion=="modificar") {
 		  echo "<h2>No se ha podido copiar el archivo</h2>\n";
 		};
 	};
-	$query="UPDATE articulos SET codfamilia='$codfamilia', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', codumunidades_caja='$umunidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', ".$cadena." borrado=0 WHERE codarticulo='$codarticulo'";
+	$query="UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', codumunidades_caja='$umunidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', ".$cadena." borrado=0 WHERE codarticulo='$codarticulo'";
 	$rs_query=mysqli_query($conexion,$query);
 	if ($rs_query) { $mensaje="Los datos del articulo han sido modificados correctamente"; }
 	$cabecera1="Inicio >> Articulos &gt;&gt; Modificar Articulo ";
@@ -264,11 +278,12 @@ if ($accion=="baja") {
 				        </tr>
 						<tr>
 							<td>Stock</td>
-							<td><?php echo $stock?> unidades</td>
+							<?php echo "<td>".$stock." ".$txtumstock."</td>";?>
 					    </tr>
 						<tr>
 							<td>Stock minimo</td>
-							<td><?php echo $stock_minimo?> unidades</td>
+							<?php echo "<td>".$stock_minimo." ".$txtumstock_minimo."</td>";?>
+						
 					    </tr>
 						<tr>
 							<td>Aviso M&iacute;nimo</td>
@@ -297,7 +312,8 @@ if ($accion=="baja") {
 					    </tr>
 						<tr>
 							<td>Unidades por caja</td>
-							<td colspan="2"><?php echo $unidades_caja?> unidades</td>
+							<?php echo "<td>".$unidades_caja." ".$txtumunidades_caja."</td>";?>
+							
 						</tr>
 						<tr>
 							<td>Preguntar precio ticket</td>
@@ -333,7 +349,9 @@ if ($accion=="baja") {
 						</tr>
 						<tr>
 							<td>Codigo de barras</td>
-							<td colspan="2"><?php echo "<img src='../barcode/barcode.php?encode=EAN-13&bdata=".$codigobarras."&height=50&scale=2&bgcolor=%23FFFFEC&color=%23333366&type=jpg'>"; ?></td>
+							
+							<td colspan="2"><?php echo '<img src="../funciones/barcode/barcode.php?s=ean-13&wq=1&d='.$codigobarras.'">'; ?></td>
+							
 						</tr>
 					</table>
 			  </div>

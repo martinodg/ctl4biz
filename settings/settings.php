@@ -24,11 +24,12 @@
 	<body >
 		<div id="pagina">
 			<div id="zonaContenido">
-				
+			<div align="center">
+				    <div id="lenguaje" class="header">Lenguaje y localizacion </div>	
 				<nav id="language">
             <ul>
                 <li>
-                    <a href="#"> <img id="bandera_lengua" class="language" src="../img/english-language.svg" height="24px" width="24px"></a>
+                    Elija un idioma> <a href="#"> <img id="bandera_lengua" class="language" src="../img/english-language.svg" height="24px" width="24px"></a>
                     <ul>
                         <li><a class="lang" id="english" href="#">English</a></li>
                         <li><a class="lang" id="espanol" href="#">Espanol</a></li>

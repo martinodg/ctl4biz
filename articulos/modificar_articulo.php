@@ -36,10 +36,30 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 //Perform when DOM is full loaded
 $( document ).ready(function(){
             
-			//load process combo
-			$.get("../sel_unidadmedida.php", function(data) {
-            	    $('.cboUnidadmedida').html(data);
-            });
+			//load stock mesure units combo
+			$.get( "../sel_unidadmedida.php" , { articulo : document.getElementById('id').value,
+                                                                   campo : 'codunidadmedida'
+                                                              },function ( data ) { 
+                                                                                        $('#umnstock').html(data);
+                                                                                       
+                                                                                  }
+                );
+			//load stock minimo mesure units combo
+			$.get( "../sel_unidadmedida.php" , { articulo : document.getElementById('id').value,
+                                                                   campo : 'codumstock_minimo'
+                                                              },function ( data ) { 
+                                                                                        $('#umnstock_minimo').html(data);
+                                                                                       
+                                                                                  }
+                );
+			//load stock minimo mesure units combo
+			$.get( "../sel_unidadmedida.php" , { articulo : document.getElementById('id').value,
+                                                                   campo : 'codumunidades_caja'
+                                                              },function ( data ) { 
+                                                                                        $('#umnunidades_caja').html(data);
+                                                                                       
+                                                                                  }
+                );
 });
 /*----------------------------------------------------------------------------------------------------------------------*/
 		function cancelar() {
@@ -47,6 +67,7 @@ $( document ).ready(function(){
 		}
 		
 		function limpiar() {
+			document.getElementById("codigobarras").value="";
 			document.getElementById("referencia").value="";
 			document.getElementById("descripcion").value="";
 			document.getElementById("descripcion_corta").value="";
@@ -86,6 +107,12 @@ $( document ).ready(function(){
 				<input id="id" name="id" value="<?php echo $codarticulo?>" type="hidden">
 				<input id="codarticulo" name="codarticulo" value="<?php echo $codarticulo?>" type="hidden">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+						<tr>
+						<td width="20%">Codigo de Barras</td>
+						
+					      <td colspan="2"><input name="codigobarras" id="codigobarras" value="<?php echo $codigobarras?>" maxlength="20" class="cajaGrande" type="text"></td>
+				          <td colspan="1"><?php echo '<img src="../funciones/barcode/barcode.php?s=ean-13&wq=1&d='.$codigobarras.'">'; ?></td>
+						</tr>
 						<tr>
 						<td width="20%">Referencia</td>
 						<?php $referencia=mysqli_result($rs_query,0,"referencia");?>
