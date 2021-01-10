@@ -2,7 +2,7 @@
 require_once("../conectar7.php"); 
 
 
-    $lote=$_GET["lote"];
+    if(isset($_GET["lote"])) {$lote=$_GET["lote"];}
     
     $consulta="SELECT lote.codlote, articulos.referencia, lote.cantidad, lote.fechai, lote.horai, lote.codstatus, lote.codarticulo FROM lote, articulos WHERE lote.codlote =".$lote." AND lote.codarticulo=articulos.codarticulo AND lote.codstatus!=1 AND lote.borrado=0;";
   /*  echo $consulta;*/

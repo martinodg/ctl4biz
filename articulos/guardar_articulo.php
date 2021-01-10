@@ -20,13 +20,13 @@ $accion=$_POST["accion"];
 if (!isset($accion)) { $accion=$_GET["accion"]; }
 
 $codigobarras=$_POST["codigobarras"];
-$referencia=$_POST["Areferencia"];
+$referencia=$_POST["areferencia"];
 $codfamilia=$_POST["AcboFamilias"];
 $descripcion=$_POST["Adescripcion"];
 $codimpuesto=$_POST["AcboImpuestos"];
 $codproveedor1=$_POST["acboProveedores1"];
 $codproveedor2=$_POST["acboProveedores2"];
-$descripcion_corta=$_POST["Adescripcion_corta"];
+$descripcion_corta=$_POST["adescripcion_corta"];
 $codubicacion=$_POST["AcboUbicacion"];
 $stock_minimo=$_POST["nstock_minimo"];
 $umstock_minimo=$_POST["umnstock_minimo"];
@@ -56,31 +56,17 @@ $txtumunidades_caja=getumtext($umunidades_caja);
 
 
 if ($accion=="alta") {
-	$sel_comp="SELECT * FROM articulos WHERE referencia='$referencia'";
-	$rs_comp=mysqli_query($conexion,$sel_comp);
-	if (mysqli_num_rows($rs_comp) > 0) {
-		?><script>
-				alert ("No se puede dar de alta a este articulo, ya existe uno con esta referencia.");
-				location.href="index.php";
-			</script><?
-	} else {
+	
 		$consultaprevia = "SELECT max(codarticulo) as maximo FROM articulos";
 		$rs_consultaprevia=mysqli_query($conexion,$consultaprevia);
 		$codarticulo=mysqli_result($rs_consultaprevia,0,"maximo");
 		if ($codarticulo=="") { $codarticulo=0; }
 		$codarticulo++;
+		// need to add photo support feature, oldone removed since not working.
 		
-		if ($foto_name<>"none")
-		 {
-		   $foto_name="foto".$codarticulo.".jpg";
-		   if (! copy ($foto, "../fotos/$foto_name")) 
-			{
-			  echo "<h2>No se ha podido copiar el archivo</h2>\n";
-			};
-		};
-		
-		$query_operacion="INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, imagen, codigobarras, borrado) 
-						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '$foto_name','', '0')";				
+		$query_operacion="INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado) 
+						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0')";				
+		//echo $query_operacion;
 		$rs_operacion=mysqli_query($conexion,$query_operacion);
 		
 		$codarticulo=mysqli_insert_id($conexion);
@@ -108,7 +94,7 @@ if ($accion=="alta") {
 		if ($rs_operacion) { $mensaje="El articulo ha sido dado de alta correctamente"; }
 		$cabecera1="Inicio >> Articulos &gt;&gt; Nuevo Articulo ";
 		$cabecera2="INSERTAR ARTICULO ";
-		}
+		
 }
 
 if ($accion=="modificar") {

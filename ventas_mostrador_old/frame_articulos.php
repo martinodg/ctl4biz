@@ -10,8 +10,9 @@ require_once("../mysqli_result.php");
 </head>
 <script language="javascript">
 
-function pon_prefijo(codfamilia,pref,nombre,precio) {
+function pon_prefijo(codfamilia,codarticulo,pref,nombre,precio) {
 	parent.opener.document.formulario_lineas.codfamilia.value=codfamilia;
+	parent.opener.document.formulario_lineas.codArticulo.value=codarticulo;
 	parent.opener.document.formulario_lineas.codbarras.value=pref;
 	parent.opener.document.formulario_lineas.descripcion.value=nombre;
 	parent.opener.document.formulario_lineas.precio.value=precio;
@@ -65,7 +66,7 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
         <div align="left"><?php echo $referencia;?></div></td>
 					<td><div align="center"><?php echo $descripcion;?></div></td>
 					<td><div align="center"><?php echo $precio;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $codigobarras?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,<?php echo $codarticulo?>,'<?php echo $codigobarras?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
 				</tr>
 			<?php }
 		?>

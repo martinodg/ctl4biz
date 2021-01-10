@@ -1,9 +1,9 @@
 <?
- if(session_id() == ''){
+
     if(session_id() == '') {
     session_start();
 }
- }
+ 
 
 $id_intUser=$_SESSION["id"];
 require_once(__DIR__.'/../conectar7.php');

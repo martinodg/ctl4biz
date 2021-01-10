@@ -563,3 +563,35 @@ input:checked+.slider:before {
     border-style: solid;
     border-width: 1px;
 }
+#modal {
+    position: fixed;
+    top: 5%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 9;
+}
+.modal__window {
+    position: relative;
+    background-color: white;
+    Top: 20px;
+    width: 800px;
+    padding: 4em 2em;
+  }
+  
+  .modal__close {
+    position: absolute;
+    top: -20px;
+    right: 0;
+  }
+
+#modal:not(:target) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+  

@@ -32,8 +32,8 @@ if ($modif<>1) {
 			$codfacturatmp=$_GET["codfacturatmp"]; 
 			$retorno=1; }
 		if ($retorno==0) {	
-				$codbarras=$_POST["codbarras"];
-				$sel_articulos="SELECT * FROM articulos WHERE codigobarras='$codbarras'";
+				$codarticulo=$_POST["codArticulo"];
+				$sel_articulos="SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
 				$rs_articulos=mysqli_query($conexion,$sel_articulos);			
 				$codfamilia=mysqli_result($rs_articulos,0,"codfamilia");
 				$codarticulo=mysqli_result($rs_articulos,0,"codarticulo");
@@ -41,8 +41,17 @@ if ($modif<>1) {
 				$precio=$_POST["precio"];
 				$importe=$_POST["importe"];
 				$descuento=$_POST["descuento"];
+				$getLineNumber="SELECT numlinea FROM factulineatmp WHERE codfactura='$codfacturatmp'";
+				$rs_lineNumber=mysqli_query($conexion,$getLineNumber);
+				if ($rs_lineastmp===TRUE) {
+					$lineNumber=mysqli_num_rows($rs_lineNumber);
+					$newLineNumber= $lineNuber + 1;
+				}else {
+					$newLineNumber= '1';
+				}
 				
-				$sel_insert="INSERT INTO factulineatmp (codfactura,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
+				
+				$sel_insert="INSERT INTO factulineatmp (codfactura,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','$newLineNumber','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
 				$rs_insert=mysqli_query($conexion,$sel_insert);
 		}
 }

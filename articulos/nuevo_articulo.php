@@ -78,7 +78,7 @@ require_once("../mysqli_result.php");
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
 						<td width="15%">Referencia</td>
-					      <td width="30%"><input name="Areferencia" id="referencia" value="" maxlength="20" class="cajaGrande" type="text"></td>
+					      <td width="30%"><input name="areferencia" id="referencia" value="" maxlength="20" class="cajaGrande" type="text"></td>
 				          <td width="55%" rowspan="15" align="left" valign="top"><ul id="lista-errores"></ul></td>
 						</tr>
 						<?php
@@ -109,7 +109,7 @@ require_once("../mysqli_result.php");
 					  ?>
 						<tr>
 							<td width="17%">Impuesto</td>
-							<td><select id="cboImpuestos" name="AcboImpuestos" class="comboMedio">
+							<td><select id="cboImpuestos" name="rcboImpuestos" class="comboMedio">
 							
 								<option value="0">Seleccione un impuesto</option>
 								<?php
@@ -161,7 +161,7 @@ require_once("../mysqli_result.php");
 					    </tr>
 						<tr>
 						  <td>Descripci&oacute;n corta</td>
-						  <td><input NAME="Adescripcion_corta" id="descripcion_corta" type="text" class="cajaGrande"  maxlength="30"></td>
+						  <td><input NAME="adescripcion_corta" id="descripcion_corta" type="text" class="cajaGrande"  maxlength="30"></td>
 				      </tr>
 					  <?php
 					  	$query_ubicacion="SELECT codubicacion,nombre FROM ubicaciones WHERE borrado=0 ORDER BY nombre ASC";
@@ -278,14 +278,11 @@ require_once("../mysqli_result.php");
 						  <td>Precio de tienda</td>
 						  <td><input NAME="qprecio_tienda" type="text" class="cajaPequena" id="precio_tienda" size="10" maxlength="10"> &#8364;</td>
 				      </tr>
-					  	<!--<tr>
-						  <td>Pvp</td>
+						<tr>
+						  <td>Precio venta al publico</td>
 						  <td><input NAME="qpvp" type="text" class="cajaPequena" id="pvp" size="10" maxlength="10"> &#8364;</td>
-				      </tr>-->
-					  <tr>
-						  <td>Precio con iva</td>
-						  <td><input NAME="qprecio_iva" type="text" class="cajaPequena" id="precio_iva" size="10" maxlength="10"> &#8364;</td>
 				      </tr>
+					 
 					  <tr>
 						  <td>Imagen [Formato jpg] [200x200]</td>
 						  <td><input type="file" name="foto" id="foto" class="cajaMedia" accept="image/jpg" /></td>
