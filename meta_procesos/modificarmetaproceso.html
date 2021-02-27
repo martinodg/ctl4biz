@@ -95,8 +95,9 @@
             mostrararticulo(metaproceso);
         }
 
-        function validararticulo(codigo, nombre, destino) {
+        function validararticulo(codigo, nombre, destino, undMedida) {
             if (destino == "materiaprima") {
+                console.log(undMedida);
                 $('#codarticulo').val(codigo);
                 $('#nombrearticulo').val(nombre);
                 $('#hidecodarticulo').val(codigo);
@@ -106,6 +107,7 @@
             if (destino == "outcome") {
                 $('#codArticuloCreado').val(codigo);
                 $('#nombreArticuloCreado').val(nombre);
+                $("#umcantidadest").val(undMedida);
                 $('#div_datos').empty();
             }
         }
@@ -132,6 +134,8 @@
                     $('#nombreArticuloCreado').val(data.nombrearticulo);
                     $('#cantidadEstimada').val(data.cantidadestimada);
                     $('#umcantidadest').val(data.codunidadmedida);
+                    $('#codarticuloresultado').val(data.codarticulo);
+                    
                     var batchres = data.esbatch;
                     if (batchres == "1") {
                         $('input[type="checkbox"]').attr('checked', true);
@@ -202,8 +206,8 @@
                         codmproceso: document.getElementById('codmproceso').value,
                         nombremproceso: document.getElementById('nombremproceso').value,
                         batch: estadobatch,
-                        codart: document.getElementById('hidecodarticulo').value,
-                        nombreart: document.getElementById('hidenombrearticulo').value,
+                        codart: document.getElementById('codarticulo').value,
+                        nombreart: document.getElementById('nombrearticulo').value,
                         cantidadart: document.getElementById('cantidad').value
                     },
                     function(data) {
@@ -220,6 +224,7 @@
                 $.get("modificarcabeceramp.php", {
                         codmproceso: document.getElementById('codmproceso').value,
                         nombremproceso: document.getElementById('nombremproceso').value,
+                       
                         batch: estadobatch,
                         codarticulocreado: document.getElementById('codArticuloCreado').value,
                         cantidadest: document.getElementById('cantidadEstimada').value,
@@ -242,6 +247,8 @@
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
+                        
+
                         <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 
                             <tr>
@@ -276,7 +283,7 @@
                 <div id="lineaResultado">
 
                 </div>
-                <div id="tituloForm" class="header">Agregar articulo </div>
+                <div id="tituloForm" class="header">Agregar Materia prima </div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
@@ -317,7 +324,7 @@
                 <div ID="div_datos2" name="div_datos2"> </div>
                 <div id="botonCerrar">
                     <br>
-                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cerrar" /> <span>cerrar</span> </button>
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="cerrar" /> <span>cerrar</span> </button>
                     <br>
 
                 </div>

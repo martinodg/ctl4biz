@@ -20,7 +20,7 @@ require_once("../mysqli_result.php");
 		$codbatch++;
                 
                 //insert in DB
-                $query_operacion="INSERT INTO batch (codbatch, codarticulo, cantidad, fechai, horai, codstatus, borrado) VALUES ('$codbatch', '$codarticulo', '$cantidad', '$fechai', '$horai', '0', '0')";				
+                $query_operacion="INSERT INTO batch (codbatch, codarticulo, cantidad, fechai, horai, codstatus, borrado) VALUES ('$codbatch', '$codarticulo', '$cantidad', '$fechai', '$horai', '1', '0')";				
 		/*echo $query_operacion;*/
 
                 $rs_operacion=mysqli_query($conexion,$query_operacion);

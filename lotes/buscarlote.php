@@ -43,7 +43,7 @@ require_once("../conectar7.php");
     echo '			</div>';
     
     
-	$consulta="SELECT lote.codlote, articulos.referencia, lote.cantidad, lote.fechai, lote.horai, lote.fechaf, lote.horaf, lote.codstatus, estado.estado FROM lote, articulos,estado WHERE ".$donde."lote.borrado=0 ORDER BY lote.codlote LIMIT ".$paginainicio.",10;";
+	$consulta="SELECT lote.codlote, articulos.descripcion, lote.cantidad, lote.fechai, lote.horai, lote.fechaf, lote.horaf, lote.codstatus, estado.estado FROM lote, articulos,estado WHERE ".$donde."lote.borrado=0 ORDER BY lote.codlote LIMIT ".$paginainicio.",10;";
     //echo $consulta;
         
 	$rs_tabla = mysqli_query($conexion,$consulta);

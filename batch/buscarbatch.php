@@ -43,7 +43,7 @@ require_once("../conectar7.php");
     echo '			</div>';
     
     
-	$consulta="SELECT batch.codbatch, articulos.referencia, batch.cantidad, batch.fechai, batch.horai, batch.fechaf, batch.horaf, batch.codstatus, estado.estado FROM batch, articulos,estado WHERE ".$donde."batch.borrado=0 ORDER BY batch.codbatch LIMIT ".$paginainicio.",10;";
+	$consulta="SELECT batch.codbatch, articulos.descripcion, batch.cantidad, batch.fechai, batch.horai, batch.fechaf, batch.horaf, batch.codstatus, estado.estado FROM batch, articulos,estado WHERE ".$donde."batch.borrado=0 ORDER BY batch.codbatch LIMIT ".$paginainicio.",10;";
     //echo $consulta;
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
@@ -61,7 +61,7 @@ require_once("../conectar7.php");
                                                         echo '<td width="6%"><div align="center">'.$row[5].'</div></td>';
                                                         echo '<td width="6%"><div align="center">'.$row[6].'</div></td>';
                                                         echo '<td width="6%"><div align="center">'.$row[8].'</div></td>';
-                                                        if ($row[7]<>1){
+                                                        if ($row[7]<>2){
                                                             echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';
                                                             echo '<td width="5%"><div align="center">&nbsp;</div></td>';
                                                         }else{

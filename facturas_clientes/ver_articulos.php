@@ -1,3 +1,4 @@
+<? require_once("../conectar7.php"); ?>
 <html>
 <head>
 <title>Buscador de Articulos</title>
@@ -54,7 +55,7 @@ body {
 }
 -->
 </style></head>
-<? require_once("../conectar7.php"); ?>
+
 <body onLoad="buscar()">
 <form name="form1" id="form1" method="post" action="frame_articulos.php" target="frame_resultado" onSubmit="buscar()">
  <div id="frmBusqueda2">

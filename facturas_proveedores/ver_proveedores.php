@@ -1,4 +1,8 @@
-<? require_once("../conectar7.php"); ?>
+<? 
+
+require_once("../conectar7.php");
+
+?>
 <html>
 <head>
 <title>Buscador de Proveedores</title>

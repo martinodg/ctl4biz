@@ -1,42 +1,30 @@
 //var variable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
-var company_name=["Company name:", "Compania:","Nazwa Firma:"];
-var nombre=["your name:", "nombre del usuario:","Nazwa Uzytkownika"];
+var company_name = ["Company name:", "Compania:","Nazwa Firma:"];
+var nombre = ["your name:", "nombre del usuario:","Nazwa Uzytkownika"];
 var emailValidation = ["e-mail validation:", "validacion del email:","Weryficacja adresu"];
-var password=["password:", "clave:", "haslo"];
-var passwordValidation=["password validation:", "validacion de la clave:","Weryficacja Hasla"];
-var member=["Already a member?", "Ya eres miembro?","Jestes juz czlonkiem"];
-var golo=["Go to Login", "Ve a la pagina de acceso","przejdz do logowania"];
-var sub=["Submit", "Envia","Zatwierdz"];
-var details=["Enter Login Details", "Complete los datos de Acceso","Wprrowadz dane logowania"];
-var companyCode=["Company code:", "Codigo de la compania:","kod frimowy"];
-var signin=["Sign in Now!", "Inscribete ahora!","Spewam teraz"];
-var noMember=["Not a member yet?", "Aun no eres miembro?","nie jestes jeszcze chlonkiem"];
-var copiasRespaldo=["Backups management", "Gestionar Backup","zarzadzanie kolpiami"];
-var hacerrespaldo=["Create Backup Copy", "Hacer Backup","Tworzenie kopii"];
-var restaurarrespaldo=["Restore Backup", "Restaurar Backup","przywracanie kopii"];
-var AdminSeguridad=["Security Administration", "Configuracion de Seguridad","administrowanie bezpieczeństwem"];
-var usuarios=["Users", "Usuarios","użytkowników"];
-var roles=["Roles", "Roles","role"];
-var recursos=["Resources", "recursos","zasoby"];
-var ventas_plus=["Sales +", "ventas +","sprzedaż +"];
-var ventas=["Sales", "ventas","sprzedaż"];
-var venta_a_mostrador=["Point of Sales", "venta a mostrador","Punkt sprzedaży"];
-var factura=["Invoice", "Factura","faktura"];
-var remitos=["Delivery Notes", "Remitos","Dowód dostawy"];
-var facturar_remitos=["Convert DN to Invoice", "Facturar remitos","konwertować dowód dostawy na fakturę"];
-var presupuestos=["Budget", "Presupuestos","budżet"];
-var contabilidad_plus=["Book Keeping +", "Contabilidad +","księgowość +"];
-var contabilidad=["Book keeping", "Contabilidad","księgowość"];
-var codremito=["delivery note code","codigo de remito","kod listu przewozowego","codice nota d invio","código da nota de envio","code du bon de livraison","Versandscheincode"];
-var fecha=["date","fecha","data"];
-var aceptar=["Agree","Aceptar","Zgodzić się"];
-var buscarremito=["Search refer","buscar remito","Szukaj odnoszą","Cerca riferimento","Busca referem","Recherche reportez-vous","Suchen beziehen"];
-var cod_cliente=["client code","codigo de cliente","kod klienta","codice client","Código do cliente","code client","Client-Code"];
-var estado=["condition","estado ","stan: schorzenie","condizione","doença","état","Bedingung"];
-var facturados=["invoiced","facturados","zafakturowanymi","fatturate","facturado","facturé","fakturieren"];
-var limp=["clean up","limpiar","sprzątać","pulire","limpar","nettoyer","Aufräumen"];
-var busc=["search","buscar","Szukaj","ricerca","procurar","chercher","Suche"];
-
+var password = ["password:", "clave:", "haslo"];
+var passwordValidation = ["password validation:", "validacion de la clave:","Weryficacja Hasla"];
+var member = ["Already a member?", "Ya eres miembro?","Jestes juz czlonkiem"];
+var golo = ["Go to Login", "Ve a la pagina de acceso","przejdz do logowania"];
+var sub = ["Submit", "Envia","Zatwierdz"];
+var details = ["Enter Login Details", "Complete los datos de Acceso","Wprrowadz dane logowania"];
+var companyCode = ["Company code:", "Codigo de la compania:","kod frimowy"];
+var signin = ["Sign in Now!", "Inscribete ahora!","Spewam teraz"];
+var noMember = ["Not a member yet?", "Aun no eres miembro?","nie jestes jeszcze chlonkiem"];
+var copiasRespaldo = ["Backups management", "Gestionar Backup","zarzadzanie kolpiami"];
+var hacerrespaldo = ["Create Backup Copy", "Hacer Backup","Tworzenie kopii"];
+var restaurarrespaldo = ["Restore Backup", "Restaurar Backup","przywracanie kopii"];
+var AdminSeguridad = ["Security Administration", "Configuracion de Seguridad","administrowanie bezpieczeństwem"];
+var usuarios = ["Users", "Usuarios","użytkowników"];
+var roles = ["Roles", "Roles","role"];
+var recursos = ["Resources", "recursos","zasoby"];
+var ventas_plus = ["Sales +", "ventas +","sprzedaż +"];
+var ventas = ["Sales", "ventas","sprzedaż"];
+var venta_a_mostrador = ["Point of Sales", "venta a mostrador","Punkt sprzedaży"];
+var factura = ["Invoice", "Factura","faktura"];
+var remitos = ["Delivery Notes", "remitos","dowód dostawy"];
+var facturar_remitos = ["Convert DN to Invoice", "Facturar remitos","konwertować dowód dostawy na fakturę"];
+var presupuestos = ["Budget", "Presupuestos","budżet"];
 // To replace with correction from this point
 var inicio=["beginning","inicio","początek","inizio","começo","début","Anfang"];
 var intercom=["commercial intermediaries","intermediarios comerciales","pośredników handlowych","intermediari commerciali","intermediários comerciais","intermédiaires commerciaux","gewerbliche Mittler"];
@@ -51,6 +39,8 @@ var pcia=["Province","provincia","Województwo","Provincia","Província","Provin
 var selpcia=["Select a province","seleccionar una provincia","Wybierz prowincje","Seleziona una provincia","Selecione uma província","Sélectionnez une province","Wählen Sie eine Provinz"];
 var local=["location","localidad","Lokalizacja","Posizione","localização","lieu","Standort"];
 var telef=["phone","telefono","telefon","Telefono","telefone","téléphone","Telefon"];
+var buscar=["search","buscar","Szukaj","ricerca","procurar","chercher","Suche"];
+var limpiar=["clean up","limpiar","sprzątać","pulire","limpar","nettoyer","Aufräumen"];
 var nueprov=["New supplier","nuevo proveedor","Nowy dostawca","nuovo fornitore","Novo fornecedor","Nouveau fournisseur","Neuer Lieferant"];
 var impr=["to print","imprimir","drukować","a stampa","imprimir","imprimer","zu drucken"];
 var nroproven=["N. companies found","N. de proveedores encontrados","Znaleziono firmy N.","aziende N. trovati","N. empresa encontrada","sociétés N. trouvé","N. Unternehmen gefunden"];
@@ -63,14 +53,14 @@ var entiban=["banking entity","entidad bancaria","podmiot bankowy","entità banc
 var cliente=["customers","clientes","klienci","clienti","clientes","clients","Kunden"];
 var selntiban=["choose a bank","seleccione una entidad bancaria","wybrać bank","scegliere una banca","escolher um banco","choisir une banque","Wähle eine Bank"];
 var bcliente=["Search customer","buscar cliente","Szukaj klient","Ricerca cliente","pesquisa cliente","Recherche client","Suchen Kunden"];
+var codclie=["client code","codigo de cliente","kod klienta","codice client","Código do cliente","code client","Client-Code"];
 var nuevo=["new","nuevo","Nowy","nuovo","novo","Nouveau","Neu"];
 var nroclien=["number of clients found","numero de clientes encontrados","liczba klientów znalezionych","numero di clienti ha trovato","número de clientes encontrados","nombre de clients trouvés","Anzahl der Clients gefunden"];
-var produccion_plus=["production +","produccion +","produkcja +","produzione +","Produção +","production +","Produktion +"];
 var produccion=["production","produccion","produkcja","produzione","Produção","production","Produktion"];
-var articu=["Items","articulos","artykuły","articoli","artigos","des Items","Artikel"];
+var articu=["articles","articulos","artykuły","articoli","artigos","des articles","Artikel"];
 var tipodart=["Item Type","tipo de articulo","Typ przedmiotu","Tipo di elemento","Tipo de item","Type délément","Gegenstandsart"];
 var lotdprod=["production batches","lotes de produccion","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"];
-var batchprod=["production batch","batch de produccion","produkcja partii","lotto di produzione","produção em lotes","production par lots","Serienfertigung"];
+var batchprod=["batch production","batch de produccion","produkcja partii","lotto di produzione","produção em lotes","production par lots","Serienfertigung"];
 var btipoar=["Type of article","buscar tipo de articulo","Rodzaj artykułu","Tipo di articolo","Tipo de artigo","Type de larticle","Artikeltyp"];
 var codtpar=["type code article","codigo de tipo de articulo","Kod typu artykuł","articolo codice tipo","artigo código de tipo","article type de code","Typencode Artikel"];
 var nvotpo=["new kind","nuevo tipo","nowy rodzaj","nuovo tipo","novo tipo","nouveau type","neue Art"];
@@ -87,18 +77,20 @@ var todubic=["All locations","todas las ubicaciones","Wszystkie lokacje","tutti 
 var preciot=["Price T.","precio T.","Cena T.","Prezzo T.","Preço T.","Prix ​​T.","Preis T."];
 var stock=["stock","stock","Zbiory","azione","estoque","Stock","Lager"];
 var unidad=["unit / measurement","unidad / medida","/ jednostka pomiarowa","Unità / misurazione","/ unidade de medição","unité / mesure","Einheit / Mess"];
-var metproc=["Meta processes","meta procesos","procesy docelowe","processi di destinazione","processos alvo","processus cibles","Soll-Prozesse"];
+var metproc=["target processes","meta procesos","procesy docelowe","processi di destinazione","processos alvo","processus cibles","Soll-Prozesse"];
 var bmetproc=["meta search process","busqueda de meta procesos","meta Proces wyszukiwania","processo di ricerca di meta","meta processo de pesquisa","processus de recherche méta","Meta-Suchprozess"];
-var estados=["status","estados ","stan","stato","Estado","Etat","Zustand"];
+var estados=["state","estados ","stan","stato","Estado","Etat","Zustand"];
 var todestad=["all the states","todos los estados","Wszystkie kraje","tutti gli stati","todos os estados","tous les états","alle Staaten"];
 var cribu_2=["search criterion No. 2","criterio de busqueda #2","kryterium wyszukiwania nr 2","criterio di ricerca n ° 2","critério de pesquisa No. 2","critère de recherche n ° 2","Suchkriterium No. 2"];
 var nomproc=["name of process","nombre del proceso","Nazwa procesu","nome del processo","nome do processo","nom du processus","Name des Prozesses"];
 var cribu_3=["search criterion No. 3","criterio de busqueda _3","kryterium wyszukiwania nr 3","criterio di ricerca n ° 3","critério de pesquisa No. 3","critère de recherche n ° 3","Suchkriterium No. 3"];
 var codproce=["code process","codigo de proceso","proces kod","processo di codice","processo de código","procédé de code","Code Prozess"];
 var nroprocen=["N. process found","N. de procesos encontrados","N. proces znalezionych","N. TROVATO processo","N. processo que foi verificado","processus N. Trouvées","N. Verfahren gefunden"];
+var limp=["clean up","limpiar","sprzątać","pulire","limpar","nettoyer","Aufräumen"];
 var imprim=["to print","imprimir","drukować","a stampa","imprimir","imprimer","zu drucken"];
 var relprocdef=["ratio defined processes","relacion de procesos definidos","Procesy współczynnik określony","processi rapporto definito","processos relação definida","Ratio processus défini","Verhältnis definierte Prozesse"];
 var tipproc=["Process type","tipo de proceso","typ procesu","tipo di processo","tipo de processo","Type de processus","Prozesstyp"];
+var estados=["condition","estado ","stan: schorzenie","condizione","doença","état","Bedingung"];
 var propru=["production processes","procesos de produccion","procesy produkcji","processi di produzione","processos de produção","processus de production","Herstellungsprozesse"];
 var bupro=["search process","busqueda de procesos","proces wyszukiwania","processo di ricerca","processo de pesquisa","processus de recherche","Suchprozess"];
 var cant=["amount","cantidad","ilość","quantità","quantia","quantité","Menge"];
@@ -108,8 +100,9 @@ var estacion=["station","estacion ","stacja","stazione","estação","gare","Bahn
 var trabaj=["employee","trabajador","pracownik","dipendente","empregado","employé","Mitarbeiter"];
 var fechfin=["finish date","fecha de finalizacion","Data zakończenia","data di fine","data de término","date de fin","Endtermin"];
 var horafin=["ending time","hora de finalizacion ","czas kończąc","tempo finale","terminando tempo","heure de fin","Endzeit"];
+var bchprod=["batch production","batch de produccion","produkcja partii","lotto di produzione","produção em lotes","production par lots","Serienfertigung"];
 var nroloten=["N. batch found","N. de lotes encontrados","N. Znaleziony partii","N. partita ritenuta","N. lote considerado","N. Trouvé lot","N. Batch GEFUNDEN"];
-var lotprod=["production Lots","lotes de produccion","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"];
+var lotprod=["production batches","lotes de produccion","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"];
 var relalot=["Batch relationship","relacion de lotes","relacja wsadowe","rapporto Batch","relacionamento lote","lot relation","Batch Beziehung"];
 var estactra=["work stations","estaciones de trabajo","Stacje robocze","postazioni di lavoro","estações de trabalho","postes de travail","Arbeitsplätze"];
 var nroesten=["N. stations found","N. de estaciones encontradas","Znaleziono stacje N.","Stazioni N. trovati","estações N. encontrado","N. stations trouvées","N. Stationen gefunden"];
@@ -139,6 +132,8 @@ var fchafin=["ending date","fecha de fin","Data końcowa","chiusura","data de t�
 var nrofcenco=["No. Of invoices found","Nro. de facturas encontradas","Ilość znalezionych faktur","No. delle fatture trovato","No. de facturas encontrado","Nombre de factures trouvées","Anzahl der Rechnungen gefunden"];
 var nvafact=["new bill","nueva factura","nowa ustawa","nuovo disegno di legge","nova lei","nouveau projet de loi","neue Rechnung"];
 var item=["item","item ","pozycja","articolo","item","Objet","Artikel"];
+var remitos=["remitos","remitos","remitos","remitos","remitos","bordereaux demballage","remitos"];
+var buscrto=["Search refer","buscar remito","Szukaj odnoszą","Cerca riferimento","Busca referem","Recherche reportez-vous","Suchen beziehen"];
 var nrorto=["No. Of refer","Nro. de remito","Ilość odnoszą","No. Di riferimento","No. da REFER","Nombre de consulter","Anzahl verweisen"];
 var sinfact=["unbilled","sin facturar ","Nierozliczona","non ancora fatturate","unbilled","non facturés","unfertige"];
 var facturado=["invoiced","facturado","zafakturowanymi","fatturata","facturado","facturé","fakturieren"];
@@ -154,7 +149,6 @@ var nropresup=["No. Budget","Nro. de presupuesto","Nie Budget","No. Budget","Sem
 var pendient=["earring","pendiente","kolczyk","orecchino","brinco","boucle doreille","Ohrring"];
 var aceptado=["accepted","aceptado","przyjęty","accettato","aceitaram","accepté","akzeptiert"];
 var nropresenc=["No. Of budgets found","Nro. de presupuestos encontrados","Ilość znalezionych budżetów","No. Di budget trovato","Nº de orçamentos encontrados","Nombre de budgets trouvés","Anzahl der Haushalte gefunden"];
-var compras_plus=["purchases +","compras +","zakupy +","acquisti +","compras +","achats +","Einkäufe +"];
 var compras=["purchases","compras","zakupy","acquisti","compras","achats","Einkäufe"];
 var codprove=["vendor code","codigo de proveedor","Kod sprzedawca","codice venditore","Código do vendedor","code de fournisseur","Herstellerkürzel"];
 var albaran=["packing slips","albaranes","zrazy opakowania","scivola imballaggio","guias de remessa","bordereaux demballage","Beipackzetteln"];
@@ -163,12 +157,12 @@ var factremi=["bill delivery note","facturar albaran","rachunek dowodu dostawy",
 var nroalbaranini=["No. Of initial delivery note","Nro. de albaran inicial","Ilość początkowej kwicie","No. Da segnalare consegna iniziale","Número de nota de entrega inicial","Nombre de bordereau de livraison initiale","Anzahl der ursprünglichen Lieferscheins"];
 var nroalbaranfin=["No. Final delivery note","Nro. de albaran final","Nie. Ostatnia uwaga dostawy","No. bolla di consegna finale","No. nota de entrega final","Non de livraison finale","Nr Schluss Lieferschein"];
 var adminst=["management","administracion","zarządzanie","gestione","gestão","la gestion","Management"];
-var cobros=["collection","cobros","opłaty","oneri","cobranças","des charges","Gebühren"];
+var cobros=["charges","cobros","opłaty","oneri","cobranças","des charges","Gebühren"];
 var buscmov=["Search movements","buscar movimientos","ruchy wyszukiwania","movimenti di ricerca","movimentos de busca","mouvements de recherche","Suchbewegungen"];
 var fchavto=["expiration date","fecha de vencimiento","termin ważności","data di scadenza","data de validade","date dexpiration","Haltbarkeitsdatum"];
 var pagos=["Payments","pagos","Płatności","pagamenti","pagamentos","Paiements","Zahlungen"];
 var fchapago=["Payment date","fecha de pago","Termin płatności","Data di pagamento","Data de pagamento","Date de paiement","Zahlungsdatum"];
-var cjadiaria=["cash flow","caja diaria","codziennie pieniężnych","cassa giornaliera","caixa diário","en espèces par jour","Tagesgeld"];
+var cjadiaria=["daily cash","caja diaria","codziennie pieniężnych","cassa giornaliera","caixa diário","en espèces par jour","Tagesgeld"];
 var buscfcha=["Search date","buscar fecha","data Szukaj","data Search","pesquisa data","Date de recherche","Suche nach Datum"];
 var fchaciere=["deadline","fecha de cierre","ostateczny termin","Scadenza","prazo final","date limite","Frist"];
 var detallecc=["closing cash detail","detalle cierre de caja","zamykanie gotówka detal","Chiusura dettagli contanti","detalhe fecho de caixa","fermeture détails de trésorerie","Schließen Bargeld Detail"];
@@ -184,12 +178,10 @@ var relacmov=["relationship movements","relacion  de movimientos","ruchy związe
 var nromovenc=["No. Of movements found","Nro. de movimientos encontrados","Ilość ruchów znaleziono","No. Di movimenti trovato","Número de movimentos encontrado","Nombre de mouvements trouvés","Anzahl der Bewegungen gefunden"];
 var compvta=["buy and sell","compra / venta","Kup i sprzedaj","comprare e vendere","comprar e vender","acheter et vendre","kaufen und verkaufen"];
 var comerc=["commercial","comercial","Reklama w telewizji","commerciale","comercial","commercial","kommerziell"];
-var forpago=["payment method","forma de pago","sposób zapłaty","modo per pagare","forma de pagamento","façon de payer","Weg zur Bezahlung"];
+var forpago=["way to pay","forma de pago","sposób zapłaty","modo per pagare","forma de pagamento","façon de payer","Weg zur Bezahlung"];
 var nrodocum=["No. Of document","Nro. de documento","Ilość dokumentów","N. DEL DOCUMENTO","Nº de documento","Nombre de documents","Anzahl Dokument"];
-var rrhh_plus=["Human Resources +","recursos humanos +","zasoby ludzkie +","risorse umane +","recursos humanos +","ressources humaines +","Humanressourcen +"];
-var rrhh=["Human Resources","recursos humanos","zasoby ludzkie","risorse umane","recursos humanos","ressources humaines","Humanressourcen"];
+var rrhh=["human Resources","recursos humanos","zasoby ludzkie","risorse umane","recursos humanos","ressources humaines","Humanressourcen"];
 var buscparttb=["search of work","buscar parte de trabajo","Poszukiwanie pracy","cerca di lavoro","busca de trabalho","la recherche de travail","Suche nach Arbeit"];
-var ordentrabajo=["work order","orden de trabajo","porządek pracy","ordine di lavoro","ordem de trabalho","demande de service","Arbeitsauftrag"];
 var codtjador=["Code worker","Codigo de trabajador","pracownik kod","Codice operaio","trabalhador código","travailleur code","Code Arbeiter"];
 var nroparte=["No. From","Nro. de parte","Nie. Od","No. Da","Não. De","Non. De","Nein. Aus"];
 var trabaj=["job","trabajo","praca","lavoro","trabalho","travail","Job"];
@@ -199,15 +191,14 @@ var nropart=["No. From","Nro. de parte ","Nie. Od","No. Da","Não. De","Non. De"
 var trabajad=["employee","trabajador","pracownik","dipendente","empregado","employé","Mitarbeiter"];
 var hsprev=["views pre hours","horas pre vistas","Widoki wstępnie godzin","Vista al orari prestabiliti","vê pré hora","views heures pré","Ansichten vor Stunden"];
 var pciohs=["Price hour","precio/ hora","Cena godziny","ora Prezzo","preço hora","Prix ​​heure","Preis Stunde"];
-var config_plus=["setting +","configuracion +","oprawa +","ambientazione +","contexto +","réglage +","Rahmen +"];
 var config=["setting","configuracion","oprawa","ambientazione","contexto","réglage","Rahmen"];
-var empleado=["employees","empleados","pracowników","dipendenti","funcionários","des employés","Angestellte"];
+var emplead=["employees","empleados","pracowników","dipendenti","funcionários","des employés","Angestellte"];
 var busctrabj=["Search worker","buscar trabajador","Szukaj pracownika","Cerca operaio","pesquisa trabalhador","Recherche travailleur","Suche Arbeiter"];
 var codtrabj=["worker code","codigo de trabajador ","Kod pracownik","codice operaio","código de trabalhador","Code de travail","Arbeiter Code"];
 var nrotraben=["Nro.de workers found","Nro.de trabajadores encontrados","Znaleziono pracownicy Nro.de","lavoratori Nro.de trovati","trabalhadores Nro.de encontrado","travailleurs Nro.de trouvé","Nro.de Arbeiter gefunden"];
 var reltrabj=["ratio of workers","relacion de trabajadores","Stosunek pracowników","rapporto tra lavoratori","proporção de trabalhadores","ratio des travailleurs","Verhältnis von Arbeitnehmern"];
-var etiquet=["labels","etiquetas","etykiety","etichette","etiquetas","Étiquettes","Etiketten"];
-var buscaart=["Search Product","buscar articulo","Wyszukiwarka produktów","Product Search","pesquisa de produto","Recherche de produits","Suchen Produkt"];
+var etiqu=["labels","etiquetas","etykiety","etichette","etiquetas","Étiquettes","Etiketten"];
+var buscart=["Search Product","buscar articulo","Wyszukiwarka produktów","Product Search","pesquisa de produto","Recherche de produits","Suchen Produkt"];
 var codbarra=["Barcode","codigo de barras","kod kreskowy","Codice a barre","Barcode","code à barre","Strichcode"];
 var descrip=["description","descripcion","opis","descrizione","Descrição","la description","Beschreibung"];
 var impuestos=["taxes","impuestos","podatki","le tasse","impostos","taxes","Steuern"];
@@ -216,11 +207,11 @@ var codimp=["tax code","codigo de impuesto","kod podatkowy","codice fiscale","C�
 var nroimpenc=["No. Of taxes found","Nro. de impuestos encontrados","Ilość znalezionych podatków","No. Di tasse trovato","No. de impostos declarados","Nombre dimpôts trouvé","Anzahl der Steuern gefunden"];
 var reimp=["tax ratio","relacion de impuestos","stosunek podatkowy","pressione fiscale","rácio fiscal","taux dimposition","Steuerquote"];
 var valor=["value","valor","wartość","valore","valor","évaluer","Wert"];
-var entbcaria=["Banks","entidades bancarias","podmioty bankowe","entità bancarie","entidades bancárias","entités bancaires","Bank-Unternehmen"];
+var entbcaria=["Bank entities","entidades bancarias","podmioty bankowe","entità bancarie","entidades bancárias","entités bancaires","Bank-Unternehmen"];
 var codentida=["entity code","codigo de entidad","Kod podmiot","codice entità","código de entidade","Code de lentité","Einheit Code"];
 var nroenbcen=["No. Of banks found","Nro. de entidades bancarias encontradas","Ilość znalezionych banków","No. Di banche trovato","Número de bancos encontrados","Nombre de banques trouvé","Anzahl der Banken gefunden"];
 var relentbc=["relationship banks","relacion de entidades bancarias","banki związek","le banche di relazione","bancos de relacionamento","banques de relations","Banken"];
-var ubica=["Locations","ubicaciones","Lokalizacje","sedi","Localizações","Emplacements","Standorte"];
+var ubicac=["Locations","ubicaciones","Lokalizacje","sedi","Localizações","Emplacements","Standorte"];
 var buscubic=["find Location","buscar ubicacion","znajdź lokalizację","trova posizione","encontrar Localização","trouver lemplacement","finden Ort"];
 var codubic=["location code","codigo de ubicacion","kod lokalizacji","codice di posizione","Código de localização","code de localisation","Ortscode"];
 var nroubenc=["No. Of locations found","Nro. de ubicaciones encontradas","Nie znaleziono lokalizacji","No. di posizioni trovato","Número de locais encontrados","Nombre de lieux trouvé","Anzahl der Stellen gefunden"];
@@ -228,7 +219,7 @@ var nvaubuc=["new location","nueva ubicacion","Nowa lokalizacja","nuova sede","n
 var relacubic=["locations relationship","relacion de ubicaciones","związek lokalizacje","rapporto posizioni","relação de locais","relation de lieux","Standorte Beziehung"];
 var inserubic=["insert location","insertar ubicacion ","wkładka lokalizacja","punto di inserimento","local de inserção","emplacement insert","Einsatzpass"];
 var cancelar=["cancel","cancelar","Anuluj","Annulla","cancelar","Annuler","stornieren"];
-var embala=["packaging","embalaje","opakowania","confezione","embalagem","emballage","Verpackung"];
+var embalaj=["packaging","embalaje","opakowania","confezione","embalagem","emballage","Verpackung"];
 var busembj=["Search packaging","buscar embalaje","opakowanie wyszukiwania","Ricerca imballaggio","pesquisa embalagem","emballage de recherche","Suchen Verpackung"];
 var codembal=["packaging code","codigo embalaje","Kod opakowania","codice di imballaggio","código da embalagem","Code demballage","Verpackungscode"];
 var nroemben=["Nro.de packages found","Nro.de embalajes encontrados","Znaleziono pakiety Nro.de","Pacchetti Nro.de trovati","pacotes Nro.de encontrado","Nro.de paquets trouvés","Nro.de Pakete gefunden"];
@@ -296,134 +287,3 @@ var nhnfqccbu=["there is no bill that meets the search criteria","no hay ninguna
 var nhnrqccbu=["There are currently no refer that meets the search criteria","no hay ningun remito que cumpla con los criterios de busqueda","Obecnie nie ma odnosić się, że spełnia kryteria wyszukiwania","Momento non ci sono riferiscono che soddisfa i criteri di ricerca","Atualmente não há referir que atenda aos critérios de pesquisa","Il ny a actuellement aucune réfèrent répondant aux critères de recherche","Es gibt keine Zeit verweisen, dass die Suchkriterien erfüllt"];
 var nhnmqccbu=["There are currently no movimiendo that meets the search criteria","no hay ningun movimiendo que cumpla con los criterios de busqueda","Obecnie nie ma movimiendo że spełnia kryteria wyszukiwania","Momento non ci sono movimiendo che soddisfa i criteri di ricerca","Atualmente não há movimiendo que atenda aos critérios de pesquisa","Il y a movimiendo actuellement aucun répondant aux critères de recherche","Es liegen noch keine movimiendo, dass die Suchkriterien erfüllt"];
 var nspeeebptpa=["You can not delete this bank because it has associated suppliers.","No se puede eliminar esta entidad bancaria porque tiene proveedores asociados.","Nie można usunąć tego banku, ponieważ ma powiązanych dostawców.","Non è possibile eliminare questa banca perché ha i fornitori associati.","Você não pode excluir este banco porque tem fornecedores associados.","Vous ne pouvez pas supprimer cette banque parce quelle a des fournisseurs associés.","Sie können diese Bank nicht löschen, da es damit verbundenen Lieferanten hat."];
-
-//language change function
-function langchange(idioma) {
-
-    $("#companyName").text(company_name[idioma]);
-    $("#password").text(password[idioma]);
-    $("#passwordValidation").text(passwordValidation[idioma]);
-    $("#emailValidation").text(emailValidation[idioma]);
-    $("#nombre").text(nombre[idioma]);
-    $("#member").text(member[idioma]);
-    $("#golo").text(golo[idioma]);
-    $("#sub").text(sub[idioma]);
-    $("#details").text(details[idioma]);
-    $("#signin").text(signin[idioma]);
-    $("#companyCode").text(companyCode[idioma]);
-    $("#noMember").text(noMember[idioma]);
-    $("#copiasRespaldo").text(copiasRespaldo[idioma]);
-    $("#hacerrespaldo").text(hacerrespaldo[idioma]);
-    $("#restaurarrespaldo").text(restaurarrespaldo[idioma]);
-    $("#AdminSeguridad").text(AdminSeguridad[idioma]);
-    $("#usuarios").text(usuarios[idioma]);
-    $("#roles").text(roles[idioma]);
-    $("#recursos").text(recursos[idioma]);
-    $("#ventas_plus").text(ventas_plus[idioma]);
-    $("#ventas").text(ventas[idioma]);
-    $("#venta_a_mostrador").text(venta_a_mostrador[idioma]);
-    $("#cliente").text(cliente[idioma]);
-    $("#factura,#factura_c").text(factura[idioma]);
-    $("#remitos,#remitos_c").text(remitos[idioma]);
-    $("#facturar_remitos,#facturar_remitos_c").text(facturar_remitos[idioma]);
-    $("#presupuestos").text(presupuestos[idioma]);
-    $("#produccion_plus").text(produccion_plus[idioma]);
-    $("#produccion").text(produccion[idioma]);
-    $("#tipodart").text(tipodart[idioma]);
-    $("#articu").text(articu[idioma]);
-    $("#metproc").text(metproc[idioma]);
-    $("#propru").text(propru[idioma]);
-    $("#batchprod").text(batchprod[idioma]);
-    $("#lotdprod").text(lotdprod[idioma]);
-    $("#estactra").text(estactra[idioma]);
-    $("#compras_plus").text(compras_plus[idioma]);
-    $("#compras").text(compras[idioma]);
-    $("#prov").text(prov[idioma]);
-    $("#contabilidad_plus").text(contabilidad_plus[idioma]);
-    $("#contabilidad").text(contabilidad[idioma]);
-    $("#cobros").text(cobros[idioma]);
-    $("#pagos").text(pagos[idioma]);
-    $("#cjadiaria").text(cjadiaria[idioma]);
-    $("#librodrio").text(librodrio[idioma]);
-    $("#forpago").text(forpago[idioma]);
-    $("#impuestos").text(impuestos[idioma]);
-    $("#entbcaria").text(entbcaria[idioma]);
-    $("#rrhh_plus").text(rrhh_plus[idioma]);
-    $("#rrhh").text(rrhh[idioma]);
-    $("#ordentrabajo").text(ordentrabajo[idioma]);
-    $("#empleado").text(empleado[idioma]);
-    $("#config_plus").text(config_plus[idioma]);
-    $("#config").text(config[idioma]);
-    $("#etiquet").text(etiquet[idioma]);
-    $("#ubica").text(ubica[idioma]);
-    $("#embala").text(embala[idioma]);
-    $("#factremi").text(factremi[idioma]);
-    $("#codremito").text(codremito[idioma]);
-    $("#fecha").text(fecha[idioma]);
-    $("#aceptar").text(aceptar[idioma]);
-    $("#cancelar").text(cancelar[idioma]);
-    $("#buscarremito").text(buscarremito[idioma]);
-    $("#cod_cliente").text(cod_cliente[idioma]);
-    $("#nomb").text(nomb[idioma]);
-    $("#nrorto,#nrorto_2").text(nrorto[idioma]);
-    $("#estado,#estado_2").text(estado[idioma]);
-    $("#todestad").text(todestad[idioma]);
-    $("#sinfact").text(sinfact[idioma]);
-    $("#facturados").text(facturados[idioma]);
-    $("#fechin").text(fechin[idioma]);
-    $("#fchafin").text(fchafin[idioma]);
-    $("#nueprov").text(nueprov[idioma]);
-    $("#nrortoenc").text(nrortoenc[idioma]);
-    $("#mostra").text(mostra[idioma]);
-    $("#relacrtos").text(relacrtos[idioma]);
-    $("#item").text(item[idioma]);
-    $("#importe").text(importe[idioma]);
-    $("#limp").text(limp[idioma]);
-    $("#busc").text(busc[idioma]);
-
-    
-   
-
-
-}
-
-$(document).ready(function() {
-    
-    //Set languages on load
-    var lang = localStorage.getItem('language');
-    if (lang == "") {
-        localStorage.setItem('language', '0');
-        $("#bandera_lengua").attr("src", "../img/english-language.svg");
-    }
-    if (lang == "1") {
-        $("#bandera_lengua").attr("src", "../img/spanish-language.svg");
-    }
-    if (lang == "2") {
-        $("#bandera_lengua").attr("src", "../img/polish-language.svg");
-    }
-    langchange(lang);
-
-    //change language
-    $("#espanol").click(function() {
-        $("#bandera_lengua").attr("src", "../img/spanish-language.svg");
-        $("#language").val("1");
-        localStorage.setItem('language', '1');
-        lang = localStorage.getItem('language');
-        langchange(lang);
-    });
-    $("#english").click(function() {
-        $("#bandera_lengua").attr("src", "../img/english-language.svg");
-        $("#language").val("0");
-        localStorage.setItem('language', '0');
-        lang = localStorage.getItem('language');
-        langchange(lang);
-    });
-    $("#polish").click(function() {
-        $("#bandera_lengua").attr("src", "../img/polish-language.svg");
-        $("#language").val("2");
-        localStorage.setItem('language', '2');
-        lang = localStorage.getItem('language');
-        langchange(lang);
-    });
-});
-    

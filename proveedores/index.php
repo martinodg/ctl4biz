@@ -1,6 +1,6 @@
 <?php
 require_once("../conectar7.php");
-require_once("../mysqli_result.php");
+require_once("../mysqli_result.php"); 
 $id_resource='1';
 $id_sresource='1';
 require_once("../racf/purePhpVerify.php");

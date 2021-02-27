@@ -1,3 +1,4 @@
+<? require_once("../conectar7.php"); ?>
 <html>
 <head>
 <title>Buscador de Clientes</title>
@@ -33,7 +34,7 @@ body {
 }
 -->
 </style></head>
-<? require_once("../conectar7.php"); ?>
+
 <body onLoad="buscar()">
 <form name="form1" id="form1" method="post" action="frame_clientes.php" target="frame_resultado" onSubmit="buscar()">
   <table width="95%" id="tabla_resultado" name="tabla_resultado" style="display:none" align="center">

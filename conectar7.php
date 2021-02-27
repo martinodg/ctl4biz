@@ -2,7 +2,7 @@
 if(session_id() == '') {
     session_start();
 }
-//ini_set('display_errors', '0');
+ini_set('display_errors', '0');
 $Servidor="database";
 $BaseDeDatos= $_SESSION["BaseDeDatos"];
 $Usuario= $_SESSION["Usuario_DB"];

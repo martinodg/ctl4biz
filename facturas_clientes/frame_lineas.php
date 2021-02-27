@@ -1,3 +1,7 @@
+<?
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
+?>
 <script>
 function eliminar_linea(codfacturatmp,numlinea,importe)
 {
@@ -20,8 +24,7 @@ function eliminar_linea(codfacturatmp,numlinea,importe)
 </script>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 <?php 
-require_once("../conectar7.php");
-require_once("../mysqli_result.php");
+
 $codfacturatmp=$_POST["codfacturatmp"];
 $retorno=0;
 if ($modif<>1) {
@@ -35,13 +38,22 @@ if ($modif<>1) {
 				$precio=$_POST["precio"];
 				$importe=$_POST["importe"];
 				$descuento=$_POST["descuento"];
+
+				//Ask for last codproceso and assing new value
+				$consultaprevia = "SELECT max(numlinea) as maximo FROM factulineatmp WHERE codfactura=$codfacturatmp";
+				$rs_consultaprevia=mysqli_query($conexion,$consultaprevia);
+				$codlineatmp=mysqli_result($rs_consultaprevia,0,"maximo");
+				//If the result of the query is null then this will be the rist entry on the table and 0 is assigned as previews entry code.
+				if ($codlineatmp=="") { $codlineatmp=0;} 
+				$codlineatmp++;
+				//insert the new entry on meta-process table.
 				
-				$sel_insert="INSERT INTO factulineatmp (codfactura,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
+				$sel_insert="INSERT INTO factulineatmp (codfactura,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','$codlineatmp','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
 				$rs_insert=mysqli_query($conexion,$sel_insert);
 		}
 }
 ?>
-<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
+<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1"> 
 <?php
 $sel_lineas="SELECT factulineatmp.*,articulos.*,familias.nombre as nombrefamilia FROM factulineatmp,articulos,familias WHERE factulineatmp.codfactura='$codfacturatmp' AND factulineatmp.codigo=articulos.codarticulo AND factulineatmp.codfamilia=articulos.codfamilia AND articulos.codfamilia=familias.codfamilia ORDER BY factulineatmp.numlinea ASC";
 $rs_lineas=mysqli_query($conexion,$sel_lineas);

@@ -1,6 +1,8 @@
 <?php
 header('Cache-Control: no-cache');
 header('Pragma: no-cache'); 
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
 ?>
 <html>
 <head>
@@ -20,8 +22,7 @@ function pon_prefijo(codfamilia,pref,nombre,precio,codarticulo) {
 
 </script>
 <? 
-require_once("../conectar7.php");
-require_once("../mysqli_result.php");
+
 $codproveedor=$_POST["codproveedor"];
 $familia=$_POST["cmbfamilia"];
 $referencia=$_POST["referencia"];

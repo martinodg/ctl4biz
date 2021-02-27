@@ -113,7 +113,7 @@
                 });
         }
 
-        function validararticulo(codigo, nombre, destino) {
+        function validararticulo(codigo, nombre, destino, undMedida) {
             if (destino == "materiaprima") {
                 $('#codarticulo').val(codigo);
                 $('#nombrearticulo').val(nombre);
@@ -124,6 +124,8 @@
             if (destino == "outcome") {
                 $('#codArticuloCreado').val(codigo);
                 $('#nombreArticuloCreado').val(nombre);
+                $('#umcantidadest').val(undMedida);
+                $('#umcantidadest').find('option[value="'+undMedida+'"]').attr('selected','selected');
                 $('#div_datos').empty();
             }
         }
@@ -182,7 +184,7 @@
                             <tr>
 
                                 <td width="20%">Codigo del meta-proceso <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15" readonly></td>
-                                <td width="40%">Producto Final <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Producto Intermedio</td>
+                                <td width="40%">Lote <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Batch</td>
                                 <td width="40%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
 
                             </tr>

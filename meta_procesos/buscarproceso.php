@@ -44,8 +44,8 @@ if($_POST) {
     echo '			</div>';
     
     
-	$consulta="SELECT metaprocesos.codproceso, metaprocesos.nombre, articulos.referencia, tipoproceso.nombre, estado.estado FROM metaprocesos, tipoproceso, articulos,  estado WHERE ".$donde."estado.codestado=metaprocesos.codstatus ORDER BY metaprocesos.nombre LIMIT ".$paginainicio.",10;";
-    /*echo $consulta;*/
+	$consulta="SELECT metaprocesos.codproceso, metaprocesos.nombre, articulos.descripcion, tipoproceso.nombre, estado.estado, metaprocesos.codstatus FROM metaprocesos, tipoproceso, articulos,  estado WHERE ".$donde."estado.codestado=metaprocesos.codstatus ORDER BY metaprocesos.nombre LIMIT ".$paginainicio.",10;";
+    //echo $consulta;
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
     $nr_procesos= mysqli_num_rows($rs_tabla);
@@ -61,7 +61,7 @@ if($_POST) {
                             echo '<td width="18%"><div align="center">'.$row[4].'</div></td>';
 
 							
-                                                        if ($row[7]<>1){
+                                                        if ($row[5]<>2){
                                                             echo '<td width="8%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';
                                                             echo '<td width="8%"><div align="center">&nbsp;</div></td>';
                                                         }else{

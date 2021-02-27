@@ -9,11 +9,11 @@ require_once("../conectar7.php");
     $donde="articulos.codfamilia=familias.codfamilia AND ";
     if ($codfamilia<>""){ $donde=$donde."articulos.codfamilia=".$codfamilia." AND ";}
     if ($codarticulo<>""){ $donde=$donde."articulos.codarticulo=".$codarticulo." AND ";}
-    if ($nombrearticulo<>""){ $donde=$donde."articulos.referencia LIKE '".$nombrearticulo."%' AND ";}
+    if ($nombrearticulo<>""){ $donde=$donde."articulos.descripcion LIKE '".$nombrearticulo."%' AND ";}
     
 
     
-	$consulta="SELECT articulos.codarticulo, familias.nombre, articulos.referencia, articulos.descripcion, articulos.stock FROM articulos, familias WHERE ".$donde."articulos.borrado=0 ORDER BY articulos.descripcion;";
+	$consulta="SELECT articulos.codarticulo, familias.nombre, articulos.referencia, articulos.descripcion, articulos.stock, articulos.codunidadmedida FROM articulos, familias WHERE ".$donde."articulos.borrado=0 ORDER BY articulos.descripcion;";
   /* echo $consulta; */
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
@@ -42,8 +42,8 @@ require_once("../conectar7.php");
 							echo '<td width="18%"><div align="center">'.$row[1].'</div></td>';
 							echo '<td width="16%"><div align="center">'.$row[2].'</div></td>';
 							echo '<td width="16%"><div align="center">'.$row[3].'</div></td>';
-							echo '<td width="16%"><div align="center">'.$row[4].'</div></td>';
-							echo '<td width="15%"><div align="center"><a href="#"><img src="../img/validacion.svg" width="16" height="16" border="0"  onClick="validararticulo(' .$row[0]. ',&apos;' .$row[2]. '&apos;,&apos;'.$destino.'&apos;)"></a></div></td>';
+                            echo '<td width="16%"><div align="center">'.$row[4].'</div></td>';
+							echo '<td width="15%"><div align="center"><a href="#"><img src="../img/validacion.svg" width="16" height="16" border="0"  onClick="validararticulo(' .$row[0]. ',&apos;' .$row[3]. '&apos;,&apos;'.$destino.'&apos;,' .$row[5]. ')"></a></div></td>';
 							
                               echo '</tr>';
                         echo '</table>';

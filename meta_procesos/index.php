@@ -82,6 +82,8 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 
           //Perform when DOM is full loaded
           $( document ).ready(function(){
+            window.scrollTop =0;
+
             
                 //Load procs data
                 buscaproceso();
