@@ -2,9 +2,6 @@
 ini_set('display_errors', '0');
 //echo ini_get('display_errors');
 
-
-
-
 require_once("../conectar.php"); 
 
 

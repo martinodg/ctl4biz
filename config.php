@@ -1,6 +1,6 @@
 <?php
-$Usuario="emoona1";  /*root*/
-$Password="emuna";
+$Usuario="root";  /*root*/
+$Password="d8d33qq0";
 $Servidor="database"; /*localhost*/
-$BaseDeDatos="ctl4biz";
+$BaseDeDatos="emoonDB";
 ?>

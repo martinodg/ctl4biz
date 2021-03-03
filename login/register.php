@@ -93,15 +93,12 @@ if (mysqli_num_rows($result)>0 ) {
     //load model DB on the new created DB  
     $sql4 = file_get_contents('../database'.$language.'.sql');
     $sql4 .= <<<APPND_TXT
-    
      -- Dumping data for table `intUsersTable`
      INSERT INTO intUsersTable (intUser_name,user_name,password,codstatus,borrado) VALUES ('$nombre','$emilio','$clave','4','0');
 
      -- Finish the trasacction with commit
      COMMIT;
-
-
-     APPND_TXT;
+APPND_TXT;
 
     $conn2 = new mysqli("$Servidor", "$DB_user", "$DB_password", "$id_company");
         if (mysqli_connect_errno()) { /* check connection */
