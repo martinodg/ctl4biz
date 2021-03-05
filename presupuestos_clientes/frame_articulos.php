@@ -44,8 +44,8 @@ function pon_prefijo(codfamilia,pref,nombre,precio,codarticulo) {
 <? if ($nrs>0) { ?>
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 		  <tr>
-			<td width="20%"><div align="center"><b>Familia</b></div></td>
-			<td width="20%"><div align="center"><b>Referencia</b></div></td>
+			<td width="20%"><div align="center"><b><span id="tipodart">Familia</span></b></div></td>
+			<td width="20%"><div align="center"><b><span id="referencia">Referencia</span></b></div></td>
 			<td width="40%"><div align="center"><b>Descripci&oacute;n</b></div></td>
 			<td width="10%"><div align="center"><b>Precio</b></div></td>
 			<td width="10%"><div align="center"></td>

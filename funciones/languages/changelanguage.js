@@ -36,6 +36,12 @@ var estado=["condition","estado ","stan: schorzenie","condizione","doença","ét
 var facturados=["invoiced","facturados","zafakturowanymi","fatturate","facturado","facturé","fakturieren"];
 var limp=["clean up","limpiar","sprzątać","pulire","limpar","nettoyer","Aufräumen"];
 var busc=["search","buscar","Szukaj","ricerca","procurar","chercher","Suche"];
+var eliminarRto=["Delete Delivery Note","Eliminar Remito","usuń dowód dostawy","eliminare la bolla di consegna","deletar nota de entrega","supprimer le bon de livraison","Lieferschein löschen"];
+var direccion=["address","direccion","adres","indirizzo","endereço","Adresse","adresse"];
+var iva=["TAX","IVA","VAT","IVA","IVA","TVA","Mehrwertsteuer"];
+var dto_pc=["discount %","descuento %","zniżka %","sconto %","desconto %","Réduction %","Rabatt %"];
+var baseImpo=["Tax base","Base imponible","Podstawa opodatkowania","Tassa base","Tributável","Base d'imposition","Steuerbemessungsgrundlage"];
+
 
 // To replace with correction from this point
 var inicio=["beginning","inicio","początek","inizio","começo","début","Anfang"];
@@ -80,7 +86,6 @@ var codart=["item code","codigo de articulo","kod produktu","codice articolo","C
 var refren=["reference","referencia","odniesienie","riferimento","referência","référence","Referenz"];
 var flia=["family","familia","rodzina","famiglia","família","famille","Familie"];
 var todflia=["Every family","todas las familias","Każda rodzina","ogni famiglia","cada família","chaque famille","Jede Familie"];
-var descri=["description","descripcion","opis","descrizione","Descrição","la description","Beschreibung"];
 var prov=["supplier","proveedor ","dostawca","fornitore","fornecedor","fournisseur","Lieferant"];
 var todprov=["all suppliers","todos los proveedores","wszyscy dostawcy","tutti i fornitori","todos os fornecedores","tous les fournisseurs","Alle Lieferanten"];
 var todubic=["All locations","todas las ubicaciones","Wszystkie lokacje","tutti i posti","Todos os locais","toutes les zones géographiques","alle Orte"];
@@ -118,11 +123,8 @@ var vtas=["sales","ventas","sprzedaż","i saldi","vendas","Ventes","Der Umsatz"]
 var vtasmost=["counter sales","ventas a mostrador","sprzedaży licznik","banco di vendita","balcão de vendas","comptoir de vente","Thekenverkauf"];
 var nvavta=["new sale","nueva venta","nowa sprzedaż","nuova vendita","nova venda","nouvelle vente","neuer Verkauf"];
 var codcli=["client code","codigo de cliente","kod klienta","codice client","Código do cliente","code client","Client-Code"];
-var iva=["iva","iva ","iva","iva","iva","iva","iva"];
 var codbarr=["Barcode","codigo de barras","kod kreskowy","Codice a barre","Barcode","code à barre","Strichcode"];
-var descr=["description","descripcion","opis","descrizione","Descrição","la description","Beschreibung"];
 var precio=["price","precio","Cena £","prezzo","preço","le prix","Preis"];
-var cant=["amount","cantidad ","ilość","quantità","quantia","quantité","Menge"];
 var dto=["discount (Extra)","descuento (Dto)","zniżka (Extra)","sconto (Extra)","desconto (Extra)","Réduction (Extra)","Rabatt (Extra)"];
 var importe=["amount","importe","ilość","quantità","quantia","quantité","Menge"];
 var subtotal=["Subtotal","sub total ","Razem","totale parziale","Subtotal","Total","Zwischensumme"];
@@ -239,7 +241,6 @@ var nhneqcclc=["There are currently no packaging that meets the search criteria"
 var ctabcaria=["Bank account","cuenta bancaria","konto bankowe","conto bancario","conta bancária","compte bancaire","Bankkonto"];
 var correlec=["email","correo electronico","e-mail","e-mail","o email","e-mail","Email"];
 var dirrcweb=["Web address","direccion web","adres internetowy","indirizzo Web","endereço da web","Adresse web","Webadresse"];
-var referenc=["reference","referencia","odniesienie","riferimento","referência","référence","Referenz"];
 var flia=["family","familia ","rodzina","famiglia","família","famille","Familie"];
 var selecflia=["Select a family","selecciona una familia","Wybierz rodzinę","Selezionare una famiglia","Selecione uma família","Sélectionnez une famille","Wählen Sie eine Familie"];
 var prodfinal=["Final product","producto final","Produkt finalny","Prodotto finale","Produto final","Produit final","Endprodukt"];
@@ -380,8 +381,19 @@ function langchange(idioma) {
     $("#importe").text(importe[idioma]);
     $("#limp").text(limp[idioma]);
     $("#busc").text(busc[idioma]);
-
+    $("#eliminarRto").text(eliminarRto[idioma]);
+    $("#direccion").text(direccion[idioma]);
+    $("#iva,#iva2").text(iva[idioma]);
+    $("#descrip").text(descrip[idioma]);
+    $("#cant").text(cant[idioma]);
+    $("#precio").text(precio[idioma]);
+    $("#dto_pc").text(dto_pc[idioma]);
+    $("#baseImpo").text(baseImpo[idioma]);
+    $("#total").text(total[idioma]);
+    $("#referencia").text(referencia[idioma]);
     
+
+  
    
 
 
