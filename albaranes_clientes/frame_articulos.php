@@ -42,10 +42,10 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
 <? if ($nrs>0) { ?>
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 		  <tr>
-			<td width="20%"><div align="center"><b>Familia</b></div></td>
-			<td width="20%"><div align="center"><b>Referencia</b></div></td>
-			<td width="40%"><div align="center"><b>Descripci&oacute;n</b></div></td>
-			<td width="10%"><div align="center"><b>Precio</b></div></td>
+			<td width="20%"><div align="center"><b><span id="tflia">Familia</span></b></div></td>
+              <td width="20%"><div align="center"><b><span id="trefren">Referencia</span></b></div></td>
+              <td width="40%"><div align="center"><b><span id="tdescri">Descripci&oacute;n</span></b></div></td>
+			<td width="10%"><div align="center"><b><span id="tprecio">Precio</span></b></div></td>
 			<td width="10%"><div align="center"></td>
 		  </tr>
 		<?php
@@ -64,7 +64,8 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
         <div align="left"><?php echo $referencia;?></div></td>
 					<td><div align="center"><?php echo $descripcion;?></div></td>
 					<td><div align="center"><?php echo $precio;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $referencia?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>',<? echo $codarticulo?>)"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
+                     <!-- @todo revisar si se busca  traducir los titles , si se los usa como guia -->
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $referencia?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>',<? echo $codarticulo?>)"><img src="../img/convertir.svg" width="16px" height="16px" border="0" data-ttitle="tsel" title="Seleccionar"></a></div></td>
 				</tr>
 			<?php }
 		?>

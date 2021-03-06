@@ -224,40 +224,40 @@ if ($accion=="convertir") {
 						<? if ($minimo==1) { ?>
 						<tr>
 							<td width="15%"></td>
-							<td width="85%" colspan="2" class="mensajeminimo">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo:<br><?php echo $mensaje_minimo;?></td>
+                            <td width="85%" colspan="2" class="mensajeminimo" ><span id="artbajomin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo:</span><br><?php echo $mensaje_minimo;?></td>
 					    </tr>
 						<? } 
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'"; 
 						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
-							<td width="15%">Cliente</td>
+                            <td width="15%"><span id="cliente">Cliente</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
-							<td width="15%">NIF / CIF</td>
+                            <td width="15%"><span id="nip">NIF / CIF</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nif");?></td>
 					    </tr>
 						<tr>
-						  <td>Direcci&oacute;n</td>
+                            <td><span id="direccion">Direcci&oacute;n</span></td>
 						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 					  <? if ($accion=="convertir") { ?>
 						<tr>
-						  <td>C&oacute;digo de factura</td>
+                            <td><span id="codfactura">C&oacute;digo de factura</span></td>
 						  <td colspan="2"><?php echo $codfactura?></td>
 					  </tr>
 					  <? } else { ?>
 					  	<tr>
-						  <td>C&oacute;digo de albar&aacute;n</td>
+						  <td id="codalbaran">C&oacute;digo de albar&aacute;n</td>
 						  <td colspan="2"><?php echo $codalbaran?></td>
 					  </tr>
 					  <? } ?>
 					  <tr>
-						  <td>Fecha</td>
+                          <td><span id="fecha">Fecha</span></td>
 						  <td colspan="2"><?php echo implota($fecha)?></td>
 					  </tr>
 					  <tr>
-						  <td>IVA</td>
+                          <td><span id="iva">IVA</span></td>
 						  <td colspan="2"><?php echo $iva?> %</td>
 					  </tr>
 					  <tr>
@@ -267,13 +267,13 @@ if ($accion=="convertir") {
 				  </table>
 					 <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="5%">ITEM</td>
-							<td width="25%">REFERENCIA</td>
-							<td width="30%">DESCRIPCION</td>
-							<td width="10%">CANTIDAD</td>
-							<td width="10%">PRECIO</td>
-							<td width="10%">DCTO %</td>
-							<td width="10%">IMPORTE</td>
+							<td width="5%"><span id="item">ITEM</span></td>
+                            <td width="25%"><span id="referenc">REFERENCIA</span></td>
+                            <td width="30%"><span id="descri">DESCRIPCION</span></td>
+                            <td width="10%"><span id="cant">CANTIDAD</span></td>
+                            <td width="10%"><span id="precio">PRECIO</span></td>
+                            <td width="10%"><span id="dctop">DCTO %</span></td>
+							<td width="10%"><span id="importe">IMPORTE</span></td>
 						</tr>
 					</table>
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
@@ -312,26 +312,26 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 					<div id="frmBusqueda">
 					<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 						<tr>
-							<td width="15%">Base imponible</td>
+                            <td width="15%"><span id="baseimp">Base imponible</span></td>
 							<td width="15%"><?php echo number_format($baseimponible,2);?> &#8364;</td>
 						</tr>
 						<tr>
-							<td width="15%">IVA</td>
+							<td width="15%"><span id="iva">IVA</span></td>
 							<td width="15%"><?php echo number_format($baseimpuestos,2);?> &#8364;</td>
 						</tr>
 						<tr>
-							<td width="15%">Total</td>
+                            <td width="15%"><span id="total">Total</span></td>
 							<td width="15%"><?php echo $preciototal?> &#8364;</td>
 						</tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
 					<div align="center">
-					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="aceptar">Aceptar</span> </button>
 					  <? if ($accion=="convertir") { ?>
-						<button type="button" id="btnimprimir"  onClick="imprimirf(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
+						<button type="button" id="btnimprimir"  onClick="imprimirf(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="impr">Imprimir</span> </button>
 					   <? } else { ?>
-						<button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codalbaran?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
+						<button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codalbaran?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="impr" >Imprimir</span> </button>
 					   <? } ?>
 				        </div>
 					</div>

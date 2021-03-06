@@ -51,7 +51,8 @@ body {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
+       <!-- @todo el title de la imagen creo que va vacio -->
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

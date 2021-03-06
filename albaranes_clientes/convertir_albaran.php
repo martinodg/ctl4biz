@@ -50,12 +50,12 @@ $fecha=implota($fecha);
 				<form id="formulario" name="formulario" method="post" action="guardar_albaran.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="14%"><span id="codremito">C&oacute;digo de albar&aacute;n</span></td>
+							<td width="14%"><span id="tcodalbaran">C&oacute;digo de albar&aacute;n</span></td>
 						    <td width="36%"><? echo $codalbaran?></td>
 				            <td width="50%"><ul id="lista-errores"></ul></td>
 						</tr>
 						<tr>
-							<td width="14%"><span id="fecha">Fecha</span></td>
+							<td width="14%"><span id="tfecha">Fecha</span></td>
 						    <td width="36%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $fecha?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
                             <script type="text/javascript">
                                     Calendar.setup(
@@ -72,9 +72,9 @@ $fecha=implota($fecha);
 			  </div>
 				<div id="botonBusqueda">
 					<input type="hidden" name="id" id="id" value="">
-					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="aceptar">Aceptar</span> </button>
-					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="limpiar">Limpiar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="cancelar">Cancelar</span> </button>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimp">Limpiar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 					<input id="accion" name="accion" value="convertir" type="hidden">
 					<input id="codalbaran" name="codalbaran" value="<? echo $codalbaran?>" type="hidden">
 			  </div>

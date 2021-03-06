@@ -35,7 +35,8 @@ require_once("../mysqli_result.php");
 	} else { ?>
     <!-- @todo revisar si hay que cargar en este archivo las traducciones  -->
 	<script>
-	alert ();
+    //alert ("No existe ningun proveedor con ese codigo");
+    talert('sinproveedor');
 	limpiar();
 	</script>
 	<? }

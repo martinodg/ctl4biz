@@ -79,13 +79,13 @@ $iva=mysqli_result($rs_query,0,"iva");
 				  </table>
 					 <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="5%"><span id="item">ITEM</span></td>
-							<td width="25%"><span id="flia">FAMILIA</span></td>
-                            <td width="30%"><span id="descri">DESCRIPCION</span></td>
-                            <td width="10%"><span id="cant">CANTIDAD</span></td>
+							<td width="5%"><span id="titem">ITEM</span></td>
+							<td width="25%"><span id="tflia">FAMILIA</span></td>
+                            <td width="30%"><span id="tdescri">DESCRIPCION</span></td>
+                            <td width="10%"><span id="tcant">CANTIDAD</span></td>
                             <td width="10%"><span id="precio">PRECIO</span></td>
                             <td width="10%"><span id="dctop">DCTO %</span></td>
-                            <td width="10%"><span id="flia">IMPORTE</span></td>
+                            <td width="10%"><span id="timporte">IMPORTE</span></td>
 						</tr>
 					</table>
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">

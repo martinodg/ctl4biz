@@ -31,9 +31,9 @@ function pon_prefijo(pref,nombre) {
 <? if ($nrs>0) { ?>
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 		  <tr>
-			<td width="10%"><div align="center"><b>Codigo</b></div></td>
-			<td width="60%"><div align="center"><b>Cliente</b></div></td>
-			<td width="20%"><div align="center"><b>NIF/CIF</b></div></td>
+			<td width="10%"><div align="center"><b><span id="codigo">Codigo</span></b></div></td>
+              <td width="60%"><div align="center"><b><span id="cliente">Cliente</span></b></div></td>
+			<td width="20%"><div align="center"><b><span id="nip">NIF/CIF</b></div></td>
 			<td width="10%"><div align="center"></td>
 		  </tr>
 		<?php
@@ -48,7 +48,8 @@ function pon_prefijo(pref,nombre) {
 					<td>
         <div align="left"><?php echo utf8_encode($nombre);?></div></td>
 					<td><div align="center"><?php echo $nif;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
+                    <!-- @todo revisar si se busca  traducir los titles , si se los usa como guia -->
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0"  data-ttitle="tsel" title="Seleccionar"></a></div></td>
 				</tr>
 			<?php }
 		?>

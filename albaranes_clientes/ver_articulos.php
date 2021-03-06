@@ -52,13 +52,13 @@ body {
  <div align="center">
 	<table class="fuente8" align="center" width="95%">
      <tr>
-	    <td width="36%">Familia:</td>
+         <td width="36%"><span id="tflia">Familia:</span></td>
 	    <td width="64%">
 		  <select id="cmbfamilia" name="cmbfamilia" class="comboGrande">
 		  <?
 		    $consultafamilia="select * from familias where borrado=0 order by nombre ASC";
 			$queryfamilia=mysqli_query($conexion,$consultafamilia);
-			?><option value=0>Todos los articulos</option><?
+          ?><option value=0> <span id="ttart">Todos los articulos</span></option><?
 			while ($rowfamilia=mysqli_fetch_row($queryfamilia))
 			  { 
 			  	if ($anterior==$rowfamilia[0]) { ?>
@@ -70,12 +70,12 @@ body {
 		  ?>
 	    </select>		</td></tr>
 		<tr>
-		<td width="36%" class="busqueda">Referencia:</td>
+		<td width="36%" class="busqueda"><span>Referencia</span>:</td>
 	    <td width="64%"><input name="referencia" type="text" id="referencia" size="20" class="cajaMedia"></td></tr>
 		<tr><td width="36%" class="busqueda">Descripci&oacute;n:</td>
 	    <td width="64%"><input name="descripcion" type="text" id="descripcion" size="50" class="cajaGrande"></td></tr>
 		<tr>
-		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="busc">Buscar</span> </button></div></td>
+		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbusc">Buscar</span> </button></div></td>
 	  </tr>
 </table>
 </div>
@@ -92,7 +92,7 @@ body {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

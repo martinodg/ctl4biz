@@ -4,7 +4,8 @@ header('Pragma: no-cache');
 ?>
 <html>
 <head>
-<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 </head>
 <script language="javascript">
 
@@ -34,8 +35,8 @@ require_once("../mysqli_result.php");
 	} else { ?>
     <!-- @todo Revisar si el js llega aca para levantar la variable -->
 	<script>
-	alert ("No existe ningun cliente con ese codigo");
-	limpiar();
+        talert(msgscliente);
+	    limpiar();
 	</script>
 	<? }
 ?>
