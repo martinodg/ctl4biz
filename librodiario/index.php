@@ -135,14 +135,14 @@ if ($cadena_busqueda<>"") {
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="5%">ITEM</td>
+							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="10%">FECHA</td>
 							<td width="10%">C/V</td>							
 							<td width="10%">FACTURA</td>
 							<td width="20%">COMERCIAL</td>
 							<td width="20%">FORMA PAGO</td>
 							<td width="15%">NUM. DOC.</td>
-							<td width="10%">IMPORTE</td>
+							<td width="10%"><span id="timporte">IMPORTE</span></td>
 						</tr>
 				</table>
 				</div>

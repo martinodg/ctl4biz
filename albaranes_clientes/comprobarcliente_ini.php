@@ -35,7 +35,7 @@ require_once("../mysqli_result.php");
 	} else { ?>
     <!-- @todo Revisar si el js llega aca para levantar la variable -->
 	<script>
-        talert(msgscliente);
+        talert('msgscliente');
 	    limpiar();
 	</script>
 	<? }

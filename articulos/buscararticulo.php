@@ -26,7 +26,7 @@ require_once("../conectar7.php");
 			echo '				<td width="16%">CODIGO</td>';
 			echo '				<td width="18%">Tipo</td>';
                         echo '                                <td width="16%">Nombre</td>';
-                        echo '                               <td width="16%">Descripcion</td>';
+                        echo '                               <td width="16%"><span id="descri">DESCRIPCION</span></td>';
                          echo '                               <td width="16%">Stock</td>';
 			echo '				<td width="15%">Selecciona</td>';
 							

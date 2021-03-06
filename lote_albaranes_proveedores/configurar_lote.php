@@ -94,7 +94,7 @@ $hoy=date("d/m/Y");
 							<td width="15%"></td>
 						</tr>
 						<tr>
-							<td width="15%">IVA</td>
+							<td width="15%"><span id="tiva">IVA</span></td>
 						    <td width="15%"><input type="text" name="Ziva" id="Ziva" value="16" class="cajaPequena"> %</td>
 				            <td width="20%"></td>
 							<td width="15%"></td>
@@ -122,7 +122,7 @@ $hoy=date("d/m/Y");
 			  </div>
 				<div id="botonBusqueda">
 					<input type="hidden" name="id" id="id" value="">
-					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
 
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 					<input id="accion" name="accion" value="convertir" type="hidden">

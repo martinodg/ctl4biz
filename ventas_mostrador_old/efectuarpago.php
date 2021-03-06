@@ -83,7 +83,7 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 						    <td><input NAME="nombre_cliente" type="text" class="cajaGrande" id="nombre_cliente" size="45" maxlength="45" value="<? echo $nombre_cliente?>" readonly></td>
 			            </tr>
 						<tr>
-							<td>Importe</td>
+							<td><span id="timporte">IMPORTE</span></td>
 						    <td><input NAME="importe" type="text" class="cajaPequena" id="importe" size="10" maxlength="10" value="<? echo $importe?>" readonly> &#8364;</td>
 			            </tr>
 						<tr>
@@ -143,7 +143,7 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 			  </div>
 			  <br><br>
 			  <div align="center">
-			  					<button type="button" id="btnaceptar" onClick="enviar()"onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+			  					<button type="button" id="btnaceptar" onClick="enviar()"onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
 
 					<button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir Tkt</span> </button>
 					<button type="button" id="btncancelar"  onClick="window.close()"  onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>

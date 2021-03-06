@@ -219,9 +219,9 @@ if ($cadena_busqueda<>"") {
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="4%">ITEM</td>
+							<td width="4%"><span id="titem">ITEM</span></td>
 							<td width="5%">CODIGO</td>
-							<td width="19%">REFERENCIA</td>
+							<td width="19%"><span id="referenc">REFERENCIA</span></td>
 							<td width="25%">DESCRIPCION </td>
 							<td width="11%">FAMILIA</td>
 							<td width="11%">PRECIO T.</td>

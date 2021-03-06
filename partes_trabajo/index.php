@@ -187,7 +187,7 @@ foreach ($estados_partestrabajo as $k => $v) {
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="8%">ITEM</td>
+							<td width="8%"><span id="titem">ITEM</span></td>
 						<td width="8%">N. PARTE</td>
 							<td width="12%">TRABAJADOR </td>
 <td width="18%">TRABAJO </td>

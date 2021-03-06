@@ -259,7 +259,7 @@ if ($cadena_busqueda<>"") {
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="10%"><input name="todos" type="checkbox" value="todos" onClick="activartodos()"></td>
-							<td width="15%">ITEM</td>
+							<td width="15%"><span id="titem">ITEM</span></td>
 							<td width="25%">N. ALBARAN</td>
 							<td width="25%">IMPORTE </td>							
 							<td width="25%">FECHA</td>							

@@ -30,7 +30,7 @@ require_once("../conectar7.php");
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="8%">CODIGO</td>';
     echo '						<td width="38%">ARTICULO</td>';
-    echo '						<td width="6%">CANTIDAD</td>';
+    echo '						<td width="6%"><span id="cant">CANTIDAD</span></td>';
     echo '						<td width="6%">FECHA DE INICIO</td>';
     echo '						<td width="6%">HORA DE INICIO</td>';
     echo '                                                <td width="6%">FECHA DE FIN</td>';

@@ -31,7 +31,7 @@ require_once("../conectar7.php");
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="5%">CODIGO</td>';
     echo '						<td width="24%">NOMBRE DEL PROCESO</td>';
-    echo '						<td width="5%">CANTIDAD</td>';
+    echo '						<td width="5%"><span id="cant">CANTIDAD</span></td>';
     echo '						<td width="5%">UN. DE MEDIDA</td>';
     echo '						<td width="5%">FECHA DE INICIO</td>';
     echo '						<td width="5%">HORA DE INICIO</td>';

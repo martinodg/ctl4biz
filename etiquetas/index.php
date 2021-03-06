@@ -54,7 +54,7 @@ require_once("../racf/purePhpVerify.php");
 				    <td rowspan="2" valign="bottom"><div align="center"><img src="../img/codigobarras.jpg" border="1" align="absbottom" onClick="imprimir()" onMouseOver="style.cursor=cursor"></div></td>
 				  </tr>
 				  <tr>
-					<td>Descripcion</td>
+					<td><span id="descri">descripcion</span></td>
 					<td><input NAME="descripcion" type="text" class="cajaGrande" id="descripcion" size="50" maxlength="50" readonly></td>
 				  </tr>
 				</table>

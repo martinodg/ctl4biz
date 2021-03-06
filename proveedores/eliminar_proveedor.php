@@ -117,7 +117,7 @@ $rs_query=mysqli_query($conexion,$query);
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="aceptar(<? echo $codproveedor?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="nuevolote" /> <span>Aceptar</span> </button>
+					<button type="button" id="btnaceptar" onClick="aceptar(<? echo $codproveedor?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="nuevolote" /> <span id="taceptar">Aceptar</span> </button>
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 			  </div>
 			 </div>

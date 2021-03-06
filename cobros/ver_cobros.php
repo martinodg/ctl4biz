@@ -143,7 +143,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					        <td width="50%" rowspan="14" align="left" valign="top"><ul id="lista-errores"></ul></td>
 						</tr>
 						<tr>
-							<td width="15%">Importe</td>
+							<td width="15%"><span id="timporte">IMPORTE</span></td>
 						    <td width="35%"><input id="Rimporte" type="text" class="cajaPequena" NAME="Rimporte" maxlength="12"> &#8364;</td>
 					        <td width="50%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
@@ -182,7 +182,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					<input type="hidden" name="accion" id="accion" value="insertar">
 					<input type="hidden" name="codcliente" id="codcliente" value="<? echo $codcliente?>">
 					<input type="hidden" name="codfactura" id="codfactura" value="<? echo $codfactura?>">
-					<button type="button" id="btnaceptar" onClick="javascript:validar(formulario,true);" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					<button type="button" id="btnaceptar" onClick="javascript:validar(formulario,true);" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
 			  </div>
 			  </form>
@@ -193,7 +193,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 				<div id="frmResultado2">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="10%">ITEM</td>
+							<td width="10%"><span id="titem">ITEM</span></td>
 							<td width="12%">FECHA</td>
 							<td width="12%">IMPORTE </td>							
 							<td width="20%">FORMA PAGO</td>

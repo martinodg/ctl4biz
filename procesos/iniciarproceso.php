@@ -46,7 +46,7 @@ echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=
 echo '					<tr class="cabeceraTabla">';
 echo '						<td width="8%">CODIGO de Proceso</td>';
 echo '						<td width="38%">NOMBRE de Articulo</td>';
-echo '						<td width="38%">CANTIDAD</td>';
+echo '						<td width="38%"><span id="cant">CANTIDAD</span></td>';
 echo '						<td width="6%">FECHA DE INICIO</td>';
 echo '						<td width="6%">HORA DE INICIO</td>';
 echo '						<td width="5%">&nbsp;</td>';
@@ -73,7 +73,7 @@ while ($nr_batcholoteactivos > 0) {
    }
    echo ' <div id="botonBusqueda">';
    echo '<button type="button" id="btnnuevo" onMouseOver="style.cursor=cursor"> <img src="../img/new'.$elemento.'.svg" alt="nuevo'.$elemento.'" /> <span>Nuevo '.$elemento.'</span> </button>';
-   echo '<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="nuevolote" /> <span>Aceptar</span> </button>';
+   echo '<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="nuevolote" /> <span id="taceptar">Aceptar</span> </button>';
    echo '</div>';    
    echo "<div class=\"header\">ATENCION: El proceso ha sido inicializado exitosamente con el codigo '$codproceso'!!</div>";
         echo mysqli_error($conexion) ;

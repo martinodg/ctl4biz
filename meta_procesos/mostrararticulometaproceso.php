@@ -23,7 +23,7 @@ require_once("../conectar7.php");
                         echo '                                <td width="16%">Linea</td>';
                         echo '                               <td width="8%">Codigo del Articulo</td>';
                          echo '                               <td width="16%">Nombre del Articulo</td>';
-                         echo '                               <td width="8%">Cantidad</td>';
+                         echo '                               <td width="8%"><span id="cant">CANTIDAD</span></td>';
 			echo '				<td width="15%">Modificar</td>';
 							
 			echo '			</tr>';

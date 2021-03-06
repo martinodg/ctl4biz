@@ -212,7 +212,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					  }
 					);
 		</script></td>
-				            <td width="3%">IVA</td>
+				            <td width="3%"><span id="tiva">IVA</span></td>
 				            <td width="64%"><input NAME="iva" type="text" class="cajaMinima" id="iva" size="5" maxlength="5" value="16" onChange="cambio_iva()"> %</td>
 						</tr>
 					</table>										
@@ -236,18 +236,18 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					<td colspan="10" valign="middle"><input NAME="codArticulo" type="text" class="cajaMedia" id="codArticulo" size="15" maxlength="15"> </td>
 				  </tr>
 				  <tr>
-					<td>Descripcion</td>
+					<td><span id="descri">descripcion</span></td>
 					<td width="17%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
 					<td width="5%">Precio</td>
 					<td width="10%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
-					<td width="5%">Cantidad</td>
+					<td width="5%"><span id="cant">CANTIDAD</span></td>
 					<td width="10%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()">
 					<select id="umnstock" class="cboUnidadmedida" name="umnstock" onChange="actualizar_importe()" >
                                 
 								</select></td>
 					<td width="4%">Dcto.</td>
 					<td width="8%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
-					<td width="5%">Importe</td>
+					<td width="5%"><span id="timporte">IMPORTE</span></td>
 					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" readonly> &#8364;</td>
 					<td width="15%"><button type="button" id="btnagregar" onClick="validar()" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button></td>
 				  </tr>
@@ -257,14 +257,14 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				<div id="frmBusqueda">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="5%">ITEM</td>
+							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="12%">FAMILIA</td>
-							<td width="14%">REFERENCIA</td>
-							<td width="33%">DESCRIPCION</td>
-							<td width="8%">CANTIDAD</td>
+							<td width="14%"><span id="referenc">REFERENCIA</span></td>
+							<td width="33%"><span id="descri">descripcion</span></td>
+							<td width="8%"><span id="cant">CANTIDAD</span></td>
 							<td width="8%">PRECIO</td>
-							<td width="7%">DCTO %</td>
-							<td width="8%">IMPORTE</td>
+							<td width="7%"><span id="tdctop">DCTO %</span></td>
+							<td width="8%"><span id="timporte">IMPORTE</span></td>
 							<td width="3%">&nbsp;</td>
 						</tr>
 				</table>
@@ -283,7 +283,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 		        &#8364;</div></td>
 			  </tr>
 			  <tr>
-				<td class="busqueda">IVA</td>
+				<td class="busqueda"><span id="tiva">IVA</span></td>
 				<td align="right"><div align="center">
 			      <input class="cajaTotales" name="baseimpuestos" type="text" id="baseimpuestos" size="12" align="right" value=0 readonly> 
 		        &#8364;</div></td>
@@ -298,7 +298,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 			  </div>
 				<div id="botonBusqueda">					
 				  <div align="center">
-				  	<button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+				  	<button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
                		<button type="button" id="btncancelar" onClick="cancelar()"onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codfacturatmp" name="codfacturatmp" value="<? echo $codfacturatmp?>" type="hidden">	

@@ -197,7 +197,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 </div>
 <div id="botonBusqueda">
 <div align="center">
-					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span>Aceptar</span> </button>
+					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
 <button type="button" id="btnimprimir"  onClick="window.print();" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
 				        </div>
 					</div>

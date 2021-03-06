@@ -232,13 +232,13 @@ $codalbarantmp=mysqli_insert_id($conexion);
 				<div id="frmBusqueda">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-                            <td width="5%"><span id="item">ITEM</span></td>
-							<td width="26%"><span id="referenc">REFERENCIA</span></td>
-                            <td width="35%"><span id="descri">DESCRIPCION</span></td>
-                            <td width="8%"><span id="cant">CANTIDAD</span></td>
-                            <td width="8%"><span id="precio">PRECIO</span></td>
-                            <td width="7%"><span id="dctop">DCTO %</span></td>
-                            <td width="8%"><span id="importe">IMPORTE</span></td>
+                            <td width="5%"><span id="titem">ITEM</span></td>
+							<td width="26%"><span id="treferenc">REFERENCIA</span></td>
+                            <td width="35%"><span id="tdescri">DESCRIPCION</span></td>
+                            <td width="8%"><span id="tcant">CANTIDAD</span></td>
+                            <td width="8%"><span id="tprecio">PRECIO</span></td>
+                            <td width="7%"><span id="tdctop">DCTO %</span></td>
+                            <td width="8%"><span id="timporte">IMPORTE</span></td>
 							<td width="3%">&nbsp;</td>
 						</tr>
 				</table>

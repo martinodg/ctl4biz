@@ -140,7 +140,7 @@ $hoy=date("d/m/Y");
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="6%">ITEM</td>
+							<td width="6%"><span id="titem">ITEM</span></td>
 							<td width="50%">DENOMINACION</td>
 							<td width="16">FECHA </td>
 							<td width="16%">HORA</td>

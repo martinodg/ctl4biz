@@ -88,7 +88,7 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td>Total</td>
+						  <td><span id="ttotal">Total</span></td>
 						  <td><? echo number_format($total,2,",",".")?> &#8364;</td>
 						  <td></td>
 						  <td>&nbsp;</td>
@@ -109,7 +109,7 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td>Total</td>
+						  <td><span id="ttotal">Total</span></td>
 						  <td><? echo number_format($total,2,",",".")?> &#8364;</td>
 						  <td></td>
 						  <td>&nbsp;</td>

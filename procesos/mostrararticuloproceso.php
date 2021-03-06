@@ -21,7 +21,7 @@ require_once("../conectar7.php");
 			echo '			<tr class="cabeceraTabla">';
 			echo '				<td width="15%"> Materia Prima # </td>';
 			echo '				<td width="45%">Nombre de la Materia Prima</td>';
-                        echo '                                <td width="25%">Cantidad</td>';
+                        echo '                                <td width="25%"><span id="cant">CANTIDAD</span></td>';
 			echo '				<td width="15%">Modificar</td>';
 							
 			echo '			</tr>';

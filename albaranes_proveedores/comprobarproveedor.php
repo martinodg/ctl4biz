@@ -4,7 +4,8 @@ header('Pragma: no-cache');
 ?>
 <html>
 <head>
-<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 </head>
 <script language="javascript">
 
@@ -35,7 +36,8 @@ require_once("../mysqli_result.php");
 		<? 
 	} else { ?>
 	<script>
-	alert ("No existe ningun proveedor con ese codigo");
+	//alert ("No existe ningun proveedor con ese codigo");
+    talert('sinproveedor');
 	limpiar();
 	</script>
 	<? }

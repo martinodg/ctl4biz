@@ -192,10 +192,10 @@ if ($cadena_busqueda<>"") {
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="8%">ITEM</td>
+							<td width="8%"><span id="titem">ITEM</span></td>
 							<td width="8%">N. ALBARAN</td>
 							<td width="29%">PROVEEDORES</td>
-							<td width="10%">IMPORTE</td>
+							<td width="10%"><span id="timporte">IMPORTE</span></td>
 							<td width="10%">FECHA</td>
 							<td width="10%">ESTADO</td>
 							<td width="5%">&nbsp;</td>

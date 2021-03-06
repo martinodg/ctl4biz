@@ -82,7 +82,7 @@ var refren=["reference","referencia","odniesienie","riferimento","referência","
 var todflia=["Every family","todas las familias","Każda rodzina","ogni famiglia","cada família","chaque famille","Jede Familie"];
 var descri=["description","descripción","opis","descrizione","Descrição","la description","Beschreibung"];
 //@todo revisar repetida var descrip=["description","descripcion","opis","descrizione","Descrição","la description","Beschreibung"];
-var prov=["supplier","proveedor ","dostawca","fornitore","fornecedor","fournisseur","Lieferant"];
+var prov=["supplier","proveedor","dostawca","fornitore","fornecedor","fournisseur","Lieferant"];
 var todprov=["all suppliers","todos los proveedores","wszyscy dostawcy","tutti i fornitori","todos os fornecedores","tous les fournisseurs","Alle Lieferanten"];
 var todubic=["All locations","todas las ubicaciones","Wszystkie lokacje","tutti i posti","Todos os locais","toutes les zones géographiques","alle Orte"];
 var preciot=["Price T.","precio T.","Cena T.","Prezzo T.","Preço T.","Prix ​​T.","Preis T."];
@@ -302,7 +302,7 @@ var nspeeebptpa=["You can not delete this bank because it has associated supplie
 var cliente=["customers","cliente","klienci","clienti","cliente","clients","Kunden"];
 var clientes=["customers","clientes","klienci","clienti","clientes","clients","Kunden"];
 var sinproveedor=["english No existe ningun proveedor con ese codigo","No existe ningun proveedor con ese codigo","polski No existe ningun proveedor con ese codigo","italian No existe ningun proveedor con ese codigo","portugues No existe ningun proveedor con ese codigo","frances No existe ningun proveedor con ese codigo","AlemanNo existe ningun proveedor con ese codigo"];
-var elmalbaran=["english","ELIMINAR ALBARÁN","polski","italian","portugues","frances","Aleman"];
+var elmalbaran=["english","eliminar albarán","polski","italian","portugues","frances","Aleman"];
 var direccion=["english","Dirección","polski","italian","portugues","frances","Aleman"];
 var codalbaran=["english","Código de albarán","polski","italian","portugues","frances","Aleman"];
 var dctop=["english","dcto %","polski","italian","portugues","frances","Aleman"];
@@ -337,6 +337,9 @@ var msgfimp=["english","Falta el importe","polski","italian","portugues","france
 var msgvmaf=["english","No puede modificar un albaran facturado","polski","italian","portugues","frances","Aleman"];
 var msgcfayf=["english","No se puede convertir en factura un albaran ya facturado","polski","italian","portugues","frances","Aleman"];
 var modificar=["english","Modificar","polski","italian","portugues","frances","Aleman"];
+var convalbaran=["english","CONVERTIR ALBAR&Aacute;N","polski","italian","portugues","frances","Aleman"];
+var nrofac=["english","N. Factura","polski","italian","portugues","frances","Aleman"];
+//var variable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
 //var variable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
 
 
@@ -382,7 +385,7 @@ function langchange(idioma) {
     $("#estactra").text(estactra[idioma]);
     $("#compras_plus").text(compras_plus[idioma]);
     $("#compras").text(compras[idioma]);
-    $("#prov").text(prov[idioma]);
+    $("#prov,#tprov").text(prov[idioma]);
     $("#contabilidad_plus").text(contabilidad_plus[idioma]);
     $("#contabilidad").text(contabilidad[idioma]);
     $("#cobros").text(cobros[idioma]);
@@ -424,8 +427,8 @@ function langchange(idioma) {
     $("#importe,#importe2,#timporte").text(importe[idioma]);
     $("#limp,#tlimp").text(limp[idioma]);
     $("#busc,#tbusc").text(busc[idioma]);
-    $("#elmalbaran").text(elmalbaran[idioma]);
-    $("#direccion").text(direccion[idioma]);
+    $("#elmalbaran,#telmalbaran").text(elmalbaran[idioma]);
+    $("#direccion,#tdireccion").text(direccion[idioma]);
     $("#codalbaran,#tcodalbaran").text(codalbaran[idioma]);
     $("#iva, #iva2,#tiva").text(iva[idioma]);
     $("#flia,#tflia").text(flia[idioma]);
@@ -455,6 +458,9 @@ function langchange(idioma) {
     $("#tcerrar").text(cerrar[idioma]);
     $("#ttdart").text(tdart[idioma]);
     $("#tvalbaran").text(valbaran[idioma]);
+    $("#tconvalbaran").text(convalbaran[idioma]);
+    $("#tnrofac").text(nrofac[idioma]);
+
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
     traducirTitle(idioma);
