@@ -32,6 +32,7 @@ require_once("../mysqli_result.php");
 		</script>
 		<? 
 	} else { ?>
+    <!-- @todo Revisar si el js llega aca para levantar la variable -->
 	<script>
 	alert ("No existe ningun cliente con ese codigo");
 	limpiar();

@@ -19,7 +19,7 @@ $fecha=implota($fecha);
 		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="../jquery/jquery331.js"></script>
-    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
 		var cursor;
@@ -57,15 +57,15 @@ $fecha=implota($fecha);
 						<tr>
 							<td width="14%"><span id="fecha">Fecha</span></td>
 						    <td width="36%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $fecha?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
-        <script type="text/javascript">
-					Calendar.setup(
-					  {
-					inputField : "fecha",
-					ifFormat   : "%d/%m/%Y",
-					button     : "Image1"
-					  }
-					);
-		</script></td>
+                            <script type="text/javascript">
+                                    Calendar.setup(
+                                      {
+                                    inputField : "fecha",
+                                    ifFormat   : "%d/%m/%Y",
+                                    button     : "Image1"
+                                      }
+                                    );
+                        </script></td>
 				            <td width="50%"></td>
 						</tr>							
 					</table>

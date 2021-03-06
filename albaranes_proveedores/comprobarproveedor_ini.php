@@ -5,6 +5,7 @@ header('Pragma: no-cache');
 <html>
 <head>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 </head>
 <script language="javascript">
 
@@ -32,8 +33,9 @@ require_once("../mysqli_result.php");
 		</script>
 		<? 
 	} else { ?>
+    <!-- @todo revisar si hay que cargar en este archivo las traducciones  -->
 	<script>
-	alert ("No existe ningun proveedor con ese codigo");
+	alert ();
 	limpiar();
 	</script>
 	<? }

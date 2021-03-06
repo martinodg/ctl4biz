@@ -60,6 +60,7 @@ var item=["item","item","pozycja","articolo","item","Objet","Artikel"];
 var selepais=["select a country","seleccione un pais","Wybierz kraj","seleziona un Paese","selecione um pais","choisissez un pays","wähle ein Land"];
 var cod=["code","codigo","kod","codice","código","code","Code"];
 var entiban=["banking entity","entidad bancaria","podmiot bankowy","entità bancaria","entidade bancária","entité bancaire","Bankgesellschaft mit"];
+//@todo revisar si la traduccion en algun punto se usa en plural , pareciera ser siempre cliente en vez de clientes
 var cliente=["customers","clientes","klienci","clienti","clientes","clients","Kunden"];
 var selntiban=["choose a bank","seleccione una entidad bancaria","wybrać bank","scegliere una banca","escolher um banco","choisir une banque","Wähle eine Bank"];
 var bcliente=["Search customer","buscar cliente","Szukaj klient","Ricerca cliente","pesquisa cliente","Recherche client","Suchen Kunden"];
@@ -78,7 +79,7 @@ var nrotipen=["N. types found","N. de tipos encontrados","Znaleziono rodzaje N."
 var reltipar=["relationship type items","relacion de tipo de articulos","szt Typ związku","elementi di tipo rapporto","itens de tipo de relacionamento","des éléments de type de relation","Beziehungstyp Artikel"];
 var codart=["item code","codigo de articulo","kod produktu","codice articolo","Código do item","code de larticle","Produktcode"];
 var refren=["reference","referencia","odniesienie","riferimento","referência","référence","Referenz"];
-var flia=["family","familia","rodzina","famiglia","família","famille","Familie"];
+//@todo revisar repetida var flia=["family","familia","rodzina","famiglia","família","famille","Familie"];
 var todflia=["Every family","todas las familias","Każda rodzina","ogni famiglia","cada família","chaque famille","Jede Familie"];
 var descri=["description","descripcion","opis","descrizione","Descrição","la description","Beschreibung"];
 var prov=["supplier","proveedor ","dostawca","fornitore","fornecedor","fournisseur","Lieferant"];
@@ -101,7 +102,7 @@ var relprocdef=["ratio defined processes","relacion de procesos definidos","Proc
 var tipproc=["Process type","tipo de proceso","typ procesu","tipo di processo","tipo de processo","Type de processus","Prozesstyp"];
 var propru=["production processes","procesos de produccion","procesy produkcji","processi di produzione","processos de produção","processus de production","Herstellungsprozesse"];
 var bupro=["search process","busqueda de procesos","proces wyszukiwania","processo di ricerca","processo de pesquisa","processus de recherche","Suchprozess"];
-var cant=["amount","cantidad","ilość","quantità","quantia","quantité","Menge"];
+//@todo revisar repetido var cant=["amount","cantidad","ilość","quantità","quantia","quantité","Menge"];
 var fechin=["start date","fecha de inicio","Data rozpoczęcia","data dinizio","data de início","date de début","Anfangsdatum"];
 var hinic=["start time","hora de inicio","czas rozpoczęcia","Ora di inizio","hora de início","Heure de début","Startzeit"];
 var estacion=["station","estacion ","stacja","stazione","estação","gare","Bahnhof"];
@@ -296,6 +297,14 @@ var nhnfqccbu=["there is no bill that meets the search criteria","no hay ninguna
 var nhnrqccbu=["There are currently no refer that meets the search criteria","no hay ningun remito que cumpla con los criterios de busqueda","Obecnie nie ma odnosić się, że spełnia kryteria wyszukiwania","Momento non ci sono riferiscono che soddisfa i criteri di ricerca","Atualmente não há referir que atenda aos critérios de pesquisa","Il ny a actuellement aucune réfèrent répondant aux critères de recherche","Es gibt keine Zeit verweisen, dass die Suchkriterien erfüllt"];
 var nhnmqccbu=["There are currently no movimiendo that meets the search criteria","no hay ningun movimiendo que cumpla con los criterios de busqueda","Obecnie nie ma movimiendo że spełnia kryteria wyszukiwania","Momento non ci sono movimiendo che soddisfa i criteri di ricerca","Atualmente não há movimiendo que atenda aos critérios de pesquisa","Il y a movimiendo actuellement aucun répondant aux critères de recherche","Es liegen noch keine movimiendo, dass die Suchkriterien erfüllt"];
 var nspeeebptpa=["You can not delete this bank because it has associated suppliers.","No se puede eliminar esta entidad bancaria porque tiene proveedores asociados.","Nie można usunąć tego banku, ponieważ ma powiązanych dostawców.","Non è possibile eliminare questa banca perché ha i fornitori associati.","Você não pode excluir este banco porque tem fornecedores associados.","Vous ne pouvez pas supprimer cette banque parce quelle a des fournisseurs associés.","Sie können diese Bank nicht löschen, da es damit verbundenen Lieferanten hat."];
+//agregados
+//var variable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
+var sinproveedor=["english No existe ningun proveedor con ese codigo","No existe ningun proveedor con ese codigo","polski No existe ningun proveedor con ese codigo","italian No existe ningun proveedor con ese codigo","portugues No existe ningun proveedor con ese codigo","frances No existe ningun proveedor con ese codigo","AlemanNo existe ningun proveedor con ese codigo"];
+var  elmalbaran=["english","ELIMINAR ALBARÁN","polski","italian","portugues","frances","Aleman"];
+var  direccion=["english","Dirección","polski","italian","portugues","frances","Aleman"];
+var  codalbaran=["english","Código de albarán","polski","italian","portugues","frances","Aleman"];
+var  dctop=["english","DCTO %","polski","italian","portugues","frances","Aleman"];
+var  baseimp=["english","Base imponible","polski","italian","portugues","frances","Aleman"];
 
 //language change function
 function langchange(idioma) {
@@ -380,17 +389,31 @@ function langchange(idioma) {
     $("#importe").text(importe[idioma]);
     $("#limp").text(limp[idioma]);
     $("#busc").text(busc[idioma]);
-
-    
-   
+    $("#elmalbaran").text(elmalbaran[idioma]);
+    $("#direccion").text(direccion[idioma]);
+    $("#codalbaran").text(codalbaran[idioma]);
+    $("#iva").text(iva[idioma]);
+    $("#flia").text(flia[idioma]);
+    $("#cant").text(cant[idioma]);
+    $("#precio").text(precio[idioma]);
+    $("#dctop").text(dctop[idioma]);
+    $("#baseimp").text(baseimp[idioma]);
+    $("#total").text(total[idioma]);
 
 
 }
 
+function getLanguajeIndex(){
+    return localStorage.getItem('language');
+}
+//@todo agregar un modificador de lenguaje en el select
+function getTranslation(indiceIdioma){
+    return [indiceIdioma];
+}
 $(document).ready(function() {
     
     //Set languages on load
-    var lang = localStorage.getItem('language');
+    var lang = getLanguajeIndex();
     if (lang == "") {
         localStorage.setItem('language', '0');
         $("#bandera_lengua").attr("src", "../img/english-language.svg");
@@ -426,4 +449,7 @@ $(document).ready(function() {
         langchange(lang);
     });
 });
+
+
+
     
