@@ -38,7 +38,11 @@ var estado=["condition","estado ","stan: schorzenie","condizione","doença","ét
 var facturados=["invoiced","facturados","zafakturowanymi","fatturate","facturado","facturé","fakturieren"];
 var limp=["clean up","limpiar","sprzątać","pulire","limpar","nettoyer","Aufräumen"];
 var busc=["search","buscar","Szukaj","ricerca","procurar","chercher","Suche"];
-
+var eliminarRto=["Delete Delivery Note","Eliminar Remito","usuń dowód dostawy","eliminare la bolla di consegna","deletar nota de entrega","supprimer le bon de livraison","Lieferschein löschen"];
+var direccion=["address","direccion","adres","indirizzo","endereço","Adresse","adresse"];
+var iva=["TAX","IVA","VAT","IVA","IVA","TVA","Mehrwertsteuer"];
+var dto_pc=["discount %","descuento %","zniżka %","sconto %","desconto %","Réduction %","Rabatt %"];
+var baseImpo=["Tax base","Base imponible","Podstawa opodatkowania","Tassa base","Tributável","Base d'imposition","Steuerbemessungsgrundlage"];
 // To replace with correction from this point
 var inicio=["beginning","inicio","początek","inizio","começo","début","Anfang"];
 var intercom=["commercial intermediaries","intermediarios comerciales","pośredników handlowych","intermediari commerciali","intermediários comerciais","intermédiaires commerciaux","gewerbliche Mittler"];
@@ -61,6 +65,7 @@ var item=["item","item","pozycja","articolo","item","Objet","Artikel"];
 var selepais=["select a country","seleccione un pais","Wybierz kraj","seleziona un Paese","selecione um pais","choisissez un pays","wähle ein Land"];
 var cod=["code","codigo","kod","codice","código","code","Code"];
 var entiban=["banking entity","entidad bancaria","podmiot bankowy","entità bancaria","entidade bancária","entité bancaire","Bankgesellschaft mit"];
+var cliente=["customers","clientes","klienci","clienti","clientes","clients","Kunden"];
 var selntiban=["choose a bank","seleccione una entidad bancaria","wybrać bank","scegliere una banca","escolher um banco","choisir une banque","Wähle eine Bank"];
 var bcliente=["Search customer","buscar cliente","Szukaj klient","Ricerca cliente","pesquisa cliente","Recherche client","Suchen Kunden"];
 //@todo revisar repetido var nuevo=["new","nuevo","Nowy","nuovo","novo","Nouveau","Neu"];
@@ -69,7 +74,7 @@ var produccion_plus=["production +","produccion +","produkcja +","produzione +",
 var produccion=["production","produccion","produkcja","produzione","Produção","production","Produktion"];
 var articu=["Items","articulos","artykuły","articoli","artigos","des Items","Artikel"];
 var tipodart=["Item Type","tipo de articulo","Typ przedmiotu","Tipo di elemento","Tipo de item","Type délément","Gegenstandsart"];
-var lotdprod=["production batches","lotes de produccion","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"];
+var lotdprod=["production Lots","lotes de produccion","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"];
 var batchprod=["production batch","batch de produccion","produkcja partii","lotto di produzione","produção em lotes","production par lots","Serienfertigung"];
 var btipoar=["Type of article","buscar tipo de articulo","Rodzaj artykułu","Tipo di articolo","Tipo de artigo","Type de larticle","Artikeltyp"];
 var codtpar=["type code article","codigo de tipo de articulo","Kod typu artykuł","articolo codice tipo","artigo código de tipo","article type de code","Typencode Artikel"];
@@ -119,11 +124,9 @@ var vtas=["sales","ventas","sprzedaż","i saldi","vendas","Ventes","Der Umsatz"]
 var vtasmost=["counter sales","ventas a mostrador","sprzedaży licznik","banco di vendita","balcão de vendas","comptoir de vente","Thekenverkauf"];
 var nvavta=["new sale","nueva venta","nowa sprzedaż","nuova vendita","nova venda","nouvelle vente","neuer Verkauf"];
 var codcli=["client code","codigo de cliente","kod klienta","codice client","Código do cliente","code client","Client-Code"];
-var iva=["iva","iva ","iva","iva","iva","iva","iva"];
 var codbarr=["Barcode","codigo de barras","kod kreskowy","Codice a barre","Barcode","code à barre","Strichcode"];
 //@todo repetido var descr=["description","descripcion","opis","descrizione","Descrição","la description","Beschreibung"];
 var precio=["price","precio","Cena £","prezzo","preço","le prix","Preis"];
-var cant=["amount","cantidad ","ilość","quantità","quantia","quantité","Menge"];
 var dto=["discount (Extra)","descuento (Dto)","zniżka (Extra)","sconto (Extra)","desconto (Extra)","Réduction (Extra)","Rabatt (Extra)"];
 var importe=["amount","importe","ilość","quantità","quantia","quantité","Menge"];
 var subtotal=["Subtotal","sub total ","Razem","totale parziale","Subtotal","Total","Zwischensumme"];
@@ -549,7 +552,20 @@ function langchange(idioma) {
     $("#tprcventpub").text(prcventpub[idioma]);
     $("#tmsgsinrbus").text(msgsinrbus[idioma]);
     $("#tvarticulo").text(varticulo[idioma]);
-
+    $("#item").text(item[idioma]);
+    $("#importe").text(importe[idioma]);
+    $("#limp").text(limp[idioma]);
+    $("#busc").text(busc[idioma]);
+    $("#eliminarRto").text(eliminarRto[idioma]);
+    $("#direccion").text(direccion[idioma]);
+    $("#iva,#iva2").text(iva[idioma]);
+    $("#descrip").text(descrip[idioma]);
+    $("#cant").text(cant[idioma]);
+    $("#precio").text(precio[idioma]);
+    $("#dto_pc").text(dto_pc[idioma]);
+    $("#baseImpo").text(baseImpo[idioma]);
+    $("#total").text(total[idioma]);
+    $("#refren").text(refren[idioma])
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
@@ -629,6 +645,3 @@ $(document).ready(function() {
         langchange(lang);
     });
 });
-
-
-

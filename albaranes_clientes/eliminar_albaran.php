@@ -18,6 +18,8 @@ $iva=mysqli_result($rs_query,0,"iva");
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+    	<script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -42,7 +44,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="elmalbaran">ELIMINAR ALBAR&Aacute;N</span> </div>
+				<div id="tituloForm" class="header"><span id="eliminarRto">ELIMINAR ALBAR&Aacute;N</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<? 
@@ -61,15 +63,15 @@ $iva=mysqli_result($rs_query,0,"iva");
 						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 						<tr>
-                            <td><span id="codalbaran">C&oacute;digo de albar&aacute;n</span></td>
+						  <td><span id="codremito">C&oacute;digo de albar&aacute;n</span></td>
 						  <td colspan="2"><?php echo $codalbaran?></td>
 					  </tr>
 					  <tr>
-                          <td><span id="fecha">Fecha</span></td>
+						  <td><span id="fecha">Fecha</span></td>
 						  <td colspan="2"><?php echo implota($fecha)?></td>
 					  </tr>
 					  <tr>
-                          <td><span id="iva">IVA</span></td>
+						  <td><span id="iva">IVA</span></td>
 						  <td colspan="2"><?php echo $iva?> %</td>
 					  </tr>
 					  <tr>
@@ -79,13 +81,13 @@ $iva=mysqli_result($rs_query,0,"iva");
 				  </table>
 					 <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="5%"><span id="titem">ITEM</span></td>
-							<td width="25%"><span id="tflia">FAMILIA</span></td>
-                            <td width="30%"><span id="tdescri">DESCRIPCION</span></td>
-                            <td width="10%"><span id="tcant">CANTIDAD</span></td>
-                            <td width="10%"><span id="precio">PRECIO</span></td>
-                            <td width="10%"><span id="dctop">DCTO %</span></td>
-                            <td width="10%"><span id="timporte">IMPORTE</span></td>
+							<td width="5%"><span id="item">ITEM</span></td>
+							<td width="25%"><span id="tipodart">FAMILIA</span></td>
+							<td width="30%"><span id="descrip">DESCRIPCION</span></td>
+							<td width="10%"><span id="cant">CANTIDAD</span></td>
+							<td width="10%"><span id="precio">PRECIO</span></td>
+							<td width="10%"><span id="dto_pc">DCTO %</span></td>
+							<td width="10%"><span id="importe">IMPORTE</span></td>
 						</tr>
 					</table>
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
@@ -122,15 +124,15 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 					<div id="frmBusqueda">
 					<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 						<tr>
-                            <td width="15%"><span id="baseimp">Base imponible</span></td>
+							<td width="15%"><span id="baseImpo">Base imponible</span></td>
 							<td width="15%"><?php echo number_format($baseimponible,2);?> &#8364;</td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="iva">IVA</span></td>
+							<td width="15%"><span id="iva2">IVA</span></td>
 							<td width="15%"><?php echo number_format($baseimpuestos,2);?> &#8364;</td>
 						</tr>
 						<tr>
-                            <td width="15%"><span id=total"">Total</span></td>
+							<td width="15%"><span id="total">Total</span></td>
 							<td width="15%"><?php echo $preciototal?> &#8364;</td>
 						</tr>
 					</table>
