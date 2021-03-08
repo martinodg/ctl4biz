@@ -4,7 +4,8 @@ header('Pragma: no-cache');
 ?>
 <html>
 <head>
-<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 </head>
 <script language="javascript">
 
@@ -28,7 +29,7 @@ require_once("../mysqli_result.php");
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 		  <tr>
 			<td width="10%"><div align="center"><b><span id="tcodigo">Codigo</span></b></div></td>
-			<td width="60%"><div align="center"><b>Cliente</b></div></td>
+			<td width="60%"><div align="center"><b><span id="tcliente">Cliente</span></b></div></td>
 			<td width="20%"><div align="center"><b><span id="tnip">NIF/CIF</span></b></div></td>
 			<td width="10%"><div align="center"></td>
 		  </tr>
@@ -48,7 +49,7 @@ require_once("../mysqli_result.php");
 		<?php } else { ?>
 			<tr>
 			<td width="10%"><div align="center"></div></td>
-			<td width="60%"><div align="center"><b>NO HAY NING&Uacute;N CLIENTE CON ESE C&Oacute;DIGO</b></div></td>
+			<td width="60%"><div align="center"><b><span id="tmsgsc">NO HAY NING&Uacute;N CLIENTE CON ESE C&Oacute;DIGO</span></b></div></td>
 			<td width="20%"><div align="center"></div></td>
 			<td width="10%"><div align="center"></td>
 		  	</tr>

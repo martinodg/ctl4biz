@@ -66,7 +66,7 @@ $codproveedor=$_GET["codproveedor"];
  <div align="center">
 	<table class="fuente8" align="center" width="95%">
      <tr>
-	    <td width="36%">Familia:</td>
+	    <td width="36%"><span id="tflia">Familia</span>:</td>
 	    <td width="64%">
 		  <select id="cmbfamilia" name="cmbfamilia" class="comboGrande">
 		  <?
@@ -84,13 +84,13 @@ $codproveedor=$_GET["codproveedor"];
 		  ?>
 	    </select>		</td></tr>
 		<tr>
-		<td width="36%" class="busqueda">Referencia:</td>
+		<td width="36%" class="busqueda"><span id="trefren">Referencia</span>:</td>
 	    <td width="64%"><input name="referencia" type="text" id="referencia" size="20" class="cajaMedia"></td></tr>
-		<tr><td width="36%" class="busqueda">Descripci&oacute;n:</td>
+		<tr><td width="36%" class="busqueda"><span id="tdescri">Descripción</span>:</td>
 	    <td width="64%"><input name="descripcion" type="text" id="descripcion" size="50" class="cajaGrande"></td></tr>
-		<tr><td width="36%" class="busqueda">Mostrar todos los art&iacute;culos:</td>
+		<tr><td width="36%" class="busqueda"><span id="tvart">Mostrar todos los art&iacute;culos</span>:</td>
 	    <td width="64%"><select name="todos" id="todos" class="comboPequeno">
-						<option value=0 selected="selected">No</option>
+						<option value=0 selected="selected"data-opttrad="no">No</option>
 						<option value=1>Si</option>
 						</select></td></tr>
 		<tr>
@@ -113,7 +113,7 @@ $codproveedor=$_GET["codproveedor"];
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

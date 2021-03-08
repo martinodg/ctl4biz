@@ -28,7 +28,7 @@ require_once("../conectar7.php");
     echo '				<div id="frmResultado">';
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
-    echo '						<td width="8%">CODIGO</td>';
+    echo '						<td width="8%"><span id="tcodigo">CODIGO</span></td>';
     echo '						<td width="38%">ARTICULO</td>';
     echo '						<td width="6%"><span id="cant">CANTIDAD</span></td>';
     echo '						<td width="6%"><span id="tfechin">Fecha de inicio</span></td>';

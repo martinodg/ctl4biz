@@ -15,6 +15,7 @@ require_once("../mysqli_result.php");
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="../funciones/validar.js"></script>
 		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
 		function cancelar() {
@@ -71,7 +72,7 @@ require_once("../mysqli_result.php");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">INSERTAR ARTICULO </div>
+                    <div id="tituloForm" class="header"><span id="tinsart">INSERTAR ARTICULO</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_articulo.php" enctype="multipart/form-data">
 				<input id="accion" name="accion" value="alta" type="hidden">
@@ -90,7 +91,7 @@ require_once("../mysqli_result.php");
 							<td width="17%"><span id="tflia">FAMILIA</span></td>
 							<td><select id="cboFamilias" name="AcboFamilias" class="comboGrande">
 							
-								<option value="0">Seleccione una familia</option>
+								<option value="0" data-opttrad="selecflia">Seleccione una familia</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_familias)) { ?>
 								<option value="<?php echo mysqli_result($res_familias,$contador,"codfamilia")?>"><?php echo mysqli_result($res_familias,$contador,"nombre")?></option>
@@ -99,7 +100,7 @@ require_once("../mysqli_result.php");
 								</select>							</td>
 				        </tr>
 						<tr>
-							<td width="17%">Descripci&oacute;n</td>
+							<td width="17%"><span id="tdescri">Descripci&oacute;n</span></td>
 						    <td><textarea name="Adescripcion" cols="41" rows="2" id="descripcion" class="areaTexto"></textarea></td>
 				        </tr>
 						<?php
@@ -108,10 +109,10 @@ require_once("../mysqli_result.php");
 						$contador=0;
 					  ?>
 						<tr>
-							<td width="17%">Impuesto</td>
+							<td width="17%"><span id="timpuesto">Impuesto</span></td>
 							<td><select id="cboImpuestos" name="rcboImpuestos" class="comboMedio">
 							
-								<option value="0">Seleccione un impuesto</option>
+								<option value="0" data-opttrad="selecimp">Seleccione un impuesto</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_impuesto)) { ?>
 								<option value="<?php echo mysqli_result($res_impuesto,$contador,"valor")?>"><?php echo mysqli_result($res_impuesto,$contador,"valor")?></option>
@@ -125,9 +126,9 @@ require_once("../mysqli_result.php");
 						$contador=0;
 					  ?>
 						<tr>
-							<td>Proveedor 1</td>
+							<td><span id="tprov1">Proveedor 1</span></td>
 							<td><select id="cboProveedores1" name="acboProveedores1" class="comboGrande">
-							<option value="0">Todos los proveedores</option>
+							<option value="0" data-opttrad="todprov">Todos los proveedores</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_proveedores)) { 
 									if ( mysqli_result($res_proveedores,$contador,"codproveedor") == $proveedor) { ?>
@@ -145,9 +146,9 @@ require_once("../mysqli_result.php");
 						$contador=0;
 					  ?>
 						<tr>
-							<td>Proveedor 2</td>
+							<td><span id="tprov2">Proveedor 2</span></td>
 							<td><select id="cboProveedores2" name="acboProveedores2" class="comboGrande">
-							<option value="0">Todos los proveedores</option>
+							<option value="0" data-opttrad="todprov">Todos los proveedores</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_proveedores)) { 
 									if ( mysqli_result($res_proveedores,$contador,"codproveedor") == $proveedor) { ?>
@@ -160,7 +161,7 @@ require_once("../mysqli_result.php");
 								</select>							</td>
 					    </tr>
 						<tr>
-						  <td>Descripci&oacute;n corta</td>
+						  <td><span id="tdesccorta">Descripci&oacute;n corta</span></td>
 						  <td><input NAME="adescripcion_corta" id="descripcion_corta" type="text" class="cajaGrande"  maxlength="30"></td>
 				      </tr>
 					  <?php
@@ -169,9 +170,9 @@ require_once("../mysqli_result.php");
 						$contador=0;
 					  ?>
 						<tr>
-							<td>Ubicaci&oacute;n</td>
+							<td><span id="tubicacion">Ubicaci&oacute;n</span></td>
 							<td><select id="cboUbicacion" name="AcboUbicacion" class="comboGrande">
-							<option value="0">Todas las ubicaciones</option>
+							<option value="0" data-opttrad="todubic">Todas las ubicaciones</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_ubicacion)) { 
 									if ( mysqli_result($res_ubicacion,$contador,"codubicacion") == $ubicacion) { ?>
@@ -184,32 +185,32 @@ require_once("../mysqli_result.php");
 								</select>							</td>
 					    </tr>
 						<tr>
-						 <td>Stock</td>
+						 <td><span id="tstock">Stock</span></td>
 						  <td><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10"> 
 						  <select id="umnstock" class="cboUnidadmedida" name="umnstock" >
                                 
 								</select> </td>
 				      </tr>
 					  	<tr>
-						 <td>Stock m&iacute;nimo</td>
+						 <td><span id="tstkmin">Stock m&iacute;nimo</span></td>
 						  <td><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8">  
 						  <select id="umnstock_minimo" class="cboUnidadmedida" name="umnstock_minimo">
                                 
 								</select> </td>
 				      </tr>
 					  	<tr>
-						 <td>Aviso m&iacute;nimo</td>
+						 <td><span id="tavisominimo">Aviso M&iacute;nimo</span></td>
 						  <td><select name="aaviso_minimo" id="aviso_minimo" class="comboPequeno">
-						  <option value="0" selected="selected">No</option>
-						  <option value="1">Si</option>
+						  <option value="0" selected="selected"data-opttrad="no">No</option>
+						  <option value="1" data-opttrad="si">Si</option>
 						  </select></td>
 				      </tr>
 					  <tr>
-							<td width="17%">Datos del producto</td>
+							<td width="17%"><span id="tdatroduc">Datos del producto</span></td>
 						    <td><textarea name="adatos" cols="41" rows="2" id="datos" class="areaTexto"></textarea></td>
 				        </tr>
 						<tr>
-							<td>Fecha de alta</td>
+							<td><span id="tfchaalta">Fecha de alta</span></td>
 							<td><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -227,9 +228,9 @@ require_once("../mysqli_result.php");
 						$contador=0;
 					  ?>
 						<tr>
-							<td>Embalaje</td>
+							<td><span id="tembalaje">Embalaje</span></td>
 							<td><select id="cboEmbalaje" name="AcboEmbalaje" class="comboGrande">
-							<option value="0">Todos los embalajes</option>
+							<option value="0"data-opttrad="tdsembalajes">Todos los embalajes</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_embalaje)) { 
 									if ( mysqli_result($res_embalaje,$contador,"codembalaje") == $embalaje) { ?>
@@ -242,55 +243,55 @@ require_once("../mysqli_result.php");
 								</select>							</td>
 					    </tr>
 						<tr>
-						 <td>Unidades por caja</td>
+						 <td><span id="tunidcaja">Unidades por caja</span></td>
 						  <td><input NAME="nunidades_caja" type="text" class="cajaPequena" id="unidades_caja" size="10" maxlength="10">  
 						  <select id="umnunidades_caja" class="cboUnidadmedida" name="umnunidades_caja" >
                                 
 								</select> </td>
 				      </tr>
 					  <tr>
-						 <td>Preguntar precio ticket</td>
+						 <td><span id="tpregpciotk">Preguntar precio ticket</span></td>
 						  <td><select name="aprecio_ticket" id="precio_ticket" class="comboPequeno">
-						  <option value="0" selected="selected">No</option>
-						  <option value="1">Si</option>
+						  <option value="0" selected="selected"data-opttrad="no">No</option>
+						  <option value="1" data-opttrad="si">Si</option>
 						  </select></td>
 				      </tr>
 					  <tr>
-						 <td>Modificar descrip. en ticket</td>
+						 <td><span id="tmoddesctick">Modificar descrip. en ticket</span></td>
 						  <td><select name="amodif_descrip" id="modif_descrip" class="comboPequeno">
-						  <option value="0" selected="selected">No</option>
-						  <option value="1">Si</option>
+						  <option value="0" selected="selected"data-opttrad="no">No</option>
+						  <option value="1" data-opttrad="si">Si</option>
 						  </select></td>
 				      </tr>
 					  	 <tr>
-							<td width="17%">Observaciones</td>
+							<td width="17%"><span id="tobsev">Observaciones</span></td>
 						    <td><textarea name="aobservaciones" cols="41" rows="2" id="observaciones" class="areaTexto"></textarea></td>
 				        </tr>
 						<tr>
-						  <td>Precio de compra</td>
+						  <td><span id="tpciocomp">Precio de compra</span></td>
 						  <td><input NAME="qprecio_compra" type="text" class="cajaPequena" id="precio_compra" size="10" maxlength="10"> &#8364;</td>
 				      </tr>
 					  	<tr>
-						  <td>Precio de almac&eacute;n</td>
+						  <td><span id="tpalmacen">Precio de almac&eacute;n</span></td>
 						  <td><input NAME="qprecio_almacen" type="text" class="cajaPequena" id="precio_almacen" size="10" maxlength="10"> &#8364;</td>
 				      </tr>
 						<tr>
-						  <td>Precio de tienda</td>
+						  <td><span id="tptienda">Precio de tienda</span></td>
 						  <td><input NAME="qprecio_tienda" type="text" class="cajaPequena" id="precio_tienda" size="10" maxlength="10"> &#8364;</td>
 				      </tr>
 						<tr>
-						  <td>Precio venta al publico</td>
+                            <td><span id="tprcventpub">Precio venta al publico</span></td>
 						  <td><input NAME="qpvp" type="text" class="cajaPequena" id="pvp" size="10" maxlength="10"> &#8364;</td>
 				      </tr>
 					 
 					  <tr>
-						  <td>Imagen [Formato jpg] [200x200]</td>
+						  <td><span id="timgfrmjpg">Imagen [Formato jpg]</span> [200x200]</td>
 						  <td><input type="file" name="foto" id="foto" class="cajaMedia" accept="image/jpg" /></td>
 				      </tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> <span>Acpetar</span> </button>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> ><span id="taceptar">Aceptar</span></td> </button>
 					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
                		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>
 				

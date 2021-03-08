@@ -192,7 +192,7 @@ $fechahoy=date("Y-m-d");
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>Descripci&oacute;n</td>
+<td><span id="tdescri">Descripci&oacute;n</span></td>
 <td><textarea name="descripcion" cols="45" rows="5" class="cajaGrandeML" id="descripcion"></textarea></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>

@@ -198,7 +198,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>Descripci&oacute;n</td>
+<td><span id="tdescri">Descripci&oacute;n</span></td>
 <td><textarea name="descripcion" cols="45" rows="5" class="cajaGrandeML" id="descripcion"><?php echo $descripcion; ?></textarea></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>

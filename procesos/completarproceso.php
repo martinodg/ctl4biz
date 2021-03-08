@@ -28,7 +28,7 @@ require_once("../conectar7.php");
 			echo '			<tr class="cabeceraTabla">';
                         echo '                               <td width="15%">Codigo del Articulo</td>';
                          echo '                               <td width="35%">Nombre del Articulo</td>';
-                         echo '                               <td width="18%">Stock</td>';
+                         echo '                               <td width="18%"><span id="tstock">Stock</span></td>';
                          echo '                               <td width="18%"><span id="cant">CANTIDAD</span></td>';
 			echo '				<td width="14%">Validar</td>';
 							

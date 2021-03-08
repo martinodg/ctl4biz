@@ -132,7 +132,7 @@ $query_comprobar="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND cod
 							<tr class="cabeceraTabla">
 								<td width="5%"><span id="titem">ITEM</span></td>
 								<td width="20%"><span id="tflia">FAMILIA</span></td>
-								<td width="15%">CODIGO</td>
+								<td width="15%"><span id="tcodigo">CODIGO</span></td>
 								<td width="30%"><span id="descri">descripcion</span></td>
 								<td width="7%"><span id="cant">CANTIDAD</span></td>
 								<td width="8%"><span id="tprecio">PRECIO</span></td>

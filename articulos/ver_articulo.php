@@ -22,6 +22,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -42,11 +43,11 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">VER ARTICULO </div>
+                    <div id="tituloForm" class="header"><span id="tvarticulo">VER ARTICULO</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="22%">Codigo</td>
+							<td width="22%"><span id="tcodigo">CODIGO</span></td>
 						    <td width="38%"><? echo mysqli_result($rs_query,0,"codarticulo")?></td>
 					        <td width="40%" rowspan="11" align="center" valign="top"><img src="../fotos/<? echo mysqli_result($rs_query,0,"imagen")?>" width="160px" height="140px" border="1"></td>
 						</tr>
@@ -66,11 +67,11 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 							<td width="38%"><?php echo $nombrefamilia?></td>
 				        </tr>
 						<tr>
-							<td width="22%">Descripci&oacute;n</td>
+							<td width="22%"><span id="tdescri">Descripci&oacute;n</span></td>
 						    <td width="38%"><? echo mysqli_result($rs_query,0,"descripcion")?></td>
 				        </tr>
 						<tr>
-						  <td>Impuesto</td>
+						  <td><span id="timpuesto">Impuesto</span></td>
 						  <td><? echo mysqli_result($rs_query,0,"impuesto")?> %</td>
 				      </tr>
 					  <?php
@@ -84,7 +85,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 						}
 					  ?>
 						<tr>
-							<td width="22%">Proveedor1</td>
+							<td width="22%"><span id="tprov">Proveedor 1</span></td>
 							<td width="38%"><?php echo $nombreproveedor?></td>
 				        </tr>
 					<?php
@@ -98,11 +99,11 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 						}
 					  ?>
 						<tr>
-							<td width="22%">Proveedor2</td>
+							<td width="22%"><span id="tprov2">Proveedor 2</span></td>
 							<td width="38%"><?php echo $nombreproveedor?></td>
 				        </tr>
 						<tr>
-							<td width="22%">Descripci&oacute;n corta</td>
+							<td width="22%"><span id="tdesccorta">Descripci&oacute;n corta</span></td>
 						    <td width="38%"><?php echo mysqli_result($rs_query,0,"descripcion_corta")?></td>
 				        </tr>
 						<?php
@@ -116,27 +117,27 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 						}
 					  ?>
 						<tr>
-							<td width="22%">Ubicaci&oacute;n</td>
+							<td width="22%"><span id="tubicacion">Ubicaci&oacute;n</span></td>
 							<td width="38%"><?php echo $nombreubicacion?></td>
 				        </tr>
 						<tr>
-							<td>Stock</td>
+							<td><span id="tstock">Stock</span></td>
 							<td><?php echo mysqli_result($rs_query,0,"stock")?> <?php echo mysqli_result($rs_query,0,"umstock")?></td>
 					    </tr>
 						<tr>
-							<td>Stock minimo</td>
+							<td><span id="tstkmin">Stock minimo</span></td>
 							<td><?php echo mysqli_result($rs_query,0,"stock_minimo")?> <?php echo mysqli_result($rs_query,0,"umstock_min")?></td>
 					    </tr>
 						<tr>
-							<td>Aviso M&iacute;nimo</td>
+							<td><span id="tavisominimo">Aviso M&iacute;nimo</span></td>
 							<td colspan="2"><?php if (mysqli_result($rs_query,0,"aviso_minimo")==0) { echo "No"; } else { echo "Si"; }?></td>
 						</tr>
 						<tr>
-							<td width="22%">Datos del producto</td>
+							<td width="22%"><span id="tdatroduc">Datos del producto</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"datos_producto")?></td>
 					    </tr>
 						<tr>
-							<td width="22%">Fecha de alta</td>
+							<td width="22%"><span id="tfchaalta">Fecha de alta</span></td>
 							<td colspan="2"><?php echo implota(mysqli_result($rs_query,0,"fecha_alta"))?></td>
 					    </tr>
 						<?php
@@ -150,35 +151,35 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 						}
 					  ?>
 						<tr>
-							<td width="22%">Embalaje</td>
+							<td width="22%"><span id="tembalaje">Embalaje</span></td>
 							<td colspan="2"><?php echo $nombreembalaje?></td>
 					    </tr>
 						<tr>
-							<td>Unidades por caja</td>
+							<td><span id="tunidcaja">Unidades por caja</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"unidades_caja")?> <?php echo mysqli_result($rs_query,0,"umunidades_caja")?></td>
 						</tr>
 						<tr>
-							<td>Preguntar precio ticket</td>
+							<td><span id="tpregpciotk">Preguntar precio ticket</span></td>
 							<td colspan="2"><?php if (mysqli_result($rs_query,0,"precio_ticket")==0) { echo "No"; } else { echo "Si"; }?></td>
 						</tr>
 						<tr>
-							<td>Modificar descrip. ticket</td>
+							<td><span id="tmdesctick">Modificar descrip. ticket</span></td>
 							<td colspan="2"><?php if (mysqli_result($rs_query,0,"modificar_ticket")==0) { echo "No"; } else { echo "Si"; }?></td>
 						</tr>
 						<tr>
-							<td>Observaciones</td>
+							<td><span id="tobsev">Observaciones</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"observaciones")?></td>
 						</tr>
 						<tr>
-							<td>Precio de compra</td>
+							<td><span id="tpciocomp">Precio de compra</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"precio_compra")?> &#8364;</td>
 						</tr>
 						<tr>
-							<td>Precio almac&eacute;n</td>
+							<td><span id="tpcioalma">Precio almac&eacute;n</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"precio_almacen")?> &#8364;</td>
 						</tr>												
 						<tr>
-							<td>Precio en tienda</td>
+							<td><span id="tprectienda">Precio en tienda</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"precio_tienda")?> &#8364;</td>
 						</tr>
 						<!--<tr>
@@ -186,17 +187,17 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"precio_pvp")?> &#8364;</td>
 						</tr>-->
 						<tr>
-							<td>Precio con iva</td>
+							<td><span id="tprcciva">Precio con iva</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"precio_iva")?> &#8364;</td>
 						</tr>
 						<tr>
-							<!--td>Codigo de barras</td>
+							<!--td><span id="tcodbarr">Codigo de barras</span></td>
 							<td colspan="2"><?php //echo "<img src='../barcode/barcode.php?encode=EAN-13&bdata=".$codigobarras."&height=50&scale=2&bgcolor=%23FFFFEC&color=%23333366&type=jpg'>"; ?></td-->
 						</tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> <span>Acpetar</span> </button>
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> ><span id="taceptar">Aceptar</span></td> </button>
 
 			  </div>
 			 </div>

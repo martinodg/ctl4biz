@@ -4,6 +4,7 @@ require_once("../conectar7.php");
 <html>
 <head>
 <title>Buscador de Articulos</title>
+<script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 <script>
 
 function buscar() {
@@ -39,7 +40,7 @@ function enviar() {
 </script>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 
-</style>
+<!-- @todo esto no se abrio nunca </style> -->
 </head>
 
 <body onLoad="buscar()">
@@ -48,7 +49,7 @@ function enviar() {
  <div align="center">
 	<table class="fuente8" align="center" width="95%">
      <tr>
-	    <td width="36%">Familia:</td>
+	    <td width="36%"><span id="tflia">Familia</span>:</td>
 	    <td width="64%">
 		  <select id="cmbfamilia" name="cmbfamilia" class="comboGrande">
 		  <?
@@ -66,9 +67,9 @@ function enviar() {
 		  ?>
 	    </select>		</td></tr>
 		<tr>
-		<td width="36%" class="busqueda">Referencia:</td>
+		<td width="36%" class="busqueda"><span id="trefren">Referencia</span>:</td>
 	    <td width="64%"><input name="referencia" type="text" id="referencia" size="20" class="cajaMedia"></td></tr>
-		<tr><td width="36%" class="busqueda">Descripci&oacute;n:</td>
+		<tr><td width="36%" class="busqueda"><span id="tdescri">Descripción</span>:</td>
 	    <td width="64%"><input name="descripcion" type="text" id="descripcion" size="50" class="cajaGrande"></td></tr>
 		<tr>
 		  <td colspan="2" class="busqueda"><div id="botonBusqueda">		    <div align="center"><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button></div></td>
@@ -88,7 +89,7 @@ function enviar() {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

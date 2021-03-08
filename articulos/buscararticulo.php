@@ -18,17 +18,17 @@ require_once("../conectar7.php");
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
 	$nr_lotes= mysqli_num_rows($rs_tabla);
-        echo ' <div id="cabeceraResultado" class="header">Seleccionar Articulo</div>';
+        echo ' <div id="cabeceraResultado" class="header"><span id="tselart">Seleccionar Articulo</span></div>';
 					
 			echo '	<div id="frmResultado">';
 			echo '	<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
 			echo '			<tr class="cabeceraTabla">';
-			echo '				<td width="16%">CODIGO</td>';
-			echo '				<td width="18%">Tipo</td>';
+			echo '				<td width="16%"><span id="tcodigo">CODIGO</span></td>';
+			echo '				<td width="18%"><span id="ttipo">Tipo</span></td>';
                         echo '                                <td width="16%"><span id="tnomb">Nombre</span></td>';
                         echo '                               <td width="16%"><span id="descri">DESCRIPCION</span></td>';
-                         echo '                               <td width="16%">Stock</td>';
-			echo '				<td width="15%">Selecciona</td>';
+                         echo '                               <td width="16%"><span id="tstock">Stock</span></td>';
+			echo '				<td width="15%"><span id="tsel">Selecciona</span></td>';
 							
 			echo '			</tr>';
 			echo '	</table> ';     

@@ -166,6 +166,7 @@ if ($accion=="baja") {
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -212,11 +213,11 @@ if ($accion=="baja") {
 							<td width="58%"><?php echo $nombrefamilia?></td>
 				        </tr>
 						<tr>
-							<td width="15%">Descripci&oacute;n</td>
+							<td width="15%"><span id="tdescri">Descripci&oacute;n</span></td>
 						    <td width="58%"><?php echo $descripcion?></td>
 				        </tr>
 						<tr>
-						  <td>Impuesto</td>
+						  <td><span id="timpuesto">Impuesto</span></td>
 						  <td><?php echo $codimpuesto?> %</td>
 				      </tr>
 					  <?php
@@ -229,7 +230,7 @@ if ($accion=="baja") {
 						}
 					  ?>
 						<tr>
-							<td width="15%">Proveedor1</td>
+							<td width="15%"><span id="tprov">Proveedor1</span></td>
 							<td width="58%"><?php echo $nombreproveedor?></td>
 				        </tr>
 					<?php
@@ -242,11 +243,11 @@ if ($accion=="baja") {
 						}
 					  ?>
 						<tr>
-							<td width="15%">Proveedor2</td>
+							<td width="15%"><span id="tprov2">Proveedor2</span></td>
 							<td width="58%"><?php echo $nombreproveedor?></td>
 				        </tr>
 						<tr>
-							<td width="15%">Descripci&oacute;n corta</td>
+							<td width="15%"><span id="tdesccorta">Descripci&oacute;n corta</span></td>
 						    <td width="58%"><?php echo $descripcion_corta?></td>
 				        </tr>
 						<?php
@@ -259,28 +260,28 @@ if ($accion=="baja") {
 						}
 					  ?>
 						<tr>
-							<td width="15%">Ubicaci&oacute;n</td>
+							<td width="15%"><span id="tubicacion">Ubicaci&oacute;n</span></td>
 							<td width="58%"><?php echo $nombreubicacion?></td>
 				        </tr>
 						<tr>
-							<td>Stock</td>
+							<td><span id="tstock">Stock</span></td>
 							<?php echo "<td>".$stock." ".$txtumstock."</td>";?>
 					    </tr>
 						<tr>
-							<td>Stock minimo</td>
+							<td><span id="tstkmin">Stock minimo</span></td>
 							<?php echo "<td>".$stock_minimo." ".$txtumstock_minimo."</td>";?>
 						
 					    </tr>
 						<tr>
-							<td>Aviso M&iacute;nimo</td>
+							<td><span id="tavisominimo">Aviso M&iacute;nimo</span></td>
 							<td colspan="2"><?php if ($aviso_minimo==0) { echo "No"; } else { echo "Si"; }?></td>
 						</tr>
 						<tr>
-							<td width="15%">Datos del producto</td>
+							<td width="15%"><span id="tdatroduc">Datos del producto</span></td>
 							<td colspan="2"><?php echo $datos?></td>
 					    </tr>
 						<tr>
-							<td width="15%">Fecha de alta</td>
+							<td width="15%"><span id="tfchaalta">Fecha de alta</span></td>
 							<td colspan="2"><?php echo $fechalis?></td>
 					    </tr>
 						<?php
@@ -293,36 +294,36 @@ if ($accion=="baja") {
 						}
 					  ?>
 						<tr>
-							<td width="15%">Embalaje</td>
+							<td width="15%"><span id="tembalaje">Embalaje</span></td>
 							<td colspan="2"><?php echo $nombreembalaje?></td>
 					    </tr>
 						<tr>
-							<td>Unidades por caja</td>
+							<td><span id="tunidcaja">Unidades por caja</span></td>
 							<?php echo "<td>".$unidades_caja." ".$txtumunidades_caja."</td>";?>
 							
 						</tr>
 						<tr>
-							<td>Preguntar precio ticket</td>
+							<td><span id="tpregpciotk">Preguntar precio ticket</span></td>
 							<td colspan="2"><?php if ($precio_ticket==0) { echo "No"; } else { echo "Si"; }?></td>
 						</tr>
 						<tr>
-							<td>Modificar descrip. ticket</td>
+							<td><span id="tmdesctick">Modificar descrip. ticket</span></td>
 							<td colspan="2"><?php if ($modif_descrip==0) { echo "No"; } else { echo "Si"; }?></td>
 						</tr>
 						<tr>
-							<td>Observaciones</td>
+							<td><span id="tobsev">Observaciones</span></td>
 							<td colspan="2"><?php echo $observaciones?></td>
 						</tr>
 						<tr>
-							<td>Precio de compra</td>
+							<td><span id="tpciocomp">Precio de compra</span></td>
 							<td colspan="2"><?php echo $precio_compra?> &#8364;</td>
 						</tr>
 						<tr>
-							<td>Precio almac&eacute;n</td>
+							<td><span id="tpcioalma">Precio almac&eacute;n</span></td>
 							<td colspan="2"><?php echo $precio_almacen?> &#8364;</td>
 						</tr>												
 						<tr>
-							<td>Precio en tienda</td>
+							<td><span id="tprectienda">Precio en tienda</span></td>
 							<td colspan="2"><?php echo $precio_tienda?> &#8364;</td>
 						</tr>
 						<!--<tr>
@@ -330,11 +331,11 @@ if ($accion=="baja") {
 							<td colspan="2"><?php echo $pvp?> &#8364;</td>
 						</tr>-->
 						<tr>
-							<td>Precio con iva</td>
+							<td><span id="tprcciva">Precio con iva</span></td>
 							<td colspan="2"><?php echo $precio_iva?> &#8364;</td>
 						</tr>
 						<tr>
-							<td>Codigo de barras</td>
+							<td><span id="tcodbarr">Codigo de barras</span></td>
 							
 							<td colspan="2"><?php echo '<img src="../funciones/barcode/barcode.php?s=ean-13&wq=1&d='.$codigobarras.'">'; ?></td>
 							
@@ -342,7 +343,7 @@ if ($accion=="baja") {
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="Aceptar" /> <span>Acpetar</span> </button>
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="Aceptar" /> ><span id="taceptar">Aceptar</span></td> </button>
 			  </div>
 			 </div>
 		  </div>

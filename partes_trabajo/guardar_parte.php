@@ -146,7 +146,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 						  <td colspan="2"><?php echo $titulo; ?></td>
 					  </tr>
 						<tr>
-						  <td>Descripci&oacute;n</td>
+						  <td><span id="tdescri">Descripci&oacute;n</span></td>
 						  <td colspan="2"><?php echo nl2br($descripcion); ?></td>
 					  </tr>
 					  	<tr>

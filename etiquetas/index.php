@@ -43,7 +43,7 @@ require_once("../racf/purePhpVerify.php");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Buscar ARTICULO </div>
+				<div id="tituloForm" class="header"><span id="tbuscaart">Buscar ARTICULO</span></div>
 			  <div id="frmBusqueda">
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>

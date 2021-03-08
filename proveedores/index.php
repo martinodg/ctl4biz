@@ -223,7 +223,7 @@ if ($cadena_busqueda<>"") {
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="8%"><span id="titem">ITEM</span></td>
-							<td width="6%">CODIGO</td>
+							<td width="6%"><span id="tcodigo">CODIGO</span></td>
 							<td width="38%">NOMBRE </td>
 							<td width="13%">NIF/CIF</td>
 							<td width="19%">TELEFONO</td>

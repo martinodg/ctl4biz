@@ -24,7 +24,8 @@ function buscar() {
 }
 
 </script>
-<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 </head>
 <body onLoad="buscar()">
 <form name="form1" id="form1" method="post" action="frame_proveedores_ini.php" target="frame_resultado" onSubmit="buscar()">
@@ -41,7 +42,7 @@ function buscar() {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span>Cerrar</span> </button>
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

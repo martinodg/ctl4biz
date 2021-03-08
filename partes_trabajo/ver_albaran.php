@@ -41,7 +41,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">VER ALBAR&Aacute;N </div>
+				<div id="tituloForm" class="header"><span id="tvalbaran">VER ALBAR&Aacute;N</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<? 

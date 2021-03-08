@@ -171,7 +171,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					        <td width="50%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
 						<tr>
-							<td width="15%">Observaciones</td>
+							<td width="15%"><span id="tobsev">Observaciones</span></td>
 						    <td width="35%"><textarea rows="5" cols="30" class="areaTexto" name="observaciones" id="observaciones"></textarea></td>
 					        <td width="40%" rowspan="14" align="left" valign="top"></td>
 						</tr>																	
