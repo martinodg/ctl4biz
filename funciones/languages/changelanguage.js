@@ -41,8 +41,6 @@ var direccion=["address","direccion","adres","indirizzo","endereço","Adresse","
 var iva=["TAX","IVA","VAT","IVA","IVA","TVA","Mehrwertsteuer"];
 var dto_pc=["discount %","descuento %","zniżka %","sconto %","desconto %","Réduction %","Rabatt %"];
 var baseImpo=["Tax base","Base imponible","Podstawa opodatkowania","Tassa base","Tributável","Base d'imposition","Steuerbemessungsgrundlage"];
-
-
 // To replace with correction from this point
 var inicio=["beginning","inicio","początek","inizio","começo","début","Anfang"];
 var intercom=["commercial intermediaries","intermediarios comerciales","pośredników handlowych","intermediari commerciali","intermediários comerciais","intermédiaires commerciaux","gewerbliche Mittler"];
@@ -75,7 +73,7 @@ var produccion_plus=["production +","produccion +","produkcja +","produzione +",
 var produccion=["production","produccion","produkcja","produzione","Produção","production","Produktion"];
 var articu=["Items","articulos","artykuły","articoli","artigos","des Items","Artikel"];
 var tipodart=["Item Type","tipo de articulo","Typ przedmiotu","Tipo di elemento","Tipo de item","Type délément","Gegenstandsart"];
-var lotdprod=["production batches","lotes de produccion","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"];
+var lotdprod=["production Lots","lotes de produccion","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"];
 var batchprod=["production batch","batch de produccion","produkcja partii","lotto di produzione","produção em lotes","production par lots","Serienfertigung"];
 var btipoar=["Type of article","buscar tipo de articulo","Rodzaj artykułu","Tipo di articolo","Tipo de artigo","Type de larticle","Artikeltyp"];
 var codtpar=["type code article","codigo de tipo de articulo","Kod typu artykuł","articolo codice tipo","artigo código de tipo","article type de code","Typencode Artikel"];
@@ -241,7 +239,6 @@ var nhneqcclc=["There are currently no packaging that meets the search criteria"
 var ctabcaria=["Bank account","cuenta bancaria","konto bankowe","conto bancario","conta bancária","compte bancaire","Bankkonto"];
 var correlec=["email","correo electronico","e-mail","e-mail","o email","e-mail","Email"];
 var dirrcweb=["Web address","direccion web","adres internetowy","indirizzo Web","endereço da web","Adresse web","Webadresse"];
-var flia=["family","familia ","rodzina","famiglia","família","famille","Familie"];
 var selecflia=["Select a family","selecciona una familia","Wybierz rodzinę","Selezionare una famiglia","Selecione uma família","Sélectionnez une famille","Wählen Sie eine Familie"];
 var prodfinal=["Final product","producto final","Produkt finalny","Prodotto finale","Produto final","Produit final","Endprodukt"];
 var prodiner=["intermediate product","producto intermedio","Produkt pośredni","prodotto intermedio","Produto intermediário","produit intermédiaire","Zwischenprodukt"];
@@ -390,13 +387,7 @@ function langchange(idioma) {
     $("#dto_pc").text(dto_pc[idioma]);
     $("#baseImpo").text(baseImpo[idioma]);
     $("#total").text(total[idioma]);
-    $("#referencia").text(referencia[idioma]);
-    
-
-  
-   
-
-
+    $("#refren").text(refren[idioma]);
 }
 
 $(document).ready(function() {
