@@ -134,9 +134,9 @@ if ($cadena_busqueda<>"") {
 						<tr>
 							<td><span id="estado">Estado</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
-								<option value="0" selected><span id="todestad">Todos los estados</span></option>
-								<option value="1"><span id="sinfact">Sin Facturar</span></option>
-								<option value="2"><span id="facturados">Facturados</span></option>			
+								<option value="0" selected data-opttrad="todestad">Todos los estados</option>
+								<option value="1" data-opttrad="sinfact"  >Sin Facturar</option>
+								<option value="2"  data-opttrad="facturados" >Facturados</option>
 								</select></td>
 					    </tr>
 					  <tr>
