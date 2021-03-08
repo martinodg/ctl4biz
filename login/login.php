@@ -50,6 +50,7 @@ if(count($_POST)>0) {
             $_SESSION['Usuario_DB'] = $Usuario_DB;
             $_SESSION['Password_DB'] = $Password_DB;
             $_SESSION['intUser'] = $row_login['user_name'];
+            $_SESSION['intUserName'] = $row_login['intUser_name'];
             $_SESSION['id'] = $row_login['id_intUser'];
             $_SESSION['company_name']= $Company_name;
         } else {
