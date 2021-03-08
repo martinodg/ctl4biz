@@ -16,7 +16,7 @@ if (!$conexion) {
 //$consulta="SELECT rolesToUsersTable.id_role, resourcesTable.id_resource, subResourceTable.id_sresource, rolesToUsersTable.id_intUser FROM rolesToUsersTable, resourcesTable, subResourceTable, resourcesToRolesTable, subresourcesToRolesTable WHERE rolesToUsersTable.id_intUser= $id_intUser AND resourcesToRolesTable.id_role=rolesToUsersTable.id_role and rolesToUsersTable.borrado=0 AND resourcesToRolesTable.id_resource=resourcesTable.id_resource and resourcesToRolesTable.borrado=0 and resourcesToRolesTable.id_resource= $id_resource and subResourceTable.id_sresource= $id_sresource and subResourceTable.id_sresource=subresourcesToRolesTable.id_subresource AND subresourcesToRolesTable.borrado=0;";
 
 $consulta="SELECT rolesToUsersTable.id_role, resourcesTable.id_resource, subResourceTable.id_sresource, rolesToUsersTable.id_intUser FROM rolesToUsersTable, resourcesTable, subResourceTable, resourcesToRolesTable, subresourcesToRolesTable WHERE rolesToUsersTable.id_intUser= $id_intUser AND resourcesToRolesTable.id_role=rolesToUsersTable.id_role and rolesToUsersTable.borrado=0 AND resourcesToRolesTable.id_resource=resourcesTable.id_resource and resourcesToRolesTable.borrado=0 and resourcesToRolesTable.id_resource= $id_resource and subResourceTable.id_sresource= $id_sresource and subResourceTable.id_sresource=subresourcesToRolesTable.id_subresource AND subresourcesToRolesTable.borrado=0;";
-echo $consulta;
+//echo $consulta;
 $rs_tabla = mysqli_query($conexion,$consulta);
 $nr_lineas= mysqli_num_rows($rs_tabla);
 if ($nr_lineas>0) {
