@@ -43,18 +43,18 @@ $rs_query=mysqli_query($conexion,$query);
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="15%">C&oacute;digo</td>
+							<td width="15%"><span id="tcod">C&Oacute;DIGO</span></td>
 							<td width="85%" colspan="2"><?php echo $codfamilia?></td>
 					    </tr>
 						<tr>
-							<td width="15%">Nombre</td>
+							<td width="15%"><span id="tnomb">Nombre</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_query,0,"nombre")?></td>
 					    </tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
 					<button type="button" id="btnaceptar" onClick="aceptar(<? echo $codfamilia?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>
 			  </div>
 			 </div>
 		  </div>

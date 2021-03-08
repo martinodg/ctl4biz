@@ -85,7 +85,7 @@ $hoy=date("d/m/Y");
 					  </tr>
 					</table>
 			  </div>
-			 	<div id="botonBusqueda">                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button>
+			 	<div id="botonBusqueda">                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
 
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>

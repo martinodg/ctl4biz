@@ -77,7 +77,7 @@ require_once("../mysqli_result.php");
 				<input id="accion" name="accion" value="alta" type="hidden">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-						<td width="15%">Referencia</td>
+						<td width="15%"><span id="trefren">Referencia</span></td>
 					      <td width="30%"><input name="areferencia" id="referencia" value="" maxlength="20" class="cajaGrande" type="text"></td>
 				          <td width="55%" rowspan="15" align="left" valign="top"><ul id="lista-errores"></ul></td>
 						</tr>
@@ -87,7 +87,7 @@ require_once("../mysqli_result.php");
 						$contador=0;
 					  ?>
 						<tr>
-							<td width="17%">Familia</td>
+							<td width="17%"><span id="tflia">FAMILIA</span></td>
 							<td><select id="cboFamilias" name="AcboFamilias" class="comboGrande">
 							
 								<option value="0">Seleccione una familia</option>
@@ -291,8 +291,8 @@ require_once("../mysqli_result.php");
 			  </div>
 				<div id="botonBusqueda">
 					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> <span>Acpetar</span> </button>
-					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
-               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
+					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>
 				
 					<input type="hidden" name="id" id="id" value="">					
 			  </div>

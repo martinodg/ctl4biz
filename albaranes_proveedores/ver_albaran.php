@@ -51,23 +51,23 @@ $iva=mysqli_result($rs_query,0,"iva");
 						 $sel_cliente="SELECT * FROM proveedores WHERE codproveedor='$codproveedor'"; 
 						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
-							<td width="15%">Proveedor</td>
+							<td width="15%"><span id="tprov">Proveedor</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
-							<td width="15%">NIF / CIF</td>
+							<td width="15%"><span id="tnip">NIF / CIF</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nif");?></td>
 					    </tr>
 						<tr>
-						  <td>Direcci&oacute;n</td>
+						  <td><span id="tdireccion">Direcci&oacute;n</span></td>
 						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 						<tr>
-						  <td>C&oacute;digo de albar&aacute;n</td>
+						  <td><span id="tcodalbaran">C&oacute;digo de albar&aacute;n</span></td>
 						  <td colspan="2"><?php echo $codalbaran?></td>
 					  </tr>
 					  <tr>
-						  <td>Fecha</td>
+						  <td><span id="tfecha">Fecha</span></td>
 						  <td colspan="2"><?php echo implota($fecha)?></td>
 					  </tr>
 					  <tr>
@@ -85,7 +85,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="20%"><span id="referenc">REFERENCIA</span></td>
 							<td width="40%"><span id="descri">descripcion</span></td>
 							<td width="8%"><span id="cant">CANTIDAD</span></td>
-							<td width="10%">PRECIO</td>
+							<td width="10%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="10%"><span id="timporte">IMPORTE</span></td>
 							<td width="5%">&nbsp;</td>
@@ -140,7 +140,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 				<div id="botonBusqueda">
 					<div align="center">
 					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btnimprimir" onClick="imprimir('<? echo $codalbaran?>','<? echo $codproveedor?>')" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="imprimir" /> <span>Imprimir</span> </button>
+					<button type="button" id="btnimprimir" onClick="imprimir('<? echo $codalbaran?>','<? echo $codproveedor?>')" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="imprimir" /> <span id="timpr">Imprimir</span> </button>
  				</div>
 			</div>
 			</div>

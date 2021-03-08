@@ -251,7 +251,7 @@ $codalbarantmp=mysqli_insert_id($conexion);
 			  <div id="frmBusqueda">
 			<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 			  <tr>
-			    <td width="27%" class="busqueda">Sub-total</td>
+			    <td width="27%" class="busqueda"><span id="subtotal">Subtotal</span></td>
 				<td width="73%" align="right"><div align="center">
 			      <input class="cajaTotales" name="baseimponible" type="text" id="baseimponible" size="12" value=0 align="right" readonly> 
 		        &#8364;</div></td>

@@ -248,7 +248,7 @@ if ($accion=="convertir") {
 					  </tr>
 					  <? } else { ?>
 					  	<tr>
-						  <td id="codalbaran">C&oacute;digo de albar&aacute;n</td>
+						  <td id="codalbaran"><span id="tcodalbaran">C&oacute;digo de albar&aacute;n</span></td>
 						  <td colspan="2"><?php echo $codalbaran?></td>
 					  </tr>
 					  <? } ?>

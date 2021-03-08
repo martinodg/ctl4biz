@@ -76,12 +76,12 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<tr>
-							<td width="15%">Nombre</td>
+							<td width="15%"><span id="tnomb">Nombre</span></td>
 						    <td width="43%"><? echo $nombre?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
 						<tr>
-							<td width="15%">C&oacute;digo de factura</td>
+							<td width="15%"><span id="tcodfactura">C&oacute;digo de factura</span></td>
 						    <td width="43%"><? echo $codfactura?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
@@ -183,7 +183,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					<input type="hidden" name="codcliente" id="codcliente" value="<? echo $codcliente?>">
 					<input type="hidden" name="codfactura" id="codfactura" value="<? echo $codfactura?>">
 					<button type="button" id="btnaceptar" onClick="javascript:validar(formulario,true);" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 			  </div>
 			  </form>
 			  <br>
@@ -194,7 +194,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="10%"><span id="titem">ITEM</span></td>
-							<td width="12%">FECHA</td>
+							<td width="12%"><span id="tfecha">Fecha</span></td>
 							<td width="12%">IMPORTE </td>							
 							<td width="20%">FORMA PAGO</td>
 							<td width="20%">N. DOCUMENTO</td>

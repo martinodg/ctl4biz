@@ -180,7 +180,7 @@ if ($cadena_busqueda<>"") {
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left"><span id="nrortoenc">N de albaranes encontrados </span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="left"><span id="nrortoenc"><span id="tndalbaranese">N de albaranes encontrados</span> </span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="mostra">Mostrados </span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>

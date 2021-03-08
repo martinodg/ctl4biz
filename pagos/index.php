@@ -102,26 +102,26 @@ if ($cadena_busqueda<>"") {
 				<form id="formulario" name="formulario" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-							<td width="16%">Codigo de proveedor </td>
+							<td width="16%"><span id="tcodprov">Codigo de proveedor</span></td>
 							<td width="68%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10"><img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar proveedor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
-							<td>Nombre</td>
+							<td><span id="tnomb">Nombre</span></td>
 							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="45" readonly="yes"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td>NIF</td>
+							<td><span id="tnif">NIF</span></td>
 							<td><input id="nif" name="nif" type="text" class="cajaMedia" maxlength="20" readonly="yes"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td>Estado</td>
+							<td><span id="testado">ESTADO</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
 								<option value="0" selected>Todos los estados</option>
 								<option value="1">Sin Pagar</option>
@@ -129,7 +129,7 @@ if ($cadena_busqueda<>"") {
 								</select></td>
 					    </tr>
 					  <tr>
-						  <td>Fecha de inicio</td>
+						  <td><span id="tfechin">Fecha de inicio</span></td>
 						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -145,7 +145,7 @@ if ($cadena_busqueda<>"") {
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-						  <td>Fecha de fin</td>
+						  <td><span id="tfchafin">Fecha de fin</span></td>
 						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $fechafin?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -163,9 +163,9 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">
-				                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button>
+				                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
 
-			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
 
 		
 				</div>
@@ -187,8 +187,8 @@ if ($cadena_busqueda<>"") {
 							<td width="26%">PROVEEDOR </td>							
 							<td width="9%"><span id="timporte">IMPORTE</span></td>
 							<td width="10%">PENDIENTE</td>
-							<td width="10%">FECHA</td>
-							<td width="10%">ESTADO</td>
+							<td width="10%"><span id="tfecha">Fecha</span></td>
+							<td width="10%"><span id="testado">ESTADO</span></td>
 							<td width="10%">FECHA PAGO</td>
 							<td width="5%">&nbsp;</td>
 						</tr>

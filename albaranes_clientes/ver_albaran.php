@@ -58,7 +58,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nif");?></td>
 					    </tr>
 						<tr>
-						  <td>Direcci&oacute;n</td>
+						  <td><span id="tdireccion">Direcci&oacute;n</span></td>
 						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 						<tr>

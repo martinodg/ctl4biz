@@ -47,7 +47,7 @@ echo '					<tr class="cabeceraTabla">';
 echo '						<td width="8%">CODIGO de Proceso</td>';
 echo '						<td width="38%">NOMBRE de Articulo</td>';
 echo '						<td width="38%"><span id="cant">CANTIDAD</span></td>';
-echo '						<td width="6%">FECHA DE INICIO</td>';
+echo '						<td width="6%"><span id="tfechin">Fecha de inicio</span></td>';
 echo '						<td width="6%">HORA DE INICIO</td>';
 echo '						<td width="5%">&nbsp;</td>';
 echo '					</tr>';

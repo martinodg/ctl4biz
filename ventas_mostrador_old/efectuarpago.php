@@ -146,7 +146,7 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 			  					<button type="button" id="btnaceptar" onClick="enviar()"onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
 
 					<button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir Tkt</span> </button>
-					<button type="button" id="btncancelar"  onClick="window.close()"  onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
+					<button type="button" id="btncancelar"  onClick="window.close()"  onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 				</div>
 			  <input id="codfactura" name="codfactura" value="<? echo $codfactura?>" type="hidden">
 			  <input id="codcliente" name="codcliente" value="<? echo $codcliente?>" type="hidden">

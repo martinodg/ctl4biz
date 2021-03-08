@@ -118,7 +118,7 @@ if ($cadena_busqueda<>"") {
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
-							<td>Nombre</td>
+							<td><span id="tnomb">Nombre</span></td>
 							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="45" value="<? echo $nombre?>"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
@@ -131,7 +131,7 @@ if ($cadena_busqueda<>"") {
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-							<td>Estado</td>
+							<td><span id="testado">ESTADO</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
 								<option value="0" selected>Todos los estados</option>
 								<option value="1">Pendiente</option>
@@ -139,7 +139,7 @@ if ($cadena_busqueda<>"") {
 								</select></td>
 					    </tr>
 					  <tr>
-						  <td>Fecha de inicio</td>
+						  <td><span id="tfechin">Fecha de inicio</span></td>
 						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -155,7 +155,7 @@ if ($cadena_busqueda<>"") {
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-						  <td>Fecha de fin</td>
+						  <td><span id="tfchafin">Fecha de fin</span></td>
 						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $fechafin?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -172,9 +172,9 @@ if ($cadena_busqueda<>"") {
 					  </tr>
 					</table>
 			  </div>
-			 	<div id="botonBusqueda">                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button>
+			 	<div id="botonBusqueda">                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
 
-			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
 
 
 					 <button type="button" id="btnnuevo" onClick="nuevo_presupuesto()" 
@@ -183,7 +183,7 @@ if ($cadena_busqueda<>"") {
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
 				<td width="50%" class="paginar" align="left">N de presupuestos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
@@ -196,7 +196,7 @@ if ($cadena_busqueda<>"") {
 							<td width="8%">N. presupuesto</td>
 							<td width="29%">CLIENTE </td>
 							<td width="10%">IMPORTE </td>
-							<td width="10%">FECHA</td>
+							<td width="10%"><span id="tfecha">Fecha</span></td>
 							<td width="10%">ESTADO </td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>

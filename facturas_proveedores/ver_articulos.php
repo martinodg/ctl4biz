@@ -95,7 +95,7 @@ $codproveedor=$_GET["codproveedor"];
 						</select></td></tr>
 		<tr>
 		  <td class="busqueda">&nbsp;</td>
-		  <td><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button></td>
+		  <td><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button></td>
 	  </tr>
 </table>
 </div>

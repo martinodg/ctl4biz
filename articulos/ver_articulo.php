@@ -51,7 +51,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 					        <td width="40%" rowspan="11" align="center" valign="top"><img src="../fotos/<? echo mysqli_result($rs_query,0,"imagen")?>" width="160px" height="140px" border="1"></td>
 						</tr>
 						<tr>
-							<td width="22%">Referencia</td>
+							<td width="22%"><span id="trefren">Referencia</span></td>
 							<? $referencia=mysqli_result($rs_query,0,"referencia"); ?>
 							<td width="38%"><? echo mysqli_result($rs_query,0,"referencia")?></td>
 				        </tr>
@@ -62,7 +62,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 						$nombrefamilia=mysqli_result($res_familia,0,"nombre");
 					  ?>
 						<tr>
-							<td width="22%">Familia</td>
+							<td width="22%"><span id="tflia">FAMILIA</span></td>
 							<td width="38%"><?php echo $nombrefamilia?></td>
 				        </tr>
 						<tr>

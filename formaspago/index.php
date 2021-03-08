@@ -96,7 +96,7 @@ if ($cadena_busqueda<>"") {
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
-							<td>Nombre</td>
+							<td><span id="tnomb">Nombre</span></td>
 							<td><input id="nombrefp" name="nombrefp" type="text" class="cajaGrande" maxlength="20" value="<? echo $nombrefp?>"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
@@ -104,10 +104,10 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">
-					<button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button>
-					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+					<button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
+					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
 					<button type="button" id="btnnuevo" onClick="nueva_fp()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span>Nueva forma de Pago</span> </button>
-					<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>									
+					<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>

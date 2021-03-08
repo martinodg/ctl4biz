@@ -83,7 +83,7 @@ if ($resultado) {
 							<td width="85%" colspan="2"><?php echo $denominacion?></td>
 					    </tr>
 						<tr>
-							<td width="15%">Fecha</td>
+							<td width="15%"><span id="tfecha">Fecha</span></td>
 						    <td width="85%" colspan="2"><?php echo $fecha?></td>
 					    </tr>
 						<tr>

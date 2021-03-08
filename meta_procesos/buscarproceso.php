@@ -33,10 +33,10 @@ if($_POST) {
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="8%">CODIGO</td>';
-    echo '						<td width="20%">NOMBRE</td>';
+    echo '						<td width="20%"><span id="tnomb">Nombre</span></td>';
     echo '						<td width="18%">ARTICULO</td>';
     echo '						<td width="18%">TIPO DE PROCESO</td>';
-    echo '						<td width="18%">ESTADO</td>';
+    echo '						<td width="18%"><span id="testado">ESTADO</span></td>';
     echo '						<td width="8%">&nbsp;</td>';
     echo '						<td width="8%">&nbsp;</td>';
     echo '					</tr>';

@@ -96,7 +96,7 @@ if ($cadena_busqueda<>"") {
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
-							<td>Nombre</td>
+							<td><span id="tnomb">Nombre</span></td>
 							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="20" value="<? echo $nombre?>"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
@@ -104,16 +104,16 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">
-				 	<button type="button" id="btnbuscar" onClick="buscar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="limpiar" /> <span>Buscar</span> </button>
-					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
+				 	<button type="button" id="btnbuscar" onClick="buscar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="limpiar" /> <span id="tbuscar">Buscar</span> </button>
+					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
                		<button type="button" id="btnnuevo" onClick="nueva_estacion()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span>Nueva estacion</span> </button>
-               		<button type="button" id="btnimprimir" onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
+               		<button type="button" id="btnimprimir" onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
 				</div>							
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
 				<td width="50%" class="paginar" align="left">N de Estaciones encontradas <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right">Mostrados <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>

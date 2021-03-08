@@ -118,7 +118,7 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 					</table>
 			  </div>
 			  <div id="botonBusqueda">
-			  <button type="button" id="btnimprimir"  onClick="imprimir('<? echo $fechainicio?>','<? echo $minimo?>','<? echo $maximo?>','<? echo $neto?>','<? echo $iva?>','<? echo $total?>','<? echo $contado?>','<? echo $tarjeta?>')" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>		
+			  <button type="button" id="btnimprimir"  onClick="imprimir('<? echo $fechainicio?>','<? echo $minimo?>','<? echo $maximo?>','<? echo $neto?>','<? echo $iva?>','<? echo $total?>','<? echo $contado?>','<? echo $tarjeta?>')" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
 				</div>
 			</div>	
 		</div>

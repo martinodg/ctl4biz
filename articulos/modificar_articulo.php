@@ -114,7 +114,7 @@ $( document ).ready(function(){
 				          <td colspan="1"><?php echo '<img src="../funciones/barcode/barcode.php?s=ean-13&wq=1&d='.$codigobarras.'">'; ?></td>
 						</tr>
 						<tr>
-						<td width="20%">Referencia</td>
+						<td width="20%"><span id="trefren">Referencia</span></td>
 						<?php $referencia=mysqli_result($rs_query,0,"referencia");?>
 					      <td colspan="2"><input name="Areferencia" id="referencia" value="<?php echo mysqli_result($rs_query,0,"referencia")?>" maxlength="20" class="cajaGrande" type="text"></td>
 				          
@@ -126,7 +126,7 @@ $( document ).ready(function(){
 						$contador=0;
 					  ?>
 						<tr>
-							<td width="11%">Familia</td>
+							<td width="11%"><span id="tflia">FAMILIA</span></td>
 							<td colspan="2"><select id="cboFamilias" name="AcboFamilias" class="comboGrande">
 							
 								<option value="0">Seleccione una familia</option>
@@ -377,8 +377,8 @@ $( document ).ready(function(){
 			  <div id="lista-errores"></div>
 				<div id="botonBusqueda">
 					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="Aceptar" /> <span>Acpetar</span> </button>
-					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span>Limpiar</span> </button>
-               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
+					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>
 								
 			    </div>
 			  </form>

@@ -182,7 +182,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 <tr>
 <td>Trabajador</td>
 <td width="27%"><input NAME="nombre" type="text" class="cajaGrande" id="nombre" value="<?php echo $nombre; ?>" size="45" readonly></td>
-<td width="3%">NIF</td>
+<td width="3%"><span id="tnif">NIF</span></td>
 <td width="64%"><input NAME="nif" type="text" class="cajaMedia" id="nif" value="<?php echo $nif; ?>" size="20" maxlength="15" readonly></td>
 </tr>
 <tr>
@@ -271,7 +271,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>Estado</td>
+<td><span id="testado">ESTADO</span></td>
 <td><label>
 <select name="estado" id="estado">
 <?php
@@ -300,7 +300,7 @@ foreach ($estados_partestrabajo as $k => $v) {
 				<br>
   <div align="center">
 				   <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codalbarantmp" name="codalbarantmp" value="<? echo $codalbarantmp?>" type="hidden">
 					<input id="modif" name="modif" value="0" type="hidden">

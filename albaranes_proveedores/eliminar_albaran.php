@@ -19,6 +19,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -139,7 +140,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 				<div id="botonBusqueda">
 					<div align="center">
 					<button type="button" id="btnaceptar" onClick="aceptar('<? echo $codalbaran?>',<? echo $codproveedor?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 				        </div>
 					</div>
 			  </div>

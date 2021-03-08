@@ -52,19 +52,19 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
-							<td width="15%">NIF / CIF</td>
+							<td width="15%"><span id="tnip">NIF / CIF</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nif");?></td>
 					    </tr>
 						<tr>
-						  <td>Direcci&oacute;n</td>
+						  <td><span id="tdireccion">Direcci&oacute;n</span></td>
 						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 						<tr>
-						  <td>C&oacute;digo de albar&aacute;n</td>
+						  <td><span id="tcodalbaran">C&oacute;digo de albar&aacute;n</span></td>
 						  <td colspan="2"><?php echo $codalbaran?></td>
 					  </tr>
 					  <tr>
-						  <td>Fecha</td>
+						  <td><span id="tfecha">Fecha</span></td>
 						  <td colspan="2"><?php echo implota($fecha)?></td>
 					  </tr>
 					  <tr>
@@ -82,7 +82,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="25%"><span id="referenc">REFERENCIA</span></td>
 							<td width="30%"><span id="descri">descripcion</span></td>
 							<td width="10%"><span id="cant">CANTIDAD</span></td>
-							<td width="10%">PRECIO</td>
+							<td width="10%"><span id="tprecio">PRECIO</span></td>
 							<td width="10%"><span id="tdctop">DCTO %</span></td>
 							<td width="10%"><span id="timporte">IMPORTE</span></td>
 						</tr>
@@ -137,7 +137,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 				<div id="botonBusqueda">
 					<div align="center">
 					   <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					 <button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codalbaran?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir</span> </button>
+					 <button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codalbaran?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
 				        </div>
 					</div>
 			  </div>

@@ -90,7 +90,7 @@ var stock=["stock","stock","Zbiory","azione","estoque","Stock","Lager"];
 var unidad=["unit / measurement","unidad / medida","/ jednostka pomiarowa","Unità / misurazione","/ unidade de medição","unité / mesure","Einheit / Mess"];
 var metproc=["Meta processes","meta procesos","procesy docelowe","processi di destinazione","processos alvo","processus cibles","Soll-Prozesse"];
 var bmetproc=["meta search process","busqueda de meta procesos","meta Proces wyszukiwania","processo di ricerca di meta","meta processo de pesquisa","processus de recherche méta","Meta-Suchprozess"];
-var estados=["status","estados ","stan","stato","Estado","Etat","Zustand"];
+var estados=["status","estados","stan","stato","Estado","Etat","Zustand"];
 var todestad=["all the states","todos los estados","Wszystkie kraje","tutti gli stati","todos os estados","tous les états","alle Staaten"];
 var cribu_2=["search criterion No. 2","criterio de busqueda #2","kryterium wyszukiwania nr 2","criterio di ricerca n ° 2","critério de pesquisa No. 2","critère de recherche n ° 2","Suchkriterium No. 2"];
 var nomproc=["name of process","nombre del proceso","Nazwa procesu","nome del processo","nome do processo","nom du processus","Name des Prozesses"];
@@ -240,7 +240,7 @@ var ctabcaria=["Bank account","cuenta bancaria","konto bankowe","conto bancario"
 var correlec=["email","correo electronico","e-mail","e-mail","o email","e-mail","Email"];
 var dirrcweb=["Web address","direccion web","adres internetowy","indirizzo Web","endereço da web","Adresse web","Webadresse"];
 var referenc=["reference","referencia","odniesienie","riferimento","referência","référence","Referenz"];
-var flia=["family","familia ","rodzina","famiglia","família","famille","Familie"];
+var flia=["family","familia","rodzina","famiglia","família","famille","Familie"];
 var selecflia=["Select a family","selecciona una familia","Wybierz rodzinę","Selezionare una famiglia","Selecione uma família","Sélectionnez une famille","Wählen Sie eine Familie"];
 var prodfinal=["Final product","producto final","Produkt finalny","Prodotto finale","Produto final","Produit final","Endprodukt"];
 var prodiner=["intermediate product","producto intermedio","Produkt pośredni","prodotto intermedio","Produto intermediário","produit intermédiaire","Zwischenprodukt"];
@@ -311,6 +311,7 @@ var codigo=["english","Codigo","polski","italian","portugues","frances","Aleman"
 var artbajomin=["english","Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo","polski","italian","portugues","frances","Aleman"];
 var codfactura=["english","Código de factura","polski","italian","portugues","frances","Aleman"];
 var balbaran=["english","Buscar ALBARAN","polski","italian","portugues","frances","Aleman"];
+var balbaranes=["english","Buscar ALBARANES","polski","italian","portugues","frances","Aleman"];
 var nrorto=["english","Num. Albaran","polski","italian","portugues","frances","Aleman"];
 var relalbaranes=["english","relación de ALBARANES ","polski","italian","portugues","frances","Aleman"];
 var insalbaran=["english","INSERTAR ALBARAN","polski","italian","portugues","frances","Aleman"];
@@ -339,7 +340,12 @@ var msgcfayf=["english","No se puede convertir en factura un albaran ya facturad
 var modificar=["english","Modificar","polski","italian","portugues","frances","Aleman"];
 var convalbaran=["english","CONVERTIR ALBAR&Aacute;N","polski","italian","portugues","frances","Aleman"];
 var nrofac=["english","N. Factura","polski","italian","portugues","frances","Aleman"];
-//var variable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
+var buscar=["english","Buscar","polski","italian","portugues","frances","Aleman"];
+var ndalbaran=["english","N. ALBARAN","polski","italian","portugues","frances","Aleman"];
+var ndalbaranese=["english","N de albaranes encontrados","polski","italian","portugues","frances","Aleman"];
+var malbaran=["english","MODIFICAR ALBARÁN","polski","italian","portugues","frances","Aleman"];
+var nif=["english","NIF","polski","italian","portugues","frances","Aleman"];
+var codralbaran=["english","Cod. Albarán","polski","italian","portugues","frances","Aleman"];
 //var variable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
 
 
@@ -411,17 +417,17 @@ function langchange(idioma) {
     $("#cancelar,#tcancelar").text(cancelar[idioma]);
     $("#buscarremito").text(buscarremito[idioma]);
     $("#cod_cliente,#tcod_cliente").text(cod_cliente[idioma]);
-    $("#nomb").text(nomb[idioma]);
-    $("#nrorto,#nrorto_2").text(nrorto[idioma]);
-    $("#estado,#estado_2").text(estado[idioma]);
+    $("#nomb,#tnomb").text(nomb[idioma]);
+    $("#nrorto,#nrorto_2,#tnrorto").text(nrorto[idioma]);
+    $("#estado,#estado_2,#testado").text(estado[idioma]);
     $("#todestad").text(todestad[idioma]);
     $("#sinfact").text(sinfact[idioma]);
     $("#facturados").text(facturados[idioma]);
-    $("#fechin").text(fechin[idioma]);
-    $("#fchafin").text(fchafin[idioma]);
-    $("#nueprov").text(nueprov[idioma]);
+    $("#fechin,#tfechin").text(fechin[idioma]);
+    $("#fchafin,#tfchafin").text(fchafin[idioma]);
+    $("#nueprov,#tnueprov").text(nueprov[idioma]);
     $("#nrortoenc").text(nrortoenc[idioma]);
-    $("#mostra").text(mostra[idioma]);
+    $("#mostra,#tmostra").text(mostra[idioma]);
     $("#relacrtos").text(relacrtos[idioma]);
     $("#item,#titem").text(item[idioma]);
     $("#importe,#importe2,#timporte").text(importe[idioma]);
@@ -442,11 +448,12 @@ function langchange(idioma) {
     $("#codigo,#tcodigo").text(codigo[idioma]);
     $("#nip,#tnip").text(NIP[idioma]);
     $("#artbajomin").text(artbajomin[idioma]);
-    $("#codfactura").text(codfactura[idioma]);
+    $("#codfactura,#tcodfactura").text(codfactura[idioma]);
     $("#referenc,#treferenc").text(referenc[idioma]);
     $("#impr,#timpr").text(impr[idioma]);
     $("#balbaran").text(balbaran[idioma]);
-    $("#relalbaranes").text(relalbaranes[idioma]);
+    $("#tbalbaranes").text(balbaranes[idioma]);
+    $("#relalbaranes,#trelalbaranes").text(relalbaranes[idioma]);
     $("#insalbaran,#tinsalbaran").text(insalbaran[idioma]);
     $("#dcto,#tdcto").text(dcto[idioma]);
     $("#agregar,#tagregar").text(agregar[idioma]);
@@ -460,12 +467,31 @@ function langchange(idioma) {
     $("#tvalbaran").text(valbaran[idioma]);
     $("#tconvalbaran").text(convalbaran[idioma]);
     $("#tnrofac").text(nrofac[idioma]);
+    $("#tcodprov").text(codprov[idioma]);
+    $("#testados").text(estados[idioma]);
+    $("#tbuscar").text(buscar[idioma]);
+    $("#tndalbaranese").text(ndalbaranese[idioma]);
+    $("#tndalbaran").text(ndalbaran[idioma]);
+    $("#tprov").text(prov[idioma]);
+    $("#tmalbaran").text(malbaran[idioma]);
+    $("#tcod").text(cod[idioma]);
+    $("#tcodralbaran").text(codralbaran[idioma]);
+
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
     traducirTitle(idioma);
+    traducirOptions(idioma);
 }
 
+
+function traducirOptions()
+{
+    $('option[data-opttrad]').each(function(el){
+        var trad = $(this).data('opttrad');
+        $(this).html(getTranslation(trad));
+    });
+}
 function traducirTitle()
 {
     $('[data-ttitle]').each(function(el){
@@ -533,4 +559,3 @@ $(document).ready(function() {
 
 
 
-    

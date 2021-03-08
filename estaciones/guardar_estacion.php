@@ -85,11 +85,11 @@ if ($accion=="baja") {
 							<td width="85%" colspan="2" class="mensaje"><?php echo $mensaje;?></td>
 					    </tr>
 						<tr>
-							<td width="15%">C&oacute;digo</td>
+							<td width="15%"><span id="tcod">C&Oacute;DIGO</span></td>
 							<td width="85%" colspan="2"><?php echo $codestacion?></td>
 					    </tr>
 						<tr>
-							<td width="15%">Nombre</td>
+							<td width="15%"><span id="tnomb">Nombre</span></td>
 						    <td width="85%" colspan="2"><?php echo $nombre?></td>
 					    </tr>						
 					</table>

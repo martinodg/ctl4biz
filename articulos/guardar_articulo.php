@@ -194,12 +194,12 @@ if ($accion=="baja") {
 							<td colspan="2" class="mensaje"><?php echo $mensaje;?></td>
 					    </tr>
 						<tr>
-							<td width="15%">C&oacute;digo</td>
+							<td width="15%"><span id="tcod">C&Oacute;DIGO</span></td>
 							<td width="58%"><?php echo $codarticulo?></td>
 					        <td width="27%" rowspan="11" align="center" valign="top"><img src="../fotos/<? echo $foto_name?>" width="160px" height="140px" border="1"></td>
 						</tr>
 						<tr>
-							<td width="15%">Referencia</td>
+							<td width="15%"><span id="trefren">Referencia</span></td>
 							<td width="58%"><?php echo $referencia?></td>
 				        </tr>
 						<?php
@@ -208,7 +208,7 @@ if ($accion=="baja") {
 						$nombrefamilia=mysqli_result($res_familia,0,"nombre");
 					  ?>
 						<tr>
-							<td width="15%">Familia</td>
+							<td width="15%"><span id="tflia">FAMILIA</span></td>
 							<td width="58%"><?php echo $nombrefamilia?></td>
 				        </tr>
 						<tr>

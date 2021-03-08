@@ -71,11 +71,11 @@ if ($resultado) {
 					    </tr>
 
 						<tr>
-							<td width="15%">Estado</td>
+							<td width="15%"><span id="testado">ESTADO</span></td>
 							<td width="85%" colspan="2">Restauraci&oacute;n correcta</td>
 					    </tr>
 						<tr>
-							<td width="15%">Fecha</td>
+							<td width="15%"><span id="tfecha">Fecha</span></td>
 						    <td width="85%" colspan="2"><?php echo $fecha?></td>
 					    </tr>
 						<tr>

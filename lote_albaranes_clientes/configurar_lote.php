@@ -93,7 +93,7 @@ $hoy=date("d/m/Y");
 							<td width="15%"></td>
 						</tr>	
 						<tr>
-							<td width="15%">Fecha</td>
+							<td width="15%"><span id="tfecha">Fecha</span></td>
 						    <td width="15%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -115,7 +115,7 @@ $hoy=date("d/m/Y");
 					<input type="hidden" name="id" id="id" value="">
 					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
 
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 					<input id="accion" name="accion" value="convertir" type="hidden">
 					<input id="albaranes" name="albaranes" value="<? echo $albaranes?>" type="hidden">
 					<input id="iva" name="iva" value="<? echo $iva?>" type="hidden">

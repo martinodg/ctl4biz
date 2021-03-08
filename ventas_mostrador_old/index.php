@@ -194,14 +194,14 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>					
 						</tr>
 						<tr>
-							<td width="6%">Nombre</td>
+							<td width="6%"><span id="tnomb">Nombre</span></td>
 						    <td width="27%"><input NAME="nombre" type="text" class="cajaGrande" id="nombre" size="45" maxlength="45" readonly></td>
 				            <td width="3%"></td>
 				            <td width="64%"></td>
 						</tr>
 						<? $hoy=date("d/m/Y"); ?>
 						<tr>
-							<td width="6%">Fecha</td>
+							<td width="6%"><span id="tfecha">Fecha</span></td>
 						    <td width="27%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -238,14 +238,14 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				  <tr>
 					<td><span id="descri">descripcion</span></td>
 					<td width="17%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
-					<td width="5%">Precio</td>
+					<td width="5%"><span id="tprecio">PRECIO</span></td>
 					<td width="10%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
 					<td width="5%"><span id="cant">CANTIDAD</span></td>
 					<td width="10%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()">
 					<select id="umnstock" class="cboUnidadmedida" name="umnstock" onChange="actualizar_importe()" >
                                 
 								</select></td>
-					<td width="4%">Dcto.</td>
+					<td width="4%"><span id="tdcto">Dcto.</span></td>
 					<td width="8%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
 					<td width="5%"><span id="timporte">IMPORTE</span></td>
 					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" readonly> &#8364;</td>
@@ -258,11 +258,11 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="5%"><span id="titem">ITEM</span></td>
-							<td width="12%">FAMILIA</td>
+							<td width="12%"><span id="tflia">FAMILIA</span></td>
 							<td width="14%"><span id="referenc">REFERENCIA</span></td>
 							<td width="33%"><span id="descri">descripcion</span></td>
 							<td width="8%"><span id="cant">CANTIDAD</span></td>
-							<td width="8%">PRECIO</td>
+							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>
 							<td width="3%">&nbsp;</td>
@@ -277,7 +277,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 			  <div id="frmBusqueda">
 			<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 			  <tr>
-			    <td width="27%" class="busqueda">Sub-total</td>
+			    <td width="27%" class="busqueda"><span id="subtotal">Subtotal</span></td>
 				<td width="73%" align="right"><div align="center">
 			      <input class="cajaTotales" name="baseimponible" type="text" id="baseimponible" size="12" value=0 align="right" readonly> 
 		        &#8364;</div></td>
@@ -289,7 +289,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 		        &#8364;</div></td>
 			  </tr>
 			  <tr>
-				<td class="busqueda">Precio Total</td>
+				<td class="busqueda"><span id="tpciototal">Precio Total</span></td>
 				<td align="right"><div align="center">
 			      <input class="cajaTotales" name="preciototal" type="text" id="preciototal" size="12" align="right" value=0 readonly> 
 		        &#8364;</div></td>
@@ -299,7 +299,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				<div id="botonBusqueda">					
 				  <div align="center">
 				  	<button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-               		<button type="button" id="btncancelar" onClick="cancelar()"onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()"onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codfacturatmp" name="codfacturatmp" value="<? echo $codfacturatmp?>" type="hidden">	
 					<input id="preciototal2" name="preciototal" value="<? echo $preciototal?>" type="hidden">			    

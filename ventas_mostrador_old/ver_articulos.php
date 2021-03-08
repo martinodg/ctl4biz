@@ -79,7 +79,7 @@ function enviar() {
 	    <td width="64%"><input name="descripcion" type="text" id="descripcion" size="50" class="cajaGrande"></td></tr>
 		<tr>
 		  <td class="busqueda">&nbsp;</td>
-		  <td><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span>Buscar</span> </button></td>
+		  <td><button type="button" id="btnbuscar" onClick="enviar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button></td>
 	  </tr>
 </table>
 </div>

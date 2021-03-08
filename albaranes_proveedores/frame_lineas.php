@@ -20,6 +20,7 @@ function eliminar_linea(codalbarantmp,numlinea,importe)
 </script>
 
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 <?php 
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");

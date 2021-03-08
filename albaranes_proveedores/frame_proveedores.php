@@ -4,7 +4,8 @@ header('Pragma: no-cache');
 ?>
 <html>
 <head>
-<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 </head>
 <script language="javascript">
 
@@ -30,9 +31,9 @@ require_once("../mysqli_result.php");?>
 <? if ($nrs>0) { ?>
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 		  <tr>
-			<td width="10%"><div align="center"><b>Codigo</b></div></td>
-			<td width="60%"><div align="center"><b>Proveedor</b></div></td>
-			<td width="20%"><div align="center"><b>NIF/CIF</b></div></td>
+			<td width="10%"><div align="center"><b><span id="tcodigo">Codigo</span></b></div></td>
+			<td width="60%"><div align="center"><b><span id="tprov">Proveedor</span></b></div></td>
+			<td width="20%"><div align="center"><b><span id="tnip">NIF/CIF</span></b></div></td>
 			<td width="10%"><div align="center"></td>
 		  </tr>
 		<?php

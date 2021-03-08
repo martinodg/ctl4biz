@@ -39,7 +39,7 @@ require_once("../../conectar7.php");
         echo '					<tr class="cabeceraTabla">';
         echo '						<td width="40%">NOMBRE DE USUARIO</td>';
         echo '						<td width="40%">E-MAIL DEL USUARIO</td>';
-        echo '						<td width="10%">ESTADO</td>';
+        echo '						<td width="10%"><span id="testado">ESTADO</span></td>';
         echo '						<td width="10%">MODIFICAR</td>';				
         echo '					</tr>';
         echo '			</table>';

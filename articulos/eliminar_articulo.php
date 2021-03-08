@@ -55,7 +55,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 					        <td width="40%" rowspan="11" align="center" valign="top"><img src="../fotos/<? echo mysqli_result($rs_query,0,"imagen")?>" width="160px" height="140px" border="1"></td>
 						</tr>
 						<tr>
-							<td width="22%">Referencia</td>
+							<td width="22%"><span id="trefren">Referencia</span></td>
 							<?php $referencia=mysqli_result($rs_query,0,"referencia");?>
 							<td width="38%"><? echo mysqli_result($rs_query,0,"referencia")?></td>
 				        </tr>
@@ -66,7 +66,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 						$nombrefamilia=mysqli_result($res_familia,0,"nombre");
 					  ?>
 						<tr>
-							<td width="22%">Familia</td>
+							<td width="22%"><span id="tflia">FAMILIA</span></td>
 							<td width="38%"><?php echo $nombrefamilia?></td>
 				        </tr>
 						<tr>
@@ -200,7 +200,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 					</table>			  </div>
 				<div id="botonBusqueda">
 					<button type="button" id="btnaceptar" onClick="aceptar(<? echo $codarticulo?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="nuevo" /> <span>Cancelar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>
 			  </div>
 			 </div>
 		  </div>

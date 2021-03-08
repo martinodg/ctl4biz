@@ -54,19 +54,19 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
-							<td width="15%">NIF / CIF</td>
+							<td width="15%"><span id="tnip">NIF / CIF</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nif");?></td>
 					    </tr>
 						<tr>
-						  <td>Direcci&oacute;n</td>
+						  <td><span id="tdireccion">Direcci&oacute;n</span></td>
 						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 						<tr>
-						  <td>C&oacute;digo de factura</td>
+						  <td><span id="tcodfactura">C&oacute;digo de factura</span></td>
 						  <td colspan="2"><?php echo $codfactura?></td>
 					  </tr>
 					  <tr>
-						  <td>Fecha</td>
+						  <td><span id="tfecha">Fecha</span></td>
 						  <td colspan="2"><?php echo implota($fecha)?></td>
 					  </tr>
 					  <tr>
@@ -84,7 +84,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="18%"><span id="referenc">REFERENCIA</span></td>
 							<td width="41%"><span id="descri">descripcion</span></td>
 							<td width="8%"><span id="cant">CANTIDAD</span></td>
-							<td width="8%">PRECIO</td>
+							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>
 							<td width="3%">&nbsp;</td>
@@ -140,7 +140,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 				<div id="botonBusqueda">
 					<div align="center">
 					<button type="button" id="btnaceptar" onClick="aceptar(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 				        </div>
 					</div>
 			  </div>

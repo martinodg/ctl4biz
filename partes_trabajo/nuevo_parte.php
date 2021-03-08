@@ -173,9 +173,9 @@ $fechahoy=date("Y-m-d");
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar trabajador" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
-							<td width="15%">Nombre</td>
+							<td width="15%"><span id="tnomb">Nombre</span></td>
 						    <td width="27%"><input NAME="nombre" type="text" class="cajaGrande" id="nombre" size="45" readonly></td>
-				            <td width="3%">NIF</td>
+				            <td width="3%"><span id="tnif">NIF</span></td>
 				            <td width="64%"><input NAME="nif" type="text" class="cajaMedia" id="nif" size="20" maxlength="15" readonly></td>
 						</tr>
 						<? $hoy=date("d/m/Y"); ?>
@@ -247,7 +247,7 @@ $fechahoy=date("Y-m-d");
 				<input name="codarticulo" value="<? echo $codarticulo?>" type="hidden" id="codarticulo">
   <div align="center">
 				    <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span>Cancelar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codalbarantmp" name="codalbarantmp" value="<? echo $codalbarantmp?>" type="hidden">
 </div>
