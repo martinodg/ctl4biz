@@ -89,7 +89,7 @@
                             mostrararticulo();
                         });
                 } else {
-                    alert('Se debe crear primero un metaproceso antes de agregar alguna materia prima al mismo');
+                    talert('msgvmtmtproc');
                 }
             });
 
@@ -175,7 +175,7 @@
     <div id="pagina">
         <div id="zonaContenido">
             <div align="center">
-                <div id="tituloForm" class="header">Definir meta-proceso </div>
+                <div id="tituloForm" class="header"><span id="tdefmtprc">Definir meta-proceso</span></div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
@@ -183,15 +183,15 @@
 
                             <tr>
 
-                                <td width="20%">Codigo del meta-proceso <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15" readonly></td>
+                                <td width="20%"><span id="tcodmetaproc">Codigo del meta-proceso</span> <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15" readonly></td>
                                 <td width="40%">Lote <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Batch</td>
                                 <td width="40%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
 
                             </tr>
                             <tr>
                                 <td width="20%"> <input id="codArticuloCreado" type="text" class="cajaGrande" NAME="codArticuloCreado" maxlength="45" style="display:none" readonly></td>
-                                <td width="40%">Articulo resultado del proceso <input id="nombreArticuloCreado" type="text" class="cajaGrande" NAME="nombreArticuloCreado" maxlength="45"></td>
-                                <td width="40%">Cantidad estimada a producir <input id="cantidadEstimada" type="text" class="cajaPequena" NAME="cantidadEstimada" maxlength="15"><select id="umcantidadest" class="cboUnidadmedida"></select></td>
+                                <td width="40%"><span id="tartresmeproce">Articulo resultado del proceso</span> <input id="nombreArticuloCreado" type="text" class="cajaGrande" NAME="nombreArticuloCreado" maxlength="45"></td>
+                                <td width="40%"><span id="cntestprod">Cantidad estimada a producir</span></td></td> <input id="cantidadEstimada" type="text" class="cajaPequena" NAME="cantidadEstimada" maxlength="15"><select id="umcantidadest" class="cboUnidadmedida"></select></td>
                                 <td>&nbsp;</td>
                             </tr>
 
@@ -204,9 +204,7 @@
                 </div>
                 <div id="botonBusqueda">
                     <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="aceptar" /> <span>Crear</span> </button>
-
                     <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="Salir" /> <span>Salir</span> </button>
-
                 </div>
 
                 </form>
@@ -221,9 +219,9 @@
 
                             <tr>
 
-                                <td width="20%">Codigo de articulo <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
-                                <td width="40%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
-                                <td width="40%">Cantidad <input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"><select id="umcantidadmprima" class="cboUnidadmedida"></select></td>
+                                <td width="20%"><span id="tcodart">Codigo de articulo</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
+                                <td width="40%"><span id="tnombart">Nombre de articulo</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
+                                <td width="40%"><span id="cant">Cantidad</span> <input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"><select id="umcantidadmprima" class="cboUnidadmedida"></select></td>
 
                             </tr>
 

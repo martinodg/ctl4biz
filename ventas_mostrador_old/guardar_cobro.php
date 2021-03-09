@@ -18,7 +18,7 @@ $rs_comprueba=mysqli_query($conexion,$sel_comprueba);
 if (mysqli_num_rows($rs_comprueba) > 0 ) {
 	?>
 		<script>
-		alert("Esta factura ya se cobro con anterioridad");
+		talert('msgfacyacbr');
 		parent.document.getElementById("botticket").disabled=false;
 		parent.document.getElementById("botaceptar").disabled=true;
 		//parent.window.close()
@@ -37,7 +37,7 @@ if (mysqli_num_rows($rs_comprueba) > 0 ) {
 		
 		?>
 		<script>
-		alert("El cobro se ha efectuado correctamente");
+		talert('msgcbrok');
 		parent.document.getElementById("botticket").disabled=false;
 		parent.document.getElementById("botaceptar").disabled=true;
 		//parent.window.close()

@@ -224,7 +224,7 @@ if ($accion=="convertir") {
 						<? if ($minimo==1) { ?>
 						<tr>
 							<td width="15%"></td>
-                            <td width="85%" colspan="2" class="mensajeminimo" ><span id="artbajomin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo:</span><br><?php echo $mensaje_minimo;?></td>
+                            <td width="85%" colspan="2" class="mensajeminimo" ><span id="artbajomin"><span id="tartimpmin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo</span>:</span><br><?php echo $mensaje_minimo;?></td>
 					    </tr>
 						<? } 
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'"; 
@@ -270,7 +270,7 @@ if ($accion=="convertir") {
 							<td width="5%"><span id="item">ITEM</span></td>
                             <td width="25%"><span id="referenc">REFERENCIA</span></td>
                             <td width="30%"><span id="descri">DESCRIPCION</span></td>
-                            <td width="10%"><span id="cant">CANTIDAD</span></td>
+                            <td width="10%"><span id="tcant">CANTIDAD</span></td>
                             <td width="10%"><span id="precio">PRECIO</span></td>
                             <td width="10%"><span id="dctop">DCTO %</span></td>
 							<td width="10%"><span id="importe">IMPORTE</span></td>

@@ -35,7 +35,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">VER IMPUESTO </div>
+                    <div id="tituloForm" class="header"><span id="tvimp">VER IMPUESTO</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
@@ -47,7 +47,7 @@ $rs_query=mysqli_query($conexion,$query);
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_query,0,"nombre")?></td>
 					    </tr>
 						<tr>
-							<td width="15%">Valor</td>
+							<td width="15%"><span id="tvalor">Valor</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_query,0,"valor")?> %</td>
 					    </tr>							
 					</table>

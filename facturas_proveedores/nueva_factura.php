@@ -88,12 +88,13 @@ $codfacturatmp=mysqli_insert_id($conexion);
 			
 		function validar_cabecera()
 			{
+			    //@todo revisar estas traducciones
 				var mensaje="";
 				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
 				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
 				if (document.getElementById("cfactura").value=="") mensaje+="  - Cod. Factura\n";
 				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
+					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("formulario").submit();
 				}
@@ -139,7 +140,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
 				
 				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
+					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);	
 					cambio_iva();
@@ -179,8 +180,8 @@ $codfacturatmp=mysqli_insert_id($conexion);
 						<tr>
 							<td width="15%"><span id="tcodprov">C&oacute;digo Proveedor</span></td>
 					      <td><input NAME="codproveedor" type="text" class="cajaPequena" id="codproveedor" size="6" maxlength="5" onBlur="validarproveedor()" onFocus="comprobarestado()">
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar proveedor" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor" onMouseOver="style.cursor=cursor"></td>					
-						  <td>Cod. Factura</td>
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar PROVEEDOR"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor" onMouseOver="style.cursor=cursor"></td>
+						  <td><span id="tcodfacabbr">Cod. Factura</span></td>
 						  <td><input NAME="cfactura" type="text" class="cajaGrande" id="cfactura" size="20" maxlength="20"></td>
 						</tr>
 						<tr>
@@ -226,7 +227,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					<td width="19%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
 					<td width="5%"><span id="tprecio">PRECIO</span></td>
 					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
-					<td width="5%"><span id="cant">CANTIDAD</span></td>
+					<td width="5%"><span id="tcant">CANTIDAD</span></td>
 					<td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
 					<td width="4%"><span id="tdcto">Dcto.</span></td>
 					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
@@ -244,7 +245,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="20%"><span id="referenc">REFERENCIA</span></td>
 							<td width="39%"><span id="descri">descripcion</span></td>
-							<td width="8%"><span id="cant">CANTIDAD</span></td>
+							<td width="8%"><span id="tcant">CANTIDAD</span></td>
 							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>

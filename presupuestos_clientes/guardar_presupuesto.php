@@ -225,13 +225,13 @@ if ($accion=="convertir") {
 						<? if ($minimo==1) { ?>
 						<tr>
 							<td width="15%"></td>
-							<td width="85%" colspan="2" class="mensajeminimo">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo:<br><?php echo $mensaje_minimo;?></td>
+							<td width="85%" colspan="2" class="mensajeminimo"><span id="tartimpmin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo</span>:<br><?php echo $mensaje_minimo;?></td>
 					    </tr>
 						<? }
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'";
 						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
-							<td width="15%">Cliente</td>
+							<td width="15%"><span id="tcliente">Cliente</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
@@ -249,7 +249,7 @@ if ($accion=="convertir") {
 					  </tr>
 					  <? } else { ?>
 					  	<tr>
-						  <td>C&oacute;digo de presupuesto</td>
+						  <td><span id="tcod_pres">C&oacute;digo de presupuesto</span></td>
 						  <td colspan="2"><?php echo $codpresupuesto?></td>
 					  </tr>
 					  <? } ?>
@@ -271,7 +271,7 @@ if ($accion=="convertir") {
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="25%"><span id="referenc">REFERENCIA</span></td>
 							<td width="30%"><span id="descri">descripcion</span></td>
-							<td width="10%"><span id="cant">CANTIDAD</span></td>
+							<td width="10%"><span id="tcant">CANTIDAD</span></td>
 							<td width="10%"><span id="tprecio">PRECIO</span></td>
 							<td width="10%"><span id="tdctop">DCTO %</span></td>
 							<td width="10%"><span id="timporte">IMPORTE</span></td>

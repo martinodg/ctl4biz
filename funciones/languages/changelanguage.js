@@ -46,7 +46,7 @@ var baseImpo=["Tax base","Base imponible","Podstawa opodatkowania","Tassa base",
 // To replace with correction from this point
 var inicio=["beginning","inicio","początek","inizio","começo","début","Anfang"];
 var intercom=["commercial intermediaries","intermediarios comerciales","pośredników handlowych","intermediari commerciali","intermediários comerciais","intermédiaires commerciaux","gewerbliche Mittler"];
-var prov=["providers","proveedores","dostawców","fornitori","provedores","fournisseurs","Anbieter"];
+var provs=["providers","proveedores","dostawców","fornitori","provedores","fournisseurs","Anbieter"];
 var bprov=["search provider","buscar proveedor","dostawcy wyszukiwania","provider di ricerca","provedor de pesquisa","moteur de recherche","Suchanbieter"];
 var codprov=["vendor code","codigo de proveedor","Kod sprzedawca","codice venditore","Código do vendedor","code de fournisseur","Herstellerkürzel"];
 var pais=["country","pais","kraj","nazione","país","de campagne","Land"];
@@ -107,14 +107,14 @@ var relprocdef=["ratio defined processes","relacion de procesos definidos","Proc
 var tipproc=["Process type","tipo de proceso","typ procesu","tipo di processo","tipo de processo","Type de processus","Prozesstyp"];
 var propru=["production processes","procesos de produccion","procesy produkcji","processi di produzione","processos de produção","processus de production","Herstellungsprozesse"];
 var bupro=["search process","busqueda de procesos","proces wyszukiwania","processo di ricerca","processo de pesquisa","processus de recherche","Suchprozess"];
-//@todo revisar repetido var cant=["amount","cantidad","ilość","quantità","quantia","quantité","Menge"];
+var cant=["amount","cantidad","ilość","quantità","quantia","quantité","Menge"];
 var fechin=["start date","fecha de inicio","Data rozpoczęcia","data dinizio","data de início","date de début","Anfangsdatum"];
 var hinic=["start time","hora de inicio","czas rozpoczęcia","Ora di inizio","hora de início","Heure de début","Startzeit"];
 var estacion=["station","estacion ","stacja","stazione","estação","gare","Bahnhof"];
 var trabaj=["employee","trabajador","pracownik","dipendente","empregado","employé","Mitarbeiter"];
 var fechfin=["finish date","fecha de finalizacion","Data zakończenia","data di fine","data de término","date de fin","Endtermin"];
 var horafin=["ending time","hora de finalizacion ","czas kończąc","tempo finale","terminando tempo","heure de fin","Endzeit"];
-var nroloten=["N. batch found","N. de lotes encontrados","N. Znaleziony partii","N. partita ritenuta","N. lote considerado","N. Trouvé lot","N. Batch GEFUNDEN"];
+var nroloten=["N. batch found","N. de lotes encontrados","N. Znaleziony partii","N. parita ritenuta","N. lote considerado","N. Trouvé lot","N. Batch GEFUNDEN"];
 var lotprod=["production Lots","lotes de produccion","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"];
 var relalot=["Batch relationship","relacion de lotes","relacja wsadowe","rapporto Batch","relacionamento lote","lot relation","Batch Beziehung"];
 var estactra=["work stations","estaciones de trabajo","Stacje robocze","postazioni di lavoro","estações de trabalho","postes de travail","Arbeitsplätze"];
@@ -341,7 +341,7 @@ var msgfimp=["english","Falta el importe","polski","italian","portugues","france
 var msgvmaf=["english","No puede modificar un albaran facturado","polski","italian","portugues","frances","Aleman"];
 var msgcfayf=["english","No se puede convertir en factura un albaran ya facturado","polski","italian","portugues","frances","Aleman"];
 var modificar=["english","Modificar","polski","italian","portugues","frances","Aleman"];
-var convalbaran=["english","CONVERTIR ALBAR&Aacute;N","polski","italian","portugues","frances","Aleman"];
+var convalbaran=["english","convertir albarán","polski","italian","portugues","frances","Aleman"];
 var nrofac=["english","N. Factura","polski","italian","portugues","frances","Aleman"];
 var buscar=["english","Buscar","polski","italian","portugues","frances","Aleman"];
 var ndalbaran=["english","N. ALBARAN","polski","italian","portugues","frances","Aleman"];
@@ -379,15 +379,195 @@ var imgfrmjpg=["english","Imagen [Formato jpg]","polski","italian","portugues","
 var insart=["english","insertar articulo","polski","italian","portugues","frances","Aleman"];
 var prcventpub=["english","Precio venta al publico","polski","italian","portugues","frances","Aleman"];
 var msgsinrbus=["english","No hay ningún artículo que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
-var varticulo=["english","VER ARTICULO","polski","italian","portugues","frances","Aleman"];
-//var variable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
+var varticulo=["english","ver articulo","polski","italian","portugues","frances","Aleman"];
+var tart=["english","ARTICULO","polski","italian","portugues","frances","Aleman"];
+var horafincrt=["english","hora de fin","polski","italian","portugues","frances","Aleman"];
+var msgatncbatexterror=["english","ATENCION: No se ha podido ser modificado con exito el batch","polski","italian","portugues","frances","Aleman"];
+var msgatncbatext=["english","ATENCION: El batch ha sido modificado con exito!","polski","italian","portugues","frances","Aleman"];
+var inicializado=["english","inicializado","polski","italian","portugues","frances","Aleman"];
+var Finalizado=["english","Finalizado","polski","italian","portugues","frances","Aleman"];
+var descartado=["english","Descartado","polski","italian","portugues","frances","Aleman"];
+var detcrrcaja=["english","Detalle de cierre de caja","polski","italian","portugues","frances","Aleman"];
+var delticktnro=["english","Del ticket nº","polski","italian","portugues","frances","Aleman"];
+var codpostal=["english","código postal","polski","italian","portugues","frances","Aleman"];
+var movil=["english","móvil","polski","italian","portugues","frances","Aleman"];
+var inscliente=["english","insertar cliente","polski","italian","portugues","frances","Aleman"];
+var selprovincia=["english","Seleccione una provincia","polski","italian","portugues","frances","Aleman"];
+var selfrmpago=["english","Seleccione una forma de pago","polski","italian","portugues","frances","Aleman"];
+var msgsincliente=["english","No hay ningún cliente que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var vcliente=["english","ver cliente","polski","italian","portugues","frances","Aleman"];
+var msgtdbprocobro=["english","Todavía no se ha producido ningún cobro de esta factura","polski","italian","portugues","frances","Aleman"];
+var fcvencrt=["english","FECHA VTO.","polski","italian","portugues","frances","Aleman"];
+var mostradas=["english","mostradas","polski","italian","portugues","frances","Aleman"];
+var relfac=["english","relacion de FACTURAS","polski","italian","portugues","frances","Aleman"];
+var impfactura=["english","Importe de la factura","polski","italian","portugues","frances","Aleman"];
+var pndpagar=["english","Pendiente por pagar","polski","italian","portugues","frances","Aleman"];
+var etdfac=["english","Estado de la factura","polski","italian","portugues","frances","Aleman"];
+var sinpagar=["english","Sin Pagar","polski","italian","portugues","frances","Aleman"];
+var reldcob=["english","relacion de COBROS","polski","italian","portugues","frances","Aleman"];
+var obv=["english","OBV","polski","italian","portugues","frances","Aleman"];
+var elemb=["english","eliminar embalaje","polski","italian","portugues","frances","Aleman"];
+var modembalaje=["english","modificar embalaje","polski","italian","portugues","frances","Aleman"];
+var msgctrbsq=["english","No hay ningún embalaje que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var vembalaje=["english","ver embalaje","polski","italian","portugues","frances","Aleman"];
+var elmentbanc=["english","ELIMINAR ENTIDAD BANCARIA","polski","italian","portugues","frances","Aleman"];
+var bscentbanc=["english","Buscar ENTIDADES BANCARIAS","polski","italian","portugues","frances","Aleman"];
+var modentbanc=["english","MODIFICAR ENTIDAD BANCARIA","polski","italian","portugues","frances","Aleman"];
+var insentbanc=["english","INSERTAR ENTIDAD BANCARIA","polski","italian","portugues","frances","Aleman"];
+var msgentbncnotfound=["english","No hay ninguna entidad bancaria que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var ventbanc=["english","VER ENTIDAD BANCARIA","polski","italian","portugues","frances","Aleman"];
+var elesttrab=["english","ELIMINAR Estaciones de Trabajo","polski","italian","portugues","frances","Aleman"];
+var bscesttrab=["english","Buscar Estaciones de Trabajo","polski","italian","portugues","frances","Aleman"];
+var codesttrab=["english","Codigo de Estaciones de Trabajo","polski","italian","portugues","frances","Aleman"];
+var modesttrab=["english","MODIFICAR Estaciones de Trabajo","polski","italian","portugues","frances","Aleman"];
+var insesttrab=["english","INSERTAR Estaciones de Trabajo","polski","italian","portugues","frances","Aleman"];
+var visualizar=["english","Visualizar","polski","italian","portugues","frances","Aleman"];
+var eliminar=["english","eliminar","polski","italian","portugues","frances","Aleman"];
+var msgetcnf=["english","No hay ninguna estacion que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var vesttrab=["english","VER Estaciones de Trabajo","polski","italian","portugues","frances","Aleman"];
+var msgvlselartimp=["english","Debe seleccionar un articulo antes de imprimir el codigo de barras","polski","italian","portugues","frances","Aleman"];
+var elfac=["english","ELIMINAR FACTURA","polski","italian","portugues","frances","Aleman"];
+var artimpmin=["english","Los siguientes artículos están bajo mínimo","polski","italian","portugues","frances","Aleman"];
+var insfactura=["english","INSERTAR FACTURA","polski","italian","portugues","frances","Aleman"];
+var vfactura=["english","espanol","polski","italian","portugues","frances","Aleman"];
+var mdfac=["english","MODIFICAR FACTURA","polski","italian","portugues","frances","Aleman"];
+var eltparc=["english","ELIMINAR Tipo de Articulo","polski","italian","portugues","frances","Aleman"];
+var rlctyarc=["english","relacion de TIPOS DE ARTICULOS","polski","italian","portugues","frances","Aleman"];
+var modtparc=["english","MODIFICAR TIPO DE ARTICULO","polski","italian","portugues","frances","Aleman"];
+var instyparc=["english","INSERTAR TIPO DE ARTICULO","polski","italian","portugues","frances","Aleman"];
+var msgtparcnf=["english","No hay ninguna familia que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var vtypsart=["english","VER TIPOS DE ARTICULOS","polski","italian","portugues","frances","Aleman"];
+var elfrmpg=["english","ELIMINAR FORMA DE PAGO","polski","italian","portugues","frances","Aleman"];
+var bscfdp=["english","Buscar FORMAS DE PAGO ","polski","italian","portugues","frances","Aleman"];
+var codfrmpg=["english","Codigo de forma de pago","polski","italian","portugues","frances","Aleman"];
+var insfrmpg=["english","INSERTAR FORMA DE PAGO","polski","italian","portugues","frances","Aleman"];
+var msgfpnf=["english","No hay ninguna forma de pago que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var vfp=["english","VER FORMA DE PAGO","polski","italian","portugues","frances","Aleman"];
+var elmimp =["english","ELIMINAR IMPUESTO","polski","italian","portugues","frances","Aleman"];
+var mdfimp=["english","MODIFICAR IMPUESTO","polski","italian","portugues","frances","Aleman"];
+var insimp=["english","INSERTAR IMPUESTO","polski","italian","portugues","frances","Aleman"];
+var msgimpnf=["english","No hay ningun impuesto que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var vimp=["english","VER IMPUESTO","polski","italian","portugues","frances","Aleman"];
+var relmov=["english","relacion de MOVIMIENTOS","polski","italian","portugues","frances","Aleman"];
+var cv=["english","C/V","polski","italian","portugues","frances","Aleman"];
+var factura=["english","factura","polski","italian","portugues","frances","Aleman"];
+var numdocabr=["english","NUM. DOC.","polski","italian","portugues","frances","Aleman"];
+var msgmovfn=["english","No hay ning&uacute;n movimiento que cumpla con los criterios de b&uacute;squeda","polski","italian","portugues","frances","Aleman"];
+var impsiva=["english","Importe sin iva","polski","italian","portugues","frances","Aleman"];
+var impciva=["english","Importe con iva","polski","italian","portugues","frances","Aleman"];
+var fcsiva=["english","Total facturación sin iva","polski","italian","portugues","frances","Aleman"];
+var fcciva=["english","Total facturaci&oacute;n con iva","polski","italian","portugues","frances","Aleman"];
+var codfacabbr=["english","Cod. Factura","polski","italian","portugues","frances","Aleman"];
+var msgvnmfacrep=["english","No se puede dar de alta este numero de factura con este proveedor, ya existe uno en el sistema","polski","italian","portugues","frances","Aleman"];
+var msgermodlot=["english","ATENCION: No ha podido ser modificado con exito el lote","polski","italian","portugues","frances","Aleman"];
+var msgokmodlot=["english","ATENCION: El lote ha sido modificado con exito!","polski","italian","portugues","frances","Aleman"];
+var msgcrlotok=["english","ATENCION: El lote ha sido creado exitosamente con el codigo","polski","italian","portugues","frances","Aleman"];
+var msgcrloter=["english","ATENCION: Los Campos relativos al articulo del lote son obligatorios!","polski","italian","portugues","frances","Aleman"];
+var msgvinslot=["english","Es necesario insertar una cantidad para finalizar un lote!","polski","italian","portugues","frances","Aleman"];
+var modlote=["english","Modificar Lote","polski","italian","portugues","frances","Aleman"];
+var codlote=["english","espanol","polski","italian","portugues","frances","Aleman"];
+var nombart=["english","Nombre de articulo","polski","italian","portugues","frances","Aleman"];
+var inizializado=["english","Inizializado","polski","italian","portugues","frances","Aleman"];
+var inicar=["english","Inicar","polski","italian","portugues","frances","Aleman"];
+var defmtprc=["english","Definir meta-proceso","polski","italian","portugues","frances","Aleman"];
+var msgermdproc=["english","ATENCION: No ha podido ser modificado con exito el proceso","polski","italian","portugues","frances","Aleman"];
+var msgokmdproc=["english","ATENCION: El proceso ha sido modificado con exito!","polski","italian","portugues","frances","Aleman"];
+var activado=["english","activado","polski","italian","portugues","frances","Aleman"];
+var desactivado=["english","desactivado","polski","italian","portugues","frances","Aleman"];
+var msgprccrok=["english","ATENCION: El proceso ha sido creado exitosamente con el codigo","polski","italian","portugues","frances","Aleman"];
+var msgprccrer=["english","ATENCION: Los Campos relativos al articulo del proceso son obligatorios!","polski","italian","portugues","frances","Aleman"];
+var dtmpmod=["english","Datos del meta-proceso modificados","polski","italian","portugues","frances","Aleman"];
+var codmetaproc=["english","Codigo del meta-proceso","polski","italian","portugues","frances","Aleman"];
+var artcrdproce=["english","Articulo creado por el proceso","polski","italian","portugues","frances","Aleman"];
+var cntestprod=["english","Cantidad estimada a producir","polski","italian","portugues","frances","Aleman"];
+var agrmatprim=["english","Agregar Materia prima","polski","italian","portugues","frances","Aleman"];
+var agrartmtpr=["english","Agregar articulo como materia prima","polski","italian","portugues","frances","Aleman"];
+var mtprmeproce=["english","Materias primas del meta-proceso","polski","italian","portugues","frances","Aleman"];
+var linea=["english","linea","polski","italian","portugues","frances","Aleman"];
+var nmbart=["english","Nombre del Articulo","polski","italian","portugues","frances","Aleman"];
+var umdmod=["english","Unidad de medida modificada","polski","italian","portugues","frances","Aleman"];
+var msgvmtmtproc=["english","Se debe crear primero un metaproceso antes de agregar alguna materia prima al mismo","polski","italian","portugues","frances","Aleman"];
+var artresmeproce=["english","Articulo resultado del proceso","polski","italian","portugues","frances","Aleman"];
+var msgvlcrbfact=["english","Todavía no se ha producido ningún pago en esta factura","polski","italian","portugues","frances","Aleman"];
+var fchpago=["english","Fecha de pago","polski","italian","portugues","frances","Aleman"];
+var fchdlpago=["english","Fecha del pago","polski","italian","portugues","frances","Aleman"];
+var grdfecha=["english","Guardar fecha","polski","italian","portugues","frances","Aleman"];
+var fcpago=["english","FECHA PAGO","polski","italian","portugues","frances","Aleman"];
+var hrsprv=["english","Horas previstas","polski","italian","portugues","frances","Aleman"];
+var ttalprev=["english","Total previsto","polski","italian","portugues","frances","Aleman"];
+var fccom=["english","Fecha Comienzo","polski","italian","portugues","frances","Aleman"];
+var flect=["english","Fecha Lectura","polski","italian","portugues","frances","Aleman"];
+var hinvertidas=["english","Horas invertidas","polski","italian","portugues","frances","Aleman"];
+var tinvertido=["english","Total invertido","polski","italian","portugues","frances","Aleman"];
+var ndpenc=["english","N de partes encontrados","polski","italian","portugues","frances","Aleman"];
+var relprts=["english","relacion de PARTES","polski","italian","portugues","frances","Aleman"];
+var trabajadores=["english","trabajadores","polski","italian","portugues","frances","Aleman"];
+var cod_pres=["english","código presupuesto","polski","italian","portugues","frances","Aleman"];
+var ttrabajo=["english","Titulo Trabajo","polski","italian","portugues","frances","Aleman"];
+var rglspunt=["english","(Separador decimal con . -punto-)","polski","italian","portugues","frances","Aleman"];
+var crprttrab=["english","CREAR PARTE DE TRABAJO","polski","italian","portugues","frances","Aleman"];
+var msgprtnf=["english","No hay ning&uacute;n parte que cumpla con los criterios de","polski","italian","portugues","frances","Aleman"];
+var inspres=["english","INSERTAR presupuesto","polski","italian","portugues","frances","Aleman"];
+var crtpres=["english","CREAR PRESUPUESTO","polski","italian","portugues","frances","Aleman"];
+var msgpresnf=["english","No hay ningún presupuesto que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var vpres=["english","VER PRESUPUESTO","polski","italian","portugues","frances","Aleman"];
+var regel=["english","record borrado","polski","italian","portugues","frances","Aleman"];
+var artdllote=["english","Articulo del lote","polski","italian","portugues","frances","Aleman"];
+var finalizar=["english","Finalizar","polski","italian","portugues","frances","Aleman"];
+var msgerproc_1=["english","La finalizacion no ha podido ser realizada!!!!","polski","italian","portugues","frances","Aleman"];
+var msgerproc_2=["english","Todos los articulos deben ser validados antes de finalizar el proceso.","polski","italian","portugues","frances","Aleman"];
+var msgerproc_3=["english","Y la cantidad total del resultado del proceso debe ser ingresada.","polski","italian","portugues","frances","Aleman"];
+var msgokfinproc=["english","El proceso ha sido finalizado con data","polski","italian","portugues","frances","Aleman"];
+var yhora=["english","y hora","polski","italian","portugues","frances","Aleman"];
+var porcantd=["english","Por una cantidad de","polski","italian","portugues","frances","Aleman"];
+var esttrab=["english","Estacion de Trabajo","polski","italian","portugues","frances","Aleman"];
+var nombempl=["english","Nombre del empleado","polski","italian","portugues","frances","Aleman"];
+var artdproce=["english","articulo del proceso","polski","italian","portugues","frances","Aleman"];
+var selelun_1=["english","Seleccionar un","polski","italian","portugues","frances","Aleman"];
+var selelun_2=["english","de la lista","polski","italian","portugues","frances","Aleman"];
+var msgprcinit=["english","El proceso ha sido inicializado exitosamente con el codigo","polski","italian","portugues","frances","Aleman"];
+var mdfproce=["english","Modificar proceso","polski","italian","portugues","frances","Aleman"];
+var nmbmtrprm=["english","Nombre de la Materia Prima","polski","italian","portugues","frances","Aleman"];
+var msglnadd_1=["english","La linea ha sido validada e insertada en la base de datos con el numero de linea ","polski","italian","portugues","frances","Aleman"];
+var msglnadd_2=["english","espanol","polski","italian","portugues","frances","Aleman"];
+var elmprov=["english","ELIMINAR PROVEEDOR","polski","italian","portugues","frances","Aleman"];
+var modprove=["english","MODIFICAR PROVEEDOR","polski","italian","portugues","frances","Aleman"];
+var insprvdr=["english","INSERTAR PROVEEDOR","polski","italian","portugues","frances","Aleman"];
+var msgprvnf=["english","No hay ningún proveedor que cumpla con los criterios ","polski","italian","portugues","frances","Aleman"];
+var vprodr=["english","ver proveedor","polski","italian","portugues","frances","Aleman"];
+var lngyloc=["english","Lenguaje y localizacion","polski","italian","portugues","frances","Aleman"];
+var elgidi=["english","Elija un idioma","polski","italian","portugues","frances","Aleman"];
+var msgtrbnf=["english","No existe ningun trabajador con ese codigo","polski","italian","portugues","frances","Aleman"];
+var elmtrab=["english","ELIMINAR TRABAJADOR","polski","italian","portugues","frances","Aleman"];
+var movavi=["english","móvil avisos","polski","italian","portugues","frances","Aleman"];
+var correlecavs=["english","correo electronico avisos","polski","italian","portugues","frances","Aleman"];
+var modtrab=["english","MODIFICAR TRABAJADOR","polski","italian","portugues","frances","Aleman"];
+var instrab=["english","INSERTAR TRABAJADOR","polski","italian","portugues","frances","Aleman"];
+var msgtrbnf=["english","No hay ning&uacute;n trabajador que cumpla con los criterios de b&uacute;squeda","polski","italian","portugues","frances","Aleman"];
+var vtrb=["english","VER TRABAJADOR","polski","italian","portugues","frances","Aleman"];
+var elmubc=["english","ELIMINAR UBICACI&Oacute;N","polski","italian","portugues","frances","Aleman"];
+var modubc=["english","MODIFICAR UBICACI&Oacute;N","polski","italian","portugues","frances","Aleman"];
+var insubc=["english","INSERTAR UBICACI&Oacute;N","polski","italian","portugues","frances","Aleman"];
+var msgubcnf=["english","No hay ninguna ubicación que cumpla con los criterios de búsqueda","polski","italian","portugues","frances","Aleman"];
+var vubc=["english","VER UBICACI&Oacute;N","polski","italian","portugues","frances","Aleman"];
+var vntmst=["english","VENTA MOSTRADOR","polski","italian","portugues","frances","Aleman"];
+var mdgartnfcb=["english","No existe ningun articulo con ese codigo de barras","polski","italian","portugues","frances","Aleman"];
+var cobro=["english","cobro","polski","italian","portugues","frances","Aleman"];
+var impvl=["english","Importe vale","polski","italian","portugues","frances","Aleman"];
+var apgr=["english","A pagar","polski","italian","portugues","frances","Aleman"];
+var pagado=["english","Pagado","polski","italian","portugues","frances","Aleman"];
+var adevolver=["english","A devolver","polski","italian","portugues","frances","Aleman"];
+var msgfacyacbr=["english","Esta factura ya se cobro con anterioridad","polski","italian","portugues","frances","Aleman"];
+var msgcbrok=["english","El cobro se ha efectuado correctamente","polski","italian","portugues","frances","Aleman"];
+var efcpag=["english","Efectuar pago","polski","italian","portugues","frances","Aleman"];
+//var varidable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
 
 
 //language change function
 function langchange(idioma) {
 
     $("#companyName").text(company_name[idioma]);
-    $("#password").text(password[idioma]);
+    $("#password,#tpassword").text(password[idioma]);
     $("#passwordValidation").text(passwordValidation[idioma]);
     $("#emailValidation").text(emailValidation[idioma]);
     $("#nombre, #nombre2, #tnombre").text(nombre[idioma]);
@@ -398,13 +578,13 @@ function langchange(idioma) {
     $("#signin").text(signin[idioma]);
     $("#companyCode").text(companyCode[idioma]);
     $("#noMember").text(noMember[idioma]);
-    $("#copiasRespaldo").text(copiasRespaldo[idioma]);
-    $("#hacerrespaldo").text(hacerrespaldo[idioma]);
-    $("#restaurarrespaldo").text(restaurarrespaldo[idioma]);
+    $("#copiasRespaldo,#tcopiasRespaldo").text(copiasRespaldo[idioma]);
+    $("#hacerrespaldo,#thacerrespaldo").text(hacerrespaldo[idioma]);
+    $("#restaurarrespaldo,#trestaurarrespaldo").text(restaurarrespaldo[idioma]);
     $("#AdminSeguridad").text(AdminSeguridad[idioma]);
-    $("#usuarios").text(usuarios[idioma]);
-    $("#roles").text(roles[idioma]);
-    $("#recursos").text(recursos[idioma]);
+    $("#usuarios,#tusuarios").text(usuarios[idioma]);
+    $("#roles,#troles").text(roles[idioma]);
+    $("#recursos,#trecursos").text(recursos[idioma]);
     $("#ventas_plus").text(ventas_plus[idioma]);
     $("#ventas").text(ventas[idioma]);
     $("#venta_a_mostrador").text(venta_a_mostrador[idioma]);
@@ -431,10 +611,10 @@ function langchange(idioma) {
     $("#contabilidad_plus").text(contabilidad_plus[idioma]);
     $("#contabilidad").text(contabilidad[idioma]);
     $("#cobros").text(cobros[idioma]);
-    $("#pagos").text(pagos[idioma]);
+    $("#pagos,#tpagos").text(pagos[idioma]);
     $("#cjadiaria").text(cjadiaria[idioma]);
     $("#librodrio").text(librodrio[idioma]);
-    $("#forpago").text(forpago[idioma]);
+    $("#forpago,#tforpago").text(forpago[idioma]);
     $("#impuestos").text(impuestos[idioma]);
     $("#entbcaria").text(entbcaria[idioma]);
     $("#rrhh_plus").text(rrhh_plus[idioma]);
@@ -556,7 +736,7 @@ function langchange(idioma) {
     $("#importe").text(importe[idioma]);
     $("#limp").text(limp[idioma]);
     $("#busc").text(busc[idioma]);
-    $("#eliminarRto").text(eliminarRto[idioma]);
+    $("#eliminarRto,#teliminarRto").text(eliminarRto[idioma]);
     $("#direccion").text(direccion[idioma]);
     $("#iva,#iva2").text(iva[idioma]);
     $("#descrip").text(descrip[idioma]);
@@ -566,9 +746,240 @@ function langchange(idioma) {
     $("#baseImpo").text(baseImpo[idioma]);
     $("#total").text(total[idioma]);
     $("#refren").text(refren[idioma])
+    $("#thinic").text(hinic[idioma])
+    $("#thorafincrt").text(horafincrt[idioma])
+    $("#tart").text(tart[idioma])
+    $("#tmsgatncbatexterror").text(msgatncbatexterror[idioma])
+    $("#tmsgatncbatext").text(msgatncbatext[idioma])
+    $("#tcribu_2").text(cribu_2[idioma])
+    $("#tcribu_3").text(cribu_3[idioma])
+    $("#tnroloten").text(nroloten[idioma])
+    $("#tbuscfcha").text(buscfcha[idioma])
+    $("#tfcierre").text(fchaciere[idioma])
+    $("#tdetcrrcaja").text(detcrrcaja[idioma])
+    $("#tfchacja").text(fchacja[idioma])
+    $("#tdelticktnro").text(delticktnro[idioma])
+    $("#taltktnro").text(altktnro[idioma])
+    $("#tneto").text(neto[idioma])
+    $("#ttotalcdo").text(totalcdo[idioma])
+    $("#ttotaltj").text(totaltj[idioma])
+    $("#tlocal").text(local[idioma])
+    $("#tpcia").text(pcia[idioma])
+    $("#tentiban").text(entiban[idioma])
+    $("#tctabcaria").text(ctabcaria[idioma])
+    $("#tcodpostal").text(codpostal[idioma])
+    $("#ttelef").text(telef[idioma])
+    $("#tmovil").text(movil[idioma])
+    $("#tcorrelec").text(correlec[idioma])
+    $("#tdirrcweb").text(dirrcweb[idioma])
+    $("#tbcliente").text(bcliente[idioma])
+    $("#tcodcli").text(codcli[idioma])
+    $("#tinscliente").text(inscliente[idioma])
+    $("#tmsgsincliente").text(msgsincliente[idioma])
+    $("#tvcliente").text(vcliente[idioma])
+    $("#tmsgtdbprocobro").text(msgtdbprocobro[idioma])
+    $("#tpendient").text(pendient[idioma])
+    $("#tfcvencrt").text(fcvencrt[idioma])
+    $("#tnrofcenco").text(nrofcenco[idioma])
+    $("#tmostradas").text(mostradas[idioma])
+    $("#trelfac").text(relfac[idioma])
+    $("#tnvafact").text(nvafact[idioma])
+    $("#tnhnfqccbu").text(nhnfqccbu[idioma])
+    $("#timpfactura").text(impfactura[idioma])
+    $("#tpndpagar").text(pndpagar[idioma])
+    $("#tetdfac").text(etdfac[idioma])
+    $("#tfchavto").text(fchavto[idioma])
+    $("#tnrodocum").text(nrodocum[idioma])
+    $("#treldcob").text(reldcob[idioma])
+    $("#tobv").text(obv[idioma])
+    $("#telemb").text(elemb[idioma])
+    $("#tbusembj").text(busembj[idioma])
+    $("#tcodembal").text(codembal[idioma])
+    $("#tnroemben").text(nroemben[idioma])
+    $("#tmodembalaje").text(modembalaje[idioma])
+    $("#tinseremb").text(inseremb[idioma])
+    $("#tmsgctrbsq").text(msgctrbsq[idioma])
+    $("#tvembalaje").text(vembalaje[idioma])
+    $("#telmentbanc").text(elmentbanc[idioma])
+    $("#tbscentbanc").text(bscentbanc[idioma])
+    $("#tcodentida").text(codentida[idioma])
+    $("#tnroenbcen").text(nroenbcen[idioma])
+    $("#tmodentbanc").text(modentbanc[idioma])
+    $("#tinsentbanc").text(insentbanc[idioma])
+    $("#tmsgentbncnotfound").text(msgentbncnotfound[idioma])
+    $("#tventbanc").text(ventbanc[idioma])
+    $("#telesttrab").text(elesttrab[idioma])
+    $("#tbscesttrab").text(bscesttrab[idioma])
+    $("#tnroesten").text(nroesten[idioma])
+    $("#trelestatr").text(relestatr[idioma])
+    $("#tcodesttrab").text(codesttrab[idioma])
+    $("#tmodesttrab").text(modesttrab[idioma])
+    $("#tinsesttrab").text(insesttrab[idioma])
+    $("#tmsgetcnf").text(msgetcnf[idioma])
+    $("#tvesttrab").text(vesttrab[idioma])
+    $("#telfac").text(elfac[idioma])
+    $("#tartimpmin").text(artimpmin[idioma])
+    $("#tbuscafc").text(buscafc[idioma])
+    $("#tinsfactura").text(insfactura[idioma])
+    $("#tvfactura").text(vfactura[idioma])
+    $("#tmdfac").text(mdfac[idioma])
+    $("#tbtipoar").text(btipoar[idioma])
+    $("#tinstyparc").text(instyparc[idioma])
+    $("#tmodtparc").text(modtparc[idioma])
+    $("#tmsgtparcnf").text(msgtparcnf[idioma])
+    $("#tvtypsart").text(vtypsart[idioma])
+    $("#telfrmpg").text(elfrmpg[idioma])
+    $("#tbscfdp").text(bscfdp[idioma])
+    $("#tcodfrmpg").text(codfrmpg[idioma])
+    $("#tinsfrmpg").text(insfrmpg[idioma])
+    $("#tmsgfpnf").text(msgfpnf[idioma])
+    $("#tvfp").text(vfp[idioma])
+    $("#telmimp").text(elmimp[idioma])
+    $("#tvalor").text(valor[idioma])
+    $("#tbusimp").text(busimp[idioma])
+    $("#tcodimp").text(codimp[idioma])
+    $("#treimp").text(reimp[idioma])
+    $("#tmdfimp").text(mdfimp[idioma])
+    $("#tinsimp").text(insimp[idioma])
+    $("#tmsgimpnf").text(msgimpnf[idioma])
+    $("#tvimp").text(vimp[idioma])
+    $("#tbuscmov").text(buscmov[idioma])
+    $("#trelmov").text(relmov[idioma])
+    $("#tcv").text(cv[idioma])
+    $("#tfactura").text(factura[idioma])
+    $("#comerc").text(comerc[idioma])
+    $("#tnumdocabr").text(numdocabr[idioma])
+    $("#tfacturar_remitos").text(facturar_remitos[idioma])
+    $("#tmsgmovfn").text(msgmovfn[idioma])
+    $("#tnrortoini").text(nrortoini[idioma])
+    $("#timpsiva").text(impsiva[idioma])
+    $("#timpciva").text(impciva[idioma])
+    $("#tfcsiva").text(fcsiva[idioma])
+    $("#tfcciva").text(fcciva[idioma])
+    $("#tcodfacabbr").text(codfacabbr[idioma])
+    $("#trelalot").text(relalot[idioma])
+    $("#tmsgermodlot").text(msgermodlot[idioma])
+    $("#tmsgokmodlot").text(msgokmodlot[idioma])
+    $("#tmsgcrlotok").text(msgcrlotok[idioma])
+    $("#tmsgcrloter").text(msgcrloter[idioma])
+    $("#tmodlote").text(modlote[idioma])
+    $("#tcodlot").text(codlote[idioma])
+    $("#tnombart").text(nombart[idioma])
+    $("#tinicar").text(inicar[idioma])
+    $("#tdefmtprc").text(defmtprc[idioma])
+    $("#ttipproc").text(tipproc[idioma])
+    $("#tmsgermdproc").text(msgermdproc[idioma])
+    $("#tmsgokmdproc").text(msgokmdproc[idioma])
+    $("#tmsgprccrok").text(msgprccrok[idioma])
+    $("#tmsgprccrer").text(msgprccrer[idioma])
+    $("#tdtmpmod").text(dtmpmod[idioma])
+    $("#tcodmetaproc").text(codmetaproc[idioma])
+    $("#tartcrdproce").text(artcrdproce[idioma])
+    $("#tcntestprod").text(cntestprod[idioma])
+    $("#tagrmatprim").text(agrmatprim[idioma])
+    $("#tagrartmtpr").text(agrartmtpr[idioma])
+    $("#tmtprmeproce").text(mtprmeproce[idioma])
+    $("#tlinea").text(linea[idioma])
+    $("#tnmbart").text(nmbart[idioma])
+    $("#tumdmod").text(umdmod[idioma])
+    $("#tartresmeproce").text(artresmeproce[idioma])
+    $("#tmsgvlcrbfact").text(msgvlcrbfact[idioma])
+    $("#tfchpago").text(fchpago[idioma])
+    $("#tfchdlpago").text(fchdlpago[idioma])
+    $("#tfcpago").text(fcpago[idioma])
+    $("#thrsprv").text(hrsprv[idioma])
+    $("#tpciohs").text(pciohs[idioma])
+    $("#tttalprev").text(ttalprev[idioma])
+    $("#tfccom").text(fccom[idioma])
+    $("#tflect").text(flect[idioma])
+    $("#tfechfin").text(fechfin[idioma])
+    $("#thinvertidas").text(hinvertidas[idioma])
+    $("#ttinvertido").text(tinvertido[idioma])
+    $("#tndpenc").text(ndpenc[idioma])
+    $("#trelprts").text(relprts[idioma])
+    $("#tnroparte").text(nroparte[idioma])
+    $("#ttrabajad").text(trabajad[idioma])
+    $("#ttrabajadores").text(trabajadores[idioma])
+    $("#ttrabaj").text(trabaj[idioma])
+    $("#tcod_pres").text(cod_pres[idioma])
+    $("#tttrabajo").text(ttrabajo[idioma])
+    $("#trglspunt").text(rglspunt[idioma])
+    $("#tcrprttrab").text(crprttrab[idioma])
+    $("#tcodtjador").text(codtjador[idioma])
+    $("#tmsgprtnf").text(msgprtnf[idioma])
+    $("#tprov").text(prov[idioma])
+    $("#tprovs").text(provs[idioma])
+    $("#tinspres").text(inspres[idioma])
+    $("#tcrtpres").text(crtpres[idioma])
+    $("#tmsgpresnf").text(msgpresnf[idioma])
+    $("#tvpres").text(vpres[idioma])
+    $("#tregel").text(regel[idioma])
+    $("#tnomproc").text(nomproc[idioma])
+    $("#testacion").text(estacion[idioma])
+    $("#tmodificar").text(modificar[idioma])
+    $("#tartdllote").text(artdllote[idioma])
+    $("#tfinalizar").text(finalizar[idioma])
+    $("#tmsgerproc_1").text(msgerproc_1[idioma])
+    $("#tmsgerproc_2").text(msgerproc_2[idioma])
+    $("#tmsgerproc_3").text(msgerproc_3[idioma])
+    $("#tmsgokfinproc").text(msgokfinproc[idioma])
+    $("#tyhora").text(yhora[idioma])
+    $("#tporcantd").text(porcantd[idioma])
+    $("#tnroprocen").text(nroprocen[idioma])
+    $("#tselelun_1").text(selelun_1[idioma])
+    $("#tselelun_2").text(selelun_2[idioma])
+    $("#tcodproce").text(codproce[idioma])
+    $("#tmsgprcinit").text(msgprcinit[idioma])
+    $("#tmdfproce").text(mdfproce[idioma])
+    $("#tmateprima").text(mateprima[idioma])
+    $("#tnmbmtrprm").text(nmbmtrprm[idioma])
+    $("#tmsglnadd_1").text(msglnadd_1[idioma])
+    $("#tmsglnadd_2").text(msglnadd_2[idioma])
+    $("#telmprov").text(elmprov[idioma])
+    $("#tbprov").text(bprov[idioma])
+    $("#tnroproven").text(nroproven[idioma])
+    $("#tmodprove").text(modprove[idioma])
+    $("#tinsprvdr").text(insprvdr[idioma])
+    $("#tmsgprvnf").text(msgprvnf[idioma])
+    $("#tvprodr").text(vprodr[idioma])
+    $("#tlngyloc").text(lngyloc[idioma])
+    $("#telgidi").text(elgidi[idioma])
+    $("#telmtrab").text(elmtrab[idioma])
+    $("#tmovavi").text(movavi[idioma])
+    $("#tcorrelecavs").text(correlecavs[idioma])
+    $("#tbusctrabj").text(busctrabj[idioma])
+    $("#tnrotraben").text(nrotraben[idioma])
+    $("#treltrabj").text(reltrabj[idioma])
+    $("#tmodtrab").text(modtrab[idioma])
+    $("#tinstrab").text(instrab[idioma])
+    $("#tmsgtrbnf").text(msgtrbnf[idioma])
+    $("#tvtrb").text(vtrb[idioma])
+    $("#telmubc").text(elmubc[idioma])
+    $("#tbuscubic").text(buscubic[idioma])
+    $("#tcodubic").text(codubic[idioma])
+    $("#trelacubic").text(relacubic[idioma])
+    $("#tmodubc").text(modubc[idioma])
+    $("#tinsubc").text(insubc[idioma])
+    $("#tmsgubcnf").text(msgubcnf[idioma])
+    $("#tvubc").text(vubc[idioma])
+    $("#tvntmst").text(vntmst[idioma])
+    $("#tcobro").text(cobro[idioma])
+    $("#timpvl").text(impvl[idioma])
+    $("#tapgr").text(apgr[idioma])
+    $("#tpagado").text(pagado[idioma])
+    $("#tadevolver").text(adevolver[idioma])
+    $("#tnvavta").text(nvavta[idioma])
+
+
+
+
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
+    //@todo revisar si se traduce ayuda
+    //@todo asumo que backup/ no se traduce.
+    //@todo la carpeta fpdf parece tener impresiones de pdfs , el problema es que con javascript no se llega hasta ese lugar , se podria analizar guardar el idioma en sesion o pasarlo por url
+    //@todo la carpeta fpdf152 similar a fpdf pero parece una copia , confimar
     traducirTitle(idioma);
     traducirOptions(idioma);
 }

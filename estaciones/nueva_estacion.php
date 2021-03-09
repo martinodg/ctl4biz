@@ -29,7 +29,7 @@
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">INSERTAR Estaciones de Trabajo </div>
+                    <div id="tituloForm" class="header"><span id="insesttrab">INSERTAR Estaciones de Trabajo</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_estacion.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>

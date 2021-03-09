@@ -97,13 +97,13 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Buscar MOVIMIENTOS </div>
+				<div id="tituloForm" class="header"><span id="tbuscmov">Buscar MOVIMIENTOS</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
 							<td width="16%"><span id="tcodprov">Codigo de proveedor</span></td>
-							<td width="68%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10"><img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar proveedor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor"></td>
+							<td width="68%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10"><img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar PROVEEDOR" > <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
@@ -123,7 +123,7 @@ if ($cadena_busqueda<>"") {
 						<tr>
 							<td><span id="testado">ESTADO</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
-								<option value="0" selected>Todos los estados</option>
+								<option value="0" selected data-opttrad="todosest">Todos los estados</option>
 								<option value="1">Sin Pagar</option>
 								<option value="2">Pagada</option>			
 								</select></td>
@@ -172,24 +172,24 @@ if ($cadena_busqueda<>"") {
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de facturas encontradas <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" align="right">Mostradas <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="left"><span id="nrofcenco">N de facturas encontradas</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" align="right"><span id="tmostradas">Mostradas</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
 				<div id="cabeceraResultado" class="header">
-					relacion de FACTURAS </div>
+					<span id="trelfac">relacion de FACTURAS</span> </div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="8%"><span id="titem">ITEM</span></td>
-							<td width="12%">N. FACTURA</td>
-							<td width="26%">PROVEEDOR </td>							
+							<td width="12%"><span id="tnrofac">N. FACTURA</span></td>
+                            <td width="26%"><span id="tprovs">PROVEEDOR</span></td>
 							<td width="9%"><span id="timporte">IMPORTE</span></td>
-							<td width="10%">PENDIENTE</td>
+							<td width="10%"><span id="tpendient">PENDIENTE</span></td>
 							<td width="10%"><span id="tfecha">Fecha</span></td>
 							<td width="10%"><span id="testado">ESTADO</span></td>
-							<td width="10%">FECHA PAGO</td>
+							<td width="10%"><span id="tfcpago">FECHA PAGO</span></td>
 							<td width="5%">&nbsp;</td>
 						</tr>
 				</table>

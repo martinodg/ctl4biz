@@ -37,7 +37,7 @@ require_once("../mysqli_result.php");
 		<? 
 	} else { ?>
 	<script>
-	alert ("No existe ningun articulo con ese codigo de barras");
+	talert ('mdgartnfcb');
 	limpiar();
 	</script>
 	<? }

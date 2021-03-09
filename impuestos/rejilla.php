@@ -81,9 +81,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="20%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codimpuesto")?></div></td>
 							<td width="30%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
 							<td width="20%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"valor")?></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Modificar"></a></div></td>
-														<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" title="Eliminar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" data-opttrad="modificar" title="Modificar"></a></div></td>
+														<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_impuesto(<?php echo mysqli_result($res_resultado,$contador,"codimpuesto")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}
@@ -92,7 +92,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="85%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="100%" class="mensaje"><?php echo "No hay ning&uacute;n impuesto que cumpla con los criterios de b&uacute;squeda";?></td>
+                            <td width="100%" class="mensaje"><span id="tmsgimpnf">No hay ning&uacute;n impuesto que cumpla con los criterios de b&uacute;squeda</span></td>
 					    </tr>
 					</table>					
 					<? } ?>					

@@ -74,12 +74,12 @@
 
                             <tr>
                                 <td width="10%">Asignar articulo por:</td>
-                                <td width="20%">Codigo de articulo <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
-                                <td width="20%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
+                                <td width="20%"><span id="tcodart">Codigo de articulo</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
+                                <td width="20%"><span id="tnombart">Nombre de articulo</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
 
                             </tr>
                             <tr>
-                                <td><span id="cant">CANTIDAD</span></td>
+                                <td><span id="tcant">CANTIDAD</span></td>
                                 <td><input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"></td>
                             </tr>
                             <tr>
@@ -87,7 +87,7 @@
                                 <td><input NAME="fechai" type="text" class="cajaMediana" id="fechai" size="25" maxlength="25" readonly></td>
                             </tr>
                             <tr>
-                                <td>Hora de inicio</td>
+                                <td><span id="thinic">HORA DE INICIO</span></td>
                                 <td><input id="horai" type="text" class="cajaPequena" NAME="horai" maxlength="20" readonly></td>
                             </tr>
 
@@ -98,7 +98,7 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btninicio" onMouseOver="style.cursor=cursor"> <img src="../img/iniciar.svg" alt="iniciar" /> <span>Inicar</span> </button>
+                    <button type="button" id="btninicio" onMouseOver="style.cursor=cursor"> <img src="../img/iniciar.svg" alt="iniciar" /> <span id="inicar">Inicar</span> </button>
                     <button type="button" id="btnlimpiar" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
                     <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
                 </div>

@@ -29,7 +29,7 @@
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">INSERTAR EMBALAJE </div>
+                    <div id="tituloForm" class="header"><span id="tinseremb">INSERTAR EMBALAJE</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_embalaje.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -42,7 +42,6 @@
 			  </div>
 				<div id="botonBusqueda">
 					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-
 					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 					<input id="accion" name="accion" value="alta" type="hidden">

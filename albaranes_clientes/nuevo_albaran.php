@@ -123,7 +123,7 @@ $codalbarantmp=mysqli_insert_id($conexion);
 				if (document.getElementById("importe").value=="") mensaje+="  - "+getTranslation('msgfimp')+"\n";
 				
 				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
+					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);	
 					cambio_iva();

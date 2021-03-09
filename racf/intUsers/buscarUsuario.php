@@ -40,7 +40,7 @@ require_once("../../conectar7.php");
         echo '						<td width="40%">NOMBRE DE USUARIO</td>';
         echo '						<td width="40%">E-MAIL DEL USUARIO</td>';
         echo '						<td width="10%"><span id="testado">ESTADO</span></td>';
-        echo '						<td width="10%">MODIFICAR</td>';				
+        echo '						<td width="10%"><span id="tmodificar">MODIFICAR</span></td>';
         echo '					</tr>';
         echo '			</table>';
         echo '			</div>';
@@ -56,9 +56,9 @@ require_once("../../conectar7.php");
             echo '<td width="40%"><div align="center">'.$row[2].'</div></td>';
             echo '<td width="10%"><div align="center">'.$row[3].'</div></td>';
             if ($row[3]<>1){
-                echo '<td width="10%"><div align="center"><a href="#"><img src="../../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';
+                echo '<td width="10%"><div align="center"><a href="#"><img src="../../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" data-opttrad="modificar" title="Modificar"></a></div></td>';
             }else{
-                echo '<td width="10%"><div align="center"><img src="../../img/end.svg" width="16" height="16" border="0" title="Visualizar"></a></div></td>';  
+                echo '<td width="10%"><div align="center"><img src="../../img/end.svg" width="16" height="16" border="0" data-opttrad="visualizar" title="Visualizar"></a></div></td>';
             }
             echo '</tr>';
             echo '</table>';

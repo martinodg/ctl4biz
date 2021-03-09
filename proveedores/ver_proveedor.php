@@ -35,7 +35,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">VER PROVEEDOR </div>
+                    <div id="tituloForm" class="header"><span id="tvprodr">VER PROVEEDOR</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
@@ -55,7 +55,7 @@ $rs_query=mysqli_query($conexion,$query);
 						  <td colspan="2"><?php echo mysqli_result($rs_query,0,"direccion")?></td>
 					  </tr>
 						<tr>
-						  <td>Localidad</td>
+						  <td><span id="tlocal">Localidad</span></td>
 						  <td colspan="2"><?php echo mysqli_result($rs_query,0,"localidad")?></td>
 					  </tr>
 					  <?php
@@ -69,7 +69,7 @@ $rs_query=mysqli_query($conexion,$query);
 						}
 					  ?>
 						<tr>
-							<td width="15%">Provincia</td>
+							<td width="15%"><span id="tpcia">Provincia</span></td>
 							<td width="85%" colspan="2"><?php echo $nombreprovincia?></td>
 					    </tr>
 						<?php
@@ -83,31 +83,31 @@ $rs_query=mysqli_query($conexion,$query);
 						}
 					  ?>
 						<tr>
-							<td width="15%">Entidad Bancaria</td>
+							<td width="15%"><span id="tentiban">Entidad Bancaria</span></td>
 							<td width="85%" colspan="2"><?php echo $nombreentidad?></td>
 					    </tr>
 						<tr>
-							<td>Cuenta bancaria</td>
+							<td><span id="tctabcaria">Cuenta bancaria</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"cuentabancaria")?></td>
 						</tr>
 						<tr>
-							<td>C&oacute;digo postal</td>
+							<td><span id="tcodpostal">C&oacute;digo postal</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"codpostal")?></td>
 						</tr>
 						<tr>
-							<td>Tel&eacute;fono</td>
+							<td><span id="ttelef">Tel&eacute;fono</span></td>
 							<td><?php echo mysqli_result($rs_query,0,"telefono")?></td>
 						</tr>
 						<tr>
-							<td>M&oacute;vil</td>
+							<td><span id="tmovil">M&oacute;vil</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"movil")?></td>
 						</tr>
 						<tr>
-							<td>Correo electr&oacute;nico  </td>
+							<td><span id="tcorrelec">Correo electr&oacute;nico</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"email")?></td>
 						</tr>
 												<tr>
-							<td>Direcci&oacute;n web </td>
+							<td><span id="tdirrcweb">Direcci&oacute;n web</span></td>
 							<td colspan="2"><?php echo mysqli_result($rs_query,0,"web")?></td>
 						</tr>
 					</table>

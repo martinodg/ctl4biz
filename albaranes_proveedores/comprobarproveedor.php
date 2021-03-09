@@ -36,7 +36,7 @@ require_once("../mysqli_result.php");
 		<? 
 	} else { ?>
 	<script>
-	//alert ("No existe ningun proveedor con ese codigo");
+	//talert('sinproveedor');
     talert('sinproveedor');
 	limpiar();
 	</script>

@@ -37,7 +37,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">MODIFICAR TIPO DE ARTICUOLO </div>
+                    <div id="tituloForm" class="header"><span id="modtparc">MODIFICAR TIPO DE ARTICULO</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_familia.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>

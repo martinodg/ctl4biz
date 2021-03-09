@@ -111,7 +111,7 @@ if ($cadena_busqueda<>"") {
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="16%">Codigo de cliente </td>
+							<td width="16%"><span id="tcod_cliente">Codigo de cliente</span></td>
 							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10" value="<? echo $codcliente?>"> <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
@@ -133,8 +133,8 @@ if ($cadena_busqueda<>"") {
 						<tr>
 							<td><span id="testado">ESTADO</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
-								<option value="0" selected>Todos los estados</option>
-								<option value="1">Pendiente</option>
+								<option value="0" selected data-opttrad="todosest">Todos los estados</option>
+								<option value="1"><span id="tpendient">Pendiente</span></option>
 								<option value="2">Aceptado</option>
 								</select></td>
 					    </tr>
@@ -194,10 +194,10 @@ if ($cadena_busqueda<>"") {
 						<tr class="cabeceraTabla">
 							<td width="8%"><span id="titem">ITEM</span></td>
 							<td width="8%">N. presupuesto</td>
-							<td width="29%">CLIENTE </td>
-							<td width="10%">IMPORTE </td>
+							<td width="29%"><span id="tcliente">CLIENTE</span></td>
+							<td width="10%"><span id="timporte">IMPORTE</span></td>
 							<td width="10%"><span id="tfecha">Fecha</span></td>
-							<td width="10%">ESTADO </td>
+							<td width="10%"><span id="testado">Estado</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>

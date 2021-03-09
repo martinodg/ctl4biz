@@ -80,7 +80,7 @@
                                 $('#div_datos').html(data);
                             });
                     } else {
-                        alert("Es necesario insertar una cantidad para finalizar un lote!");
+                        talert('msgvinslot');
                     }
                 }
             });
@@ -92,20 +92,17 @@
     <div id="pagina">
         <div id="zonaContenido">
             <div align="center">
-                <div id="tituloForm" class="header">Modificar Lote</div>
+                <div id="tituloForm" class="header"><span id="tmodlote">Modificar Lote</span></div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
                         <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
-
                             <tr>
-
-                                <td width="20%">Codigo de Lote <input id="codlote" type="text" class="cajaPequena" NAME="codlote" maxlength="15" readonly></td>
-                                <td width="20%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45" readonly=""></td>
-
+                                <td width="20%"><span id="tcodlot">Codigo de Lote</span> <input id="codlote" type="text" class="cajaPequena" NAME="codlote" maxlength="15" readonly></td>
+                                <td width="20%"><span id="tnombart">Nombre de articulo</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45" readonly=""></td>
                             </tr>
                             <tr>
-                                <td><span id="cant">CANTIDAD</span></td>
+                                <td><span id="tcant">CANTIDAD</span></td>
                                 <td><input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"></td>
                             </tr>
                             <tr>
@@ -113,16 +110,16 @@
                                 <td><input NAME="fechai" type="text" class="cajaMediana" id="fechai" size="25" maxlength="25" readonly></td>
                             </tr>
                             <tr>
-                                <td>Hora de inicio</td>
+                                <td><span id="thinic">HORA DE INICIO</span></td>
                                 <td><input id="horai" type="text" class="cajaPequena" NAME="horai" maxlength="20" readonly></td>
                             </tr>
                             <tr>
                                 <td><span id="testado">ESTADO</span></td>
                                 <td>
                                     <select id="estado" name="estado" class="comboMedio">
-                                    <option value="0">Inizializado</option>
-                                    <option value="1">Finalizado</option>
-                                    <option value="2">Descartado</option>
+                                    <option value="0" data-opttrad="inizializado" >Inizializado</option>
+                                    <option value="1" data-opttrad="finalizado">Finalizado</option>
+                                    <option value="2" data-opttrad="descartado">Descartado</option>
                                     
                                 </select>
                                 </td>

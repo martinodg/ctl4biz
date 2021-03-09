@@ -37,7 +37,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">MODIFICAR Estaciones de Trabajo </div>
+                    <div id="tituloForm" class="header"><span id="tmodesttrab">MODIFICAR Estaciones de Trabajo</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_estacion.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -54,7 +54,6 @@ $rs_query=mysqli_query($conexion,$query);
 			  </div>
 				<div id="botonBusqueda">
 					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-
 					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 					<input id="accion" name="accion" value="modificar" type="hidden">

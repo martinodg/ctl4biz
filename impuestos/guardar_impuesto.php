@@ -85,7 +85,7 @@ if ($accion=="baja") {
 						    <td width="85%" colspan="2"><?php echo $nombre?></td>
 					    </tr>
 						<tr>
-							<td width="15%">Valor</td>
+							<td width="15%"><span id="tvalor">Valor</span></td>
 							<td width="85%" colspan="2"><?php echo $valor?> %</td>
 					    </tr>						
 					</table>

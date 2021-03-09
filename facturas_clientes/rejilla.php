@@ -113,9 +113,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="8%"><div align="center"><? echo number_format(mysqli_result($res_resultado,$contador,"totalfactura"),2,",",".")?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo $estado?></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>,<? echo $marcaestado?>)" title="Modificar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" title="Eliminar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>,<? echo $marcaestado?>)" data-opttrad="modificar" title="Modificar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}
@@ -124,7 +124,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="100%" class="mensaje"><?php echo "No hay ninguna factura que cumpla con los criterios de b&uacute;squeda";?></td>
+							<td width="100%" class="mensaje"><span id="tnhnfqccbu">No hay ninguna factura que cumpla con los criterios de búsqueda</span></td>
 					    </tr>
 					</table>					
 					<? } ?>					

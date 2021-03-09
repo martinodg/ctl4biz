@@ -286,7 +286,7 @@ if ($accion=="convertir") {
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="25%"><span id="referenc">REFERENCIA</span></td>
 							<td width="30%"><span id="descri">descripcion</span></td>
-							<td width="10%"><span id="cant">CANTIDAD</span></td>
+							<td width="10%"><span id="tcant">CANTIDAD</span></td>
 							<td width="10%"><span id="tprecio">PRECIO</span></td>
 							<td width="10%"><span id="tdctop">DCTO %</span></td>
 							<td width="10%"><span id="timporte">IMPORTE</span></td>

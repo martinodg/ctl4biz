@@ -19,7 +19,8 @@ $query_comprobar="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND cod
 	$rs_comprobar=mysqli_query($conexion,$query_comprobar);
 	if (mysqli_num_rows($rs_comprobar) > 0 ) {
 			?><script>
-				alert ("No se puede dar de alta este numero de factura con este proveedor, ya existe uno en el sistema.");
+				//alert ("No se puede dar de alta este numero de factura con este proveedor, ya existe uno en el sistema.");
+                talert('msgvnmfacrep');
 				location.href="index.php";
 			</script><?
 	} else {
@@ -56,7 +57,7 @@ $query_comprobar="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND cod
 	
 	$act_alb="UPDATE albaranesp SET codfactura='$codfactura',estado=2 WHERE codalbaran IN (".$albaranes.") AND codproveedor='$codproveedor'";
 	$rs_alb=mysqli_query($conexion,$act_alb);
-	
+	    //@todo analizar como traducir esto
 		$cabecera1="Inicio >> Compras &gt;&gt; Facturar Albaranes ";
 		$cabecera2="FACTURAR ALBARANES";
 	?>
@@ -134,7 +135,7 @@ $query_comprobar="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND cod
 								<td width="20%"><span id="tflia">FAMILIA</span></td>
 								<td width="15%"><span id="tcodigo">CODIGO</span></td>
 								<td width="30%"><span id="descri">descripcion</span></td>
-								<td width="7%"><span id="cant">CANTIDAD</span></td>
+								<td width="7%"><span id="tcant">CANTIDAD</span></td>
 								<td width="8%"><span id="tprecio">PRECIO</span></td>
 								<td width="7%"><span id="tdctop">DCTO %</span></td>
 								<td width="8%"><span id="timporte">IMPORTE</span></td>
@@ -191,8 +192,8 @@ $query_comprobar="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND cod
 				  </div>
 					<div id="botonBusqueda">
 						<div align="center">
-						<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					                   		<button type="button" id="btnimprimir"  onClick="imprimir('<? echo $codfactura?>',<? echo $codproveedor?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+						        <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+                                <button type="button" id="btnimprimir"  onClick="imprimir('<? echo $codfactura?>',<? echo $codproveedor?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
 							</div>
 						</div>
 				  </div>

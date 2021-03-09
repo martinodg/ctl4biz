@@ -79,6 +79,7 @@
         });
         //when we validate every line of the process items
         function validararticuloproceso(codigo, cantidad, unique) {
+            //@todo ver la traduccion de esta funcion
             var uniquevar = "cantidada" + unique;
             var refresco = document.getElementById(uniquevar).value;
             //alert if amount of item to validate had changed or if we validate the standard amount
@@ -143,7 +144,7 @@
 
                             <tr>
                                 <td width="10%">Seleccionar datos del Proceso:</td>
-                                <td width="20%">Codigo de Proceso <input id="codproceso" type="text" class="cajaPequena" NAME="codproceso" maxlength="15" readonly></td>
+                                <td width="20%"><span id="tcodproce">Codigo de proceso</span> <input id="codproceso" type="text" class="cajaPequena" NAME="codproceso" maxlength="15" readonly></td>
                                 <td>Seleccione Proceso</td>
                                 <td><select id="cbomProceso" name="cbomProceso" class="comboMedio">
                                 
@@ -157,7 +158,7 @@
                                 <td><input NAME="fechai" type="text" class="cajaMediana" id="fechai" size="25" maxlength="25" readonly></td>
                             </tr>
                             <tr>
-                                <td>Hora de inicio</td>
+                                <td><span id="thinic">HORA DE INICIO</span></td>
                                 <td><input id="horai" type="text" class="cajaPequena" NAME="horai" maxlength="20" readonly></td>
                             </tr>
 

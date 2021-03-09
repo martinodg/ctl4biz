@@ -42,7 +42,7 @@ $hoy=date("d/m/Y");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">FACTURAR ALBARANES </div>
+                    <div id="tituloForm" class="header"><span id="tfacturar_remitos">FACTURAR ALBARANES</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_facturacion.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -58,11 +58,11 @@ $hoy=date("d/m/Y");
 						$totalfacturasiniva=$totalfacturasiniva+$totalalbaransiniva; 
 						?>
 						<tr>
-							<td width="15%">C&oacute;digo de albar&aacute;n <? echo $contador+1;?></td>
+                            <td width="15%"><span id="codalbaran">C&oacute;digo de albar&aacute;n</span> <? echo $contador+1;?></td>
 						    <td width="15%"><? echo mysqli_result($rs_albaranes,$contador,"codalbaran");?></td>
-				            <td width="20%">Importe sin iva</td>
+                            <td width="20%"><span id="timpsiva">Importe sin iva</span></td>
 							<td width="15%"><? echo number_format($totalalbaransiniva,2,",",".");?> &#8364;</td>
-							<td width="20%">Importe con iva (<? echo $iva?>%)</td>
+                            <td width="20%"><span id="timpciva">Importe con iva</span> (<? echo $iva?>%)</td>
 							<td width="15%"><? echo number_format($totalalbaran,2,",",".");?> &#8364;</td>
 						</tr>
 					<? $totalfactura=$totalfactura+mysqli_result($rs_albaranes,$contador,"totalalbaran");
@@ -79,9 +79,9 @@ $hoy=date("d/m/Y");
 						<tr>
 							<td width="15%"></td>
 						    <td width="15%"></td>
-				            <td width="20%">Total facturaci&oacute;n sin iva</td>
+				            <td width="20%"><span id="tfcsiva">Total facturaci&oacute;n sin iva</span></td>
 							<td width="15%"><? echo number_format($totalfacturasiniva,2,",",".");?> &#8364;</td>
-							<td width="20%">Total facturaci&oacute;n con iva</td>
+							<td width="20%"><span id="tfcciva">Total facturaci&oacute;n con iva</span></td>
 							<td width="15%"><? echo number_format($totalfactura,2,",",".");?> &#8364;</td>
 						</tr>
 						<tr>

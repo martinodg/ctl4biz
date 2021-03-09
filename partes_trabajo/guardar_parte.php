@@ -128,17 +128,17 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 						<? if ($minimo==1) { ?>
 						<tr>
 							<td width="15%"></td>
-							<td width="85%" colspan="2" class="mensajeminimo">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo:<br><?php echo $mensaje_minimo;?></td>
+							<td width="85%" colspan="2" class="mensajeminimo"><span id="tartimpmin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo</span>:<br><?php echo $mensaje_minimo;?></td>
 					    </tr>
 						<? }
 						 $sel_trabajador="SELECT * FROM trabajadores WHERE codtrabajador='$codtrabajador'";
 						  $rs_trabajador=mysqli_query($conexion,$sel_trabajador); ?>
 						<tr>
-							<td width="15%">Trabajador</td>
+							<td width="15%"><span id="ttrabajad">TRABAJADOR</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_trabajador,0,"nombre"); ?></td>
 					    </tr>
 						<tr>
-							<td width="15%">C&oacute;digo Presupuesto</td>
+							<td width="15%"><span id="tcod_pres">C&oacute;digo Presupuesto</span></td>
 						    <td width="85%" colspan="2"><?php echo $codpresupuesto; ?></td>
 					    </tr>
 						<tr>
@@ -150,36 +150,36 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 						  <td colspan="2"><?php echo nl2br($descripcion); ?></td>
 					  </tr>
 					  	<tr>
-						  <td>Horas previstas</td>
+						  <td><span id="thrsprv">Horas previstas</span></td>
 						  <td colspan="2"><?php echo $horasprevistas; ?></td>
 					  </tr>
 					  <tr>
-						  <td>Precio / Hora</td>
+						  <td><span id="tpciohs">Precio / Hora</span></td>
 						  <td colspan="2"><?php echo $preciohora; ?></td>
 					  </tr>
 <tr>
-<td>Total previsto</td>
+    <td><span id="tttalprev">Total previsto</span></td>
 <td colspan="2"><?php echo $preciohora*$horasprevistas; ?></td>
 </tr>
 <tr>
-<td>Fecha Comienzo</td>
+    <td><span id="tfccom">Fecha Comienzo</span></td>
 <td colspan="2"><?php echo implota($fechacomienzo)?></td>
 </tr>
 <?php if ( $accion == "modificar" ) { ?>
 <tr>
-<td>Fecha Lectura</td>
-<td colspan="2"><?php echo implota($fechalectura)?></td>
+    <td><span id="tflect">Fecha Lectura</span></td>
+    <td colspan="2"><?php echo implota($fechalectura)?></td>
 </tr>
 <tr>
-<td>Fecha Finalizaci&oacute;n</td>
+<td><span id="tfechfin">Fecha Finalizaci&oacute;n</span></td>
 <td colspan="2"><?php echo implota($fechafinalizacion)?></td>
 </tr>
 <tr>
-<td>Horas invertidas</td>
+    <td><span id="thinvertidas">Horas invertidas</span></td>
 <td colspan="2"><?php echo $horasinvertidas; ?></td>
 </tr>
 <tr>
-<td>Total invertido</td>
+    <td><span id="thinvertidas">Total invertido</span></td>
 <td colspan="2"><?php echo $preciohora * $horasinvertidas; ?></td>
 </tr>
 <tr>

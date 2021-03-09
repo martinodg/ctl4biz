@@ -84,7 +84,7 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Buscar Tipo de Articulo </div>
+                    <div id="tituloForm" class="header"><span id="tbtipoar">Buscar Tipo de Articulo</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
@@ -117,14 +117,13 @@ if ($cadena_busqueda<>"") {
 		          </select></td>
 			  </table>
 				</div>
-				<div id="cabeceraResultado" class="header">
-					relacion de TIPOS DE ARTICULOS </div>
+                    <div id="cabeceraResultado" class="header"><span id="trlctyarc">relacion de TIPOS DE ARTICULOS</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="12%"><span id="titem">ITEM</span></td>
 							<td width="20%"><span id="tcodigo">CODIGO</span></td>
-							<td width="50%">NOMBRE </td>
+							<td width="50%"><span id="tnomb">NOMBRE</span></td>
 							<td width="6%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>

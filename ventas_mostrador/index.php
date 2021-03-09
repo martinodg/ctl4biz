@@ -113,13 +113,13 @@ require_once("../racf/purePhpVerify.php");
 			</div> 
 			  </div>
 				<div align="center">
-				<div id="tituloForm" class="header">VENTA MOSTRADOR</div>
+				<div id="tituloForm" class="header" id="tvntmst">VENTA MOSTRADOR</div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_factura.php">
 				<input id="codfacturatmp" name="codfacturatmp" type="hidden">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="10%">C&oacute;digo Cliente </td>
+							<td width="10%"><span id="cod_cliente">C&oacute;digo Cliente</span></td>
 					      <td width="50%"><input NAME="codcliente" value="1" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()">
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>					
 						  <td width="10%"></td>
@@ -158,11 +158,11 @@ require_once("../racf/purePhpVerify.php");
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
-					<td width="10%">Codigo barras </td>
+					<td width="10%"><span id="tcodbarr">Codigo barras</span> </td>
 					<td colspan="10" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15"> </td>
 				  </tr>
                    <tr>
-					<td width="10%">Codigo de Articulo </td>
+					<td width="10%"><span id="tcodart">Codigo de articulo</span> </td>
 					<td colspan="10" valign="middle"><input NAME="codArticulo" type="text" class="cajaMedia" id="codArticulo" size="15" maxlength="15"> 
 						<a href="#modal"><img src="../img/ver.svg" width="16" height="16"  onMouseOver="style.cursor=cursor" title="Validar codigo de barras">  </a>   
 					</td>
@@ -172,7 +172,7 @@ require_once("../racf/purePhpVerify.php");
 					<td width="20%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
 					<td width="5%"><span id="tprecio">PRECIO</span></td>
 					<td width="20%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
-					<td width="5%"><span id="cant">CANTIDAD</span></td>
+					<td width="5%"><span id="tcant">CANTIDAD</span></td>
 					<td width="25%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()">
 					<select id="umnstock" class="cboUnidadmedida" name="umnstock" onChange="actualizar_importe()" >
                                 
@@ -201,7 +201,7 @@ require_once("../racf/purePhpVerify.php");
 							<td width="12%"><span id="tflia">FAMILIA</span></td>
 							<td width="14%"><span id="referenc">REFERENCIA</span></td>
 							<td width="33%"><span id="descri">descripcion</span></td>
-							<td width="8%"><span id="cant">CANTIDAD</span></td>
+							<td width="8%"><span id="tcant">CANTIDAD</span></td>
 							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>

@@ -108,7 +108,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
 				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
 				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
+					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("formulario").submit();
 				}
@@ -154,7 +154,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
 
 				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
+					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);
 					cambio_iva();
@@ -187,12 +187,12 @@ $preciototal=$baseimponible+$baseimpuestos;
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">INSERTAR presupuesto </div>
+                    <div id="tituloForm" class="header"><span id="tinspres">INSERTAR presupuesto</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_presupuesto.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="15%">C&oacute;digo Cliente </td>
+							<td width="15%"><span id="cod_cliente">C&oacute;digo Cliente</span></td>
 					      <td colspan="3"><input NAME="codcliente" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()" value="<? echo $codcliente?>">
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						</tr>
@@ -219,7 +219,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 				            <td width="64%"><input NAME="iva" type="text" class="cajaPequena" id="iva" size="5" maxlength="5" value="16" onChange="cambio_iva()" value="<? echo $iva?>"> %</td>
 						</tr>
 						<tr>
-						  <td>C&oacute;digo de presupuesto</td>
+						  <td><span id="tcod_pres">C&oacute;digo de presupuesto</span></td>
 						  <td colspan="2"><?php echo $codpresupuesto?></td>
 					  </tr>
 					</table>
@@ -244,7 +244,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 					<td width="19%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
 					<td width="5%"><span id="tprecio">PRECIO</span></td>
 					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
-					<td width="5%"><span id="cant">CANTIDAD</span></td>
+					<td width="5%"><span id="tcant">CANTIDAD</span></td>
 					<td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
 					<td width="4%"><span id="tdcto">Dcto.</span></td>
 					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
@@ -262,7 +262,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="26%"><span id="referenc">REFERENCIA</span></td>
 							<td width="35%"><span id="descri">descripcion</span></td>
-							<td width="8%"><span id="cant">CANTIDAD</span></td>
+							<td width="8%"><span id="tcant">CANTIDAD</span></td>
 							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>

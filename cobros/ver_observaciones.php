@@ -18,7 +18,7 @@ var cursor;
 <div id="pagina">
 	<div id="zonaContenido">
 		<div align="center">
-			<div id="tituloForm" class="header">Observaciones</div>
+            <div id="tituloForm" class="header"><span id="tobsev">Observaciones</span></div>
 			<div id="frmBusqueda">
 <? $observaciones=$_GET["observaciones"]; ?>
 <table width="100%" border="0">

@@ -34,7 +34,7 @@ require_once("../mysqli_result.php");
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 		  <tr>
 			<td width="10%"><div align="center"><b><span id="tcodigo">Codigo</span></b></div></td>
-			<td width="60%"><div align="center"><b>Trabajador</b></div></td>
+			<td width="60%"><div align="center"><b><span id="ttrabajad">TRABAJADOR</span></b></div></td>
 			<td width="20%"><div align="center"><b><span id="tnip">NIF/CIF</span></b></div></td>
 			<td width="10%"><div align="center"></td>
 		  </tr>
@@ -50,7 +50,7 @@ require_once("../mysqli_result.php");
 					<td>
         <div align="left"><?php echo utf8_encode($nombre);?></div></td>
 					<td><div align="center"><?php echo $nif;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codtrabajador?>,'<?php echo $nombre?>','<?php echo $nif?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codtrabajador?>,'<?php echo $nombre?>','<?php echo $nif?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" data-ttitle="tsel" title="Seleccionar"></a></div></td>
 				</tr>
 			<?php }
 		?>

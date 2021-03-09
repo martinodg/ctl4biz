@@ -48,7 +48,7 @@ require_once("../mysqli_result.php");?>
 					<td>
         <div align="left"><?php echo utf8_encode($nombre);?></div></td>
 					<td><div align="center"><?php echo $nif;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codproveedor?>,'<?php echo $nombre?>','<?php echo $nif?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" title="Seleccionar"></a></div></td>					
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codproveedor?>,'<?php echo $nombre?>','<?php echo $nif?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" data-ttitle="tsel" title="Seleccionar"></a></div></td>
 				</tr>
 			<?php }
 		?>

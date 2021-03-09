@@ -40,15 +40,16 @@ require_once("../mysqli_result.php");
                 //echo "$query_batcholoteactivos";
                 $rs_batcholoteactivos=mysqli_query($conexion,$query_batcholoteactivos);
                 $nr_batcholoteactivos=mysqli_num_rows($rs_batcholoteactivos);
-                echo '                      <div id="cabeceraResultado" class="header"> Seleccionar un '.$elemento.' de la lista </div>';
+                //@todo analizar otro caso de replace
+                echo '                      <div id="cabeceraResultado" class="header"> <span id="tselelun_1">Seleccionar un</span> '.$elemento.' <span id="tselelun_2">de la lista</span> </div>';
 echo '				<div id="frmResultado">';
 echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
 echo '					<tr class="cabeceraTabla">';
-echo '						<td width="8%">CODIGO de Proceso</td>';
-echo '						<td width="38%">NOMBRE de Articulo</td>';
-echo '						<td width="38%"><span id="cant">CANTIDAD</span></td>';
+echo '						<td width="8%"><span id="tcodproce">CODIGO de Proceso</span></td>';
+echo '						<td width="38%"><span id="tnombart">Nombre de articulo</span></td>';
+echo '						<td width="38%"><span id="tcant">CANTIDAD</span></td>';
 echo '						<td width="6%"><span id="tfechin">Fecha de inicio</span></td>';
-echo '						<td width="6%">HORA DE INICIO</td>';
+echo '						<td width="6%"><span id="thinic">HORA DE INICIO</span></td>';
 echo '						<td width="5%">&nbsp;</td>';
 echo '					</tr>';
 echo '			</table>';
@@ -75,7 +76,7 @@ while ($nr_batcholoteactivos > 0) {
    echo '<button type="button" id="btnnuevo" onMouseOver="style.cursor=cursor"> <img src="../img/new'.$elemento.'.svg" alt="nuevo'.$elemento.'" /> <span>Nuevo '.$elemento.'</span> </button>';
    echo '<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="nuevolote" /> <span id="taceptar">Aceptar</span> </button>';
    echo '</div>';    
-   echo "<div class=\"header\">ATENCION: El proceso ha sido inicializado exitosamente con el codigo '$codproceso'!!</div>";
+   echo "<div class=\"header\"><span id=\"tmsgprcinit\">ATENCION: El proceso ha sido inicializado exitosamente con el codigo</span> '$codproceso'!!</div>";
         echo mysqli_error($conexion) ;
     
  

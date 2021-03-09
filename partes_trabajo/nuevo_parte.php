@@ -33,7 +33,7 @@ $fechahoy=date("Y-m-d");
 		function ventanaArticulos(){
 			var codigo=document.getElementById("codcliente").value;
 			if (codigo=="") {
-				alert ("Debe introducir el codigo del cliente");
+				talert('msgintcl')
 			} else {
 				miPopup = window.open("ver_articulos.php","miwin","width=700,height=500,scrollbars=yes");
 				miPopup.focus();
@@ -74,7 +74,7 @@ $fechahoy=date("Y-m-d");
 				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
 				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
 				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
+					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("formulario").submit();
 				}
@@ -120,7 +120,7 @@ $fechahoy=date("Y-m-d");
 				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
 
 				if (mensaje!="") {
-					alert("Atencion, se han detectado las siguientes incorrecciones:\n\n"+mensaje);
+					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);
 					cambio_iva();
@@ -163,14 +163,14 @@ $fechahoy=date("Y-m-d");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">CREAR PARTE DE TRABAJO</div>
+                    <div id="tituloForm" class="header"><span id="tcrprttrab">CREAR PARTE DE TRABAJO</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_parte.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="15%">C&oacute;digo Trabajador </td>
+                            <td width="15%"><span id="tcodtjador">C&oacute;digo Trabajador</span> </td>
 					      <td colspan="3"><input NAME="codtrabajador" type="text" class="cajaPequena" id="codtrabajador" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar trabajador" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="data-ttitle" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
 							<td width="15%"><span id="tnomb">Nombre</span></td>
@@ -180,13 +180,13 @@ $fechahoy=date("Y-m-d");
 						</tr>
 						<? $hoy=date("d/m/Y"); ?>
 						<tr>
-							<td width="15%">C&oacute;digo Presupuesto</td>
+							<td width="15%"><span id="tcod_pres">C&oacute;digo Presupuesto</span></td>
 						    <td width="27%"><input NAME="codpresupuesto" type="text" class="cajaGrande" id="codpresupuesto" size="45" maxlength="45"></td>
 				            <td width="3%">&nbsp;</td>
 				            <td width="64%">&nbsp;</td>
 						</tr>
 <tr>
-<td>Titulo Trabajo</td>
+<td><span id="tttrabajo">Titulo Trabajo</span></td>
 <td><input NAME="titulo" type="text" class="cajaGrande" id="titulo" size="45" maxlength="250"></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
@@ -198,20 +198,20 @@ $fechahoy=date("Y-m-d");
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>Horas previstas</td>
+<td><span id="thrsprv">Horas previstas</span></td>
 <td><input NAME="horasprevistas" type="text" class="cajaPequena" id="horasprevistas" size="45" maxlength="45"></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>Precio / Hora</td>
+<td><span id="tpciohs">Precio / Hora</span></td>
 <td><input NAME="preciohora" type="text" class="cajaPequena" id="preciohora" size="45" maxlength="45">
 (Separador decimal con . -punto-)</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>Fecha Comienzo</td>
+<td><span id="fccom">Fecha Comienzo</span></td>
 <td><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly>
 <img src="../img/calendario.svg" alt="" name="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
 <script type="text/javascript">

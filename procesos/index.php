@@ -152,15 +152,15 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="20%">Estado </td>
+							<td width="20%"><span id="testado">Estado</span></td>
 						
                             <td id="entrada1" with="20%">
                           
                                   <select id='param1' name='param1' class='comboMedio'>
-                                    <option value='' selected >Todos los estados</option>
-                                    <option value='1'>Inicializado</option>
-                                    <option value='2'>Finalizado</option>
-                                    <option value='3'>Descartado</option>
+                                    <option value='' selected  data-opttrad="todosest">Todos los estados</option>
+                                    <option value='1' data-opttrad="inicializado">Inicializado</option>
+                                    <option value='2' data-opttrad="finalizado">Finalizado</option>
+                                    <option value='3' data-opttrad="descartado">Descartado</option>
                                 </select>
                              
                             </td>
@@ -169,17 +169,17 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 							
 						</tr>
 <tr>
-							<td width="20%">Criterio de busqueda #2 </td>
+							<td width="20%"><span id="tcribu_2">Criterio de busqueda #2</span></td>
 							<td width="20%"> 
                                 <select id="crit2" name="2" class="comboMedio" >
-                                    <option value="nombre">Nombre del Proceso</option>
-                                    <option value="codproceso">Codigo de proceso</option>
-                                    <option value="fechai">Fecha de inicio</option>
-                                    <option value="horai">Hora de inicio</option>
-                                    <option value="fechaf">Fecha de finalizacion</option>
-                                    <option value="horaf">Hora de finalizacion</option>
-                                    <option value="codestacion">Estacion de Trabajo</option>
-                                    <option value="codtrabajador">Nombre del empleado</option>
+                                    <option value="nombre" data-opttrad="nomproc" >Nombre del Proceso</option>
+                                    <option value="codproceso" data-opttrad="codproce"  >Codigo de proceso</option>
+                                    <option value="fechai" data-opttrad="fchaini" >Fecha de inicio</option>
+                                    <option value="horai" data-opttrad="hinic">Hora de inicio</option>
+                                    <option value="fechaf" data-opttrad="fechfin" >Fecha de finalizacion</option>
+                                    <option value="horaf" data-opttrad="horafin" >Hora de finalizacion</option>
+                                    <option value="codestacion" data-opttrad="esttrab" >Estacion de Trabajo</option>
+                                    <option value="codtrabajador" data-opttrad="nombempl" >Nombre del empleado</option>
 
 
                                 </select>
@@ -191,16 +191,16 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 							<td width="40%">&nbsp;</td>
 						</tr>
 <tr>
-							<td width="20%">Criterio de busqueda #3 </td>
+							<td width="20%"><span id="tcribu_3">Criterio de busqueda #3</span></td>
 							<td width="20%"> 
                                 <select id="crit3" name="3" class="comboMedio" >
-                                    <option value="codproceso">Codigo de proceso</option>
-                                    <option value="codarticulo">Articulo del proceso</option>
-                                    <option value="cantidad">Cantidad</option>
-                                    <option value="fechai">Fecha de inicio</option>
-                                    <option value="horai">Hora de inicio</option>
-                                    <option value="fechaf">Fecha de finalizacion</option>
-                                    <option value="horaf">Hora de finalizacion</option>
+                                    <option value="codproceso" data-opttrad="codproce">Codigo de proceso</option>
+                                    <option value="codarticulo" data-opttrad="artdproce">Articulo del proceso</option>
+                                    <option value="cantidad" data-opttrad="cant">Cantidad</option>
+                                    <option value="fechai" data-opttrad="fchaini">Fecha de inicio</option>
+                                    <option value="horai" data-opttrad="hinic">Hora de inicio</option>
+                                    <option value="fechaf" data-opttrad="fechfin">Fecha de finalizacion</option>
+                                    <option value="horaf" data-opttrad="horafin">Hora de finalizacion</option>
                                 </select>
                             </td>
                             <td id="entrada3" with="20%">
@@ -221,7 +221,7 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de procesos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="left"><span id="tnroprocen">N de procesos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                 </tr>

@@ -5,6 +5,7 @@ require_once("../mysqli_result.php");
 <script>
 function eliminar_linea(codfacturatmp,numlinea,importe)
 {
+    //@todo analizar traduccion de este confirm
 	if (confirm(" Desea eliminar esta linea ? "))
 		parent.document.formulario_lineas.baseimponible.value=parseFloat(parent.document.formulario_lineas.baseimponible.value) - parseFloat(importe);
 		var original=parseFloat(parent.document.formulario_lineas.baseimponible.value);

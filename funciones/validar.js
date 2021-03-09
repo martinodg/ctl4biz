@@ -69,6 +69,7 @@ clsCampo.prototype.vacio = function vacio() {
 	return true;
 }
 clsCampo.prototype.natural = function natural() {
+	//@todo revisar si estos textos se debe traducir
 	if( this.campo.value.search('[^0-9]') == -1 ) return true;
 	this.error = 'el campo "'+this.formatoNombre()+'" solo puede tener numeros enteros sin signo';
 	return false;

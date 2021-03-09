@@ -70,16 +70,16 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 <body>
 <div id="pagina">
 <div id="zonaContenido">
-<div id="tituloForm2" class="header">COBRO </div>
+<div id="tituloForm2" class="header"><span id="tcobro">COBRO</span> </div>
 <div id="frmBusqueda2">
 <div align="center">
 <form id="formulario" name="formulario" method="post" action="guardar_cobro.php" target="frame_datos">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=2 border=0>
 						<tr>
-							<td width="25%">C&oacute;digo Factura </td>
+							<td width="25%"><span id="tcodfactura">C&oacute;digo Factura</span> </td>
 				        	<td width="75%"><input NAME="codfactura" type="text" class="cajaPequena" id="codfactura" size="15" maxlength="15" value="<? echo $codfactura?>" readonly="yes">						</tr>
 						<tr>
-							<td>Cliente</td>
+							<td><span id="tcliente">Cliente</span></td>
 						    <td><input NAME="nombre_cliente" type="text" class="cajaGrande" id="nombre_cliente" size="45" maxlength="45" value="<? echo $nombre_cliente?>" readonly></td>
 			            </tr>
 						<tr>
@@ -87,19 +87,19 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 						    <td><input NAME="importe" type="text" class="cajaPequena" id="importe" size="10" maxlength="10" value="<? echo $importe?>" readonly> &#8364;</td>
 			            </tr>
 						<tr>
-							<td>Importe vale</td>
+							<td><span id="timpvl">Importe vale</span></td>
 						    <td><input NAME="importevale" type="text" class="cajaPequena" id="importevale" size="10" maxlength="10" value="0"> &#8364; <img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Aplicar Vale" onClick="actualizarimporte()"></td>
 			            </tr>
 						<tr>
-							<td>A pagar</td>
+							<td><span id="tapgr">A pagar</span></td>
 						    <td><input NAME="apagar" type="text" class="cajaPequena" id="apagar" size="10" maxlength="10" value="<? echo $importe?>" readonly> &#8364;</td>
 			            </tr>
 						<tr>
-							<td>Pagado</td>
+							<td<span id="tpagado">Pagado</span></td>
 						    <td><input NAME="pagado" type="text" class="cajaPequena" id="pagado" size="10" maxlength="10"> &#8364; <img src="../img/dinero.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Pagado" onClick="actualizarimportedevolver()"></td>
 			            </tr>
 						<tr>
-							<td>A devolver</td>
+							<td><span id="tadevolver">A devolver</span></td>
 						    <td><input NAME="adevolver" type="text" class="cajaPequena" id="adevolver" size="10" maxlength="10" readonly> &#8364;</td>
 			            </tr>
 						<?
@@ -107,7 +107,7 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 						$res_fp=mysqli_query($conexion,$query_fp);
 						$contador=0; ?>
 						<tr>
-							<td>Forma de pago</td>
+							<td><span id="tforpago">Forma de pago</span></td>
 						    <td><select id="formapago" name="formapago" class="comboGrande">
 								<?php
 								while ($contador < mysqli_num_rows($res_fp)) { 
@@ -143,8 +143,7 @@ $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
 			  </div>
 			  <br><br>
 			  <div align="center">
-			  					<button type="button" id="btnaceptar" onClick="enviar()"onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-
+                    <button type="button" id="btnaceptar" onClick="enviar()"onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
 					<button type="button" id="btnimprimir"  onClick="imprimir(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span>Imprimir Tkt</span> </button>
 					<button type="button" id="btncancelar"  onClick="window.close()"  onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 				</div>

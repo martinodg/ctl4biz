@@ -84,7 +84,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="21%"><span id="referenc">REFERENCIA</span></td>
 							<td width="40%"><span id="descri">descripcion</span></td>
-							<td width="8%"><span id="cant">CANTIDAD</span></td>
+							<td width="8%"><span id="tcant">CANTIDAD</span></td>
 							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="8%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>
@@ -138,10 +138,10 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 			  </div>
 				<div id="botonBusqueda">
 					<div align="center">
-					<button type="button" id="btnaceptar" onClick="aceptar('<? echo $codfactura?>',<? echo $codproveedor?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
-				        </div>
-					</div>
+					    <button type="button" id="btnaceptar" onClick="aceptar('<? echo $codfactura?>',<? echo $codproveedor?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+					    <button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
+                    </div>
+                </div>
 			  </div>
 		  </div>
 		</div>

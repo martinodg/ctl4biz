@@ -164,14 +164,14 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="20%">Estado </td>
+							<td width="20%"><span id="testado">Estado</span></td>
 						
                             <td id="entrada1" with="20%">
                           
                                   <select id='param1' name='param1' class='comboMedio'>
-                                    <option value='' selected >Todos los estados</option>
-                                    <option value='4'>activado</option>
-                                    <option value='5'>desactivado</option>
+                                    <option value='' selected  data-opttrad="todosest">Todos los estados</option>
+                                    <option value='4' data-opttrad="activado" >activado</option>
+                                    <option value='5' data-opttrad="desactivado" >desactivado</option>
                                     
                                 </select>
                              
@@ -181,11 +181,11 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 							
 						</tr>
 <tr>
-							<td width="20%">Criterio de busqueda #2 </td>
+							<td width="20%"><span id="tcribu_2">Criterio de busqueda #2</span></td>
 							<td width="20%"> 
                                 <select id="crit2" name="2" class="comboMedio" >
-                                    <option value="nombre">Nombre del Proceso</option>
-                                    <option value="codproceso">Codigo de proceso</option>
+                                    <option value="nombre" data-opttrad="nomproc">Nombre del Proceso</option>
+                                    <option value="codproceso" data-opttrad="codproce" >Codigo de proceso</option>
                                     
 
                                 </select>
@@ -197,11 +197,11 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 							<td width="40%">&nbsp;</td>
 						</tr>
 <tr>
-							<td width="20%">Criterio de busqueda #3 </td>
+							<td width="20%"><span id="tcribu_3">Criterio de busqueda #3</span></td>
 							<td width="20%"> 
                                 <select id="crit3" name="3" class="comboMedio" >
-                                    <option value="codproceso">Codigo de proceso</option>
-                                    <option value="nombre">Nombre del proceso</option>
+                                    <option value="codproceso" data-opttrad="codproce">Codigo de proceso</option>
+                                    <option value="nombre" data-opttrad="nomproc" >Nombre del proceso</option>
                                    
                                 </select>
                             </td>
@@ -222,7 +222,7 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                 <tr>
-				<td width="50%" class="paginar" align="left">N de procesos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="left"><span id="tnroprocen">N de procesos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                 </tr>

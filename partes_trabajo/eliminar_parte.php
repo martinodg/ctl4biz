@@ -5,6 +5,7 @@ require_once("../funciones/fechas.php");
 	$codtrabajo=$_GET["codtrabajo"];
 	$query="DELETE FROM partestrabajo WHERE codtrabajo='$codtrabajo'";
 	$rs_query=mysqli_query($conexion,$query);
+	//@todo revisar como traducir esto
 	$mensaje="El parte de trabajo ha sido eliminado correctamente";
 	$cabecera1="Inicio >> Partes de Trabajo &gt;&gt; Eliminar Parte de Trabajo";
 	$cabecera2="PARTE DE TRABAJO ELIMINADO";
@@ -41,14 +42,14 @@ exit;
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">ELIMINAR ALBAR&Aacute;N </div>
+				<div id="tituloForm" class="header"><span id="telmalbaran">ELIMINAR ALBAR&Aacute;N </span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<?
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'";
 						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
-							<td width="15%">Cliente</td>
+							<td width="15%"><span id="tcliente">Cliente</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
@@ -81,7 +82,7 @@ exit;
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="25%"><span id="tflia">FAMILIA</span></td>
 							<td width="30%"><span id="descri">descripcion</span></td>
-							<td width="10%"><span id="cant">CANTIDAD</span></td>
+							<td width="10%"><span id="tcant">CANTIDAD</span></td>
 							<td width="10%"><span id="tprecio">PRECIO</span></td>
 							<td width="10%"><span id="tdctop">DCTO %</span></td>
 							<td width="10%"><span id="timporte">IMPORTE</span></td>

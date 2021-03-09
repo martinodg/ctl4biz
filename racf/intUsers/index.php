@@ -157,12 +157,12 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="20%">Estado </td>
+							<td width="20%"><span id="testado">Estado</span></td>
 						
                             <td id="entrada1" with="20%">
                           
                                   <select id='param1' name='param1' class='comboMedio'>
-                                    <option value='' selected >Todos los estados</option>
+                                    <option value='' selected  data-opttrad="todosest">Todos los estados</option>
                                     <option value='4'>activado</option>
                                     <option value='5'>desactivado</option>
                                     
@@ -174,7 +174,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 							
 						</tr>
 <tr>
-							<td width="20%">Criterio de busqueda #2 </td>
+							<td width="20%"><span id="tcribu_2">Criterio de busqueda #2</span></td>
 							<td width="20%"> 
                                 <select id="crit2" name="2" class="comboMedio" >
                                     
@@ -192,7 +192,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 							<td width="40%">&nbsp;</td>
 						</tr>
 <tr>
-							<td width="20%">Criterio de busqueda #3 </td>
+							<td width="20%"><span id="tcribu_3">Criterio de busqueda #3</span></td>
 							<td width="20%"> 
                                 <select id="crit3" name="3" class="comboMedio" >
                                 

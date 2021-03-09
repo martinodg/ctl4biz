@@ -38,7 +38,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">MODIFICAR TRABAJADOR </div>
+                    <div id="tituloForm" class="header"><span id="tmodtrab">MODIFICAR TRABAJADOR</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -56,27 +56,27 @@ $rs_query=mysqli_query($conexion,$query);
 						  <td><input id="nif" type="text" class="cajaPequena" NAME="anif" maxlength="15" value="<?php echo mysqli_result($rs_query,0,"nif")?>"></td>
 				      </tr>
 						<tr>
-<td>Contrase&ntilde;a</td>
+<td><span id="tpassword">Contrase&ntilde;a</span></td>
 <td><input NAME="apassword" type="text" class="cajaPequena" id="password" value="<?php echo mysqli_result($rs_query,0,"password")?>" size="20" maxlength="20"></td>
 					  </tr>
 						<tr>
-<td>Tel&eacute;fono</td>
+<td><span id="ttelef">Tel&eacute;fono</span></td>
 <td><input NAME="atelefono" type="text" class="cajaPequena" id="cuentabanco" value="<?php echo mysqli_result($rs_query,0,"telefono")?>" maxlength="20"></td>
 						</tr>
 						<tr>
-<td>M&oacute;vil </td>
+<td><span id="tmovil">M&oacute;vil</span> </td>
 <td><input NAME="amovil" type="text" class="cajaPequena" id="codpostal" value="<?php echo mysqli_result($rs_query,0,"movil")?>" maxlength="20"></td>
 						</tr>
 						<tr>
-<td>M&oacute;vil Avisos </td>
+<td><span id="tmovavi">M&oacute;vil Avisos</span> </td>
 <td><input name="amovilavisos" type="text" class="cajaPequena" id="telefono" value="<?php echo mysqli_result($rs_query,0,"movilavisos")?>" maxlength="20"></td>
 						</tr>
 						<tr>
-<td>Correo electr&oacute;nico</td>
+<td><span id="tcorrelec">Correo electr&oacute;nico</span></td>
 <td><input name="aemail" type="text" class="cajaGrande" id="movil" value="<?php echo mysqli_result($rs_query,0,"email")?>" size="50" maxlength="50"></td>
 						</tr>
 						<tr>
-<td>Correo electr&oacute;nico Avisos </td>
+<td><span id="tcorrelecavs">Correo electr&oacute;nico Avisos</span> </td>
 <td><input NAME="aemailavisos" type="text" class="cajaGrande" id="email" value="<?php echo mysqli_result($rs_query,0,"emailavisos")?>" size="50" maxlength="50"></td>
 						</tr>
 					</table>

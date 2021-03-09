@@ -40,7 +40,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">ELIMINAR UBICACI&Oacute;N </div>
+				<div id="tituloForm" class="header"><span id="telmubc">ELIMINAR UBICACI&Oacute;N</span> </div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>

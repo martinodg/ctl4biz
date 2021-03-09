@@ -110,12 +110,12 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Buscar CLIENTE </div>
+                    <div id="tituloForm" class="header"><span id="tbcliente">Buscar CLIENTE</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-							<td width="16%">Codigo de cliente </td>
+							<td width="16%" id="tcodcli">Codigo de cliente</td>
 							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10" value="<? echo $codcliente?>"> <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
@@ -140,7 +140,7 @@ if ($cadena_busqueda<>"") {
 						$contador=0;
 					  ?>
 						<tr>
-							<td>Provincia</td>
+							<td><span id="tpcia">Provincia</span></td>
 							<td><select id="cboProvincias" name="cboProvincias" class="comboMedio">
 								<option value="0" selected>Todas las provincias</option>
 								<?php
@@ -155,14 +155,14 @@ if ($cadena_busqueda<>"") {
 								</select>							</td>
 					    </tr>
 					  <tr>
-						  <td>Localidad</td>
+						  <td><span id="tlocal">Localidad</span></td>
 						  <td><input id="localidad" type="text" class="cajaGrande" NAME="localidad" maxlength="30" value="<? echo $localidad?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-						  <td>Tel&eacute;fono</td>
+						  <td><span id="ttelef">Tel&eacute;fono</span></td>
 						  <td><input id="telefono" type="text" class="cajaPequena" NAME="telefono" maxlength="15" value="<? echo $telefono?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
@@ -191,9 +191,9 @@ if ($cadena_busqueda<>"") {
 						<tr class="cabeceraTabla">
 							<td width="8%"><span id="titem">ITEM</span></td>
 							<td width="6%"><span id="tcodigo">CODIGO</span></td>
-							<td width="38%">NOMBRE </td>
-							<td width="13%">NIF/CIF</td>
-							<td width="19%">TELEFONO</td>
+							<td width="38%"><span id="tnomb">NOMBRE</span></td>
+							<td width="13%"><span id="tnip">NIF/CIF</span></td>
+							<td width="19%"><span id="ttelef">TELEFONO</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>

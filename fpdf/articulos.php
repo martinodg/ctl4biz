@@ -37,7 +37,7 @@ if ($codproveedor > "0") { $where.=" AND (codproveedor1='$codproveedor' OR codpr
 if ($codubicacion > "0") { $where.=" AND codubicacion='$codubicacion'"; }
 if ($referencia <> "") { $where.=" AND referencia like '%".$referencia."%'"; }
 
-
+//@todo revisar esto en base al idioma no creo que pueda definir por js porque son exportables, quiza pasar la variable por url y definir el idioma
 $header=array('Familia','Referencia','Descripcion','P. Tienda','Stock');
 
 //Colores, ancho de lnea y fuente en negrita

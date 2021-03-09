@@ -105,12 +105,12 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Buscar FACTURA </div>
+                    <div id="tituloForm" class="header"><span id="buscafc">Buscar FACTURA</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-							<td width="16%">Codigo de cliente </td>
+							<td width="16%"><span id="tcod_cliente">Codigo de cliente</span></td>
 							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10" value="<? echo $codcliente?>"> <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
@@ -123,7 +123,7 @@ if ($cadena_busqueda<>"") {
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-						  <td>Num. Factura</td>
+						  <td><span id="nrofac">Num. Factura</span></td>
 						  <td><input id="numfactura" type="text" class="cajaPequena" NAME="numfactura" maxlength="15" value="<? echo $numfactura?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
@@ -132,7 +132,7 @@ if ($cadena_busqueda<>"") {
 						<tr>
 							<td><span id="testado">ESTADO</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
-								<option value="0" selected>Todos los estados</option>
+								<option value="0" selected data-opttrad="todosest">Todos los estados</option>
 								<option value="1">Sin Pagar</option>
 								<option value="2">Pagada</option>			
 								</select></td>
@@ -172,21 +172,14 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">
-				                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
-
-			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-
-
-					               		<button type="button" id="btnnuevo" onClick="nueva_factura()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span>Nueva Factura</span> </button>
-
-
-
-					
+                  <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
+                  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
+                  <button type="button" id="btnnuevo" onClick="nueva_factura()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span id="tnvafact">Nueva Factura</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de facturas encontradas <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="left"><span id="nrofcenco">N de facturas encontradas</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
@@ -197,8 +190,8 @@ if ($cadena_busqueda<>"") {
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="8%"><span id="titem">ITEM</span></td>
-							<td width="8%">N. FACTURA</td>
-							<td width="38%">CLIENTE </td>							
+							<td width="8%"><span id="tnrofac">N. FACTURA</span></td>
+							<td width="38%"><span id="tcliente">CLIENTE</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>
 							<td width="10%"><span id="tfecha">Fecha</span></td>
 							<td width="10%"><span id="testado">ESTADO</span></td>

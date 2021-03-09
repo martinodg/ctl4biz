@@ -30,17 +30,17 @@ require_once("../conectar7.php");
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="5%"><span id="tcodigo">CODIGO</span></td>';
-    echo '						<td width="24%">NOMBRE DEL PROCESO</td>';
-    echo '						<td width="5%"><span id="cant">CANTIDAD</span></td>';
-    echo '						<td width="5%">UN. DE MEDIDA</td>';
+    echo '						<td width="24%"><span id="tnomproc">NOMBRE DEL PROCESO</span></td>';
+    echo '						<td width="5%"><span id="tcant">CANTIDAD</span></td>';
+    echo '						<td width="5%"><span id="tundmed">UN. DE MEDIDA</span></td>';
     echo '						<td width="5%"><span id="tfechin">Fecha de inicio</span></td>';
-    echo '						<td width="5%">HORA DE INICIO</td>';
-    echo '                      <td width="8%">ESTACION</td>';
-    echo '                      <td width="20%">TRABAJADOR</td>';
+    echo '						<td width="5%"><span id="thinic">HORA DE INICIO</span></td>';
+    echo '                      <td width="8%"><span id="testacion">ESTACION</span></td>';
+    echo '                      <td width="20%"><span id="ttrabajad">TRABAJADOR</span></td>';
     echo '                      <td width="5%"><span id="tfchafin">Fecha de fin</span></td>';
-    echo '						<td width="5%">HORA DE FIN</td>';
+    echo '						<td width="5%"><span id="thorafincrt">HORA DE FIN</span></td>';
     echo '						<td width="8%"><span id="testado">ESTADO</span></td>';
-    echo '						<td width="5%">MODIFICAR</td>';
+    echo '						<td width="5%"><span id="tmodificar">MODIFICAR</span></td>';
     echo '					</tr>';
     echo '			</table>';
     echo '		</div>';
@@ -67,9 +67,9 @@ require_once("../conectar7.php");
                                     echo '<td width="8%"><div align="center">'.$row[9].'</div></td>';
 
                                     if ($row[12]<>2){
-                                            echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';                 
+                                            echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" data-opttrad="modificar" title="Modificar"></a></div></td>';
                                     }else{
-                                        echo '<td width="5%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" title="Visualizar"></a></div></td>';                                                                     
+                                        echo '<td width="5%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" data-opttrad="visualizar" title="Visualizar"></a></div></td>';
                                     }
                                 echo '</tr>';
                         echo '</table>';

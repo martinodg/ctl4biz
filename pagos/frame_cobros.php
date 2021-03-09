@@ -92,7 +92,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td class="aDerecha" width="20%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"numdocumento")?></div></td>
 							<td class="aDerecha" width="15%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"pagos.fechapago"))?></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/observaciones.svg" width="16" height="16" border="0" onClick="abreVentana('<?php echo mysqli_result($res_resultado,$contador,"observaciones")?>')" title="Ver Observaciones"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar('<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>',<?php echo mysqli_result($res_resultado,$contador,"id")?>,<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<?php echo mysqli_result($res_resultado,$contador,"fechapago")?>,<?php echo mysqli_result($res_resultado,$contador,"importe")?>)" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar('<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>',<?php echo mysqli_result($res_resultado,$contador,"id")?>,<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>,<?php echo mysqli_result($res_resultado,$contador,"fechapago")?>,<?php echo mysqli_result($res_resultado,$contador,"importe")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}
@@ -101,7 +101,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="100%" class="mensaje"><?php echo "Todav&iacute;a no se ha producido ning&uacute;n pago en esta factura.";?></td>
+                            <td width="100%" class="mensaje"><span id="tmsgvlcrbfact">Todav&iacute;a no se ha producido ning&uacute;n pago en esta factura</span></td>
 					    </tr>
 					</table>					
 					<? } ?>	

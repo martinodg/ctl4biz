@@ -17,6 +17,7 @@
         }
 
         $(document).ready(function() {
+            //@todo revisar traducciones de esta funcion
             //get proceso code from Url hash on last page.
             var proceso = window.location.hash.substring(1);
 
@@ -144,7 +145,7 @@
     <div id="pagina">
         <div id="zonaContenido">
             <div align="center">
-                <div id="tituloForm" class="header">Modificar proceso</div>
+                <div id="tituloForm" class="header"><span id="tmdfproce">Modificar proceso</span></div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
@@ -152,14 +153,14 @@
 
                             <tr>
 
-                                <td width="20%">Codigo de proceso <input id="codproceso" type="text" class="cajaPequena" NAME="codproceso" maxlength="15" readonly></td>
-                                <td width="20%">Codigo de articulo <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15" readonly></td>
+                                <td width="20%"><span id="tcodproce">Codigo de proceso</span> <input id="codproceso" type="text" class="cajaPequena" NAME="codproceso" maxlength="15" readonly></td>
+                                <td width="20%"><span id="tcodart">Codigo de articulo</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15" readonly></td>
 
-                                <td width="20%">Nombre de articulo <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45" readonly=""></td>
+                                <td width="20%"><span id="tnombart">Nombre de articulo</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45" readonly=""></td>
 
                             </tr>
                             <tr>
-                                <td><span id="cant">CANTIDAD</span></td>
+                                <td><span id="tcant">CANTIDAD</span></td>
                                 <td><input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"> <span id="unidadmedida"></span></td>
                             </tr>
                             <tr>
@@ -167,7 +168,7 @@
                                 <td><input NAME="fechai" type="text" class="cajaMediana" id="fechai" size="25" maxlength="25" readonly></td>
                             </tr>
                             <tr>
-                                <td>Hora de inicio</td>
+                                <td><span id="thinic">HORA DE INICIO</span></td>
                                 <td><input id="horai" type="text" class="cajaPequena" NAME="horai" maxlength="20" readonly></td>
                             </tr>
                             <tr>
@@ -183,8 +184,8 @@
                                 <td>
                                     <select id="estado" name="estado" class="comboMedio">
                                     <option value="1">Inizializado</option>
-                                    <option value="2">Finalizado</option>
-                                    <option value="3">Descartado</option>
+                                    <option value="2" data-opttrad="finalizado">Finalizado</option>
+                                    <option value="3" data-opttrad="descartado">Descartado</option>
                                     
                                 </select>
                                 </td>

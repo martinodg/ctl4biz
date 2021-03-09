@@ -133,13 +133,13 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 			<div align="center">
-				<div id="tituloForm" class="header">Buscar PROVEEDOR </div>
+                <div id="tituloForm" class="header"><span id="tbprov">Buscar PROVEEDOR</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
 							<td width="16%"><span id="tcodprov">Codigo de proveedor</span></td>
-							<td width="68%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10" value="<? echo $codproveedor?>">  <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar proveedor" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor" onMouseOver="style.cursor=cursor"></td>
+							<td width="68%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10" value="<? echo $codproveedor?>">  <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar PROVEEDOR"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor" onMouseOver="style.cursor=cursor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
@@ -182,20 +182,20 @@ if ($cadena_busqueda<>"") {
 					  </tr>
 					
 						<tr>
-							<td>Provincia</td>
+							<td><span id="tpcia">Provincia</span></td>
 							<td><select id="cboProvincias" name="cboProvincias" class="comboMedio">
 							
 								</select>							</td>
 					    </tr>
                                             <tr>
-						  <td>Localidad</td>
+						  <td><span id="tlocal">Localidad</span></td>
 						  <td><input id="localidad" type="text" class="cajaGrande" NAME="localidad" maxlength="30" value="<? echo $localidad?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-						  <td>Tel&eacute;fono</td>
+						  <td><span id="ttelef">Tel&eacute;fono</span></td>
 						  <td><input id="telefono" type="text" class="cajaPequena" NAME="telefono" maxlength="15" value="<? echo $telefono?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
@@ -212,7 +212,7 @@ if ($cadena_busqueda<>"") {
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de proveedores encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                    <td width="50%" class="paginar" align="left"><span id="tnroproven">N de proveedores encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
@@ -224,9 +224,9 @@ if ($cadena_busqueda<>"") {
 						<tr class="cabeceraTabla">
 							<td width="8%"><span id="titem">ITEM</span></td>
 							<td width="6%"><span id="tcodigo">CODIGO</span></td>
-							<td width="38%">NOMBRE </td>
-							<td width="13%">NIF/CIF</td>
-							<td width="19%">TELEFONO</td>
+							<td width="38%"><span id="tnomb">NOMBRE</span></td>
+							<td width="13%"><span id="tnip">NIF/CIF</span></td>
+							<td width="19%"><span id="ttelef">TELEFONO</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>

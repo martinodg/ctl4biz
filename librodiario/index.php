@@ -78,7 +78,7 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Buscar MOVIMIENTOS </div>
+                    <div id="tituloForm" class="header"><span id="tbuscmov">Buscar MOVIMIENTOS</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>					
@@ -116,32 +116,29 @@ if ($cadena_busqueda<>"") {
 					  </tr>
 					</table>
 			  </div>
-					<div id="botonBusqueda">                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
-
-			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-
-	
+					<div id="botonBusqueda">
+                        <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
+                        <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de movimientos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
-		          </select></td>
+    				<td width="50%" class="paginar" align="left">N de movimientos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+    				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+	                  </select></td>
 			  </table>
 				</div>
-				<div id="cabeceraResultado" class="header">
-					relacion de MOVIMIENTOS </div>
+                    <div id="cabeceraResultado" class="header"><span id="trelmov">relacion de MOVIMIENTOS</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="10%"><span id="tfecha">Fecha</span></td>
-							<td width="10%">C/V</td>							
-							<td width="10%">FACTURA</td>
-							<td width="20%">COMERCIAL</td>
-							<td width="20%">FORMA PAGO</td>
-							<td width="15%">NUM. DOC.</td>
+                            <td width="10%"><span id="tcv">C/V</span></td>
+                            <td width="10%"><span id="factura">FACTURA</span></td>
+                            <td width="20%"><span id="comerc">COMERCIAL</span></td>
+							<td width="20%"><span id="tforpago">FORMA PAGO</span></td>
+                            <td width="15%"><span id="tnumdoc">NUM. DOC.</span></td>
 							<td width="10%"><span id="timporte">IMPORTE</span></td>
 						</tr>
 				</table>

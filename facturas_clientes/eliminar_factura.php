@@ -43,14 +43,14 @@ $iva=mysqli_result($rs_query,0,"iva");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">ELIMINAR FACTURA </div>
+                    <div id="tituloForm" class="header"><span id="telfac">ELIMINAR FACTURA</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<? 
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'"; 
 						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
-							<td width="15%">Cliente</td>
+							<td width="15%"><span id="tcliente">Cliente</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
@@ -83,7 +83,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="18%"><span id="referenc">REFERENCIA</span></td>
 							<td width="41%"><span id="descri">descripcion</span></td>
-							<td width="8%"><span id="cant">CANTIDAD</span></td>
+							<td width="8%"><span id="tcant">CANTIDAD</span></td>
 							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>

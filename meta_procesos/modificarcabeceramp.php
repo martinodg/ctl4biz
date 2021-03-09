@@ -11,4 +11,4 @@ $unmedida=$_GET["unmedida"];
 //echo $batch;
 $query_modificarcabeceramp="UPDATE metaprocesos SET nombre = '$nombre', esbatch='$batch', codarticulo='$codarticulocreado', cantidad='$cantidadest', codunidadmedida='$unmedida' where codproceso='$codigo';";
 $rs_modificarcabeceramp=mysqli_query($conexion,$query_modificarcabeceramp);
-echo "<h1><center>Datos del meta-proceso modificados</h1></center>";
+echo "<h1><center><span id=\"tdtmpmod\">Datos del meta-proceso modificados</span></h1></center>";

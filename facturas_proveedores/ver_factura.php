@@ -44,7 +44,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">VER FACTURA</div>
+				<div id="tituloForm" class="header"><span id="tvfactura">VER FACTURA</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<? 
@@ -84,7 +84,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="21%"><span id="referenc">REFERENCIA</span></td>
 							<td width="40%"><span id="descri">descripcion</span></td>
-							<td width="8%"><span id="cant">CANTIDAD</span></td>
+							<td width="8%"><span id="tcant">CANTIDAD</span></td>
 							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="8%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>

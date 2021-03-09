@@ -100,13 +100,13 @@ if ($accion=="alta") {
 						<? if ($minimo==1) { ?>
 						<tr>
 							<td width="15%"></td>
-							<td width="85%" colspan="2" class="mensajeminimo">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo:<br><?php echo $mensaje_minimo;?></td>
+							<td width="85%" colspan="2" class="mensajeminimo"><span id="tartimpmin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo</span>:<br><?php echo $mensaje_minimo;?></td>
 					    </tr>
 						<? } 
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'"; 
 						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
-							<td width="15%">Cliente</td>
+							<td width="15%"><span id="tcliente">Cliente</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
@@ -140,7 +140,7 @@ if ($accion=="alta") {
 							<td width="20%"><span id="tflia">FAMILIA</span></td>
 							<td width="15%"><span id="referenc">REFERENCIA</span></td>
 							<td width="30%"><span id="descri">descripcion</span></td>
-							<td width="7%"><span id="cant">CANTIDAD</span></td>
+							<td width="7%"><span id="tcant">CANTIDAD</span></td>
 							<td width="8%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="8%"><span id="timporte">IMPORTE</span></td>
@@ -203,7 +203,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 				        </div>
 						<br>
 						<div align="center" id="cajareg">
-					  <img src="../img/caja.jpg" width="80" height="77" border="1" onClick="efectuarpago(<? echo $codfactura?>,<? echo $codcliente?>,<? echo $preciototal?>)" onMouseOver="style.cursor=cursor" title="Efectuar pago">
+					  <img src="../img/caja.jpg" width="80" height="77" border="1" onClick="efectuarpago(<? echo $codfactura?>,<? echo $codcliente?>,<? echo $preciototal?>)" onMouseOver="style.cursor=cursor" data-ttitle="efcpag" title="Efectuar pago">
 				        </div>
 					</div>
 			  </div>

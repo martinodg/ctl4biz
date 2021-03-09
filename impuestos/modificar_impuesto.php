@@ -38,7 +38,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">MODIFICAR IMPUESTO </div>
+                    <div id="tituloForm" class="header"><span id="tmdfimp">MODIFICAR IMPUESTO</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_impuesto.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -52,14 +52,13 @@ $rs_query=mysqli_query($conexion,$query);
 						    <td width="43%"><input NAME="Anombre" type="text" class="cajaGrande" id="nombre" size="20" maxlength="20" value="<?php echo mysqli_result($rs_query,0,"nombre")?>"></td>
 				        </tr>
 						<tr>
-							<td width="15%">Valor</td>
+							<td width="15%"><span id="tvalor">Valor</span></td>
 						    <td width="43%"><input NAME="Qvalor" type="text" class="cajaPequena" id="valor" size="5" maxlength="5" value="<?php echo mysqli_result($rs_query,0,"valor")?>"> %</td>
 				        </tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
 					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-
 					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 					<input id="accion" name="accion" value="modificar" type="hidden">

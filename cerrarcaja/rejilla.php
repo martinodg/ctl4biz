@@ -60,28 +60,28 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 				<form id="formulario" name="formulario" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>					
 					  <tr>
-						  <td width="18%">Caja Fecha</td>
+                          <td width="18%"><span id="tfchacja">Caja Fecha</span></td>
 						  <td width="14%"><? echo implota($fechainicio)?>	</td>
 						  <td width="12%">&nbsp;</td>
 						  <td width="50%">&nbsp;</td>
 						  <td width="6%">&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td>Del ticket n&deg;</td>
+                          <td><span id="tdelticktnro">Del ticket n&deg;</span></td>
 						  <td><? echo $minimo?>	</td>
-						  <td>al ticket n&deg;</td>
+                          <td><span id="taltktnro">al ticket n&deg;</span></td>
 						  <td><? echo $maximo?></td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td>Neto</td>
+                          <td><span id="tneto">Neto</span></td>
 						  <td><? echo number_format($neto,2,",",".")?> &#8364;</td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td>16 % IVA</td>
+                          <td>16 % <span id="tiva">IVA</span></td>
 						  <td><? echo number_format($iva,2,",",".")?> &#8364;</td>
 						  <td></td>
 						  <td>&nbsp;</td>
@@ -95,14 +95,14 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td>Total contado</td>
+                          <td><span id="ttotalcdo">Total contado</span></td>
 						  <td><? echo number_format($contado,2,",",".")?> &#8364;</td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td>Total tarjetas</td>
+                          <td><span id="ttotaltj">Total tarjetas</span></td>
 						  <td><? echo number_format($tarjeta,2,",",".")?> &#8364;</td>
 						  <td></td>
 						  <td>&nbsp;</td>

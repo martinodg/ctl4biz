@@ -82,7 +82,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="16%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td width="16%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"hora")?></div></td>
 							<td width="6%"><div align="center"><a href="#"><img src="../img/restaurar.png" width="16" height="16" border="0" onClick="restaurar(<?php echo mysqli_result($res_resultado,$contador,"id")?>)" title="Restaurar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar(<?php echo mysqli_result($res_resultado,$contador,"id")?>)" title="Eliminar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar(<?php echo mysqli_result($res_resultado,$contador,"id")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

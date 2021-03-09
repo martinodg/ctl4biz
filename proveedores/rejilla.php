@@ -112,9 +112,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="38%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
 							<td class="aDerecha" width="13%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"nif")?></div></td>
 							<td class="aDerecha" width="19%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"telefono")?></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Modificar"></a></div></td>
-														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-opttrad="modificar" title="Modificar"></a></div></td>
+														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}
@@ -123,7 +123,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="100%" class="mensaje"><?php echo "No hay ning&uacute;n proveedor que cumpla con los criterios de b&uacute;squeda";?></td>
+                            <td width="100%" class="mensaje"><span id="tmsgprvnf">No hay ning&uacute;n proveedor que cumpla con los criterios de b&uacute;squeda</span></td>
 					    </tr>
 					</table>					
 					<? } ?>					

@@ -62,7 +62,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">PAGOS </div>
+                    <div id="tituloForm" class="header"><span id="tpagos">PAGOS</span></div>
 				<div id="frmBusqueda">
 				<form id="formdatos" name="formdatos" method="post" action="guardar_cobro.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -76,7 +76,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						if ($fechapago=="0000-00-00") { $fechapago=""; } else { $fechapago=implota($fechapago); } 						
 						?>
 						<tr>
-							<td width="15%">C&oacute;digo de proveedor</td>
+                            <td width="15%"><span id="tcodprov">C&oacute;digo de proveedor</span></td>
 						    <td width="43%"><? echo $codproveedor?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
@@ -91,18 +91,18 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<tr>
-							<td width="15%">Importe de la factura</td>
+							<td width="15%"><span id="timpfactura">Importe de la factura</span></td>
 						    <td width="43%"><? echo number_format($totalfactura,2)?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<? $pendiente=$totalfactura-$aportaciones; ?>
 						<tr>
-							<td width="15%">Pendiente por pagar</td>
+							<td width="15%"><span id="tpndpagar">Pendiente por pagar</span></td>
 						    <td width="43%"><input type="text" name="pendiente" id="pendiente" value="<? echo number_format($pendiente,2,".","")?>" readonly="yes" class="cajaTotales"> &#8364;</td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<tr>
-							<td width="15%">Estado de la factura</td>
+							<td width="15%"><span id="tetdfac">Estado de la factura</span></td>
 						    <td width="43%"><select id="cboEstados" name="cboEstados" class="comboMedio" onChange="cambiar_estado()">
 								<? if ($estado==1) { ?><option value="1" selected="selected">Sin Pagar</option>
 								<option value="2">Pagada</option><? } else { ?>
@@ -113,7 +113,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
 						<tr>
-							<td width="15%">Fecha de pago</td>
+                            <td width="15%"><span id="tfchpago">Fecha de pago</span></td>
 						    <td width="43%"><input id="fechapago" type="text" class="cajaPequena" NAME="fechapago" maxlength="10" value="<? echo $fechapago?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -123,7 +123,8 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					button     : "Image1"
 					  }
 					);
-		</script><img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Guardar fecha" onClick="cambiar_vencimiento()"></td>
+        </script>
+                                <img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" data-ttitle="grdfecha" title="Guardar fecha" onClick="cambiar_vencimiento()"></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>										
 					</table>
@@ -134,7 +135,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 				<form id="formulario" name="formulario" method="post" action="frame_cobros.php" target="frame_cobros">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="15%">Fecha del pago</td>
+                            <td width="15%"><span id="fchdlpago">Fecha del pago</span></td>
 						    <td width="35%"><input id="fechapago2" type="text" class="cajaPequena" NAME="fechapago2" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -158,10 +159,10 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						$contador=0;
 					  ?>
 						<tr>
-							<td width="15%">Forma de pago</td>
+							<td width="15%"><span id="tforpago">Forma de pago</span></td>
 							<td width="35%"><select id="AcboFP" name="AcboFP" class="comboGrande">
 							
-								<option value="0">Seleccione una forma de pago</option>
+								<option value="0" data-opttrad="selfrmpago" >Seleccione una forma de pago</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_fp)) { ?>
 								<option value="<?php echo mysqli_result($res_fp,$contador,"codformapago")?>"><?php echo mysqli_result($res_fp,$contador,"nombrefp")?></option>
@@ -171,7 +172,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 								<td width="50%" rowspan="14" align="left" valign="top"></td>
 				        </tr>
 						<tr>
-							<td width="15%">Num. Documento</td>
+							<td width="15%"><span id="tnrodocum">Num. Documento</span></td>
 						    <td width="35%"><input id="anumdocumento" type="text" class="cajaMedia" NAME="anumdocumento" maxlength="30"></td>
 					        <td width="50%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
@@ -188,7 +189,6 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					<input type="hidden" name="codproveedor" id="codproveedor" value="<? echo $codproveedor?>">
 					<input type="hidden" name="codfactura" id="codfactura" value="<? echo $codfactura?>">
 					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 			  </div>
 			  </form>
@@ -201,11 +201,11 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						<tr class="cabeceraTabla">
 							<td width="10%"><span id="titem">ITEM</span></td>
 							<td width="12%"><span id="tfecha">Fecha</span></td>
-							<td width="12%">IMPORTE </td>							
-							<td width="20%">FORMA PAGO</td>
-							<td width="20%">N. DOCUMENTO</td>
-							<td width="15%">FECHA PAGO</td>
-							<td width="5%">OBV.</td>
+							<td width="12%"><span id="timporte">IMPORTE</span></td>
+							<td width="20%"><span id="tforpago">FORMA PAGO</span></td>
+							<td width="20%"><span id="tnrodocum">N. DOCUMENTO</span></td>
+                            <td width="15%"><span id="tfcpago">FECHA PAGO</span></td>
+							<td width="5%"><span id="tobv">OBV.</span></td>
 							<td width="6%">&nbsp;</td>
 						</tr>
 				</table>

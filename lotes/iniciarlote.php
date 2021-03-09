@@ -29,10 +29,10 @@ require_once("../mysqli_result.php");
                 
                 
                 
-        echo "<div class=\"header\">ATENCION: El lote ha sido creado exitosamente con el codigo '$codlote'!!</div>";
+        echo "<div class=\"header\"><span id=\"tmsgcrlotok\">ATENCION: El lote ha sido creado exitosamente con el codigo</span> '$codlote'!!</div>";
         echo mysqli_error($conexion) ;
     }else{
-       echo "<div class=\"mensaje\">ATENCION: Los Campos relativos al articulo del lote son obligatorios!</div>";
+       echo "<div class=\"mensaje\"><span id=\"tmsgcrloter\">ATENCION: Los Campos relativos al articulo del lote son obligatorios!</span></div>";
     }
  
 mysqli_close($conexion);   

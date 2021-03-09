@@ -113,7 +113,7 @@ if ($accion=="baja") {
 						  <td colspan="2"><?php echo $direccion?></td>
 					  </tr>
 						<tr>
-						  <td>Localidad</td>
+						  <td><span id="tlocal">Localidad</span></td>
 						  <td colspan="2"><?php echo $localidad?></td>
 					  </tr>
 					  <?php
@@ -126,7 +126,7 @@ if ($accion=="baja") {
 						}
 					  ?>
 						<tr>
-							<td width="15%">Provincia</td>
+							<td width="15%"><span id="tpcia">Provincia</span></td>
 							<td width="85%" colspan="2"><?php echo $nombreprovincia?></td>
 					    </tr>
 						<?php
@@ -139,31 +139,31 @@ if ($accion=="baja") {
 						}
 					  ?>
 						<tr>
-							<td width="15%">Entidad Bancaria</td>
+							<td width="15%"><span id="tentiban">Entidad Bancaria</span></td>
 							<td width="85%" colspan="2"><?php echo $nombreentidad?></td>
 					    </tr>
 						<tr>
-							<td>Cuenta bancaria</td>
+							<td><span id="tctabcaria">Cuenta bancaria</span></td>
 							<td colspan="2"><?php echo $cuentabanco?></td>
 						</tr>
 						<tr>
-							<td>C&oacute;digo postal</td>
+							<td><span id="tcodpostal">C&oacute;digo postal</span></td>
 							<td colspan="2"><?php echo $codpostal?></td>
 						</tr>
 						<tr>
-							<td>Tel&eacute;fono</td>
+							<td><span id="ttelef">Tel&eacute;fono</span></td>
 							<td><?php echo $telefono?></td>
 						</tr>
 						<tr>
-							<td>M&oacute;vil</td>
+							<td><span id="tmovil">M&oacute;vil</span></td>
 							<td colspan="2"><?php echo $movil?></td>
 						</tr>
 						<tr>
-							<td>Correo electr&oacute;nico  </td>
+							<td><span id="tcorrelec">Correo electr&oacute;nico</span></td>
 							<td colspan="2"><?php echo $email?></td>
 						</tr>
 												<tr>
-							<td>Direcci&oacute;n web </td>
+							<td><span id="tdirrcweb">Direcci&oacute;n web</span></td>
 							<td colspan="2"><?php echo $web?></td>
 						</tr>
 					</table>

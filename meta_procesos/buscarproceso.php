@@ -34,8 +34,8 @@ if($_POST) {
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="8%"><span id="tcodigo">CODIGO</span></td>';
     echo '						<td width="20%"><span id="tnomb">Nombre</span></td>';
-    echo '						<td width="18%">ARTICULO</td>';
-    echo '						<td width="18%">TIPO DE PROCESO</td>';
+    echo '						<td width="18%"><span id="varticulo">ARTICULO</span></td>';
+    echo '						<td width="18%"><span id="ttipproc">TIPO DE PROCESO</span></td>';
     echo '						<td width="18%"><span id="testado">ESTADO</span></td>';
     echo '						<td width="8%">&nbsp;</td>';
     echo '						<td width="8%">&nbsp;</td>';
@@ -62,10 +62,10 @@ if($_POST) {
 
 							
                                                         if ($row[5]<>2){
-                                                            echo '<td width="8%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" title="Modificar"></a></div></td>';
+                                                            echo '<td width="8%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" data-opttrad="modificar" title="Modificar"></a></div></td>';
                                                             echo '<td width="8%"><div align="center">&nbsp;</div></td>';
                                                         }else{
-                                                            echo '<td width="8%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" title="Visualizar"></a></div></td>';  
+                                                            echo '<td width="8%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" data-opttrad="visualizar" title="Visualizar"></a></div></td>';
                                                             echo '<td width="8%"><div align="center">&nbsp;</div></td>';                                                             
                                                         }
                               echo '</tr>';

@@ -166,13 +166,13 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Facturar ALBARANES </div>
+                    <div id="tituloForm" class="header"><span id="tfacturar_remitos">Facturar ALBARANES</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
 							<td width="16%"><span id="tcodprov">Codigo de proveedor</span></td>
-							<td width="68%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10"><img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar proveedor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor"></td>
+							<td width="68%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10"><img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar PROVEEDOR" > <img src="../img/cliente.svg" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
@@ -190,14 +190,14 @@ if ($cadena_busqueda<>"") {
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-						  <td>Num. Albaran Inicial</td>
+						  <td><span id="tnrortoini">Num. Albaran Inicial</span></td>
 						  <td><input id="numalbaranini" type="text" class="cajaPequena" NAME="numalbaranini" maxlength="15" value="<? echo $numalbaranini?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td>Num. Albaran Final</td>
+						  <td><span id="tntortofin">Num. Albaran Final</span></td>
 						  <td><input id="numalbaranfin" type="text" class="cajaPequena" NAME="numalbaranfin" maxlength="15" value="<? echo $numalbaranfin?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
@@ -238,12 +238,9 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">
-				                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
-
-			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-
-
-					 <button type="button" id="btnfacturarremito" onClick="facturar_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/convertir.svg" alt="facturar remito" /> <span>Facturar remito</span> </button>				
+                      <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
+        		 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
+                  	  <button type="button" id="btnfacturarremito" onClick="facturar_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/convertir.svg" alt="facturar remito" /> <span>Facturar remito</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
@@ -261,7 +258,7 @@ if ($cadena_busqueda<>"") {
 							<td width="10%"><input name="todos" type="checkbox" value="todos" onClick="activartodos()"></td>
 							<td width="15%"><span id="titem">ITEM</span></td>
 							<td width="25%"<span id="tndalbaran">N. ALBARAN</span>
-							<td width="25%">IMPORTE </td>							
+							<td width="25%"><span id="timporte">IMPORTE</span></td>
 							<td width="25%"><span id="tfecha">Fecha</span></td>
 						</tr>
 				</table>

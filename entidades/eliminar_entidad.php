@@ -39,7 +39,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">ELIMINAR ENTIDAD BANCARIA </div>
+                    <div id="tituloForm" class="header"><span id="telmentbanc">ELIMINAR ENTIDAD BANCARIA</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>

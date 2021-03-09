@@ -36,7 +36,7 @@ require_once("../mysqli_result.php");
 		<? 
 	} else { ?>
 	<script>
-	alert ("No existe ningun cliente con ese codigo");
+	talert('msgscliente');
 	limpiar();
 	</script>
 	<? }

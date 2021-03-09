@@ -22,7 +22,8 @@ require_once("../racf/purePhpVerify.php");
 		function imprimir() {
 			var codigo=document.getElementById("codbarras").value;
 			if (codigo=="") {
-				alert ("Debe seleccionar un articulo antes de imprimir el codigo de barras");
+			    talert('msgvlselartimp');
+				//alert ("Debe seleccionar un articulo antes de imprimir el codigo de barras");
 			} else {
 				window.open("../fpdf/codigo.php?codigo="+codigo);
 			}
@@ -48,7 +49,7 @@ require_once("../racf/purePhpVerify.php");
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
-					<td width="15%">Codigo barras </td>
+					<td width="15%"><span id="tcodbarr">Codigo barras</span> </td>
 					<td colspan="8" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15" readonly><img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()"></td>
 				    <td valign="middle">&nbsp;</td>
 				    <td rowspan="2" valign="bottom"><div align="center"><img src="../img/codigobarras.jpg" border="1" align="absbottom" onClick="imprimir()" onMouseOver="style.cursor=cursor"></div></td>

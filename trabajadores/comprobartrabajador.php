@@ -34,7 +34,7 @@ function limpiar() {
 		<?
 	} else { ?>
 	<script>
-	alert ("No existe ningun trabajador con ese codigo");
+    talert('msgtrbnf');
 	limpiar();
 	</script>
 	<? }

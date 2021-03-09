@@ -85,7 +85,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="5%"><span id="titem">ITEM</span></td>
 							<td width="20%"><span id="referenc">REFERENCIA</span></td>
 							<td width="40%"><span id="descri">descripcion</span></td>
-							<td width="8%"><span id="cant">CANTIDAD</span></td>
+							<td width="8%"><span id="tcant">CANTIDAD</span></td>
 							<td width="10%"><span id="tprecio">PRECIO</span></td>
 							<td width="7%"><span id="tdctop">DCTO %</span></td>
 							<td width="10%"><span id="timporte">IMPORTE</span></td>

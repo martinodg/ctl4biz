@@ -53,7 +53,7 @@ $movil = mysqli_result($rs_query,0,"movil");
 $movilavisos = mysqli_result($rs_query,0,"movilavisos");
 $email = mysqli_result($rs_query,0,"email");
 $emailavisos = mysqli_result($rs_query,0,"emailavisos");
-
+//@todo revisar como traducir esto
 $cabecera1="Inicio >> Trabajadores &gt;&gt; Ver Trabajador ";
 	$cabecera2="VER TRABAJADOR ";
 }
@@ -105,27 +105,27 @@ $cabecera1="Inicio >> Trabajadores &gt;&gt; Ver Trabajador ";
 						  <td colspan="2"><?php echo $nif?></td>
 					  </tr>
 						<tr>
-						  <td>Contrase&ntilde;a</td>
+                            <td><span id="tpassword">Contrase&ntilde;a</span></td>
 						  <td colspan="2"><?php echo $password?></td>
 					  </tr>
 						<tr>
-						  <td>Tel&eacute;fono</td>
+						  <td><span id="ttelef">Tel&eacute;fono</span></td>
 						  <td colspan="2"><?php echo $telefono?></td>
 					  </tr>
 						<tr>
-							<td width="15%">M&oacute;vil</td>
+							<td width="15%"><span id="tmovil">M&oacute;vil</span></td>
 							<td width="85%" colspan="2"><?php echo $movil?></td>
 					    </tr>
 						<tr>
-							<td width="15%">M&oacute;vil Avisos</td>
+                            <td width="15%"><span id="tmovavi">M&oacute;vil Avisos</span></td>
 							<td width="85%" colspan="2"><?php echo $movilavisos?></td>
 					    </tr>
 						<tr>
-							<td width="15%">Correo electr&oacute;nico</td>
+							<td width="15%"><span id="tcorrelec">Correo electr&oacute;nico</span></td>
 							<td width="85%" colspan="2"><?php echo $email?></td>
 					    </tr>
 						<tr>
-							<td>Correo electr&oacute;nico Avisos</td>
+							<td><span id="tcorrelecavs">Correo electr&oacute;nico Avisos</span></td>
 							<td colspan="2"><?php echo $emailavisos?></td>
 						</tr>
 					</table>
