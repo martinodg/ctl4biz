@@ -1,9 +1,10 @@
 <?php
-ini_set('display_errors', '0');
+include_once("../locale/locale.php");
+//
+ini_set('display_errors', 0);
 //echo ini_get('display_errors');
 
 require_once("../conectar.php"); 
-
 
 $companycode=$_POST["company_code"];
 $usuario=$_POST["user_name"];
@@ -71,7 +72,7 @@ if(isset($_SESSION["intUser"])) {
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/login.css' />
     <script type="text/javascript" src="../jquery/jquery331.js"></script>
     <script type="text/javascript" src="../funciones/login.js"></script>
-    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+    <!-- <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script> -->
  
     
     
@@ -84,9 +85,9 @@ if(isset($_SESSION["intUser"])) {
                 <li>
                     <a href="#"> <img id="bandera_lengua" src="../img/english-language.svg" height="30px" width="30px"></a>
                     <ul>
-                        <li><a class="lang" id="english" href="#">English</a></li>
-                        <li><a class="lang" id="espanol" href="#">Espanol</a></li>
-                        <li><a class="lang" id="polish" href="#">Polski</a></li>
+                        <li><a class="lang" id="english" href="#"><?php echo _('English');?></a></li>
+                        <li><a class="lang" id="espanol" href="#"><?php echo _('Spanish');?></a></li>
+                        <li><a class="lang" id="polish" href="#"><?php echo _('Polski');?></a></li>
                     </ul>
 
                 </li>
@@ -100,15 +101,15 @@ if(isset($_SESSION["intUser"])) {
             <br>
             <form name="frmUser" method="post" action="" align="center">
                 <div class="message"><?php if($message!="") { echo $message; } ?></div>
-                <h3 id="details" class="loginTitle">Enter Login Details</h3>
+                <h3 id="details" class="loginTitle"><?php echo _('Enter Login Details');?></h3>
                 <br><br>
-                <span id="companyCode" class="loginText">Company Code:</span><br>
+                <span id="companyCode" class="loginText"><?php echo _('Company Code');?>:</span><br>
                 <input class="input-wrapper"type="text" name="company_code">
                 <br><br>
-                <span class="loginText">e-mail:</span><br>
+                <span class="loginText"><?php echo _('E-mail');?>:</span><br>
                 <input class="input-wrapper"type="text" name="user_name">
                 <br> <br>
-                <span id="password" class="loginText">password:</span><br>
+                <span id="password" class="loginText"><?php echo _('Password');?>:</span><br>
                 <div class="password-wrapper">
 	                <input id="password-field" type="password" class="input" name="password">
 	                <div class="icon-wrapper pass">
@@ -120,11 +121,11 @@ if(isset($_SESSION["intUser"])) {
 
                 <div id="botonBusqueda">
 					
-                    <button type="submit"  id="btnsubmit" value="Submit" onMouseOver="style.cursor=cursor"> <img src="../img/login.svg" alt="nuevo" /> <span id="sub">Submit</span> </button>
+                    <button type="submit"  id="btnsubmit" value="Submit" onMouseOver="style.cursor=cursor"> <img src="../img/login.svg" alt="nuevo" /> <span id="sub"><?php echo _('Submit');?></span> </button>
                     <br><br>
                     <br> <br>
-                <span id="noMember" class="loginText">Not a member yet?</span><br>
-                    <button type="button" id="btnlogin"  onClick="window.location.href = './register.html';" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="Register" /> <span id="signin">Sign in Now!</span> </button>
+                    <span id="noMember" class="loginText"><?php echo _('Not a member yet?');?></span><br>
+                    <button type="button" id="btnlogin"  onClick="window.location.href = './register.html';" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="Register" /> <span id="signin"><?php echo _('Sign in Now!');?></span> </button>
                 </div>
             </form>
         </center>
