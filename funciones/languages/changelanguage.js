@@ -662,7 +662,7 @@ function langchange(idioma) {
     $("#baseimp,#tbaseimp").text(baseimp[idioma]);
     $("#total,#ttotal").text(total[idioma]);
     $("#refren,#trefren").text(refren[idioma]);
-    $("#descri,#tdescri").text(descri[idioma]);
+    $("#descri,#tdescri,#descrip").text(descri[idioma]);
     $("#codigo,#tcodigo").text(codigo[idioma]);
     $("#nip,#tnip").text(NIP[idioma]);
     $("#artbajomin").text(artbajomin[idioma]);
@@ -741,7 +741,6 @@ function langchange(idioma) {
     $("#eliminarRto,#teliminarRto").text(eliminarRto[idioma]);
     $("#direccion").text(direccion[idioma]);
     $("#iva,#iva2").text(iva[idioma]);
-    $("#descrip").text(descrip[idioma]);
     $("#cant").text(cant[idioma]);
     $("#precio").text(precio[idioma]);
     $("#dto_pc").text(dto_pc[idioma]);
