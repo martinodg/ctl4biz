@@ -1,3 +1,5 @@
+//evitar el mensaje de error
+var cursor='hand';
 //var variable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
 var company_name=["Company name:", "Compania:","Nazwa Firma:"];
 var nombre=["your name:", "nombre del usuario:","Nazwa Uzytkownika"];
