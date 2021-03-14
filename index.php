@@ -18,7 +18,7 @@ error_reporting(0);
     <!link href="../estilos/menu2.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="./jquery/jquery331.js"></script>
     <script type="text/javascript" src="./funciones/languages/changelanguage.js"></script>
- 
+
     
     <script language="javascript">
         $(document).ready(function() {
@@ -294,13 +294,13 @@ if($_SESSION["intUser"]) {
         <a href="./login/logout.php" target="principal" id="logout"><img src="./img/cerrar.svg" class="iconolado" alt="help"></a>      
     </div>
     <div id="content">
-        <iframe src="central2.php" name="principal" title="principal" width="100%" height="1500px" frameborder=0 scrolling="no" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;"></iframe>
+        <iframe src="central2.php" name="principal" title="principal" width="100%" height="1500px" frameborder=0 scrolling="no" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;" onload="traducirVista()"></iframe>
     </div>
     <div id="bottombar"></div>
     <?php
     }else{ 
     ?>      <script>
-                parent.changeURL('./login/login.php');
+                changeURL('./login/login.php');
             </script>
     <?
     } 

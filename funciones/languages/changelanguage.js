@@ -985,7 +985,7 @@ function langchange(idioma) {
 }
 
 function traducirVista()
-{
+{    //Set languages on load
     var lang = getLanguajeIndex();
     langchange(lang);
 }
@@ -1027,42 +1027,5 @@ function talert(trad)
 }
 
 $(document).ready(function() {
-    
-    //Set languages on load
-    var lang = getLanguajeIndex();
-    console.log('idioma onDomready',lang);
-    if (lang == ""); {
-        setTranslation(0);
-        $("#bandera_lengua").attr("src", "../img/english-language.svg");
-    }
-    if (lang == "1") {
-        $("#bandera_lengua").attr("src", "../img/spanish-language.svg");
-    }
-    if (lang == "2") {
-        $("#bandera_lengua").attr("src", "../img/polish-language.svg");
-    }
-    langchange(lang);
-
-    //change language
-    $("#espanol").click(function() {
-        $("#bandera_lengua").attr("src", "../img/spanish-language.svg");
-        $("#language").val("1");
-        setTranslation(1);
-        lang = getLanguajeIndex();
-        langchange(lang);
-    });
-    $("#english").click(function() {
-        $("#bandera_lengua").attr("src", "..ttfbd/img/english-language.svg");
-        $("#language").val("0");
-        setTranslation(0);
-        lang = getLanguajeIndex();
-        langchange(lang);
-    });
-    $("#polish").click(function() {
-        $("#bandera_lengua").attr("src", "../img/polish-language.svg");
-        $("#language").val("2");
-        setTranslation(2);
-        lang = getLanguajeIndex();
-        langchange(lang);
-    });
+    traducirVista();
 });
