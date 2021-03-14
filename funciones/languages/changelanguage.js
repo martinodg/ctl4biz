@@ -562,6 +562,8 @@ var adevolver=["english","A devolver","polski","italian","portugues","frances","
 var msgfacyacbr=["english","Esta factura ya se cobro con anterioridad","polski","italian","portugues","frances","Aleman"];
 var msgcbrok=["english","El cobro se ha efectuado correctamente","polski","italian","portugues","frances","Aleman"];
 var efcpag=["english","Efectuar pago","polski","italian","portugues","frances","Aleman"];
+var msgfbd=["You Shall Not Pass!!!!","¡¡¡¡No debe pasar!!!!","polski","italian","portugues","frances","Aleman"];
+var tfbd=["403 Forbidden Page","403 Página prohibida","polski","italian","portugues","frances","Aleman"];
 //var varidable_name=["english","espanol","polski","italian","portugues","frances","Aleman"];
 
 
@@ -741,241 +743,237 @@ function langchange(idioma) {
     $("#eliminarRto,#teliminarRto").text(eliminarRto[idioma]);
     $("#direccion").text(direccion[idioma]);
     $("#iva,#iva2").text(iva[idioma]);
-    $("#descrip").text(descrip[idioma]);
     $("#cant").text(cant[idioma]);
     $("#precio").text(precio[idioma]);
     $("#dto_pc").text(dto_pc[idioma]);
     $("#baseImpo").text(baseImpo[idioma]);
     $("#total").text(total[idioma]);
-    $("#refren").text(refren[idioma])
-    $("#thinic").text(hinic[idioma])
-    $("#thorafincrt").text(horafincrt[idioma])
-    $("#tart").text(tart[idioma])
-    $("#tmsgatncbatexterror").text(msgatncbatexterror[idioma])
-    $("#tmsgatncbatext").text(msgatncbatext[idioma])
-    $("#tcribu_2").text(cribu_2[idioma])
-    $("#tcribu_3").text(cribu_3[idioma])
-    $("#tnroloten").text(nroloten[idioma])
-    $("#tbuscfcha").text(buscfcha[idioma])
-    $("#tfcierre").text(fchaciere[idioma])
-    $("#tdetcrrcaja").text(detcrrcaja[idioma])
-    $("#tfchacja").text(fchacja[idioma])
-    $("#tdelticktnro").text(delticktnro[idioma])
-    $("#taltktnro").text(altktnro[idioma])
-    $("#tneto").text(neto[idioma])
-    $("#ttotalcdo").text(totalcdo[idioma])
-    $("#ttotaltj").text(totaltj[idioma])
-    $("#tlocal").text(local[idioma])
-    $("#tpcia").text(pcia[idioma])
-    $("#tentiban").text(entiban[idioma])
-    $("#tctabcaria").text(ctabcaria[idioma])
-    $("#tcodpostal").text(codpostal[idioma])
-    $("#ttelef").text(telef[idioma])
-    $("#tmovil").text(movil[idioma])
-    $("#tcorrelec").text(correlec[idioma])
-    $("#tdirrcweb").text(dirrcweb[idioma])
-    $("#tbcliente").text(bcliente[idioma])
-    $("#tcodcli").text(codcli[idioma])
-    $("#tinscliente").text(inscliente[idioma])
-    $("#tmsgsincliente").text(msgsincliente[idioma])
-    $("#tvcliente").text(vcliente[idioma])
-    $("#tmsgtdbprocobro").text(msgtdbprocobro[idioma])
-    $("#tpendient").text(pendient[idioma])
-    $("#tfcvencrt").text(fcvencrt[idioma])
-    $("#tnrofcenco").text(nrofcenco[idioma])
-    $("#tmostradas").text(mostradas[idioma])
-    $("#trelfac").text(relfac[idioma])
-    $("#tnvafact").text(nvafact[idioma])
-    $("#tnhnfqccbu").text(nhnfqccbu[idioma])
-    $("#timpfactura").text(impfactura[idioma])
-    $("#tpndpagar").text(pndpagar[idioma])
-    $("#tetdfac").text(etdfac[idioma])
-    $("#tfchavto").text(fchavto[idioma])
-    $("#tnrodocum").text(nrodocum[idioma])
-    $("#treldcob").text(reldcob[idioma])
-    $("#tobv").text(obv[idioma])
-    $("#telemb").text(elemb[idioma])
-    $("#tbusembj").text(busembj[idioma])
-    $("#tcodembal").text(codembal[idioma])
-    $("#tnroemben").text(nroemben[idioma])
-    $("#tmodembalaje").text(modembalaje[idioma])
-    $("#tinseremb").text(inseremb[idioma])
-    $("#tmsgctrbsq").text(msgctrbsq[idioma])
-    $("#tvembalaje").text(vembalaje[idioma])
-    $("#telmentbanc").text(elmentbanc[idioma])
-    $("#tbscentbanc").text(bscentbanc[idioma])
-    $("#tcodentida").text(codentida[idioma])
-    $("#tnroenbcen").text(nroenbcen[idioma])
-    $("#tmodentbanc").text(modentbanc[idioma])
-    $("#tinsentbanc").text(insentbanc[idioma])
-    $("#tmsgentbncnotfound").text(msgentbncnotfound[idioma])
-    $("#tventbanc").text(ventbanc[idioma])
-    $("#telesttrab").text(elesttrab[idioma])
-    $("#tbscesttrab").text(bscesttrab[idioma])
-    $("#tnroesten").text(nroesten[idioma])
-    $("#trelestatr").text(relestatr[idioma])
-    $("#tcodesttrab").text(codesttrab[idioma])
-    $("#tmodesttrab").text(modesttrab[idioma])
-    $("#tinsesttrab").text(insesttrab[idioma])
-    $("#tmsgetcnf").text(msgetcnf[idioma])
-    $("#tvesttrab").text(vesttrab[idioma])
-    $("#telfac").text(elfac[idioma])
-    $("#tartimpmin").text(artimpmin[idioma])
-    $("#tbuscafc").text(buscafc[idioma])
-    $("#tinsfactura").text(insfactura[idioma])
-    $("#tvfactura").text(vfactura[idioma])
-    $("#tmdfac").text(mdfac[idioma])
-    $("#tbtipoar").text(btipoar[idioma])
-    $("#tinstyparc").text(instyparc[idioma])
-    $("#tmodtparc").text(modtparc[idioma])
-    $("#tmsgtparcnf").text(msgtparcnf[idioma])
-    $("#tvtypsart").text(vtypsart[idioma])
-    $("#telfrmpg").text(elfrmpg[idioma])
-    $("#tbscfdp").text(bscfdp[idioma])
-    $("#tcodfrmpg").text(codfrmpg[idioma])
-    $("#tinsfrmpg").text(insfrmpg[idioma])
-    $("#tmsgfpnf").text(msgfpnf[idioma])
-    $("#tvfp").text(vfp[idioma])
-    $("#telmimp").text(elmimp[idioma])
-    $("#tvalor").text(valor[idioma])
-    $("#tbusimp").text(busimp[idioma])
-    $("#tcodimp").text(codimp[idioma])
-    $("#treimp").text(reimp[idioma])
-    $("#tmdfimp").text(mdfimp[idioma])
-    $("#tinsimp").text(insimp[idioma])
-    $("#tmsgimpnf").text(msgimpnf[idioma])
-    $("#tvimp").text(vimp[idioma])
-    $("#tbuscmov").text(buscmov[idioma])
-    $("#trelmov").text(relmov[idioma])
-    $("#tcv").text(cv[idioma])
-    $("#tfactura").text(factura[idioma])
-    $("#comerc").text(comerc[idioma])
-    $("#tnumdocabr").text(numdocabr[idioma])
-    $("#tfacturar_remitos").text(facturar_remitos[idioma])
-    $("#tmsgmovfn").text(msgmovfn[idioma])
-    $("#tnrortoini").text(nrortoini[idioma])
-    $("#timpsiva").text(impsiva[idioma])
-    $("#timpciva").text(impciva[idioma])
-    $("#tfcsiva").text(fcsiva[idioma])
-    $("#tfcciva").text(fcciva[idioma])
-    $("#tcodfacabbr").text(codfacabbr[idioma])
-    $("#trelalot").text(relalot[idioma])
-    $("#tmsgermodlot").text(msgermodlot[idioma])
-    $("#tmsgokmodlot").text(msgokmodlot[idioma])
-    $("#tmsgcrlotok").text(msgcrlotok[idioma])
-    $("#tmsgcrloter").text(msgcrloter[idioma])
-    $("#tmodlote").text(modlote[idioma])
-    $("#tcodlot").text(codlote[idioma])
-    $("#tnombart").text(nombart[idioma])
-    $("#tinicar").text(inicar[idioma])
-    $("#tdefmtprc").text(defmtprc[idioma])
-    $("#ttipproc").text(tipproc[idioma])
-    $("#tmsgermdproc").text(msgermdproc[idioma])
-    $("#tmsgokmdproc").text(msgokmdproc[idioma])
-    $("#tmsgprccrok").text(msgprccrok[idioma])
-    $("#tmsgprccrer").text(msgprccrer[idioma])
-    $("#tdtmpmod").text(dtmpmod[idioma])
-    $("#tcodmetaproc").text(codmetaproc[idioma])
-    $("#tartcrdproce").text(artcrdproce[idioma])
-    $("#tcntestprod").text(cntestprod[idioma])
-    $("#tagrmatprim").text(agrmatprim[idioma])
-    $("#tagrartmtpr").text(agrartmtpr[idioma])
-    $("#tmtprmeproce").text(mtprmeproce[idioma])
-    $("#tlinea").text(linea[idioma])
-    $("#tnmbart").text(nmbart[idioma])
-    $("#tumdmod").text(umdmod[idioma])
-    $("#tartresmeproce").text(artresmeproce[idioma])
-    $("#tmsgvlcrbfact").text(msgvlcrbfact[idioma])
-    $("#tfchpago").text(fchpago[idioma])
-    $("#tfchdlpago").text(fchdlpago[idioma])
-    $("#tfcpago").text(fcpago[idioma])
-    $("#thrsprv").text(hrsprv[idioma])
-    $("#tpciohs").text(pciohs[idioma])
-    $("#tttalprev").text(ttalprev[idioma])
-    $("#tfccom").text(fccom[idioma])
-    $("#tflect").text(flect[idioma])
-    $("#tfechfin").text(fechfin[idioma])
-    $("#thinvertidas").text(hinvertidas[idioma])
-    $("#ttinvertido").text(tinvertido[idioma])
-    $("#tndpenc").text(ndpenc[idioma])
-    $("#trelprts").text(relprts[idioma])
-    $("#tnroparte").text(nroparte[idioma])
-    $("#ttrabajad").text(trabajad[idioma])
-    $("#ttrabajadores").text(trabajadores[idioma])
-    $("#ttrabaj").text(trabaj[idioma])
-    $("#tcod_pres").text(cod_pres[idioma])
-    $("#tttrabajo").text(ttrabajo[idioma])
-    $("#trglspunt").text(rglspunt[idioma])
-    $("#tcrprttrab").text(crprttrab[idioma])
-    $("#tcodtjador").text(codtjador[idioma])
-    $("#tmsgprtnf").text(msgprtnf[idioma])
-    $("#tprov").text(prov[idioma])
-    $("#tprovs").text(provs[idioma])
-    $("#tinspres").text(inspres[idioma])
-    $("#tcrtpres").text(crtpres[idioma])
-    $("#tmsgpresnf").text(msgpresnf[idioma])
-    $("#tvpres").text(vpres[idioma])
-    $("#tregel").text(regel[idioma])
-    $("#tnomproc").text(nomproc[idioma])
-    $("#testacion").text(estacion[idioma])
-    $("#tmodificar").text(modificar[idioma])
-    $("#tartdllote").text(artdllote[idioma])
-    $("#tfinalizar").text(finalizar[idioma])
-    $("#tmsgerproc_1").text(msgerproc_1[idioma])
-    $("#tmsgerproc_2").text(msgerproc_2[idioma])
-    $("#tmsgerproc_3").text(msgerproc_3[idioma])
-    $("#tmsgokfinproc").text(msgokfinproc[idioma])
-    $("#tyhora").text(yhora[idioma])
-    $("#tporcantd").text(porcantd[idioma])
-    $("#tnroprocen").text(nroprocen[idioma])
-    $("#tselelun_1").text(selelun_1[idioma])
-    $("#tselelun_2").text(selelun_2[idioma])
-    $("#tcodproce").text(codproce[idioma])
-    $("#tmsgprcinit").text(msgprcinit[idioma])
-    $("#tmdfproce").text(mdfproce[idioma])
-    $("#tmateprima").text(mateprima[idioma])
-    $("#tnmbmtrprm").text(nmbmtrprm[idioma])
-    $("#tmsglnadd_1").text(msglnadd_1[idioma])
-    $("#tmsglnadd_2").text(msglnadd_2[idioma])
-    $("#telmprov").text(elmprov[idioma])
-    $("#tbprov").text(bprov[idioma])
-    $("#tnroproven").text(nroproven[idioma])
-    $("#tmodprove").text(modprove[idioma])
-    $("#tinsprvdr").text(insprvdr[idioma])
-    $("#tmsgprvnf").text(msgprvnf[idioma])
-    $("#tvprodr").text(vprodr[idioma])
-    $("#tlngyloc").text(lngyloc[idioma])
-    $("#telgidi").text(elgidi[idioma])
-    $("#telmtrab").text(elmtrab[idioma])
-    $("#tmovavi").text(movavi[idioma])
-    $("#tcorrelecavs").text(correlecavs[idioma])
-    $("#tbusctrabj").text(busctrabj[idioma])
-    $("#tnrotraben").text(nrotraben[idioma])
-    $("#treltrabj").text(reltrabj[idioma])
-    $("#tmodtrab").text(modtrab[idioma])
-    $("#tinstrab").text(instrab[idioma])
-    $("#tmsgtrbnf").text(msgtrbnf[idioma])
-    $("#tvtrb").text(vtrb[idioma])
-    $("#telmubc").text(elmubc[idioma])
-    $("#tbuscubic").text(buscubic[idioma])
-    $("#tcodubic").text(codubic[idioma])
-    $("#trelacubic").text(relacubic[idioma])
-    $("#tmodubc").text(modubc[idioma])
-    $("#tinsubc").text(insubc[idioma])
-    $("#tmsgubcnf").text(msgubcnf[idioma])
-    $("#tvubc").text(vubc[idioma])
-    $("#tvntmst").text(vntmst[idioma])
-    $("#tcobro").text(cobro[idioma])
-    $("#timpvl").text(impvl[idioma])
-    $("#tapgr").text(apgr[idioma])
-    $("#tpagado").text(pagado[idioma])
-    $("#tadevolver").text(adevolver[idioma])
-    $("#tnvavta").text(nvavta[idioma])
-
-
-
-
-
+    $("#refren").text(refren[idioma]);
+    $("#thinic").text(hinic[idioma]);
+    $("#thorafincrt").text(horafincrt[idioma]);
+    $("#tart").text(tart[idioma]);
+    $("#tmsgatncbatexterror").text(msgatncbatexterror[idioma]);
+    $("#tmsgatncbatext").text(msgatncbatext[idioma]);
+    $("#tcribu_2").text(cribu_2[idioma]);
+    $("#tcribu_3").text(cribu_3[idioma]);
+    $("#tnroloten").text(nroloten[idioma]);
+    $("#tbuscfcha").text(buscfcha[idioma]);
+    $("#tfcierre").text(fchaciere[idioma]);
+    $("#tdetcrrcaja").text(detcrrcaja[idioma]);
+    $("#tfchacja").text(fchacja[idioma]);
+    $("#tdelticktnro").text(delticktnro[idioma]);
+    $("#taltktnro").text(altktnro[idioma]);
+    $("#tneto").text(neto[idioma]);
+    $("#ttotalcdo").text(totalcdo[idioma]);
+    $("#ttotaltj").text(totaltj[idioma]);
+    $("#tlocal").text(local[idioma]);
+    $("#tpcia").text(pcia[idioma]);
+    $("#tentiban").text(entiban[idioma]);
+    $("#tctabcaria").text(ctabcaria[idioma]);
+    $("#tcodpostal").text(codpostal[idioma]);
+    $("#ttelef").text(telef[idioma]);
+    $("#tmovil").text(movil[idioma]);
+    $("#tcorrelec").text(correlec[idioma]);
+    $("#tdirrcweb").text(dirrcweb[idioma]);
+    $("#tbcliente").text(bcliente[idioma]);
+    $("#tcodcli").text(codcli[idioma]);
+    $("#tinscliente").text(inscliente[idioma]);
+    $("#tmsgsincliente").text(msgsincliente[idioma]);
+    $("#tvcliente").text(vcliente[idioma]);
+    $("#tmsgtdbprocobro").text(msgtdbprocobro[idioma]);
+    $("#tpendient").text(pendient[idioma]);
+    $("#tfcvencrt").text(fcvencrt[idioma]);
+    $("#tnrofcenco").text(nrofcenco[idioma]);
+    $("#tmostradas").text(mostradas[idioma]);
+    $("#trelfac").text(relfac[idioma]);
+    $("#tnvafact").text(nvafact[idioma]);
+    $("#tnhnfqccbu").text(nhnfqccbu[idioma]);
+    $("#timpfactura").text(impfactura[idioma]);
+    $("#tpndpagar").text(pndpagar[idioma]);
+    $("#tetdfac").text(etdfac[idioma]);
+    $("#tfchavto").text(fchavto[idioma]);
+    $("#tnrodocum").text(nrodocum[idioma]);
+    $("#treldcob").text(reldcob[idioma]);
+    $("#tobv").text(obv[idioma]);
+    $("#telemb").text(elemb[idioma]);
+    $("#tbusembj").text(busembj[idioma]);
+    $("#tcodembal").text(codembal[idioma]);
+    $("#tnroemben").text(nroemben[idioma]);
+    $("#tmodembalaje").text(modembalaje[idioma]);
+    $("#tinseremb").text(inseremb[idioma]);
+    $("#tmsgctrbsq").text(msgctrbsq[idioma]);
+    $("#tvembalaje").text(vembalaje[idioma]);
+    $("#telmentbanc").text(elmentbanc[idioma]);
+    $("#tbscentbanc").text(bscentbanc[idioma]);
+    $("#tcodentida").text(codentida[idioma]);
+    $("#tnroenbcen").text(nroenbcen[idioma]);
+    $("#tmodentbanc").text(modentbanc[idioma]);
+    $("#tinsentbanc").text(insentbanc[idioma]);
+    $("#tmsgentbncnotfound").text(msgentbncnotfound[idioma]);
+    $("#tventbanc").text(ventbanc[idioma]);
+    $("#telesttrab").text(elesttrab[idioma]);
+    $("#tbscesttrab").text(bscesttrab[idioma]);
+    $("#tnroesten").text(nroesten[idioma]);
+    $("#trelestatr").text(relestatr[idioma]);
+    $("#tcodesttrab").text(codesttrab[idioma]);
+    $("#tmodesttrab").text(modesttrab[idioma]);
+    $("#tinsesttrab").text(insesttrab[idioma]);
+    $("#tmsgetcnf").text(msgetcnf[idioma]);
+    $("#tvesttrab").text(vesttrab[idioma]);
+    $("#telfac").text(elfac[idioma]);
+    $("#tartimpmin").text(artimpmin[idioma]);
+    $("#tbuscafc").text(buscafc[idioma]);
+    $("#tinsfactura").text(insfactura[idioma]);
+    $("#tvfactura").text(vfactura[idioma]);
+    $("#tmdfac").text(mdfac[idioma]);
+    $("#tbtipoar").text(btipoar[idioma]);
+    $("#tinstyparc").text(instyparc[idioma]);
+    $("#tmodtparc").text(modtparc[idioma]);
+    $("#tmsgtparcnf").text(msgtparcnf[idioma]);
+    $("#tvtypsart").text(vtypsart[idioma]);
+    $("#telfrmpg").text(elfrmpg[idioma]);
+    $("#tbscfdp").text(bscfdp[idioma]);
+    $("#tcodfrmpg").text(codfrmpg[idioma]);
+    $("#tinsfrmpg").text(insfrmpg[idioma]);
+    $("#tmsgfpnf").text(msgfpnf[idioma]);
+    $("#tvfp").text(vfp[idioma]);
+    $("#telmimp").text(elmimp[idioma]);
+    $("#tvalor").text(valor[idioma]);
+    $("#tbusimp").text(busimp[idioma]);
+    $("#tcodimp").text(codimp[idioma]);
+    $("#treimp").text(reimp[idioma]);
+    $("#tmdfimp").text(mdfimp[idioma]);
+    $("#tinsimp").text(insimp[idioma]);
+    $("#tmsgimpnf").text(msgimpnf[idioma]);
+    $("#tvimp").text(vimp[idioma]);
+    $("#tbuscmov").text(buscmov[idioma]);
+    $("#trelmov").text(relmov[idioma]);
+    $("#tcv").text(cv[idioma]);
+    $("#tfactura").text(factura[idioma]);
+    $("#comerc").text(comerc[idioma]);
+    $("#tnumdocabr").text(numdocabr[idioma]);
+    $("#tfacturar_remitos").text(facturar_remitos[idioma]);
+    $("#tmsgmovfn").text(msgmovfn[idioma]);
+    $("#tnrortoini").text(nrortoini[idioma]);
+    $("#timpsiva").text(impsiva[idioma]);
+    $("#timpciva").text(impciva[idioma]);
+    $("#tfcsiva").text(fcsiva[idioma]);
+    $("#tfcciva").text(fcciva[idioma]);
+    $("#tcodfacabbr").text(codfacabbr[idioma]);
+    $("#trelalot").text(relalot[idioma]);
+    $("#tmsgermodlot").text(msgermodlot[idioma]);
+    $("#tmsgokmodlot").text(msgokmodlot[idioma]);
+    $("#tmsgcrlotok").text(msgcrlotok[idioma]);
+    $("#tmsgcrloter").text(msgcrloter[idioma]);
+    $("#tmodlote").text(modlote[idioma]);
+    $("#tcodlot").text(codlote[idioma]);
+    $("#tnombart").text(nombart[idioma]);
+    $("#tinicar").text(inicar[idioma]);
+    $("#tdefmtprc").text(defmtprc[idioma]);
+    $("#ttipproc").text(tipproc[idioma]);
+    $("#tmsgermdproc").text(msgermdproc[idioma]);
+    $("#tmsgokmdproc").text(msgokmdproc[idioma]);
+    $("#tmsgprccrok").text(msgprccrok[idioma]);
+    $("#tmsgprccrer").text(msgprccrer[idioma]);
+    $("#tdtmpmod").text(dtmpmod[idioma]);
+    $("#tcodmetaproc").text(codmetaproc[idioma]);
+    $("#tartcrdproce").text(artcrdproce[idioma]);
+    $("#tcntestprod").text(cntestprod[idioma]);
+    $("#tagrmatprim").text(agrmatprim[idioma]);
+    $("#tagrartmtpr").text(agrartmtpr[idioma]);
+    $("#tmtprmeproce").text(mtprmeproce[idioma]);
+    $("#tlinea").text(linea[idioma]);
+    $("#tnmbart").text(nmbart[idioma]);
+    $("#tumdmod").text(umdmod[idioma]);
+    $("#tartresmeproce").text(artresmeproce[idioma]);
+    $("#tmsgvlcrbfact").text(msgvlcrbfact[idioma]);
+    $("#tfchpago").text(fchpago[idioma]);
+    $("#tfchdlpago").text(fchdlpago[idioma]);
+    $("#tfcpago").text(fcpago[idioma]);
+    $("#thrsprv").text(hrsprv[idioma]);
+    $("#tpciohs").text(pciohs[idioma]);
+    $("#tttalprev").text(ttalprev[idioma]);
+    $("#tfccom").text(fccom[idioma]);
+    $("#tflect").text(flect[idioma]);
+    $("#tfechfin").text(fechfin[idioma]);
+    $("#thinvertidas").text(hinvertidas[idioma]);
+    $("#ttinvertido").text(tinvertido[idioma]);
+    $("#tndpenc").text(ndpenc[idioma]);
+    $("#trelprts").text(relprts[idioma]);
+    $("#tnroparte").text(nroparte[idioma]);
+    $("#ttrabajad").text(trabajad[idioma]);
+    $("#ttrabajadores").text(trabajadores[idioma]);
+    $("#ttrabaj").text(trabaj[idioma]);
+    $("#tcod_pres").text(cod_pres[idioma]);
+    $("#tttrabajo").text(ttrabajo[idioma]);
+    $("#trglspunt").text(rglspunt[idioma]);
+    $("#tcrprttrab").text(crprttrab[idioma]);
+    $("#tcodtjador").text(codtjador[idioma]);
+    $("#tmsgprtnf").text(msgprtnf[idioma]);
+    $("#tprov").text(prov[idioma]);
+    $("#tprovs").text(provs[idioma]);
+    $("#tinspres").text(inspres[idioma]);
+    $("#tcrtpres").text(crtpres[idioma]);
+    $("#tmsgpresnf").text(msgpresnf[idioma]);
+    $("#tvpres").text(vpres[idioma]);
+    $("#tregel").text(regel[idioma]);
+    $("#tnomproc").text(nomproc[idioma]);
+    $("#testacion").text(estacion[idioma]);
+    $("#tmodificar").text(modificar[idioma]);
+    $("#tartdllote").text(artdllote[idioma]);
+    $("#tfinalizar").text(finalizar[idioma]);
+    $("#tmsgerproc_1").text(msgerproc_1[idioma]);
+    $("#tmsgerproc_2").text(msgerproc_2[idioma]);
+    $("#tmsgerproc_3").text(msgerproc_3[idioma]);
+    $("#tmsgokfinproc").text(msgokfinproc[idioma]);
+    $("#tyhora").text(yhora[idioma]);
+    $("#tporcantd").text(porcantd[idioma]);
+    $("#tnroprocen").text(nroprocen[idioma]);
+    $("#tselelun_1").text(selelun_1[idioma]);
+    $("#tselelun_2").text(selelun_2[idioma]);
+    $("#tcodproce").text(codproce[idioma]);
+    $("#tmsgprcinit").text(msgprcinit[idioma]);
+    $("#tmdfproce").text(mdfproce[idioma]);
+    $("#tmateprima").text(mateprima[idioma]);
+    $("#tnmbmtrprm").text(nmbmtrprm[idioma]);
+    $("#tmsglnadd_1").text(msglnadd_1[idioma]);
+    $("#tmsglnadd_2").text(msglnadd_2[idioma]);
+    $("#telmprov").text(elmprov[idioma]);
+    $("#tbprov").text(bprov[idioma]);
+    $("#tnroproven").text(nroproven[idioma]);
+    $("#tmodprove").text(modprove[idioma]);
+    $("#tinsprvdr").text(insprvdr[idioma]);
+    $("#tmsgprvnf").text(msgprvnf[idioma]);
+    $("#tvprodr").text(vprodr[idioma]);
+    $("#tlngyloc").text(lngyloc[idioma]);
+    $("#telgidi").text(elgidi[idioma]);
+    $("#telmtrab").text(elmtrab[idioma]);
+    $("#tmovavi").text(movavi[idioma]);
+    $("#tcorrelecavs").text(correlecavs[idioma]);
+    $("#tbusctrabj").text(busctrabj[idioma]);
+    $("#tnrotraben").text(nrotraben[idioma]);
+    $("#treltrabj").text(reltrabj[idioma]);
+    $("#tmodtrab").text(modtrab[idioma]);
+    $("#tinstrab").text(instrab[idioma]);
+    $("#tmsgtrbnf").text(msgtrbnf[idioma]);
+    $("#tvtrb").text(vtrb[idioma]);
+    $("#telmubc").text(elmubc[idioma]);
+    $("#tbuscubic").text(buscubic[idioma]);
+    $("#tcodubic").text(codubic[idioma]);
+    $("#trelacubic").text(relacubic[idioma]);
+    $("#tmodubc").text(modubc[idioma]);
+    $("#tinsubc").text(insubc[idioma]);
+    $("#tmsgubcnf").text(msgubcnf[idioma]);
+    $("#tvubc").text(vubc[idioma]);
+    $("#tvntmst").text(vntmst[idioma]);
+    $("#tcobro").text(cobro[idioma]);
+    $("#timpvl").text(impvl[idioma]);
+    $("#tapgr").text(apgr[idioma]);
+    $("#tpagado").text(pagado[idioma]);
+    $("#tadevolver").text(adevolver[idioma]);
+    $("#tnvavta").text(nvavta[idioma]);
+    $("#ttfbd").text(tfbd[idioma]);
+    $("#tmsgfbd").text(msgfbd[idioma]);
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
     //@todo revisar si se traduce ayuda
@@ -986,6 +984,11 @@ function langchange(idioma) {
     traducirOptions(idioma);
 }
 
+function traducirVista()
+{
+    var lang = getLanguajeIndex();
+    langchange(lang);
+}
 
 function traducirOptions()
 {
@@ -1014,6 +1017,10 @@ function getTranslation(trad){
     return trans;
 }
 
+function setTranslation(lang){
+    localStorage.setItem('language', lang);
+}
+
 function talert(trad)
 {
     alert (getTranslation(trad));
@@ -1023,8 +1030,9 @@ $(document).ready(function() {
     
     //Set languages on load
     var lang = getLanguajeIndex();
-    if (lang == "") {
-        localStorage.setItem('language', '0');
+    console.log('idioma onDomready',lang);
+    if (lang == ""); {
+        setTranslation(0);
         $("#bandera_lengua").attr("src", "../img/english-language.svg");
     }
     if (lang == "1") {
@@ -1039,22 +1047,22 @@ $(document).ready(function() {
     $("#espanol").click(function() {
         $("#bandera_lengua").attr("src", "../img/spanish-language.svg");
         $("#language").val("1");
-        localStorage.setItem('language', '1');
-        lang = localStorage.getItem('language');
+        setTranslation(1);
+        lang = getLanguajeIndex();
         langchange(lang);
     });
     $("#english").click(function() {
-        $("#bandera_lengua").attr("src", "../img/english-language.svg");
+        $("#bandera_lengua").attr("src", "..ttfbd/img/english-language.svg");
         $("#language").val("0");
-        localStorage.setItem('language', '0');
-        lang = localStorage.getItem('language');
+        setTranslation(0);
+        lang = getLanguajeIndex();
         langchange(lang);
     });
     $("#polish").click(function() {
         $("#bandera_lengua").attr("src", "../img/polish-language.svg");
         $("#language").val("2");
-        localStorage.setItem('language', '2');
-        lang = localStorage.getItem('language');
+        setTranslation(2);
+        lang = getLanguajeIndex();
         langchange(lang);
     });
 });
