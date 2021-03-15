@@ -32,7 +32,7 @@ if ($cadena_busqueda<>"") {
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="/jquery/jquery331.js"></script>
 		 
@@ -172,7 +172,7 @@ if ($cadena_busqueda<>"") {
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
 							<td width="16%"><span id="tcod_cliente">Codigo de cliente</span></td>
-							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10"><img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente"></td>
+							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10"><img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>

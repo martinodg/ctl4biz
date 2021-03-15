@@ -60,6 +60,8 @@ $rs_borrar=mysqli_query($conexion,$sel_borrar);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="jquery/jquery331.js"></script>
+<script type="text/javascript" src="funciones/languages/changelanguage.js"></script>
 <title>Documento sin t&iacute;tulo</title>
 <style type="text/css">
 <!--

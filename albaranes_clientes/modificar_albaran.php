@@ -45,7 +45,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
@@ -107,10 +107,10 @@ $preciototal=$baseimponible+$baseimpuestos;
 			{
 			    //@todo revisar si se traducen estos casos tomando el dato por default del idioma y levantarlo
 				var mensaje="";
-				if (document.getElementById("nombre").value=="") mensaje+="  - "+getTranslation('nombre')+"\n";
-				if (document.getElementById("fecha").value=="") mensaje+="  - "+getTranslation('fecha')+"\n";
+				if (document.getElementById("nombre").value=="") mensaje+="  - "+getTranslationText('nombre')+"\n";
+				if (document.getElementById("fecha").value=="") mensaje+="  - "+getTranslationText('fecha')+"\n";
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+":\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+":\n\n"+mensaje);
 				} else {
 					document.getElementById("formulario").submit();
 				}
@@ -123,18 +123,18 @@ $preciototal=$baseimponible+$baseimpuestos;
 				var entero=0;
 				var enteroo=0;
 		
-				if (document.getElementById("referencia").value=="") mensaje="  - "+getTranslation('refren')+"\n";
-				if (document.getElementById("descripcion").value=="") mensaje+="  - "+getTranslation('descri')+"\n";
+				if (document.getElementById("referencia").value=="") mensaje="  - "+getTranslationText('refren')+"\n";
+				if (document.getElementById("descripcion").value=="") mensaje+="  - "+getTranslationText('descri')+"\n";
 				if (document.getElementById("precio").value=="") { 
-							mensaje+="  - "+getTranslation('vfprec')+"\n";
+							mensaje+="  - "+getTranslationText('vfprec')+"\n";
 						} else {
 							if (isNaN(document.getElementById("precio").value)==true) {
-								mensaje+="  - "+getTranslation('vprnm')+"\n";
+								mensaje+="  - "+getTranslationText('vprnm')+"\n";
 							}
 						}
 				if (document.getElementById("cantidad").value=="") 
 						{ 
-						mensaje+="  - "+getTranslation('vcnm')+"\n";
+						mensaje+="  - "+getTranslationText('vcnm')+"\n";
 						} else {
 							enteroo=parseInt(document.getElementById("cantidad").value);
 							if (isNaN(enteroo)==true) {
@@ -149,7 +149,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 						} else {
 							entero=parseInt(document.getElementById("descuento").value);
 							if (isNaN(entero)==true) {
-								mensaje+="  - "+getTranslation('vdcnm')+"\n";
+								mensaje+="  - "+getTranslationText('vdcnm')+"\n";
 							} else {
 								document.getElementById("descuento").value=entero;
 							}
@@ -157,7 +157,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
 				
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+":\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+":\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);	
 					cambio_iva();
@@ -198,7 +198,7 @@ $preciototal=$baseimponible+$baseimpuestos;
                             <td width="15%"><span id="tcod_cliente">C&oacute;digo Cliente</span> </td>
 					      <td colspan="3"><input NAME="codcliente" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()" value="<? echo $codcliente?>">
                               <!-- @todo determinar si se tiene que traducir el title si se lo usa como hint -->
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente"  data-ttitle="tvalclt" onMouseOver="style.cursor=cursor"></td>
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente"  data-ttitle="tvalclt" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
                             <td width="6%"><span id="tnombre">Nombre</span></td>

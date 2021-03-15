@@ -294,7 +294,7 @@ if($_SESSION["intUser"]) {
         <a href="./login/logout.php" target="principal" id="logout"><img src="./img/cerrar.svg" class="iconolado" alt="help"></a>      
     </div>
     <div id="content">
-        <iframe src="central2.php" name="principal" title="principal" width="100%" height="1500px" frameborder=0 scrolling="no" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;" onload="traducirVista()"></iframe>
+        <iframe src="central2.php" name="principal" title="principal" width="100%" height="1500px" frameborder=0 scrolling="no" style="margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;" ></iframe>
     </div>
     <div id="bottombar"></div>
     <?php

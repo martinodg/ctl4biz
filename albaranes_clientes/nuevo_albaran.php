@@ -12,7 +12,7 @@ $codalbarantmp=mysqli_insert_id($conexion);
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script language="javascript">
 		var cursor;
@@ -76,7 +76,7 @@ $codalbarantmp=mysqli_insert_id($conexion);
 				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
 				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+":\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+":\n\n"+mensaje);
 				} else {
 					document.getElementById("formulario").submit();
 				}
@@ -92,19 +92,19 @@ $codalbarantmp=mysqli_insert_id($conexion);
 				if (document.getElementById("codarticulo").value=="") mensaje="  - Referencia\n";
 				if (document.getElementById("descripcion").value=="") mensaje+="  - Descripcion\n";
 				if (document.getElementById("precio").value=="") { 
-							mensaje+="  - "+getTranslation('vfprec')+"\n";
+							mensaje+="  - "+getTranslationText('vfprec')+"\n";
 						} else {
 							if (isNaN(document.getElementById("precio").value)==true) {
-								mensaje+="  - "+getTranslation('vprnm')+"\n";
+								mensaje+="  - "+getTranslationText('vprnm')+"\n";
 							}
 						}
 				if (document.getElementById("cantidad").value=="") 
 						{ 
-						mensaje+="  - "+getTranslation('vfc')+"\n";
+						mensaje+="  - "+getTranslationText('vfc')+"\n";
 						} else {
 							enteroo=parseInt(document.getElementById("cantidad").value);
 							if (isNaN(enteroo)==true) {
-								mensaje+="  - "+getTranslation('vcnm')+"\n";
+								mensaje+="  - "+getTranslationText('vcnm')+"\n";
 							} else {
 									document.getElementById("cantidad").value=enteroo;
 								}
@@ -115,15 +115,15 @@ $codalbarantmp=mysqli_insert_id($conexion);
 						} else {
 							entero=parseInt(document.getElementById("descuento").value);
 							if (isNaN(entero)==true) {
-								mensaje+="  - "+getTranslation('vdcnm')+"\n";
+								mensaje+="  - "+getTranslationText('vdcnm')+"\n";
 							} else {
 								document.getElementById("descuento").value=entero;
 							}
 						} 
-				if (document.getElementById("importe").value=="") mensaje+="  - "+getTranslation('msgfimp')+"\n";
+				if (document.getElementById("importe").value=="") mensaje+="  - "+getTranslationText('msgfimp')+"\n";
 				
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);	
 					cambio_iva();
@@ -172,7 +172,7 @@ $codalbarantmp=mysqli_insert_id($conexion);
 						<tr>
                             <td width="15%"><span id="cod_cliente">C&oacute;digo Cliente</span></td>
 					      <td colspan="3"><input NAME="codcliente" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>					
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
                             <td width="6%"><span id="nombre2">Nombre</span></td>

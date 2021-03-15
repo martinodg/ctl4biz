@@ -29,7 +29,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script language="javascript">
 		var cursor;
@@ -91,7 +91,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 				var mensaje="";
 				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("formulario").submit();
 				}
@@ -137,7 +137,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
 
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);
 					cambio_iva();

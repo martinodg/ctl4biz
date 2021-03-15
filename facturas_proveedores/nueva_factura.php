@@ -12,7 +12,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script language="javascript">
 		var cursor;
@@ -94,7 +94,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
 				if (document.getElementById("cfactura").value=="") mensaje+="  - Cod. Factura\n";
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("formulario").submit();
 				}
@@ -140,7 +140,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
 				
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);	
 					cambio_iva();
@@ -233,7 +233,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
 					<td width="5%"><span id="timporte">IMPORTE</span></td>
 					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" readonly> &#8364;</td>
-					<td width="15%"><button type="button" id="btnagregar" onClick="validar()"  onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button></td>
+					<td width="15%"><button type="button" id="btnagregar" onClick="validar()"  onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="tagregar">Agregar</span> </button></td>
 				  </tr>
 				</table>
 				</div>

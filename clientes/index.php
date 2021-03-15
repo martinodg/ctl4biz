@@ -30,7 +30,8 @@ if ($cadena_busqueda<>"") {
 	<head>
 		<title>Clientes</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<script type="text/javascript" src="../../jquery/jquery331.js"></script>
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<!script type="text/javascript" src="/racf/verify.js"><!/script>
 		<script language="javascript">
 		// 
@@ -50,7 +51,7 @@ if ($cadena_busqueda<>"") {
 		function nuevo_cliente() {
 			location.href="nuevo_cliente.php";
 		}
-		
+
 		function imprimir() {
 			var codcliente=document.getElementById("codcliente").value;
 			var nombre=document.getElementById("nombre").value;
@@ -116,7 +117,7 @@ if ($cadena_busqueda<>"") {
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
 							<td width="16%" id="tcodcli">Codigo de cliente</td>
-							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10" value="<? echo $codcliente?>"> <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
+							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10" value="<? echo $codcliente?>"> <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
@@ -179,13 +180,12 @@ if ($cadena_busqueda<>"") {
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de clientes encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                    <td width="50%" class="paginar" align="left"><span id="tnroclifnd">N de clientes encontrados</span><input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
-				<div id="cabeceraResultado" class="header">
-					relacion de CLIENTES </div>
+				<div id="cabeceraResultado" class="header"><span id="trelcli">relacion de CLIENTES</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">

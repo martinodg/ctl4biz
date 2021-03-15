@@ -16,9 +16,10 @@ require_once("../racf/purePhpVerify.php");
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">   
 		
         
@@ -121,7 +122,7 @@ require_once("../racf/purePhpVerify.php");
 						<tr>
 							<td width="10%"><span id="cod_cliente">C&oacute;digo Cliente</span></td>
 					      <td width="50%"><input NAME="codcliente" value="1" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>					
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						  <td width="10%"></td>
                           <td width="50%"></td>	
                         </tr>
@@ -164,7 +165,7 @@ require_once("../racf/purePhpVerify.php");
                    <tr>
 					<td width="10%"><span id="tcodart">Codigo de articulo</span> </td>
 					<td colspan="10" valign="middle"><input NAME="codArticulo" type="text" class="cajaMedia" id="codArticulo" size="15" maxlength="15"> 
-						<a href="#modal"><img src="../img/ver.svg" width="16" height="16"  onMouseOver="style.cursor=cursor" title="Validar codigo de barras">  </a>   
+						<a href="#modal"><img src="../img/ver.svg" width="16" height="16"  onMouseOver="style.cursor=cursor" data-ttitle="valcodbar" title="Validar codigo de barras">  </a>
 					</td>
 				  </tr>
 				  <tr>
@@ -188,7 +189,7 @@ require_once("../racf/purePhpVerify.php");
                     <td><select id="impuesto" class="cboImpuesto" name="impuesto" onChange="actualizar_importe()" >
                                 
 								</select></td>
-                    <td><button type="button" id="btnagregar" onClick="validar()" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar</span> </button></td>
+                    <td><button type="button" id="btnagregar" onClick="validar()" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="tagregar">Agregar</span> </button></td>
 				  </tr>
 				</table>
 				</div>

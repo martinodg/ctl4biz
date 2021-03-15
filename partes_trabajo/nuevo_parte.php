@@ -12,7 +12,7 @@ $fechahoy=date("Y-m-d");
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script language="javascript">
 		var cursor;
@@ -74,7 +74,7 @@ $fechahoy=date("Y-m-d");
 				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
 				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("formulario").submit();
 				}
@@ -120,7 +120,7 @@ $fechahoy=date("Y-m-d");
 				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
 
 				if (mensaje!="") {
-					alert(getTranslation('msgvgn')+"\n\n"+mensaje);
+					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {
 					document.getElementById("baseimponible").value=parseFloat(document.getElementById("baseimponible").value) + parseFloat(document.getElementById("importe").value);
 					cambio_iva();
@@ -170,7 +170,7 @@ $fechahoy=date("Y-m-d");
 						<tr>
                             <td width="15%"><span id="tcodtjador">C&oacute;digo Trabajador</span> </td>
 					      <td colspan="3"><input NAME="codtrabajador" type="text" class="cajaPequena" id="codtrabajador" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="data-ttitle" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="data-ttitle" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
 							<td width="15%"><span id="tnomb">Nombre</span></td>

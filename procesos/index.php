@@ -17,7 +17,7 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 	<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
     <link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
+		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
         <script type="text/javascript" src="../funciones/paginar.js"></script>
         <script type="text/javascript" src="../../jquery/jquery331.js"></script>
