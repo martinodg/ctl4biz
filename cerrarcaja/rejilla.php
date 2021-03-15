@@ -35,7 +35,9 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 <html>
 	<head>
 		<title>Cierre Caja</title>
-		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">	
+		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script>
 		
 		var cursor;

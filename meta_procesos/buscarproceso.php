@@ -1,6 +1,8 @@
 <?php
 require_once("../conectar7.php"); 
- 
+//@todo revisar si este es el metodo que se busca usar
+echo '  <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>';
 if($_POST) {
 	$page = $_POST['page']; // Current page number
 	$per_page = $_POST['per_page']; // Articles per page
@@ -27,14 +29,13 @@ if($_POST) {
     if ($parametro2<>""){ $donde=$donde."procesos.".$criterio2."='".$parametro2."' AND ";}
     if ($parametro3<>""){ $donde=$donde."procesos.".$criterio3."='".$parametro3."' AND ";}
 
-    echo '                      <div id="cabeceraResultado" class="header"> 
-     					relacion de procesos definidos </div>';
+    echo '                      <div id="cabeceraResultado" class="header"><span id="trelprocdef">relacion de procesos definidos</span></div>';
     echo '				<div id="frmResultado">';
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="8%"><span id="tcodigo">CODIGO</span></td>';
     echo '						<td width="20%"><span id="tnomb">Nombre</span></td>';
-    echo '						<td width="18%"><span id="varticulo">ARTICULO</span></td>';
+    echo '						<td width="18%"><span id="tvarticulo">ARTICULO</span></td>';
     echo '						<td width="18%"><span id="ttipproc">TIPO DE PROCESO</span></td>';
     echo '						<td width="18%"><span id="testado">ESTADO</span></td>';
     echo '						<td width="8%">&nbsp;</td>';
@@ -62,10 +63,10 @@ if($_POST) {
 
 							
                                                         if ($row[5]<>2){
-                                                            echo '<td width="8%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" data-opttrad="modificar" title="Modificar"></a></div></td>';
+                                                            echo '<td width="8%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" data-ttitle="modificar" title="Modificar"></a></div></td>';
                                                             echo '<td width="8%"><div align="center">&nbsp;</div></td>';
                                                         }else{
-                                                            echo '<td width="8%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" data-opttrad="visualizar" title="Visualizar"></a></div></td>';
+                                                            echo '<td width="8%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" data-ttitle="visualizar" title="Visualizar"></a></div></td>';
                                                             echo '<td width="8%"><div align="center">&nbsp;</div></td>';                                                             
                                                         }
                               echo '</tr>';

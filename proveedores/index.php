@@ -38,7 +38,9 @@ if ($cadena_busqueda<>"") {
 	<head>
 		<title>Proveedores</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-        <script type="text/javascript" src="../../jquery/jquery331.js"></script>
+
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         
         <script language="javascript">
@@ -217,8 +219,7 @@ if ($cadena_busqueda<>"") {
 		          </select></td>
 			  </table>
 				</div>
-				<div id="cabeceraResultado" class="header">
-					relacion de PROVEEDORES </div>
+                <div id="cabeceraResultado" class="header"><span id="trelacprov">relacion de PROVEEDORES</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">

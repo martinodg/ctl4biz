@@ -1,7 +1,9 @@
 <?php
-require_once("../conectar7.php"); 
+require_once("../conectar7.php");
 
-
+//@todo revisar si este es el metodo que se busca usar
+echo '  <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>';
     $criterio1=$_GET["criterio1"];
     $parametro1=$_GET["parametro1"];
     $criterio2=$_GET["criterio2"];
@@ -29,7 +31,7 @@ require_once("../conectar7.php");
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
     echo '						<td width="8%"><span id="tcodigo">CODIGO</span></td>';
-    echo '						<td width="38%"><span id="varticulo">ARTICULO</span></td>';
+    echo '						<td width="38%"><span id="tvarticulo">ARTICULO</span></td>';
     echo '						<td width="6%"><span id="tcant">CANTIDAD</span></td>';
     echo '						<td width="6%"><span id="tfechin">Fecha de inicio</span></td>';
     echo '						<td width="6%"><span id="thinic">HORA DE INICIO</span></td>';
@@ -62,10 +64,10 @@ require_once("../conectar7.php");
                                                         echo '<td width="6%"><div align="center">'.$row[6].'</div></td>';
                                                         echo '<td width="6%"><div align="center">'.$row[8].'</div></td>';
                                                         if ($row[7]<>1){
-                                                            echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" data-opttrad="modificar" title="Modificar"></a></div></td>';
+                                                            echo '<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0"  onClick="modificar('.$row[0].')" data-ttitle="modificar" title="Modificar"></a></div></td>';
                                                             echo '<td width="5%"><div align="center">&nbsp;</div></td>';
                                                         }else{
-                                                            echo '<td width="5%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" data-opttrad="visualizar" title="Visualizar"></a></div></td>';
+                                                            echo '<td width="5%"><div align="center"><img src="../img/end.svg" width="16" height="16" border="0" data-ttitle="visualizar" title="Visualizar"></a></div></td>';
                                                             echo '<td width="5%"><div align="center">&nbsp;</div></td>';                                                             
                                                         }
                               echo '</tr>';

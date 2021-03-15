@@ -40,6 +40,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 	<head>
 		<title>Proveedores</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script type="text/javascript" src="../funciones/paginar.js"></script>
 		<script language="javascript">
 		
@@ -112,9 +114,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="38%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
 							<td class="aDerecha" width="13%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"nif")?></div></td>
 							<td class="aDerecha" width="19%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"telefono")?></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-opttrad="modificar" title="Modificar"></a></div></td>
-														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
+														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_proveedor(<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>)" data-ttitle="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

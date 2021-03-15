@@ -92,9 +92,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="38%"><div align="left"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
 							<td class="aDerecha" width="13%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"nif")?></div></td>
 							<td class="aDerecha" width="19%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"telefono")?></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_cliente(<?php echo mysqli_result($res_resultado,$contador,"codcliente")?>)" data-opttrad="modificar" title="Modificar"></a></div></td>
-														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_cliente(<?php echo mysqli_result($res_resultado,$contador,"codcliente")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_cliente(<?php echo mysqli_result($res_resultado,$contador,"codcliente")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_cliente(<?php echo mysqli_result($res_resultado,$contador,"codcliente")?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
+														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_cliente(<?php echo mysqli_result($res_resultado,$contador,"codcliente")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_cliente(<?php echo mysqli_result($res_resultado,$contador,"codcliente")?>)" data-ttitle="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

@@ -34,7 +34,9 @@ if ($cadena_busqueda<>"") {
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
-		<script type="text/javascript" src="/jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+
 		 
         
         <script language="javascript">
@@ -106,7 +108,7 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header">Buscar presupuesto </div>
+                    <div id="tituloForm" class="header"><span id="tbscprec">Buscar presupuesto</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -124,7 +126,7 @@ if ($cadena_busqueda<>"") {
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-						  <td>Num. presupuesto</td>
+                            <td><span id="tnropresup">Num. presupuesto</span></td>
 						  <td><input id="numpresupuesto" type="text" class="cajaPequena" NAME="numpresupuesto" maxlength="15" value="<? echo $numpresupuesto?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
@@ -140,7 +142,7 @@ if ($cadena_busqueda<>"") {
 					    </tr>
 					  <tr>
 						  <td><span id="tfechin">Fecha de inicio</span></td>
-						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
+						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
@@ -182,18 +184,17 @@ if ($cadena_busqueda<>"") {
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de presupuestos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="left"><span id="tnropresenc">N de presupuestos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
-				<div id="cabeceraResultado" class="header">
-					relacion de presupuestos </div>
+				<div id="cabeceraResultado" class="header"><span id="treldprec">relacion de presupuestos</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							<td width="8%"><span id="titem">ITEM</span></td>
-							<td width="8%">N. presupuesto</td>
+                            <td width="8%"><span id="tnropresupt">N. presupuesto</span></td>
 							<td width="29%"><span id="tcliente">CLIENTE</span></td>
 							<td width="10%"><span id="timporte">IMPORTE</span></td>
 							<td width="10%"><span id="tfecha">Fecha</span></td>

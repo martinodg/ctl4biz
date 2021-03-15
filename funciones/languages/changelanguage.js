@@ -390,7 +390,7 @@ function getTranslationText(name)
         "msgatncbatexterror":["english","ATENCION: No se ha podido ser modificado con exito el batch","polski","italian","portugues","frances","Aleman"],
         "msgatncbatext":["english","ATENCION: El batch ha sido modificado con exito!","polski","italian","portugues","frances","Aleman"],
         "inicializado":["english","inicializado","polski","italian","portugues","frances","Aleman"],
-        "Finalizado":["english","Finalizado","polski","italian","portugues","frances","Aleman"],
+        "finalizado":["english","Finalizado","polski","italian","portugues","frances","Aleman"],
         "descartado":["english","Descartado","polski","italian","portugues","frances","Aleman"],
         "detcrrcaja":["english","Detalle de cierre de caja","polski","italian","portugues","frances","Aleman"],
         "delticktnro":["english","Del ticket nº","polski","italian","portugues","frances","Aleman"],
@@ -469,7 +469,7 @@ function getTranslationText(name)
         "msgcrloter":["english","ATENCION: Los Campos relativos al articulo del lote son obligatorios!","polski","italian","portugues","frances","Aleman"],
         "msgvinslot":["english","Es necesario insertar una cantidad para finalizar un lote!","polski","italian","portugues","frances","Aleman"],
         "modlote":["english","Modificar Lote","polski","italian","portugues","frances","Aleman"],
-        "codlote":["english","espanol","polski","italian","portugues","frances","Aleman"],
+        "codlote":["english","Codigo de Lote","polski","italian","portugues","frances","Aleman"],
         "nombart":["english","Nombre de articulo","polski","italian","portugues","frances","Aleman"],
         "inizializado":["english","Inizializado","polski","italian","portugues","frances","Aleman"],
         "inicar":["english","Inicar","polski","italian","portugues","frances","Aleman"],
@@ -568,6 +568,18 @@ function getTranslationText(name)
         "relcli":["english","relacion de CLIENTES","polski","italian","portugues","frances","Aleman"],
         "nroclifnd":["english","N de clientes encontrados","polski","italian","portugues","frances","Aleman"],
         "valcodbar":["english","Validar codigo de barras","polski","italian","portugues","frances","Aleman"],
+        "calinft":["english","Información del Calendario","polski","italian","portugues","frances","Aleman"],
+        "calselfch":["english","Seleccione fecha","polski","italian","portugues","frances","Aleman"],
+        "cal":["english","calendario","polski","italian","portugues","frances","Aleman"],
+        "reldprec":["english","relación de presupuestos","polski","italian","portugues","frances","Aleman"],
+        "bscprec":["english","buscpresu","polski","italian","portugues","frances","Aleman"],
+        "relproc":["english","relación de procesos ","polski","italian","portugues","frances","Aleman"],
+        "bscdbch":["english","busqueda de batch","polski","italian","portugues","frances","Aleman"],
+        "reldbch":["english","relación de batchs","polski","italian","portugues","frances","Aleman"],
+        //@todo revisar si no refiere a  lo mismo que bscdbch o son distintos
+        "bscdlts":["english","busqueda de lotes","polski","italian","portugues","frances","Aleman"],
+        "relfrmpag":["english","RELACION DE FORMAS DE PAGO","polski","italian","portugues","frances","Aleman"],
+        //"varidable_name":["english","espanol","polski","italian","portugues","frances","Aleman"],
         //"varidable_name":["english","espanol","polski","italian","portugues","frances","Aleman"],
     };
 
@@ -989,6 +1001,23 @@ function langchange() {
     $("#trelcli").text(getTranslationText('relcli'));
     $("#tnroclifnd").text(getTranslationText('nroclifnd'));
     $("#tagregar").text(getTranslationText('agregar'));
+    $("#treldprec").text(getTranslationText('reldprec'));
+    $("#tbscprec").text(getTranslationText('bscprec'));
+    $("#tnropresup,#tnropresupt").text(getTranslationText('nropresup'));
+    $("#tnropresenc").text(getTranslationText('nropresenc'));
+    $("#trlctyarc").text(getTranslationText('reltipar'));
+    $("#tnrotipen").text(getTranslationText('nrotipen'));
+    $("#tcodtpar").text(getTranslationText('codtpar'));
+    $("#tbmetproc").text(getTranslationText('bmetproc'));
+    $("#trelprocdef").text(getTranslationText('relprocdef'));
+    $("#trelproc").text(getTranslationText('relproc'));
+    $("#tbscdbch").text(getTranslationText('bscdbch'));
+    $("#treldbch").text(getTranslationText('reldbch'));
+    $("#trelacprov").text(getTranslationText('relacprov'));
+    $("#tbscdlts").text(getTranslationText('bscdlts'));
+    $("#trelfrmpag").text(getTranslationText('relfrmpag'));
+    $("#treimp").text(getTranslationText('reimp'));
+    $("#trelentbc").text(getTranslationText('relentbc'));
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
     //@todo revisar si se traduce ayuda
@@ -1043,64 +1072,69 @@ function traducirCalendario ()
     }
     // ** I18N
     Calendar._DN = new Array
-    ("Domingo",
-        "Lunes",
-        "Martes",
-        "Miercoles",
-        "Jueves",
-        "Viernes",
-        "Sabado",
-        "Domingo");
+    (
+        getTranslationText("domgo"),
+        getTranslationText("lunes"),
+        getTranslationText("martes"),
+        getTranslationText("miercoles"),
+        getTranslationText("jueves"),
+        getTranslationText("viernes"),
+        getTranslationText("sabado"),
+        getTranslationText("domgo")
+    );
     Calendar._MN = new Array
-    ("Enero",
-        "Febrero",
+    (
+        getTranslationText("enero"),
+        getTranslationText("febrero"),
         getTranslationText("marzo"),
-        "Abril",
-        "Mayo",
-        "Junio",
-        "Julio",
-        "Agosto",
-        "Septiembre",
-        "Octubre",
-        "Noviembre",
-        "Diciembre");
+        getTranslationText("abril"),
+        getTranslationText("mayo"),
+        getTranslationText("junio"),
+        getTranslationText("julio"),
+        getTranslationText("agosto"),
+        getTranslationText("sept"),
+        getTranslationText("octubre"),
+        getTranslationText("noviem"),
+        getTranslationText("diciem")
+    );
 
 // tooltips
     Calendar._TT = {};
-    Calendar._TT["INFO"] = "Informaci�n del Calendario";
-
+    Calendar._TT["INFO"] =  getTranslationText("calinft");//"Información del Calendario";
+//@todo traducir estas frases
     Calendar._TT["ABOUT"] =
-        "Calendario" +
+        getTranslationText("cal")+
         "\n\n" +
         "Selecci�n de Fechas:\n" +
-        "- Use  \xab, \xbb para seleccionar el a�o\n" +
+        "- Use  \xab, \xbb para seleccionar el año\n" +
         "- Use " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " para seleccionar el mes\n" +
-        "- Mantenga presionado el bot�n del rat�n en cualquiera de las opciones superiores para un acceso rapido .";
+        "- Mantenga presionado el botón del ratón en cualquiera de las opciones superiores para un acceso rapido .";
     Calendar._TT["ABOUT_TIME"] = "\n\n" +
         "Selecci�n del Reloj:\n" +
         "- Seleccione la hora para cambiar el reloj\n" +
         "- o presione  Shift-click para disminuirlo\n" +
-        "- o presione click y arrastre del rat�n para una selecci�n rapida.";
+        "- o presione click y arrastre del ratón para una selecci�n rapida.";
 
     Calendar._TT["TOGGLE"] = "Primer dia de la semana";
-    Calendar._TT["PREV_YEAR"] = "A�o anterior (Presione para menu)";
+    Calendar._TT["PREV_YEAR"] = "Año anterior (Presione para menu)";
     Calendar._TT["PREV_MONTH"] = "Mes Anterior (Presione para menu)";
     Calendar._TT["GO_TODAY"] = "Ir a Hoy";
     Calendar._TT["NEXT_MONTH"] = "Mes Siguiente (Presione para menu)";
-    Calendar._TT["NEXT_YEAR"] = "A�o Siguiente (Presione para menu)";
-    Calendar._TT["SEL_DATE"] = "Seleccione fecha";
+    Calendar._TT["NEXT_YEAR"] = "Año Siguiente (Presione para menu)";
+    Calendar._TT["SEL_DATE"] = getTranslationText("calselfch");
     Calendar._TT["DRAG_TO_MOVE"] = "Arrastre y mueva";
     Calendar._TT["PART_TODAY"] = " (Hoy)";
     Calendar._TT["MON_FIRST"] = "Lunes Primero";
     Calendar._TT["SUN_FIRST"] = "Domingo Primero";
-    Calendar._TT["CLOSE"] = "Cerrar";
-    Calendar._TT["TODAY"] = "Hoy";
+    Calendar._TT["CLOSE"] = getTranslationText("cerrar");
+    Calendar._TT["TODAY"] = getTranslationText("hoy");
 
     Calendar._TT["WEEKEND"] = "0,6";
 
     Calendar._TT["DAY_FIRST"] = "Pulse para primer dia de la semana";
 
 // date formats
+    //@todo revisar si esto se debe dejar aca o mover al setup  , en caso de poder traducirlo afectaria al funcionamiento ?
     Calendar._TT["DEF_DATE_FORMAT"] = "dd-mm-yy";
     Calendar._TT["TT_DATE_FORMAT"] = "%A, %e de %B de %Y";
 

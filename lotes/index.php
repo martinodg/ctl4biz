@@ -1,11 +1,11 @@
 <?php
 $language="spanish";
-$Busqueda="Busqueda de lotes";
+//$Busqueda="Busqueda de lotes";
 $id_resource='2';
 $id_sresource='8';
 require_once("../racf/purePhpVerify.php");
 
-if ($language<>"spanish"){$Busqueda="Search for lot";}
+//if ($language<>"spanish"){$Busqueda="Search for lot";}
 ?>
 <html>
     <head>
@@ -17,6 +17,7 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
         <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
         <script type="text/javascript" src="../funciones/paginar.js"></script>
 		 
         
@@ -140,7 +141,7 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header"><?echo $Busqueda;?> </div>
+				<div id="tituloForm" class="header"><span id="tbscdlts">Busqueda de lotes</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -166,12 +167,12 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
 							<td width="20%"> 
                                 <select id="crit2" name="2" class="comboMedio" >
                                     <option value="codarticulo" data-opttrad="artdllote">Articulo del lote</option>
-                                    <option value="codlote"><span id="tcodlot">Codigo de Lote</span></option>
-                                    <option value="cantidad">Cantidad</option>
-                                    <option value="fechai">Fecha de inicio</option>
-                                    <option value="horai">Hora de inicio</option>
-                                    <option value="fechaf">Fecha de finalizacion</option>
-                                    <option value="horaf">Hora de finalizacion</option>
+                                    <option value="codlote"  data-opttrad="codlote">Codigo de Lote</option>
+                                    <option value="cantidad" data-opttrad="cant">Cantidad</option>
+                                    <option value="fechai" data-opttrad="fchaini">Fecha de inicio</option>
+                                    <option value="horai" data-opttrad="hinic">Hora de inicio</option>
+                                    <option value="fechaf" data-opttrad="fechfin">Fecha de finalizacion</option>
+                                    <option value="horaf" data-opttrad="horafin">Hora de finalizacion</option>
                                 </select>
                             </td>
                             <td id="entrada2" with="20%">
@@ -184,13 +185,13 @@ if ($language<>"spanish"){$Busqueda="Search for lot";}
 							<td width="20%"><span id="tcribu_3">Criterio de busqueda #3</span></td>
 							<td width="20%"> 
                                 <select id="crit3" name="3" class="comboMedio" >
-                                    <option value="codlote"><span id="tcodlot">Codigo de Lote</span></option>
+                                    <option value="codlote"  data-opttrad="codlote">Codigo de Lote</option>
                                     <option value="codarticulo" data-opttrad="artdllote">Articulo del lote</option>
-                                    <option value="cantidad">Cantidad</option>
-                                    <option value="fechai">Fecha de inicio</option>
-                                    <option value="horai">Hora de inicio</option>
-                                    <option value="fechaf">Fecha de finalizacion</option>
-                                    <option value="horaf">Hora de finalizacion</option>
+                                    <option value="cantidad" data-opttrad="cant">Cantidad</option>
+                                    <option value="fechai" data-opttrad="fchaini">Fecha de inicio</option>
+                                    <option value="horai" data-opttrad="hinic">Hora de inicio</option>
+                                    <option value="fechaf" data-opttrad="fechfin">Fecha de finalizacion</option>
+                                    <option value="horaf" data-opttrad="horafin">Hora de finalizacion</option>
                                 </select>
                             </td>
                             <td id="entrada3" with="20%">

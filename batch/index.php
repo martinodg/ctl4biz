@@ -10,7 +10,7 @@ require_once("../racf/purePhpVerify.php");
     <title>Lotes</title>
     <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="../funciones/paginar.js"></script>
-    <script type="text/javascript" src="../../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../jquery/jquery331.js"></script>
     <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 	 
         
@@ -96,7 +96,7 @@ require_once("../racf/purePhpVerify.php");
     <div id="pagina">
         <div id="zonaContenido">
             <div align="center">
-                <div id="tituloForm" class="header">Busqueda de Batch </div>
+                <div id="tituloForm" class="header"><span id="tbscdbch">Busqueda de Batch</span></div>
                 <div id="frmBusqueda">
                     <form id="form_busqueda" name="form_busqueda">
                         <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -122,12 +122,12 @@ require_once("../racf/purePhpVerify.php");
                                 <td>
                                     <select id="crit2" name="crit2" class="comboMedio">
                                     <option value="codarticulo" data-opttrad="artdllote">Articulo del lote</option>
-                                    <option value="codlote"><span id="tcodlot">Codigo de Lote</span></option>
-                                    <option value="cantidad">Cantidad</option>
-                                    <option value="fechai">Fecha de inicio</option>
-                                    <option value="horai">Hora de inicio</option>
-                                    <option value="fechaf">Fecha de finalizacion</option>
-                                    <option value="horaf">Hora de finalizacion</option>
+                                    <option value="codlote" data-opttrad="codlote">Codigo de Lote</option>
+                                    <option value="cantidad" data-opttrad="cant">Cantidad</option>
+                                    <option value="fechai" data-opttrad="fchaini">Fecha de inicio</option>
+                                    <option value="horai" data-opttrad="hinic">Hora de inicio</option>
+                                    <option value="fechaf" data-opttrad="fechfin">Fecha de finalizacion</option>
+                                    <option value="horaf" data-opttrad="horafin">Hora de finalizacion</option>
                                 </select>
                                     <input id="param2" name="param2" type="text" class="cajaMediana" maxlength="45">
                                 </td>
@@ -139,13 +139,13 @@ require_once("../racf/purePhpVerify.php");
                                 <td width="25%"><span id="tcribu_3">Criterio de busqueda #3</span></td>
                                 <td>
                                     <select id="crit3" name="crit3" class="comboMedio">
-                                    <option value="cantidad">Cantidad</option>
+                                    <option value="cantidad" data-opttrad="cant">Cantidad</option>
                                     <option value="codarticulo" data-opttrad="artdllote">Articulo del lote</option>
                                     <option value="codlote"><span id="tcodlot">Codigo de Lote</span></option>
-                                    <option value="fechai">Fecha de inicio</option>
-                                    <option value="horai">Hora de inicio</option>
-                                    <option value="fechaf">Fecha de finalizacion</option>
-                                    <option value="horaf">Hora de finalizacion</option>
+                                    <option value="fechai" data-opttrad="fchaini">Fecha de inicio</option>
+                                    <option value="horai" data-opttrad="hinic">Hora de inicio</option>
+                                    <option value="fechaf" data-opttrad="fechfin">Fecha de finalizacion</option>
+                                    <option value="horaf" data-opttrad="horafin">Hora de finalizacion</option>
                                 </select>
                                     <input id="param3" name="param3" type="text" class="cajaMediana" maxlength="45" ">
                             </td>

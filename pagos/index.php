@@ -32,7 +32,8 @@ if ($cadena_busqueda<>"") {
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
-		<script type="text/javascript" src="/jquery/jquery331.js"></script>
+		        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         
         <script language="javascript">
@@ -124,13 +125,13 @@ if ($cadena_busqueda<>"") {
 							<td><span id="testado">ESTADO</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
 								<option value="0" selected data-opttrad="todosest">Todos los estados</option>
-								<option value="1">Sin Pagar</option>
-								<option value="2">Pagada</option>			
+								<option value="1" data-opttrad="sinpagar" >Sin Pagar</option>
+								<option value="2"data-opttrad="pagada" >Pagada</option>
 								</select></td>
 					    </tr>
 					  <tr>
 						  <td><span id="tfechin">Fecha de inicio</span></td>
-						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
+						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
@@ -172,7 +173,7 @@ if ($cadena_busqueda<>"") {
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left"><span id="nrofcenco">N de facturas encontradas</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="left"><span id="tnrofcenco">N de facturas encontradas</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" align="right"><span id="tmostradas">Mostradas</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>

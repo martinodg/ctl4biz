@@ -43,6 +43,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
         <!-- todo revisar si esto se tendria que traducir -->
 		<title>Clientes</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
 		function ver_albaran(codalbaran) {
@@ -136,8 +138,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="10%"><div align="center"><? echo $estado?></div></td>
                             <!-- @todo revisar si los titles se usan de hint y deben ser traducidos -->
 							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" data-ttitle="eliminar" title="Eliminar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16px" height="16px" width="16" height="16" border="0" onClick="convertir_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" title="Facturar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/printer.svg" width="16" height="16" border="0" onClick="imprimir(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>)" title="Imprimir etiquetas"></a></div></td>
 						</tr>
@@ -148,7 +150,6 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-                            <!-- @todo revisar si esta traduccion deberia hacerse -->
                             <td width="100%" class="mensaje"><span id="msgsinresultado">No hay ning&uacute;n albar&aacute;n que cumpla con los criterios de b&uacute;squeda</span></td>
 					    </tr>
 					</table>					

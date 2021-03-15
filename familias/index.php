@@ -22,7 +22,9 @@ if ($cadena_busqueda<>"") {
 	<head>
 		<title>Familias</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<script type="text/javascript" src="../../jquery/jquery331.js"></script>
+
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         
         <script language="javascript">
@@ -89,7 +91,7 @@ if ($cadena_busqueda<>"") {
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-							<td width="16%">Codigo de Tipo de Articulo </td>
+                            <td width="16%"><span id="tcodtpar">Codigo de Tipo de Articulo</span> </td>
 							<td width="68%"><input id="codfamilia" type="text" class="cajaPequena" NAME="codfamilia" maxlength="3" value="<? echo $codfamilia?>"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
@@ -112,7 +114,7 @@ if ($cadena_busqueda<>"") {
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de Tipos encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                    <td width="50%" class="paginar" align="left"><span id="tnrotipen">N de Tipos encontrados </span><input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>

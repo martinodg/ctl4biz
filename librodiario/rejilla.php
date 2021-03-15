@@ -34,6 +34,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 	<head>
 		<title>Clientes</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 
 		function ver_cobros(codfactura) {
@@ -107,7 +109,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-                            <td width="100%" class="mensaje"><span id="msgmovfn">No hay ning&uacute;n movimiento que cumpla con los criterios de b&uacute;squeda</span></td>
+                            <td width="100%" class="mensaje"><span id="tmsgmovfn">No hay ning&uacute;n movimiento que cumpla con los criterios de b&uacute;squeda</span></td>
 					    </tr>
 					</table>					
 					<? } ?>	

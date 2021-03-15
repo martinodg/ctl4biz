@@ -5,7 +5,9 @@
     <link rel='stylesheet' media='screen and (max-width: 700px)' href='../../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 959px)' href='../../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../../estilos/login.css' />
-    <script type="text/javascript" src="../../jquery/jquery331.js"></script>
+
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
     <script type="text/javascript" src="../../funciones/login.js"></script>
     <script language="javascript">
        

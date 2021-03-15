@@ -35,7 +35,8 @@ if ($cadena_busqueda<>"") {
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
-		<script type="text/javascript" src="/jquery/jquery331.js"></script>
+		        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         
         <script language="javascript">
@@ -152,7 +153,7 @@ foreach ($estados_partestrabajo as $k => $v) {
 					    </tr>
 					  <tr>
 						  <td><span id="fccom">Fecha Comienzo</span></td>
-						  <td><input id="fechacomienzo" type="text" class="cajaPequena" NAME="fechacomienzo" maxlength="10" value="<? echo $fechacomienzo?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'" title="Calendario">
+						  <td><input id="fechacomienzo" type="text" class="cajaPequena" NAME="fechacomienzo" maxlength="10" value="<? echo $fechacomienzo?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {

@@ -29,6 +29,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 	<head>
 		<title>Articulos</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
@@ -102,17 +103,16 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td class="aCentro" width="11%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"precio_tienda")?></div></td>
 							<td class="aCentro" width="5%"><? echo mysqli_result($res_resultado,$contador,"stock")?></td>
 							<td class="aCentro" width="5%"><? echo mysqli_result($res_resultado,$contador,"unidaddemedida")?></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" data-opttrad="modificar" title="Modificar"></a></div></td>
-														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
+														<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_articulo(<?php echo mysqli_result($res_resultado,$contador,"codarticulo")?>)" data-ttitle="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}
 						?>			
 					</table>
 					<? } else { ?>
-					<table class="fuente8" width="87%" cellspacing=0 cellpadding=3 border=0>
-width="100%"
+					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 >
 						<tr>
                             <td width="100%" class="mensaje"><span id="tmsgsinrbus">No hay ning&uacute;n art&iacute;culo que cumpla con los criterios de b&uacute;squeda</span></td>
 					    </tr>

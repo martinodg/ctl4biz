@@ -41,6 +41,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 	<head>
 		<title>Clientes</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
 		function ver_factura(codfactura) {
@@ -113,9 +115,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="8%"><div align="center"><? echo number_format(mysqli_result($res_resultado,$contador,"totalfactura"),2,",",".")?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo $estado?></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>,<? echo $marcaestado?>)" data-opttrad="modificar" title="Modificar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>,<? echo $marcaestado?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" data-ttitle="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;
 							}

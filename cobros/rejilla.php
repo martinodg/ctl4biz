@@ -37,7 +37,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 <html>
 	<head>
 		<title>Clientes</title>
-		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 
 		function ver_cobros(codfactura) {

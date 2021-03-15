@@ -104,17 +104,17 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						<tr>
 							<td width="15%"><span id="tetdfac">Estado de la factura</span></td>
 						    <td width="43%"><select id="cboEstados" name="cboEstados" class="comboMedio" onChange="cambiar_estado()">
-								<? if ($estado==1) { ?><option value="1" selected="selected">Sin Pagar</option>
-								<option value="2">Pagada</option><? } else { ?>
-								<option value="1">Sin Pagar</option>
-								<option value="2" selected="selected">Pagada</option>
+								<? if ($estado==1) { ?><option value="1" selected="selected" data-opttrad="sinpagar" >Sin Pagar</option>
+								<option value="2"data-opttrad="pagada" >Pagada</option><? } else { ?>
+								<option value="1" data-opttrad="sinpagar" >Sin Pagar</option>
+								<option value="2" selected="selected"data-opttrad="pagada" >Pagada</option>
 								<? } ?> 			
 								</select></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
 						<tr>
                             <td width="15%"><span id="tfchpago">Fecha de pago</span></td>
-						    <td width="43%"><input id="fechapago" type="text" class="cajaPequena" NAME="fechapago" maxlength="10" value="<? echo $fechapago?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
+						    <td width="43%"><input id="fechapago" type="text" class="cajaPequena" NAME="fechapago" maxlength="10" value="<? echo $fechapago?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
@@ -136,7 +136,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
                             <td width="15%"><span id="fchdlpago">Fecha del pago</span></td>
-						    <td width="35%"><input id="fechapago2" type="text" class="cajaPequena" NAME="fechapago2" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">
+						    <td width="35%"><input id="fechapago2" type="text" class="cajaPequena" NAME="fechapago2" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {

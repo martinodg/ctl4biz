@@ -42,6 +42,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 	<head>
 		<title>Clientes</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 
 		function ver_presupuesto(codpresupuesto) {
@@ -129,9 +131,9 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="10%"><div align="center"><? echo number_format(mysqli_result($res_resultado,$contador,"totalpresupuesto"),2,",",".")?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td width="10%"><div align="center"><? echo $estado?></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" data-opttrad="modificar" title="Modificar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>)" data-opttrad="visualizar" title="Visualizar"></a></div></td>
-							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" data-opttrad="eliminar" title="Eliminar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
+							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" data-ttitle="eliminar" title="Eliminar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/convertir.svg" width="16px" height="16px" width="16" height="16" border="0" onClick="convertir_presupuesto(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>,<? echo $marcaestado?>)" title="Albaranar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/printer.svg" width="16" height="16" border="0" onClick="imprimir(<?php echo mysqli_result($res_resultado,$contador,"codpresupuesto")?>)" title="Imprimir"></a></div></td>
 						</tr>
@@ -142,7 +144,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-                            <td width="100%" class="mensaje"><span id="msgpresnf">No hay ning&uacute;n presupuesto que cumpla con los criterios de b&uacute;squeda</span></td>
+                            <td width="100%" class="mensaje"><span id="tmsgpresnf">No hay ning&uacute;n presupuesto que cumpla con los criterios de b&uacute;squeda</span></td>
 					    </tr>
 					</table>
 					<? } ?>

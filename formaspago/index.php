@@ -22,7 +22,8 @@ if ($cadena_busqueda<>"") {
 	<head>
 		<title>Formas de pago</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<script type="text/javascript" src="/jquery/jquery331.js"></script>
+		        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         
         <script language="javascript">
@@ -117,8 +118,7 @@ if ($cadena_busqueda<>"") {
 		          </select></td>
 			  </table>
 				</div>
-				<div id="cabeceraResultado" class="header">
-					relacion de FORMAS DE PAGO </div>
+				<div id="cabeceraResultado" class="header"><span id="trelfrmpag">relacion de FORMAS DE PAGO</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">

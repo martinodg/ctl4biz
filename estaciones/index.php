@@ -22,7 +22,8 @@ if ($cadena_busqueda<>"") {
 	<head>
 		<title>estaciones</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<script type="text/javascript" src="/jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         
         <script language="javascript">
@@ -84,12 +85,12 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="bscesttrab">Buscar Estaciones de Trabajo</span></div>
+                    <div id="tituloForm" class="header"><span id="tbscesttrab">Buscar Estaciones de Trabajo</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-                            <td width="16%"><span id="codesttrab">Codigo de Estaciones de Trabajo</span></td>
+                            <td width="16%"><span id="tcodesttrab">Codigo de Estaciones de Trabajo</span></td>
 							<td width="68%"><input id="codestacion" type="text" class="cajaPequena" NAME="codestacion" maxlength="3" value="<? echo $codestacion?>"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>

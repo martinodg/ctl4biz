@@ -5,11 +5,10 @@ if(session_id() == '') {
 $id_resource='2';
 $id_sresource='5';
 require_once("../racf/purePhpVerify.php");
-$language="spanish";
-$Busqueda="Busqueda de meta procesos";
-
-
-if ($language<>"spanish"){$Busqueda="Search for processes";}
+//@todo consultar si estao tenia alguna finalidad
+//$language="spanish";
+//$Busqueda="Busqueda de meta procesos";
+//if ($language<>"spanish"){$Busqueda="Search for processes";}
 ?>
 <html>
     <head>
@@ -20,7 +19,9 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
-        <script type="text/javascript" src="../../jquery/jquery331.js"></script>
+
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         <script type="text/javascript" src="../funciones/paginar.js"></script>
         <script language="javascript">
@@ -159,7 +160,7 @@ if ($language<>"spanish"){$Busqueda="Search for processes";}
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header"><?echo $Busqueda;?> </div>
+				<div id="tituloForm" class="header"><span id="tbmetproc">Busqueda de meta procesos</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
