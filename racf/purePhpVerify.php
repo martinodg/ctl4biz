@@ -25,7 +25,6 @@ $consulta="SELECT rolesToUsersTable.id_role, resourcesTable.id_resource, subReso
 
 $rs_tabla = mysqli_query($conexion,$consulta);
 $nr_lineas= mysqli_num_rows($rs_tabla);
-$nr_lineas = 1;
 //echo $nr_lineas;
 
 if ($nr_lineas==0) {
