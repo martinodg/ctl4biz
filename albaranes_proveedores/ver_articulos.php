@@ -43,6 +43,7 @@ function enviar() {
 
 </script>
     <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../jquery/jquery331.js"></script>
     <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
 <!--
@@ -70,7 +71,7 @@ $codproveedor=$_GET["codproveedor"];
 		  <?
 		    $consultafamilia="select * from familias where borrado=0 order by nombre ASC";
 			$queryfamilia=mysqli_query($conexion,$consultafamilia);
-			?><option value=0>Todos los articulos</option><?
+			?><option value="0" data-opttrad="tdart" >Todos los articulos</option><?
 			while ($rowfamilia=mysqli_fetch_row($queryfamilia))
 			  { 
 			  	if ($anterior==$rowfamilia[0]) { ?>

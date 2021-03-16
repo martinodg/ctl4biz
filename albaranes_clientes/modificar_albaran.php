@@ -105,7 +105,6 @@ $preciototal=$baseimponible+$baseimpuestos;
 			
 		function validar_cabecera()
 			{
-			    //@todo revisar si se traducen estos casos tomando el dato por default del idioma y levantarlo
 				var mensaje="";
 				if (document.getElementById("nombre").value=="") mensaje+="  - "+getTranslationText('nombre')+"\n";
 				if (document.getElementById("fecha").value=="") mensaje+="  - "+getTranslationText('fecha')+"\n";
@@ -118,7 +117,6 @@ $preciototal=$baseimponible+$baseimpuestos;
 		
 		function validar() 
 			{
-                //@todo revisar si se traducen estos casos tomando el dato por default del idioma y levantarlo
 				var mensaje="";
 				var entero=0;
 				var enteroo=0;
@@ -154,7 +152,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 								document.getElementById("descuento").value=entero;
 							}
 						} 
-				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
+				if (document.getElementById("importe").value=="") mensaje+="  - "+getTranslationText('msgfimp')+"\n";
 				
 				if (mensaje!="") {
 					alert(getTranslationText('msgvgn')+":\n\n"+mensaje);
@@ -197,7 +195,6 @@ $preciototal=$baseimponible+$baseimpuestos;
 						<tr>
                             <td width="15%"><span id="tcod_cliente">C&oacute;digo Cliente</span> </td>
 					      <td colspan="3"><input NAME="codcliente" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()" value="<? echo $codcliente?>">
-                              <!-- @todo determinar si se tiene que traducir el title si se lo usa como hint -->
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente"  data-ttitle="tvalclt" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
@@ -241,7 +238,6 @@ $preciototal=$baseimponible+$baseimpuestos;
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
                       <td width="11%"><span id="refren">Referencia</span></td>
-					    <!-- @todo revisar si title se usa como hint -->
                       <td colspan="10"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15" readonly> <img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor"  data-ttitle="tbscart"  title="Buscar articulo"></td>
 				  </tr>
 				  <tr>

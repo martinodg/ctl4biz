@@ -89,11 +89,11 @@ $codalbarantmp=mysqli_insert_id($conexion);
 			
 		function validar_cabecera()
 			{
-			    //@todo traducir estos textos
+
 				var mensaje="";
-				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
-				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
-				if (document.getElementById("calbaran").value=="") mensaje+="  - Cod. Albaran\n";
+				if (document.getElementById("nombre").value=="") mensaje+="  - "+getTranslationText('nomb')+"\n";
+				if (document.getElementById("fecha").value=="") mensaje+="  - "+getTranslationText('fecha')+"\n";
+				if (document.getElementById("calbaran").value=="") mensaje+="  - "+getTranslationText('codalb')+"\n";
 				if (mensaje!="") {
 					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {
@@ -103,27 +103,26 @@ $codalbarantmp=mysqli_insert_id($conexion);
 		
 		function validar() 
 			{
-                //@todo traducir estos textos
 				var mensaje="";
 				var entero=0;
 				var enteroo=0;
 		
-				if (document.getElementById("referencia").value=="") mensaje="  - Referencia\n";
-				if (document.getElementById("descripcion").value=="") mensaje+="  - Descripcion\n";
+				if (document.getElementById("referencia").value=="") mensaje="  - "+getTranslationText('refren')+"\n";
+				if (document.getElementById("descripcion").value=="") mensaje+="  - "+getTranslationText('descri')+"\n";
 				if (document.getElementById("precio").value=="") { 
-							mensaje+="  - Falta el precio\n"; 
+							mensaje+="  - "+getTranslationText('vfprec')+"\n";
 						} else {
 							if (isNaN(document.getElementById("precio").value)==true) {
-								mensaje+="  - El precio debe ser numerico\n";
+								mensaje+="  - "+getTranslationText('vprnm')+"\n";
 							}
 						}
 				if (document.getElementById("cantidad").value=="") 
 						{ 
-						mensaje+="  - Falta la cantidad\n";
+						mensaje+="  - "+getTranslationText('vfc')+"\n";
 						} else {
 							enteroo=parseInt(document.getElementById("cantidad").value);
 							if (isNaN(enteroo)==true) {
-								mensaje+="  - La cantidad debe ser numerica\n";
+								mensaje+="  - "+getTranslationText('vcnm')+"\n";
 							} else {
 									document.getElementById("cantidad").value=enteroo;
 								}
@@ -134,12 +133,12 @@ $codalbarantmp=mysqli_insert_id($conexion);
 						} else {
 							entero=parseInt(document.getElementById("descuento").value);
 							if (isNaN(entero)==true) {
-								mensaje+="  - El descuento debe ser numerico\n";
+								mensaje+="  - "+getTranslationText('vdcnm')+"\n";
 							} else {
 								document.getElementById("descuento").value=entero;
 							}
 						} 
-				if (document.getElementById("importe").value=="") mensaje+="  - Falta el importe\n";
+				if (document.getElementById("importe").value=="") mensaje+="  - "+getTranslationText('msgfimp')+"\n";
 				
 				if (mensaje!="") {
 					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);

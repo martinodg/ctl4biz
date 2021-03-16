@@ -1,6 +1,5 @@
 <?php
 require_once("../conectar7.php");
-//@todo revisar si este es el metodo que se busca usar
 echo '  <script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>';
 

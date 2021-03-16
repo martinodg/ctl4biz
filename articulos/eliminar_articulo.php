@@ -117,8 +117,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 							$res_ubicacion=mysqli_query($conexion,$query_ubicacion);
 							$nombreubicacion=mysqli_result($res_ubicacion,0,"nombre");
 						} else {
-					  	    //@todo determinar como traducir esto
-							$nombreubicacion="Sin determinar";
+							$nombreubicacion="<span id=\"tsindet\">Sin determinar</span>";
 						}
 					  ?>
 						<tr>

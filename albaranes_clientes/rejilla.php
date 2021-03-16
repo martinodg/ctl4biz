@@ -40,7 +40,6 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 ?>
 <html>
 	<head>
-        <!-- todo revisar si esto se tendria que traducir -->
 		<title>Clientes</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="../jquery/jquery331.js"></script>
@@ -64,9 +63,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 			if (marcaestado==1) {
 				parent.location.href="modificar_albaran.php?codalbaran=" + codalbaran + "&cadena_busqueda=<? echo $cadena_busqueda?>";
 			} else {
-			    //@todo revisar si esto se tendria que traducir
-				//alert ("No puede modificar un albaran facturado");
-                talert('msgvmaf');
+			    talert('msgvmaf');
 			}
 		}
 		
@@ -74,8 +71,6 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 			if (marcaestado==1) {
 				parent.location.href="convertir_albaran.php?codalbaran=" + codalbaran + "&cadena_busqueda=<? echo $cadena_busqueda?>";
 			} else {
-                //@todo revisar si esto se tendria que traducir
-				//alert ("No se puede convertir en factura un albaran ya facturado");
                 talert('msgcfayf');
 			}
 		}
@@ -136,7 +131,6 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="10%"><div align="center"><? echo number_format(mysqli_result($res_resultado,$contador,"totalalbaran"),2,",",".")?></div></td>							
 							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td width="10%"><div align="center"><? echo $estado?></div></td>
-                            <!-- @todo revisar si los titles se usan de hint y deben ser traducidos -->
 							<td width="5%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
 							<td width="5%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_albaran(<?php echo mysqli_result($res_resultado,$contador,"codalbaran")?>,<? echo $marcaestado?>)" data-ttitle="eliminar" title="Eliminar"></a></div></td>

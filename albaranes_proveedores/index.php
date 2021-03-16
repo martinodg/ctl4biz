@@ -130,7 +130,6 @@ if ($cadena_busqueda<>"") {
 					  </tr>
 						<tr>
 							<td><span id="testado">ESTADO</span></td>
-                            <!-- @todo revisar estos valores -->
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
 								<option value="0" selected data-opttrad="todosest">Todos los estados</option>
 								<option value="1" data-opttrad="sinfact">Sin Facturar</option>

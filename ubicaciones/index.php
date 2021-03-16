@@ -108,13 +108,13 @@ if ($cadena_busqueda<>"") {
                     <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
 			 	    <button type="button" id="btnlimpiar"  onClick="limpiar_busqueda()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
                     <button type="button" id="btnnuevo" onClick="nueva_ubicacion()"
- onMouseOver="style.cursor=cursor"> <img src="../img/ubicacionesr.svg" alt="nuevo" /> <span>Nueva ubicacion</span> </button>
+ onMouseOver="style.cursor=cursor"> <img src="../img/ubicacionesr.svg" alt="nuevo" /> <span id="tnvaubuc">Nueva ubicacion</span> </button>
 					<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left">N de ubicaciones encontradas <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                    <td width="50%" class="paginar" align="left"><span id="tnroubenc">N de ubicaciones encontradas</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" align="right"><span id="tmostradas">Mostradas</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>

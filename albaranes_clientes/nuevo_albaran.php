@@ -33,7 +33,6 @@ $codalbarantmp=mysqli_insert_id($conexion);
 		function ventanaArticulos(){
 			var codigo=document.getElementById("codcliente").value;
 			if (codigo=="") {
-			    //@todo Revisar la traduccion de esto
                 talert('msgintcl')
 			} else {
 				miPopup = window.open("ver_articulos.php","miwin","width=700,height=500,scrollbars=yes");
@@ -71,10 +70,9 @@ $codalbarantmp=mysqli_insert_id($conexion);
 			
 		function validar_cabecera()
 			{
-			    //@todo revisar si traducir esto
 				var mensaje="";
-				if (document.getElementById("nombre").value=="") mensaje+="  - Nombre\n";
-				if (document.getElementById("fecha").value=="") mensaje+="  - Fecha\n";
+				if (document.getElementById("nombre").value=="") mensaje+="  - "+getTranslationText('nomb')+"\n";
+				if (document.getElementById("fecha").value=="") mensaje+="  - "+getTranslationText('fecha')+"\n";
 				if (mensaje!="") {
 					alert(getTranslationText('msgvgn')+":\n\n"+mensaje);
 				} else {
@@ -84,13 +82,12 @@ $codalbarantmp=mysqli_insert_id($conexion);
 		
 		function validar() 
 			{
-                //@todo revisar si traducir esto
 				var mensaje="";
 				var entero=0;
 				var enteroo=0;
 		
-				if (document.getElementById("codarticulo").value=="") mensaje="  - Referencia\n";
-				if (document.getElementById("descripcion").value=="") mensaje+="  - Descripcion\n";
+				if (document.getElementById("codarticulo").value=="") mensaje="  - "+getTranslationText('refren')+"\n";
+				if (document.getElementById("descripcion").value=="") mensaje+="  - "+getTranslationText('descri')+"\n";
 				if (document.getElementById("precio").value=="") { 
 							mensaje+="  - "+getTranslationText('vfprec')+"\n";
 						} else {
