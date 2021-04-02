@@ -48,6 +48,8 @@ require_once("../racf/purePhpVerify.php");
 			var id_cliente=$("#codcliente").val();
 			getClientData(id_cliente);
 
+			getItemList();
+
 			
 
              
@@ -92,16 +94,21 @@ require_once("../racf/purePhpVerify.php");
 					}
 			);
 		}
-		function getItemData(id_category) {
-			$.getJSON('../funciones/BackendQueries/getItemsData.php', 
-					{
-                        idCategory: id_category
-					}, 
-					function(data) {
-                            $('.modal__window').html( data );
-					}
-			);
+		function getItemList(id_category) {
+			$.get( "../funciones/BackendQueries/getItemList.php" , 
+					{ 
+						idCategory: id_category,
+						toolSeleccionar: "1"                                               
+					},
+					function ( data ) { 
+                            $('#windowData').html( data );
+                    }
+            );
 		}
+		function select(id_item) {
+
+		}
+		
 		</script>
 	</head>
 	<body>
@@ -110,24 +117,38 @@ require_once("../racf/purePhpVerify.php");
 			<div id="modal">
   				<div class="modal__window">
       				<a class="modal__close" href="#"><img src="../img/borrar.svg" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'"></a>
-      			<div id="windownData"></div>	
-			</div> 
-			  </div>
+      				<div id="windowFilter">
+					  <form id="formulario_filtro" name="formulario_filtro">
+						<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+				  			<tr>
+								<td width="10%"><span id="referenc">Referencia</span> </td>
+								<td colspan="10" valign="middle"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15"> </td>
+				 			</tr>
+							<tr>
+								<td width="10%"><span id="descri">Descripcion</span> </td>
+								<td colspan="10" valign="middle"><input NAME="descripcion" type="text" class="cajaGrande" id="descripcion" size="15" maxlength="15"> </td>
+				 			</tr>
+						</table>
+					  </form>	
+				  	</div>	
+				  	<div id="windowData"></div>	
+				</div> 
+			</div>
 				<div align="center">
-				<div id="tituloForm" class="header" id="tvntmst">VENTA MOSTRADOR</div>
+				<div id="tituloForm" class="header"><span id="tvntmst">VENTA MOSTRADOR</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_factura.php">
 				<input id="codfacturatmp" name="codfacturatmp" type="hidden">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
 							<td width="10%"><span id="cod_cliente">C&oacute;digo Cliente</span></td>
-					      <td width="50%"><input NAME="codcliente" value="1" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()">
+					      <td width="40%"><input NAME="codcliente" value="1" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()">
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						  <td width="10%"></td>
-                          <td width="50%"></td>	
+                          <td width="40%"></td>	
                         </tr>
 						<tr>
-							<td>Nombre Cliente</td>
+							<td><span id="tnombcliente">Nombre Cliente</span></td>
 						    <td><input NAME="nombreCliente" type="text" class="cajaGrande" id="nombreCliente" size="45" maxlength="45" readonly></td>
 				            <td></td>
 				            <td></td>

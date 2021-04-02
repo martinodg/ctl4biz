@@ -209,7 +209,7 @@ if($_SESSION["intUser"]) {
                     <input type="checkbox" id="hamburger-3" />
                     <ul class="dropdown">
                         <li><a href="./clientes/index.php" target="principal" id="clientes"><span id="cliente">Clientes</span></a></li>
-                        <li><a href="./ventas_mostrador/index.php" target="principal" id="ventasmostrador"><span id="venta_a_mostrador">Venta a Mostrador</span></a></li>
+                        <li><a href="./ventas_mostrador/index.php" target="principal" id="ventasmostrador"><span id="tvntmst">Venta a Mostrador</span></a></li>
                         <li><a href="./facturas_clientes/index.php" target="principal" id="facturas"><span id="factura">Facturas</span></a></li>
                         <li><a href="./albaranes_clientes/index.php" target="principal" id="remitos"><span id="remitos">Remitos</span></a></li>
                         <li><a href="./lote_albaranes_clientes/index.php" target="principal" id="facturarremitos"><span id="facturar_remitos">Facturar Remitos</span></a></li>

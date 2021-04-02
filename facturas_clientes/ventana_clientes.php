@@ -1,6 +1,8 @@
 <? require_once("../conectar7.php"); ?>
 <html>
 <head>
+<script type="text/javascript" src="../jquery/jquery331.js"></script>
+<script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 <title>Buscador de Clientes</title>
 <script>
 var cursor;

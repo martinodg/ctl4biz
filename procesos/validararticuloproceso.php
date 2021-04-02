@@ -30,7 +30,7 @@ if ($insersiones==0) {
 //insert the item to add into the table proclinea
 $rs_validararticulo=mysqli_query($conexion,$query_validararticulo);
 
-echo "<span id=\"msglnadd_1\">La linea ha sido validada e insertada en la base de datos con el numero de linea</span> '$codlinea' <span id=\"msglnadd_2\">para el proceso</span> '$codproceso'";
+echo "<span id=\"msglnadd_1\">La linea ha sido validada e insertada con el numero: </span> '$codlinea' <span id=\"msglnadd_2\"> En el proceso: </span> '$codproceso'";
  
 mysqli_close($conexion);   
 	

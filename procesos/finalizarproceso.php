@@ -33,7 +33,7 @@ if ($nlineas_metaprocesoslinea==$nlineas_proclinea && $cantproceso>'0'){
     $query_finalizar="UPDATE procesos SET cantidad='$cantproceso', codunidadmedida='$umcantfinal', horaf='$horafin', fechaf='$fechafin', codstatus='2' WHERE codproceso='$codproceso'";
     $rs_finalizar=mysqli_query($conexion,$query_finalizar);
     //@todo revisa caso de replace
-    echo '<div class="mensaje"><span id="tmsgokfinproc">El proceso ha sido finalizado con data</span>:'.$fechafin.' <span id="tyhora">y hora</span>:'.$horafin.'. <span id="tporcantd">Por una cantidad de</span>:'.$cantproceso.'.</span></div> ';
+    echo '<div class="mensaje"><span id="tmsgokfinproc">El proceso ha sido finalizado con fecha </span>:'.$fechafin.' <span id="tyhora"> y hora </span>:'.$horafin.'. <span id="tporcantd">Por una cantidad de</span>:'.$cantproceso.'.</span></div> ';
     while ($nlineas_proclinea > 0) {
         $row = mysqli_fetch_row($rs_verificanlineas_proclinea);
         $query_restarinsumosstock="UPDATE articulos SET stock=(stock - '$row[1]') WHERE codarticulo='$row[0]';";
