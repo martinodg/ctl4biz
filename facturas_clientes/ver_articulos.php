@@ -76,7 +76,7 @@ body {
 			<?	} else { ?>
 					<option value="<? echo $rowfamilia[0]?>"><? echo utf8_encode($rowfamilia[1])?></option>
 			<?	}   
-		   	  };
+		   	  }; 
 		  ?>
 	    </select>		</td></tr>
 		<tr>
