@@ -170,7 +170,7 @@ $fechahoy=date("Y-m-d");
 						<tr>
                             <td width="15%"><span id="tcodtjador">C&oacute;digo Trabajador</span> </td>
 					      <td colspan="3"><input NAME="codtrabajador" type="text" class="cajaPequena" id="codtrabajador" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="data-ttitle" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
 							<td width="15%"><span id="tnomb">Nombre</span></td>
@@ -211,7 +211,7 @@ $fechahoy=date("Y-m-d");
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="fccom">Fecha Comienzo</span></td>
+<td><span id="tfccom">Fecha Comienzo</span></td>
 <td><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly>
 <img src="../img/calendario.svg" alt="" name="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
 <script type="text/javascript">

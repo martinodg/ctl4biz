@@ -33,9 +33,7 @@ require_once("../mysqli_result.php");
 		</script>
 		<? 
 	} else { ?>
-    <!-- @todo revisar si hay que cargar en este archivo las traducciones  -->
 	<script>
-    //talert('sinproveedor');
     talert('sinproveedor');
 	limpiar();
 	</script>

@@ -177,7 +177,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 						<tr>
 							<td width="15%">C&oacute;digo Trabajador </td>
 					      <td colspan="3"><input NAME="codtrabajador" type="text" class="cajaPequena" id="codtrabajador" size="6" maxlength="5" onClick="limpiarcaja()" value="<?php echo $codtrabajador; ?>">
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="data-ttitle" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validartrabajador()" title="Validar trabajador" onMouseOver="style.cursor=cursor"></td>
+					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validartrabajador()" title="Validar trabajador" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 <tr>
 <td><span id="ttrabajad">TRABAJADOR</span></td>
@@ -223,7 +223,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="fccom">Fecha Comienzo</span></td>
+<td><span id="tfccom">Fecha Comienzo</span></td>
 <td><input NAME="fechacomienzo" type="text" class="cajaPequena" id="fechacomienzo" size="10" maxlength="10" value="<? echo implota($fechacomienzo); ?>" readonly>
 <img src="../img/calendario.svg" alt="" name="ifechacomienzo" width="16" height="16" border="0" id="ifechacomienzo" onMouseOver="this.style.cursor='pointer'">
 <script type="text/javascript">

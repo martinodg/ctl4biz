@@ -49,7 +49,6 @@ function pon_prefijo(pref,nombre,nif) {
 					<td>
         <div align="left"><?php echo utf8_encode($nombre);?></div></td>
 					<td><div align="center"><?php echo $nif;?></div></td>
-                    <!-- @todo revisar si se busca  traducir los titles , si se los usa como guia -->
 					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codcliente?>,'<?php echo $nombre?>','<?php echo $nif?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" data-ttitle="tsel" title="Seleccionar"></a></div></td>
 				</tr>
 			<?php }

@@ -22,7 +22,7 @@ if ($cadena_busqueda<>"") {
 	<head>
 		<title>Familias</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         
@@ -114,13 +114,12 @@ if ($cadena_busqueda<>"") {
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-                    <td width="50%" class="paginar" align="left"><span id="nroemben">Nro.de embalajes encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                    <td width="50%" class="paginar" align="left"><span id="tnroemben">Nro.de embalajes encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
-				<div id="cabeceraResultado" class="header">
-					relacion de EMBALAJES</div>
+                    <div id="cabeceraResultado" class="header"><span id="trelacenb">relacion de EMBALAJES</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">

@@ -1,6 +1,8 @@
 <?php
 require_once("../conectar7.php"); 
-require_once("../mysqli_result.php"); 
+require_once("../mysqli_result.php");
+echo '   <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>';
 
 $codproceso=$_GET["codproceso"];
 $codmproceso=$_GET["codmproceso"];

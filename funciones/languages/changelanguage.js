@@ -918,7 +918,7 @@ function langchange() {
     $("#thrsprv").text(getTranslationText('hrsprv'));
     $("#tpciohs").text(getTranslationText('pciohs'));
     $("#tttalprev").text(getTranslationText('ttalprev'));
-    $("#tfccom").text(getTranslationText('fccom'));
+    $("#tfccom,#tfccom2").text(getTranslationText('fccom'));
     $("#tflect").text(getTranslationText('flect'));
     $("#tfechfin").text(getTranslationText('fechfin'));
     $("#thinvertidas").text(getTranslationText('hinvertidas'));
@@ -926,9 +926,9 @@ function langchange() {
     $("#tndpenc").text(getTranslationText('ndpenc'));
     $("#trelprts").text(getTranslationText('relprts'));
     $("#tnroparte").text(getTranslationText('nroparte'));
-    $("#ttrabajad").text(getTranslationText('trabajad'));
+    $("#ttrabajad,#ttrabajad2").text(getTranslationText('trabajad'));
     $("#ttrabajadores").text(getTranslationText('trabajadores'));
-    $("#ttrabaj").text(getTranslationText('trabaj'));
+    $("#ttrabaj,#ttrabaj2").text(getTranslationText('trabaj'));
     $("#tcod_pres").text(getTranslationText('cod_pres'));
     $("#tttrabajo").text(getTranslationText('ttrabajo'));
     $("#trglspunt").text(getTranslationText('rglspunt'));
@@ -1017,10 +1017,11 @@ function langchange() {
     $("#trelacprov").text(getTranslationText('relacprov'));
     $("#tbscdlts").text(getTranslationText('bscdlts'));
     $("#trelfrmpag").text(getTranslationText('relfrmpag'));
-    $("#treimp").text(getTranslationText('reimp'));
     $("#trelentbc").text(getTranslationText('relentbc'));
     $("#tnombcliente").text(getTranslationText('nombcliente'));
    
+    $("#trelacenb").text(getTranslationText('relacenb'));
+    $("#tnvaubuc").text(getTranslationText('nvaubuc'));
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
     //@todo revisar si se traduce ayuda
@@ -1103,41 +1104,38 @@ function traducirCalendario ()
 
 // tooltips
     Calendar._TT = {};
-    Calendar._TT["INFO"] =  getTranslationText("calinft");//"Información del Calendario";
-//@todo traducir estas frases
+    Calendar._TT["INFO"] =  getTranslationText("calinft");
     Calendar._TT["ABOUT"] =
         getTranslationText("cal")+
         "\n\n" +
-        "Selecci�n de Fechas:\n" +
-        "- Use  \xab, \xbb para seleccionar el año\n" +
-        "- Use " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " para seleccionar el mes\n" +
-        "- Mantenga presionado el botón del ratón en cualquiera de las opciones superiores para un acceso rapido .";
+        getTranslationText("calslfc")+":\n" +
+        "- "+getTranslationText("caluslea")+"\n" +
+        "- "+getTranslationText('caluse')+ " " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " "+getTranslationText('calpsem')+" \n" +
+        "- "+getTranslationText('calmpebdrec')+" .";
     Calendar._TT["ABOUT_TIME"] = "\n\n" +
-        "Selecci�n del Reloj:\n" +
-        "- Seleccione la hora para cambiar el reloj\n" +
-        "- o presione  Shift-click para disminuirlo\n" +
-        "- o presione click y arrastre del ratón para una selecci�n rapida.";
+        getTranslationText('calsdr')+":\n" +
+        "- "+getTranslationText('calslhpcer')+"\n" +
+        "- "+getTranslationText('calopscpd')+"\n" +
+        "- "+getTranslationText('calopcyadrpus');
 
-    Calendar._TT["TOGGLE"] = "Primer dia de la semana";
-    Calendar._TT["PREV_YEAR"] = "Año anterior (Presione para menu)";
-    Calendar._TT["PREV_MONTH"] = "Mes Anterior (Presione para menu)";
-    Calendar._TT["GO_TODAY"] = "Ir a Hoy";
-    Calendar._TT["NEXT_MONTH"] = "Mes Siguiente (Presione para menu)";
-    Calendar._TT["NEXT_YEAR"] = "Año Siguiente (Presione para menu)";
+    Calendar._TT["TOGGLE"] = getTranslationText("pddsmn");
+    Calendar._TT["PREV_YEAR"] = getTranslationText("aappm");
+    Calendar._TT["PREV_MONTH"] = getTranslationText("mappm");
+    Calendar._TT["GO_TODAY"] = getTranslationText("iah");
+    Calendar._TT["NEXT_MONTH"] = getTranslationText("msppm");
+    Calendar._TT["NEXT_YEAR"] = getTranslationText("asppm");
     Calendar._TT["SEL_DATE"] = getTranslationText("calselfch");
-    Calendar._TT["DRAG_TO_MOVE"] = "Arrastre y mueva";
-    Calendar._TT["PART_TODAY"] = " (Hoy)";
-    Calendar._TT["MON_FIRST"] = "Lunes Primero";
-    Calendar._TT["SUN_FIRST"] = "Domingo Primero";
+    Calendar._TT["DRAG_TO_MOVE"] = getTranslationText("arrmev");
+    Calendar._TT["PART_TODAY"] = " ("+getTranslationText("hoy")+")";
+    Calendar._TT["MON_FIRST"] = getTranslationText("lunprm");
+    Calendar._TT["SUN_FIRST"] =  getTranslationText("domprm");
     Calendar._TT["CLOSE"] = getTranslationText("cerrar");
     Calendar._TT["TODAY"] = getTranslationText("hoy");
 
     Calendar._TT["WEEKEND"] = "0,6";
 
-    Calendar._TT["DAY_FIRST"] = "Pulse para primer dia de la semana";
-
-// date formats
-    //@todo revisar si esto se debe dejar aca o mover al setup  , en caso de poder traducirlo afectaria al funcionamiento ?
+    Calendar._TT["DAY_FIRST"] = getTranslationText('calpppddls');
+    // date formats
     Calendar._TT["DEF_DATE_FORMAT"] = "dd-mm-yy";
     Calendar._TT["TT_DATE_FORMAT"] = "%A, %e de %B de %Y";
 

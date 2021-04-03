@@ -16,7 +16,6 @@ $iva=mysqli_result($rs_query,0,"iva");
 
 <html>
 	<head>
-        <!-- @todo revisar si deberia traducirse -->
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<script language="javascript">
