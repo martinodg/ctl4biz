@@ -29,7 +29,7 @@
                     parent.langchange(lang);
                 });
                 $("#english").click(function() {
-                    $("#bandera_lengua").attr("src", "..ttfbd/img/english-language.svg");
+                    $("#bandera_lengua").attr("src", "../img/english-language.svg");
                     $("#language").val("0");
                     parent.setTranslation(0);
                     lang = parent.getLanguajeIndex();
