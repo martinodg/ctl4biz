@@ -688,7 +688,7 @@ function langchange() {
     $("#dctop,#tdctop").text(getTranslationText('dctop'));
     $("#baseimp,#tbaseimp").text(getTranslationText('baseimp'));
     $("#total,#ttotal").text(getTranslationText('total'));
-    $("#refren,#trefren").text(getTranslationText('refren'));
+    $("#refren,#trefren").text(getTranslationText('referenc'));
     $("#descri,#tdescri").text(getTranslationText('descri'));
     $("#codigo,#tcodigo").text(getTranslationText('codigo'));
     $("#nip,#tnip").text(getTranslationText('NIP'));
@@ -711,7 +711,7 @@ function langchange() {
     $("#ttdart").text(getTranslationText('tdart'));
     $("#tvalbaran").text(getTranslationText('valbaran'));
     $("#tconvalbaran").text(getTranslationText('convalbaran'));
-    $("#tnrofac").text(getTranslationText('nrofac'));
+    $("#tnrofac,#nrofac").text(getTranslationText('nrofac'));
     $("#tcodprov").text(getTranslationText('codprov'));
     $("#testados").text(getTranslationText('estados'));
     $("#tbuscar").text(getTranslationText('buscar'));
@@ -773,7 +773,6 @@ function langchange() {
     $("#dto_pc").text(getTranslationText('dto_pc'));
     $("#baseImpo").text(getTranslationText('baseImpo'));
     $("#total").text(getTranslationText('total'));
-    $("#refren").text(getTranslationText('refren'));
     $("#thinic").text(getTranslationText('hinic'));
     $("#thorafincrt").text(getTranslationText('horafincrt'));
     $("#tart").text(getTranslationText('tart'));

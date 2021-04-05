@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>Buscador de Clientes</title>
+<script type="text/javascript" src="../jquery/jquery331.js"></script>
+<script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 <script>
 var cursor;
 		if (document.all) {
