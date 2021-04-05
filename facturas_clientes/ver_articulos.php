@@ -80,7 +80,7 @@ body {
 			<?	}   
 		   	  }; 
 		  ?>
-	    </select>		</td></tr>
+	    </select>		</td></tr> 
 		<tr>
 		<td width="36%" class="busqueda"><span id="trefren">Referencia</span>:</td>
 	    <td width="64%"><input name="referencia" type="text" id="referencia" size="20" class="cajaMedia"></td></tr>
