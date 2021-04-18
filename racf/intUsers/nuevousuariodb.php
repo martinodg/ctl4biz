@@ -14,7 +14,7 @@ require_once("config.php");
     echo "**********************************************************<br>";
     echo "Dando privilegios al usuario<br>";
     // Grant permisions to user for new DB
-    $sql3 = "GRANT SELECT, INSERT, ALTER, UPDATE, CREATE, LOCK TABLES ON $id_company.* TO '$emilio'@'%';";
+    $sql3 = "GRANT SELECT, INSERT, ALTER, UPDATE, CREATE, DELETE, LOCK TABLES ON $id_company.* TO '$emilio'@'%';";
     echo $sql3."<br>";
     if ($conn1->query($sql3) === TRUE) {
         echo "Privileges granted successfully<br>";

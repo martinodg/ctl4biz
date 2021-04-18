@@ -1,6 +1,13 @@
+<? require_once("../conectar7.php"); ?>
 <html>
 <head>
 <title>Buscador de Proveedores</title>
+	<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+	
+
+
 <script>
 
 var cursor;
@@ -23,19 +30,17 @@ function buscar() {
 }
 
 </script>
-    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
-<!--
+
 body {
 	margin-left: 0px;
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
 }
--->
-</style></head>
-<? require_once("../conectar7.php"); ?>
+
+</style>
+</head>
 <body onLoad="buscar()">
 <form name="form1" id="form1" method="post" action="frame_proveedores.php" target="frame_resultado" onSubmit="buscar()">
   <table width="95%" id="tabla_resultado" name="tabla_resultado" style="display:none" align="center">

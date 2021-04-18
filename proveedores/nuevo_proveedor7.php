@@ -1,4 +1,7 @@
 <?
+if(session_id() == '') {
+    session_start();
+}
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 
@@ -8,8 +11,8 @@ require_once("../mysqli_result.php");
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript" src="../funciones/validar.js"></script>
-		 <script type="text/javascript" src="../jquery/jquery331.js"></script>
-        
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
         <script language="javascript">
 		
         /* Ajax para completar comboBox cboProvincias basado en el pais elejido en comboBox cboPais */
@@ -72,7 +75,7 @@ require_once("../mysqli_result.php");
 					    </tr>
 						<tr>
 							<td width="15%"><span id="tnomb">Nombre</span></td>
-						    <td width="43%"><input NAME="Anombre" type="text" class="cajaGrande" id="nombre" size="45" maxlength="45"></td>
+						    <td width="43%"><input NAME="anombre" type="text" class="cajaGrande" id="nombre" size="45" maxlength="45"></td>
 					        <td width="42%" rowspan="12" align="left" valign="top"><ul id="lista-errores"></ul></td>
 						</tr>
 						<tr>
@@ -107,7 +110,7 @@ require_once("../mysqli_result.php");
 						<tr>
 							<td width="15%"><span id="tentiban">Entidad Bancaria</span></td>
 							<td width="43%"><select id="cboBanco" name="cboBanco" class="comboGrande">
-							<option value="0"> data-opttrad="selntiban" >Seleccione una entidad bancaria<</option>
+							<option value="0" data-opttrad="selntiban" >Seleccione una entidad bancaria<</option>
 									<?php
 								while ($contador < mysqli_num_rows($res_entidades)) { ?>
 								<option value="<?php echo mysqli_result($res_entidades,$contador,"codentidad")?>"><?php echo mysqli_result($res_entidades,$contador,"nombreentidad")?></option>

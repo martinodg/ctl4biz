@@ -33,27 +33,30 @@ if($_POST) {
     
    
 
-    $query="SELECT $table.numlinea, articulos.descripcion, $table.precio, $table.cantidad, unidadesmedidas.nombre, $table.dcto, $table.importe, $table.TAX FROM $table, articulos, unidadesmedidas WHERE $table.codfactura='$idInvoice' AND $table.codigo=articulos.codarticulo AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY $table.$indxField LIMIT ".$paginainicio.",10;";       
-	$rs_table = mysqli_query($conexion,$query);
+    $query="SELECT $table.numlinea, articulos.descripcion, $table.precio, $table.cantidad, unidadesmedidas.nombre, $table.dcto, $table.importe, impuestos.valor FROM $table, articulos, unidadesmedidas, impuestos WHERE $table.codfactura='$idInvoice' AND $table.codigo=articulos.codarticulo AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida AND impuestos.codimpuesto=$table.TAX ORDER BY $table.$indxField LIMIT ".$paginainicio.",10;";       
+	//echo $query;
+    $rs_table = mysqli_query($conexion,$query);
     $invoice_linesNumber= mysqli_num_rows($rs_table);
-                while ($invoice_linesNumber > 0) {
-                            if ($invoice_linesNumber % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }
+    $count=0;
+                while ( $count < $invoice_linesNumber) {
+                            $showline=1+$count;
+                            if ($count % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }
                             $row = mysqli_fetch_row($rs_table);
                             echo '<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
                                 echo '<tr class="'.$fondolinea.'">';
-							        echo '<td width="10%"><div align="center">'.$row[0].'</td>';
+							        echo '<td width="10%"><div align="center">'.$showline.'</td>';
 							        echo '<td width="20%"><div align="center">'.$row[1].'</div></td>';
 							        echo '<td width="10%"><div align="center">'.$row[2].'</div></td>';
                                     echo '<td width="10%"><div align="center">'.$row[3].'</div></td>';
                                     echo '<td width="10%"><div align="center">'.$row[4].'</div></td>';
-                                    echo '<td width="10%"><div align="center">'.$row[5].'</div></td>';
+                                    echo '<td width="10%"><div align="center">'.$row[5].' %</div></td>';
                                     echo '<td width="10%"><div align="center">'.$row[6].'</div></td>';
-                                    echo '<td width="10%"><div align="center">'.$row[7].'</div></td>';
+                                    echo '<td width="10%"><div align="center">'.$row[7].' %</div></td>';
                                     echo '<td width="10%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0"  onClick="remove('.$row[0].')" title="remove"></a></div></td>';
                                 echo '</tr>';
                              echo '</table>';
                            
-                             $invoice_linesNumber--;
+                             $count++;
                 }
 echo $errorMessage;
 mysqli_close($conexion); 

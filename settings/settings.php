@@ -63,7 +63,7 @@
 		<div id="pagina">
 			<div id="zonaContenido">
 			<div align="center">
-                <div id="lenguaje" class="header"><span id="lngyloc">Lenguaje y localizacion</span></div>
+                <div id="lenguaje" class="header"><span id="tlngyloc">Lenguaje y localizacion</span></div>
 				<nav id="language">
             <ul>
                 <li>

@@ -7,14 +7,19 @@ $errorMessage='';
 //build filters
 $where="";
 if(isset($_GET['idCategory'])) {$idCateogory=$_GET['idCategory'];
-    $where.="articulos.codfamilia='$idCategory' AND ";
+    if($idCateogory>0){
+        $where=$where."articulos.codfamilia='$idCateogory' AND ";
+    }
+    
 }
-if(isset($_GET['referencia'])) {$idCateogory=$_GET['referencia'];
-    $where.="articulos.referencia='$referencia' AND ";
+if(isset($_GET['referencia'])) {$referencia=$_GET['referencia'];
+   // $donde=$donde."articulos.descripcion LIKE '".$nombrearticulo."%' AND ";
+    $where=$where."articulos.referencia LIKE '$referencia%' AND ";
 }
-if(isset($_GET['descripcion'])) {$idCateogory=$_GET['descripcion'];
-    $where.="articulos.descripcion='$descripcion' AND ";
+if(isset($_GET['descripcion'])) {$descripcion=$_GET['descripcion'];
+    $where=$where."articulos.descripcion LIKE '%$descripcion%' AND ";
 }
+
 
 //Set tools
 if(isset($_GET['toolVer'])) {$toolVer=$_GET['toolVer'];
@@ -32,7 +37,8 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
     
    
 //Query SQL
-    $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY articulos.descripcion";       
+    $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY articulos.descripcion";     
+    //echo $query;  
 	$rs_table = mysqli_query($conexion,$query);
     $linesNumber= mysqli_num_rows($rs_table);
                 while ($linesNumber > 0) {

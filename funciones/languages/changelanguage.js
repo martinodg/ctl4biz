@@ -85,6 +85,7 @@ function getTranslationText(name)
         "btipoar":["Type of article","buscar tipo de artículo","Rodzaj artykułu","Tipo di articolo","Tipo de artigo","Type de larticle","Artikeltyp"],
         "codtpar":["article type code","código de tipo de artículo","Kod typu artykuł","articolo codice tipo","artigo código de tipo","article type de code","Typencode Artikel"],
         "nvotpo":["new kind","nuevo tipo","nowy rodzaj","nuovo tipo","novo tipo","nouveau type","neue Art"],
+        "tnvorto":["New delivery note","nuevo remito","nowy dowód dostawy","nuova bolla di consegna","nova nota de entrega","nouveau bon de livraison","neuer Lieferschein"],
         "nrotipen":["Number of types founded","N. de tipos encontrados","Znaleziono rodzaje N.","Tipi N. trovati","N. tipos encontrados","N. types trouvés","N. Typen gefunden"],
         "reltipar":["List of types of ítems ","listado de tipo de artículos","szt Typ związku","elementi di tipo rapporto","itens de tipo de relacionamento","des éléments de type de relation","Beziehungstyp Artikel"],
         "codart":["Item code","código de artículo","kod produktu","codice articolo","Código do item","code de larticle","Produktcode"],
@@ -112,7 +113,7 @@ function getTranslationText(name)
         "tipproc":["Process type","tipo de proceso","typ procesu","tipo di processo","tipo de processo","Type de processus","Prozesstyp"],
         "propru":["production processes","procesos de producción","procesy produkcji","processi di produzione","processos de produção","processus de production","Herstellungsprozesse"],
         "bupro":[" process search ","búsqueda de procesos","proces wyszukiwania","processo di ricerca","processo de pesquisa","processus de recherche","Suchprozess"],
-        "cant":["amount","cantidad","ilość","quantità","quantia","quantité","Menge"],
+        "cant":["quantity","cantidad","ilość","quantità","quantia","quantité","Menge"],
         "fechin":["start date","fecha de inicio","Data rozpoczęcia","data dinizio","data de início","date de début","Anfangsdatum"],
         "hinic":["start time","hora de inicio","czas rozpoczęcia","Ora di inizio","hora de início","Heure de début","Startzeit"],
         "estacion":["station","estación ","stacja","stazione","estação","gare","Bahnhof"],
@@ -248,7 +249,7 @@ function getTranslationText(name)
         "correlec":["email","correo electrónico","e-mail","e-mail","o email","e-mail","Email"],
         "dirrcweb":["Web address","dirección de web","adres internetowy","indirizzo Web","endereço da web","Adresse web","Webadresse"],
         "referenc":["reference","referencia","odniesienie","riferimento","referência","référence","Referenz"],
-        "flia":["family","familia","rodzina","famiglia","família","famille","Familie"],
+        "flia":["family","Tipo de articulo","rodzina","famiglia","família","famille","Familie"],
         "selecflia":["Select a family","selecciona una familia","Wybierz rodzinę","Selezionare una famiglia","Selecione uma família","Sélectionnez une famille","Wählen Sie eine Familie"],
         "prodfinal":["Final product","producto final","Produkt finalny","Prodotto finale","Produto final","Produit final","Endprodukt"],
         "prodiner":["intermediate product","producto intermedio","Produkt pośredni","prodotto intermedio","Produto intermediário","produit intermédiaire","Zwischenprodukt"],
@@ -371,7 +372,8 @@ function getTranslationText(name)
         "mdesctick":["modify bill","Modificar descrip. ticket","polski","italian","portugues","frances","Aleman"],
         "prectienda":["Shop price","Precio en tienda","polski","italian","portugues","frances","Aleman"],
         "prcciva":["Price plus tax","Precio con iva","polski","italian","portugues","frances","Aleman"],
-        "tdsfam":["All families","Todas las familias","polski","italian","portugues","frances","Aleman"],
+        "tdsfam":["All families","Todas los tipos","polski","italian","portugues","frances","Aleman"],
+        "tdstax":["select a tax","Seleccionar un impuesto","wybierz podatek","italian","portugues","frances","Aleman"],
         "realcionart":["list of items","listado de articulos","polski","italian","portugues","frances","Aleman"],
         "ndartenctn":["number of ítems founded","No. de articulos encontrados", "polski","italian","portugues","frances","Aleman"],
         "undmed":["Unit of meassurement","Unidad de medida", "polski","italian","portugues","frances","Aleman"],
@@ -539,7 +541,7 @@ function getTranslationText(name)
         "insprvdr":["INSERT  SUPLIER","INSERTAR PROVEEDOR","polski","italian","portugues","frances","Aleman"],
         "msgprvnf":[" There are not supliers that meet the search criteria ","No hay ningún proveedor que cumpla con los criterios ","polski","italian","portugues","frances","Aleman"],
         "vprodr":["See supplier","ver proveedor","polski","italian","portugues","frances","Aleman"],
-        "lngyloc":["Lenguaje and Location","Lenguaje y localizacion","polski","italian","portugues","frances","Aleman"],
+        "lngyloc":["Lenguage and Localization","Lenguaje y localizacion","jezyk i lokalizacja","lingua e localizzazione","portugues","frances","Aleman"],
         "elgidi":["Chose a Languaje","Elija un idioma","polski","italian","portugues","frances","Aleman"],
         "msgtrbnf":["There is no worker with that code","No existe ningun trabajador con ese codigo","polski","italian","portugues","frances","Aleman"],
         "elmtrab":["Erase worker","ELIMINAR TRABAJADOR","polski","italian","portugues","frances","Aleman"],
@@ -1018,7 +1020,7 @@ function langchange() {
     $("#trelfrmpag").text(getTranslationText('relfrmpag'));
     $("#trelentbc").text(getTranslationText('relentbc'));
     $("#tnombcliente").text(getTranslationText('nombcliente'));
-   
+    $("#tnvorto").text(getTranslationText('tnvorto'));
     $("#trelacenb").text(getTranslationText('relacenb'));
     $("#tnvaubuc").text(getTranslationText('nvaubuc'));
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado

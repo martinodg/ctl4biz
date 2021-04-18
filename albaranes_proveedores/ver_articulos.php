@@ -1,3 +1,6 @@
+<?php
+require_once("../conectar7.php"); 
+?>
 <html>
 <head>
 <title>Buscador de Articulos</title>
@@ -56,7 +59,6 @@ body {
 -->
 </style></head>
 <? 
-require_once("../conectar7.php"); 
 $codproveedor=$_GET["codproveedor"];
 ?>
 <body onLoad="buscar()">

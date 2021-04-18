@@ -10,6 +10,8 @@ $codalbarantmp=mysqli_insert_id($conexion);
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
@@ -93,7 +95,7 @@ $codalbarantmp=mysqli_insert_id($conexion);
 				var mensaje="";
 				if (document.getElementById("nombre").value=="") mensaje+="  - "+getTranslationText('nomb')+"\n";
 				if (document.getElementById("fecha").value=="") mensaje+="  - "+getTranslationText('fecha')+"\n";
-				if (document.getElementById("calbaran").value=="") mensaje+="  - "+getTranslationText('codalb')+"\n";
+				if (document.getElementById("calbaran").value=="") mensaje+="  - "+getTranslationText('codalbaran')+"\n";
 				if (mensaje!="") {
 					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
 				} else {

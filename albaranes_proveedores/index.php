@@ -176,7 +176,7 @@ if ($cadena_busqueda<>"") {
 			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
 
 
-					 					<button type="button" id="btnnuevo"  onClick="nuevo_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span id="tnueprov">Nuevo Proveedor</span> </button>
+					 					<button type="button" id="btnnuevo"  onClick="nuevo_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span id="tnvorto">Nuevo Remito</span> </button>
 			
 				</div>
 			  <div id="lineaResultado">

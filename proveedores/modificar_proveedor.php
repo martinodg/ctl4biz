@@ -1,4 +1,7 @@
 <?
+if(session_id() == '') {
+    session_start();
+}
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 
@@ -12,6 +15,8 @@ $rs_query=mysqli_query($conexion,$query);
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script type="text/javascript" src="../funciones/validar.js"></script>
 		<script language="javascript">
 		
@@ -92,7 +97,7 @@ $rs_query=mysqli_query($conexion,$query);
 						<tr>
 							<td width="15%" height="26"><span id="tentiban">Entidad Bancaria</span></td>
 							<td width="43%"><select id="cboBanco" name="cboBanco" class="comboGrande">
-							<option value="0"> data-opttrad="selntiban" >Seleccione una entidad bancaria<</option>
+							<option value="0" data-opttrad="selntiban" >Seleccione una entidad bancaria<</option>
 									<?php
 								while ($contador < mysqli_num_rows($res_entidades)) { 
 									if ($codentidad == mysqli_result($res_entidades,$contador,"codentidad")) { ?>
