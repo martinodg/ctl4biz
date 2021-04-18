@@ -200,6 +200,7 @@ require_once("../racf/purePhpVerify.php");
 						impuesto: vimpuesto									                                          
 					}, function (data) { $("#div_datos").html(data);
 						getInvoiceLines('tempInvoice',vcodFacturat);
+						calculaTaxYTotal();
 						$('#icodfamilia').val('');
 						$('#icodArticulo').val('');
 						$('#cantidad').val('1');
@@ -212,8 +213,24 @@ require_once("../racf/purePhpVerify.php");
                     }
             );           
 		}
-		function remove(id_line) {
+		function remove(id_line,bprecio,balicuotaProducto) {
 			var vcodfact = $('#codfacturatmp').val();
+			//All the variables are rounded using Math.round() function to avoid errors on the float point operations.
+			var baseImponibleOriginal1=parseFloat($('#baseimponible').val());
+			var baseImponibleOriginal=Math.round(baseImponibleOriginal1*100)/100 ;
+			var impuestosOriginal1=parseFloat($('#baseimpuestos').val());
+			var impuestosOriginal=Math.round(impuestosOriginal1*100)/100 ;
+			var impuestoProducto1= (bprecio*balicuotaProducto)/100;
+			var impuestoProducto=Math.round(impuestoProducto1*100)/100 ;
+			var nuevaBaseImponible1=baseImponibleOriginal-bprecio;
+			var nuevaBaseImponible=Math.round(nuevaBaseImponible1*100)/100 ;
+			var nuevoImpuestos1=impuestosOriginal-impuestoProducto;
+			var nuevoImpuestos=Math.round(nuevoImpuestos1*100)/100 ;
+			$('#baseimponible').val(nuevaBaseImponible);
+			$('#baseimpuestos').val(nuevoImpuestos);
+			$('#preciototal').val(Math.round((nuevaBaseImponible+nuevoImpuestos)*100)/100);
+			//alert("precio"+bprecio+"alicuota"+balicuotaProducto+"impuesto"+impuestoProducto+"baseoriginal"+baseImponibleOriginal+"impuestosOriginal"+impuestosOriginal);
+
 			$.get( "../funciones/BackendQueries/removeTempInvoiceLine.php" , 
 					{ 	docType:"tempInvoice",
 						idLine: id_line,
@@ -225,6 +242,26 @@ require_once("../racf/purePhpVerify.php");
                     }
             );
 		}
+		function calculaTaxYTotal() {
+			var precio1=parseFloat($('#iprecio').val());
+			var precio=Math.round(precio1*100)/100 ;
+			var alicuotaProducto1=parseFloat($('#impuesto').find('option:selected').text());
+			//All the variables are rounded using Math.round() function to avoid errors on the float point operations.
+			var alicuotaProducto=Math.round(alicuotaProducto1*100)/100 ;
+			var impuestoProducto= (precio*alicuotaProducto)/100;
+			var baseImponibleOriginal1=parseFloat($('#baseimponible').val());
+			var baseImponibleOriginal=Math.round(baseImponibleOriginal1*100)/100 ;
+			var impuestosOriginal1=parseFloat($('#baseimpuestos').val());
+			var impuestosOriginal=Math.round(impuestosOriginal1*100)/100 ;
+			var nuevaBaseImponible1=baseImponibleOriginal+precio;
+			var nuevaBaseImponible=Math.round(nuevaBaseImponible1*100)/100 ;
+			var nuevoImpuestos1=impuestosOriginal+impuestoProducto;
+			var nuevoImpuestos=Math.round(nuevoImpuestos1*100)/100 ;
+			//alert("precio"+precio+"alicuota"+alicuotaProducto+"impuesto"+impuestoProducto+"baseoriginal"+baseImponibleOriginal+"impuestosOriginal"+impuestosOriginal);
+			$('#baseimponible').val(nuevaBaseImponible);
+			$('#baseimpuestos').val(nuevoImpuestos);
+			$('#preciototal').val(Math.round((nuevaBaseImponible+nuevoImpuestos)*100)/100);
+		}	
 		</script>
 	</head>
 	<body>

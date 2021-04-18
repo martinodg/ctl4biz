@@ -52,7 +52,7 @@ if($_POST) {
                                     echo '<td width="10%"><div align="center">'.$row[5].' %</div></td>';
                                     echo '<td width="10%"><div align="center">'.$row[6].'</div></td>';
                                     echo '<td width="10%"><div align="center">'.$row[7].' %</div></td>';
-                                    echo '<td width="10%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0"  onClick="remove('.$row[0].')" title="remove"></a></div></td>';
+                                    echo '<td width="10%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0"  onClick="remove('.$row[0].','.$row[2].','.$row[7].')" title="remove"></a></div></td>';
                                 echo '</tr>';
                              echo '</table>';
                            

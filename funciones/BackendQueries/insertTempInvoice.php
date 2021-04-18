@@ -50,12 +50,12 @@ if(isset($_GET['cantidad'])) {$cantidad=$_GET['cantidad'];
 	//$prueba=newNumberLine($table,$codFacturat);
 	//$codLineTmp=1;
 	$codLineTmp=newNumberLine($table,$codFacturat);
-	echo $codLineTmp;
+	//echo $codLineTmp;
 	$insert_invoice="INSERT INTO $table (codfactura, numlinea, codfamilia, codigo, cantidad, precio, importe, dcto, TAX) VALUE ('$codFacturat','$codLineTmp','$codfamilia','$codArticulo','$cantidad','$precio','$importe','$dscto','$impuesto');";
-	echo $insert_invoice;
+	//echo $insert_invoice;
 	$rs_invoice=mysqli_query($conexion,$insert_invoice);
 	mysqli_close($conexion);
-
+	
 //}
 
 
