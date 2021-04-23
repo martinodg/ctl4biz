@@ -16,7 +16,7 @@ require_once("../conectar7.php");
     
 
     
-	$consulta="SELECT metaprocesoslinea.codarticulo, articulos.referencia, articulos.stock, metaprocesoslinea.cantidad, unidadesmedidas.nombre, metaprocesoslinea.codrecord FROM metaprocesoslinea, articulos, metaprocesos, unidadesmedidas WHERE ".$donde."metaprocesos.codproceso=metaprocesoslinea.codproceso AND unidadesmedidas.codunidadmedida=metaprocesoslinea.codunidadmedida";
+	$consulta="SELECT metaprocesoslinea.codarticulo, articulos.descripcion, articulos.stock, metaprocesoslinea.cantidad, unidadesmedidas.nombre, metaprocesoslinea.codrecord FROM metaprocesoslinea, articulos, metaprocesos, unidadesmedidas WHERE ".$donde."metaprocesos.codproceso=metaprocesoslinea.codproceso AND unidadesmedidas.codunidadmedida=metaprocesoslinea.codunidadmedida";
     //echo $consulta; 
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
@@ -54,7 +54,7 @@ require_once("../conectar7.php");
                             $nr_lotes--;
                         }
 
-    $consulta_outcome="SELECT metaprocesos.cantidad, unidadesmedidas.nombre, articulos.referencia, unidadesmedidas.codunidadmedida FROM metaprocesos, unidadesmedidas, articulos WHERE metaprocesos.codunidadmedida=unidadesmedidas.codunidadmedida AND metaprocesos.codproceso=$codmproceso AND metaprocesos.codarticulo=articulos.codarticulo;";
+    $consulta_outcome="SELECT metaprocesos.cantidad, unidadesmedidas.nombre, articulos.descripcion, unidadesmedidas.codunidadmedida FROM metaprocesos, unidadesmedidas, articulos WHERE metaprocesos.codunidadmedida=unidadesmedidas.codunidadmedida AND metaprocesos.codproceso=$codmproceso AND metaprocesos.codarticulo=articulos.codarticulo;";
     //echo $consulta_outcome;
     $rs_consulta_outcome = mysqli_query($conexion,$consulta_outcome);               
     $row2 = mysqli_fetch_row($rs_consulta_outcome);

@@ -262,6 +262,27 @@ require_once("../racf/purePhpVerify.php");
 			$('#baseimpuestos').val(nuevoImpuestos);
 			$('#preciototal').val(Math.round((nuevaBaseImponible+nuevoImpuestos)*100)/100);
 		}	
+		function cancelar() {
+			var vcodfact = $('#codfacturatmp').val();
+			$.get( "../funciones/BackendQueries/removeTempInvoiceLine.php" , 
+					{ 	docType:"tempInvoice",
+						codFacturat: vcodfact
+					},
+					function ( data ) { 
+                            $('#div_datos2').html( data );
+                    }
+            );
+			$.get( "../funciones/BackendQueries/removeTempInvoice.php" , 
+					{ 	docType:"tempInvoice",
+						codFacturat: vcodfact
+					},
+					function ( data ) { 
+                            $('#div_datos3').html( data );
+                    }
+            );
+			alert("La factura "+vcodfact+" ha sido cancelada");
+			window.top.location.href ="../index.php";
+		}
 		</script>
 	</head>
 	<body>
@@ -392,6 +413,8 @@ require_once("../racf/purePhpVerify.php");
 				</table>
 				<div ID="div_datos" name="div_datos" > </div> 		
 				<div ID="div_datos2" name="div_datos2" > </div> 		
+				<div ID="div_datos3" name="div_datos3" > </div> 		
+
 			  </div>
 			  <div id="frmBusqueda">
 			<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">

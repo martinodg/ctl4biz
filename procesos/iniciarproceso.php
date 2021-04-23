@@ -35,7 +35,7 @@ require_once("../mysqli_result.php");
                 //echo "$tabla";
                 //echo "$cod";
                 //echo "$elemento";
-                $query_batcholoteactivos="SELECT $tabla.$cod, articulos.referencia, $tabla.cantidad, $tabla.fechai, $tabla.horai from $tabla, articulos WHERE articulos.codarticulo=$tabla.codarticulo and $tabla.borrado='0' and $tabla.codstatus!='1';";
+                $query_batcholoteactivos="SELECT $tabla.$cod, articulos.descripcion, $tabla.cantidad, $tabla.fechai, $tabla.horai from $tabla, articulos WHERE articulos.codarticulo=$tabla.codarticulo and $tabla.borrado='0' and $tabla.codstatus!='2';";
                 //echo "<br>";
                 //echo "$query_batcholoteactivos";
                 $rs_batcholoteactivos=mysqli_query($conexion,$query_batcholoteactivos);

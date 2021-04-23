@@ -117,7 +117,7 @@ $( document ).ready(function(){
 						<tr>
 						<td width="20%"><span id="trefren">Referencia</span></td>
 						<?php $referencia=mysqli_result($rs_query,0,"referencia");?>
-					      <td colspan="2"><input name="Areferencia" id="referencia" value="<?php echo mysqli_result($rs_query,0,"referencia")?>" maxlength="20" class="cajaGrande" type="text"></td>
+					      <td colspan="2"><input name="referencia" id="referencia" value="<?php echo mysqli_result($rs_query,0,"referencia")?>" maxlength="20" class="cajaGrande" type="text"></td>
 				          
 						</tr>
 						<?php

@@ -6,25 +6,18 @@ require_once("getNewLineNumber.php");
 
 $errorMessage='';
 $conexion=mysqli_connect($Servidor,$Usuario,$Password,$BaseDeDatos) or die("Error: La Funcion insertTempInvoice no puede conectar con la base de datos");
-$where="";
+
 //check doctype argument
 
 if (isset($_GET['docType'])) { $doctype=$_GET['docType'];
 
 	if ($doctype=="tempInvoice"){
-		$table="factulineatmp";
+		$table="facturastmp";
 	}else{ $errorMessage.= "Unknown doctype. "; }}
 
 	
 if(isset($_GET['codFacturat'])) {$codFacturat=$_GET['codFacturat'];
     }else{ $errorMessage.= "Error. temporary invoice number is mandatory."; }
-    
-if(isset($_GET['idLine'])) { $idLine=$_GET['idLine'];
-	$where="AND numlinea='".$idLine."'";
-	}
-
-if(isset($_GET['codFacturat'])) {$codFacturat=$_GET['codFacturat'];
-	}else{ $errorMessage.= "Error. codFacturat is needed to delette the line."; }
 
  
 //if($errorMessage<>""){echo $errorMessage;
@@ -38,7 +31,7 @@ if(isset($_GET['codFacturat'])) {$codFacturat=$_GET['codFacturat'];
 	//$codLineTmp=1;
 	//$codLineTmp=newNumberLine($table,$codFacturat);
 	//echo $codLineTmp;
-	$query_borrar="DELETE FROM $table WHERE codfactura='$codFacturat' ".$where.";";
+	$query_borrar="DELETE FROM $table WHERE codfactura='$codFacturat';";
 	echo $query_borrar;
 	$rs_borrar=mysqli_query($conexion,$query_borrar);
 	mysqli_close($conexion);

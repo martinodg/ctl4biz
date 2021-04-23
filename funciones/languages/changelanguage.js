@@ -361,6 +361,9 @@ function getTranslationText(name)
         "selart":["Select Items","Seleccionar Articulo","polski","italian","portugues","frances","Aleman"],
         "tipo":["Type","tipo","polski","italian","portugues","frances","Aleman"],
         "sel":["Select","Selecciona","polski","italian","portugues","frances","Aleman"],
+        "salir":["Exit","Salir","Wyjscie","Uscire","portugues","Sortir","Aleman"],
+        "definir":["Define","Definir","Definiowac","Definire","portugues","frances","Aleman"],
+        "agregmatpimas":["Add raw material","Agregar materias primas","Dodaj surowiec","Aggiungere Materia prima","Adicionar materia-prima","Ajouter de la matiere premiere","Rohmaterial hinzufugen"],
         "elart":["remove item","eliminar articulo","polski","italian","portugues","frances","Aleman"],
         "impuesto":["Tax","Impuesto","polski","italian","portugues","frances","Aleman"],
         "prov1":["supplier 1","proveedor 1","dostawca","fornitore","fornecedor","fournisseur","Lieferant"],
@@ -1023,6 +1026,16 @@ function langchange() {
     $("#tnvorto").text(getTranslationText('tnvorto'));
     $("#trelacenb").text(getTranslationText('relacenb'));
     $("#tnvaubuc").text(getTranslationText('nvaubuc'));
+    $("#tdefinir").text(getTranslationText('definir'));
+    $("#tsalir").text(getTranslationText('salir'));
+    $("#tagregmatpimas,#agregmatpimas").text(getTranslationText('agregmatpimas'));
+
+
+    
+
+
+    
+
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
     //@todo revisar si se traduce ayuda

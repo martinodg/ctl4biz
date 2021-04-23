@@ -9,7 +9,7 @@ require_once("../conectar7.php");
     
 
     
-	$consulta="SELECT proclinea.codlinea, articulos.referencia, proclinea.cantidad, unidadesmedidas.nombre FROM proclinea, articulos, unidadesmedidas WHERE ".$donde."proclinea.codarticulo=articulos.codarticulo AND unidadesmedidas.codunidadmedida=proclinea.codunidadmedida";
+	$consulta="SELECT proclinea.codlinea, articulos.descripcion, proclinea.cantidad, unidadesmedidas.nombre FROM proclinea, articulos, unidadesmedidas WHERE ".$donde."proclinea.codarticulo=articulos.codarticulo AND unidadesmedidas.codunidadmedida=proclinea.codunidadmedida";
    //echo $consulta; 
         
 	$rs_tabla = mysqli_query($conexion,$consulta);

@@ -4,7 +4,7 @@ require_once("../conectar7.php");
 
     $proceso=$_GET["proceso"];
     
-    $consulta="SELECT articulos.referencia, procesos.cantidad, procesos.fechai, procesos.horai, procesos.codstatus, metaprocesos.codarticulo, unidadesmedidas.nombre FROM metaprocesos, procesos, articulos, unidadesmedidas WHERE procesos.codunidadmedida=unidadesmedidas.codunidadmedida AND procesos.codproceso ='".$proceso."' AND procesos.codstatus!=2 AND procesos.borrado=0 AND articulos.codarticulo=metaprocesos.codarticulo AND metaprocesos.codproceso=procesos.codmproceso;";
+    $consulta="SELECT articulos.descripcion, procesos.cantidad, procesos.fechai, procesos.horai, procesos.codstatus, metaprocesos.codarticulo, unidadesmedidas.nombre FROM metaprocesos, procesos, articulos, unidadesmedidas WHERE procesos.codunidadmedida=unidadesmedidas.codunidadmedida AND procesos.codproceso ='".$proceso."' AND procesos.codstatus!=2 AND procesos.borrado=0 AND articulos.codarticulo=metaprocesos.codarticulo AND metaprocesos.codproceso=procesos.codmproceso;";
    //echo ",<script>alert($consulta);</script>";
         
 	$rs_tabla = mysqli_query($conexion,$consulta);

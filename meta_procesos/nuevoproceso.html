@@ -4,6 +4,7 @@
     <title>Principal</title>
     <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
     <script language="javascript">
         //Perform when DOM is full loaded
         $(document).ready(function() {
@@ -203,15 +204,15 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="aceptar" /> <span>Crear</span> </button>
-                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="Salir" /> <span>Salir</span> </button>
+                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="aceptar" /> <span id="tdefinir">Crear</span> </button>
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="Salir" /> <span id="tsalir">Salir</span> </button>
                 </div>
 
                 </form>
                 <div id="lineaResultado">
 
                 </div>
-                <div id="tituloForm" class="header">Agregar Materias Primas </div>
+                <div id="tituloForm" class="header" ><span id="tagregmatpimas">Agregar Materias Primas </span></div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
@@ -233,7 +234,7 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span>Agregar articulo como materia prima</span> </button>
+                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="agregmatpimas">Agregar articulo como materia prima</span> </button>
 
                 </div>
                 <input id="hidecodarticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
