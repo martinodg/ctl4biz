@@ -89,7 +89,7 @@ $rs_borrar=mysqli_query($conexion,$sel_borrar);
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><div align="center" class="Estilo6">ConTroL for my business. Cloud ERP System</div></td>
+    <td><div align="center" class="Estilo6">ConTroL for business. Cloud ERP System</div></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
@@ -99,7 +99,7 @@ $rs_borrar=mysqli_query($conexion,$sel_borrar);
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><div align="center" class="Estilo6">&copy; 2008-2019</div></td>
+    <td><div align="center" class="Estilo6">&copy; 2008-2021</div></td>
     <td>&nbsp;</td>
   </tr>
     <tr>
@@ -111,7 +111,7 @@ $rs_borrar=mysqli_query($conexion,$sel_borrar);
       <td>&nbsp;</td>
       <td><table width="50%" border="0" align="center">
         <tr>
-          <td><div align="center"><span class="Estilo5">Resolución óptima 1024 x 768 píxeles  </span></div></td>
+          <td><div align="center"><span class="Estilo5">Resolución óptima 1920 x 1080 píxeles  </span></div></td>
         </tr>
       </table></td>
       <td>&nbsp;</td>
@@ -119,11 +119,13 @@ $rs_borrar=mysqli_query($conexion,$sel_borrar);
     <tr>
       <td height="27">&nbsp;</td>
       <td><table width="50%" border="0" align="center">
-        <tr>
-          <td width="38%"><div align="right"><img src="img/firefox.gif" width="80" height="15" /></div></td>
-          <td width="62%"><span class="Estilo5">Aplicación optimizada para Firefox </span></td>
-        </tr>
-      </table></td>
+            <tr>
+                <td><div align="center"><span class="Estilo5">Aplicación optimizada para Firefox </span></div></td>
+            </tr>
+            <tr>
+                <td><div align="center"><img src="img/firefox.svg" width="40" height="40" /></div></td>
+            </tr>
+          </table></td>
       <td>&nbsp;</td>
     </tr>
 </table>
