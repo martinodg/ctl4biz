@@ -1,8 +1,8 @@
 <?php
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
-$id_resource='1';
-$id_sresource='2';
+$id_resource='3';
+$id_sresource='110';
 require_once("../racf/purePhpVerify.php");
 $cadena_busqueda=$_GET["cadena_busqueda"];
 

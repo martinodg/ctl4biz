@@ -78,8 +78,9 @@
 
         });
         //when we validate every line of the process items
-        function validararticuloproceso(codigo, cantidad, unique) {
+        function validararticuloproceso(codigo, cantidad, unique, price) {
             //@todo ver la traduccion de esta funcion
+            var totPrice = cantidad * price;
             var uniquevar = "cantidada" + unique;
             var refresco = document.getElementById(uniquevar).value;
             //alert if amount of item to validate had changed or if we validate the standard amount
@@ -92,7 +93,8 @@
             $.get("validararticuloproceso.php", {
                     codproceso: document.getElementById('codproceso').value,
                     codarticulo: codigo,
-                    refresco: refresco
+                    refresco: refresco,
+                    totalprice: totPrice
                 },
                 function(data) {
                     $('#div_datos2').html(data);

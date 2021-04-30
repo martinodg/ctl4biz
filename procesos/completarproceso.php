@@ -16,7 +16,7 @@ require_once("../conectar7.php");
     
 
     
-	$consulta="SELECT metaprocesoslinea.codarticulo, articulos.referencia, articulos.stock, metaprocesoslinea.cantidad, unidadesmedidas.nombre, metaprocesoslinea.codrecord FROM metaprocesoslinea, articulos, metaprocesos, unidadesmedidas WHERE ".$donde."metaprocesos.codproceso=metaprocesoslinea.codproceso AND unidadesmedidas.codunidadmedida=metaprocesoslinea.codunidadmedida";
+	$consulta="SELECT metaprocesoslinea.codarticulo, articulos.descripcion, articulos.stock, metaprocesoslinea.cantidad, unidadesmedidas.nombre, metaprocesoslinea.codrecord, articulos.precio_compra FROM metaprocesoslinea, articulos, metaprocesos, unidadesmedidas WHERE ".$donde."metaprocesos.codproceso=metaprocesoslinea.codproceso AND unidadesmedidas.codunidadmedida=metaprocesoslinea.codunidadmedida";
     //echo $consulta; 
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
@@ -46,8 +46,7 @@ require_once("../conectar7.php");
 							echo '<td width="18%"><div align="center">'.$row[2].'</div></td>';
                             echo '<td width="18%"><div align="center"><input id="cantidada'.$row[5].'" type="text" class="cajaPequena" NAME="cantidada'.$row[5].'" align="center" value="'.$row[3].'" maxlength="15">';
                             echo ' '.$row[4].'</div></td>';
-                            echo '<td width="14%"><div align="center"><a href="#"><img id="validacion" src="../img/validacion.svg" width="16" height="16" border="0"  onClick="validararticuloproceso(&apos;' .$row[0]. '&apos;,&apos;' .$row[3]. '&apos;,&apos;' .$row[5]. '&apos;)"></a></div></td>';
-							
+                            echo '<td width="14%"><div align="center"><a href="#"><img id="validacion" src="../img/validacion.svg" width="16" height="16" border="0"  onClick="validararticuloproceso(&apos;' .$row[0]. '&apos;,&apos;' .$row[3]. '&apos;,&apos;' .$row[5]. '&apos;,&apos;' .$row[6]. '&apos;)"></a></div></td>';
                               echo '</tr>';
                         echo '</table>';
                        

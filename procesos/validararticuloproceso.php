@@ -5,6 +5,7 @@ require_once("../mysqli_result.php");
     $codproceso=$_GET["codproceso"];
     $codarticulo=$_GET["codarticulo"];
     $refresco=$_GET["refresco"];
+    $totalprice=$_GET["totalprice"];
 
  //verify the last code linea for this code process
  $codlineaprevia = "SELECT max(codlinea) as maximo FROM proclinea WHERE codproceso='$codproceso'";
@@ -24,7 +25,7 @@ if ($insersiones>=1){
     $query_validararticulo="UPDATE proclinea SET cantidad='$refresco' WHERE codarticulo='$codarticulo' AND codproceso='$codproceso'";
 }
 if ($insersiones==0) {
-    $query_validararticulo="INSERT INTO proclinea (codproceso, codlinea, codarticulo, cantidad) VALUES ('$codproceso', '$codlinea','$codarticulo','$refresco');";   
+    $query_validararticulo="INSERT INTO proclinea (codproceso, codlinea, codarticulo, cantidad, precio) VALUES ('$codproceso', '$codlinea','$codarticulo','$refresco','$totalprice');";   
 }
 
 //insert the item to add into the table proclinea
