@@ -1,0 +1,338 @@
+<html>
+
+<head>
+    <title>Principal</title>
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+    <script language="javascript">
+        var cursor;
+        var estadoInicial;
+        //get metaproceso code from Url hash on last page.
+        var metaproceso = window.location.hash.substring(1);
+
+        if (document.all) {
+            // Está utilizando EXPLORER
+            cursor = 'hand';
+        } else {
+            // Está utilizando MOZILLA/NETSCAPE
+            cursor = 'pointer';
+        }
+        //modify mesure unites of the articles
+        function cambiaunmedida(mproceso, linea, umedida) {
+            //show meta-process items 
+            $.get("./cambiaumedida.php", {
+                    metaproceso: mproceso,
+                    nlinea: linea,
+                    unmedida: umedida
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
+                });
+        }
+        //accept mesure unit change
+        function aceptarcumedida(mproceso, linea) {
+            var nuevaum = document.getElementById('umselect').value;
+            //alert(nuevaum);
+            $.get("./nuevaum.php", {
+                    metaproceso: mproceso,
+                    nlinea: linea,
+                    unmedida: nuevaum
+                },
+                function(data) {
+                    $('#div_datos3').html(data);
+                    mostrararticulo(metaproceso);
+                });
+        }
+
+
+        //show items used as raw material
+        function mostrararticulo(proximomproc) {
+            //show meta-process items 
+            $.get("./mostrararticulometaproceso.php", {
+                    codmetap: proximomproc
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
+                });
+        }
+        //function to validate a line modification
+        function validarlinea(codigo, linea, cantidad) {
+            //var cantidaddeinteres = "'cantidad" + linea + "'";
+            //alert(cantidaddeinteres);
+            var nuevacantidad = document.getElementById('cantidad' + linea).value;
+            var viejacantidad = cantidad;
+            //var mensaje = "la vieja cantidad es: " + viejacantidad + " la nueva cantidad es: " + nuevacantidad;
+            //alert(mensaje);
+            if (viejacantidad != nuevacantidad) {
+                //alert("como son distintas se procede a modificar la tabla");
+                $.get("modificarlineamp.php", {
+                        codmproceso: codigo,
+                        lineamproceso: linea,
+                        cantidadarticulo: nuevacantidad
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                        $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+
+
+                    });
+                mostrararticulo(metaproceso);
+            }
+
+        }
+        // function to delete line of mentaprocess
+        function borrarlineamp(codigo, linea) {
+            $.get("borrarlineamp.php", {
+                    codmproceso: codigo,
+                    lineamproceso: linea,
+
+                },
+                function(data) {
+                    $('#div_datos3').html(data);
+
+
+                });
+            mostrararticulo(metaproceso);
+        }
+
+        function validararticulo(codigo, nombre, destino, undMedida) {
+            if (destino == "materiaprima") {
+                console.log(undMedida);
+                $('#codarticulo').val(codigo);
+                $('#nombrearticulo').val(nombre);
+                $('#hidecodarticulo').val(codigo);
+                $('#hidenombrearticulo').val(nombre);
+                $('#div_datos').empty();
+            }
+            if (destino == "outcome") {
+                $('#codArticuloCreado').val(codigo);
+                $('#nombreArticuloCreado').val(nombre);
+                $("#umcantidadest").val(undMedida);
+                $('#div_datos').empty();
+            }
+        }
+        $(document).ready(function() {
+            //@todo revisar traducciones necesarias en esta funcion
+            //load unidades de medida combo
+            $.get("../sel_unidadmedida.php", function(data) {
+                $('.cboUnidadmedida').html(data);
+            });
+
+            //Set Title for page
+            var titulo = "Modificar el meta-proceso: " + metaproceso;
+            $('#tituloForm').html(titulo);
+
+
+            //Retrive metaproceso data
+            $.getJSON("buscametaprocesoamod.php", {
+                    mproceso: metaproceso
+                },
+                function(data) {
+                    /*alert(data);*/
+                    $('#codmproceso').val(data.codproceso);
+                    $('#nombremproceso').val(data.nombre);
+                    $('#nombreArticuloCreado').val(data.nombrearticulo);
+                    $('#cantidadEstimada').val(data.cantidadestimada);
+                    $('#umcantidadest').val(data.codunidadmedida);
+                    $('#codarticuloresultado').val(data.codarticulo);
+                    
+                    var batchres = data.esbatch;
+                    if (batchres == "1") {
+                        $('input[type="checkbox"]').attr('checked', true);
+                    } else {
+                        $('input[type="checkbox"]').attr('checked', false);
+                    }
+                }
+            );
+
+            //assign value to batch
+            var estadobatch;
+            $('input[type="checkbox"]').on('change', function() {
+                if ($(this).prop('checked')) {
+                    estadobatch = "1";
+                } else {
+                    estadobatch = "0";
+                }
+                /*alert(estadobatch);*/
+            });
+
+            //show items of the meta-process
+            mostrararticulo(metaproceso);
+
+
+            //Search Item for raw material
+            $('#codarticulo, #nombrearticulo').keyup(function() {
+                /*  console.log($(this));*/
+                $.get("../articulos/buscararticulo.php", {
+                        codart: document.getElementById('codarticulo').value,
+                        nombreart: document.getElementById('nombrearticulo').value,
+                        codfamilia: "",
+                        destino: "materiaprima"
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                    });
+            });
+            //when we press clean button
+            $('#btnlimpiar').click(function() {
+
+                $('#cantidad, #hidecantidad').val('');
+                $('#hideestado').val('0');
+                $('select[name="estado"]').val('0');
+
+            });
+            //when we press cancel button
+            $('#btncancelar').click(function() {
+                location.href = "index.php";
+            });
+            //search process outcome item
+            $('#nombreArticuloCreado').keyup(function() {
+                /*  console.log($(this));*/
+                $.get("../articulos/buscararticulo.php", {
+                        codart: "",
+                        nombreart: document.getElementById('nombreArticuloCreado').value,
+                        codfamilia: "",
+                        destino: "outcome"
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                    });
+            });
+
+            //when we press add button
+            $('#btnagregar').click(function() {
+
+                $.get("agregararticulo.php", {
+                        codmproceso: document.getElementById('codmproceso').value,
+                        nombremproceso: document.getElementById('nombremproceso').value,
+                        batch: estadobatch,
+                        codart: document.getElementById('codarticulo').value,
+                        nombreart: document.getElementById('nombrearticulo').value,
+                        cantidadart: document.getElementById('cantidad').value
+                    },
+                    function(data) {
+                        $('#div_datos3').html(data);
+                        $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+
+                    });
+                mostrararticulo(metaproceso);
+            });
+
+            //when we press accept button
+            $('#btnaceptar').click(function() {
+
+                $.get("modificarcabeceramp.php", {
+                        codmproceso: document.getElementById('codmproceso').value,
+                        nombremproceso: document.getElementById('nombremproceso').value,
+                       
+                        batch: estadobatch,
+                        codarticulocreado: document.getElementById('codArticuloCreado').value,
+                        cantidadest: document.getElementById('cantidadEstimada').value,
+                        unmedida: document.getElementById('umcantidadest').value
+                    },
+                    function(data) {
+                        $('#div_datos3').html(data);
+                    });
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="pagina">
+        <div id="zonaContenido">
+            <div align="center">
+                <div id="tituloForm" class="header">Definir meta-proceso </div>
+
+                <div id="frmBusqueda">
+                    <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
+                        
+
+                        <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+
+                            <tr>
+
+                                <td width="20%"><span id="tcodmetaproc">Codigo del meta-proceso</span> <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15" readonly></td>
+                                <td width="40%">Producto Final <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Producto Intermedio</td>
+                                <td width="40%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
+
+                            </tr>
+
+                            <tr>
+                                <td width="20%"> <input id="codArticuloCreado" type="text" class="cajaGrande" NAME="codArticuloCreado" maxlength="45" style="display:none" readonly></td>
+                                <td width="40%"><span id="tartcrdproce">Articulo creado por el proceso</span> <input id="nombreArticuloCreado" type="text" class="cajaGrande" NAME="nombreArticuloCreado" maxlength="45"></td>
+                                <td width="40%"><span id="cntestprod">Cantidad estimada a producir</span></td></td> <input id="cantidadEstimada" type="text" class="cajaPequena" NAME="cantidadEstimada" maxlength="15"><select id="umcantidadest" class="cboUnidadmedida"></select></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                </div>
+                <div id="botonBusqueda">
+
+                    <br>
+                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+                    <br>
+
+                </div>
+
+                </form>
+                <div id="lineaResultado">
+
+                </div>
+                <div id="tituloForm" class="header"><span id="agrmatprim">Agregar Materia prima</span></div>
+
+                <div id="frmBusqueda">
+                    <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
+                        <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+
+                            <tr>
+                                <td width="20%"><span id="tcodart">Codigo de articulo</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
+                                <td width="40%"><span id="tnombart">Nombre de articulo</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
+                                <td width="40%"><span id="tcant">Cantidad</span> <input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"><select id="umcantidadmprima" class="cboUnidadmedida"></select></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                </div>
+                <div id="botonBusqueda">
+                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="tagrartmtpr">Agregar articulo como materia prima</span> </button>
+
+
+                </div>
+                <input id="hidecodarticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                <input id="hidenombrearticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                </form>
+                <div id="lineaResultado">
+                    <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
+                        <tr>
+                            <td width="50%" class="paginar" align="left"><span id="tndartenctn">N de articulos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                            <td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+		          </select></td>
+                    </table>
+                </div>
+
+
+                <div ID="div_datos" name="div_datos"> </div>
+                <div ID="div_datos2" name="div_datos2"> </div>
+                <div id="botonCerrar">
+                    <br>
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
+                    <br>
+                </div>
+            </div>
+            <div ID="div_datos3" name="div_datos3"> </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

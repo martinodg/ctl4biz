@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Principal</title>
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../jquery/jquery331.js"></script>
+    <script language="javascript">
+        $.get("../articulos/buscararticulo.php", {
+                codart: document.getElementById('codarticulo').value,
+                nombreart: document.getElementById('nombrearticulo').value,
+                codfamilia: ""
+            },
+            function(data) {
+                $('#div_datos').html(data);
+            });
+    </script>
+</head>
+
+<body>
+    <div id="pagina">
+        <div id="zonaContenido">
+            <div align="center">
+                <div id="tituloForm" class="header"><span id="tdefmtprc">Definir meta-proceso</span></div>
+                <div ID="div_datos" name="div_datos"> </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

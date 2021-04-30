@@ -1,0 +1,249 @@
+<html>
+
+<head>
+    <title>Principal</title>
+    <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+    <script language="javascript">
+        //Perform when DOM is full loaded
+        $(document).ready(function() {
+            //load unidades de medida combo
+            $.get("../sel_unidadmedida.php", function(data) {
+                $('.cboUnidadmedida').html(data);
+            });
+            //assign value to batch
+            var estadobatch;
+            $('input[type="checkbox"]').on('change', function() {
+                if ($(this).prop('checked')) {
+                    estadobatch = "1";
+                } else {
+                    estadobatch = "0";
+                }
+                /*alert(estadobatch);*/
+            });
+
+            //search process outcome item
+            $('#nombreArticuloCreado').keyup(function() {
+                /*  console.log($(this));*/
+                $.get("../articulos/buscararticulo.php", {
+                        codart: "",
+                        nombreart: document.getElementById('nombreArticuloCreado').value,
+                        codfamilia: "",
+                        destino: "outcome"
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                    });
+            });
+
+            //Search Item for raw material
+            $('#codarticulo, #nombrearticulo').keyup(function() {
+                /*  console.log($(this));*/
+                $.get("../articulos/buscararticulo.php", {
+                        codart: document.getElementById('codarticulo').value,
+                        nombreart: document.getElementById('nombrearticulo').value,
+                        codfamilia: "",
+                        destino: "materiaprima"
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                    });
+            });
+
+            //when we press clean button
+            $('#btnlimpiar').click(function() {
+                $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+
+            });
+
+            //when we press Acept button
+            $('#btnaceptar').click(function() {
+                $.get("./creamproceso.php", {
+                        batch: estadobatch,
+                        nombremproceso: document.getElementById('nombremproceso').value,
+                        codArticuloCreado: document.getElementById('codArticuloCreado').value,
+                        cantidad: document.getElementById('cantidadEstimada').value,
+                        unmedida: document.getElementById('umcantidadest').value
+                    },
+                    function(data) {
+                        $('#codmproceso').val(data);
+                    });
+            });
+
+            //when we press add button
+            $('#btnagregar').click(function() {
+                var codmproceso = document.getElementById('codmproceso').value;
+                if (codmproceso != "") {
+                    $.get("agregararticulo.php", {
+                            codmproceso: document.getElementById('codmproceso').value,
+                            nombremproceso: document.getElementById('nombremproceso').value,
+                            batch: estadobatch,
+                            codart: document.getElementById('hidecodarticulo').value,
+                            nombreart: document.getElementById('hidenombrearticulo').value,
+                            cantidadart: document.getElementById('cantidad').value,
+                            unmedida: document.getElementById('umcantidadmprima').value
+                        },
+                        function(data) {
+                            $('#div_datos').html(data);
+                            $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+                            mostrararticulo();
+                        });
+                } else {
+                    talert('msgvmtmtproc');
+                }
+            });
+
+            //when we press cancel button
+            $('#btncancelar').click(function() {
+
+                location.href = "index.php";
+            });
+
+
+        });
+
+        function mostrararticulo(proximomproc) {
+
+            //show meta-process items 
+            $.get("./mostrararticulometaproceso.php", {
+                    codmetap: document.getElementById('codmproceso').value
+                },
+                function(data) {
+                    $('#div_datos2').html(data);
+                });
+        }
+
+        function validararticulo(codigo, nombre, destino, undMedida) {
+            if (destino == "materiaprima") {
+                $('#codarticulo').val(codigo);
+                $('#nombrearticulo').val(nombre);
+                $('#hidecodarticulo').val(codigo);
+                $('#hidenombrearticulo').val(nombre);
+                $('#div_datos').empty();
+            }
+            if (destino == "outcome") {
+                $('#codArticuloCreado').val(codigo);
+                $('#nombreArticuloCreado').val(nombre);
+                $('#umcantidadest').val(undMedida);
+                $('#umcantidadest').find('option[value="'+undMedida+'"]').attr('selected','selected');
+                $('#div_datos').empty();
+            }
+        }
+        //function to validate a line modification
+        function validarlinea(codigo, linea, cantidad) {
+            //var cantidaddeinteres = "'cantidad" + linea + "'";
+            //alert(cantidaddeinteres);
+            var nuevacantidad = document.getElementById('cantidad' + linea).value;
+            var viejacantidad = cantidad;
+            //var mensaje = "la vieja cantidad es: " + viejacantidad + " la nueva cantidad es: " + nuevacantidad;
+            //alert(mensaje);
+            if (viejacantidad != nuevacantidad) {
+                //alert("como son distintas se procede a modificar la tabla");
+                $.get("modificarlineamp.php", {
+                        codmproceso: codigo,
+                        lineamproceso: linea,
+                        cantidadarticulo: nuevacantidad
+                    },
+                    function(data) {
+                        $('#div_datos').html(data);
+                        $('#codarticulo, #nombrearticulo, #hidecodarticulo, #hidenombrearticulo,#cantidad').val('');
+
+
+                    });
+                mostrararticulo();
+            }
+
+        }
+        // function to delete line of mentaprocess
+        function borrarlineamp(codigo, linea) {
+            $.get("borrarlineamp.php", {
+                    codmproceso: codigo,
+                    lineamproceso: linea,
+
+                },
+                function(data) {
+                    $('#div_datos3').html(data);
+
+
+                });
+            mostrararticulo();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="pagina">
+        <div id="zonaContenido">
+            <div align="center">
+                <div id="tituloForm" class="header"><span id="tdefgrupprc">Definir grupo de procesos</span></div>
+
+                <div id="frmBusqueda">
+                    <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
+                        <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+
+                            <tr>
+
+                                <td width="20%"><span id="tcodigo">Codigo</span> <input id="codgrupo" type="text" class="cajaPequena" NAME="codgrupo" maxlength="15" readonly></td>
+                                <td width="40%"><span id="tlot">Lote</span><label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> <span id="tbat">Partida</span></td>
+                                <td width="40%"><span id="tnomgrupprc">Nombre del grupo de procesos</span> <input id="nombregrupo" type="text" class="cajaGrande" NAME="nombregrupo" size="45"></td>
+
+                            </tr>
+                            
+                        </table>
+                </div>
+                <div id="botonBusqueda">
+                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="aceptar" /> <span id="tdefinir">Crear</span> </button>
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="Salir" /> <span id="tsalir">Salir</span> </button>
+                </div>
+
+                </form>
+                <div id="lineaResultado">
+
+                </div>
+                <div id="tituloForm" class="header" ><span id="tagregprocgrup">Agregar porcesos al grupo </span></div>
+
+                <div id="frmBusqueda">
+                    <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
+                        <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+
+                            <tr>
+
+                                <td width="20%"><span id="tcodart">Codigo del proceso</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
+                                <td width="80%"><span id="tnombart">Nombre del proceso</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
+
+                            </tr>
+
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                </div>
+                <div id="botonBusqueda">
+                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="agregmatpimas">Agregar articulo como materia prima</span> </button>
+
+                </div>
+                <input id="hidecodarticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                <input id="hidenombrearticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
+                </form>
+                <div id="lineaResultado">
+                    <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
+                        <tr>
+                            <td width="50%" class="paginar" align="left"><span id="tndartenctn">N de articulos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                            <td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+		          </select></td>
+                    </table>
+                </div>
+
+
+                <div ID="div_datos" name="div_datos"> </div>
+                <div ID="div_datos2" name="div_datos2"> </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
