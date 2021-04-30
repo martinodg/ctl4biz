@@ -5,7 +5,7 @@ require_once("../conectar7.php");
 
     $batch=$_GET["batch"];
     
-    $consulta="SELECT batch.codbatch, articulos.referencia, batch.cantidad, batch.fechai, batch.horai, batch.codstatus, batch.codarticulo FROM batch, articulos WHERE batch.codbatch =".$batch." AND batch.codarticulo=articulos.codarticulo AND batch.codstatus!=1 AND batch.borrado=0;";
+    $consulta="SELECT batch.codbatch, articulos.descripcion, batch.cantidad, batch.fechai, batch.horai, batch.codstatus, batch.codarticulo FROM batch, articulos WHERE batch.codbatch =".$batch." AND batch.codarticulo=articulos.codarticulo AND batch.codstatus!=2 AND batch.borrado=0;";
         
   $rs_tabla = mysqli_query($conexion,$consulta);
 

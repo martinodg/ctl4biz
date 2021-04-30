@@ -58,6 +58,10 @@ error_reporting(0);
                 $('#icono').html('<img class="imgicon" src="./img/procesos.svg">');
                 $('#bottombar').html('Produccion>Procesos de Produccion');
             });
+            $('#agruparprocesos').click(function() {
+                $('#icono').html('<img class="imgicon" src="./img/procesos.svg">');
+                $('#bottombar').html('Produccion>Agrupar Procesos');
+            });
             $('#batchproduccion').click(function() {
                 $('#icono').html('<img class="imgicon" src="./img/batch.svg">');
                 $('#bottombar').html('Produccion>Batch de Produccion');
@@ -225,6 +229,7 @@ if($_SESSION["intUser"]) {
                         <li><a href="./articulos/index.php" target="principal" id="articulos"><span id="articu">Articulos</span></a></li>
                         <li><a href="./meta_procesos/index.php" target="principal" id="metaprocesos"><span id="metproc">Meta-Procesos</span></a></li>
                         <li><a href="./procesos/index.php" target="principal" id="procesosproduccion"><span id="propru">Procesos de Produccion</span></a></li>
+                        <li><a href="./agrupar_procesos/index.php" target="principal" id="agruparprocesos"><span id="proagpru">Agrupar Procesos</span></a></li>
                         <li><a href="./batch/index.php" target="principal" id="batchproduccion"><span id="batchprod">Batch de Produccion</span></a></li>
                         <li><a href="./lotes/index.php" target="principal" id="lotesproduccion"><span id="lotdprod">Lotes de Produccion</span></a></li>
                         <li><a href="./estaciones/index.php" target="principal" id="estaciones"><span id="estactra">Estaciones de trabajo</span></a></li>

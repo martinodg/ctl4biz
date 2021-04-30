@@ -8,17 +8,23 @@ $codproceso=$_GET["codproceso"];
 $codmproceso=$_GET["codmproceso"];
 $cantproceso=$_GET["cantproceso"];
 $umcantfinal=$_GET["umcantfinal"];
-
+//echo $codmproceso;
 //echo '<script>alert("'.$umcantfinal.'");</script>';
 
 //verify if process validation match with metaprocesline
 //verify lines numbers on proclinea
-$query_verificanlineas_proclinea="SELECT proclinea.codarticulo, proclinea.cantidad, metaprocesos.codarticulo as articulo_mproc FROM proclinea, metaprocesos WHERE proclinea.codproceso = '$codproceso' AND metaprocesos.codproceso='$codmproceso' ;";
-//echo $query_verificanlineas_proclinea;
+$query_verificanlineas_proclinea="SELECT proclinea.codarticulo, proclinea.cantidad, proclinea.precio, metaprocesos.codarticulo as articulo_mproc FROM proclinea, metaprocesos WHERE proclinea.codproceso = '$codproceso' AND metaprocesos.codproceso='$codmproceso';";
+
 $rs_verificanlineas_proclinea=mysqli_query($conexion,$query_verificanlineas_proclinea);
 $nlineas_proclinea= mysqli_num_rows($rs_verificanlineas_proclinea);
-
-//echo $nlineas_proclinea;
+$nlineas_proclinea2= $nlineas_proclinea;
+$precioTotalDeSalida=0;
+while ($nlineas_proclinea2 > 0) {
+   $row = mysqli_fetch_row($rs_verificanlineas_proclinea);
+   $precioTotalDeSalida=$precioTotalDeSalida+$row[2];
+   $articuloDeSalida=$row[3];
+   $nlineas_proclinea2--;
+}
 
 //verify lines numbers on metaprocess
 $query_verificanlineas_metaprocesoslinea="SELECT COUNT(1) as totalm FROM metaprocesoslinea WHERE codproceso = '$codmproceso';";
@@ -30,9 +36,11 @@ $nlineas_metaprocesoslinea=$lineasmeta['totalm'];
 //compare line numbers between procline and metaprocessline and decide if end could be accomplish or not
 if ($nlineas_metaprocesoslinea==$nlineas_proclinea && $cantproceso>'0'){
     //if the number of lines match
+    $precioPorUnidad=$precioTotalDeSalida/$cantproceso;
+    echo $precioPorUnidad;
     $fechafin= date('Y/m/d');
     $horafin= date('H:i:s');
-    $query_finalizar="UPDATE procesos SET cantidad='$cantproceso', codunidadmedida='$umcantfinal', horaf='$horafin', fechaf='$fechafin', codstatus='2' WHERE codproceso='$codproceso'";
+    $query_finalizar="UPDATE procesos SET cantidad='$cantproceso', codunidadmedida='$umcantfinal', precio='$precioPorUnidad', horaf='$horafin', fechaf='$fechafin', codstatus='2' WHERE codproceso='$codproceso'";
     $rs_finalizar=mysqli_query($conexion,$query_finalizar);
     //@todo revisa caso de replace
     echo '<div class="mensaje"><span id="tmsgokfinproc">El proceso ha sido finalizado con fecha </span>:'.$fechafin.' <span id="tyhora"> y hora </span>:'.$horafin.'. <span id="tporcantd">Por una cantidad de</span>:'.$cantproceso.'.</span></div> ';
@@ -43,7 +51,7 @@ if ($nlineas_metaprocesoslinea==$nlineas_proclinea && $cantproceso>'0'){
         $nlineas_proclinea--;
     }
     //add item just produced as the result of the current process to the stock
-    $query_sumarresultadostock="UPDATE articulos SET stock=(stock + '$cantproceso') WHERE codarticulo='$row[2]';";
+    $query_sumarresultadostock="UPDATE articulos SET stock=(stock + '$cantproceso'), precio_compra='$precioPorUnidad' WHERE codarticulo='$articuloDeSalida';";
     $rs_sumarresultadostock=mysqli_query($conexion,$query_sumarresultadostock);
 
     mysqli_close($conexion);   
