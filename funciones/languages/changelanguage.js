@@ -1026,13 +1026,10 @@ function langchange() {
     $("#tdefinir").text(getTranslationText('definir'));
     $("#tsalir").text(getTranslationText('salir'));
     $("#tagregmatpimas,#agregmatpimas").text(getTranslationText('agregmatpimas'));
-<<<<<<< HEAD
-=======
     $("#tagregprocgrup,#agregprocgrup").text(getTranslationText('agregprocgrup')); 
     $("#tlot,#lot").text(getTranslationText('lot'));
     $("#tbat,#bat").text(getTranslationText('bat'));
 
->>>>>>> Language-control
 
 
     
