@@ -80,7 +80,7 @@ if (mysqli_num_rows($result)>0 ) {
         echo "**********************************************************<br>";
         echo "Dando privilegios al usuario<br>";
         // Grant permisions to master-user for new DB
-        $sql3 = "GRANT SELECT, INSERT, ALTER, UPDATE, CREATE, LOCK TABLES ON $id_company.* TO '$DB_user'@'%';";
+        $sql3 = "GRANT SELECT, INSERT, ALTER, UPDATE, DELETE, CREATE, LOCK TABLES ON $id_company.* TO '$DB_user'@'%';";
         echo $sql3."<br>";
         if ($conn1->query($sql3) === TRUE) {
             echo "Privileges granted successfully<br>";

@@ -70,7 +70,7 @@ require_once("../mysqli_result.php");
 	</head>
 	<body>
 		<div id="pagina">
-			<div id="zonaContenido">
+			<div id="zonaContenido"> 
 				<div align="center">
                     <div id="tituloForm" class="header"><span id="tinsart">INSERTAR ARTICULO</span></div>
 				<div id="frmBusqueda">
@@ -79,7 +79,7 @@ require_once("../mysqli_result.php");
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
 						<td width="15%"><span id="trefren">Referencia</span></td>
-					      <td width="30%"><input name="areferencia" id="referencia" value="" maxlength="20" class="cajaGrande" type="text"></td>
+					      <td width="30%"><input name="areferencia" id="mreferencia" value="" maxlength="20" class="cajaGrande" type="text"></td>
 				          <td width="55%" rowspan="15" align="left" valign="top"><ul id="lista-errores"></ul></td>
 						</tr>
 						<?php
@@ -229,7 +229,7 @@ require_once("../mysqli_result.php");
 					  ?>
 						<tr>
 							<td><span id="tembalaje">Embalaje</span></td>
-							<td><select id="cboEmbalaje" name="AcboEmbalaje" class="comboGrande">
+							<td><select id="cboEmbalaje" name="AEmbalajes" class="comboGrande">
 							<option value="0"data-opttrad="tdsembalajes">Todos los embalajes</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_embalaje)) { 

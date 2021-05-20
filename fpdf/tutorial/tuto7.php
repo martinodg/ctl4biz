@@ -8,5 +8,4 @@ $pdf->AddPage();
 $pdf->SetFont('Calligrapher','',35);
 $pdf->Cell(0,10,'Enjoy new fonts with FPDF!');
 $pdf->Output();
-ob_end_flush(); 
 ?>

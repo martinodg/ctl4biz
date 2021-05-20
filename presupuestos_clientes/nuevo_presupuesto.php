@@ -12,9 +12,12 @@ $codpresupuestotmp=mysqli_insert_id($conexion);
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script language="javascript">
+
 		var cursor;
 		if (document.all) {
 		// Está utilizando EXPLORER
@@ -24,7 +27,22 @@ $codpresupuestotmp=mysqli_insert_id($conexion);
 		cursor='pointer';
 		}
 
-		var miPopup
+		$(document).ready(function() {
+		//check checkbox
+		$('input[type="checkbox"]').on('change', function() {
+                if ($(this).prop('checked')) {
+                    var defined = "0";
+					alert("Se puede escribir una nueva descripcion");
+					$("#descripcion").attr('readonly', false); 
+
+                } else {
+                    var defined = "1";
+					$("#descripcion").attr('readonly', true); 
+                }
+            
+            });
+		});
+		var miPopup;
 		function abreVentana(){
 			miPopup = window.open("ver_clientes.php","miwin","width=700,height=380,scrollbars=yes");
 			miPopup.focus();
@@ -148,15 +166,9 @@ $codpresupuestotmp=mysqli_insert_id($conexion);
 			document.getElementById("preciototal").value=result2;
 		}
 
-		var cursor;
-		if (document.all) {
-		// Está utilizando EXPLORER
-		cursor='hand';
-		} else {
-		// Está utilizando MOZILLA/NETSCAPE
-		cursor='pointer';
-		}
-
+		
+			
+	
 		</script>
 	</head>
 	<body>
@@ -206,6 +218,10 @@ $codpresupuestotmp=mysqli_insert_id($conexion);
 			  <div id="frmBusqueda">
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+				  <tr>
+				  	<td width="11%"><span id="tprodnop">Producto no presente en stock </span></td>
+					<td width="5%"> <label class="switch"> <input type="checkbox" id="onstock" name="onstock" > <span class="slider round"></span> </label></td>
+				  </tr>
 				  <tr>
 					<td width="11%"><span id="trefren">Referencia</span></td>
 					<td colspan="10"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15" readonly> <img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor" title="Buscar articulos"></td>

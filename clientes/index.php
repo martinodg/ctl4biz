@@ -43,7 +43,15 @@ if ($cadena_busqueda<>"") {
 		// Está utilizando MOZILLA/NETSCAPE
 		cursor='pointer';
 		}
-		
+		 /* Ajax para completar comboBox cboProvincias basado en el pais elejido en comboBox cboPais */
+		 $( document ).ready(function(){
+                $('#cboPais').change(function(){
+                    console.log($(this));
+                    $.get( "../funciones/BackendQueries/sel_provincias7.php" , { pais : $(this).val() } , function ( data ) {
+                        $ ( '#cboProvincias' ) . html ( data ) ;
+                    });
+                });
+         });
 		function inicio() {
 			document.getElementById("form_busqueda").submit();
 		}
@@ -104,7 +112,8 @@ if ($cadena_busqueda<>"") {
 			var codigo=document.getElementById("codcliente").value;
 			miPopup = window.open("comprobarcliente.php?codcliente="+codigo,"frame_datos","width=700,height=80,scrollbars=yes");
 		}	
-		
+
+
 		</script>
 	</head>
 	<body onLoad="inicio()">
@@ -122,6 +131,29 @@ if ($cadena_busqueda<>"") {
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
 						</tr>
+						<?php
+					  	$query_pais="SELECT * FROM pais ORDER BY nombrePais ASC";
+						$res_pais=mysqli_query($conexion,$query_pais);
+						$contador=0;
+					  ?>
+<tr>
+							<td id="pais">Pais</td>
+							<td><select id="cboPais" name="cboPais" class="comboMedio">
+								<option value="0" selected>Todos los paises</option>
+								<?php
+								while ($contador < mysqli_num_rows($res_pais)) { 
+									if ( mysqli_result($res_pais,$contador,"codPais") == $pais) { ?>
+								<option value="<?php echo mysqli_result($res_pais,$contador,"codPais")?>" selected><?php echo mysqli_result($res_pais,$contador,"nombrePais")?></option>
+                              
+								<? } else { ?> 
+								<option value="<?php echo mysqli_result($res_pais,$contador,"codPais")?>"><?php echo mysqli_result($res_pais,$contador,"nombrePais")?></option>
+								<? }
+                               
+								$contador++;
+                                
+								} ?>				
+								</select>							</td>
+					    </tr>
 						<tr>
 							<td><span id="tnomb">Nombre</span></td>
 							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="45" value="<? echo $nombre?>"></td>
@@ -135,24 +167,10 @@ if ($cadena_busqueda<>"") {
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
-						<?php
-					  	$query_provincias="SELECT * FROM provincias ORDER BY nombreprovincia ASC";
-						$res_provincias=mysqli_query($conexion,$query_provincias);
-						$contador=0;
-					  ?>
-						<tr>
+					  <tr>
 							<td><span id="tpcia">Provincia</span></td>
 							<td><select id="cboProvincias" name="cboProvincias" class="comboMedio">
-								<option value="0" selected>Todas las provincias</option>
-								<?php
-								while ($contador < mysqli_num_rows($res_provincias)) { 
-									if ( mysqli_result($res_provincias,$contador,"codprovincia") == $provincia) { ?>
-								<option value="<?php echo mysqli_result($res_provincias,$contador,"codprovincia")?>" selected><?php echo mysqli_result($res_provincias,$contador,"nombreprovincia")?></option>
-								<? } else { ?> 
-								<option value="<?php echo mysqli_result($res_provincias,$contador,"codprovincia")?>"><?php echo mysqli_result($res_provincias,$contador,"nombreprovincia")?></option>
-								<? }
-								$contador++;
-								} ?>				
+							
 								</select>							</td>
 					    </tr>
 					  <tr>

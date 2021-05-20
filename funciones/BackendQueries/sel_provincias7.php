@@ -2,7 +2,8 @@
 
 // Connects to your Database 
 
- include "../conectar7.php";
+include "../../conectar7.php";
+
 
  $id_pais = $_GET['pais'];
  echo "<script type='text/javascript'>console.error('$id_pais');</script>";
@@ -11,7 +12,7 @@
                 $nr_provincias= mysqli_num_rows($res_provincias);
                  while ($nr_provincias > 0) {
                             $row = mysqli_fetch_row($res_provincias);
-                            echo '<option >'.$row[1].'</option>';
+                            echo '<option value="'.$row[0].'">'.$row[1].'</option>';
                        /*     echo "<script type='text/javascript'>console.error('$row');</script>";*/
                             $nr_provincias--;
                         }

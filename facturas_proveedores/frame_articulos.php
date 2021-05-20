@@ -45,6 +45,7 @@ if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%
 		$consulta="SELECT artpro.precio as pcosto,articulos.*,familias.nombre as nombrefamilia FROM artpro,articulos,familias
 			WHERE ".$where." AND artpro.codarticulo=articulos.codarticulo AND artpro.codfamilia=articulos.codfamilia AND artpro.codproveedor='".$codproveedor."' AND articulos.codfamilia=familias.codfamilia AND articulos.borrado=0 ORDER BY articulos.codfamilia ASC,articulos.descripcion ASC";			
 	}
+	//echo $consulta;
 	$rs_tabla = mysqli_query($conexion,$consulta);
 	$nrs=mysqli_num_rows($rs_tabla);
 ?>

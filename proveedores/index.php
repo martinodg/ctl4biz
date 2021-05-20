@@ -43,13 +43,13 @@ if ($cadena_busqueda<>"") {
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		 
         
-        <script language="javascript">
+        <script language="javascript"> 
          
  /* Ajax para completar comboBox cboProvincias basado en el pais elejido en comboBox cboPais */
         $( document ).ready(function(){
                 $('#cboPais').change(function(){
                     console.log($(this));
-                    $.get( "sel_provincias7.php" , { pais : $(this).val() } , function ( data ) {
+                    $.get( "../funciones/BackendQueries/sel_provincias7.php" , { pais : $(this).val() } , function ( data ) {
                         $ ( '#cboProvincias' ) . html ( data ) ;
                     });
                 });
@@ -152,7 +152,7 @@ if ($cadena_busqueda<>"") {
 						$contador=0;
 					  ?>
 <tr>
-							<td>Pais</td>
+							<td id="pais">Pais</td>
 							<td><select id="cboPais" name="cboPais" class="comboMedio">
 								<option value="0" selected>Todos los paises</option>
 								<?php

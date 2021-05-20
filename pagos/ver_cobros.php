@@ -4,7 +4,7 @@ require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
  
 $codfactura=$_GET["codfactura"];
-$codproveedor=$_GET["codproveedor"];
+$codproveedor=$_GET["codproveedor"]; 
 
 
 $select_facturas="SELECT proveedores.codproveedor,proveedores.nombre,facturasp.codfactura,estado,facturasp.fechapago,totalfactura FROM facturasp LEFT JOIN pagos ON facturasp.codfactura=pagos.codfactura AND facturasp.codproveedor=pagos.codproveedor INNER JOIN proveedores ON facturasp.codproveedor=proveedores.codproveedor WHERE facturasp.codfactura='$codfactura' AND facturasp.codproveedor='$codproveedor'";
@@ -22,11 +22,13 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
+		
 		<script type="text/javascript" src="../funciones/validar.js"></script>		
+		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
-		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
+        <script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -43,10 +45,24 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 		}
 		
 		function cambiar_estado() {
-			var estado=document.getElementById("cboEstados").value;
-			var codfactura=document.getElementById("codfactura").value;
-			var codproveedor=document.getElementById("codproveedor").value;
-			miPopup = window.open("actualizarestado.php?estado="+estado+"&codfactura="+codfactura+"&codproveedor="+codproveedor,"frame_datos","width=700,height=80,scrollbars=yes");
+			var estado=$("#cboEstados").val();
+			var codFactura=$("#codfactura").val();
+			var codProveedor=$("#codproveedor").val();
+			$.get( "../funciones/BackendQueries/updateInvoiceStatus.php" , { codfactura:codFactura,
+																				tipoFactura:"facturasp",
+																				codproveedor:codProveedor,
+																				estado:estado	
+                                                                     },function ( data ) { 
+                                                                                        $('#frame_datos2').html(data);    
+                                                                                  }
+                );
+			
+
+			
+			//var estado=document.getElementById("cboEstados").value;
+			//var codfactura=document.getElementById("codfactura").value;
+			//var codproveedor=document.getElementById("codproveedor").value;
+			//miPopup = window.open("actualizarestado.php?estado="+estado+"&codfactura="+codfactura+"&codproveedor="+codproveedor,"frame_datos","width=700,height=80,scrollbars=yes");
 		}
 		
 		function cambiar_vencimiento() {
@@ -73,7 +89,9 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						$totalfactura=mysqli_result($rs_facturas,0,"totalfactura");
 						$estado=mysqli_result($rs_facturas,0,"estado"); 
 						$fechapago=mysqli_result($rs_facturas,0,"fechapago");
-						if ($fechapago=="0000-00-00") { $fechapago=""; } else { $fechapago=implota($fechapago); } 						
+						
+						if ($fechapago=="0000-00-00") { $fechapago=""; } else { $fechapago=implota($fechapago); } 		
+						echo $fechapago;				
 						?>
 						<tr>
                             <td width="15%"><span id="tcodprov">C&oacute;digo de proveedor</span></td>
@@ -114,7 +132,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						</tr>	
 						<tr>
                             <td width="15%"><span id="tfchpago">Fecha de pago</span></td>
-						    <td width="43%"><input id="fechapago" type="text" class="cajaPequena" NAME="fechapago" maxlength="10" value="<? echo $fechapago?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
+						    <td width="43%"><input id="fechapago" type="text" class="cajaPequena" NAME="fechapago" maxlength="10" value="<? echo $fechapago?>" ><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
@@ -124,7 +142,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					  }
 					);
         </script>
-                                <img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" data-ttitle="grdfecha" title="Guardar fecha" onClick="cambiar_vencimiento()"></td>
+                                <img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'" data-ttitle="grdfecha" title="Guardar fecha" onClick="cambiar_vencimiento()"></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>										
 					</table>
@@ -136,13 +154,13 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
                             <td width="15%"><span id="fchdlpago">Fecha del pago</span></td>
-						    <td width="35%"><input id="fechapago2" type="text" class="cajaPequena" NAME="fechapago2" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
+						    <td width="35%"><input id="fechapago2" type="text" class="cajaPequena" NAME="fechapago2" maxlength="10" value="<? echo $hoy?>" ><img src="../img/calendario.svg" name="Image3" id="Image3" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
 					inputField : "fechapago2",
 					ifFormat   : "%d/%m/%Y",
-					button     : "Image1"
+					button     : "Image3"
 					  }
 					);
 		</script></td>

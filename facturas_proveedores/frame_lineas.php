@@ -40,8 +40,17 @@ if ($modif<>1) {
 				$precio=$_POST["precio"];
 				$importe=$_POST["importe"];
 				$descuento=$_POST["descuento"];
+
+				//Ask for last codproceso and assing new value
+				$consultaprevia = "SELECT max(numlinea) as maximo FROM factulineaptmp WHERE codfactura=$codfacturatmp";
+				$rs_consultaprevia=mysqli_query($conexion,$consultaprevia);
+				$codlineatmp=mysqli_result($rs_consultaprevia,0,"maximo");
+				//If the result of the query is null then this will be the rist entry on the table and 0 is assigned as previews entry code.
+				if ($codlineatmp=="") { $codlineatmp=0;} 
+				$codlineatmp++;
+				//insert the new entry on meta-process table.
 				
-				$sel_insert="INSERT INTO factulineaptmp (codfactura,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
+				$sel_insert="INSERT INTO factulineaptmp (codfactura,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','$codlineatmp','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
 				$rs_insert=mysqli_query($conexion,$sel_insert);
 		}
 }

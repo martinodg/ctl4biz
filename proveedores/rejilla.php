@@ -14,8 +14,8 @@ if(array_key_exists('nif', $_POST)){
 	$nif=$_POST["nif"];
 	if ($nif <> "") { $where.=" AND nif like '%".$nif."%'"; }
 }
-if(array_key_exists('codprovincia', $_POST)){
-	$codprovincia=$_POST["codprovincia"];
+if(array_key_exists('cboProvincias', $_POST)){
+	$codprovincia=$_POST["cboProvincias"];
 	if ($codprovincia > "0") { $where.=" AND codprovincia='$codprovincia'"; }
 }
 if(array_key_exists('localidad', $_POST)){
@@ -29,7 +29,7 @@ if(array_key_exists('telefono', $_POST)){
 if(array_key_exists('cadena_busqueda', $_POST)){
 	$cadena_busqueda=$_POST["cadena_busqueda"];
 }
-
+//echo $codprovincia;
 $where.=" ORDER BY nombre ASC";
 $query_busqueda="SELECT count(*) as filas FROM proveedores WHERE borrado=0 AND ".$where;
 $rs_busqueda=mysqli_query($conexion,$query_busqueda);

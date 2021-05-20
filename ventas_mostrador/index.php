@@ -79,7 +79,7 @@ require_once("../racf/purePhpVerify.php");
 			});
 			//LOAD INVOICE ADDED ITEMS LINES
 			var id_tmpInvoice=$("#codfacturatmp").val();
-			getInvoiceLines('tempInvoice',id_tmpInvoice);
+			getInvoiceLines('tempInvoice',id_tmpInvoice,0,0,0,1);
 			
 			var id_cliente=$("#codcliente").val();
 			getClientData(id_cliente);
@@ -121,11 +121,15 @@ require_once("../racf/purePhpVerify.php");
                     }
             );
 		} 
-		function getInvoiceLines(d_type,id_invoice) {	
+		function getInvoiceLines(d_type,id_invoice,ver,modifica,seleccionar,eliminar) {	
 			$.get( "../funciones/BackendQueries/getInvoiceLines.php" , 
 					{ 
 						docType: d_type,
-						idInvoice: id_invoice                                                
+						idInvoice: id_invoice,
+						toolVer: ver, 
+						toolModificar: modifica,
+						toolSeleccionar: seleccionar,
+						toolEliminar: eliminar                                             
 					},
 					function ( data ) { 
                             $('#div_datos').html( data );
@@ -189,7 +193,7 @@ require_once("../racf/purePhpVerify.php");
 			
 				
 
-			$.get("../funciones/BackendQueries/insertTempInvoice.php", { docType:"tempInvoice",
+			$.get("../funciones/BackendQueries/insertInvoiceLines.php", { docType:"tempInvoice",
 						codFacturat: vcodFacturat,
 						codfamilia: vcodfamilia,
 						codArticulo: vcodArticulo,
@@ -199,7 +203,7 @@ require_once("../racf/purePhpVerify.php");
 						dscto: vdscto, 
 						impuesto: vimpuesto									                                          
 					}, function (data) { $("#div_datos").html(data);
-						getInvoiceLines('tempInvoice',vcodFacturat);
+						getInvoiceLines('tempInvoice',vcodFacturat,0,0,0,1);
 						calculaTaxYTotal();
 						$('#icodfamilia').val('');
 						$('#icodArticulo').val('');
@@ -213,23 +217,22 @@ require_once("../racf/purePhpVerify.php");
                     }
             );           
 		}
-		function remove(id_line,bprecio,balicuotaProducto) {
+		function remove(id_line,bimporte,balicuotaProducto) {
 			var vcodfact = $('#codfacturatmp').val();
 			//All the variables are rounded using Math.round() function to avoid errors on the float point operations.
 			var baseImponibleOriginal1=parseFloat($('#baseimponible').val());
 			var baseImponibleOriginal=Math.round(baseImponibleOriginal1*100)/100 ;
 			var impuestosOriginal1=parseFloat($('#baseimpuestos').val());
 			var impuestosOriginal=Math.round(impuestosOriginal1*100)/100 ;
-			var impuestoProducto1= (bprecio*balicuotaProducto)/100;
+			var impuestoProducto1= (bimporte*balicuotaProducto)/100;
 			var impuestoProducto=Math.round(impuestoProducto1*100)/100 ;
-			var nuevaBaseImponible1=baseImponibleOriginal-bprecio;
+			var nuevaBaseImponible1=baseImponibleOriginal-bimporte;
 			var nuevaBaseImponible=Math.round(nuevaBaseImponible1*100)/100 ;
 			var nuevoImpuestos1=impuestosOriginal-impuestoProducto;
 			var nuevoImpuestos=Math.round(nuevoImpuestos1*100)/100 ;
-			$('#baseimponible').val(nuevaBaseImponible);
-			$('#baseimpuestos').val(nuevoImpuestos);
-			$('#preciototal').val(Math.round((nuevaBaseImponible+nuevoImpuestos)*100)/100);
-			//alert("precio"+bprecio+"alicuota"+balicuotaProducto+"impuesto"+impuestoProducto+"baseoriginal"+baseImponibleOriginal+"impuestosOriginal"+impuestosOriginal);
+			$('#baseimponible,#baseimponible2').val(nuevaBaseImponible);
+			$('#baseimpuestos,#baseimpuestos2').val(nuevoImpuestos);
+			$('#preciototal,#preciototal2').val(Math.round((nuevaBaseImponible+nuevoImpuestos)*100)/100);
 
 			$.get( "../funciones/BackendQueries/removeTempInvoiceLine.php" , 
 					{ 	docType:"tempInvoice",
@@ -238,29 +241,28 @@ require_once("../racf/purePhpVerify.php");
 					},
 					function ( data ) { 
                             $('#div_datos2').html( data );
-							getInvoiceLines('tempInvoice',vcodfact);
+							getInvoiceLines('tempInvoice',vcodfact,0,0,0,1);
                     }
             );
 		}
 		function calculaTaxYTotal() {
-			var precio1=parseFloat($('#iprecio').val());
-			var precio=Math.round(precio1*100)/100 ;
+			var importe1=parseFloat($('#importe').val());
+			var importe=Math.round(importe1*100)/100 ;
 			var alicuotaProducto1=parseFloat($('#impuesto').find('option:selected').text());
 			//All the variables are rounded using Math.round() function to avoid errors on the float point operations.
 			var alicuotaProducto=Math.round(alicuotaProducto1*100)/100 ;
-			var impuestoProducto= (precio*alicuotaProducto)/100;
+			var impuestoProducto= (importe*alicuotaProducto)/100;
 			var baseImponibleOriginal1=parseFloat($('#baseimponible').val());
 			var baseImponibleOriginal=Math.round(baseImponibleOriginal1*100)/100 ;
 			var impuestosOriginal1=parseFloat($('#baseimpuestos').val());
 			var impuestosOriginal=Math.round(impuestosOriginal1*100)/100 ;
-			var nuevaBaseImponible1=baseImponibleOriginal+precio;
+			var nuevaBaseImponible1=baseImponibleOriginal+importe;
 			var nuevaBaseImponible=Math.round(nuevaBaseImponible1*100)/100 ;
 			var nuevoImpuestos1=impuestosOriginal+impuestoProducto;
 			var nuevoImpuestos=Math.round(nuevoImpuestos1*100)/100 ;
-			//alert("precio"+precio+"alicuota"+alicuotaProducto+"impuesto"+impuestoProducto+"baseoriginal"+baseImponibleOriginal+"impuestosOriginal"+impuestosOriginal);
-			$('#baseimponible').val(nuevaBaseImponible);
-			$('#baseimpuestos').val(nuevoImpuestos);
-			$('#preciototal').val(Math.round((nuevaBaseImponible+nuevoImpuestos)*100)/100);
+			$('#baseimponible,#baseimponible2').val(nuevaBaseImponible);
+			$('#baseimpuestos,#baseimpuestos2').val(nuevoImpuestos);
+			$('#preciototal,#preciototal2').val(Math.round((nuevaBaseImponible+nuevoImpuestos)*100)/100);
 		}	
 		function cancelar() {
 			var vcodfact = $('#codfacturatmp').val();
@@ -282,6 +284,51 @@ require_once("../racf/purePhpVerify.php");
             );
 			alert("La factura "+vcodfact+" ha sido cancelada");
 			window.top.location.href ="../index.php";
+		}
+		function validar_cabecera() {
+				//alert("valido cabecera");
+				var mensaje="";
+				if ($("nombre").val=="") mensaje+="  - Nombre\n";
+				if ($("fecha").val=="") mensaje+="  - Fecha\n";
+				if (mensaje!="") {
+					alert(getTranslationText('msgvgn')+"\n\n"+mensaje);
+				} else {
+					$.getJSON('../funciones/BackendQueries/initInvoice.php', 
+						{	docType: 'Invoice',
+							fecha: $("#fecha").val(),
+							codcliente: $("#codcliente").val(),
+							impuestos: $("#baseimpuestos").val(),
+							baseimponible: $("#baseimponible").val(),
+							totalfactura: $("#preciototal").val()
+						}, 
+					function(data) {
+						console.log(data.idInvoice);
+							
+							$.get('../funciones/BackendQueries/insertInvoiceLines.php',
+								{
+									docType: 'Invoice',
+									codFactura: data.idInvoice,
+									codFacturat: $('#codfacturatmp').val()
+								},
+								function (data2) { $("#botonBusqueda").html(data2);
+												   getInvoiceLines('Invoice',data.idInvoice,0,0,0,0);					
+                    			}
+            				);
+					
+						}
+					);
+			}
+		}	
+		function salir() {
+			location.href="index.php";
+		}
+		
+		function imprimir(codfactura) {
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura);
+		}
+		
+		function pagar(codfactura,codcliente,importe) {
+			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe,"miwin","width=500,height=360,scrollbars=yes");			
 		}
 		</script>
 	</head>
@@ -312,13 +359,32 @@ require_once("../racf/purePhpVerify.php");
 						</table>
 					  </form>	
 				  	</div>	
+					<div  class="header">
+						<table>
+							<tr>
+								<td width="5%"><div align="center"><span class="header" id="tcodigo">Codigo</span></div></td>
+								<td width="15%"><div align="center"><span class="header" id="tflia">Familia</div</span></td>
+								<td width="15%"><div align="center"><span class="header" id="tdescri">Descripcion</span></div></td>
+								<td width="20%"><div align="center"><span class="header" id="tprecio">Precio</span></div></td>
+								<td width="18%"><div align="center"><span class="header" id="tundmed">Unidad</span></div></td>
+								<td width="15%"><div align="center"><span class="header" id="tflia">Impuesto</span></div></td>
+								<td width="12%">&nbsp;</td>
+		  					</tr>
+							<tr>
+								<td width="5%">&nbsp;</td>
+							</tr>
+		  				</table>  
+						  </br>
+						  </br>
+						  </br>
+					</div>
 				  	<div id="windowData"></div>	
 				</div> 
 			</div>
 				<div align="center">
 				<div id="tituloForm" class="header"><span id="tvntmst">VENTA MOSTRADOR</span></div>
 				<div id="frmBusqueda">
-				<form id="formulario" name="formulario" method="post" action="guardar_factura.php">
+				<form id="formulario" name="formulario" >
 				<input id="codfacturatmp" name="codfacturatmp" type="hidden">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
@@ -352,8 +418,8 @@ require_once("../racf/purePhpVerify.php");
 						</tr>
 					</table>										
 			  </div>
-			  
-			
+			 			  
+
 			  </form>
 			  
 			  <br>
@@ -413,7 +479,7 @@ require_once("../racf/purePhpVerify.php");
 				</table>
 				<div ID="div_datos" name="div_datos" > </div> 		
 				<div ID="div_datos2" name="div_datos2" > </div> 		
-				<div ID="div_datos3" name="div_datos3" > </div> 		
+					
 
 			  </div>
 			  <div id="frmBusqueda">
@@ -441,10 +507,7 @@ require_once("../racf/purePhpVerify.php");
 				<div id="botonBusqueda">					
 				  <div align="center">
 				  	<button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-               		<button type="button" id="btncancelar" onClick="cancelar()"onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>
-				    <input id="icodfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
-				    <input id="codfacturatmp" name="codfacturatmp" value="<? echo $codfacturatmp?>" type="hidden">	
-					<input id="preciototal2" name="preciototal" value="<? echo $preciototal?>" type="hidden">			    
+               		<button type="button" id="btncancelar" onClick="cancelar()"onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>		    
 			      </div>
 				</div>
 			  		<iframe id="frame_datos" name="frame_datos" width="0" height="0" frameborder="0">

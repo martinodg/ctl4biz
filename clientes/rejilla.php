@@ -9,7 +9,7 @@ $codprovincia=$_POST["cboProvincias"];
 $localidad=$_POST["localidad"];
 $telefono=$_POST["telefono"];
 $cadena_busqueda=$_POST["cadena_busqueda"];
-
+//echo $codprovincia;
 $where="1=1";
 if ($codcliente <> "") { $where.=" AND codcliente='$codcliente'"; }
 if ($nombre <> "") { $where.=" AND nombre like '%".$nombre."%'"; }

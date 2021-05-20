@@ -24,6 +24,9 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
+		<script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+		 
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -40,9 +43,21 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 		}
 		
 		function cambiar_estado() {
-			var estado=document.getElementById("cboEstados").value;
-			var codfactura=document.getElementById("codfactura").value;
-			miPopup = window.open("actualizarestado.php?estado="+estado+"&codfactura="+codfactura,"frame_datos","width=700,height=80,scrollbars=yes");
+			
+			var estado=$("#cboEstados").val();
+			var codfactura=$("#codfactura").val();
+			$.get( "../funciones/BackendQueries/updateInvoiceStatus.php" , { codfactura:codfactura,
+																				tipoFactura:"facturas",
+																				estado:estado	
+                                                                     },function ( data ) { 
+                                                                                        $('#frame_datos2').html(data);    
+                                                                                  }
+                );
+			
+			
+			
+			
+		//	miPopup = window.open("actualizarestado.php?estado="+estado+"&codfactura="+codfactura,"frame_datos","width=700,height=80,scrollbars=yes");
 		}
 		
 		function cambiar_vencimiento() {
@@ -209,6 +224,9 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					</iframe>
 					<iframe id="frame_datos" name="frame_datos" width="0" height="0" frameborder="0">
 					<ilayer width="0" height="0" id="frame_datos" name="frame_datos"></ilayer>
+					</iframe>
+					<iframe id="frame_datos2" name="frame_datos2" width="0" height="0" frameborder="0">
+					<ilayer width="0" height="0" id="frame_datos2" name="frame_datos2"></ilayer>
 					</iframe>
 				</div>
 				</div>

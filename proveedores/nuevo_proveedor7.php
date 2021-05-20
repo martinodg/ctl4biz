@@ -19,7 +19,7 @@ require_once("../mysqli_result.php");
         $( document ).ready(function(){
                 $('#cboPais').change(function(){
                     console.log($(this));
-                    $.get( "sel_provincias7.php" , { pais : $(this).val() } , function ( data ) {
+                    $.get( "../funciones/BackendQueries/sel_provincias7.php" , { pais : $(this).val() } , function ( data ) {
                         $ ( '#cboProvincias' ) . html ( data ) ;
                     });
                 });

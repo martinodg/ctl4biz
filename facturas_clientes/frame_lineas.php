@@ -1,30 +1,37 @@
 <?
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
+
 ?>
+
+
 <script>
 function eliminar_linea(codfacturatmp,numlinea,importe)
 {
-	if (confirm(" Desea eliminar esta linea ? "))
-		parent.document.formulario_lineas.baseimponible.value=parseFloat(parent.document.formulario_lineas.baseimponible.value) - parseFloat(importe);
-		var original=parseFloat(parent.document.formulario_lineas.baseimponible.value);
-		var result=Math.round(original*100)/100 ;
-		parent.document.formulario_lineas.baseimponible.value=result;
+	if (confirm(" Desea eliminar esta linea ? ")) {
 
-		parent.document.formulario_lineas.baseimpuestos.value=parseFloat(result * parseFloat(parent.document.formulario.iva.value / 100));
-		var original1=parseFloat(parent.document.formulario_lineas.baseimpuestos.value);
-		var result1=Math.round(original1*100)/100 ;
-		parent.document.formulario_lineas.baseimpuestos.value=result1;
-		var original2=parseFloat(result + result1);
-		var result2=Math.round(original2*100)/100 ;
-		parent.document.formulario_lineas.preciototal.value=result2;
-		
+		//GET original base imponible and repalce with the new value
+		var bi_original=parseFloat(parent.document.formulario_lineas.baseimponible.value);
+		var nueva_bi=bi_original - parseFloat(importe);
+		parent.document.formulario_lineas.baseimponible.value=Math.round(nueva_bi*100)/100;
+	
+		//Get original impuestos and replace with the new value
+		var iva=parseFloat(parent.document.formulario.iva.value);
+		var nuevos_impuestos=(nueva_bi*iva)/100;
+
+		//Calculate new total
+		var nuevo_total=nueva_bi+nuevos_impuestos;
+		parent.document.formulario_lineas.baseimpuestos.value=Math.round(nuevos_impuestos*100)/100;
+		parent.document.formulario_lineas.preciototal.value=Math.round(nuevo_total*100)/100;
+		parent.document.formulario_lineas.preciototal2.value=Math.round(nuevo_total*100)/100;
+	
 		document.getElementById("frame_datos").src="eliminar_linea.php?codfacturatmp="+codfacturatmp+"&numlinea=" + numlinea;
+	}	
 }
 </script>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 <?php 
-
+if (isset($_GET["codfacturatmp"])){$codfacturatmp=$_GET["codfacturatmp"];} 
 $codfacturatmp=$_POST["codfacturatmp"];
 $retorno=0;
 if ($modif<>1) {
@@ -37,7 +44,7 @@ if ($modif<>1) {
 				$cantidad=$_POST["cantidad"];
 				$precio=$_POST["precio"];
 				$importe=$_POST["importe"];
-				$descuento=$_POST["descuento"];
+				$descuento=$_POST["descuento"];  
 
 				//Ask for last codproceso and assing new value
 				$consultaprevia = "SELECT max(numlinea) as maximo FROM factulineatmp WHERE codfactura=$codfacturatmp";

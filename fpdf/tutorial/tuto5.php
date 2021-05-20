@@ -99,5 +99,4 @@ $pdf->ImprovedTable($header,$data);
 $pdf->AddPage();
 $pdf->FancyTable($header,$data);
 $pdf->Output();
-ob_end_flush(); 
 ?>

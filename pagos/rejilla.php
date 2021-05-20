@@ -1,8 +1,8 @@
-<?php
+<?php 
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
-
+$filas=0;
 $codproveedor=$_POST["codproveedor"];
 $estado=$_POST["cboEstados"];
 $fechainicio=$_POST["fechainicio"];
@@ -29,7 +29,7 @@ if (($fechainicio<>"") and ($fechafin<>"")) {
 
 $where.=" ORDER BY facturasp.codfactura DESC";
 $query_busqueda="SELECT count(*) as filas FROM facturasp LEFT JOIN pagos ON facturasp.codfactura=pagos.codfactura AND facturasp.codproveedor=pagos.codproveedor INNER JOIN proveedores ON facturasp.codproveedor=proveedores.codproveedor WHERE facturasp.borrado=0 AND ".$where;
-
+//echo $query_busqueda;
 $rs_busqueda=mysqli_query($conexion,$query_busqueda);
 $filas=mysqli_result($rs_busqueda,0,"filas");
 

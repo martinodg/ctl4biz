@@ -12,7 +12,6 @@ $codfacturatmp=mysqli_insert_id($conexion);
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
 		<link href="../calendario/calendar-blue.css" rel="stylesheet" type="text/css">
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
-		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
@@ -88,7 +87,6 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				var entero=0;
 				var enteroo=0;
 		
-				if (document.getElementById("referencia").value=="") mensaje="  - Referencia\n";
 				if (document.getElementById("descripcion").value=="") mensaje+="  - Descripcion\n";
 				if (document.getElementById("precio").value=="") { 
 							mensaje+="  - Falta el precio\n"; 
@@ -189,9 +187,9 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					</table>										
 			  </div>
 			  <input id="codfacturatmp" name="codfacturatmp" value="<? echo $codfacturatmp?>" type="hidden">
-			  <input id="baseimpuestos2" name="baseimpuestos" value="<? echo $baseimpuestos?>" type="hidden">
-			  <input id="baseimponible2" name="baseimponible" value="<? echo $baseimponible?>" type="hidden">
-			  <input id="preciototal2" name="preciototal" value="<? echo $preciototal?>" type="hidden">
+			  <input id="baseimpuestos2" name="baseimpuestos2" value="<? echo $baseimpuestos?>" type="hidden">
+			  <input id="baseimponible2" name="baseimponible2" value="<? echo $baseimponible?>" type="hidden">
+			  <input id="preciototal2" name="preciototal2" value="<? echo $preciototal?>" type="hidden">
 			  <input id="accion" name="accion" value="alta" type="hidden">
 			  </form>
 			  <br>
@@ -266,7 +264,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codfacturatmp" name="codfacturatmp" value="<? echo $codfacturatmp?>" type="hidden">	
-					<input id="preciototal2" name="preciototal" value="<? echo $preciototal?>" type="hidden">			    
+					<input id="preciototal2" name="preciototal2" value="<? echo $preciototal?>" type="hidden">			    
 			      </div>
 				</div>
 			  		<iframe id="frame_datos" name="frame_datos" width="0" height="0" frameborder="0">

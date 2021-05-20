@@ -278,7 +278,8 @@ if($_SESSION["intUser"]) {
                         <li><a href="./etiquetas/index.php" target="principal" id="etiquetas"><span id="etiquet">Etiquetas</span></a></li>
                         <li><a href="./ubicaciones/index.php" target="principal" id="ubicaciones"><span id="ubica">Ubicaciones</span></a></li>
                         <li><a href="./embalajes/index.php" target="principal" id="embalajes"><span id="embala">Embalajes</span></a></li>
-                       
+                        <li><a href="./fpdf/tutorial/index.php" target="principal" id="Tutorialpdf"><span id="tutorialpdf">Turorial PDF</span></a></li>
+
                         
                     </ul>
                 </li>

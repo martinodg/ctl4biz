@@ -2,7 +2,6 @@
 define('FPDF_FONTPATH','font/');
 require('mysqli_table.php');
 require_once("comunes.php");
-require_once("../conectar7.php");
 require_once("../funciones/fechas.php");
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");

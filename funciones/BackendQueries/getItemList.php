@@ -24,16 +24,16 @@ if(isset($_GET['descripcion'])) {$descripcion=$_GET['descripcion'];
 //Set tools
 if(isset($_GET['toolVer'])) {$toolVer=$_GET['toolVer'];
     
-}
+}else{$toolVer=0;}
 if(isset($_GET['toolModificar'])) {$toolModificar=$_GET['toolModificar'];
    
-}
+}else{$toolModificar=0;}
 if(isset($_GET['toolSeleccionar'])) {$toolSeleccionar=$_GET['toolSeleccionar'];
     
-}
+}else{$toolSeleccionar=0;}
 if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
     
-}
+}else{$toolEliminar=0;}
     
    
 //Query SQL
@@ -63,8 +63,8 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
                                 echo '<tr class="'.$fondolinea.'">';
 							        echo '<td width="5%"><div align="center">'.$row[0].'</td>';
 							        echo '<td width="15%"><div align="center">'.$row[1].'</div></td>';
-							        echo '<td width="25%"><div align="center">'.$row[2].'</div></td>';
-                                    echo '<td width="13%"><div align="center">'.$row[3].'</div></td>';
+							        echo '<td width="20%"><div align="center">'.$row[2].'</div></td>';
+                                    echo '<td width="18%"><div align="center">'.$row[3].'</div></td>';
                                     echo '<td width="15%"><div align="center">'.$row[4].'</div></td>';
                                     echo '<td width="15%"><div align="center">'.$row[5].'</div></td>';
                                     echo '<td width="3%"><div align="center">'.$tool1.'</div></td>';

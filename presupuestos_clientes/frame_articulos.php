@@ -57,7 +57,7 @@ function pon_prefijo(codfamilia,pref,nombre,precio,codarticulo) {
 				$codarticulo=mysqli_result($rs_tabla,$i,"codarticulo");
 				$referencia=mysqli_result($rs_tabla,$i,"referencia");				
 				$descripcion=mysqli_result($rs_tabla,$i,"descripcion");
-				$precio=mysqli_result($rs_tabla,$i,"precio_almacen");
+				$precio=mysqli_result($rs_tabla,$i,"precio_compra");
 				 if ($i % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }?>
 						<tr class="<?php echo $fondolinea?>">
 					<td>

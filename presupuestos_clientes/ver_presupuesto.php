@@ -1,5 +1,6 @@
 <?
-require_once("../conectar.php");
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
 
 $codpresupuesto=$_GET["codpresupuesto"];

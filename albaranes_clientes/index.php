@@ -141,7 +141,7 @@ if ($cadena_busqueda<>"") {
 					    </tr>
 					  <tr>
 						  <td><span id="fechin">Fecha de inicio</span></td>
-						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
+						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
@@ -157,13 +157,13 @@ if ($cadena_busqueda<>"") {
 					  </tr>
 						<tr>
 						  <td><span id="fchafin">Fecha de fin</span></td>
-						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $fechafin?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
+						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $fechafin?>" readonly><img src="../img/calendario.svg" name="Image2" id="Image2" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
 					inputField : "fechafin",
 					ifFormat   : "%d/%m/%Y",
-					button     : "Image1"
+					button     : "Image2"
 					  }
 					);
 		</script></td>
@@ -176,7 +176,7 @@ if ($cadena_busqueda<>"") {
 			 	<div id="botonBusqueda">                    
 				 	<button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg"/> <span id="busc">buscar</span>  </button>
 			 	  	<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg"/> <span id="limp">limpiar</span>  </button>
-					<button type="button" id="btnnuevo"  onClick="nuevo_albaran()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg"/> <span id="nueprov">Nuevo Proveedor</span> </button>
+					<button type="button" id="btnnuevo"  onClick="nuevo_albaran()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg"/> <span id="tnvorto">Nuevo Albaran</span> </button>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>

@@ -90,7 +90,7 @@ function getTranslationText(name)
         "todubic":["All locations","Todas las ubicaciones","Wszystkie lokacje","tutti i posti","Todos os locais","toutes les zones géographiques","alle Orte"],
         "preciot":["Price T.","Precio T.","Cena T.","Prezzo T.","Preço T.","Prix ​​T.","Preis T."],
         "stock":["Stock","Stock","Zbiory","azione","estoque","Stock","Lager"],
-        "unidad":["Unit of measurement","Unidad de medida","/ jednostka pomiarowa","Unità / misurazione","/ unidade de medição","unité / mesure","Einheit / Mess"],
+        "unidad":["Meassur. Un.","Unidad de medida","/ jednostka pomiarowa","Unità / misurazione","/ unidade de medição","unité / mesure","Einheit / Mess"],
         "metproc":["Meta processes","Meta procesos","procesy docelowe","processi di destinazione","processos alvo","processus cibles","Soll-Prozesse"],
         "bmetproc":["Meta processes search ","Búsqueda de meta procesos","Meta Proces wyszukiwania","Ricerca di meta processi","Pesquisa de meta processo ","Recherche de méta processus", "Suche nach metaprozess"],
         "bgrupproc":["Processes Groups search ","Búsqueda de grupos de procesos","Szukaj grup procesow","Ricerca di Gruppi di Processi","Pesquisa de grupo de processo","Rechercher des groupes des processus", "Suche nach prozessgruppen"],
@@ -141,6 +141,7 @@ function getTranslationText(name)
         "todosest":["All states","Todos los estados","Wszystkie kraje","tutti gli stati","todos os estados","tous les états","alle Staaten"],
         "pendpago":["Outstanding","Pendiente de pago","wybitny","eccezionale","excepcional", "exceptionnel","hervorragend"],
         "pagada":["Paid","Pagada","płatny","pagato","pago","payé","bezahlt"],
+        "pagar":["Pay","Pagar","płacic","pagare","pagar","payer","bezahlen"],
         "fchaini":["Start date","Fecha de inicio","Data rozpoczęcia","data dinizio","data de início","date de début","Anfangsdatum"],
         "fchafin":["Ending date","Fecha de fin","Data końcowa","chiusura","data de término","fin","Ende"],
         "nrofcenco":["No. Of invoices found","No. de facturas encontradas","Ilość znalezionych faktur","No. delle fatture trovato","No. de facturas encontrado","Nombre de factures trouvées","Anzahl der Rechnungen gefunden"],
@@ -369,7 +370,7 @@ function getTranslationText(name)
         "tdstax":["Select a tax","Seleccionar un impuesto","wybierz podatek","italian","portugues","frances","Aleman"],
         "realcionart":["List of items","Listado de articulos","polski","italian","portugues","frances","Aleman"],
         "ndartenctn":["Number of ítems found","No. de articulos encontrados", "polski","italian","portugues","frances","Aleman"],
-        "undmed":["Unit of meassurement","Unidad de medida", "polski","italian","portugues", "frances","Aleman"],
+        "undmed":["Meassure Un.","Unidad de medida", "polski","italian","portugues", "frances","Aleman"],
         "modarticulo":["Modify Item","MODIFICAR ARTICULO","polski","italian","portugues", "frances","Aleman"],
         "tdsembalajes":["All packaging types","Todos los embalajes","polski","italian", "portugues", "frances","Aleman"],
         "moddesctick":["Modify description of bills","Modificar descrip. en ticket","polski","italian", "portugues","frances","Aleman"],
@@ -576,7 +577,9 @@ function getTranslationText(name)
         "nomgrupprc":["Group name","Nombre del grupo","Nazwa grupy","Nome del gruppo","Nome do grupo","Nom de gruope","Gruppenname"],
         "lot":["Lot","Lote","Los","Lotto","Lote","Lot","Menge"],
         "bat":["Batch","Partida","Przesylka","Partita","remessa","Pracelle","Batch"],
-     };
+        "prodnop":["Item not in stock","Producto no presente en Stock","produkt niedostępny ","prodotto non in stock","produto não em estoque","produit pas en stock","Produkt nicht auf Lager"],
+        "estactual":["Status has been updated","El estado ha sido actualizado","Stan zostal zaktualizowany","Lo stato e stato aggiornato","O status foi atualizado","Le statut a ete mis a jour","Der Status wurde aktulisiert"],
+    };
 
 
     var trans ='traduccion no definida'
@@ -994,6 +997,9 @@ function langchange() {
     $("#timpvl").text(getTranslationText('impvl'));
     $("#tapgr").text(getTranslationText('apgr'));
     $("#tpagado").text(getTranslationText('pagado'));
+    $("#tpagada,#pagada").text(getTranslationText('pagada'));
+    $("#tpagar,#pagar").text(getTranslationText('pagar'));
+
     $("#tadevolver").text(getTranslationText('adevolver'));
     $("#tnvavta").text(getTranslationText('nvavta'));
     $("#ttfbd").text(getTranslationText('tfbd'));
@@ -1029,13 +1035,11 @@ function langchange() {
     $("#tagregprocgrup,#agregprocgrup").text(getTranslationText('agregprocgrup')); 
     $("#tlot,#lot").text(getTranslationText('lot'));
     $("#tbat,#bat").text(getTranslationText('bat'));
+    $("#tprodnop,#prodnop").text(getTranslationText('prodnop'));
+    $("#tpais,#pais").text(getTranslationText('pais'));
+    $("#testactual,#estactual").text(getTranslationText('estactual'));
 
-
-
-    
-
-
-    
+  
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
