@@ -1,11 +1,13 @@
 <?
-require_once("../conectar.php");
+require_once("../conectar7.php");
 require_once("../funciones/fechas.php"); 
+require_once("../mysqli_result.php");
 
 $codpresupuesto=$_GET["codpresupuesto"];
 $cadena_busqueda=$_GET["cadena_busqueda"];
 
 $query="SELECT * FROM presupuestos WHERE codpresupuesto='$codpresupuesto'";
+echo $query;
 $rs_query=mysqli_query($conexion,$query);
 $codcliente=mysqli_result($rs_query,0,"codcliente");
 $fecha=mysqli_result($rs_query,0,"fecha");
@@ -48,27 +50,27 @@ $iva=mysqli_result($rs_query,0,"iva");
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'"; 
 						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
-							<td width="15%"><span id="tcliente">Cliente</span></td>
+							<td width="15%"><span  id="tcliente">Cliente</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
-							<td width="15%"><span id="tnip">NIF / CIF</span></td>
+							<td width="15%"><span  id="tnip">NIF / CIF</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nif");?></td>
 					    </tr>
 						<tr>
-						  <td><span id="tdireccion">Direcci&oacute;n</span></td>
+						  <td><span  id="tdireccion">Direcci&oacute;n</span></td>
 						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 						<tr>
-						  <td><span id="tcod_pres">C&oacute;digo de presupuesto</span></td>
+						  <td><span  id="tcod_pres">C&oacute;digo de presupuesto</span></td>
 						  <td colspan="2"><?php echo $codpresupuesto?></td>
 					  </tr>
 					  <tr>
-						  <td><span id="tfecha">Fecha</span></td>
+						  <td><span  id="tfecha">Fecha</span></td>
 						  <td colspan="2"><?php echo implota($fecha)?></td>
 					  </tr>
 					  <tr>
-						  <td><span id="tiva">IVA</span></td>
+						  <td><span  id="tiva">IVA</span></td>
 						  <td colspan="2"><?php echo $iva?> %</td>
 					  </tr>
 					  <tr>
@@ -78,18 +80,20 @@ $iva=mysqli_result($rs_query,0,"iva");
 				  </table>
 					 <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="5%"><span id="titem">ITEM</span></td>
-							<td width="25%"><span id="tflia">FAMILIA</span></td>
-							<td width="30%"><span id="descri">descripcion</span></td>
-							<td width="10%"><span id="tcant">CANTIDAD</span></td>
-							<td width="10%"><span id="tprecio">PRECIO</span></td>
-							<td width="10%"><span id="tdctop">DCTO %</span></td>
-							<td width="10%"><span id="timporte">IMPORTE</span></td>
+							<td width="5%"><span  id="titem">ITEM</span></td>
+							<td width="25%"><span  id="tflia">FAMILIA</span></td>
+							<td width="30%"><span  id="descri">descripcion</span></td>
+							<td width="10%"><span  id="tcant">CANTIDAD</span></td>
+							<td width="10%"><span  id="tprecio">PRECIO</span></td>
+							<td width="10%"><span  id="tdctop">DCTO %</span></td>
+							<td width="10%"><span  id="timporte">IMPORTE</span></td>
 						</tr>
 					</table>
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
-					  <? $sel_lineas="SELECT presulinea.*,articulos.*,familias.nombre as nombrefamilia FROM presulinea,articulos,familias WHERE presulinea.codpresupuesto='$codpresupuesto' AND presulinea.codigo=articulos.codarticulo AND presulinea.codfamilia=articulos.codfamilia AND articulos.codfamilia=familias.codfamilia ORDER BY presulinea.numlinea ASC";
-$rs_lineas=mysqli_query($conexion,$sel_lineas);
+					  <? //$sel_lineas="SELECT presulinea.*,articulos.*,familias.nombre as nombrefamilia FROM presulinea,articulos,familias WHERE presulinea.codpresupuesto='$codpresupuesto' AND presulinea.codigo=articulos.codarticulo AND presulinea.codfamilia=articulos.codfamilia AND articulos.codfamilia=familias.codfamilia ORDER BY presulinea.numlinea ASC";
+					     $sel_lineas="SELECT presulinea.*,articulos.*,familias.nombre as nombrefamilia FROM presulinea,articulos,familias WHERE presulinea.codpresupuesto='$codpresupuesto' AND presulinea.codigo=articulos.codarticulo AND presulinea.codfamilia=familias.codfamilia ORDER BY presulinea.numlinea ASC";
+
+						$rs_lineas=mysqli_query($conexion,$sel_lineas);
 						for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
 							$numlinea=mysqli_result($rs_lineas,$i,"numlinea");
 							$codfamilia=mysqli_result($rs_lineas,$i,"codfamilia");
@@ -121,23 +125,23 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 					<div id="frmBusqueda">
 					<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 						<tr>
-							<td width="15%"><span id="tbaseimp">Base imponible</span></td>
+							<td width="15%"><span  id="tbaseimp">Base imponible</span></td>
 							<td width="15%"><?php echo number_format($baseimponible,2);?> &#8364;</td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="tiva">IVA</span></td>
+							<td width="15%"><span  id="tiva">IVA</span></td>
 							<td width="15%"><?php echo number_format($baseimpuestos,2);?> &#8364;</td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="ttotal">Total</span></td>
+							<td width="15%"><span  id="ttotal">Total</span></td>
 							<td width="15%"><?php echo $preciototal?> &#8364;</td>
 						</tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
 					<div align="center">
-					<button type="button" id="btnaceptar" onClick="aceptar(<? echo $codpresupuesto?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
+					<button type="button" id="btnaceptar" onClick="aceptar(<? echo $codpresupuesto?>)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span  id="tcancelar">Cancelar</span> </button>
 				        </div>
 					</div>
 			  </div>

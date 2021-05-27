@@ -13,7 +13,7 @@ if (isset($_GET["codproveedor"])){$codproveedor=$_GET["codproveedor"];
 	$act_factura="UPDATE $tipoFactura SET estado='$estado' WHERE codfactura='$codfactura' $where;";
 	$rs_act=mysqli_query($conexion,$act_factura);
 
-	echo '<span id="testactual"> El estado ha sido acturalizado</span>';
+	echo '<span  id="testactual"> El estado ha sido acturalizado</span>';
 ?>
 </body>
 </html>

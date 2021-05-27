@@ -1,5 +1,5 @@
 <?php
-require_once("../conectar.php");
+require_once("../conectar7.php");
 require_once("../funciones/fechas.php");
 
 $codtrabajo=$_GET["codtrabajo"];
@@ -180,50 +180,50 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validartrabajador()" title="Validar trabajador" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 <tr>
-<td><span id="ttrabajad">TRABAJADOR</span></td>
+<td><span  id="ttrabajad">TRABAJADOR</span></td>
 <td width="27%"><input NAME="nombre" type="text" class="cajaGrande" id="nombre" value="<?php echo $nombre; ?>" size="45" readonly></td>
-<td width="3%"><span id="tnif">NIF</span></td>
+<td width="3%"><span  id="tnif">NIF</span></td>
 <td width="64%"><input NAME="nif" type="text" class="cajaMedia" id="nif" value="<?php echo $nif; ?>" size="20" maxlength="15" readonly></td>
 </tr>
 <tr>
-<td><span id="tcod_pres">C&oacute;digo Presupuesto</span></td>
+<td><span  id="tcod_pres">C&oacute;digo Presupuesto</span></td>
 <td><input NAME="codpresupuesto" type="text" class="cajaGrande" id="codpresupuesto" value="<?php echo $codpresupuesto; ?>" size="45" maxlength="45"></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="tttrabajo">Titulo Trabajo</span></td>
+<td><span  id="tttrabajo">Titulo Trabajo</span></td>
 <td><input NAME="titulo" type="text" class="cajaGrande" id="titulo" value="<?php echo $titulo; ?>" size="45" maxlength="250"></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="tdescri">Descripci&oacute;n</span></td>
+<td><span  id="tdescri">Descripci&oacute;n</span></td>
 <td><textarea name="descripcion" cols="45" rows="5" class="cajaGrandeML" id="descripcion"><?php echo $descripcion; ?></textarea></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="thrsprv">Horas previstas</span></td>
+<td><span  id="thrsprv">Horas previstas</span></td>
 <td><input NAME="horasprevistas" type="text" class="cajaPequena" id="horasprevistas" value="<?php echo $horasprevistas; ?>" size="45" maxlength="45"></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="thinvertidas">Horas invertidas</span></td>
+<td><span  id="thinvertidas">Horas invertidas</span></td>
 <td><input NAME="horasinvertidas" type="text" class="cajaPequena" id="horasinvertidas" value="<?php echo $horasinvertidas; ?>" size="45" maxlength="45"></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="tpciohs">Precio / Hora</span></td>
+<td><span  id="tpciohs">Precio / Hora</span></td>
 <td><input NAME="preciohora" type="text" class="cajaPequena" id="preciohora" value="<?php echo $preciohora; ?>" size="45" maxlength="45">
-    <span id="trglspunt">(Separador decimal con . -punto-)</span></td>
+    <span  id="trglspunt">(Separador decimal con . -punto-)</span></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="tfccom">Fecha Comienzo</span></td>
+<td><span  id="tfccom">Fecha Comienzo</span></td>
 <td><input NAME="fechacomienzo" type="text" class="cajaPequena" id="fechacomienzo" size="10" maxlength="10" value="<? echo implota($fechacomienzo); ?>" readonly>
 <img src="../img/calendario.svg" alt="" name="ifechacomienzo" width="16" height="16" border="0" id="ifechacomienzo" onMouseOver="this.style.cursor='pointer'">
 <script type="text/javascript">
@@ -239,7 +239,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 <td>&nbsp;</td>
 </tr>
 <tr>
-    <td><span id="tflect">Fecha Lectura</span></td>
+    <td><span  id="tflect">Fecha Lectura</span></td>
 <td><input NAME="fechalectura" type="text" class="cajaPequena" id="fechalectura" size="10" maxlength="10" value="<? echo implota($fechalectura); ?>">
 <img src="../img/calendario.svg" alt="" name="ifechalectura" width="16" height="16" border="0" id="ifechalectura" onMouseOver="this.style.cursor='pointer'">
 <script type="text/javascript">
@@ -255,7 +255,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="tfechfin">Fecha Finalizaci&oacute;n</span></td>
+<td><span  id="tfechfin">Fecha Finalizaci&oacute;n</span></td>
 <td><input NAME="fechafinalizacion" type="text" class="cajaPequena" id="fechafinalizacion" size="10" maxlength="10" value="<? echo implota($fechafinalizacion); ?>">
 <img src="../img/calendario.svg" alt="" name="ifechafinalizacion" width="16" height="16" border="0" id="ifechafinalizacion" onMouseOver="this.style.cursor='pointer'">
 <script type="text/javascript">
@@ -271,7 +271,7 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="testado">ESTADO</span></td>
+<td><span  id="testado">ESTADO</span></td>
 <td><label>
 <select name="estado" id="estado">
 <?php
@@ -299,8 +299,8 @@ foreach ($estados_partestrabajo as $k => $v) {
 				<input name="codarticulo" value="<? echo $codarticulo?>" type="hidden" id="codarticulo">
 				<br>
   <div align="center">
-				   <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
+				   <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span  id="tcancelar">Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codalbarantmp" name="codalbarantmp" value="<? echo $codalbarantmp?>" type="hidden">
 					<input id="modif" name="modif" value="0" type="hidden">

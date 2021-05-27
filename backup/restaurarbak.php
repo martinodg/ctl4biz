@@ -76,7 +76,7 @@ $hoy=date("d/m/Y");
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla_restaurar.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-						  <td><span id="tfechin">Fecha de inicio</span></td>
+						  <td><span  id="tfechin">Fecha de inicio</span></td>
 						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -92,7 +92,7 @@ $hoy=date("d/m/Y");
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-						  <td><span id="tfchafin">Fecha de fin</span></td>
+						  <td><span  id="tfchafin">Fecha de fin</span></td>
 						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -117,12 +117,12 @@ $hoy=date("d/m/Y");
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">
-					                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
+					                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span  id="tbuscar">Buscar</span> </button>
 
-			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
+			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
 
 
-					<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+					<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 
 
 														
@@ -131,7 +131,7 @@ $hoy=date("d/m/Y");
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
 				<td width="50%" class="paginar" align="left">N de copias de seguridad encontradas <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" align="right"><span id="tmostradas">Mostradas</span> <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" align="right"><span  id="tmostradas">Mostradas</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
@@ -140,7 +140,7 @@ $hoy=date("d/m/Y");
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="6%"><span id="titem">ITEM</span></td>
+							<td width="6%"><span  id="titem">ITEM</span></td>
 							<td width="50%">DENOMINACION</td>
 							<td width="16">FECHA </td>
 							<td width="16%">HORA</td>

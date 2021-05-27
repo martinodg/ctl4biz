@@ -23,9 +23,9 @@ function eliminar_linea(codfacturatmp,numlinea,importe)
 		var nuevo_total=nueva_bi+nuevos_impuestos;
 		parent.document.formulario_lineas.baseimpuestos.value=Math.round(nuevos_impuestos*100)/100;
 		parent.document.formulario_lineas.preciototal.value=Math.round(nuevo_total*100)/100;
-		parent.document.formulario_lineas.preciototal2.value=Math.round(nuevo_total*100)/100;
+		parent.document.formulario.preciototal2.value=Math.round(nuevo_total*100)/100;
 	
-		document.getElementById("frame_datos").src="eliminar_linea.php?codfacturatmp="+codfacturatmp+"&numlinea=" + numlinea;
+		document.getElementById("frame_datos").src="eliminar_linea.php?codfacturatmp="+codfacturatmp+"&numlinea="+numlinea;
 	}	
 }
 </script>
@@ -33,6 +33,8 @@ function eliminar_linea(codfacturatmp,numlinea,importe)
 <?php 
 if (isset($_GET["codfacturatmp"])){$codfacturatmp=$_GET["codfacturatmp"];} 
 $codfacturatmp=$_POST["codfacturatmp"];
+if (isset($_GET["modif"])){$modif=$_GET["modif"];} 
+$modif=$_POST["modif"];
 $retorno=0;
 if ($modif<>1) {
 		if (!isset($codfacturatmp)) { 
@@ -44,7 +46,7 @@ if ($modif<>1) {
 				$cantidad=$_POST["cantidad"];
 				$precio=$_POST["precio"];
 				$importe=$_POST["importe"];
-				$descuento=$_POST["descuento"];  
+				$descuento=$_POST["descuento"];   
 
 				//Ask for last codproceso and assing new value
 				$consultaprevia = "SELECT max(numlinea) as maximo FROM factulineatmp WHERE codfactura=$codfacturatmp";

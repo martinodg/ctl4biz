@@ -79,7 +79,7 @@ if(isset($_SESSION["intUser"])) {
 <title>User Login</title>
 </head>
 <body>
-  <div id="content_login">
+  <div id="content_login"> 
   <nav>
             <ul>
                 <li>
@@ -88,6 +88,11 @@ if(isset($_SESSION["intUser"])) {
                         <li><a class="lang" id="english" href="#">English</a></li>
                         <li><a class="lang" id="espanol" href="#">Espanol</a></li>
                         <li><a class="lang" id="polish" href="#">Polski</a></li>
+                        <li><a class="lang" id="italiano" href="#">Italiano</a></li>
+                        <li><a class="lang" id="portugues" href="#">Portugues</a></li>
+                        <li><a class="lang" id="francais" href="#">Français</a></li>
+                        <li><a class="lang" id="deutsche" href="#">Deutsche</a></li>
+
                     </ul>
 
                 </li>
@@ -103,13 +108,13 @@ if(isset($_SESSION["intUser"])) {
                 <div class="message"><?php if($message!="") { echo $message; } ?></div>
                 <h3 id="details" class="loginTitle">Enter Login Details</h3>
                 <br><br>
-                <span id="companyCode" class="loginText">Company Code:</span><br>
+                <span  id="companyCode" class="loginText">Company Code:</span><br>
                 <input class="input-wrapper"type="text" name="company_code">
                 <br><br>
                 <span class="loginText">e-mail:</span><br>
                 <input class="input-wrapper"type="text" name="user_name">
                 <br> <br>
-                <span id="password" class="loginText">password:</span><br>
+                <span  id="password" class="loginText">password:</span><br>
                 <div class="password-wrapper">
 	                <input id="password-field" type="password" class="input" name="password">
 	                <div class="icon-wrapper pass">
@@ -121,11 +126,11 @@ if(isset($_SESSION["intUser"])) {
 
                 <div id="botonBusqueda">
 					
-                    <button type="submit"  id="btnsubmit" value="Submit" onMouseOver="style.cursor=cursor"> <img src="../img/login.svg" alt="nuevo" /> <span id="sub">Submit</span> </button>
+                    <button type="submit"  id="btnsubmit" value="Submit" onMouseOver="style.cursor=cursor"> <img src="../img/login.svg" alt="nuevo" /> <span  id="sub">Submit</span> </button>
                     <br><br>
                     <br> <br>
-                <span id="noMember" class="loginText">Not a member yet?</span><br>
-                    <button type="button" id="btnlogin"  onClick="window.location.href = './register.html';" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="Register" /> <span id="signin">Sign in Now!</span> </button>
+                <span  id="noMember" class="loginText">Not a member yet?</span><br>
+                    <button type="button" id="btnlogin"  onClick="window.location.href = './register.html';" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="Register" /> <span  id="signin">Sign in Now!</span> </button>
                 </div>
             </form>
         </center>

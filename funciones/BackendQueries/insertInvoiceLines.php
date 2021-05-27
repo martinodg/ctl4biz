@@ -50,9 +50,9 @@ if (isset($_GET['docType'])) { $doctype=$_GET['docType'];
 				$insertInvoiceLines_fromTmp="INSERT INTO $table (codfactura,numlinea,codfamilia,codigo, cantidad,precio,importe,dcto,TAX) SELECT $codFactura, numlinea,codfamilia,codigo,cantidad,precio,importe,dcto,TAX FROM factulineatmp WHERE codfactura=$codFacturat ORDER BY numlinea ASC";
 				$rs_invoice=mysqli_query($conexion,$insertInvoiceLines_fromTmp);
 				echo '<div align="center">';
-				echo '<button type="button" id="btnsalir" onClick="salir()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="aceptar" /> <span id="tsalir">Salir</span> </button>';  	
-				echo '<button type="button" id="btnimprimir" onClick="imprimir()"onMouseOver="style.cursor=cursor"> <img src="../img/dinero.svg" alt="nuevo" /> <span id="tpagar">Pagar</span> </button>';			    
-				echo '<button type="button" id="bpagar" onClick="pagar()"onMouseOver="style.cursor=cursor"> <img src="../img/caja.svg" alt="nuevo" /> <span id="timpr">Imprimir</span> </button>';			    
+				echo '<button type="button" id="btnsalir" onClick="salir()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="aceptar" /> <span  id="tsalir">Salir</span> </button>';  	
+				echo '<button type="button" id="btnimprimir" onClick="imprimir()"onMouseOver="style.cursor=cursor"> <img src="../img/caja.svg" alt="nuevo" /> <span  id="timpr">Imprimir</span> </button>';		    
+				echo '<button type="button" id="bpagar" onClick="pagar()"onMouseOver="style.cursor=cursor"> <img src="../img/dinero.svg" alt="nuevo" /> <span  id="tpagar">Pagar</span> </button>';		    
 				echo '</div>';
 			}else{
 					$errorMessage.= "Unknown doctype. "; 

@@ -59,11 +59,11 @@ $hoy=date("d/m/Y");
 						$totalfacturasiniva=$totalfacturasiniva+$totalalbaransiniva; 
 						?>
 						<tr>
-							<td width="15%"><span id="codalbaran">C&oacute;digo de albar&aacute;n</span> <? echo $contador+1;?></td>
+							<td width="15%"><span  id="codalbaran">C&oacute;digo de albar&aacute;n</span> <? echo $contador+1;?></td>
 						    <td width="15%"><? echo mysqli_result($rs_albaranes,$contador,"codalbaran");?></td>
-                            <td width="20%"><span id="timpsiva">Importe sin iva</span></td>
+                            <td width="20%"><span  id="timpsiva">Importe sin iva</span></td>
 							<td width="15%"><? echo number_format($totalalbaransiniva,2,",",".");?> &#8364;</td>
-							<td width="20%"><span id="timpciva">Importe con iva</span> (<? echo $iva?>%)</td>
+							<td width="20%"><span  id="timpciva">Importe con iva</span> (<? echo $iva?>%)</td>
 							<td width="15%"><? echo number_format($totalalbaran,2,",",".");?> &#8364;</td>
 						</tr>
 					<? $totalfactura=$totalfactura+mysqli_result($rs_albaranes,$contador,"totalalbaran");
@@ -80,13 +80,13 @@ $hoy=date("d/m/Y");
 						<tr>
 							<td width="15%"></td>
 						    <td width="15%"></td>
-				            <td width="20%"><span id="tfcsiva">Total facturaci&oacute;n sin iva</span></td>
+				            <td width="20%"><span  id="tfcsiva">Total facturaci&oacute;n sin iva</span></td>
 							<td width="15%"><? echo number_format($totalfacturasiniva,2,",",".");?> &#8364;</td>
-							<td width="20%"><span id="tfcciva">Total facturaci&oacute;n con iva</span></td>
+							<td width="20%"><span  id="tfcciva">Total facturaci&oacute;n con iva</span></td>
 							<td width="15%"><? echo number_format($totalfactura,2,",",".");?> &#8364;</td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="tcodfacabbr">Cod. Factura</span></td>
+							<td width="15%"><span  id="tcodfacabbr">Cod. Factura</span></td>
 						    <td width="15%"><input type="text" name="Afactura" id="Afactura" class="cajaMedia" size="20" maxlength="20"></td>
 				            <td width="20%"><ul id="lista-errores"></ul></td>
 							<td width="15%"></td>
@@ -94,7 +94,7 @@ $hoy=date("d/m/Y");
 							<td width="15%"></td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="tiva">IVA</span></td>
+							<td width="15%"><span  id="tiva">IVA</span></td>
 						    <td width="15%"><input type="text" name="Ziva" id="Ziva" value="16" class="cajaPequena"> %</td>
 				            <td width="20%"></td>
 							<td width="15%"></td>
@@ -102,7 +102,7 @@ $hoy=date("d/m/Y");
 							<td width="15%"></td>
 						</tr>		
 						<tr>
-							<td width="15%"><span id="tfecha">Fecha</span></td>
+							<td width="15%"><span  id="tfecha">Fecha</span></td>
 						    <td width="15%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -122,9 +122,9 @@ $hoy=date("d/m/Y");
 			  </div>
 				<div id="botonBusqueda">
 					<input type="hidden" name="id" id="id" value="">
-					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
 
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span  id="tcancelar">Cancelar</span> </button>
 					<input id="accion" name="accion" value="convertir" type="hidden">
 					<input id="albaranes" name="albaranes" value="<? echo $albaranes?>" type="hidden">
 					<input id="iva" name="iva" value="<? echo $iva?>" type="hidden">

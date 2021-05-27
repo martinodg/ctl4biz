@@ -25,10 +25,10 @@ require_once("../mysqli_result.php");
                     }
     if (!mysqli_query($conexion,$query_operacion)){
                
-    echo "<div class=\"mensaje\"><span id='tmsgatncbatexterror'>ATENCION: Non ha podido ser modificado con exito el batch</span>: '$codbatch'!!</div>";
+    echo "<div class=\"mensaje\"><span  id='tmsgatncbatexterror'>ATENCION: Non ha podido ser modificado con exito el batch</span>: '$codbatch'!!</div>";
         echo mysqli_error($conexion) ;
     }else{
-       echo "<div class=\"header\"><span id='tmsgatncbatext'>ATENCION: El batch ha sido modificado con exito!</span></div>";
+       echo "<div class=\"header\"><span  id='tmsgatncbatext'>ATENCION: El batch ha sido modificado con exito!</span></div>";
     }
  
 mysqli_close($conexion);   

@@ -9,7 +9,7 @@
         //Perform when DOM is full loaded
         $(document).ready(function() {
             //load unidades de medida combo
-            $.get("../sel_unidadmedida.php", function(data) {
+            $.get("../funciones/BackendQueries/getMeassuresUnits.php", function(data) {
                 $('.cboUnidadmedida').html(data);
             });
             //assign value to batch
@@ -176,7 +176,7 @@
     <div id="pagina">
         <div id="zonaContenido">
             <div align="center">
-                <div id="tituloForm" class="header"><span id="tdefgrupprc">Definir grupo de procesos</span></div>
+                <div id="tituloForm" class="header"><span  id="tdefgrupprc">Definir grupo de procesos</span></div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
@@ -184,24 +184,24 @@
 
                             <tr>
 
-                                <td width="20%"><span id="tcodigo">Codigo</span> <input id="codgrupo" type="text" class="cajaPequena" NAME="codgrupo" maxlength="15" readonly></td>
-                                <td width="40%"><span id="tlot">Lote</span><label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> <span id="tbat">Partida</span></td>
-                                <td width="40%"><span id="tnomgrupprc">Nombre del grupo de procesos</span> <input id="nombregrupo" type="text" class="cajaGrande" NAME="nombregrupo" size="45"></td>
+                                <td width="20%"><span  id="tcodigo">Codigo</span> <input id="codgrupo" type="text" class="cajaPequena" NAME="codgrupo" maxlength="15" readonly></td>
+                                <td width="40%"><span  id="tlot">Lote</span><label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> <span  id="tbat">Partida</span></td>
+                                <td width="40%"><span  id="tnomgrupprc">Nombre del grupo de procesos</span> <input id="nombregrupo" type="text" class="cajaGrande" NAME="nombregrupo" size="45"></td>
 
                             </tr>
                             
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="aceptar" /> <span id="tdefinir">Crear</span> </button>
-                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="Salir" /> <span id="tsalir">Salir</span> </button>
+                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="aceptar" /> <span  id="tdefinir">Crear</span> </button>
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="Salir" /> <span  id="tsalir">Salir</span> </button>
                 </div>
 
                 </form>
                 <div id="lineaResultado">
 
                 </div>
-                <div id="tituloForm" class="header" ><span id="tagregprocgrup">Agregar porcesos al grupo </span></div>
+                <div id="tituloForm" class="header" ><span  id="tagregprocgrup">Agregar porcesos al grupo </span></div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
@@ -209,8 +209,8 @@
 
                             <tr>
 
-                                <td width="20%"><span id="tcodart">Codigo del proceso</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
-                                <td width="80%"><span id="tnombart">Nombre del proceso</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
+                                <td width="20%"><span  id="tcodart">Codigo del proceso</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
+                                <td width="80%"><span  id="tnombart">Nombre del proceso</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
 
                             </tr>
 
@@ -222,7 +222,7 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="agregmatpimas">Agregar articulo como materia prima</span> </button>
+                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span  id="agregmatpimas">Agregar articulo como materia prima</span> </button>
 
                 </div>
                 <input id="hidecodarticulo" type="text" class="cajaPequena" maxlength="15" style="display:none" readonly>
@@ -231,8 +231,8 @@
                 <div id="lineaResultado">
                     <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                         <tr>
-                            <td width="50%" class="paginar" align="left"><span id="tndartenctn">N de articulos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-                            <td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+                            <td width="50%" class="paginar" align="left"><span  id="tndartenctn">N de articulos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                            <td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                     </table>
                 </div>

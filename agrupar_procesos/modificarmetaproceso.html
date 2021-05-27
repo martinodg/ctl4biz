@@ -115,7 +115,7 @@
         $(document).ready(function() {
             //@todo revisar traducciones necesarias en esta funcion
             //load unidades de medida combo
-            $.get("../sel_unidadmedida.php", function(data) {
+            $.get("../funciones/BackendQueries/getMeassuresUnits.php", function(data) {
                 $('.cboUnidadmedida').html(data);
             });
 
@@ -254,7 +254,7 @@
 
                             <tr>
 
-                                <td width="20%"><span id="tcodmetaproc">Codigo del meta-proceso</span> <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15" readonly></td>
+                                <td width="20%"><span  id="tcodmetaproc">Codigo del meta-proceso</span> <input id="codmproceso" type="text" class="cajaPequena" NAME="codmproceso" maxlength="15" readonly></td>
                                 <td width="40%">Producto Final <label class="switch"> <input type="checkbox" id="batch" name="batch" > <span class="slider round"></span> </label> Producto Intermedio</td>
                                 <td width="40%">Nombre del meta-proceso <input id="nombremproceso" type="text" class="cajaGrande" NAME="nombremproceso" size="45"></td>
 
@@ -262,8 +262,8 @@
 
                             <tr>
                                 <td width="20%"> <input id="codArticuloCreado" type="text" class="cajaGrande" NAME="codArticuloCreado" maxlength="45" style="display:none" readonly></td>
-                                <td width="40%"><span id="tartcrdproce">Articulo creado por el proceso</span> <input id="nombreArticuloCreado" type="text" class="cajaGrande" NAME="nombreArticuloCreado" maxlength="45"></td>
-                                <td width="40%"><span id="cntestprod">Cantidad estimada a producir</span></td></td> <input id="cantidadEstimada" type="text" class="cajaPequena" NAME="cantidadEstimada" maxlength="15"><select id="umcantidadest" class="cboUnidadmedida"></select></td>
+                                <td width="40%"><span  id="tartcrdproce">Articulo creado por el proceso</span> <input id="nombreArticuloCreado" type="text" class="cajaGrande" NAME="nombreArticuloCreado" maxlength="45"></td>
+                                <td width="40%"><span  id="cntestprod">Cantidad estimada a producir</span></td></td> <input id="cantidadEstimada" type="text" class="cajaPequena" NAME="cantidadEstimada" maxlength="15"><select id="umcantidadest" class="cboUnidadmedida"></select></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
@@ -275,7 +275,7 @@
                 <div id="botonBusqueda">
 
                     <br>
-                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+                    <button type="button" id="btnaceptar" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
                     <br>
 
                 </div>
@@ -284,16 +284,16 @@
                 <div id="lineaResultado">
 
                 </div>
-                <div id="tituloForm" class="header"><span id="agrmatprim">Agregar Materia prima</span></div>
+                <div id="tituloForm" class="header"><span  id="agrmatprim">Agregar Materia prima</span></div>
 
                 <div id="frmBusqueda">
                     <form id="formulario" name="formulario" method="post" action="guardar_trabajador.php">
                         <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 
                             <tr>
-                                <td width="20%"><span id="tcodart">Codigo de articulo</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
-                                <td width="40%"><span id="tnombart">Nombre de articulo</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
-                                <td width="40%"><span id="tcant">Cantidad</span> <input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"><select id="umcantidadmprima" class="cboUnidadmedida"></select></td>
+                                <td width="20%"><span  id="tcodart">Codigo de articulo</span> <input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15"></td>
+                                <td width="40%"><span  id="tnombart">Nombre de articulo</span> <input id="nombrearticulo" type="text" class="cajaGrande" NAME="nombrearticulo" size="45"></td>
+                                <td width="40%"><span  id="tcant">Cantidad</span> <input id="cantidad" type="text" class="cajaPequena" NAME="cantidad" maxlength="15"><select id="umcantidadmprima" class="cboUnidadmedida"></select></td>
                             </tr>
 
 
@@ -304,7 +304,7 @@
                         </table>
                 </div>
                 <div id="botonBusqueda">
-                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="tagrartmtpr">Agregar articulo como materia prima</span> </button>
+                    <button type="button" id="btnagregar" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span  id="tagrartmtpr">Agregar articulo como materia prima</span> </button>
 
 
                 </div>
@@ -314,8 +314,8 @@
                 <div id="lineaResultado">
                     <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                         <tr>
-                            <td width="50%" class="paginar" align="left"><span id="tndartenctn">N de articulos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-                            <td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+                            <td width="50%" class="paginar" align="left"><span  id="tndartenctn">N de articulos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                            <td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                     </table>
                 </div>
@@ -325,7 +325,7 @@
                 <div ID="div_datos2" name="div_datos2"> </div>
                 <div id="botonCerrar">
                     <br>
-                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
+                    <button type="button" id="btncancelar" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="cerrar" /> <span  id="tcerrar">Cerrar</span> </button>
                     <br>
                 </div>
             </div>

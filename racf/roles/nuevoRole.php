@@ -65,7 +65,7 @@
                             <?php if($message!="") { echo $message; } ?>
                         </div>
                         <br> <br>
-                        <span id="codigo" class="loginText">Codigo del role:</span><br>
+                        <span  id="codigo" class="loginText">Codigo del role:</span><br>
                         <input class="input-wrapper" type="text" id="code" name="code" readonly>                  
 
                 </center>
@@ -73,7 +73,7 @@
             <div class="column3" style="background-color:#eee;">
                 <center>
                 <br> <br>
-                        <span id="nombre" class="loginText">Nombre de role:</span><br>
+                        <span  id="nombre" class="loginText">Nombre de role:</span><br>
                         <input class="input-wrapper" type="text" id="name" name="name" >
                     
                 </center>
@@ -81,7 +81,7 @@
             <div class="column3" style="background-color:#eee;">
                 <center>
                     <br> <br>
-                    <div><span id="roleDesactivado" class="loginText">Desactivado </span><label class="switch"> <input type="checkbox" id="rActivo" name="rActivo" > <span class="slider round"></span> </label> <span id="roleActivo" class="loginText">Activo</span></div>
+                    <div><span  id="roleDesactivado" class="loginText">Desactivado </span><label class="switch"> <input type="checkbox" id="rActivo" name="rActivo" > <span class="slider round"></span> </label> <span  id="roleActivo" class="loginText">Activo</span></div>
 
                     <input type="hidden" id="language" name="language" value="0">
 

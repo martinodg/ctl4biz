@@ -33,6 +33,8 @@ function eliminar_linea(codpresupuestotmp,numlinea,importe) {
 <?php 
 $codpresupuestotmp=$_POST["codpresupuestotmp"];
 $retorno=0;
+if (isset($_GET["modif"])){$modif=$_GET["modif"];} 
+$modif=$_POST["modif"];
 if ($modif<>1) {
 		if (!isset($codpresupuestotmp)) { 
 			$codpresupuestotmp=$_GET["codpresupuestotmp"]; 
@@ -45,7 +47,7 @@ if ($modif<>1) {
 				$precio=$_POST["precio"];
 				$importe=$_POST["importe"];
 				$descuento=$_POST["descuento"];
-				
+				//echo "la descripcion pasada es: ".$descripcioni;
 					//Ask for last codproceso and assing new value
 					$consultaprevia = "SELECT max(numlinea) as maximo FROM presulineatmp WHERE codpresupuesto=$codpresupuestotmp";
 					$rs_consultaprevia=mysqli_query($conexion,$consultaprevia);
@@ -57,13 +59,14 @@ if ($modif<>1) {
 
 
 				$sel_insert="INSERT INTO presulineatmp (codpresupuesto,numlinea,descripcion,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codpresupuestotmp','$codlineatmp','$descripcioni','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
+				//echo $sel_insert;
 				$rs_insert=mysqli_query($conexion,$sel_insert);
 		}
 }
 ?>
 <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 <?php
-$sel_lineas="SELECT presulineatmp.numlinea, presulineatmp.codigo as codarticulo, presulineatmp.descripcion as descripcionp, presulineatmp.codfamilia, presulineatmp.cantidad, presulineatmp.precio, presulineatmp.importe, presulineatmp.dcto, articulos.referencia,familias.nombre as nombrefamilia FROM articulos, presulineatmp,familias WHERE presulineatmp.codpresupuesto='$codpresupuestotmp' AND presulineatmp.codigo=articulos.codarticulo AND presulineatmp.codfamilia=articulos.codfamilia AND articulos.codfamilia=familias.codfamilia ORDER BY presulineatmp.numlinea ASC";
+$sel_lineas="SELECT presulineatmp.numlinea, presulineatmp.codigo as codarticulo, presulineatmp.descripcion as descripcionp, presulineatmp.codfamilia, presulineatmp.cantidad, presulineatmp.precio, presulineatmp.importe, presulineatmp.dcto, articulos.referencia,familias.nombre as nombrefamilia FROM articulos, presulineatmp,familias WHERE presulineatmp.codpresupuesto='$codpresupuestotmp' AND presulineatmp.codigo=articulos.codarticulo AND presulineatmp.codfamilia=familias.codfamilia ORDER BY presulineatmp.numlinea ASC";
 //echo $sel_lineas;
 $rs_lineas=mysqli_query($conexion,$sel_lineas);
 for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
@@ -89,7 +92,7 @@ for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
 				<td width="3%"><a href="javascript:eliminar_linea(<?php echo $codpresupuestotmp?>,<?php echo $numlinea?>,<?php echo $importe ?>)"><img src="../img/eliminar.svg" height="16px" width="16px" border="0"></a></td>
 			</tr>
 <? } ?>
-</table>
+</table> 
 <iframe id="frame_datos" name="frame_datos" width="0%" height="0" frameborder="0">
 	<ilayer width="0" height="0" id="frame_datos" name="frame_datos"></ilayer>
 </iframe>

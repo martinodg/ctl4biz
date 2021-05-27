@@ -33,8 +33,8 @@ body {
 #header {
     color: white;
     width: 100%;
-    height: 34px;
-    background: #083b66;
+    height: 48px;
+    background: #8dcaffaa;
     position: fixed;
 }
 
@@ -47,7 +47,7 @@ body {
 #icono {
     /*background: rgb(28, 31, 73);*/
     background: #083b66;
-    height: 34px;
+    height: 48px;
     width: 50px;
     display: block;
     float: left;
@@ -60,7 +60,7 @@ body {
 .imgicon {
     height: 24px;
     width: 24px;
-    padding: 5px 13px;
+    padding: 12px 13px;
 }
 
 .company {
@@ -84,8 +84,8 @@ body {
 
 #left_side {
     width: 50px;
-    margin-top: 34px;
-    height: 678px;
+    margin-top: 48px;
+    height: 100%;
     background: #1e1e1e;
     background-repeat: repeat-y;
     overflow: hidden;
@@ -96,14 +96,16 @@ body {
     padding: 13px;
     height: 24px;
     width: 24px;
+
 }
 
 .iconolado:hover {
     background: grey;
+    border-radius: 5px;
 }
 
 #content {
-    height: 672px;
+    height: 100%;
     overflow: auto;
     padding: 0px;
     margin-left: 50px;
@@ -124,7 +126,7 @@ body {
 
 .logo_login {
     margin-top: 100px;
-}
+}#306c77#306c77
 
 #bottombar {
     width: 100%;

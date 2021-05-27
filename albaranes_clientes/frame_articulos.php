@@ -1,6 +1,8 @@
 <?php
 header('Cache-Control: no-cache');
 header('Pragma: no-cache'); 
+require_once("../conectar7.php"); 
+require_once("../mysqli_result.php");
 ?>
 <html>
 <head>
@@ -19,8 +21,7 @@ function pon_prefijo(codfamilia,pref,nombre,precio,codarticulo) {
 }
 
 </script>
-<? require_once("../conectar7.php"); 
-require_once("../mysqli_result.php");
+<? 
 $familia=$_POST["cmbfamilia"];
 $referencia=$_POST["referencia"];
 $descripcion=$_POST["descripcion"];
@@ -42,10 +43,10 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; } ?>
 <? if ($nrs>0) { ?>
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 		  <tr>
-			<td width="20%"><div align="center"><b><span id="tflia">Familia</span></b></div></td>
-              <td width="20%"><div align="center"><b><span id="trefren">Referencia</span></b></div></td>
-              <td width="40%"><div align="center"><b><span id="tdescri">Descripci&oacute;n</span></b></div></td>
-			<td width="10%"><div align="center"><b><span id="tprecio">Precio</span></b></div></td>
+			<td width="20%"><div align="center"><b><span  id="tflia">Familia</span></b></div></td>
+              <td width="20%"><div align="center"><b><span  id="trefren">Referencia</span></b></div></td>
+              <td width="40%"><div align="center"><b><span  id="tdescri">Descripci&oacute;n</span></b></div></td>
+			<td width="10%"><div align="center"><b><span  id="tprecio">Precio</span></b></div></td>
 			<td width="10%"><div align="center"></td>
 		  </tr>
 		<?php

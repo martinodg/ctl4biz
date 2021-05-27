@@ -24,13 +24,14 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 $contador=0;
 while ($contador < mysqli_num_rows($rs_lineas)) {
 	$codfamilia=mysqli_result($rs_lineas,$contador,"codfamilia");
+	$numlineaat=mysqli_result($rs_lineas,$contador,"numlinea");
 	$codigo=mysqli_result($rs_lineas,$contador,"codigo");
 	$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
 	$precio=mysqli_result($rs_lineas,$contador,"precio");
 	$importe=mysqli_result($rs_lineas,$contador,"importe");
 	$baseimponible=$baseimponible+$importe;
 	$dcto=mysqli_result($rs_lineas,$contador,"dcto");
-	$sel_tmp="INSERT INTO albalineatmp (codalbaran,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES ('$codalbarantmp','','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
+	$sel_tmp="INSERT INTO albalineatmp (codalbaran,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES ('$codalbarantmp','$numlineaat','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
 	$rs_tmp=mysqli_query($conexion,$sel_tmp);
 	$contador++;
 }
@@ -188,24 +189,24 @@ $preciototal=$baseimponible+$baseimpuestos;
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="tinsalbaran">INSERTAR ALBARAN </span></div>
+                    <div id="tituloForm" class="header"><span  id="tinsalbaran">INSERTAR ALBARAN </span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_albaran.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-                            <td width="15%"><span id="tcod_cliente">C&oacute;digo Cliente</span> </td>
+                            <td width="15%"><span  id="tcod_cliente">C&oacute;digo Cliente</span> </td>
 					      <td colspan="3"><input NAME="codcliente" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()" value="<? echo $codcliente?>">
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente"  data-ttitle="tvalclt" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
-                            <td width="6%"><span id="tnombre">Nombre</span></td>
+                            <td width="6%"><span  id="tnombre">Nombre</span></td>
 						    <td width="27%"><input NAME="nombre" type="text" class="cajaGrande" id="nombre" size="45" maxlength="45" value="<? echo $nombre?>" readonly></td>
-				            <td width="3%"><span id="tnip">NIF</span></td>
+				            <td width="3%"><span  id="tnip">NIF</span></td>
 				            <td width="64%"><input NAME="nif" type="text" class="cajaMedia" id="nif" size="20" maxlength="15" value="<? echo $nif?>" readonly></td>
 						</tr>
 						<? $hoy=date("d/m/Y"); ?>
 						<tr>
-							<td width="6%"><span id="tfecha">Fecha</span></td>
+							<td width="6%"><span  id="tfecha">Fecha</span></td>
 						    <td width="27%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo implota($fecha)?>" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -216,11 +217,11 @@ $preciototal=$baseimponible+$baseimpuestos;
 					  }
 					);
 		</script></td>
-                            <td width="3%"><span id="tiva">IVA</span></td>
+                            <td width="3%"><span  id="tiva">IVA</span></td>
 				            <td width="64%"><input NAME="iva" type="text" class="cajaPequena" id="iva" size="5" maxlength="5" value="16" onChange="cambio_iva()" value="<? echo $iva?>"> %</td>
 						</tr>
 						<tr>
-                            <td><span id="tcodalbaran">C&oacute;digo de albar&aacute;n</span></td>
+                            <td><span  id="tcodalbaran">C&oacute;digo de albar&aacute;n</span></td>
 						  <td colspan="2"><?php echo $codalbaran?></td>
 					  </tr>
 					</table>										
@@ -237,21 +238,21 @@ $preciototal=$baseimponible+$baseimpuestos;
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
-                      <td width="11%"><span id="refren">Referencia</span></td>
+                      <td width="11%"><span  id="refren">Referencia</span></td>
                       <td colspan="10"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15" readonly> <img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor"  data-ttitle="tbscart"  title="Buscar articulo"></td>
 				  </tr>
 				  <tr>
-					<td><span id="tdescri">Descripción</span></td>
+					<td><span  id="tdescri">Descripción</span></td>
 					<td width="19%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
-                      <td width="5%"><span id="tprecio">Precio</span></td>
+                      <td width="5%"><span  id="tprecio">Precio</span></td>
 					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
-                      <td width="5%"><span id="tcant">Cantidad</span></td>
+                      <td width="5%"><span  id="tcant">Cantidad</span></td>
 					<td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
-                      <td width="4%"><span id="tdcto">Dcto.</span></td>
+                      <td width="4%"><span  id="tdcto">Dcto.</span></td>
 					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
-                      <td width="5%"><span id="timporte">Importe</span></td>
+                      <td width="5%"><span  id="timporte">Importe</span></td>
 					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" readonly> &#8364;</td>
-					<td width="15%"><button type="button" id="btnagregar" onClick="validar()"  onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="tagregar">Agregar</span> </button></td>
+					<td width="15%"><button type="button" id="btnagregar" onClick="validar()"  onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span  id="tagregar">Agregar</span> </button></td>
 				  </tr>
 				</table>
 				</div>
@@ -260,13 +261,13 @@ $preciototal=$baseimponible+$baseimpuestos;
 				<div id="frmBusqueda">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-                            <td width="5%"><span id="titem">ITEM</span></td>
-                            <td width="26%"><span id="treferenc">REFERENCIA</span></td>
-                            <td width="35%"><span id="tdescri">DESCRIPCION</span></td>
-                            <td width="8%"><span id="tcant">CANTIDAD</span></td>
-                            <td width="8%"><span id="tprecio">PRECIO</span></td>
-                            <td width="7%"><span id="tdctop">DCTO %</span></td>
-                            <td width="8%"><span id="timp">IMPORTE</span></td>
+                            <td width="5%"><span  id="titem">ITEM</span></td>
+                            <td width="26%"><span  id="treferenc">REFERENCIA</span></td>
+                            <td width="35%"><span  id="tdescri">DESCRIPCION</span></td>
+                            <td width="8%"><span  id="tcant">CANTIDAD</span></td>
+                            <td width="8%"><span  id="tprecio">PRECIO</span></td>
+                            <td width="7%"><span  id="tdctop">DCTO %</span></td>
+                            <td width="8%"><span  id="timp">IMPORTE</span></td>
 							<td width="3%">&nbsp;</td>
 						</tr>
 				</table>
@@ -279,19 +280,19 @@ $preciototal=$baseimponible+$baseimpuestos;
 			  <div id="frmBusqueda">
 			<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 			  <tr>
-                  <td width="27%" class="busqueda"><span id="subtotal">Sub-total</span></td>
+                  <td width="27%" class="busqueda"><span  id="subtotal">Sub-total</span></td>
 				<td width="73%" align="right"><div align="center">
 			      <input class="cajaTotales" name="baseimponible" type="text" id="baseimponible" size="12" align="right" value="<? echo number_format($baseimponible,2)?>" readonly> 
 		        &#8364;</div></td>
 			  </tr>
 			  <tr>
-                  <td class="busqueda"><span id="tiva">IVA</span></td>
+                  <td class="busqueda"><span  id="tiva">IVA</span></td>
 				<td align="right"><div align="center">
 			      <input class="cajaTotales" name="baseimpuestos" type="text" id="baseimpuestos" size="12" align="right" value="<? echo number_format($baseimpuestos,2)?>" readonly> 
 		        &#8364;</div></td>
 			  </tr>
 			  <tr>
-                  <td class="busqueda"><span id="tpciototal">Precio Total</span></td>
+                  <td class="busqueda"><span  id="tpciototal">Precio Total</span></td>
 				<td align="right"><div align="center">
 			      <input class="cajaTotales" name="preciototal" type="text" id="preciototal" size="12" align="right" value="<? echo number_format($preciototal,2)?>" readonly> 
 		        &#8364;</div></td>
@@ -300,8 +301,8 @@ $preciototal=$baseimponible+$baseimpuestos;
 			  </div>
 				<div id="botonBusqueda">					
 				  <div align="center">
-				   <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
+				   <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span  id="tcancelar">Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codalbarantmp" name="codalbarantmp" value="<? echo $codalbarantmp?>" type="hidden">
 					<input id="modif" name="modif" value="0" type="hidden">				    

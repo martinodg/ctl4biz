@@ -113,19 +113,19 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header"><span id="tbuscaart">Buscar ARTICULO</span></div>
+				<div id="tituloForm" class="header"><span  id="tbuscaart">Buscar ARTICULO</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-                            <td width="16%"><span id="tcodart">C&oacute;digo de art&iacute;culo</span></td>
+                            <td width="16%"><span  id="tcodart">C&oacute;digo de art&iacute;culo</span></td>
 							<td width="68%"><input id="codarticulo" type="text" class="cajaPequena" NAME="codarticulo" maxlength="15" value="<? echo $codarticulo?>" > <img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor" data-opttrad="tbuscaart" title="Buscar articulos"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
-							<td><span id="trefren">Referencia</span></td>
+							<td><span  id="trefren">Referencia</span></td>
 							<td><input id="referencia" name="referencia" type="text" class="cajaGrande" maxlength="20" value="<? echo $referencia?>"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
@@ -136,7 +136,7 @@ if ($cadena_busqueda<>"") {
 						$contador=0;
 					  ?>
 						<tr>
-							<td><span id="tflia">FAMILIA</span></td>
+							<td><span  id="tflia">FAMILIA</span></td>
 							<td><select id="cboFamilias" name="cboFamilias" class="comboMedio">
 							<option value="0" data-opttrad="tdsfam" >Todas las familias</option>
 								<?php
@@ -151,7 +151,7 @@ if ($cadena_busqueda<>"") {
 								</select>							</td>
 					    </tr>
 						<tr>
-							<td><span id="tdescri">Descripci&oacute;n</span></td>
+							<td><span  id="tdescri">Descripci&oacute;n</span></td>
 							<td><input id="descripcion" name="descripcion" type="text" class="cajaGrande" maxlength="60" value="<? echo $descripcion?>"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
@@ -162,7 +162,7 @@ if ($cadena_busqueda<>"") {
 						$contador=0;
 					  ?>
 						<tr>
-							<td><span id="tprov">Proveedor</span></td>
+							<td><span  id="tprov">Proveedor</span></td>
 							<td><select id="cboProveedores" name="cboProveedores" class="comboGrande">
 							<option value="0" data-opttrad="todprov">Todos los proveedores</option>
 								<?php
@@ -182,7 +182,7 @@ if ($cadena_busqueda<>"") {
 						$contador=0;
 					  ?>
 						<tr>
-							<td><span id="tubicacion">Ubicaci&oacute;n</span></td>
+							<td><span  id="tubicacion">Ubicaci&oacute;n</span></td>
 							<td><select id="cboUbicacion" name="cboUbicacion" class="comboGrande">
 							<option value="0" data-opttrad="todubic">Todas las ubicaciones</option>
 								<?php
@@ -199,32 +199,32 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 				<div id="botonBusqueda">	
-					<button type="button" id="btnbuscar" onClick="buscar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="limpiar" /> <span id="tbuscar">Buscar</span> </button>
-					<button type="button" id="btnlimpiar" onClick="limpiar_busqueda()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-               		<button type="button" id="btnnuevo" onClick="nuevo_articulo()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span id="tnuevo">Nuevo</span> </button>
-               		<button type="button" id="btnimprimir" onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+					<button type="button" id="btnbuscar" onClick="buscar()" onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="limpiar" /> <span  id="tbuscar">Buscar</span> </button>
+					<button type="button" id="btnlimpiar" onClick="limpiar_busqueda()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
+               		<button type="button" id="btnnuevo" onClick="nuevo_articulo()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span  id="tnuevo">Nuevo</span> </button>
+               		<button type="button" id="btnimprimir" onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 				</div>	
 
 				<div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left"><span id="tndartenctn">N de articulos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="left"><span  id="tndartenctn">N de articulos encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
-                    <div id="cabeceraResultado" class="header" ><span id="ttrealcionart">Relación de articulos</span></div>
+                    <div id="cabeceraResultado" class="header" ><span  id="ttrealcionart">Relación de articulos</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="4%"><span id="titem">ITEM</span></td>
-							<td width="5%"><span id="tcodigo">CODIGO</span></td>
-							<td width="19%"><span id="referenc">REFERENCIA</span></td>
-							<td width="25%"><span id="tdescri">DESCRIPCION</span></td>
-							<td width="11%"><span id="tflia">FAMILIA</span></td>
-							<td width="11%"><span id="tpreciot">PRECIO T.</span></td>
-							<td width="5%"><span id="tstock">Stock</span></td>
-                            <td width="5%"><span id="tundmed">Und./medida</span></td>
+							<td width="4%"><span  id="titem">ITEM</span></td>
+							<td width="5%"><span  id="tcodigo">CODIGO</span></td>
+							<td width="19%"><span  id="referenc">REFERENCIA</span></td>
+							<td width="25%"><span  id="tdescri">DESCRIPCION</span></td>
+							<td width="11%"><span  id="tflia">FAMILIA</span></td>
+							<td width="11%"><span  id="tpreciot">PRECIO T.</span></td>
+							<td width="5%"><span  id="tstock">Stock</span></td>
+                            <td width="5%"><span  id="tundmed">Und./medida</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>

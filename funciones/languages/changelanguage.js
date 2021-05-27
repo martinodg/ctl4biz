@@ -459,6 +459,7 @@ function getTranslationText(name)
         "fcciva":[" Total billing plus tax","Total facturaci&oacute;n con iva","polski","italian", "portugues","frances","Aleman"],
         "codfacabbr":["Invoice Code","Cod. Factura","polski","italian","portugues","frances","Aleman"],
         "msgvnmfacrep":["This code already exists in the system","No se puede dar de alta este numero de factura con este proveedor, ya existe uno en el sistema","polski","italian","portugues","frances","Aleman"],
+        "msgfacreasucc":["Invoice was successfuly created","La factura ha sido creada con suceso","Faktura została pomyślnie utworzona","La fattura è stata creata con successo","A fatura foi criada com sucesso","La facture a été créée avec succès","Die Rechnung wurde erfolgreich erstellt"],
         "msgermodlot":["ATTENTION; Lot could not be modified succesfully","ATENCION: No ha podido ser modificado con exito el lote","polski","italian","portugues","frances","Aleman"],
         "msgokmodlot":[" ATTENTION; Lot was modified succesfully ","ATENCION: El lote ha sido modificado con exito!","polski","italian","portugues","frances","Aleman"],
         "msgcrlotok":["ATTENTION: Batch was created successfully with the code","ATENCION: El lote ha sido creado exitosamente con el código","polski","italian","portugues","frances","Aleman"],
@@ -579,6 +580,8 @@ function getTranslationText(name)
         "bat":["Batch","Partida","Przesylka","Partita","remessa","Pracelle","Batch"],
         "prodnop":["Item not in stock","Producto no presente en Stock","produkt niedostępny ","prodotto non in stock","produto não em estoque","produit pas en stock","Produkt nicht auf Lager"],
         "estactual":["Status has been updated","El estado ha sido actualizado","Stan zostal zaktualizowany","Lo stato e stato aggiornato","O status foi atualizado","Le statut a ete mis a jour","Der Status wurde aktulisiert"],
+        "impvl":["Voucher Amount","Importe Vale","Kwota Vouchera","Importo del buono","Valor do voucher","Montant du bon d'achat","Gutscheinbetrag"],
+
     };
 
 
@@ -807,6 +810,7 @@ function langchange() {
     $("#tpendient").text(getTranslationText('pendient'));
     $("#tfcvencrt").text(getTranslationText('fcvencrt'));
     $("#tnrofcenco").text(getTranslationText('nrofcenco'));
+    $("#tnrofc,#nrofc").text(getTranslationText('nrofc'));
     $("#tmostradas").text(getTranslationText('mostradas'));
     $("#trelfac").text(getTranslationText('relfac'));
     $("#tnvafact").text(getTranslationText('nvafact'));
@@ -999,7 +1003,6 @@ function langchange() {
     $("#tpagado").text(getTranslationText('pagado'));
     $("#tpagada,#pagada").text(getTranslationText('pagada'));
     $("#tpagar,#pagar").text(getTranslationText('pagar'));
-
     $("#tadevolver").text(getTranslationText('adevolver'));
     $("#tnvavta").text(getTranslationText('nvavta'));
     $("#ttfbd").text(getTranslationText('tfbd'));
@@ -1038,8 +1041,8 @@ function langchange() {
     $("#tprodnop,#prodnop").text(getTranslationText('prodnop'));
     $("#tpais,#pais").text(getTranslationText('pais'));
     $("#testactual,#estactual").text(getTranslationText('estactual'));
-
-  
+    $("#tmsgfacreasucc,#msgfacreasucc").text(getTranslationText('msgfacreasucc'));
+   
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula

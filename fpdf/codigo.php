@@ -1,7 +1,7 @@
 <?php
 define('FPDF_FONTPATH','font/');
 require('fpdf.php');
-require_once("../conectar.php");
+require_once("../conectar7.php");
 //require('code39.php');
 
 $codigo=$_GET["codigo"];

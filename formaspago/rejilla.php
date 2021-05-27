@@ -93,7 +93,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-                            <td width="100%" class="mensaje"><span id="tmsgfpnf">No hay ninguna forma de pago que cumpla con los criterios de búsqueda</span></td>
+                            <td width="100%" class="mensaje"><span  id="tmsgfpnf">No hay ninguna forma de pago que cumpla con los criterios de búsqueda</span></td>
 					    </tr>
 					</table>					
 					<? } ?>					

@@ -5,7 +5,7 @@ require_once("../mysqli_result.php");
 $accion=$_POST["accion"];
 if (!isset($accion)) { $accion=$_GET["accion"]; }
 
-$nombre=$_POST["Anombre"];
+
 $nif=$_POST["anif"];
 $direccion=$_POST["adireccion"];
 $localidad=$_POST["alocalidad"];
@@ -17,10 +17,13 @@ $telefono=$_POST["atelefono"];
 $movil=$_POST["amovil"];
 $email=$_POST["aemail"];
 $web=$_POST["aweb"];
+$nombre=$_POST["Anombre"];
 
+//echo $nombre;
 if ($accion=="alta") {
-	$query_operacion="INSERT INTO proveedores (codproveedor, nombre, nif, direccion, codprovincia, localidad, codentidad, 			cuentabancaria, codpostal, telefono, movil, email, web, borrado) 
+	$query_operacion="INSERT INTO proveedores (codproveedor, nombre, nif, direccion, codprovincia, localidad, codentidad, cuentabancaria, codpostal, telefono, movil, email, web, borrado) 
 					VALUES ('', '$nombre', '$nif', '$direccion', '$codprovincia', '$localidad', '$codentidad', '$cuentabanco', '$codpostal', '$telefono', '$movil', '$email', '$web', '0')";					
+	//echo $query_operacion;
 	$rs_operacion=mysqli_query($conexion,$query_operacion);
 	if ($rs_operacion) { $mensaje="El proveedor ha sido dado de alta correctamente"; }
 	$cabecera1="Inicio >> Proveedores &gt;&gt; Nuevo Proveedor ";
@@ -97,23 +100,23 @@ if ($accion=="baja") {
 							<td width="85%" colspan="2" class="mensaje"><?php echo $mensaje;?></td>
 					    </tr>
 						<tr>
-							<td width="15%"><span id="tcod">C&Oacute;DIGO</span></td>
+							<td width="15%"><span  id="tcod">C&Oacute;DIGO</span></td>
 							<td width="85%" colspan="2"><?php echo $codproveedor?></td>
 					    </tr>
 						<tr>
-							<td width="15%"><span id="tnomb">Nombre</span></td>
+							<td width="15%"><span  id="tnomb">Nombre</span></td>
 						    <td width="85%" colspan="2"><?php echo $nombre?></td>
 					    </tr>
 						<tr>
-						  <td><span id="tnip">NIF / CIF</span></td>
+						  <td><span  id="tnip">NIF / CIF</span></td>
 						  <td colspan="2"><?php echo $nif?></td>
 					  </tr>
 						<tr>
-						  <td><span id="tdireccion">Direcci&oacute;n</span></td>
+						  <td><span  id="tdireccion">Direcci&oacute;n</span></td>
 						  <td colspan="2"><?php echo $direccion?></td>
 					  </tr>
 						<tr>
-						  <td><span id="tlocal">Localidad</span></td>
+						  <td><span  id="tlocal">Localidad</span></td>
 						  <td colspan="2"><?php echo $localidad?></td>
 					  </tr>
 					  <?php
@@ -126,7 +129,7 @@ if ($accion=="baja") {
 						}
 					  ?>
 						<tr>
-							<td width="15%"><span id="tpcia">Provincia</span></td>
+							<td width="15%"><span  id="tpcia">Provincia</span></td>
 							<td width="85%" colspan="2"><?php echo $nombreprovincia?></td>
 					    </tr>
 						<?php
@@ -139,37 +142,37 @@ if ($accion=="baja") {
 						}
 					  ?>
 						<tr>
-							<td width="15%"><span id="tentiban">Entidad Bancaria</span></td>
+							<td width="15%"><span  id="tentiban">Entidad Bancaria</span></td>
 							<td width="85%" colspan="2"><?php echo $nombreentidad?></td>
 					    </tr>
 						<tr>
-							<td><span id="tctabcaria">Cuenta bancaria</span></td>
+							<td><span  id="tctabcaria">Cuenta bancaria</span></td>
 							<td colspan="2"><?php echo $cuentabanco?></td>
 						</tr>
 						<tr>
-							<td><span id="tcodpostal">C&oacute;digo postal</span></td>
+							<td><span  id="tcodpostal">C&oacute;digo postal</span></td>
 							<td colspan="2"><?php echo $codpostal?></td>
 						</tr>
 						<tr>
-							<td><span id="ttelef">Tel&eacute;fono</span></td>
+							<td><span  id="ttelef">Tel&eacute;fono</span></td>
 							<td><?php echo $telefono?></td>
 						</tr>
 						<tr>
-							<td><span id="tmovil">M&oacute;vil</span></td>
+							<td><span  id="tmovil">M&oacute;vil</span></td>
 							<td colspan="2"><?php echo $movil?></td>
 						</tr>
 						<tr>
-							<td><span id="tcorrelec">Correo electr&oacute;nico</span></td>
+							<td><span  id="tcorrelec">Correo electr&oacute;nico</span></td>
 							<td colspan="2"><?php echo $email?></td>
 						</tr>
 												<tr>
-							<td><span id="tdirrcweb">Direcci&oacute;n web</span></td>
+							<td><span  id="tdirrcweb">Direcci&oacute;n web</span></td>
 							<td colspan="2"><?php echo $web?></td>
 						</tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
 			  </div>
 			  </div>
 		  </div>

@@ -1,5 +1,5 @@
 <?
-require_once("../conectar.php");
+require_once("../conectar7.php");
 require_once("../funciones/fechas.php");
 
 $accion=$_POST["accion"];
@@ -128,17 +128,17 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 						<? if ($minimo==1) { ?>
 						<tr>
 							<td width="15%"></td>
-							<td width="85%" colspan="2" class="mensajeminimo"><span id="tartimpmin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo</span>:<br><?php echo $mensaje_minimo;?></td>
+							<td width="85%" colspan="2" class="mensajeminimo"><span  id="tartimpmin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo</span>:<br><?php echo $mensaje_minimo;?></td>
 					    </tr>
 						<? }
 						 $sel_trabajador="SELECT * FROM trabajadores WHERE codtrabajador='$codtrabajador'";
 						  $rs_trabajador=mysqli_query($conexion,$sel_trabajador); ?>
 						<tr>
-							<td width="15%"><span id="ttrabajad">TRABAJADOR</span></td>
+							<td width="15%"><span  id="ttrabajad">TRABAJADOR</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_trabajador,0,"nombre"); ?></td>
 					    </tr>
 						<tr>
-							<td width="15%"><span id="tcod_pres">C&oacute;digo Presupuesto</span></td>
+							<td width="15%"><span  id="tcod_pres">C&oacute;digo Presupuesto</span></td>
 						    <td width="85%" colspan="2"><?php echo $codpresupuesto; ?></td>
 					    </tr>
 						<tr>
@@ -146,44 +146,44 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 						  <td colspan="2"><?php echo $titulo; ?></td>
 					  </tr>
 						<tr>
-						  <td><span id="tdescri">Descripci&oacute;n</span></td>
+						  <td><span  id="tdescri">Descripci&oacute;n</span></td>
 						  <td colspan="2"><?php echo nl2br($descripcion); ?></td>
 					  </tr>
 					  	<tr>
-						  <td><span id="thrsprv">Horas previstas</span></td>
+						  <td><span  id="thrsprv">Horas previstas</span></td>
 						  <td colspan="2"><?php echo $horasprevistas; ?></td>
 					  </tr>
 					  <tr>
-						  <td><span id="tpciohs">Precio / Hora</span></td>
+						  <td><span  id="tpciohs">Precio / Hora</span></td>
 						  <td colspan="2"><?php echo $preciohora; ?></td>
 					  </tr>
 <tr>
-    <td><span id="tttalprev">Total previsto</span></td>
+    <td><span  id="tttalprev">Total previsto</span></td>
 <td colspan="2"><?php echo $preciohora*$horasprevistas; ?></td>
 </tr>
 <tr>
-    <td><span id="tfccom">Fecha Comienzo</span></td>
+    <td><span  id="tfccom">Fecha Comienzo</span></td>
 <td colspan="2"><?php echo implota($fechacomienzo)?></td>
 </tr>
 <?php if ( $accion == "modificar" ) { ?>
 <tr>
-    <td><span id="tflect">Fecha Lectura</span></td>
+    <td><span  id="tflect">Fecha Lectura</span></td>
     <td colspan="2"><?php echo implota($fechalectura)?></td>
 </tr>
 <tr>
-<td><span id="tfechfin">Fecha Finalizaci&oacute;n</span></td>
+<td><span  id="tfechfin">Fecha Finalizaci&oacute;n</span></td>
 <td colspan="2"><?php echo implota($fechafinalizacion)?></td>
 </tr>
 <tr>
-    <td><span id="thinvertidas">Horas invertidas</span></td>
+    <td><span  id="thinvertidas">Horas invertidas</span></td>
 <td colspan="2"><?php echo $horasinvertidas; ?></td>
 </tr>
 <tr>
-    <td><span id="thinvertidas">Total invertido</span></td>
+    <td><span  id="thinvertidas">Total invertido</span></td>
 <td colspan="2"><?php echo $preciohora * $horasinvertidas; ?></td>
 </tr>
 <tr>
-<td><span id="testado">ESTADO</span></td>
+<td><span  id="testado">ESTADO</span></td>
 <td colspan="2"><?php echo $estados_partestrabajo[$estado]; ?></td>
 </tr>
 
@@ -197,8 +197,8 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 </div>
 <div id="botonBusqueda">
 <div align="center">
-					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-<button type="button" id="btnimprimir"  onClick="window.print();" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+<button type="button" id="btnimprimir"  onClick="window.print();" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 				        </div>
 					</div>
 			  </div>

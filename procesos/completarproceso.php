@@ -21,15 +21,15 @@ require_once("../conectar7.php");
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
 	$nr_lotes= mysqli_num_rows($rs_tabla);
-        echo ' <div id="cabeceraResultado" class="header"><span id="tartdllote">Articulo del lote</span></div>';
+        echo ' <div id="cabeceraResultado" class="header"><span  id="tartdllote">Articulo del lote</span></div>';
 					
 			echo '	<div id="frmResultado">';
 			echo '	<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
 			echo '			<tr class="cabeceraTabla">';
-                        echo '                               <td width="15%"><span id="tcodart">Codigo del Articulo</span></td>';
-                         echo '                               <td width="35%"><span id="tnmbart">Nombre del Articulo</span></td>';
-                         echo '                               <td width="18%"><span id="tstock">Stock</span></td>';
-                         echo '                               <td width="18%"><span id="tcant">CANTIDAD</span></td>';
+                        echo '                               <td width="15%"><span  id="tcodart">Codigo del Articulo</span></td>';
+                         echo '                               <td width="35%"><span  id="tnmbart">Nombre del Articulo</span></td>';
+                         echo '                               <td width="18%"><span  id="tstock">Stock</span></td>';
+                         echo '                               <td width="18%"><span  id="tcant">CANTIDAD</span></td>';
 			echo '				<td width="14%">Validar</td>';
 							
 			echo '			</tr>';
@@ -63,6 +63,6 @@ require_once("../conectar7.php");
     
                         echo '<div id="botonBusqueda">';
                         echo '<div align="left"><h2><span class="paginar">Ajuste la cantidad final de '.$row2[2].' producida a un total de: </span> <input id="cantidadproceso" type="text" class="cajaPequena" NAME="cantidadproceso"  value=" '.$row2[0].' " maxlength="15"><span class="paginar"></span><span class="paginar" id="umcantfinal"> '.$row2[1].' </span></H2></div>';
-                        echo '<button type="button" id="btnfin" onClick="finalizar('.$codproceso.','.$codmproceso.',&apos;'.$row2[3].'&apos;)" onMouseOver="style.cursor=cursor"> <img src="../img/end.svg" alt="Finalizar" /> <span id="tfinalizar">Finalizar</span> </button>';
+                        echo '<button type="button" id="btnfin" onClick="finalizar('.$codproceso.','.$codmproceso.',&apos;'.$row2[3].'&apos;)" onMouseOver="style.cursor=cursor"> <img src="../img/end.svg" alt="Finalizar" /> <span  id="tfinalizar">Finalizar</span> </button>';
                         echo '</div>';
 ?>

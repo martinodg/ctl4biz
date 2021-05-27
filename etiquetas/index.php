@@ -45,18 +45,18 @@ require_once("../racf/purePhpVerify.php");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header"><span id="tbuscaart">Buscar ARTICULO</span></div>
+				<div id="tituloForm" class="header"><span  id="tbuscaart">Buscar ARTICULO</span></div>
 			  <div id="frmBusqueda">
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
-					<td width="15%"><span id="tcodbarr">Codigo barras</span> </td>
+					<td width="15%"><span  id="tcodbarr">Codigo barras</span> </td>
 					<td colspan="8" valign="middle"><input NAME="codbarras" type="text" class="cajaMedia" id="codbarras" size="15" maxlength="15" readonly><img src="../img/ver.svg" width="16" height="16" onClick="ventanaArticulos()"></td>
 				    <td valign="middle">&nbsp;</td>
 				    <td rowspan="2" valign="bottom"><div align="center"><img src="../img/codigobarras.jpg" border="1" align="absbottom" onClick="imprimir()" onMouseOver="style.cursor=cursor"></div></td>
 				  </tr>
 				  <tr>
-					<td><span id="descri">descripcion</span></td>
+					<td><span  id="descri">descripcion</span></td>
 					<td><input NAME="descripcion" type="text" class="cajaGrande" id="descripcion" size="50" maxlength="50" readonly></td>
 				  </tr>
 				</table>

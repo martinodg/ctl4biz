@@ -169,14 +169,14 @@
                             <?php if((isset($message))!="") { echo $message; } ?>
                         </div>
                         <br> <br>
-                        <span id="nombre" class="loginText">Nombre de Usuario:</span><br>
+                        <span  id="nombre" class="loginText">Nombre de Usuario:</span><br>
                         <input class="input-wrapper" type="text" id="name" name="name" readonly>
                         <br> <br>
 
                         <span class="loginText">e-mail:</span><br>
                         <input id="email-field" class="input-wrapper" type="text" name="email">
                         <br> <br>
-                        <span id="password" class="loginText">clave:</span><br>
+                        <span  id="password" class="loginText">clave:</span><br>
                         <div class="password-wrapper">
                             <input id="password-field" type="password" class="input" name="password">
                             <div class="icon-wrapper pass">
@@ -196,13 +196,13 @@
                     <br> <br>
 
                    
-                    <span id="emailValidation" class="loginText">validacion de e-mail:</span><br>
+                    <span  id="emailValidation" class="loginText">validacion de e-mail:</span><br>
                     <div class="email-validation-wrapper">
                         <input id="email-validation-field" type="text" class="input" name="email-validation" onpaste="return false;">
                         <div class="email-validation-icon-wrapper passdistinta"></div>
                     </div>
                     <br>
-                    <span id="passwordValidation" class="loginText">validacion de clave:</span><br>
+                    <span  id="passwordValidation" class="loginText">validacion de clave:</span><br>
                     <div class="password-validation-wrapper">
                         <input id="password-validation-field" type="password" class="input" name="password-validation" onpaste="return false;">
                         <div class="validation-icon-wrapper passdistinta">
@@ -210,7 +210,7 @@
                         </div>
                     </div>
                     <br> <br> <br>
-                    <div><span id="usuarioDesactivado" class="loginText">Inactivo </span><label class="switch"> <input type="checkbox" id="uActivo" name="uActivo" > <span class="slider round"></span> </label> <span id="usuarioActivo" class="loginText">Activo</span></div>
+                    <div><span  id="usuarioDesactivado" class="loginText">Inactivo </span><label class="switch"> <input type="checkbox" id="uActivo" name="uActivo" > <span class="slider round"></span> </label> <span  id="usuarioActivo" class="loginText">Activo</span></div>
 
                     <input type="hidden" id="language" name="language" value="0">
 

@@ -22,7 +22,7 @@ function abreVentana(){
 
 
   <?
-   require_once("../conectar.php");
+   require_once("../conectar7.php");
   ?>
 <blockquote><font size="2">Buscador de Artculos:</font></blockquote>
 

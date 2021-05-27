@@ -122,9 +122,38 @@
 }
 
 button {
+    height: 45px;
     padding: 3px 2px 3px 2px;
     margin-bottom: 10px;
     margin-right: 10px;
+    background-color: #96f1b9;
+    border: none;
+    border-radius: 5px;
+    color: rgb(56, 101, 138);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+
+    /*cursor: pointer;
+    background-color: #e4e4e3;
+    /*border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e4e4e3;
+    /*border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;*/
 }
 
 button>img {
@@ -154,6 +183,7 @@ button>span {
     padding-top: 1em;
     margin-right: .5em;
     border-bottom: solid 1px #083b66;
+   
 }
 
 #botonCerrar {
@@ -223,14 +253,15 @@ button>span {
 /* clases relativas a tablas             */
 
 .header {
-    background-color: #083b66;
+    background-color: #376992;
     color: #f5f5f5;
     text-transform: uppercase;
+    height: 50px;
     text-align: center;
-    height: 30px;
-    vertical-align: middle;
 }
-
+.header > span{
+    line-height: 50px;
+}
 .mensaje {
     background-color: #FF0000;
     color: ##ffffff;
@@ -273,17 +304,17 @@ button>span {
 /* clases relativas a hiperenlace        */
 
 a:link {
-    font: 10pt quicksandlight;
+    font: 12pt quicksandlight;
     color: #000;
 }
 
 a:visited {
-    font: 10pt quicksandlight;
+    font: 12pt quicksandlight;
     color: #000;
 }
 
 a:hover {
-    font: 10pt quicksandlight;
+    font: 12pt quicksandlight;
     color: #b46300;
 }
 
@@ -294,7 +325,7 @@ a:hover {
 /* clases relativas a la fuente de texto */
 
 .fuente8 {
-    font: 10pt quicksandlight;
+    font: 12pt quicksandlight;
 }
 
 .aDerecha {
@@ -325,16 +356,23 @@ a:hover {
 }
 
 .boton {
-    color: #000;
+  /*  color: #000;
     background-color: #ffffff;
     border-radius: 3px;
     border-style: solid;
     border-color: #696969;
     border-width: 1px 1px 1px 1px;
-    font: bold 10pt quicksandlight;
+    font: bold 14pt quicksandlight;
     text-transform: lowercase;
     width: 90px;
-    height: 20pt;
+    height: 20pt;*/
+
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 270px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
 }
 
 .botonprov {
@@ -344,15 +382,15 @@ a:hover {
     border-style: solid;
     border-color: #696969;
     border-width: 1px 1px 1px 1px;
-    font: bold 10pt quicksandlight;
+    font: bold 14pt quicksandlight;
     text-transform: lowercase;
     width: 130px;
     height: 20pt;
 }
 
 .cajaMediana {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+  /*  background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 100px;
     border-radius: 3px;
@@ -360,12 +398,19 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     height: 20pt;
-    padding: 3px 2px 3px 2px;
+    padding: 3px 2px 3px 2px;*/
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 130px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
+    overflow: hidden;
 }
 
 .cajaPequena {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+  /* background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 75px;
     border-radius: 3px;
@@ -373,12 +418,20 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     height: 20pt;
-    padding: 3px 2px 3px 2px;
+    padding: 3px 2px 3px 2px;*/
+
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 105px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
+    overflow: hidden;
 }
 
 .cajaPequena2 {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+   /* background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 55px;
     border-radius: 3px;
@@ -386,12 +439,20 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     height: 20pt;
-    padding: 3px 2px 3px 2px;
+    padding: 3px 2px 3px 2px;*/
+
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 80px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
+    overflow: hidden;
 }
 
 .cajaMinima {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+   /* background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 30px;
     border-radius: 3px;
@@ -399,12 +460,20 @@ a:hover {
     border-style: solid;
     border-width: 1px;
     height: 20pt;
-    padding: 3px 2px 3px 2px;
+    padding: 3px 2px 3px 2px;*/
+
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 100px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
+    overflow: hidden;
 }
 
 .cajaTotales {
     background-color: #FFD9B3;
-    font: 10pt quicksandlight;
+    font: 12pt quicksandlight;
     color: #000;
     width: 75px;
     border-radius: 3px;
@@ -416,8 +485,8 @@ a:hover {
 }
 
 .cajaMedia {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+    /*background-color: #ffffff;
+    font: 12pt quicksandlight;
     text-transform: uppercase;
     color: #000;
     width: 150px;
@@ -425,78 +494,123 @@ a:hover {
     border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
-    height: 20pt;
+    height: 20pt;*/
+
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 170px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
+    overflow: hidden;
 }
 
 .cajaGrande {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+    /*background-color: #ffffff;*/
+    font: 12pt quicksandlight;
     /*text-transform: uppercase;*/
-    color: #000;
+    /*color: #000;
     width: 250px;
     border-radius: 3px;
     border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
-    height: 20pt;
+    height: 20pt;*/
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 270px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
+    overflow: hidden;
 }
 
 .cboUnidadmedida {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+  /*  background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 80px;
     border-radius: 3px;
     border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
-    height: 20pt;
+    height: 20pt;*/
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 110px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
 }
 .comboNano {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+   /* background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 30px;
     border-radius: 3px;
     border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
-    height: 20pt;
+    height: 20pt;*/
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 60px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
 }
 .comboPequeno {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+  /*  background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 75px;
     border-radius: 3px;
     border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
-    height: 20pt;
+    height: 20pt;*/
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 105px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
 }
 
 .comboMedio {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+  /*  background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 150px;
     border-radius: 3px;
     border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
-    height: 20pt;
+    height: 20pt;*/
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 180px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
 }
 
 .comboGrande {
-    background-color: #ffffff;
-    font: 10pt quicksandlight;
+  /*  background-color: #ffffff;
+    font: 12pt quicksandlight;
     color: #000;
     width: 250px;
     border-radius: 3px;
     border-color: #7aaedc;
     border-style: solid;
     border-width: 1px;
-    height: 20pt;
+    height: 20pt;*/
+    font: 12pt quicksandlight;
+    height: 45px;
+    max-width: 270px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #ddd;
 }
 
 

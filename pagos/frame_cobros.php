@@ -101,7 +101,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-                            <td width="100%" class="mensaje"><span id="tmsgvlcrbfact">Todav&iacute;a no se ha producido ning&uacute;n pago en esta factura</span></td>
+                            <td width="100%" class="mensaje"><span  id="tmsgvlcrbfact">Todav&iacute;a no se ha producido ning&uacute;n pago en esta factura</span></td>
 					    </tr>
 					</table>					
 					<? } ?>	

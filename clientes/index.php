@@ -120,7 +120,7 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="tbcliente">Buscar CLIENTE</span></div>
+                    <div id="tituloForm" class="header"><span  id="tbcliente">Buscar CLIENTE</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
@@ -155,33 +155,33 @@ if ($cadena_busqueda<>"") {
 								</select>							</td>
 					    </tr>
 						<tr>
-							<td><span id="tnomb">Nombre</span></td>
+							<td><span  id="tnomb">Nombre</span></td>
 							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="45" value="<? echo $nombre?>"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-						  <td><span id="tnip">NIF / CIF</span></td>
+						  <td><span  id="tnip">NIF / CIF</span></td>
 						  <td><input id="nif" type="text" class="cajaPequena" NAME="nif" maxlength="15" value="<? echo $nif?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-							<td><span id="tpcia">Provincia</span></td>
+							<td><span  id="tpcia">Provincia</span></td>
 							<td><select id="cboProvincias" name="cboProvincias" class="comboMedio">
 							
 								</select>							</td>
 					    </tr>
 					  <tr>
-						  <td><span id="tlocal">Localidad</span></td>
+						  <td><span  id="tlocal">Localidad</span></td>
 						  <td><input id="localidad" type="text" class="cajaGrande" NAME="localidad" maxlength="30" value="<? echo $localidad?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-						  <td><span id="ttelef">Tel&eacute;fono</span></td>
+						  <td><span  id="ttelef">Tel&eacute;fono</span></td>
 						  <td><input id="telefono" type="text" class="cajaPequena" NAME="telefono" maxlength="15" value="<? echo $telefono?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
@@ -190,28 +190,28 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">                    
-					<button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
-					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-					<button type="button" id="btnnuevo"  onClick="nuevo_cliente()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span id="tnuevo">Nuevo</span> </button>
-					<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+					<button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span  id="tbuscar">Buscar</span> </button>
+					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
+					<button type="button" id="btnnuevo"  onClick="nuevo_cliente()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span  id="tnuevo">Nuevo</span> </button>
+					<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-                    <td width="50%" class="paginar" align="left"><span id="tnroclifnd">N de clientes encontrados</span><input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+                    <td width="50%" class="paginar" align="left"><span  id="tnroclifnd">N de clientes encontrados</span><input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
-				<div id="cabeceraResultado" class="header"><span id="trelcli">relacion de CLIENTES</span></div>
+				<div id="cabeceraResultado" class="header"><span  id="trelcli">relacion de CLIENTES</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="8%"><span id="titem">ITEM</span></td>
-							<td width="6%"><span id="tcodigo">CODIGO</span></td>
-							<td width="38%"><span id="tnomb">NOMBRE</span></td>
-							<td width="13%"><span id="tnip">NIF/CIF</span></td>
-							<td width="19%"><span id="ttelef">TELEFONO</span></td>
+							<td width="8%"><span  id="titem">ITEM</span></td>
+							<td width="6%"><span  id="tcodigo">CODIGO</span></td>
+							<td width="38%"><span  id="tnomb">NOMBRE</span></td>
+							<td width="13%"><span  id="tnip">NIF/CIF</span></td>
+							<td width="19%"><span  id="ttelef">TELEFONO</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>

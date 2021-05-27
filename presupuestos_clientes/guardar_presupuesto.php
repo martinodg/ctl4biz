@@ -24,14 +24,15 @@ if ($accion=="alta") {
 	while ($contador < mysqli_num_rows($rs_tmp)) {
 		$codfamilia=mysqli_result($rs_tmp,$contador,"codfamilia");
 		$numlinea=mysqli_result($rs_tmp,$contador,"numlinea");
+		$descripcion=mysqli_result($rs_tmp,$contador,"descripcion");
 		$codigo=mysqli_result($rs_tmp,$contador,"codigo");
 		$cantidad=mysqli_result($rs_tmp,$contador,"cantidad");
 		$precio=mysqli_result($rs_tmp,$contador,"precio");
 		$importe=mysqli_result($rs_tmp,$contador,"importe");
 		$baseimponible=$baseimponible+$importe;
 		$dcto=mysqli_result($rs_tmp,$contador,"dcto");
-		$sel_insertar="INSERT INTO presulinea (codpresupuesto,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES
-		('$codpresupuesto','$numlinea','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
+		$sel_insertar="INSERT INTO presulinea (codpresupuesto,numlinea,descripcion,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES
+		('$codpresupuesto','$numlinea','$descripcion','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
 		$rs_insertar=mysqli_query($conexion,$sel_insertar);
 // No se controla el stock en los presupuestos
 //		$sel_articulos="UPDATE articulos SET stock=(stock-'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
@@ -69,7 +70,7 @@ if ($accion=="modificar") {
 		$codfamilia=mysqli_result($rs_lineas,$contador,"codfamilia");
 		$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
 //		$sel_actualizar="UPDATE `articulos` SET stock=(stock+'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_actualizar = mysqli_query($conexion,$sel_actualizar);
+//		$rs_actualizar = mysqli_query($conexion,$sel_actualizar);
 		$contador++;
 	}
 	$sel_borrar = "DELETE FROM presulinea WHERE codpresupuesto='$codpresupuesto'";
@@ -80,6 +81,8 @@ if ($accion=="modificar") {
 	$baseimponible=0;
 	while ($contador < mysqli_num_rows($rs_lineastmp)) {
 		$numlinea=mysqli_result($rs_lineastmp,$contador,"numlinea");
+		$descripcionpt=mysqli_result($rs_lineastmp,$contador,"descripcion");
+
 		$codigo=mysqli_result($rs_lineastmp,$contador,"codigo");
 		$codfamilia=mysqli_result($rs_lineastmp,$contador,"codfamilia");
 		$cantidad=mysqli_result($rs_lineastmp,$contador,"cantidad");
@@ -88,12 +91,12 @@ if ($accion=="modificar") {
 		$baseimponible=$baseimponible+$importe;
 		$dcto=mysqli_result($rs_lineastmp,$contador,"dcto");
 
-		$sel_insert = "INSERT INTO presulinea (codpresupuesto,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto)
-		VALUES ('$codpresupuesto','','$codigo','$codfamilia','$cantidad','$precio','$importe','$dcto')";
+		$sel_insert = "INSERT INTO presulinea (codpresupuesto,numlinea,descripcion,codigo,codfamilia,cantidad,precio,importe,dcto)
+		VALUES ('$codpresupuesto','$numlinea','$descripcionpt','$codigo','$codfamilia','$cantidad','$precio','$importe','$dcto')";
 		$rs_insert = mysqli_query($conexion,$sel_insert);
 
 //		$sel_actualiza="UPDATE articulos SET stock=(stock-'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_actualiza = mysqli_query($conexion,$sel_actualiza);
+//		$rs_actualiza = mysqli_query($conexion,$sel_actualiza);
 		$sel_bajominimo = "SELECT codarticulo,codfamilia,stock,stock_minimo,descripcion FROM articulos WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
 		$rs_bajominimo= mysqli_query($conexion,$sel_bajominimo);
 		$stock=mysqli_result($rs_bajominimo,0,"stock");
@@ -133,7 +136,7 @@ if ($accion=="baja") {
 		$codigo=mysqli_result($rs_tmp,$contador,"codigo");
 		$cantidad=mysqli_result($rs_tmp,$contador,"cantidad");
 //		$sel_articulos="UPDATE articulos SET stock=(stock+'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
-		$rs_articulos=mysqli_query($conexion,$sel_articulos);
+		//$rs_articulos=mysqli_query($conexion,$sel_articulos);
 		$contador++;
 	}
 	if ($rs_query) { $mensaje="El presupuesto ha sido eliminado correctamente"; }
@@ -225,40 +228,40 @@ if ($accion=="convertir") {
 						<? if ($minimo==1) { ?>
 						<tr>
 							<td width="15%"></td>
-							<td width="85%" colspan="2" class="mensajeminimo"><span id="tartimpmin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo</span>:<br><?php echo $mensaje_minimo;?></td>
+							<td width="85%" colspan="2" class="mensajeminimo"><span  id="tartimpmin">Los siguientes art&iacute;culos est&aacute;n bajo m&iacute;nimo</span>:<br><?php echo $mensaje_minimo;?></td>
 					    </tr>
 						<? }
 						 $sel_cliente="SELECT * FROM clientes WHERE codcliente='$codcliente'";
 						  $rs_cliente=mysqli_query($conexion,$sel_cliente); ?>
 						<tr>
-							<td width="15%"><span id="tcliente">Cliente</span></td>
+							<td width="15%"><span  id="tcliente">Cliente</span></td>
 							<td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nombre");?></td>
 					    </tr>
 						<tr>
-							<td width="15%"><span id="tnip">NIF / CIF</span></td>
+							<td width="15%"><span  id="tnip">NIF / CIF</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_cliente,0,"nif");?></td>
 					    </tr>
 						<tr>
-						  <td><span id="tdireccion">Direcci&oacute;n</span></td>
+						  <td><span  id="tdireccion">Direcci&oacute;n</span></td>
 						  <td colspan="2"><?php echo mysqli_result($rs_cliente,0,"direccion"); ?></td>
 					  </tr>
 					  <? if ($accion=="convertir") { ?>
 						<tr>
-						  <td><span id="tcodfactura">C&oacute;digo de factura</span></td>
+						  <td><span  id="tcodfactura">C&oacute;digo de factura</span></td>
 						  <td colspan="2"><?php echo $codfactura?></td>
 					  </tr>
 					  <? } else { ?>
 					  	<tr>
-						  <td><span id="tcod_pres">C&oacute;digo de presupuesto</span></td>
+						  <td><span  id="tcod_pres">C&oacute;digo de presupuesto</span></td>
 						  <td colspan="2"><?php echo $codpresupuesto?></td>
 					  </tr>
 					  <? } ?>
 					  <tr>
-						  <td><span id="tfecha">Fecha</span></td>
+						  <td><span  id="tfecha">Fecha</span></td>
 						  <td colspan="2"><?php echo implota($fecha)?></td>
 					  </tr>
 					  <tr>
-						  <td><span id="tiva">IVA</span></td>
+						  <td><span  id="tiva">IVA</span></td>
 						  <td colspan="2"><?php echo $iva?> %</td>
 					  </tr>
 					  <tr>
@@ -268,25 +271,26 @@ if ($accion=="convertir") {
 				  </table>
 					 <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="5%"><span id="titem">ITEM</span></td>
-							<td width="25%"><span id="referenc">REFERENCIA</span></td>
-							<td width="30%"><span id="descri">descripcion</span></td>
-							<td width="10%"><span id="tcant">CANTIDAD</span></td>
-							<td width="10%"><span id="tprecio">PRECIO</span></td>
-							<td width="10%"><span id="tdctop">DCTO %</span></td>
-							<td width="10%"><span id="timporte">IMPORTE</span></td>
+							<td width="5%"><span  id="titem">ITEM</span></td>
+							<td width="25%"><span  id="referenc">REFERENCIA</span></td>
+							<td width="30%"><span  id="descri">descripcion</span></td>
+							<td width="10%"><span  id="tcant">CANTIDAD</span></td>
+							<td width="10%"><span  id="tprecio">PRECIO</span></td>
+							<td width="10%"><span  id="tdctop">DCTO %</span></td>
+							<td width="10%"><span  id="timporte">IMPORTE</span></td>
 						</tr>
 					</table>
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
-					  <? $sel_lineas="SELECT presulinea.*,articulos.*,familias.nombre as nombrefamilia FROM presulinea,articulos,familias WHERE presulinea.codpresupuesto='$codpresupuesto' AND presulinea.codigo=articulos.codarticulo AND presulinea.codfamilia=articulos.codfamilia AND articulos.codfamilia=familias.codfamilia ORDER BY presulinea.numlinea ASC";
-$rs_lineas=mysqli_query($conexion,$sel_lineas);
+					  <? $sel_lineas="SELECT presulinea.*, presulinea.descripcion as descripcionp,articulos.*,familias.nombre as nombrefamilia FROM presulinea,articulos,familias WHERE presulinea.codpresupuesto='$codpresupuesto' AND presulinea.codigo=articulos.codarticulo AND presulinea.codfamilia=familias.codfamilia ORDER BY presulinea.numlinea ASC";
+					echo $sel_lineas;
+					  $rs_lineas=mysqli_query($conexion,$sel_lineas);
 						for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
 							$numlinea=mysqli_result($rs_lineas,$i,"numlinea");
 							$codfamilia=mysqli_result($rs_lineas,$i,"codfamilia");
 							$nombrefamilia=mysqli_result($rs_lineas,$i,"nombrefamilia");
 							$codarticulo=mysqli_result($rs_lineas,$i,"codarticulo");
 							$referencia=mysqli_result($rs_lineas,$i,"referencia");
-							$descripcion=mysqli_result($rs_lineas,$i,"descripcion");
+							$descripcion=mysqli_result($rs_lineas,$i,"descripcionp");
 							$cantidad=mysqli_result($rs_lineas,$i,"cantidad");
 							$precio=mysqli_result($rs_lineas,$i,"precio");
 							$importe=mysqli_result($rs_lineas,$i,"importe");
@@ -313,26 +317,26 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 					<div id="frmBusqueda">
 					<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 						<tr>
-							<td width="15%"><span id="tbaseimp">Base imponible</span></td>
+							<td width="15%"><span  id="tbaseimp">Base imponible</span></td>
 							<td width="15%"><?php echo number_format($baseimponible,2);?> &#8364;</td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="tiva">IVA</span></td>
+							<td width="15%"><span  id="tiva">IVA</span></td>
 							<td width="15%"><?php echo number_format($baseimpuestos,2);?> &#8364;</td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="ttotal">Total</span></td>
+							<td width="15%"><span  id="ttotal">Total</span></td>
 							<td width="15%"><?php echo $preciototal?> &#8364;</td>
 						</tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
 					<div align="center">
-					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+					 <button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
 					  <? if ($accion=="convertir") { ?>
-					   <button type="button" id="btnimprimir" onClick="imprimirf(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+					   <button type="button" id="btnimprimir" onClick="imprimirf(<? echo $codfactura?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 					   <? } else { ?>
-					   <button type="button" id="btnimprimir" onClick="imprimir(<? echo $codpresupuesto?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+					   <button type="button" id="btnimprimir" onClick="imprimir(<? echo $codpresupuesto?>)" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 					   <? } ?>
 				        </div>
 					</div>

@@ -1,5 +1,5 @@
 <?php
-require_once("../conectar.php");
+require_once("../conectar7.php");
 $id_resource='6';
 $id_sresource='25';
 require_once("../racf/purePhpVerify.php");
@@ -108,19 +108,19 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="tbuscparttb">Buscar PARTE DE TRABAJO</span></div>
+                    <div id="tituloForm" class="header"><span  id="tbuscparttb">Buscar PARTE DE TRABAJO</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="16%"><span id="tcodtjador">Codigo de trabajador </span></td>
+							<td width="16%"><span  id="tcodtjador">Codigo de trabajador </span></td>
 							<td width="68%"><input id="codtrabajador" type="text" class="cajaPequena" NAME="codtrabajador" maxlength="10" value="<? echo $codtrabajador?>"> <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validartrabajador()" title="Validar trabajador" onMouseOver="style.cursor=cursor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
-							<td><span id="tnomb">Nombre</span></td>
+							<td><span  id="tnomb">Nombre</span></td>
 							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="45" value="<? echo $nombre?>">
 <input name="nif" type="hidden" id="nif" value=""></td>
 							<td>&nbsp;</td>
@@ -134,14 +134,14 @@ if ($cadena_busqueda<>"") {
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-						  <td><span id="ttrabaj">TRABAJO</span></td>
+						  <td><span  id="ttrabaj">TRABAJO</span></td>
 						  <td><input id="titulo" name="titulo" type="text" class="cajaGrande" maxlength="45" value="<? echo $titulo?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-							<td><span id="testado">ESTADO</span></td>
+							<td><span  id="testado">ESTADO</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
 								<option value="0" selected data-opttrad="todosest">Todos los estados</option>
 <?php
@@ -152,7 +152,7 @@ foreach ($estados_partestrabajo as $k => $v) {
 								</select></td>
 					    </tr>
 					  <tr>
-						  <td><span id="tfccom">Fecha Comienzo</span></td>
+						  <td><span  id="tfccom">Fecha Comienzo</span></td>
 						  <td><input id="fechacomienzo" type="text" class="cajaPequena" NAME="fechacomienzo" maxlength="10" value="<? echo $fechacomienzo?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -170,30 +170,30 @@ foreach ($estados_partestrabajo as $k => $v) {
 					</table>
 			  </div>
 		 	  <div id="botonBusqueda">
-                  <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
-			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-				  <button type="button" id="btnnuevo" onClick="nuevo_parte()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span id="tnuevo">Nuevo</span> </button>
+                  <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span  id="tbuscar">Buscar</span> </button>
+			 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
+				  <button type="button" id="btnnuevo" onClick="nuevo_parte()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span  id="tnuevo">Nuevo</span> </button>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left"><span id="tndpenc">N de partes encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="left"><span  id="tndpenc">N de partes encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
 				<div id="cabeceraResultado" class="header">
-					<span id="trelprts">relacion de PARTES</span> </div>
+					<span  id="trelprts">relacion de PARTES</span> </div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="8%"><span id="titem">ITEM</span></td>
-                            <td width="8%"><span id="tnroparte">N. PARTE</span></td>
-							<td width="12%"><span id="ttrabajad2">TRABAJADOR</span></td>
-                            <td width="18%"><span id="ttrabaj2">TRABAJO</span> </td>
-							<td width="10%"><span id="tfccom2">Fecha Comienzo</span></td>
-						    <td width="8%"><span id="thrsprv">Horas previstas</span></td>
-                            <td width="8%"><span id="tpciohs">Precio / Hora</span></td>
-							<td width="10%"><span id="testado">Estado</span></td>
+							<td width="8%"><span  id="titem">ITEM</span></td>
+                            <td width="8%"><span  id="tnroparte">N. PARTE</span></td>
+							<td width="12%"><span  id="ttrabajad2">TRABAJADOR</span></td>
+                            <td width="18%"><span  id="ttrabaj2">TRABAJO</span> </td>
+							<td width="10%"><span  id="tfccom2">Fecha Comienzo</span></td>
+						    <td width="8%"><span  id="thrsprv">Horas previstas</span></td>
+                            <td width="8%"><span  id="tpciohs">Precio / Hora</span></td>
+							<td width="10%"><span  id="testado">Estado</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>

@@ -45,9 +45,12 @@ require_once("../racf/purePhpVerify.php");
 																						$('#impuesto').attr('class', 'comboMedio');
                                                                                   }
                 );
+
+				
 		//Perform when DOM is full loaded
 		$( document ).ready(function(){
-			
+
+			$('#divNumeroFactura').hide();
 			//filter for procs search   
 			$('#cboFamily').change(function(){
 				var idcat=$(this).val();
@@ -90,7 +93,7 @@ require_once("../racf/purePhpVerify.php");
 
              
 			//load process combo vacio
-			$.get("../sel_unidadmedida.php", function(data) {
+			$.get("../funciones/BackendQueries/getMeassuresUnits.php", function(data) {
             	    $('.cboUnidadmedida').html(data);
             });
 		});
@@ -302,6 +305,7 @@ require_once("../racf/purePhpVerify.php");
 							totalfactura: $("#preciototal").val()
 						}, 
 					function(data) {
+						$('#numfactura').val(data.idInvoice);
 						console.log(data.idInvoice);
 							
 							$.get('../funciones/BackendQueries/insertInvoiceLines.php',
@@ -311,7 +315,12 @@ require_once("../racf/purePhpVerify.php");
 									codFacturat: $('#codfacturatmp').val()
 								},
 								function (data2) { $("#botonBusqueda").html(data2);
-												   getInvoiceLines('Invoice',data.idInvoice,0,0,0,0);					
+													$('#divNumeroFactura').show();
+													$('#frameFiltroArticulos').html('<span class="mensaje" id="msgfacreasucc">Msj Creacion de factura</span>');
+													traducirVista();
+													$("#image1,#valcliente,#buscacliente").hide();
+													$("#codcliente").attr('readonly', true);
+													getInvoiceLines('Invoice',data.idInvoice,0,0,0,0);					
                     			}
             				);
 					
@@ -323,12 +332,16 @@ require_once("../racf/purePhpVerify.php");
 			location.href="index.php";
 		}
 		
-		function imprimir(codfactura) {
+		function imprimir() {
+			var codfactura=$("#numfactura").val();
 			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura);
 		}
 		
-		function pagar(codfactura,codcliente,importe) {
-			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe,"miwin","width=500,height=360,scrollbars=yes");			
+		function pagar() {
+			var codfactura=$("#numfactura").val();
+			var codcliente=$("#codcliente").val();
+			var importe=$("#preciototal").val();
+			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe,"miwin","width=700,height=500,scrollbars=yes");			
 		}
 		</script>
 	</head>
@@ -342,18 +355,18 @@ require_once("../racf/purePhpVerify.php");
 					  <form id="formulario_filtro" name="formulario_filtro">
 						<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 							<tr>
-						 		<td><span id="flia">Tipo de articulo</span></td>
+						 		<td><span  id="flia">Tipo de articulo</span></td>
 								<td>
 						  			<select id="cboFamily" class="comboMedio" name="cboFamily">
 									</select> 
 								</td>
 				      		</tr>	
 							<tr>
-								<td width="10%"><span id="referenc">Referencia</span> </td>
+								<td width="10%"><span  id="referenc">Referencia</span> </td>
 								<td colspan="10" valign="middle"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15"> </td>
 				 			</tr>
 							<tr>
-								<td width="10%"><span id="descri">Descripcion</span> </td>
+								<td width="10%"><span  id="descri">Descripcion</span> </td>
 								<td colspan="10" valign="middle"><input NAME="descripcion" type="text" class="cajaGrande" id="descripcion" size="15" maxlength="15"> </td>
 				 			</tr>
 						</table>
@@ -382,27 +395,35 @@ require_once("../racf/purePhpVerify.php");
 				</div> 
 			</div>
 				<div align="center">
-				<div id="tituloForm" class="header"><span id="tvntmst">VENTA MOSTRADOR</span></div>
+				<div id="tituloForm" class="header"><span  id="tvntmst">VENTA MOSTRADOR</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" >
 				<input id="codfacturatmp" name="codfacturatmp" type="hidden">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="10%"><span id="cod_cliente">C&oacute;digo Cliente</span></td>
+							<td width="10%"><span  id="cod_cliente">C&oacute;digo Cliente</span></td>
 					      <td width="40%"><input NAME="codcliente" value="1" type="text" class="cajaPequena" id="codcliente" size="6" maxlength="5" onClick="limpiarcaja()">
-					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
+					        <img id="buscacliente" src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" id="valcliente" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						  <td width="10%"></td>
                           <td width="40%"></td>	
                         </tr>
+						
+							<tr id="divNumeroFactura">
+								<td><span  id="tnrofc">Factura N.</span></td>
+						    	<td><input NAME="numfactura" type="text" class="cajaGrande" id="numfactura" size="45" maxlength="45" readonly></td>
+				            	<td></td>
+				            	<td></td>
+							</tr>
+					
 						<tr>
-							<td><span id="tnombcliente">Nombre Cliente</span></td>
+							<td><span  id="tnombcliente">Nombre Cliente</span></td>
 						    <td><input NAME="nombreCliente" type="text" class="cajaGrande" id="nombreCliente" size="45" maxlength="45" readonly></td>
 				            <td></td>
 				            <td></td>
 						</tr>
 						
 						<tr>
-							<td><span id="tfecha">Fecha</span></td>
+							<td><span  id="tfecha">Fecha</span></td>
 						    <td><input NAME="fecha" type="text" class="cajaMedia" id="fecha" size="10" maxlength="10" " readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -423,25 +444,26 @@ require_once("../racf/purePhpVerify.php");
 			  </form>
 			  
 			  <br>
-			  <div id="frmBusqueda">
+			  <!--div id="frmBusqueda"-->
+			  <div id="frameFiltroArticulos">
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
-					<td width="10%"><span id="tcodbarr">Codigo barras</span> </td>
+					<td width="10%"><span  id="tcodbarr">Codigo barras</span> </td>
 					<td colspan="10" valign="middle"><input NAME="icodbarras" type="text" class="cajaMedia" id="icodbarras" size="15" maxlength="15"> </td>
 				  </tr>
                    <tr>
-					<td width="10%"><span id="tcodart">Codigo de articulo</span> </td>
+					<td width="10%"><span  id="tcodart">Codigo de articulo</span> </td>
 					<td colspan="10" valign="middle"><input NAME="codArticulo" type="text" class="cajaMedia" id="icodArticulo" size="15" maxlength="15"> 
 						<a href="#modal"><img src="../img/ver.svg" width="16" height="16"  onMouseOver="style.cursor=cursor" data-ttitle="valcodbar" title="Validar codigo de barras">  </a>
 					</td>
 				  </tr>
 				  <tr>
-					<td width="5%"><span id="descri">descripcion</span></td>
+					<td width="5%"><span  id="descri">descripcion</span></td>
 					<td width="20%"><input NAME="descripcion" type="text" class="cajaMedia" id="idescripcion" size="30" maxlength="30" readonly></td>
-					<td width="5%"><span id="tprecio">PRECIO</span></td>
+					<td width="5%"><span  id="tprecio">PRECIO</span></td>
 					<td width="20%"><input NAME="precio" type="text" class="cajaPequena2" id="iprecio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
-					<td width="5%"><span id="tcant">CANTIDAD</span></td>
+					<td width="5%"><span  id="tcant">CANTIDAD</span></td>
 					<td width="25%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()">
 					<select id="umnstock" class="cboUnidadmedida" name="umnstock" onChange="actualizar_importe()" >
                                 
@@ -449,15 +471,15 @@ require_once("../racf/purePhpVerify.php");
                     <td width="20%"></td>
                  </tr>
                  <tr>
-					<td><span id="tdcto">Dcto.</span></td>
+					<td><span  id="tdcto">Dcto.</span></td>
 					<td><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
-					<td><span id="timporte">IMPORTE</span></td>
+					<td><span  id="timporte">IMPORTE</span></td>
 					<td><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" readonly> &#8364;</td>
-					<td><span id="tiva">IVA</span></td>
+					<td><span  id="tiva">IVA</span></td>
                     <td><select id="impuesto" class="cboImpuesto, comboMedio" name="impuesto" onChange="actualizar_importe()" >
                                 
 								</select> %</td>
-                    <td><button type="button" id="btnagregar" onClick="validar()" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span id="tagregar">Agregar</span> </button></td>
+                    <td><button type="button" id="btnagregar" onClick="validar()" onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span  id="tagregar">Agregar</span> </button></td>
 				  </tr>
 				</table>
 				</div>
@@ -466,14 +488,14 @@ require_once("../racf/purePhpVerify.php");
 				<div id="frmBusqueda">
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="10%"><span id="titem">ITEM</span></td>
-							<td width="20%"><span id="descri">DESCRIPCION</span></td>
-							<td width="10%"><span id="tprecio">PRECIO</span></td>
-							<td width="10%"><span id="tcant">CANTIDAD</span></td>
+							<td width="10%"><span  id="titem">ITEM</span></td>
+							<td width="20%"><span  id="descri">DESCRIPCION</span></td>
+							<td width="10%"><span  id="tprecio">PRECIO</span></td>
+							<td width="10%"><span  id="tcant">CANTIDAD</span></td>
 							<td width="10%"><span ></span></td>
-							<td width="10%"><span id="tdcto">DCTO </span></td>						
-							<td width="10%"><span id="timporte">IMPORTE</span></td>
-							<td width="10%"><span id="tiva">IVA</span></td>
+							<td width="10%"><span  id="tdcto">DCTO </span></td>						
+							<td width="10%"><span  id="timporte">IMPORTE</span></td>
+							<td width="10%"><span  id="tiva">IVA</span></td>
 							<td width="10%">&nbsp;</td>
 						</tr>
 				</table>
@@ -485,19 +507,19 @@ require_once("../racf/purePhpVerify.php");
 			  <div id="frmBusqueda">
 			<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 			  <tr>
-			    <td width="27%" class="busqueda"><span id="subtotal">Subtotal</span></td>
+			    <td width="27%" class="busqueda"><span  id="subtotal">Subtotal</span></td>
 				<td width="73%" align="right"><div align="center">
 			      <input class="cajaTotales" name="baseimponible" type="text" id="baseimponible" size="12" value=0 align="right" readonly> 
 		        &#8364;</div></td>
 			  </tr>
 			  <tr>
-				<td class="busqueda"><span id="tiva">IVA</span></td>
+				<td class="busqueda"><span  id="tiva">IVA</span></td>
 				<td align="right"><div align="center">
 			      <input class="cajaTotales" name="baseimpuestos" type="text" id="baseimpuestos" size="12" align="right" value=0 readonly> 
 		        &#8364;</div></td>
 			  </tr>
 			  <tr>
-				<td class="busqueda"><span id="tpciototal">Precio Total</span></td>
+				<td class="busqueda"><span  id="tpciototal">Precio Total</span></td>
 				<td align="right"><div align="center">
 			      <input class="cajaTotales" name="preciototal" type="text" id="preciototal" size="12" align="right" value=0 readonly> 
 		        &#8364;</div></td>
@@ -506,8 +528,8 @@ require_once("../racf/purePhpVerify.php");
 			  </div>
 				<div id="botonBusqueda">					
 				  <div align="center">
-				  	<button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-               		<button type="button" id="btncancelar" onClick="cancelar()"onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span id="tcancelar">Cancelar</span> </button>		    
+				  	<button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+               		<button type="button" id="btncancelar" onClick="cancelar()"onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span  id="tcancelar">Cancelar</span> </button>		    
 			      </div>
 				</div>
 			  		<iframe id="frame_datos" name="frame_datos" width="0" height="0" frameborder="0">

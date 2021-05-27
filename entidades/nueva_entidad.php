@@ -29,21 +29,21 @@
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="tinsentbanc">INSERTAR ENTIDAD BANCARIA</span></div>
+                    <div id="tituloForm" class="header"><span  id="tinsentbanc">INSERTAR ENTIDAD BANCARIA</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_entidad.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="14%"><span id="tnomb">Nombre</span></td>
+							<td width="14%"><span  id="tnomb">Nombre</span></td>
 						    <td width="36%"><input NAME="Anombreentidad" type="text" class="cajaGrande" id="nombreentidad" size="45" maxlength="45"></td>
 				            <td width="50%"><ul id="lista-errores"></ul></td>
 						</tr>						
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span  id="tcancelar">Cancelar</span> </button>
 					<input id="accion" name="accion" value="alta" type="hidden">
 					<input id="id" name="id" value="" type="hidden">
 			  </div>

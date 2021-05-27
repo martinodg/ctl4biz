@@ -14,7 +14,7 @@
    viewBox="0 0 158.75 69.54762"
    version="1.1"
    id="svg5262"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="ctl4bizlogo-long.svg">
   <defs
      id="defs5256" />
@@ -32,9 +32,9 @@
      inkscape:current-layer="g5227"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1006"
+     inkscape:window-height="1029"
      inkscape:window-x="0"
-     inkscape:window-y="50"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      units="px"
      borderlayer="false"
@@ -50,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -62,14 +62,6 @@
     <g
        transform="matrix(3.8142857,0,0,3.7,6571.1416,-319.82882)"
        id="g5227">
-      <rect
-         transform="scale(-1,1)"
-         y="116.55202"
-         x="-104.04296"
-         height="15.119048"
-         width="41.61985"
-         id="rect815"
-         style="fill:#083b66;fill-opacity:1;stroke-width:0.04891227" />
       <g
          transform="matrix(0.01678555,0,0,0.01840896,64.200986,120.52872)"
          id="g895">
@@ -106,23 +98,23 @@
       </g>
       <g
          id="text1450"
-         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#083b66;fill-opacity:1;stroke:none;stroke-width:0.26458332"
          aria-label="CTL"
          transform="matrix(0.21717194,0,0,0.23594346,62.329096,95.651278)">
         <path
            inkscape:connector-curvature="0"
            id="path5202"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45.86111069px;font-family:'Noto Sans Mono CJK HK';-inkscape-font-specification:'Noto Sans Mono CJK HK Bold';fill:#8dcaff;fill-opacity:1;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45.86111069px;font-family:'Noto Sans Mono CJK HK';-inkscape-font-specification:'Noto Sans Mono CJK HK Bold';fill:#083b66;fill-opacity:1;stroke-width:0.26458332"
            d="m 63.574345,139.61283 c 3.118556,0 6.053667,-1.32997 8.300862,-4.08164 l -3.852334,-4.08163 c -1.054805,1.46755 -2.293055,2.29305 -3.806472,2.29305 -3.210278,0 -5.961944,-3.07269 -5.961944,-11.7863 0,-8.53017 2.88925,-11.69459 5.640916,-11.69459 1.605139,0 2.614084,0.8255 3.760611,2.15547 l 3.852334,-4.21922 c -1.834445,-2.01789 -4.448528,-3.76061 -7.888111,-3.76061 -6.558139,0 -12.336639,5.31989 -12.336639,17.79411 0,12.52009 5.7785,17.38136 12.290777,17.38136 z" />
         <path
            inkscape:connector-curvature="0"
            id="path5204"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45.86111069px;font-family:'Noto Sans Mono CJK HK';-inkscape-font-specification:'Noto Sans Mono CJK HK Bold';fill:#8dcaff;fill-opacity:1;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45.86111069px;font-family:'Noto Sans Mono CJK HK';-inkscape-font-specification:'Noto Sans Mono CJK HK Bold';fill:#083b66;fill-opacity:1;stroke-width:0.26458332"
            d="m 80.451234,139.0625 h 6.833306 v -28.38803 h 7.108472 v -5.68678 H 73.296901 v 5.68678 h 7.154333 z" />
         <path
            inkscape:connector-curvature="0"
            id="path5206"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45.86111069px;font-family:'Noto Sans Mono CJK HK';-inkscape-font-specification:'Noto Sans Mono CJK HK Bold';fill:#8dcaff;fill-opacity:1;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45.86111069px;font-family:'Noto Sans Mono CJK HK';-inkscape-font-specification:'Noto Sans Mono CJK HK Bold';fill:#083b66;fill-opacity:1;stroke-width:0.26458332"
            d="m 98.749817,139.0625 h 17.427223 v -5.68678 h -10.59392 v -28.38803 h -6.833303 z" />
       </g>
       <g

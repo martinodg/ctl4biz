@@ -15,7 +15,7 @@ function pon_prefijo(pref,nombre) {
 }
 
 </script>
-<? require_once("../conectar.php"); ?>
+<? require_once("../conectar7.php"); ?>
 <body>
 <?
 	
@@ -29,9 +29,9 @@ function pon_prefijo(pref,nombre) {
 <? if ($nrs>0) { ?>
 		<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 		  <tr>
-			<td width="10%"><div align="center"><b><span id="tcodigo">Codigo</span></b></div></td>
-			<td width="60%"><div align="center"><b><span id="tcliente">Cliente</span></b></div></td>
-			<td width="20%"><div align="center"><b><span id="tnip">NIF/CIF</span></b></div></td>
+			<td width="10%"><div align="center"><b><span  id="tcodigo">Codigo</span></b></div></td>
+			<td width="60%"><div align="center"><b><span  id="tcliente">Cliente</span></b></div></td>
+			<td width="20%"><div align="center"><b><span  id="tnip">NIF/CIF</span></b></div></td>
 			<td width="10%"><div align="center"></td>
 		  </tr>
 		<?php

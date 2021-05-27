@@ -6,7 +6,7 @@ function Header()
 {
 
     //Logo
-    $this->Image('./logo/logo.jpg',20,8,150);
+    $this->Image('../img/ctl4bizlogo.jpg',10,8,50,50); 
     $this->Ln(5);	
 }
 

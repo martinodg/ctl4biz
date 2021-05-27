@@ -25,10 +25,10 @@ require_once("../mysqli_result.php");
                     }
     if (!mysqli_query($conexion,$query_operacion)){
                
-    echo "<div class=\"mensaje\"><span id=\"tmsgermodlot\">ATENCION: No ha podido ser modificado con exito el lote</span>: '$codlote'!!</div>";
+    echo "<div class=\"mensaje\"><span  id=\"tmsgermodlot\">ATENCION: No ha podido ser modificado con exito el lote</span>: '$codlote'!!</div>";
         echo mysqli_error($conexion) ;
     }else{
-       echo "<div class=\"header\"><span id=\"tmsgokmodlot\">ATENCION: El lote ha sido modificado con exito!</span></div>";
+       echo "<div class=\"header\"><span  id=\"tmsgokmodlot\">ATENCION: El lote ha sido modificado con exito!</span></div>";
     }
  
 mysqli_close($conexion);   

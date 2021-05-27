@@ -107,32 +107,32 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-				<div id="tituloForm" class="header"><span id="balbaran">Buscar ALBARAN </span></div>
+				<div id="tituloForm" class="header"><span  id="balbaran">Buscar ALBARAN </span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-							<td width="16%"><span id="cod_cliente">Codigo de cliente </span></td>
+							<td width="16%"><span  id="cod_cliente">Codigo de cliente </span></td>
 							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10" value="<? echo $codcliente?>"> <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()" data-ttitle="bcliente" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
-							<td><span id="nomb">Nombre</span></td>
+							<td><span  id="nomb">Nombre</span></td>
 							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="45" value="<? echo $nombre?>"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-						  <td><span id=""><span id="nrorto">Num. Albaran</span></td>
+						  <td><span  id=""><span  id="nrorto">Num. Albaran</span></td>
 						  <td><input id="numalbaran" type="text" class="cajaPequena" NAME="numalbaran" maxlength="15" value="<? echo $numalbaran?>"></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-							<td><span id="estado">Estado</span></td>
+							<td><span  id="estado">Estado</span></td>
 							<td><select id="cboEstados" name="cboEstados" class="comboMedio">
 								<option value="0" selected data-opttrad="todestad">Todos los estados</option>
 								<option value="1" data-opttrad="sinfact"  >Sin Facturar</option>
@@ -140,7 +140,7 @@ if ($cadena_busqueda<>"") {
 								</select></td>
 					    </tr>
 					  <tr>
-						  <td><span id="fechin">Fecha de inicio</span></td>
+						  <td><span  id="fechin">Fecha de inicio</span></td>
 						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $fechainicio?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -156,7 +156,7 @@ if ($cadena_busqueda<>"") {
 						  <td>&nbsp;</td>
 					  </tr>
 						<tr>
-						  <td><span id="fchafin">Fecha de fin</span></td>
+						  <td><span  id="fchafin">Fecha de fin</span></td>
 						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $fechafin?>" readonly><img src="../img/calendario.svg" name="Image2" id="Image2" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
@@ -174,28 +174,28 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">                    
-				 	<button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg"/> <span id="busc">buscar</span>  </button>
-			 	  	<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg"/> <span id="limp">limpiar</span>  </button>
-					<button type="button" id="btnnuevo"  onClick="nuevo_albaran()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg"/> <span id="tnvorto">Nuevo Albaran</span> </button>
+				 	<button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg"/> <span  id="busc">buscar</span>  </button>
+			 	  	<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg"/> <span  id="limp">limpiar</span>  </button>
+					<button type="button" id="btnnuevo"  onClick="nuevo_albaran()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg"/> <span  id="tnvorto">Nuevo Albaran</span> </button>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-				<td width="50%" class="paginar" align="left"><span id="nrortoenc"><span id="tndalbaranese">N de albaranes encontrados</span> </span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right"><span id="mostra">Mostrados </span> <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="left"><span  id="nrortoenc"><span  id="tndalbaranese">N de albaranes encontrados</span> </span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right"><span  id="mostra">Mostrados </span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
 				<div id="cabeceraResultado" class="header">
-				<span id="relalbaranes">relación de ALBARANES </span></div>
+				<span  id="relalbaranes">relación de ALBARANES </span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="8%"><span id="item">ITEM</span></td>
-							<td width="8%"><span id="nrorto_2">N. ALBARAN</span></td>
-							<td width="29%"><span id="cliente">CLIENTE </span></td>
-							<td width="10%"><span id="importe">IMPORTE </span></td>							
-							<td width="10%"><span id="fecha">FECHA</span></td>
-							<td width="10%"><span id="estado_2">ESTADO </span></td>
+							<td width="8%"><span  id="item">ITEM</span></td>
+							<td width="8%"><span  id="nrorto_2">N. ALBARAN</span></td>
+							<td width="29%"><span  id="cliente">CLIENTE </span></td>
+							<td width="10%"><span  id="importe">IMPORTE </span></td>							
+							<td width="10%"><span  id="fecha">FECHA</span></td>
+							<td width="10%"><span  id="estado_2">ESTADO </span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>

@@ -42,7 +42,7 @@ $hora=date("H:i:s");
 				            <td width="50%"><ul id="lista-errores"></ul></td>
 						</tr>
 						<tr>
-							<td width="14%"><span id="tfecha">Fecha</span></td>
+							<td width="14%"><span  id="tfecha">Fecha</span></td>
 						    <td width="36%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="12" maxlength="12" value="<? echo $hoy?>" readonly="yes"></td>
 				            <td width="50%"></td>
 						</tr>
@@ -55,9 +55,9 @@ $hora=date("H:i:s");
 			  </div>
 				<div id="botonBusqueda">
 					<input type="hidden" name="id" id="id" value="">
-					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)"  onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
 
-					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
+					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
 			  </div>
 			  </form>
 			 </div>

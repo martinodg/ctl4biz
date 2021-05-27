@@ -23,6 +23,6 @@ require_once("../conectar7.php");
            $nr_unidadesmedidas--;
             }
 echo '</select> ';
-echo '<button type="button" id="btnaceptarun" onMouseOver="style.cursor=cursor" onClick="aceptarcumedida('.$metaproceso.', '.$nlinea.')"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>';
+echo '<button type="button" id="btnaceptarun" onMouseOver="style.cursor=cursor" onClick="aceptarcumedida('.$metaproceso.', '.$nlinea.')"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>';
 
 ?>

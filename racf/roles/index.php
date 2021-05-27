@@ -160,7 +160,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 				<form id="form_busqueda" name="form_busqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-							<td width="20%"><span id="testado">Estado</span></td>
+							<td width="20%"><span  id="testado">Estado</span></td>
 						
                             <td id="entrada1" with="20%">
                           
@@ -177,7 +177,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 							
 						</tr>
 <tr>
-							<td width="20%"><span id="tcribu_2">Criterio de busqueda #2</span></td>
+							<td width="20%"><span  id="tcribu_2">Criterio de busqueda #2</span></td>
 							<td width="20%"> 
                                 <select id="crit2" name="2" class="comboMedio" >
                                     
@@ -195,7 +195,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 							<td width="40%">&nbsp;</td>
 						</tr>
 <tr>
-							<td width="20%"><span id="tcribu_3">Criterio de busqueda #3</span></td>
+							<td width="20%"><span  id="tcribu_3">Criterio de busqueda #3</span></td>
 							<td width="20%"> 
                                 <select id="crit3" name="3" class="comboMedio" >
                                 
@@ -215,15 +215,15 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 					</table>
 			  </div>
 		 	  <div id="botonBusqueda">
-					<button type="button" id="btnlimpiar" onMouseOver="style.cursor=cursor"> <img src="../../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-               		<button type="button" id="btnnuevo" onMouseOver="style.cursor=cursor"> <img src="../../img/nuevo.svg" alt="nuevo" /> <span id="tnuevo">Nuevo</span> </button>
-               		<button type="button" id="btnimprimir" onMouseOver="style.cursor=cursor"> <img src="../../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+					<button type="button" id="btnlimpiar" onMouseOver="style.cursor=cursor"> <img src="../../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
+               		<button type="button" id="btnnuevo" onMouseOver="style.cursor=cursor"> <img src="../../img/nuevo.svg" alt="nuevo" /> <span  id="tnuevo">Nuevo</span> </button>
+               		<button type="button" id="btnimprimir" onMouseOver="style.cursor=cursor"> <img src="../../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 			  </div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                 <tr>
 				<td width="50%" class="paginar" align="left">N de roles encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+				<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                 </tr>
 			  </table>

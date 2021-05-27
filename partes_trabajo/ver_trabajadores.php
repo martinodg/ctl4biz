@@ -34,7 +34,7 @@ body {
 }
 -->
 </style></head>
-<? require_once("../conectar.php"); ?>
+<? require_once("../conectar7.php"); ?>
 <body onLoad="buscar()">
 <form name="form1" id="form1" method="post" action="frame_trabajadores.php" target="frame_resultado" onSubmit="buscar()">
   <table width="95%" id="tabla_resultado" name="tabla_resultado" style="display:none" align="center">
@@ -50,7 +50,7 @@ body {
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span  id="tcerrar">Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

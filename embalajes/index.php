@@ -86,19 +86,19 @@ if ($cadena_busqueda<>"") {
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="tbusembj">Buscar EMBALAJE</span></div>
+                    <div id="tituloForm" class="header"><span  id="tbusembj">Buscar EMBALAJE</span></div>
 				<div id="frmBusqueda">
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-                            <td width="16%"><span id="tcodembal">C&oacute;digo de embalaje</span></td>
+                            <td width="16%"><span  id="tcodembal">C&oacute;digo de embalaje</span></td>
 							<td width="68%"><input id="codembalaje" type="text" class="cajaPequena" NAME="codembalaje" maxlength="3" value="<? echo $codembalaje?>"></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
-							<td><span id="tnomb">Nombre</span></td>
+							<td><span  id="tnomb">Nombre</span></td>
 							<td><input id="nombre" name="nombre" type="text" class="cajaGrande" maxlength="30" value="<? echo $nombre?>"></td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
@@ -106,26 +106,26 @@ if ($cadena_busqueda<>"") {
 					</table>
 			  </div>
 			 	<div id="botonBusqueda">
-					                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
-										<button type="button" id="btnlimpiar"  onClick="limpiar_busqueda()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span id="tlimpiar">Limpiar</span> </button>
-					 					<button type="button" id="btnnuevo" onClick="nuevo_embalaje()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span id="tnuevo">Nuevo</span> </button>
-										<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span id="timpr">Imprimir</span> </button>
+					                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span  id="tbuscar">Buscar</span> </button>
+										<button type="button" id="btnlimpiar"  onClick="limpiar_busqueda()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
+					 					<button type="button" id="btnnuevo" onClick="nuevo_embalaje()" onMouseOver="style.cursor=cursor"> <img src="../img/nuevo.svg" alt="nuevo" /> <span  id="tnuevo">Nuevo</span> </button>
+										<button type="button" id="btnimprimir"  onClick="imprimir()" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 			  	<tr>
-                    <td width="50%" class="paginar" align="left"><span id="tnroemben">Nro.de embalajes encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
-				<td width="50%" class="paginar" align="right"><span id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+                    <td width="50%" class="paginar" align="left"><span  id="tnroemben">Nro.de embalajes encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
 			  </table>
 				</div>
-                    <div id="cabeceraResultado" class="header"><span id="trelacenb">relacion de EMBALAJES</span></div>
+                    <div id="cabeceraResultado" class="header"><span  id="trelacenb">relacion de EMBALAJES</span></div>
 				<div id="frmResultado">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="12%"><span id="titem">ITEM</span></td>
-							<td width="20%"><span id="tcodigo">CODIGO</span></td>
-							<td width="50%"><span id="tnomb">NOMBRE</span></td>
+							<td width="12%"><span  id="titem">ITEM</span></td>
+							<td width="20%"><span  id="tcodigo">CODIGO</span></td>
+							<td width="50%"><span  id="tnomb">NOMBRE</span></td>
 							<td width="6%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>

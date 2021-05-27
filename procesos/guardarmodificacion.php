@@ -25,10 +25,10 @@ require_once("../mysqli_result.php");
                     }
     if (!mysqli_query($conexion,$query_operacion)){
                
-    echo "<div class=\"mensaje\"><span id=\"tmsgermdproc\">ATENCION: No ha podido ser modificado con exito el proceso</span>: '$codproceso'!!</div>";
+    echo "<div class=\"mensaje\"><span  id=\"tmsgermdproc\">ATENCION: No ha podido ser modificado con exito el proceso</span>: '$codproceso'!!</div>";
         echo mysqli_error($conexion) ;
     }else{
-       echo "<div class=\"header\"><span id=\"tmsgokmdproc\">ATENCION: El proceso ha sido modificado con exito!</span></div>";
+       echo "<div class=\"header\"><span  id=\"tmsgokmdproc\">ATENCION: El proceso ha sido modificado con exito!</span></div>";
     }
  
 mysqli_close($conexion);   

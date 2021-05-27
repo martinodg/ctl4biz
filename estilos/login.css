@@ -157,10 +157,10 @@ button {
     height: 50px;
     width: 270px;
     cursor: pointer;
-    background-color: #e4e4e3;
-    /*border: none;*/
+    background-color: #96f1b9;
+    border: none;
     border-radius: 5px;
-    color: black;
+    color: rgb(56, 101, 138);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -180,7 +180,7 @@ button img {
 }
 
 .bg-red {
-    background-color: #e74c3c !important;
+    background-color: #e74c3c !important; 
 }
 
 .bg-orange {

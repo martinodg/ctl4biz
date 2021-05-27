@@ -123,12 +123,13 @@ $lafila=mysqli_fetch_array($resultado);
 	  $pdf->Cell(1);
 	  $contador++;
 	  $codarticulo=mysqli_result($resultado2,$lineas,"codigo");
+	  $descripcion=mysqli_result($resultado2,$lineas,"descripcion");
 	  $codfamilia=mysqli_result($resultado2,$lineas,"codfamilia");
 	  $sel_articulos="SELECT * FROM articulos WHERE codarticulo='$codarticulo' AND codfamilia='$codfamilia'";
 	  $rs_articulos=mysqli_query($conexion,$sel_articulos);
 	  $pdf->Cell(40,4,mysqli_result($rs_articulos,0,"referencia"),'LR',0,'L');
-
-	  $acotado = substr(mysqli_result($rs_articulos,0,"descripcion"), 0, 45);
+	  $acotado =$descripcion;
+	  //$acotado = substr(mysqli_result($rs_articulos,0,"descripcion"), 0, 45);
 	  $pdf->Cell(80,4,$acotado,'LR',0,'L');
 
 	  $pdf->Cell(20,4,mysqli_result($resultado2,$lineas,"cantidad"),'LR',0,'C');
@@ -222,10 +223,10 @@ $lafila=mysqli_fetch_array($resultado);
 	$pdf->Ln(4);
 
 
-      @mysqli_free_result($resultado);
-      @mysqli_free_result($query);
-	  @mysqli_free_result($resultado2);
-	  @mysqli_free_result($query3);
+      //@mysqli_free_result($resultado);
+      //@mysqli_free_result($query);
+	  //@mysqli_free_result($resultado2);
+	  //@mysqli_free_result($query3);
 
 $pdf->Output();
 ob_end_flush(); 

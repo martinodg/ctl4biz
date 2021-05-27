@@ -64,12 +64,12 @@ $hoy=date("d/m/Y");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="tbuscfcha">Buscar FECHA</span></div>
+                    <div id="tituloForm" class="header"><span  id="tbuscfcha">Buscar FECHA</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 					  <tr>
-                          <td><span id="tfcierre">Fecha de cierre</span></td>
+                          <td><span  id="tfcierre">Fecha de cierre</span></td>
 						  <td><input id="fechainicio" type="text" class="cajaPequena" NAME="fechainicio" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -86,7 +86,7 @@ $hoy=date("d/m/Y");
 					  </tr>
 					</table>
 			  </div>
-			 	<div id="botonBusqueda">                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span id="tbuscar">Buscar</span> </button>
+			 	<div id="botonBusqueda">                    <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span  id="tbuscar">Buscar</span> </button>
 
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -95,7 +95,7 @@ $hoy=date("d/m/Y");
 				<td width="50%" align="right"></td>
 			  </table>
 				</div>
-                    <div id="cabeceraResultado" class="header"><span id="tdetcrrcaja">DETALLES CIERRE CAJA</span></div>
+                    <div id="cabeceraResultado" class="header"><span  id="tdetcrrcaja">DETALLES CIERRE CAJA</span></div>
 				<input type="hidden" id="cadena_busqueda" name="cadena_busqueda">
 			</form>
 			<br>

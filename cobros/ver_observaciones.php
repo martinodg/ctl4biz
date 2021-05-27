@@ -18,7 +18,7 @@ var cursor;
 <div id="pagina">
 	<div id="zonaContenido">
 		<div align="center">
-            <div id="tituloForm" class="header"><span id="tobsev">Observaciones</span></div>
+            <div id="tituloForm" class="header"><span  id="tobsev">Observaciones</span></div>
 			<div id="frmBusqueda">
 <? $observaciones=$_GET["observaciones"]; ?>
 <table width="100%" border="0">
@@ -31,7 +31,7 @@ var cursor;
 <table width="100%" border="0">
   <tr>
     <td><div align="center">
-      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span id="tcerrar">Cerrar</span> </button>
+      <button type="button" id="btncerrar"  onClick="window.close()" onMouseOver="style.cursor=cursor"> <img src="../img/cerrar.svg" alt="cerrar" /> <span  id="tcerrar">Cerrar</span> </button>
     </div></td>
   </tr>
 </table>

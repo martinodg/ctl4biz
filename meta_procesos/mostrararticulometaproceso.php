@@ -14,17 +14,17 @@ require_once("../conectar7.php");
         
 	$rs_tabla = mysqli_query($conexion,$consulta);
 	$nr_lotes= mysqli_num_rows($rs_tabla);
-        echo ' <div id="cabeceraResultado" class="header"><span id="tmtprmeproce">Materias primas del meta-proceso</span> </div>';
+        echo ' <div id="cabeceraResultado" class="header"><span  id="tmtprmeproce">Materias primas del meta-proceso</span> </div>';
 					
 			echo '	<div id="frmResultado">';
 			echo '	<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
 			echo '			<tr class="cabeceraTabla">';
 			
-                        echo '                                <td width="16%"><span id="tlinea">Linea</span></td>';
-                        echo '                               <td width="8%"><span id="tcodart">Codigo del Articulo</span></td>';
-                         echo '                               <td width="16%"><span id="tnmbart">Nombre del Articulo</span></td>';
-                         echo '                               <td width="8%"><span id="tcant">CANTIDAD</span></td>';
-			echo '				<td width="15%"><span id="tmodificar">MODIFICAR</span></td>';
+                        echo '                                <td width="16%"><span  id="tlinea">Linea</span></td>';
+                        echo '                               <td width="8%"><span  id="tcodart">Codigo del Articulo</span></td>';
+                         echo '                               <td width="16%"><span  id="tnmbart">Nombre del Articulo</span></td>';
+                         echo '                               <td width="8%"><span  id="tcant">CANTIDAD</span></td>';
+			echo '				<td width="15%"><span  id="tmodificar">MODIFICAR</span></td>';
 							
 			echo '			</tr>';
 			echo '	</table> ';     

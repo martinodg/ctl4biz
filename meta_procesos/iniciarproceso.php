@@ -29,10 +29,10 @@ require_once("../mysqli_result.php");
                 
                 
                 
-        echo "<div class=\"header\"><span id=\"tmsgprccrok\">ATENCION: El proceso ha sido creado exitosamente con el codigo</span> '$codproceso'!!</div>";
+        echo "<div class=\"header\"><span  id=\"tmsgprccrok\">ATENCION: El proceso ha sido creado exitosamente con el codigo</span> '$codproceso'!!</div>";
         echo mysqli_error($conexion) ;
     }else{
-       echo "<div class=\"mensaje\"><span id=\"tmsgprccrer\">ATENCION: Los Campos relativos al articulo del proceso son obligatorios!</span></div>";
+       echo "<div class=\"mensaje\"><span  id=\"tmsgprccrer\">ATENCION: Los Campos relativos al articulo del proceso son obligatorios!</span></div>";
     }
  
 mysqli_close($conexion);   

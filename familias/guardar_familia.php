@@ -85,17 +85,17 @@ if ($accion=="baja") {
 							<td width="85%" colspan="2" class="mensaje"><?php echo $mensaje;?></td>
 					    </tr>
 						<tr>
-							<td width="15%"><span id="tcod">C&Oacute;DIGO</span></td>
+							<td width="15%"><span  id="tcod">C&Oacute;DIGO</span></td>
 							<td width="85%" colspan="2"><?php echo $codfamilia?></td>
 					    </tr>
 						<tr>
-							<td width="15%"><span id="tnomb">Nombre</span></td>
+							<td width="15%"><span  id="tnomb">Nombre</span></td>
 						    <td width="85%" colspan="2"><?php echo $nombre?></td>
 					    </tr>						
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
 			  </div>
 			 </div>
 		  </div>

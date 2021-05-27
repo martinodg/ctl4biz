@@ -33,7 +33,7 @@ if (($fechainicio<>"") and ($fechafin<>"")) {
 
 $where.=" ORDER BY codpresupuesto DESC";
 $query_busqueda="SELECT count(*) as filas FROM presupuestos,clientes WHERE presupuestos.borrado=0 AND presupuestos.codcliente=clientes.codcliente AND ".$where;
-
+//echo $query_busqueda;
 $rs_busqueda=mysqli_query($conexion,$query_busqueda);
 $filas=mysqli_result($rs_busqueda,0,"filas");
 
@@ -144,7 +144,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 					<? } else { ?>
 					<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-                            <td width="100%" class="mensaje"><span id="tmsgpresnf">No hay ning&uacute;n presupuesto que cumpla con los criterios de b&uacute;squeda</span></td>
+                            <td width="100%" class="mensaje"><span  id="tmsgpresnf">No hay ning&uacute;n presupuesto que cumpla con los criterios de b&uacute;squeda</span></td>
 					    </tr>
 					</table>
 					<? } ?>

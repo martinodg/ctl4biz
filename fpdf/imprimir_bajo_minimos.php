@@ -8,7 +8,7 @@ $empresa=$_POST["cmbempresa"];
 if ($empresa==0) { require_once("comunes.php"); }
 if ($empresa==1) { require_once("comunes2.php"); }
 
-require_once("../conectar.php"); 
+require_once("../conectar7.php"); 
 require_once("../utiles/fecha_hispana.php");
 
 $pdf=new PDF();

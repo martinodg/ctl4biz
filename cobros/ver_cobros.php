@@ -72,7 +72,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="tcobros">COBROS</span></div>
+                    <div id="tituloForm" class="header"><span  id="tcobros">COBROS</span></div>
 				<div id="frmBusqueda">
 				<form id="formdatos" name="formdatos" method="post" action="guardar_cobro.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
@@ -86,33 +86,33 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						if ($fechavencimiento=="0000-00-00") { $fechavencimiento=""; } else { $fechavencimiento=implota($fechavencimiento); } 						
 						?>
 						<tr>
-                            <td width="15%"><span id="tcod_cliente">C&oacute;digo de cliente</span></td>
+                            <td width="15%"><span  id="tcod_cliente">C&oacute;digo de cliente</span></td>
 						    <td width="43%"><? echo $codcliente?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="tnomb">Nombre</span></td>
+							<td width="15%"><span  id="tnomb">Nombre</span></td>
 						    <td width="43%"><? echo $nombre?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
 						<tr>
-							<td width="15%"><span id="tcodfactura">C&oacute;digo de factura</span></td>
+							<td width="15%"><span  id="tcodfactura">C&oacute;digo de factura</span></td>
 						    <td width="43%"><? echo $codfactura?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<tr>
-                            <td width="15%"><span id="timpfactura">Importe de la factura</span></td>
+                            <td width="15%"><span  id="timpfactura">Importe de la factura</span></td>
 						    <td width="43%"><? echo number_format($totalfactura,2)?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<? $pendiente=$totalfactura-$aportaciones; ?>
 						<tr>
-                            <td width="15%"><span id="tpndpagar">Pendiente por pagar</span></td>
+                            <td width="15%"><span  id="tpndpagar">Pendiente por pagar</span></td>
 						    <td width="43%"><input type="text" name="pendiente" id="pendiente" value="<? echo number_format($pendiente,2,".","")?>" readonly="yes" class="cajaTotales"> &#8364;</td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="tetdfac">Estado de la factura</span></td>
+							<td width="15%"><span  id="tetdfac">Estado de la factura</span></td>
 						    <td width="43%"><select id="cboEstados" name="cboEstados" class="comboMedio" onChange="cambiar_estado()">
 								<? if ($estado==1) { ?><option value="1" selected="selected" data-opttrad="sinpagar" >Sin Pagar</option>
 								<option value="2" data-opttrad="pagada" >Pagada</option><? } else { ?>
@@ -123,7 +123,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
 						<tr>
-                            <td width="15%"><span id="tfchavto">Fecha de vencimiento</span></td>
+                            <td width="15%"><span  id="tfchavto">Fecha de vencimiento</span></td>
 						    <td width="43%"><input id="fechavencimiento" type="text" class="cajaPequena" NAME="fechavencimiento" maxlength="10" value="<? echo $fechavencimiento?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
@@ -158,7 +158,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					        <td width="50%" rowspan="14" align="left" valign="top"><ul id="lista-errores"></ul></td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="timporte">IMPORTE</span></td>
+							<td width="15%"><span  id="timporte">IMPORTE</span></td>
 						    <td width="35%"><input id="Rimporte" type="text" class="cajaPequena" NAME="Rimporte" maxlength="12"> &#8364;</td>
 					        <td width="50%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
@@ -168,7 +168,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						$contador=0;
 					  ?>
 						<tr>
-							<td width="15%"><span id="tforpago">Forma de pago</span></td>
+							<td width="15%"><span  id="tforpago">Forma de pago</span></td>
 							<td width="35%"><select id="AcboFP" name="AcboFP" class="comboGrande">
 							
 								<option value="0" data-opttrad="selfrmpago" >Seleccione una forma de pago</option>
@@ -181,12 +181,12 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 								<td width="50%" rowspan="14" align="left" valign="top"></td>
 				        </tr>
 						<tr>
-							<td width="15%"><span id="tnrodocum">Num. Documento</span></td>
+							<td width="15%"><span  id="tnrodocum">Num. Documento</span></td>
 						    <td width="35%"><input id="anumdocumento" type="text" class="cajaMedia" NAME="anumdocumento" maxlength="30"></td>
 					        <td width="50%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
 						<tr>
-							<td width="15%"><span id="tobsev">Observaciones</span></td>
+							<td width="15%"><span  id="tobsev">Observaciones</span></td>
 						    <td width="35%"><textarea rows="5" cols="30" class="areaTexto" name="observaciones" id="observaciones"></textarea></td>
 					        <td width="40%" rowspan="14" align="left" valign="top"></td>
 						</tr>																	
@@ -197,23 +197,23 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 					<input type="hidden" name="accion" id="accion" value="insertar">
 					<input type="hidden" name="codcliente" id="codcliente" value="<? echo $codcliente?>">
 					<input type="hidden" name="codfactura" id="codfactura" value="<? echo $codfactura?>">
-					<button type="button" id="btnaceptar" onClick="javascript:validar(formulario,true);" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
+					<button type="button" id="btnaceptar" onClick="javascript:validar(formulario,true);" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span  id="tcancelar">Cancelar</span> </button>
 			  </div>
 			  </form>
 			  <br>
 			  <div id="frmBusqueda">
-			  <div id="cabeceraResultado2" class="header"><span id="treldcob">relacion de COBROS</span> </div>
+			  <div id="cabeceraResultado2" class="header"><span  id="treldcob">relacion de COBROS</span> </div>
 				<div id="frmResultado2">
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
-							<td width="10%"><span id="titem">ITEM</span></td>
-							<td width="12%"><span id="tfecha">Fecha</span></td>
-							<td width="12%"><span id="timporte">IMPORTE</span></td>
-							<td width="20%"><span id="tforpago">FORMA PAGO</span></td>
-							<td width="20%"><span id="tnrodocum">N. DOCUMENTO</span></td>
-							<td width="15%"><span id="tfcvencrt">FECHA VTO.</span></td>
-							<td width="5%"><span id="tobv">OBV.</span></td>
+							<td width="10%"><span  id="titem">ITEM</span></td>
+							<td width="12%"><span  id="tfecha">Fecha</span></td>
+							<td width="12%"><span  id="timporte">IMPORTE</span></td>
+							<td width="20%"><span  id="tforpago">FORMA PAGO</span></td>
+							<td width="20%"><span  id="tnrodocum">N. DOCUMENTO</span></td>
+							<td width="15%"><span  id="tfcvencrt">FECHA VTO.</span></td>
+							<td width="5%"><span  id="tobv">OBV.</span></td>
 							<td width="6%">&nbsp;</td>
 						</tr>
 				</table>

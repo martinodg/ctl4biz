@@ -1,5 +1,5 @@
 <?php
-require_once("../conectar.php");
+require_once("../conectar7.php");
 
 $fechahoy=date("Y-m-d");
 #$sel_albaran="INSERT INTO albaranestmp (codalbaran,fecha) VALUE ('','$fechahoy')";
@@ -163,55 +163,55 @@ $fechahoy=date("Y-m-d");
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span id="tcrprttrab">CREAR PARTE DE TRABAJO</span></div>
+                    <div id="tituloForm" class="header"><span  id="tcrprttrab">CREAR PARTE DE TRABAJO</span></div>
 				<div id="frmBusqueda">
 				<form id="formulario" name="formulario" method="post" action="guardar_parte.php">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
-                            <td width="15%"><span id="tcodtjador">C&oacute;digo Trabajador</span> </td>
+                            <td width="15%"><span  id="tcodtjador">C&oacute;digo Trabajador</span> </td>
 					      <td colspan="3"><input NAME="codtrabajador" type="text" class="cajaPequena" id="codtrabajador" size="6" maxlength="5" onClick="limpiarcaja()">
 					        <img src="../img/ver.svg" width="16" height="16" onClick="abreVentana()"  data-ttitle="bprov" title="Buscar trabajador"  onMouseOver="style.cursor=cursor"> <img src="../img/cliente.svg" width="16" height="16" onClick="validarcliente()" data-ttitle="tvalclt" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 						</tr>
 						<tr>
-							<td width="15%"><span id="tnomb">Nombre</span></td>
+							<td width="15%"><span  id="tnomb">Nombre</span></td>
 						    <td width="27%"><input NAME="nombre" type="text" class="cajaGrande" id="nombre" size="45" readonly></td>
-				            <td width="3%"><span id="tnif">NIF</span></td>
+				            <td width="3%"><span  id="tnif">NIF</span></td>
 				            <td width="64%"><input NAME="nif" type="text" class="cajaMedia" id="nif" size="20" maxlength="15" readonly></td>
 						</tr>
 						<? $hoy=date("d/m/Y"); ?>
 						<tr>
-							<td width="15%"><span id="tcod_pres">C&oacute;digo Presupuesto</span></td>
+							<td width="15%"><span  id="tcod_pres">C&oacute;digo Presupuesto</span></td>
 						    <td width="27%"><input NAME="codpresupuesto" type="text" class="cajaGrande" id="codpresupuesto" size="45" maxlength="45"></td>
 				            <td width="3%">&nbsp;</td>
 				            <td width="64%">&nbsp;</td>
 						</tr>
 <tr>
-<td><span id="tttrabajo">Titulo Trabajo</span></td>
+<td><span  id="tttrabajo">Titulo Trabajo</span></td>
 <td><input NAME="titulo" type="text" class="cajaGrande" id="titulo" size="45" maxlength="250"></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="tdescri">Descripci&oacute;n</span></td>
+<td><span  id="tdescri">Descripci&oacute;n</span></td>
 <td><textarea name="descripcion" cols="45" rows="5" class="cajaGrandeML" id="descripcion"></textarea></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="thrsprv">Horas previstas</span></td>
+<td><span  id="thrsprv">Horas previstas</span></td>
 <td><input NAME="horasprevistas" type="text" class="cajaPequena" id="horasprevistas" size="45" maxlength="45"></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="tpciohs">Precio / Hora</span></td>
+<td><span  id="tpciohs">Precio / Hora</span></td>
 <td><input NAME="preciohora" type="text" class="cajaPequena" id="preciohora" size="45" maxlength="45">
 (Separador decimal con . -punto-)</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td><span id="tfccom">Fecha Comienzo</span></td>
+<td><span  id="tfccom">Fecha Comienzo</span></td>
 <td><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly>
 <img src="../img/calendario.svg" alt="" name="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
 <script type="text/javascript">
@@ -246,8 +246,8 @@ $fechahoy=date("Y-m-d");
 
 				<input name="codarticulo" value="<? echo $codarticulo?>" type="hidden" id="codarticulo">
   <div align="center">
-				    <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="taceptar">Aceptar</span> </button>
-					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span id="tcancelar">Cancelar</span> </button>
+				    <button type="button" id="btnaceptar" onClick="validar_cabecera()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span  id="tcancelar">Cancelar</span> </button>
 				    <input id="codfamilia" name="codfamilia" value="<? echo $codfamilia?>" type="hidden">
 				    <input id="codalbarantmp" name="codalbarantmp" value="<? echo $codalbarantmp?>" type="hidden">
 </div>

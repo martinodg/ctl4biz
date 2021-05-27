@@ -26,18 +26,18 @@ echo '  <script type="text/javascript" src="../jquery/jquery331.js"></script>
     if ($parametro3<>""){ $donde=$donde."lote.".$criterio3."='".$parametro3."' AND ";}
 
     echo '                      <div id="cabeceraResultado" class="header"> 
-     					<span id="trelalot">relacion de LOTES</span></div>';
+     					<span  id="trelalot">relacion de LOTES</span></div>';
     echo '				<div id="frmResultado">';
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
-    echo '						<td width="8%"><span id="tcodigo">CODIGO</span></td>';
-    echo '						<td width="38%"><span id="tvarticulo">ARTICULO</span></td>';
-    echo '						<td width="6%"><span id="tcant">CANTIDAD</span></td>';
-    echo '						<td width="6%"><span id="tfechin">Fecha de inicio</span></td>';
-    echo '						<td width="6%"><span id="thinic">HORA DE INICIO</span></td>';
-    echo '                                                <td width="6%"><span id="tfchafin">Fecha de fin</span></td>';
-    echo '						<td width="6%"><span id="thorafincrt">HORA DE FIN</span></td>';
-    echo '                                               <td width="6%"><span id="testado">ESTADO</span></td>';
+    echo '						<td width="8%"><span  id="tcodigo">CODIGO</span></td>';
+    echo '						<td width="38%"><span  id="tvarticulo">ARTICULO</span></td>';
+    echo '						<td width="6%"><span  id="tcant">CANTIDAD</span></td>';
+    echo '						<td width="6%"><span  id="tfechin">Fecha de inicio</span></td>';
+    echo '						<td width="6%"><span  id="thinic">HORA DE INICIO</span></td>';
+    echo '                                                <td width="6%"><span  id="tfchafin">Fecha de fin</span></td>';
+    echo '						<td width="6%"><span  id="thorafincrt">HORA DE FIN</span></td>';
+    echo '                                               <td width="6%"><span  id="testado">ESTADO</span></td>';
     echo '						<td width="6%">&nbsp;</td>';
     echo '						<td width="5%">&nbsp;</td>';
     echo '					</tr>';
