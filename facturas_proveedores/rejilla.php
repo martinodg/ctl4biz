@@ -45,13 +45,13 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
-		function ver_factura(codfactura) {
-			parent.location.href="ver_factura.php?codfactura=" + codfactura + "&cadena_busqueda=<? echo $cadena_busqueda?>";
+		function ver_factura(codfactura,codproveedor) {
+			parent.location.href="ver_factura.php?codfactura=" + codfactura + "&codproveedor=" + codproveedor;
 		}
 		
-		function modificar_factura(codfactura,marcaestado) {
+		function modificar_factura(codfactura,codproveedor,marcaestado) {
 			if (marcaestado==1) {
-				parent.location.href="modificar_factura.php?codfactura=" + codfactura + "&cadena_busqueda=<? echo $cadena_busqueda?>";
+				parent.location.href="modificar_factura.php?codfactura=" + codfactura + "&codproveedor=" + codproveedor;
 			} else {
 				alert ("No puede modificar una factura ya pagada.");
 			}
@@ -99,7 +99,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 				if (empty($iniciopagina)) { $iniciopagina=0; }
 				if ($iniciopagina>$filas) { $iniciopagina=0; }
 					if ($filas > 0) { ?>
-						<? $sel_resultado="SELECT codfactura,proveedores.nombre as nombre,facturasp.fecha as fecha,totalfactura,estado FROM facturasp,proveedores WHERE facturasp.borrado=0 AND facturasp.codproveedor=proveedores.codproveedor AND ".$where;
+						<? $sel_resultado="SELECT facturasp.codfactura as codfactura,proveedores.nombre as nombre,facturasp.fecha as fecha,totalfactura,estado, facturasp.codproveedor as codproveedor FROM facturasp,proveedores WHERE facturasp.borrado=0 AND facturasp.codproveedor=proveedores.codproveedor AND ".$where;
+						   //echo $sel_resultado;
 						   $sel_resultado=$sel_resultado."  limit ".$iniciopagina.",10";
 						   $res_resultado=mysqli_query($conexion,$sel_resultado);
 						   $contador=0;
@@ -115,8 +116,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							<td width="8%"><div align="center"><? echo number_format(mysqli_result($res_resultado,$contador,"totalfactura"),2,",",".")?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo implota(mysqli_result($res_resultado,$contador,"fecha"))?></div></td>
 							<td class="aDerecha" width="10%"><div align="center"><? echo $estado?></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>,<? echo $marcaestado?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
-							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_factura(&apos;<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>&apos;,&apos;<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>&apos;,&apos;<? echo $marcaestado?>&apos;)" data-ttitle="modificar" title="Modificar"></a></div></td>
+							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_factura(&apos;<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>&apos;,&apos;<?php echo mysqli_result($res_resultado,$contador,"codproveedor")?>&apos;)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
 							<td width="6%"><div align="center"><a href="#"><img src="../img/eliminar.svg" width="16" height="16" border="0" onClick="eliminar_factura(<?php echo mysqli_result($res_resultado,$contador,"codfactura")?>)" data-ttitle="eliminar" title="Eliminar"></a></div></td>
 						</tr>
 						<? $contador++;

@@ -23,6 +23,7 @@ if ($accion=="alta") {
 			</script><?
 	} else {
 			$query_operacion="INSERT INTO albaranesp (codalbaran, codproveedor, codfactura, fecha, iva, estado) VALUES ('$codalbaran', '$codproveedor',  '0', '$fecha', '$iva', '1')";					
+			echo $query_operacion;
 			$rs_operacion=mysqli_query($conexion,$query_operacion);
 			if ($rs_operacion) { $mensaje="El albar&aacute;n ha sido dado de alta correctamente"; }
 			$query_tmp="SELECT * FROM albalineaptmp WHERE codalbaran='$codalbarantmp' ORDER BY numlinea ASC";
@@ -100,7 +101,7 @@ if ($accion=="modificar") {
 		$dcto=mysqli_result($rs_lineastmp,$contador,"dcto");
 	
 		$sel_insert = "INSERT INTO albalineap (codalbaran,codproveedor,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) 
-		VALUES ('$codalbaran','$codproveedor','','$codigo','$codfamilia','$cantidad','$precio','$importe','$dcto')";
+		VALUES ('$codalbaran','$codproveedor','$numlinea','$codigo','$codfamilia','$cantidad','$precio','$importe','$dcto')";
 		$rs_insert = mysqli_query($conexion,$sel_insert);
 		
 		$sel_actualiza="UPDATE articulos SET stock=(stock-'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";
@@ -185,12 +186,13 @@ if ($accion=="convertir") {
 		while ($contador < mysqli_num_rows($rs_lineas)) {
 			$codfamilia=mysqli_result($rs_lineas,$contador,"codfamilia");
 			$codigo=mysqli_result($rs_lineas,$contador,"codigo");
+			$numlinea=mysqli_result($rs_lineas,$contador,"numlinea");
 			$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
 			$precio=mysqli_result($rs_lineas,$contador,"precio");
 			$importe=mysqli_result($rs_lineas,$contador,"importe");
 			$dcto=mysqli_result($rs_lineas,$contador,"dcto");
 			$sel_insert="INSERT INTO factulineap (codfactura,codproveedor,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES 
-				('$codfactura','$codproveedor','','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
+				('$codfactura','$codproveedor','$numlinea','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
 			$rs_insert=mysqli_query($conexion,$sel_insert);
 			$contador++;
 		}

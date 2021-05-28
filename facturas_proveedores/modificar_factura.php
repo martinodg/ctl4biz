@@ -3,9 +3,12 @@ require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
 
-$codfactura=$_GET["codfactura"];
-$codproveedor=$_GET["codproveedor"];
+if (isset($_GET["codfactura"])){$codfactura=$_GET["codfactura"];}
+if (isset($_GET["codproveedor"])){$codproveedor=$_GET["codproveedor"];}
+
+
 $sel_alb="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND codproveedor='$codproveedor'";
+//echo $sel_alb;
 $rs_alb=mysqli_query($conexion,$sel_alb);
 $codproveedor=mysqli_result($rs_alb,0,"codproveedor");
 $iva=mysqli_result($rs_alb,0,"iva");
@@ -25,13 +28,14 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 $contador=0;
 while ($contador < mysqli_num_rows($rs_lineas)) {
 	$codfamilia=mysqli_result($rs_lineas,$contador,"codfamilia");
+	$numlinea=mysqli_result($rs_lineas,$contador,"numlinea");
 	$codigo=mysqli_result($rs_lineas,$contador,"codigo");
 	$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
 	$precio=mysqli_result($rs_lineas,$contador,"precio");
 	$importe=mysqli_result($rs_lineas,$contador,"importe");
 	$baseimponible=$baseimponible+$importe;
 	$dcto=mysqli_result($rs_lineas,$contador,"dcto");
-	$sel_tmp="INSERT INTO factulineaptmp (codfactura,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
+	$sel_tmp="INSERT INTO factulineaptmp (codfactura,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','$numlinea','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
 	$rs_tmp=mysqli_query($conexion,$sel_tmp);
 	$contador++;
 }

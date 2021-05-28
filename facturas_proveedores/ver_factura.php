@@ -5,9 +5,10 @@ require_once("../funciones/fechas.php");
 
 $codfactura=$_GET["codfactura"];
 $codproveedor=$_GET["codproveedor"];
-$cadena_busqueda=$_GET["cadena_busqueda"];
+if (isset($_GET["cadena_busqueda"])){$cadena_busqueda=$_GET["cadena_busqueda"];}
 
 $query="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND codproveedor='$codproveedor'";
+//echo $query;
 $rs_query=mysqli_query($conexion,$query);
 $codproveedor=mysqli_result($rs_query,0,"codproveedor");
 $fecha=mysqli_result($rs_query,0,"fecha");

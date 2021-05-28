@@ -15,6 +15,7 @@ $minimo=0;
 
 if ($accion=="alta") {
 	$query_comprobar="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND codproveedor='$codproveedor'";
+	//echo $query_comprobar;
 	$rs_comprobar=mysqli_query($conexion,$query_comprobar);
 	if (mysqli_num_rows($rs_comprobar) > 0 ) {
 			?><script>
@@ -23,9 +24,11 @@ if ($accion=="alta") {
 			</script><?
 	} else {
 			$query_operacion="INSERT INTO facturasp (codfactura, codproveedor, fecha, iva, estado) VALUES ('$codfactura', '$codproveedor', '$fecha', '$iva', '1')";					
+			//echo $query_operacion;
 			$rs_operacion=mysqli_query($conexion,$query_operacion);
 			if ($rs_operacion) { $mensaje="La factura ha sido dada de alta correctamente"; }
 			$query_tmp="SELECT * FROM factulineaptmp WHERE codfactura='$codfacturatmp' ORDER BY numlinea ASC";
+			//echo $query_tmp;
 			$rs_tmp=mysqli_query($conexion,$query_tmp);
 			$contador=0;
 			$baseimponible=0;
@@ -71,8 +74,10 @@ if ($accion=="alta") {
 if ($accion=="modificar") {
 	$codfactura=$_POST["codfactura"];
 	$act_albaran="UPDATE facturasp SET fecha='$fecha', iva='$iva' WHERE codfactura='$codfactura' AND codproveedor='$codproveedor'";
+	//echo $act_albaran;
 	$rs_albaran=mysqli_query($conexion,$act_albaran);
 	$sel_lineas = "SELECT codigo,codfamilia,cantidad FROM factulineap WHERE codfactura='$codfactura' AND codproveedor='$codproveedor' order by numlinea";
+	//echo $sel_lineas;
 	$rs_lineas = mysqli_query($conexion,$sel_lineas);
 	$contador=0;
 	while ($contador < mysqli_num_rows($rs_lineas)) {
@@ -100,8 +105,8 @@ if ($accion=="modificar") {
 		$dcto=mysqli_result($rs_lineastmp,$contador,"dcto");
 	
 		$sel_insert = "INSERT INTO factulineap (codfactura,codproveedor,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) 
-		VALUES ('$codfactura','$codproveedor','','$codigo','$codfamilia','$cantidad','$precio','$importe','$dcto')";
-
+		VALUES ('$codfactura','$codproveedor','$numlinea','$codigo','$codfamilia','$cantidad','$precio','$importe','$dcto')";
+		//echo $sel_insert;
 		$rs_insert = mysqli_query($conexion,$sel_insert);
 		
 		$sel_actualiza="UPDATE articulos SET stock=(stock-'$cantidad') WHERE codarticulo='$codigo' AND codfamilia='$codfamilia'";

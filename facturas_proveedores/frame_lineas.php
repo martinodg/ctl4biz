@@ -28,8 +28,10 @@ function eliminar_linea(codfacturatmp,numlinea,importe)
 <?php 
 
 $codfacturatmp=$_POST["codfacturatmp"];
+if (isset($_GET["modif"])){$modif=$_GET["modif"];} 
+$modif=$_POST["modif"];
 $retorno=0;
-if ($modif<>1) {
+if ($modif<>1) { 
 		if (!isset($codfacturatmp)) { 
 			$codfacturatmp=$_GET["codfacturatmp"]; 
 			$retorno=1; }
@@ -43,6 +45,7 @@ if ($modif<>1) {
 
 				//Ask for last codproceso and assing new value
 				$consultaprevia = "SELECT max(numlinea) as maximo FROM factulineaptmp WHERE codfactura=$codfacturatmp";
+				//echo $consultaprevia;
 				$rs_consultaprevia=mysqli_query($conexion,$consultaprevia);
 				$codlineatmp=mysqli_result($rs_consultaprevia,0,"maximo");
 				//If the result of the query is null then this will be the rist entry on the table and 0 is assigned as previews entry code.
@@ -51,6 +54,7 @@ if ($modif<>1) {
 				//insert the new entry on meta-process table.
 				
 				$sel_insert="INSERT INTO factulineaptmp (codfactura,numlinea,codigo,codfamilia,cantidad,precio,importe,dcto) VALUES ('$codfacturatmp','$codlineatmp','$codarticulo','$codfamilia','$cantidad','$precio','$importe','$descuento')";
+				//echo $sel_insert;
 				$rs_insert=mysqli_query($conexion,$sel_insert);
 		}
 }

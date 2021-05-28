@@ -25,13 +25,14 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 $contador=0;
 while ($contador < mysqli_num_rows($rs_lineas)) {
 	$codfamilia=mysqli_result($rs_lineas,$contador,"codfamilia");
+	$numlinea=mysqli_result($rs_lineas,$contador,"numlinea");
 	$codigo=mysqli_result($rs_lineas,$contador,"codigo");
 	$cantidad=mysqli_result($rs_lineas,$contador,"cantidad");
 	$precio=mysqli_result($rs_lineas,$contador,"precio");
 	$importe=mysqli_result($rs_lineas,$contador,"importe");
 	$baseimponible=$baseimponible+$importe;
 	$dcto=mysqli_result($rs_lineas,$contador,"dcto");
-	$sel_tmp="INSERT INTO albalineaptmp (codalbaran,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES ('$codalbarantmp','','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
+	$sel_tmp="INSERT INTO albalineaptmp (codalbaran,numlinea,codfamilia,codigo,cantidad,precio,importe,dcto) VALUES ('$codalbarantmp','$numlinea','$codfamilia','$codigo','$cantidad','$precio','$importe','$dcto')";
 	$rs_tmp=mysqli_query($conexion,$sel_tmp);
 	$contador++;
 }
