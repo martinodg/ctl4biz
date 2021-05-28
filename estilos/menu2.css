@@ -1,3 +1,12 @@
+/*Font*/
+
+@font-face {
+    font-family: "quicksandlight";
+    src: url('./font/quicksand_book-webfont.woff2') format('woff2'), url("./font/quicksand_book-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     width: 100%;
     height: auto;
@@ -46,7 +55,7 @@ body {
 
 #icono {
     /*background: rgb(28, 31, 73);*/
-    background: #083b66;
+    background: #47494b;
     height: 48px;
     width: 50px;
     display: block;
@@ -66,16 +75,18 @@ body {
 .company {
      display: block padding: active;
     box-sizing: border-box;
-    padding-top: 6px;
+   /* padding-top: 6px;*/
     padding-left: 15%;
     font-size: 20px;
     color: #ff7f00;
+    width: auto;
 }
 
 .logo {
     position: fixed;
     height: 34px;
-    width: 134px;
+    padding-top: 7px;
+    width: auto;
     display: block;
     right: 15px;
     margin-left: auto;
@@ -142,31 +153,39 @@ a {
 }
 
 nav {
-    font-family: Helvetica, sans-serif;
-    font-size: 12px;
+    font: bold 12pt quicksandlight;
+    height: 48px;
+   
+}
+
+nav > div {
+    line-height: 48px;
 }
 
 ul {
-    background: #083b66;
+    background: #ffffff00;
     list-style: none;
     margin: 0;
     padding-left: 0;
-    min-width: 150px;
+    width: auto;
+    
 }
 
 li {
     color: #fff;
-    background: #083b66;
+    background: #ffffff00;
     display: block;
     float: left;
     position: relative;
     text-decoration: none;
     transition-duration: 0.2s;
-    padding: 11px 10px 7px 10px;
+    padding: 14px 0px 14px 0px;
+  
 }
 
 li a {
-    color: #fff;
+    color: rgb(20, 19, 19);
+    padding: 14px 10px 14px 10px;
 }
 
 li:hover {
@@ -175,13 +194,13 @@ li:hover {
 }
 
 ul li ul {
-    background: orange;
+    background: #8dcaff;
     visibility: hidden;
     opacity: 0;
-    min-width: 150px;
+    width: 150px;
     position: absolute;
     transition: all 0.5s ease;
-    margin-top: 6px;
+    margin-top: 12px;
     left: 0;
     display: none;
 }
@@ -191,11 +210,13 @@ ul li ul:hover {
     visibility: visible;
     opacity: 1;
     display: block;
+  
 }
 
 ul li ul li {
     clear: both;
     width: 100%;
+ 
 }
 
 ul li ul li:hover {

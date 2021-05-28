@@ -139,7 +139,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 				<div id="botonBusqueda">
 					<div align="center">
 					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
-					 <button type="button" id="btnimprimir"  actura?>','<? echo $codproveedor?>')" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
+					 <button type="button" id="btnimprimir" onClick="imprimir('<? echo $codfactura?>','<? echo $codproveedor?>')" onMouseOver="style.cursor=cursor"> <img src="../img/printer.svg" alt="Imprimir" /> <span  id="timpr">Imprimir</span> </button>
 				        </div>
 					</div>
 			  </div>

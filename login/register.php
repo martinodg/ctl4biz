@@ -49,7 +49,14 @@ if (mysqli_num_rows($result)>0 ) {
     $DB_password=randomPassword(16);
     echo "El nombre de la base de datos es: ".$id_company."<br>";
     //Create company folders to hold images
-   // @mkdir("/img/".$id_company."/items", 0777);/* Create folder for items */
+   
+    $path="./img/$id_company";
+    $path1="./img/$id_company/users";
+    $path2="./img/$id_company/items";
+    mkdir($path, 0777);/* Create folder for company */
+    mkdir($path1, 0777);/* Create folder for users */
+    mkdir($path2, 0777);/* Create folder for items */
+
 
     $query_login_insert="INSERT INTO login_data (company_name,id_company,master_user,db_user,db_password) VALUES ('$compania','$id_company','$emilio','$DB_user','$DB_password');";
     $rs_login_insert=mysqli_query($conexion,$query_login_insert);

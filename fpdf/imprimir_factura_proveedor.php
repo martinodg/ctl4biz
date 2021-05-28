@@ -227,10 +227,10 @@ $lafila=mysqli_fetch_array($resultado);
 	$pdf->Ln(4);
 
 
-      @mysqli_free_result($resultado); 
-      @mysqli_free_result($query);
-	  @mysqli_free_result($resultado2); 
-	  @mysqli_free_result($query3);
+     // @mysqli_free_result($resultado); 
+     // @mysqli_free_result($query);
+	 // @mysqli_free_result($resultado2); 
+	 // @mysqli_free_result($query3);
 
 $pdf->Output();
 ob_end_flush(); 
