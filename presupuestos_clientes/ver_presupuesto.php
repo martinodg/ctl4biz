@@ -89,7 +89,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 						</tr>
 					</table>
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
-					  <? $sel_lineas="SELECT presulinea.*,articulos.*,familias.nombre as nombrefamilia FROM presulinea,articulos,familias WHERE presulinea.codpresupuesto='$codpresupuesto' AND presulinea.codigo=articulos.codarticulo AND presulinea.codfamilia=familias.codfamilia ORDER BY presulinea.numlinea ASC";
+					  <? $sel_lineas="SELECT presulinea.*, presulinea.descripcion as descripcionp ,articulos.*,familias.nombre as nombrefamilia FROM presulinea,articulos,familias WHERE presulinea.codpresupuesto='$codpresupuesto' AND presulinea.codigo=articulos.codarticulo AND presulinea.codfamilia=familias.codfamilia ORDER BY presulinea.numlinea ASC";
 						 //echo $sel_lineas;
 						 $rs_lineas=mysqli_query($conexion,$sel_lineas);
 						for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
@@ -97,7 +97,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							$codfamilia=mysqli_result($rs_lineas,$i,"codfamilia");
 							$nombrefamilia=mysqli_result($rs_lineas,$i,"nombrefamilia");
 							$codarticulo=mysqli_result($rs_lineas,$i,"codarticulo");
-							$descripcion=mysqli_result($rs_lineas,$i,"descripcion");
+							$descripcion=mysqli_result($rs_lineas,$i,"descripcionp");
 							$referencia=mysqli_result($rs_lineas,$i,"referencia");
 							$cantidad=mysqli_result($rs_lineas,$i,"cantidad");
 							$precio=mysqli_result($rs_lineas,$i,"precio");
