@@ -12,7 +12,7 @@
     float: left;
     width: 33.33%;
     padding: 10px;
-    height: 340px;
+    height: 450px;
     /* Should be removed. Only for demonstration */
 }
 
@@ -345,6 +345,129 @@ body .password-wrapper .strength-lines .line:last-of-type {
     right: 4px;
 }
 
+/* Avatar Class */
+
+
+#avatar{
+    display:none;
+}
+.avatarDiv{
+    
+    
+    height: 100px; 
+}
+
+.avatarImg{
+    width: 100%;
+    height: 100%;  
+    
+}
+.avatarText{
+    color: #000;
+    font-size: 18px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    background-color: #97999b;
+    /*padding: 1px;*/
+  }
+  
+  .grid-item {
+    
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+  #BtSelectPhoto {
+      width: 99%;
+  }
+  .BtContainer {
+   
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  input[type="file"] {
+    font-size: 0px;
+    top: 10px;
+    /*position: absolute;*/
+    visibility: hidden;
+    /* z-index: -1;
+   
+    left: 8px;
+    
+    color: #0e0101;*/
+  }
+  .button-wrap {
+    position: relative;
+    width: 99%;
+  }
+  .button {
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    background-color: #ff7f00;
+    border: none;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*margin: 4px 2px;*/
+    cursor: pointer;
+/*
+    display: inline-block;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #ff7f00;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;*/
+  }
+/*Modal*/
+
+#modal {
+    position: fixed;
+    top: 5%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 9;
+}
+.modal__window {
+    position: relative;
+    background-color: white;
+    Top: 20px;
+    width: 900px;
+    padding: 4em 2em;
+  }
+  
+  .modal__close {
+    position: absolute;
+    top: -20px;
+    right: 0;
+  }
+
+#modal:not(:target) {
+    visibility: hidden;
+    opacity: 0;
+}
+#modalContent{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 1000px;
+    width: 99%;
+}
 /* Clase switch */
 
 .switch {

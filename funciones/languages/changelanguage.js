@@ -4,20 +4,20 @@ function getTranslationText(name)
 {
     var traductions = {
         //"variable_name":["english","espanol","polski","italian","portugues","frances","Aleman",”español_UE],
-        "company_name":["Company name:", "Compañia:","Nazwa Firma:"],
-        "nombre":["Your name:", "Nombre del usuario:","Nazwa Uzytkownika"],
+        "company_name":["Company name", "Compañia","Nazwa Firma","Nome della ditta","Nome da empresa","Nom de la compagnie","Name der Firma"],
+        "nombre":["Your name", "Nombre del usuario","Nazwa Uzytkownika","Il tuo nome","Seu nome","Votre nom","Dein Name"],
         "nombcliente":["Customer Name", "Nombre Cliente","Nazwa klienta","Nome do cliente","nome do cliente","Nom du client","Kundenname"],
         "nomb":["Name","Nombre","Nazwa","Nome","Nome","Nom","Name"],
-        "emailValidation":["e-mail validation:", "validación del email:","Weryficacja adresu"],
-        "password":["Password:", "Clave:", "Haslo"],
-        "passwordValidation":["Password validation:", "Validación de la clave:","Weryficacja Hasla"],
-        "member":["Already a member?", "Ya eres miembro?","Jestes juz czlonkiem"],
-        "golo":["Go to Login", "Ir a página de acceso","Przejdz do logowania"],
-        "sub":["Submit", "Enviar","Zatwierdz"],
-        "details":["Enter Login Details", "Complete los datos de Acceso","Wprrowadz dane logowania"],
-        "companyCode":["Company code:", "Código de la compañia:","kod frimowy"],
-        "signin":["Sign in Now!", "Inscribete ahora!","Spewam teraz"],
-        "noMember":["Not a member yet?", "Aún no eres miembro?","nie jestes jeszcze chlonkiem"],
+        "emailValidation":["e-mail validation", "validación del email","Weryficacja adresu","Convalida della e-mail","Validação de e-mail","Validation e-mail","E-Mail-Validierung"],
+        "password":["Password", "Clave", "Haslo","password","senha","le mot de passe","Passwort"],
+        "passwordValidation":["Password validation", "Validación de la clave","Weryficacja Hasla","Convalida della password","Validação de senha","Validation du mot de passe","Passwortüberprüfung"],
+        "member":["Already a member?", "Ya eres miembro?","Jestes juz czlonkiem","sei già un membro?","já é um membro?","Déjà membre?","Schon ein Mitglied?"],
+        "golo":["Back to Login", "Ir a página de acceso","Przejdz do logowania","Torna al login","Volte ao login","Retour connexion","Zurück zur Anmeldung"],
+        "sub":["Submit", "Enviar","Zatwierdz","Invia","Enviar","Soumettre","einreichen"],
+        "details":["Enter Login Details", "Complete los datos de Acceso","Wprrowadz dane logowania","Immettere i dettagli di accesso","Insira os detalhes de login","Entrez les détails de connexion","Geben Sie die Anmeldedaten ein"],
+        "companyCode":["Company code", "Código de la compañia","kod frimowy","Codice aziendale","Código da companhia","Code de l'entreprise","Buchungskreis"],
+        "signin":["Sign in Now!", "Inscribete ahora!","Spewam teraz","Registrati adesso!","Faça seu login agora mesmo!","Connectez vous maintenant!","Schreib dich jetzt ein!"],
+        "noMember":["Not a member yet?", "Aún no eres miembro?","nie jestes jeszcze chlonkiem?","non sei ancora un membro?","Ainda não é membro?","Pas encore membre?","Noch kein Mitglied?"],
         "copiasRespaldo":["Backups management", "Gestionar Backup","zarzadzanie kolpiami"],
         "hacerrespaldo":["Create Backup Copy", "Hacer Backup","Tworzenie kopii"],
         "restaurarrespaldo":["Restore Backup", "Restaurar Backup","przywracanie kopii"],
@@ -581,6 +581,7 @@ function getTranslationText(name)
         "prodnop":["Item not in stock","Producto no presente en Stock","produkt niedostępny ","prodotto non in stock","produto não em estoque","produit pas en stock","Produkt nicht auf Lager"],
         "estactual":["Status has been updated","El estado ha sido actualizado","Stan zostal zaktualizowany","Lo stato e stato aggiornato","O status foi atualizado","Le statut a ete mis a jour","Der Status wurde aktulisiert"],
         "impvl":["Voucher Amount","Importe Vale","Kwota Vouchera","Importo del buono","Valor do voucher","Montant du bon d'achat","Gutscheinbetrag"],
+        "avatar":["Choose an avatar","Elige un avatar","Wybierz awatara","Scegli un avatar","Escolha um avatar","Choisissez un avatar","Wähle einen Avatar"],
 
     };
 
@@ -596,7 +597,7 @@ function getTranslationText(name)
 
 //language change function
 function langchange() {
-    $("#companyName").text(getTranslationText('company_name'));
+    $("#tcompanyName").text(getTranslationText('company_name'));
     $("#password,#tpassword").text(getTranslationText('password'));
     $("#passwordValidation").text(getTranslationText('passwordValidation'));
     $("#emailValidation").text(getTranslationText('emailValidation'));
@@ -1042,7 +1043,8 @@ function langchange() {
     $("#tpais,#pais").text(getTranslationText('pais'));
     $("#testactual,#estactual").text(getTranslationText('estactual'));
     $("#tmsgfacreasucc,#msgfacreasucc").text(getTranslationText('msgfacreasucc'));
-   
+    $("#tavatar").text(getTranslationText('avatar'));
+
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
@@ -1055,7 +1057,7 @@ function langchange() {
 }
 
 function traducirVista()
-{
+{   //alert("traduce");
     traducirCalendario();
     //Set languages on load
     $(document).ready(function() {

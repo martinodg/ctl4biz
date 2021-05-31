@@ -1,16 +1,37 @@
+<!DOCTYPE html>
 <html>
 
-<head>
+<head> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' media='screen and (max-width: 700px)' href='../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 959px)' href='../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/login.css' />
     <script type="text/javascript" src="../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../jquery/jquery.simulate.js"></script>
+
     <script type="text/javascript" src="../funciones/login.js"></script>
     <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+    <script type="text/javascript" src="../funciones/languages/langNavLogin.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        
+       
+        loadAvatars()
+        togglModalBt();
+                
+    });                                                                 
+    function loadAvatars() {
+    $.get( "../funciones/BackendQueries/getAvatarGallery.php" ,function ( data ) { $('#modalContent').html(data);    
+    });
+}                                                                             
+    function avatarSelected(filename){  
+                                            var cleanfile=filename.replace("../../img/",""); 
+                                            $("#myavatar").attr("src",filename);
+                                            $("#inputAvatar").val(cleanfile);
+    } 
+    </script>
    
-   
-    <title>Registration form</title>
+    <title>CTL4.biz Registration form</title>
 </head>
 
 <body>
@@ -24,12 +45,23 @@
                         <li><a class="lang" id="english" href="#">English</a></li>
                         <li><a class="lang" id="espanol" href="#">Espanol</a></li>
                         <li><a class="lang" id="polish" href="#">Polski</a></li>
+                        <li><a class="lang" id="italiano" href="#">Italiano</a></li>
+                        <li><a class="lang" id="portugues" href="#">Portugues</a></li>
+                        <li><a class="lang" id="francais" href="#">Français</a></li>
+                        <li><a class="lang" id="deutsche" href="#">Deutsche</a></li>
                     </ul>
 
                 </li>
             </ul>
 </nav>
-        
+<div id="modal">
+    <div class="modal__window">
+        <a class="modal__close" href="#"><img src="../img/borrar.svg" width="16" height="16" border="0" onMouseOver="this.style.cursor='pointer'"></a>
+        <div id="modalContent">  
+
+        </div>
+    </div>
+</div>
         <div class="row">
             <div class="column" style="background-color:#aaa;">
                 <center>
@@ -48,10 +80,10 @@
                 <center>
                     <form name="frmUser" method="post" action="register.php" align="center">
                         <div class="message">
-                            <?php if($message!="") { echo $message; } ?>
+                            
                         </div>
                         <br> <br>
-                        <span  id="companyName" class="loginText">Company name:</span><br>
+                        <span  id="tcompanyName" class="loginText">Company name:</span><br>
                         <input id="company_name" class="input-wrapper" type="text" name="company_name">
                         <br> <br>
 
@@ -69,6 +101,12 @@
                                 <div class="line"></div>
                                 <div class="line"></div>
                             </div>
+                        </div>
+                        <br> <br>
+                        <div class="avatarDiv" id="avatar">
+                            <span class="avatarText" id="tavatar">Elige un avatar</span><br>
+                            <a href="#modal" id="clickToModal"><img id="myavatar" class="avatarImg" src="../img/avatars/036-person.svg"></a>
+                        
                         </div>
 
                 </center>
@@ -94,11 +132,11 @@
                         </div>
                     </div>
                     <input type="hidden" id="language" name="language" value="0">
+                    <input type="hidden" id="inputAvatar" name="inputAvatar" value="../../img/avatars/036-person.svg">
 
 
                 </center>
             </div>
-
             <div id="botonBusqueda" align="right">
                 <span  id="member" class="loginText">Already a member?</span>
                 <button type="button" id="btnlogin" onClick="window.location.href = './login.php';" onMouseOver="style.cursor=cursor"> <img src="../img/login.svg" alt="Login" /> <span  id="golo">Go to Login</span> </button>

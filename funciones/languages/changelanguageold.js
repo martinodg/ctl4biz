@@ -4,14 +4,14 @@ function getTranslationText(name)
 {
     var traductions = {
         //"variable_name":["english","espanol","polski","italian","portugues","frances","Aleman"],
-        "company_name":["Company name:", "Compañia:","Nazwa Firma:"],
-        "nombre":["your name:", "nombre del usuario:","Nazwa Uzytkownika"],
+        "company_name":["Company name:", "Compañia:","Nazwa Firma:","Nome della ditta:","Nome da empresa:","Nom de la compagnie:","Name der Firma:"],
+        "nombre":["Your name:", "Nombre del usuario:","Nazwa Uzytkownika:","Il tuo nome:","Seu nome:","Votre nom:","Dein Name:"],
         "nombcliente":["Customer Name", "Nombre Cliente","Nazwa klienta","Nome del cliente","nome do cliente","Nom du client","Kundenname"],
         //@todo revisar que esta esta repetida pero usada
         "nomb":["Name","nombre","Nazwa","Nome","Nome","Nom","Name"],
-        "emailValidation":["e-mail validation:", "validación del email:","Weryficacja adresu"],
-        "password":["password:", "clave:", "haslo"],
-        "passwordValidation":["password validation:", "validación de la clave:","Weryficacja Hasla"],
+        "emailValidation":["e-mail validation:", "validación del email:","Weryficacja adresu","Convalida e-mail:","Validação de e-mail:","Validation e-mail:","E-Mail-Validierung:"],
+        "password":["password:", "clave:", "haslo","password:","Senha:","Mot de passe:","Passwort:"],
+        "passwordValidation":["Password validation:", "validación de la clave:","Weryficacja Hasla","Convalida della password:","Validação de senha:","Validation du mot de passe:","Passwortüberprüfung:"],
         "member":["Already a member?", "Ya eres miembro?","Jestes juz czlonkiem"],
         "golo":["Go to Login", "Ir a página de acceso","przejdz do logowania"],
         "sub":["Submit", "Enviar","Zatwierdz"],

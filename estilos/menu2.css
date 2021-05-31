@@ -9,14 +9,71 @@
 
 body {
     width: 100%;
-    height: auto;
+    /*height: 855;*/
     padding: 0;
     margin: 0px auto;
     font-size: 14px;
-    margin-bottom: 0PX
+    margin-bottom: 0PX;
+    
+    height:960px;
+    
+}
+#central2{
+    height: 910px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 43px;
+    margin-bottom: 0px;
+    
+       
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+#nombreCompania{
+    position:fixed;
+    height: 40;
+    
+    z-index:1000;
+    left:47%;
+    top:0;
+    display: table;
 }
 
 
+#headbar {
+    width: 100%;
+    height: 40px;
+    background: #1e1e1e;
+    z-index:100;
+    position: fixed;
+}
+
+.navigation {
+    float:right;
+    height: 40px;
+    line-height:40px;
+    width: auto;
+}
+.navigation div {float:left;display:block;height:40px;}
+.ctlLogo-continer{width:100px; }
+.avatar-continer{width:60px; }
+.navigation div a {color:#fff;display:block;}
+
+/*icono dinamico muestra recurso*/
+/*#icono {
+    background: #47494b;
+    height: 50px;
+    width: 50px;
+    float: left;
+    position: relative;
+    border-radius: 5px;
+    margin: 5px 5px 0px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
 /*Login-register page */
 
 .loginText {
@@ -27,7 +84,26 @@ body {
     align-content: center;
     color: orange;
 }
-
+.companyName {
+    display: table-cell;
+    vertical-align:middle;
+    justify-content: center;
+    font: bold 18pt quicksandlight;
+    color: #ffffff;
+  
+}
+/*Logo CTL4.biz */
+.logo {
+    height: 34px;
+    padding-top: 2px;
+    
+}
+.avatarNav {
+    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+    padding-top: 2px;
+}
 
 /*-----------------------------*/
 
@@ -40,74 +116,104 @@ body {
 }
 
 #header {
-    color: white;
-    width: 100%;
+    
+    width: auto;
     height: 48px;
     background: #8dcaffaa;
     position: fixed;
 }
-
+/*icon hamburgher*/
 .menuicon {
     height: 24px;
     width: 24px;
     padding: 5px 13px;
 }
 
-#icono {
-    /*background: rgb(28, 31, 73);*/
-    background: #47494b;
-    height: 48px;
-    width: 50px;
-    display: block;
-    float: left;
-    padding: 0px;
-    position: relative;
-    text-decoration: none;
-    transition-duration: 0.5s;
-}
+
 
 .imgicon {
-    height: 24px;
-    width: 24px;
-    padding: 12px 13px;
-}
-
-.company {
-     display: block padding: active;
-    box-sizing: border-box;
-   /* padding-top: 6px;*/
-    padding-left: 15%;
-    font-size: 20px;
-    color: #ff7f00;
-    width: auto;
-}
-
-.logo {
-    position: fixed;
     height: 34px;
-    padding-top: 7px;
-    width: auto;
-    display: block;
-    right: 15px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 34px;
+    padding: 8px;
+
 }
+
+
 
 #left_side {
-    width: 50px;
-    margin-top: 48px;
-    height: 100%;
-    background: #1e1e1e;
+    width: 60px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    height: 875px;
+    background: #202627b0;
     background-repeat: repeat-y;
+    overflow: hidden;
+    position: fixed;
+}
+/*   resource menu     */
+
+#resources_menu {
+    display: none;
+    width: 80px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 75px;
+    height: 875px;
+    background: #202627b0;
+    overflow: hidden;
+    position: fixed;
+}
+
+/*   subresources_menu     */
+
+#subresources_menu {
+    display: none;
+    width: 140px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 160px;
+    height: 875px;
+    background: #202627b0;
     overflow: hidden;
     position: fixed;
 }
 
 .iconolado {
-    padding: 13px;
-    height: 24px;
-    width: 24px;
+    margin: 5px 5px 0px;
+    padding: 8px;
+    height: 34px;
+    width: 34px;
+    
 
+}
+
+/*    Iconos Menu lado    */
+.newmenu{
+    
+    background: rgb(255, 149, 0);
+    border-radius: 5px;
+}
+.home{
+    
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+}
+.settings{
+    
+    background: rgb(52, 199, 89);
+    border-radius: 5px;
+}
+.ayuda{
+   
+    background: rgb(0, 122, 255);
+    border-radius: 5px;
+}
+.logout{
+    
+    background: rgb(255, 59, 48);
+    border-radius: 5px;
 }
 
 .iconolado:hover {
@@ -115,13 +221,216 @@ body {
     border-radius: 5px;
 }
 
+
+/*Texto iconos resource_menu*/
+.icons_menu { 
+    overflow: hidden; 
+    text-align: center;
+    font: 9pt quicksandlight;
+    display: inline-block;
+    vertical-align: top;
+ /*   padding: 9px;*/
+    margin: 5px 5px 0px;
+    
+}
+.menuText a {
+
+    display: inline-block;
+    /* float:left;  remove */
+    
+}
+
+
+/*    Iconos resources_menu    */
+.iconolado2 {
+    margin-top: 15px;
+    margin-left: 4px;
+    padding: 8px;
+    height: 34px;
+    width: 34px;
+    
+
+}
+.iconolado2:hover {
+    background: rgb(51, 49, 49);
+    border-radius: 5px;
+}
+.icono-produccion{
+   
+    background: rgb(52, 199, 89);
+    border-radius: 5px;
+}
+.icono-ventas{
+   
+    background: rgb(255, 204, 0);
+    border-radius: 5px;
+}
+.icono-compras{
+   
+    background: rgb(0, 122, 255);
+    border-radius: 5px;
+}
+.icono-contabilidad{
+   
+    background: rgb(255, 45, 85);
+    border-radius: 5px;
+}
+.icono-recursosHumanos{
+   
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.icono-configuracion{
+   
+    background: rgb(150, 37, 170);
+    border-radius: 5px;
+}
+.icono-ventaMostrador{
+   
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.icono-facturas{
+   
+    background: rgb(255, 45, 85);
+    border-radius: 5px;
+}
+.icono-remitos{
+   
+    background: rgb(0, 122, 255);
+    border-radius: 5px;
+}
+.icono-facturarRemitos{
+   
+    background: rgb(255, 204, 0);
+    border-radius: 5px;
+}
+.icono-presupuestos{
+   
+    background: rgb(52, 199, 89);
+    border-radius: 5px;
+}
+.icono-clientes{
+   
+    background: rgb(51, 49, 49);
+    border-radius: 5px;
+}
+.icono-tiposDeArticulos{
+   
+    background: rgb(150, 37, 170);
+    border-radius: 5px;
+}
+.icono-articulos{
+   
+    background: rgb(52, 199, 89);
+    border-radius: 5px;
+}
+.icono-metaProcesos{
+   
+    background: rgb(255, 204, 0);
+    border-radius: 5px;
+}
+.icono-prcesosDeProduccion{
+   
+    background: rgb(0, 122, 255);
+    border-radius: 5px;
+}
+.icono-batchDeProduccion{
+   
+    background: rgb(255, 45, 85);
+    border-radius: 5px;
+}
+.icono-lotesDeProduccion{
+   
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.icono-estacionesDeTrabajo{
+   
+    background: rgb(51, 49, 49);
+    border-radius: 5px;
+}
+.icono-agruparProcesos{
+   
+    background: rgb(255, 149, 0);
+    border-radius: 5px;
+}
+.icono-proveedores{
+   
+    background: rgb(150, 37, 170);
+    border-radius: 5px;
+}
+.icono-cobros{
+   
+    background: rgb(52, 199, 89);
+    border-radius: 5px;
+}
+.icono-pagos{
+   
+    background: rgb(255, 45, 85);
+    border-radius: 5px;
+}
+.icono-cajaDiaria{
+   
+    background: rgb(0, 122, 255);
+    border-radius: 5px;
+}
+.icono-libroDiario{
+   
+    background: rgb(255, 204, 0);
+    border-radius: 5px;
+}
+.icono-formasDePago{
+   
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.icono-impuestos{
+   
+    background: rgb(000, 000, 000);
+    border-radius: 5px;
+}
+.icono-entidadesBancarias{
+   
+    background: rgb(150, 37, 170);
+    border-radius: 5px;
+}
+.icono-partesDeTrabajo{
+   
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+.icono-empleados{
+   
+    background: rgb(0, 122, 255);
+    border-radius: 5px;
+}
+.icono-etiquetas{
+   
+    background: rgb(0, 122, 255);
+    border-radius: 5px;
+}
+.icono-ubicaciones{
+   
+    background: rgb(52, 199, 89);
+    border-radius: 5px;
+}
+.icono-embalajes{
+   
+    background: rgb(255, 204, 0);
+    border-radius: 5px;
+}
+
+
+
+
 #content {
     height: 100%;
     overflow: auto;
     padding: 0px;
-    margin-left: 50px;
+    margin-left: 0px;
     margin-right: 0px;
-    padding-top: 40px;
+    padding-top: 0px;
     background: #ffffff;
 }
 
@@ -155,11 +464,14 @@ a {
 nav {
     font: bold 12pt quicksandlight;
     height: 48px;
+    margin-left: 65px;
+
    
 }
 
 nav > div {
-    line-height: 48px;
+    line-height: 48px; 
+
 }
 
 ul {
@@ -203,6 +515,7 @@ ul li ul {
     margin-top: 12px;
     left: 0;
     display: none;
+
 }
 
 ul li:hover>ul,
