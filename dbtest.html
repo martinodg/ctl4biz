@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery/localbase.min.js"></script>
+
+<script>
+  let db = new Localbase('db');
+//ADD DATA
+//  db.collection('users').add({
+//  id: 1,
+//  name: 'Bill',
+//  age: 47
+//});
+
+//GET DATA
+db.collection('users').get().then(users => {
+  console.log(users);
+});
+//update data
+
+db.collection('users').doc({ id: 1 }).update({
+  name: 'William'
+});
+//over write
+db.collection('users').doc({ id: 2 }).set({
+  id: 4, 
+  name: 'Pauline',
+  age: 27
+});
+//set a collection
+
+db.collection('users')
+  .set([
+    {
+      id: 1,
+      name: 'Bill',
+      age: 48
+    },
+    {
+      id: 2, 
+      name: 'Paul',
+      age: 28
+    }
+  ]);
+  
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
