@@ -590,6 +590,7 @@ CREATE TABLE `intUsersTable` (
   `user_name` varchar(140) NOT NULL,
   `password` varchar(160) NOT NULL,
   `codstatus` int(1) NOT NULL,
+  `avatar` varchar(160) NOT NULL,
   `borrado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

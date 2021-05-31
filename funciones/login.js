@@ -1,11 +1,21 @@
 // After document is loaded:
 
 $(document).ready(function() {
-    
+    var  lang = getLanguajeIndex(); 
+    if (lang == ""); {
+        setTranslation(0);
+        $("#bandera_lengua").attr("src", "../img/english-language.svg");
+    }
+    // validate Company Name on input event
+    $("#company_name").keyup(function() {
+        valComp();
+        
+    });
+
     // validate e-mail on input event
     $("#email-validation-field, #email-field").keyup(function() {
         valmail();
-        
+    
     });
 
     // validate password on input event
@@ -39,6 +49,26 @@ $(document).ready(function() {
 
 // Functions --------------------------------------------------------------------------------------------------
 
+
+//enable/disable modal button butto
+function togglModalBt() {
+    //alert("entro en verificacion avatar");
+    var inputComp = document.getElementById("company_name").value;
+    var inputemail = document.getElementById("email-field").value;
+    var emailval = document.getElementById("email-validation-field").value;
+    if (inputemail == emailval && emailval != "" && inputComp != "") {
+        //alert("desbloquea");
+        //$('#clickToModal a').Attr('href','#modal'); 
+        //loadAvatars(); 
+        $("#avatar").show();
+    }else{
+        //alert("bloquea");
+        $("#avatar").hide();
+        
+          
+
+    }
+}   
 //enable/disable submit button
 function togglSub() {
     var inputpass = document.getElementById("password-field").value;
@@ -52,6 +82,14 @@ function togglSub() {
 
     }
 }
+// validate mail Company Name
+function valComp(){
+    
+    var inputComp = $("#company_name").val();
+    if (inputComp != "") {
+        togglModalBt();
+    }
+}
 // validate mail function
 function valmail(){
     
@@ -62,11 +100,13 @@ function valmail(){
         $(".email-validation-icon-wrapper").removeClass("passdistinta");
         $(".email-validation-icon-wrapper").addClass("passigual");
         togglSub();
+        togglModalBt();
     }
     if (inputemail != emailval) {
         $(".email-validation-icon-wrapper").removeClass("passigual");
         $(".email-validation-icon-wrapper").addClass("passdistinta");
         togglSub();
+        togglModalBt();
     }
 
 }

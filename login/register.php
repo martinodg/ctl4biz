@@ -5,8 +5,9 @@ $nombre=$_POST["name"];
 $emilio=$_POST["email"];
 $clave=$_POST["password"];
 $language=$_POST["language"];
+$avatar=$_POST["inputAvatar"];
 
-
+echo "El avatar es: " . $avatar . "<br>";
 // ************************php functions****************************
 //convert string to MD5 code
 function strToMD5($string){
@@ -50,9 +51,9 @@ if (mysqli_num_rows($result)>0 ) {
     echo "El nombre de la base de datos es: ".$id_company."<br>";
     //Create company folders to hold images
    
-    $path="./img/$id_company";
-    $path1="./img/$id_company/users";
-    $path2="./img/$id_company/items";
+    $path="../img/$id_company";
+    $path1="../img/$id_company/users";
+    $path2="../img/$id_company/items";
     mkdir($path, 0777);/* Create folder for company */
     mkdir($path1, 0777);/* Create folder for users */
     mkdir($path2, 0777);/* Create folder for items */
@@ -104,7 +105,7 @@ if (mysqli_num_rows($result)>0 ) {
     $sql4 = file_get_contents('../database'.$language.'.sql');
     $sql4 .= <<<APPND_TXT
      -- Dumping data for table `intUsersTable`
-     INSERT INTO intUsersTable (intUser_name,user_name,password,codstatus,borrado) VALUES ('$nombre','$emilio','$clave','4','0');
+     INSERT INTO intUsersTable (intUser_name,user_name,password,codstatus,avatar,borrado) VALUES ('$nombre','$emilio','$clave','4','$avatar','0');
 
      -- Finish the trasacction with commit
      COMMIT;
@@ -151,9 +152,9 @@ APPND_TXT;
         }
     $conn3->close();*/
     //Go to login page
-    echo"<script>
+   /* echo"<script>
             window.location = 'login.php';
-        </script>";
+        </script>";*/
     exit;
 }
    
