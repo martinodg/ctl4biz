@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' media='screen and (max-width: 700px)' href='../estilos/menu0.css' />
+    <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 959px)' href='../estilos/menu1.css' />
+    <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/menu2.css' />
+    <script type="text/javascript" src="./jquery/jquery331.js"></script>
+    <script type="text/javascript" src="./funciones/languages/changelanguage.js"></script>
+   
+    
+    <title>Test IndexedDB</title>
+
+<script>
+
+$(document).ready(function() {  
+$("#resources_menu").show();
+getMenuItems();
+
+});
+
+// Chek support for indexedDB
+//prefixes of implementation that we want to test
+window.indexedDB = window.indexedDB || window.mozIndexedDB || 
+         window.webkitIndexedDB || window.msIndexedDB;
+         
+         //prefixes of window.IDB objects
+         window.IDBTransaction = window.IDBTransaction || 
+         window.webkitIDBTransaction || window.msIDBTransaction;
+         window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || 
+         window.msIDBKeyRange
+         
+         if (!window.indexedDB) {
+            window.alert("Your browser doesn't support a stable version of IndexedDB.")
+         }
+         
+         
+         var db;
+         var request = window.indexedDB.open("ctl4biz", 2);
+         
+         request.onerror = function(event) {
+            console.log("error: ");
+         };
+         
+         request.onsuccess = function(event) {
+            db = request.result;
+            console.log("success: "+ db);
+         };
+         
+         request.onupgradeneeded = function(event) {
+            var db = event.target.result;
+            var menuOS = db.createObjectStore("menu", {keyPath: "id"});
+            var subMenuOS = db.createObjectStore("SubMenu", {keyPath: "id"});
+            
+         }                                                         
+
+// load menus
+
+
+
+
+
+// get menu data
+
+function getMenuItems() {
+  var numberOfMenuItems=999;
+  var Id=1;
+  var submenuof=0;
+  
+  $.ajaxSetup({async: false});
+
+  while (numberOfMenuItems > 0) {
+    $.getJSON("./funciones/BackendQueries/getMenuItemsToLoad.php", {  id: Id,
+                                                                      numberOfItemsToLoad:numberOfMenuItems,
+                                                                      SubMenuOf:submenuof
+                                                                    }, function(data) {
+                                                                                    console.log("antes de tomar el valor de data:"+numberOfMenuItems); 
+                                                                                    numberOfMenuItems=data.numberOfItemsToLoad;
+                                                                                    console.log("Luego de tomar el valor de data:"+numberOfMenuItems); 
+                                                                                    console.log("valor en data:"+data.numberOfItemsToLoad); 
+                                                                                               
+                                                                                    var request = db.transaction("menu", "readwrite")
+                                                                                    .objectStore("menu")
+                                                                                    .add(data);
+            
+                                                                                    request.onsuccess = function(event) {
+                                                                                          alert("Kenny has been added to your database.");
+                                                                                    };
+            
+                                                                                    request.onerror = function(event) {
+                                                                                          alert("Unable to add data\r\nKenny is aready exist in your database! ");
+                                                                                    }
+                                                                          }
+    );
+
+                                                                           
+    //numberOfMenuItems--;
+    Id++;
+  }
+  $.ajaxSetup({async: true});
+}
+
+/*
+$.get("./funciones/BackendQueries/getAllAllowedMenuItems.php",  function(data) {
+    console.log(data);
+    var arrMenu = JSON.parse(data); 
+    console.log(arrMenu);
+
+    //create DB in indexedDB
+    var db;
+    var request = window.indexedDB.open("ctl4biz", 2);
+    request.onerror = function(event) {
+        console.log("error: "); //if error on open leave a message on the console
+    };
+    request.onsuccess = function(event) {
+        db = request.result;
+        console.log("success: "+ db); //is success on open leave a message on the console
+    };
+
+    //Structuring the Database
+    request.onupgradeneeded = function(event) {
+        var db = event.target.result;
+        var objectStore = db.createObjectStore("menues");
+        for (var i in data) {
+            objectStore.add(data);
+        }
+      }
+});
+/*
+// time stamp variable
+  var timeStamp=$.now();
+ 
+//Open Local base
+  let db = new Localbase('db');
+//delette database from last load  
+  db.delete()
+  .then(response => {
+    console.log('Database deleted, now do something.')
+  })
+  .catch(error => {
+    console.log('There was an error, do something else.')
+  })
+         
+  //Reload the local menu database from the host database
+  $.getJSON("./funciones/BackendQueries/getAllAllowedMenuItems.php",  function(data) {
+              db.collection('menu').add(data, ''+timeStamp+'');
+  });
+  
+  // load menu function 
+  function loadMenu(){
+   /*
+    var menuJSON=[];
+    menuJSON=db.collection('menu').get();
+     
+    let menuJSON= await db.collection('users')
+      .get()
+      
+
+      console.log(menuJSON);
+
+    
+    
+              var contadorRecursos=getCount(menuJSON);
+              //console.log(contadorRecursos);
+              var i;
+              var n=1;
+              for (i = 0; i < contadorRecursos; i++) {
+                //console.log(n);
+                var nombreM=getMenuNames(menuJSON,n);
+        
+              
+               var traslation_tag=getTranslationText(menuJSON[nombreM]['traslation_tag']);
+               $("#resources_menu").append('<div class="icons_menu"><a href="#"  id="a-'+menuJSON[nombreM]['resourceName']+'"><img src="./img/'+menuJSON[nombreM]['iconLink']+'"class="iconolado2 icono-'+menuJSON[nombreM]['resourceName']+'" onClick="openSubresMenu(&apos;'+menuJSON[nombreM]['id_resource']+'&apos;)"><span>'+traslation_tag+'</span></a></div>');
+              
+           //     $("#resources_menu").append('<div class="icons_menu"><a href="#" id="a-'+data.i.resourceName+'"><img src="../../img/'+data.i.iconLink+'" class="iconolado2 icono-'+data.i.resourceName+'" id="'+data.i.resourceName+'img" onClick="openSubresMenu(&apos;'+data.i.id_resource+'&apos;)" alt="'+data.i.resourceName+'"><span id="'+data.i.traslation_tag+'"></span></div></a>');
+               n++ 
+            } 
+              
+  }
+  // Open sub Menu
+  function openSubresMenu(resource) {
+                
+                //alert(resource);
+                $("#subresources_menu").show(200);
+                
+                        //$('#subresources_menu').html(data);
+                        
+                        
+
+                  
+             
+        }  
+// function to count the menus items
+  function getCount(obj) {
+    var count = 0,
+        prop;
+
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "traslation_tag" && prop !== "id_sresource" && prop !== "id_resource" && prop !== "subresourceLink") {
+            count += 1;
+        }
+    }
+    return count;
+}
+function getMenuNames(obj,n) {
+    var prop;
+    var nombre=[];
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "traslation_tag" && prop !== "id_sresource" && prop !== "id_resource" && prop !== "subresourceLink") {
+          nombre.push(prop)      
+        }
+    }
+    return nombre[n-1];
+}
+function getIconLink(obj,n) {
+    var prop;
+    var nombre=[];
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "resourceName" && prop !== "traslation_tag" && prop !== "id_sresource" && prop !== "id_resource" && prop !== "subresourceLinkName") {
+          nombre.push(prop)      
+        }
+    }
+    return nombre[n-1];
+}*/
+
+</script>
+</head>
+<body>
+  <div id="resources_menu"></div>
+  <div id="subresources_menu"></div>  
+</body>
+</html>

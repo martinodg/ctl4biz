@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' media='screen and (max-width: 700px)' href='../estilos/menu0.css' />
+    <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 959px)' href='../estilos/menu1.css' />
+    <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/menu2.css' />
+    <script type="text/javascript" src="./jquery/jquery331.js"></script>
+    <script type="text/javascript" src="./funciones/languages/changelanguage.js"></script>
+   
+    
+    <title>Test IndexedDB</title>
+
+<script>
+
+$(document).ready(function() {  
+$("#resources_menu").show();
+});
+// This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+
+// Open (or create) the database
+var open = indexedDB.open("Ctl4biz", 3);
+
+// Create the schema
+open.onupgradeneeded = function() {
+    var db = open.result;
+    var store = db.createObjectStore("Menu", {keyPath: "id"});
+    //var store = db.createObjectStore("SubMenu", {keyPath: "id"});
+    //var index = store.createIndex('id_resource',{ unique: true });
+};
+
+open.onsuccess = function() {
+    // Start a new transaction
+    var db = open.result;
+    var tx = db.transaction("Menu", "readwrite");
+    var store = tx.objectStore("Menu");
+
+    //var index = store.index('id_resource');
+
+    var numberOfMenuItems=999;
+  var totalMenuNumber=0;
+  var Id=1;
+  var submenuof=0;
+  
+  $.ajaxSetup({async: false});
+
+  while (numberOfMenuItems > 0) {
+    $.getJSON("./funciones/BackendQueries/getMenuItemsToLoad.php", {  id: Id,
+                                                                      numberOfItemsToLoad:numberOfMenuItems,
+                                                                      SubMenuOf:submenuof
+                                                                    }, function(data) {
+                                                                                    var beforevalue=numberOfMenuItems;
+                                                                                    console.log("antes de tomar el valor de data:"+numberOfMenuItems); 
+                                                                                    numberOfMenuItems=data.numberOfItemsToLoad;
+                                                                                    if (beforevalue==999){totalMenuNumber=numberOfMenuItems+1}
+                                                                                    console.log(totalMenuNumber)
+                                                                                    console.log("Luego de tomar el valor de data:"+numberOfMenuItems); 
+                                                                                    console.log("valor en data:"+data.numberOfItemsToLoad); 
+                                                                                    store.put(data);                                                                                          
+                                                                        });
+                                                                        Id++;  
+      
+  }
+  $.ajaxSetup({async: true}); 
+   // Close the db when the transaction is done
+   tx.oncomplete = function() {
+                              db.close();
+    };
+}                                                             
+                                                                      
+
+</script>
+</head>
+<body>
+  <div id="resources_menu"></div>
+  <div id="subresources_menu"></div>  
+</body>
+</html>

@@ -5,7 +5,6 @@ if(session_id() == '') {
 
 // Turn off all error reporting
 //error_reporting(0);
-
 ?>
 
 
@@ -17,6 +16,8 @@ if(session_id() == '') {
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/menu2.css' />
     <script type="text/javascript" src="./jquery/jquery331.js"></script>
     <script type="text/javascript" src="./funciones/languages/changelanguage.js"></script>
+    <script src="./jquery/localbase.min.js"></script>
+
 
     
     <script language="javascript">
@@ -39,10 +40,61 @@ if(session_id() == '') {
             
         });
         function loadMenu() {
-            $.get("./funciones/BackendQueries/getMenuItems.php", 
-                    function(data) {
-                        $('#resources_menu').html(data);   
-                    });
+            let CTLDB = new Localbase('Ctl4bizLDB');
+            CTLDB.collection('menu').get().then(document => {
+                        var result=document;
+                        //var stringed= JSON.stringify(result);
+                        //console.log(stringed);
+                        var numOfItems=getCount(result);
+                      
+                        for (let i=0;  i< numOfItems;i++){
+                            var itemName=getTranslationText(result[i].traslation_tag);
+                            $('#resources_menu').append('<div class="icons_menu"><a href="#"  id="a-'+result[i].resourceName+'"><img src="../../img/'+result[i].iconLink+'" class="iconolado2 icono-'+result[i].resourceName+'" id="'+result[i].resourceName+'img" onClick="openSubresMenu(&apos;'+result[i].id+'&apos;)" alt="'+result[i].resourceName+'"><span>'+itemName+'</span></div></a>');
+                        }
+                        
+                        console.log("there are "+getCount(result)+" menu items");
+            })
+
+
+           // $.get("./funciones/BackendQueries/getMenuItems.php", 
+                        //function(data) {
+                     //   $('#resources_menu').html(data);   
+               //     });
+        }
+        function getCount(obj) {
+            var count = 0,
+            prop;
+
+            for (prop in obj) {
+                    if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "traslation_tag" && prop !== "id_sresource" && prop !== "id_resource" && prop !== "subresourceLink") {
+                                count += 1;
+                    }
+            }
+            return count;
+        }
+
+        function getSubMenuName(obj,n) {
+            var prop;
+            var nombre=[];
+
+            for (prop in obj) {
+                if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "id" && prop !== "id_resource" && prop !== "resourceName" && prop !== "traslation_tag") {
+                        nombre.push(prop)
+                    }
+            }
+            return nombre[n];
+        }
+
+        function getSubMenuCount(obj) {
+            var count = 0,
+            prop;
+
+            for (prop in obj) {
+                    if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "id" && prop !== "id_resource" && prop !== "resourceName" && prop !== "traslation_tag") {
+                                count += 1;
+                    }
+            }
+            return count;
         }
         function openMenu(resource) {
                                             $("#resources_menu").toggle({
@@ -59,7 +111,26 @@ if(session_id() == '') {
         function openSubresMenu(resource) {
                 
                 //alert(resource);
+                $('#subresources_menu').empty();
                 $("#subresources_menu").show(200);
+
+                let CTLDB = new Localbase('Ctl4bizLDB');
+                CTLDB.collection('menu').doc(resource).get().then(document => {
+                        var result=document;
+                        var nroItems=getSubMenuCount(result);
+                        console.log(nroItems);
+                        console.log(result);
+                        for (let i = 0; i < nroItems; i++) {
+                            var subMenuName=getSubMenuName(result,i);
+                            console.log(subMenuName);
+                            console.log(result[subMenuName].traslation_tag);
+                            var subMenuItemName=getTranslationText(result[subMenuName].traslation_tag);
+                            $('#subresources_menu').append('<div class="icons_menu"><a href="#"  id="a-'+subMenuName+'"><img src="../../img/'+result[subMenuName].iconLink+'" class="iconolado2 icono-'+subMenuName+'" id="'+subMenuName+'img" onClick="openTargetPage(&apos;'+result[subMenuName].subresourceLink+'&apos;)" alt="'+subMenuName+'"><span>'+subMenuItemName+'</span></div></a>');
+
+                        }
+
+
+                /*
                 $.get("./funciones/BackendQueries/getMenuItems.php", { menu:"sub",
                     res:resource
 
@@ -68,7 +139,8 @@ if(session_id() == '') {
                         
                         
 
-                    });
+                    });*/
+                })
              
         }  
         function openTargetPage(link) {

@@ -2,7 +2,7 @@
 session_start();
 $userid=$_SESSION['id'];
 require_once("../../varConnUserDB.php"); 
- 
+require_once("getNewLineNumber.php"); 
 if (isset($_GET["res"])){ $res=$_GET["res"];}
 if (isset($_GET["menu"])){ $menu=$_GET["menu"];
                             if($menu=="sub"){ 

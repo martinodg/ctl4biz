@@ -59,7 +59,7 @@ if(count($_POST)>0) {
 }
 if(isset($_SESSION["intUser"])) {
     
-    header("Location:../index.php");
+    header("Location:../loadMenu.html");
     
 }
 ?>
@@ -70,6 +70,7 @@ if(isset($_SESSION["intUser"])) {
     <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 959px)' href='../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/login.css' />
     <script type="text/javascript" src="../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../jquery/localbase.min.js"></script>
     <script type="text/javascript" src="../funciones/login.js"></script>
     <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
     <script type="text/javascript" src="../funciones/languages/langNavLogin.js"></script>

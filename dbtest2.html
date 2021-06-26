@@ -17,17 +17,73 @@
 $(document).ready(function() {  
 $("#resources_menu").show();
 });
-// This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
+
+// Define your database
+
+let CTLDB = new Localbase('Ctl4bizLDB');
+// call specific document
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
-var oldCTLDB = new Localbase('Ctl4bizLDB');
-oldCTLDB.delete() .then(response => {
-    console.log('Database deleted, now do something.')
-  })
-  .catch(error => {
-    console.log('There was an error, do something else.')
-  })
 
+CTLDB.collection('menu').doc({ id: "1" }).get().then(document => {
+  var result=document;
+ /* for(var key in result){
+                                                                                             if(result.hasOwnProperty(key)) {
+                                                                                                    console.log(key + ': ' + result[key]);
+                                                                                                    //var indata=obj[key].id;
+                                                                                                  
+                                                                                                    //var indata=JSON.stringify(result[key]);
+                                                                                                    //var parsed= JSON.parse(indata);
 
+                                                                                                    //console.log(indata);
+                                                                                                    ////var unquoted = indata.replace(/"([^"]+)":/g, '$1:');
+                                                                                                    //console.log(parsed);  // {name:"John Smith"}
+                                                                                                    //
+                                                                                                    // Put some data into it
+                                                                                                    //
+                                                                                                    //db.Menu.put({id:"1",id_resource:"2",resourceName:"produccion",traslation_tag:"produccion",iconLink:"produccion.svg",tiposDeArticulos:{id_sresource:"3",traslation_tag:"tipodart",iconLink:"tipos.svg",subresourceLink:"./familias/index.php"},articulos:{id_sresource:"4",traslation_tag:"articu",iconLink:"articulos.svg",subresourceLink:"./articulos/index.php"},metaProcesos:{id_sresource:"5",traslation_tag:"metproc",iconLink:"metaproc.svg",subresourceLink:"./meta_procesos/index.php"},prcesosDeProduccion:{id_sresource:"6",traslation_tag:"propru",iconLink:"procesos.svg",subresourceLink:"./procesos/index.php"},batchDeProduccion:{id_sresource:"7",traslation_tag:"batchprod",iconLink:"batch.svg",subresourceLink:"./batch/index.php"},lotesDeProduccion:{id_sresource:"8",traslation_tag:"lotdprod",iconLink:"lotes.svg",subresourceLink:"./lotes/index.php"},estacionesDeTrabajo:{id_sresource:"9",traslation_tag:"estactra",iconLink:"estaciones.svg",subresourceLink:"./estaciones/index.php"},AgruparProcesos:{id_sresource:"120",traslation_tag:"proagpru",iconLink:"agruparProcesos.svg",subresourceLink:"./agrupar_procesos/index.php"}}).then (function(){
+                                                                                                     // CTLDB.collection('menu').add(parsed);
+                                                                                              } 
+                                                                                        }   */                                                    
+  var stringed= JSON.stringify(result);
+  //console.log("el resultado del query es: "+stringed);
+ console.log(getSubMenu(result));
+})
+// function to count the menus items
+function getCount(obj) {
+    var count = 0,
+        prop;
+
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "traslation_tag" && prop !== "id_sresource" && prop !== "id_resource" && prop !== "subresourceLink") {
+            count += 1;
+        }
+    }
+    return count;
+}
+function getMenuNames(obj,n) {
+    var prop;
+    var nombre=[];
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "traslation_tag" && prop !== "id_sresource" && prop !== "id_resource" && prop !== "subresourceLink") {
+          nombre.push(prop)      
+        }
+    }
+    return nombre[n-1];
+}
+function getSubMenu(obj,n) {
+    var prop;
+    var nombre=[];
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "resourceName" && prop !== "traslation_tag" && prop !== "id" && prop !== "id_resource" && prop !== "iconLink") {
+          nombre.push(prop) 
+          //console.log(nombre);  
+            
+        }
+    }
+    return nombre[n-1];
+    //return nombre;
+}
+/*
  
     $.getJSON("./funciones/BackendQueries/getAllAllowedMenuItems.php", function(data) {
                                                                                         // Define your database
@@ -65,7 +121,7 @@ oldCTLDB.delete() .then(response => {
       
   
   
-   // Close the db when the transaction is done
+   // Close the db when the transaction is done*/
   
                                                           
                                                                       
