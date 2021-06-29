@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' media='screen and (max-width: 700px)' href='../estilos/menu0.css' />
+    <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 959px)' href='../estilos/menu1.css' />
+    <link rel='stylesheet' media='screen and (min-width: 960px)' href='../estilos/menu2.css' />
+    <script type="text/javascript" src="./jquery/jquery331.js"></script>
+    <script type="text/javascript" src="./funciones/languages/changelanguage.js"></script>
+    <script src="./jquery/localbase.min.js"></script>
+    
+    <title>Test IndexedDB</title>
+
+<script>
+
+$(document).ready(function() {  
+$("#resources_menu").show();
+});
+
+// Define your database
+
+let CTLDB = new Localbase('Ctl4bizLDB');
+// call specific document
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+
+CTLDB.collection('menu').doc({ id: "1" }).get().then(document => {
+  var result=document;
+ /* for(var key in result){
+                                                                                             if(result.hasOwnProperty(key)) {
+                                                                                                    console.log(key + ': ' + result[key]);
+                                                                                                    //var indata=obj[key].id;
+                                                                                                  
+                                                                                                    //var indata=JSON.stringify(result[key]);
+                                                                                                    //var parsed= JSON.parse(indata);
+
+                                                                                                    //console.log(indata);
+                                                                                                    ////var unquoted = indata.replace(/"([^"]+)":/g, '$1:');
+                                                                                                    //console.log(parsed);  // {name:"John Smith"}
+                                                                                                    //
+                                                                                                    // Put some data into it
+                                                                                                    //
+                                                                                                    //db.Menu.put({id:"1",id_resource:"2",resourceName:"produccion",traslation_tag:"produccion",iconLink:"produccion.svg",tiposDeArticulos:{id_sresource:"3",traslation_tag:"tipodart",iconLink:"tipos.svg",subresourceLink:"./familias/index.php"},articulos:{id_sresource:"4",traslation_tag:"articu",iconLink:"articulos.svg",subresourceLink:"./articulos/index.php"},metaProcesos:{id_sresource:"5",traslation_tag:"metproc",iconLink:"metaproc.svg",subresourceLink:"./meta_procesos/index.php"},prcesosDeProduccion:{id_sresource:"6",traslation_tag:"propru",iconLink:"procesos.svg",subresourceLink:"./procesos/index.php"},batchDeProduccion:{id_sresource:"7",traslation_tag:"batchprod",iconLink:"batch.svg",subresourceLink:"./batch/index.php"},lotesDeProduccion:{id_sresource:"8",traslation_tag:"lotdprod",iconLink:"lotes.svg",subresourceLink:"./lotes/index.php"},estacionesDeTrabajo:{id_sresource:"9",traslation_tag:"estactra",iconLink:"estaciones.svg",subresourceLink:"./estaciones/index.php"},AgruparProcesos:{id_sresource:"120",traslation_tag:"proagpru",iconLink:"agruparProcesos.svg",subresourceLink:"./agrupar_procesos/index.php"}}).then (function(){
+                                                                                                     // CTLDB.collection('menu').add(parsed);
+                                                                                              } 
+                                                                                        }   */                                                    
+  var stringed= JSON.stringify(result);
+  //console.log("el resultado del query es: "+stringed);
+ console.log(getSubMenu(result));
+})
+// function to count the menus items
+function getCount(obj) {
+    var count = 0,
+        prop;
+
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "traslation_tag" && prop !== "id_sresource" && prop !== "id_resource" && prop !== "subresourceLink") {
+            count += 1;
+        }
+    }
+    return count;
+}
+function getMenuNames(obj,n) { 
+    var prop;
+    var nombre=[];
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "iconLink" && prop !== "traslation_tag" && prop !== "id_sresource" && prop !== "id_resource" && prop !== "subresourceLink") {
+          nombre.push(prop)      
+        }
+    }
+    return nombre[n-1];
+}
+function getSubMenu(obj,n) {
+    var prop;
+    var nombre=[];
+    for (prop in obj) {
+        if (obj.hasOwnProperty(prop) && prop !== "resourceName" && prop !== "traslation_tag" && prop !== "id" && prop !== "id_resource" && prop !== "iconLink") {
+          nombre.push(prop) 
+          //console.log(nombre);  
+            
+        }
+    }
+    return nombre[n-1];
+    //return nombre;
+}
+/*
+ 
+    $.getJSON("./funciones/BackendQueries/getAllAllowedMenuItems.php", function(data) {
+                                                                                        // Define your database
+                                                                                        //
+                                                                                        let CTLDB = new Localbase('Ctl4bizLDB')
+
+                                                                                   
+                                                                                        console.log(data);
+                                                                                        const obj = JSON.parse(data);
+                                                                                        console.log(obj);
+
+                                                                                        //const unquoted = obj.replace(/"([^"]+)":/g, '$1:');
+                                                                                        //console.log(unquoted);  // {name:"John Smith"}
+                                                                                     //   const objs = [{id:1, ....}, {id:2, ....},  ......  , {id:100, ....} ];
+ 
+                                                                                       for(var key in obj){
+                                                                                             if(obj.hasOwnProperty(key)) {
+                                                                                                    // console.log(key + ': ' + obj[key].id);
+                                                                                                    //var indata=obj[key].id;
+                                                                                                  
+                                                                                                    var indata=JSON.stringify(obj[key]);
+                                                                                                    var parsed= JSON.parse(indata);
+
+                                                                                                    //console.log(indata);
+                                                                                                    //var unquoted = indata.replace(/"([^"]+)":/g, '$1:');
+                                                                                                    console.log(parsed);  // {name:"John Smith"}
+                                                                                                    //
+                                                                                                    // Put some data into it
+                                                                                                    //
+                                                                                                    //db.Menu.put({id:"1",id_resource:"2",resourceName:"produccion",traslation_tag:"produccion",iconLink:"produccion.svg",tiposDeArticulos:{id_sresource:"3",traslation_tag:"tipodart",iconLink:"tipos.svg",subresourceLink:"./familias/index.php"},articulos:{id_sresource:"4",traslation_tag:"articu",iconLink:"articulos.svg",subresourceLink:"./articulos/index.php"},metaProcesos:{id_sresource:"5",traslation_tag:"metproc",iconLink:"metaproc.svg",subresourceLink:"./meta_procesos/index.php"},prcesosDeProduccion:{id_sresource:"6",traslation_tag:"propru",iconLink:"procesos.svg",subresourceLink:"./procesos/index.php"},batchDeProduccion:{id_sresource:"7",traslation_tag:"batchprod",iconLink:"batch.svg",subresourceLink:"./batch/index.php"},lotesDeProduccion:{id_sresource:"8",traslation_tag:"lotdprod",iconLink:"lotes.svg",subresourceLink:"./lotes/index.php"},estacionesDeTrabajo:{id_sresource:"9",traslation_tag:"estactra",iconLink:"estaciones.svg",subresourceLink:"./estaciones/index.php"},AgruparProcesos:{id_sresource:"120",traslation_tag:"proagpru",iconLink:"agruparProcesos.svg",subresourceLink:"./agrupar_procesos/index.php"}}).then (function(){
+                                                                                                      CTLDB.collection('menu').add(parsed);
+                                                                                              } 
+                                                                                        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+      });                                                                       
+      
+  
+  
+   // Close the db when the transaction is done*/
+  
+                                                          
+                                                                      
+
+</script>
+</head>
+<body>
+  <div id="resources_menu"></div>
+  <div id="subresources_menu"></div>  
+</body>
+</html>
