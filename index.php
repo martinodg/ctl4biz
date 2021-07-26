@@ -43,8 +43,7 @@ if(session_id() == '') {
             let CTLDB = new Localbase('Ctl4bizLDB');
             CTLDB.collection('menu').get().then(document => {
                         var result=document;
-                        //var stringed= JSON.stringify(result);
-                        //console.log(stringed);
+                       
                         var numOfItems=getCount(result);
                       
                         for (let i=0;  i< numOfItems;i++){
@@ -52,14 +51,11 @@ if(session_id() == '') {
                             $('#resources_menu').append('<div class="icons_menu"><a href="#"  id="a-'+result[i].resourceName+'"><img src="../../img/'+result[i].iconLink+'" class="iconolado2 icono-'+result[i].resourceName+'" id="'+result[i].resourceName+'img" onClick="openSubresMenu(&apos;'+result[i].id+'&apos;)" alt="'+result[i].resourceName+'"><span>'+itemName+'</span></div></a>');
                         }
                         
-                        console.log("there are "+getCount(result)+" menu items");
+                      
             })
 
 
-           // $.get("./funciones/BackendQueries/getMenuItems.php", 
-                        //function(data) {
-                     //   $('#resources_menu').html(data);   
-               //     });
+           
         }
         function getCount(obj) {
             var count = 0,
@@ -103,7 +99,7 @@ if(session_id() == '') {
                                             if ($("#subresources_menu").is(":visible")){
                                                 $("#subresources_menu").hide(270);
                                             }
-                                            //loadMenu();
+                                            
                                             
                                             
         }
@@ -118,28 +114,17 @@ if(session_id() == '') {
                 CTLDB.collection('menu').doc(resource).get().then(document => {
                         var result=document;
                         var nroItems=getSubMenuCount(result);
-                        console.log(nroItems);
-                        console.log(result);
+                       
                         for (let i = 0; i < nroItems; i++) {
                             var subMenuName=getSubMenuName(result,i);
-                            console.log(subMenuName);
-                            console.log(result[subMenuName].traslation_tag);
+                           
                             var subMenuItemName=getTranslationText(result[subMenuName].traslation_tag);
                             $('#subresources_menu').append('<div class="icons_menu"><a href="#"  id="a-'+subMenuName+'"><img src="../../img/'+result[subMenuName].iconLink+'" class="iconolado2 icono-'+subMenuName+'" id="'+subMenuName+'img" onClick="openTargetPage(&apos;'+result[subMenuName].subresourceLink+'&apos;)" alt="'+subMenuName+'"><span>'+subMenuItemName+'</span></div></a>');
 
                         }
 
 
-                /*
-                $.get("./funciones/BackendQueries/getMenuItems.php", { menu:"sub",
-                    res:resource
-
-                },                    function(data) {
-                        $('#subresources_menu').html(data);
-                        
-                        
-
-                    });*/
+                
                 })
              
         }  

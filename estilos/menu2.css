@@ -420,8 +420,11 @@ body {
     background: rgb(255, 204, 0);
     border-radius: 5px;
 }
-
-
+.icono-listaDePrecios{
+   
+    background: rgb(255, 149, 0);
+    border-radius: 5px;
+}
 
 
 #content {

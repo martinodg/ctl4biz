@@ -28,17 +28,14 @@ function loadLocalMenu() {
                                                                                                      if(obj.hasOwnProperty(key)) {
                                                                                                             var indata=JSON.stringify(obj[key]);
                                                                                                             var parsed= JSON.parse(indata);
-                                                                                                            console.log(parsed);  // {name:"John Smith"}
-                                                                                                            console.log(key);
-                                                                                                            console.log(lastTurn);
+                                                                                                           
                                                                                                             // Put some data into it
+                                                                                                            
                                                                                                             CTLDB.collection('menu').add(parsed,docKey)
                                                                                                             .then(response => {
                                                                                                               dbTurn++;
                                                                                                               
-                                                                                                              console.log(dbTurn)
                                                                                                               if(dbTurn==lastTurn){ 
-                                                                                                                                    console.log("ahora me voy");
                                                                                                                                     window.top.location = "./index.php";
 
                                                                                                                                   }

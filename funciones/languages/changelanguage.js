@@ -582,6 +582,13 @@ function getTranslationText(name)
         "estactual":["Status has been updated","El estado ha sido actualizado","Stan zostal zaktualizowany","Lo stato e stato aggiornato","O status foi atualizado","Le statut a ete mis a jour","Der Status wurde aktulisiert"],
         "impvl":["Voucher Amount","Importe Vale","Kwota Vouchera","Importo del buono","Valor do voucher","Montant du bon d'achat","Gutscheinbetrag"],
         "avatar":["Choose an avatar","Elige un avatar","Wybierz awatara","Scegli un avatar","Escolha um avatar","Choisissez un avatar","Wähle einen Avatar"],
+        "lstprecios":["Price List","Lista de Precios","cennik","listino prezzi","lista de preços","tarif","Preisliste"],
+        "lstsprecios":["Price Lists","Listas de Precios","cenniki","listini prezzi","listas de preços","listes de prix","Preislisten"],
+
+        "codlstprecios":["price list code","Codigo de la Lista de Precios","kod cennika","codice listino prezzi","código da lista de preços","code liste de prix","Preislistencode"],
+        "nrolstpen":["Number of price list found","Nro.de listas de precios encontradas","Liczba znalezionych cenników","Numero di listino trovato","Número da lista de preços encontrada","Nombre de listes de prix trouvées","Nummer der gefundenen Preisliste"],
+        "insnuelst":["INSERT NEW PRICE LIST","INSERTAR NUEVA LISTA DE PRECIOS","NOWY CENNIK","NUOVO LISTINO PREZZI","NOVA LISTA DE PREÇOS","NOUVELLE LISTE DE PRIX","NEUE PREISLISTE"],
+        "porcdefault":["DEFAULT PERCENTAGE","PORCENTAJE PREDEFINIDO","DOMYŚLNA WARTOŚĆ PROCENTOWA","PERCENTUALE PREDEFINITA","PORCENTAGEM PADRÃO","POURCENTAGE PAR DÉFAUT","STANDARDPROZENTSATZ"],
 
     };
 
@@ -939,6 +946,9 @@ function langchange() {
     $("#trglspunt").text(getTranslationText('rglspunt'));
     $("#tcrprttrab").text(getTranslationText('crprttrab'));
     $("#tcodtjador").text(getTranslationText('codtjador'));
+    $("#tcodlstprecios").text(getTranslationText('codlstprecios'));
+    $("#lstprecios,#tlstprecios").text(getTranslationText('lstprecios'));
+    $("#lstsprecios,#tlstsprecios").text(getTranslationText('lstsprecios'));
     $("#tmsgprtnf").text(getTranslationText('msgprtnf'));
     $("#tprov").text(getTranslationText('prov'));
     $("#tprovs").text(getTranslationText('provs'));
@@ -1044,7 +1054,10 @@ function langchange() {
     $("#testactual,#estactual").text(getTranslationText('estactual'));
     $("#tmsgfacreasucc,#msgfacreasucc").text(getTranslationText('msgfacreasucc'));
     $("#tavatar").text(getTranslationText('avatar'));
-
+    $("#tnrolstpen,#nrolstpen").text(getTranslationText('nrolstpen'));
+    $("#tinsnuelst").text(getTranslationText('insnuelst'));
+    $("#tporcdefault,#porcdefault").text(getTranslationText('porcdefault'));
+    
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
