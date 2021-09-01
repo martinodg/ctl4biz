@@ -122,7 +122,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 				var entero=0;
 				var enteroo=0;
 
-				if (document.getElementById("referencia").value=="") mensaje="  - Referencia\n";
+				if (document.getElementById("codarticulo").value=="") mensaje="  - Referencia\n";
 				if (document.getElementById("descripcion").value=="") mensaje+="  - Descripcion\n";
 				if (document.getElementById("precio").value=="") {
 							mensaje+="  - Falta el precio\n";

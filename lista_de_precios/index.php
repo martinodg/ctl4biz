@@ -20,11 +20,10 @@ require_once("../racf/purePhpVerify.php");
         
         <script language="javascript">
 
-		$( document ).ready(function(){ 
-
+		$(document).ready(function(){
+			
 			getPriceListLines('%','%',0,1,0,1);
-			$("#codlista,#nombre").change(function(){
-				alert("algocambio");
+			$("#codlista,#nombre").change(function(){	
 				var codigo='%'+$("#codlista").val()+'%';
 				var nombreLista=$("#nombre").val()+'%';
 				if (codigo==""){var codigo='%';}
@@ -82,7 +81,6 @@ require_once("../racf/purePhpVerify.php");
 
 	
 		function getPriceListLines(id_pricelist,pl_name,ver,modifica,seleccionar,eliminar) {	
-			//alert("entro en price list lines function");
 			$.get( "../funciones/BackendQueries/getPriceListLines.php" , 
 					{ 
 						idPriceList: id_pricelist, 
@@ -92,7 +90,6 @@ require_once("../racf/purePhpVerify.php");
 						toolSeleccionar: seleccionar,
 						toolEliminar: eliminar,
 						iniciopagina: $("#iniciopagina").val()
-
 					},
 					function ( data ) { 
                             $('#div_datos').html( data );
@@ -117,6 +114,9 @@ require_once("../racf/purePhpVerify.php");
             );
 		}
 		
+		function modify(id_list) {
+			location.href="nueva_lista.php" + "#" + id_list;
+		}
 		</script>
 
 	</head>

@@ -73,7 +73,7 @@ function getTranslationText(name)
         "produccion_plus":["Production +","produccion +","produkcja +","produzione +","Produção +","production +","Produktion +"],
         "produccion":["Production","Producción","produkcja","produzione","Produção","production","Produktion"],
         "articu":["Items","Artículos","artykuły","articoli","artigos","des Items","Artikel"],
-        "tipodart":["Item type","Tipo de artículo","Typ przedmiotu","Tipo di elemento","Tipo de item","Type délément","Gegenstandsart"],
+        "tipodart":["Item Family","Tipo de artículo","Typ przedmiotu","Tipo di elemento","Tipo de item","Type délément","Gegenstandsart"],
         "lotdprod":["Production Lots","Lotes de producción","partie produkcyjne","lotti di produzione","lotes de produção","lots de production","Produktionschargen"],
         "batchprod":["Production Batches","Batch de producción","produkcja partii","lotto di produzione","produção em lotes","production par lots","Serienfertigung"],
         "btipoar":["Type of article","Buscar tipo de artículo","Rodzaj artykułu","Tipo di articolo","Tipo de artigo","Type de larticle","Artikeltyp"],
@@ -589,6 +589,10 @@ function getTranslationText(name)
         "nrolstpen":["Number of price list found","Nro.de listas de precios encontradas","Liczba znalezionych cenników","Numero di listino trovato","Número da lista de preços encontrada","Nombre de listes de prix trouvées","Nummer der gefundenen Preisliste"],
         "insnuelst":["INSERT NEW PRICE LIST","INSERTAR NUEVA LISTA DE PRECIOS","NOWY CENNIK","NUOVO LISTINO PREZZI","NOVA LISTA DE PREÇOS","NOUVELLE LISTE DE PRIX","NEUE PREISLISTE"],
         "porcdefault":["DEFAULT PERCENTAGE","PORCENTAJE PREDEFINIDO","DOMYŚLNA WARTOŚĆ PROCENTOWA","PERCENTUALE PREDEFINITA","PORCENTAGEM PADRÃO","POURCENTAGE PAR DÉFAUT","STANDARDPROZENTSATZ"],
+        "margen":["Profit margin","Margen de ganancia","Marża zysku","Margine di profitto","Margem de lucro","Marge bénéficiaire","Gewinnmarge"],
+        "ulticost":["Last cost","Ultimo costo","Marża zysku","Margine di profitto","Margem de lucro","Marge bénéficiaire","letzte Kosten"],
+        "costref":["Reference Cost","Costo de referencia","Marża zysku","Margine di profitto","Margem de lucro","Marge bénéficiaire","Gewinnmarge"],
+        "precioantimpuestos":["Price before taxes","Precio antes de impuestos","Cena przed opodatkowaniem","Prezzo senza tasse","Preço sem impostos","Prix hors taxes","Steuerfreier preis"],
 
     };
 
@@ -1057,7 +1061,8 @@ function langchange() {
     $("#tnrolstpen,#nrolstpen").text(getTranslationText('nrolstpen'));
     $("#tinsnuelst").text(getTranslationText('insnuelst'));
     $("#tporcdefault,#porcdefault").text(getTranslationText('porcdefault'));
-    
+    $("#tmargen,#margen").text(getTranslationText('margen'));
+
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula

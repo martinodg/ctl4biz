@@ -2,7 +2,7 @@
 
 // Connects to your Database 
 
- include "./conectar7.php";
+ include "../../conectar7.php";
  
  if (isset($_GET["articulo"])) {$articulo=$_GET["articulo"];}
  if (isset($_GET["campo"])) {$campo=$_GET["campo"];}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: May 09, 2021 at 02:57 PM
+-- Generation Time: Aug 24, 2021 at 02:51 PM
 -- Server version: 10.5.8-MariaDB-1:10.5.8+maria~focal
 -- PHP Version: 7.4.11
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `T_de10ff9fe0a37aa071be7586c5c3151f`
+-- Database: `T_8d6846c85e8076b85318fd1054480811`
 --
 
 -- --------------------------------------------------------
@@ -35,8 +35,15 @@ CREATE TABLE `albalinea` (
   `cantidad` float NOT NULL DEFAULT 0,
   `precio` float NOT NULL DEFAULT 0,
   `importe` float NOT NULL DEFAULT 0,
-  `dcto` tinyint(4) NOT NULL DEFAULT 0
+  `dcto` tinyint(4) NOT NULL DEFAULT 0,
+  `TAX` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `albalinea`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -53,8 +60,15 @@ CREATE TABLE `albalineap` (
   `cantidad` float NOT NULL DEFAULT 0,
   `precio` float NOT NULL DEFAULT 0,
   `importe` float NOT NULL DEFAULT 0,
-  `dcto` tinyint(4) NOT NULL DEFAULT 0
+  `dcto` tinyint(4) NOT NULL DEFAULT 0,
+  `TAX` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `albalineap`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -70,7 +84,8 @@ CREATE TABLE `albalineaptmp` (
   `cantidad` float NOT NULL DEFAULT 0,
   `precio` float NOT NULL DEFAULT 0,
   `importe` float NOT NULL DEFAULT 0,
-  `dcto` tinyint(4) NOT NULL DEFAULT 0
+  `dcto` tinyint(4) NOT NULL DEFAULT 0,
+  `TAX` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -87,7 +102,8 @@ CREATE TABLE `albalineatmp` (
   `cantidad` float NOT NULL DEFAULT 0,
   `precio` float NOT NULL DEFAULT 0,
   `importe` float NOT NULL DEFAULT 0,
-  `dcto` tinyint(4) NOT NULL DEFAULT 0
+  `dcto` tinyint(4) NOT NULL DEFAULT 0,
+  `TAX` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -107,6 +123,13 @@ CREATE TABLE `albaranes` (
   `borrado` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `albaranes`
+--
+
+INSERT INTO `albaranes` (`codalbaran`, `codfactura`, `fecha`, `iva`, `codcliente`, `estado`, `totalalbaran`, `borrado`) VALUES
+(1, 0, '2021-05-26', 16, 2, '1', 8.3404, '1');
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +145,12 @@ CREATE TABLE `albaranesp` (
   `estado` varchar(1) DEFAULT '1',
   `totalalbaran` float NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `albaranesp`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -157,6 +186,9 @@ CREATE TABLE `articulos` (
   `referencia` varchar(20) NOT NULL,
   `descripcion` text NOT NULL,
   `impuesto` float DEFAULT NULL,
+  `impuesto2` float NOT NULL,
+  `impuesto3` float NOT NULL,
+  `impuesto4` float NOT NULL,
   `codproveedor1` int(5) NOT NULL DEFAULT 1,
   `codproveedor2` int(5) NOT NULL,
   `codproveedor3` int(11) NOT NULL,
@@ -190,8 +222,8 @@ CREATE TABLE `articulos` (
 -- Dumping data for table `articulos`
 --
 
-INSERT INTO `articulos` (`codarticulo`, `codfamilia`, `referencia`, `descripcion`, `impuesto`, `codproveedor1`, `codproveedor2`, `codproveedor3`, `codproveedor4`, `descripcion_corta`, `codubicacion`, `stock`, `codunidadmedida`, `stock_minimo`, `codumstock_minimo`, `aviso_minimo`, `datos_producto`, `fecha_alta`, `codembalaje`, `unidades_caja`, `codumunidades_caja`, `precio_ticket`, `modificar_ticket`, `observaciones`, `precio_compra`, `precio_almacen`, `precio_tienda`, `precio_pvp`, `precio_iva`, `codigobarras`, `imagen`, `borrado`) VALUES
-(0, 0, 'NOT DEFINED', 'NOT DEFINED', 0, 23, 0, 0, 0, '', 0, 160, 0, 0, 0, '0', '', '0000-00-00', 0, 0, 0, '0', '', '', 0.29, 0.00, 0.00, NULL, 0.00, '', '', '0');
+INSERT INTO `articulos` (`codarticulo`, `codfamilia`, `referencia`, `descripcion`, `impuesto`, `impuesto2`, `impuesto3`, `impuesto4`, `codproveedor1`, `codproveedor2`, `codproveedor3`, `codproveedor4`, `descripcion_corta`, `codubicacion`, `stock`, `codunidadmedida`, `stock_minimo`, `codumstock_minimo`, `aviso_minimo`, `datos_producto`, `fecha_alta`, `codembalaje`, `unidades_caja`, `codumunidades_caja`, `precio_ticket`, `modificar_ticket`, `observaciones`, `precio_compra`, `precio_almacen`, `precio_tienda`, `precio_pvp`, `precio_iva`, `codigobarras`, `imagen`, `borrado`) VALUES
+(0, 0, '', 'undefined', NULL, 0, 0, 0, 1, 0, 0, 0, NULL, 0, 0, 0, 0, 0, '0', '', '0000-00-00', 0, 0, 0, '0', '0', '', NULL, NULL, NULL, NULL, NULL, '', '', '0');
 
 -- --------------------------------------------------------
 
@@ -205,6 +237,12 @@ CREATE TABLE `artpro` (
   `codproveedor` int(5) NOT NULL,
   `precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `artpro`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -225,7 +263,12 @@ CREATE TABLE `batch` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
+-- Dumping data for table `batch`
+--
 
+
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `clientes`
@@ -274,6 +317,12 @@ CREATE TABLE `cobros` (
   `observaciones` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cobros de facturas a clientes';
 
+--
+-- Dumping data for table `cobros`
+--
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -308,8 +357,7 @@ CREATE TABLE `embalajes` (
 --
 
 INSERT INTO `embalajes` (`codembalaje`, `nombre`, `borrado`) VALUES
-(1, 'dummy pack', '0');
-
+(1, 'dummie pack', '0');
 
 -- --------------------------------------------------------
 
@@ -322,6 +370,13 @@ CREATE TABLE `entidades` (
   `nombreentidad` varchar(50) NOT NULL,
   `borrado` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Entidades Bancarias';
+
+--
+-- Dumping data for table `entidades`
+--
+
+INSERT INTO `entidades` (`codentidad`, `nombreentidad`, `borrado`) VALUES
+(1, 'Dummies Bank', '0');
 
 -- --------------------------------------------------------
 
@@ -340,9 +395,7 @@ CREATE TABLE `estaciones` (
 --
 
 INSERT INTO `estaciones` (`codestacion`, `nombre`, `borrado`) VALUES
-(1, 'Estacion no Asignada', '0'),
-(2, 'Dummy workplace', '0');
-
+(1, 'Estacion no Asignada', '0');
 
 -- --------------------------------------------------------
 
@@ -375,16 +428,23 @@ INSERT INTO `estado` (`codestado`, `estado`) VALUES
 CREATE TABLE `factulinea` (
   `codfactura` int(11) NOT NULL,
   `numlinea` int(4) NOT NULL,
+  `descripcion` varchar(140) NOT NULL,
   `codfamilia` int(3) NOT NULL,
   `codigo` varchar(15) NOT NULL,
   `cantidad` float NOT NULL,
   `precio` float NOT NULL,
   `importe` float NOT NULL,
-  `dcto` tinyint(4) NOT NULL
+  `dcto` tinyint(4) NOT NULL,
+  `TAX` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='lineas de facturas a clientes';
 
 --
+-- Dumping data for table `factulinea`
+--
 
+
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `factulineap`
@@ -399,8 +459,15 @@ CREATE TABLE `factulineap` (
   `cantidad` float NOT NULL,
   `precio` float NOT NULL,
   `importe` float NOT NULL,
-  `dcto` tinyint(4) NOT NULL
+  `dcto` tinyint(4) NOT NULL,
+  `TAX` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='lineas de facturas de proveedores';
+
+--
+-- Dumping data for table `factulineap`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -416,7 +483,8 @@ CREATE TABLE `factulineaptmp` (
   `cantidad` float NOT NULL,
   `precio` float NOT NULL,
   `importe` float NOT NULL,
-  `dcto` tinyint(4) NOT NULL
+  `dcto` tinyint(4) NOT NULL,
+  `TAX` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='lineas de facturas de proveedores temporal';
 
 -- --------------------------------------------------------
@@ -437,8 +505,7 @@ CREATE TABLE `factulineatmp` (
   `TAX` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Temporal de linea de facturas a clientes';
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `facturas`
@@ -450,13 +517,19 @@ CREATE TABLE `facturas` (
   `iva` tinyint(4) NOT NULL,
   `codcliente` int(5) NOT NULL,
   `estado` varchar(1) NOT NULL DEFAULT '0',
+  `impuestos` float NOT NULL,
   `totalfactura` float NOT NULL,
   `fechavencimiento` date NOT NULL DEFAULT '0000-00-00',
   `borrado` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='facturas de ventas a clientes';
 
 --
+-- Dumping data for table `facturas`
+--
 
+
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `facturasp`
@@ -472,6 +545,12 @@ CREATE TABLE `facturasp` (
   `fechapago` date NOT NULL DEFAULT '0000-00-00',
   `borrado` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='facturas de compras a proveedores';
+
+--
+-- Dumping data for table `facturasp`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -496,7 +575,12 @@ CREATE TABLE `facturastmp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='temporal de facturas a clientes';
 
 --
+-- Dumping data for table `facturastmp`
+--
 
+
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `familias`
@@ -516,7 +600,8 @@ INSERT INTO `familias` (`codfamilia`, `nombre`, `borrado`) VALUES
 (1, 'Raw material', '0'),
 (2, 'Intermediate product', '0'),
 (3, 'Final product', '0'),
-(4, 'internal supplies', '0');
+(4, 'internal supplies', '0'),
+(5, 'Servicios', '0');
 
 -- --------------------------------------------------------
 
@@ -544,15 +629,13 @@ INSERT INTO `formapago` (`codformapago`, `nombrefp`, `borrado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grupoDeProcesos`
+-- Table structure for table `images`
 --
 
-CREATE TABLE `grupoDeProcesos` (
-  `codGrupoDeProcesos` int(10) NOT NULL,
-  `batchOrLot` tinyint(1) NOT NULL,
-  `nombre` varchar(40) NOT NULL,
-  `codstatus` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `images` (
+  `img_name` varchar(255) NOT NULL,
+  `img_data` longblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -572,11 +655,10 @@ CREATE TABLE `impuestos` (
 --
 
 INSERT INTO `impuestos` (`codimpuesto`, `nombre`, `valor`, `borrado`) VALUES
-(1, 'Tax Free', 0, '0'),
-(2, 'Tax 1', 7, '0'),
-(3, 'Tax 2', 16, '0'),
-(4, 'Tax 3', 22, '0'),
-(5, 'Tax 4', 27, '0');
+(1, 'tax', 7, '0'),
+(2, 'Tax Free', 0, '0'),
+(3, 'IVA_ARG', 21, '0'),
+(4, 'TAX 23% Poland', 23, '0');
 
 -- --------------------------------------------------------
 
@@ -590,12 +672,16 @@ CREATE TABLE `intUsersTable` (
   `user_name` varchar(140) NOT NULL,
   `password` varchar(160) NOT NULL,
   `codstatus` int(1) NOT NULL,
-  `avatar` varchar(160) NOT NULL,
+  `avatar` varchar(140) NOT NULL,
   `borrado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `intUsersTable`
+--
 
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `librodiario`
@@ -611,6 +697,33 @@ CREATE TABLE `librodiario` (
   `numpago` varchar(30) NOT NULL,
   `total` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Movimientos diarios';
+
+--
+-- Dumping data for table `librodiario`
+--
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `listaDePrecios`
+--
+
+CREATE TABLE `listaDePrecios` (
+  `codLista` int(5) NOT NULL,
+  `nombre` varchar(120) NOT NULL,
+  `porcentaje` float NOT NULL,
+  `codusuario` int(10) NOT NULL,
+  `fechaInser` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `listaDePrecios`
+--
+
+INSERT INTO `listaDePrecios` (`codLista`, `nombre`, `porcentaje`, `codusuario`, `fechaInser`) VALUES
+(1, 'lista consumidor final', 30.5, 1, '2021-07-27');
 
 -- --------------------------------------------------------
 
@@ -635,6 +748,21 @@ CREATE TABLE `lote` (
 --
 
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `margenPorArticulo`
+--
+
+CREATE TABLE `margenPorArticulo` (
+  `codmargen` int(10) NOT NULL,
+  `codarticulo` int(10) NOT NULL,
+  `porcentaje` float(10,2) NOT NULL,
+  `usuario` varchar(40) NOT NULL,
+  `fechaultimamod` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `metaprocesos`
@@ -654,18 +782,6 @@ CREATE TABLE `metaprocesos` (
 -- Dumping data for table `metaprocesos`
 --
 
-
-
---
--- Table structure for table `metaProcesosAGrupo`
---
-
-CREATE TABLE `metaProcesosAGrupo` (
-  `codProcesosAGrupo` int(10) NOT NULL,
-  `codGrupoDeProcesos` int(10) NOT NULL,
-  `codMetaProceso` int(10) NOT NULL,
-  `secuencia` int(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -688,6 +804,8 @@ CREATE TABLE `metaprocesoslinea` (
 
 
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `pagos`
 --
@@ -702,6 +820,11 @@ CREATE TABLE `pagos` (
   `fechapago` date DEFAULT '0000-00-00',
   `observaciones` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Pagos de facturas a proveedores';
+
+--
+-- Dumping data for table `pagos`
+--
+
 
 -- --------------------------------------------------------
 
@@ -734,6 +857,7 @@ INSERT INTO `pais` (`codPais`, `lengua`, `nombrePais`, `borrado`) VALUES
 CREATE TABLE `presulinea` (
   `codpresupuesto` int(11) NOT NULL DEFAULT 0,
   `numlinea` int(4) NOT NULL,
+  `descripcion` varchar(140) NOT NULL,
   `codfamilia` int(3) DEFAULT NULL,
   `codigo` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
   `cantidad` float NOT NULL DEFAULT 0,
@@ -743,7 +867,11 @@ CREATE TABLE `presulinea` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `presulinea`
+--
 
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `presulineatmp`
@@ -752,7 +880,7 @@ CREATE TABLE `presulinea` (
 CREATE TABLE `presulineatmp` (
   `codpresupuesto` int(11) NOT NULL DEFAULT 0,
   `numlinea` int(4) NOT NULL,
-  `descripcion` varchar(40) NOT NULL,
+  `descripcion` varchar(140) NOT NULL,
   `codfamilia` int(3) DEFAULT NULL,
   `codigo` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
   `cantidad` float NOT NULL DEFAULT 0,
@@ -762,6 +890,11 @@ CREATE TABLE `presulineatmp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `presulineatmp`
+--
+
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `presupuestos`
@@ -782,6 +915,8 @@ CREATE TABLE `presupuestos` (
 -- Dumping data for table `presupuestos`
 --
 
+
+
 -- --------------------------------------------------------
 
 --
@@ -798,6 +933,9 @@ CREATE TABLE `presupuestostmp` (
 --
 
 
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `procesos`
 --
@@ -808,7 +946,6 @@ CREATE TABLE `procesos` (
   `bolasoc` int(5) NOT NULL,
   `cantidad` int(10) NOT NULL,
   `codunidadmedida` int(2) NOT NULL,
-  `precio` float(10,2) NOT NULL,
   `fechai` date NOT NULL,
   `horai` varchar(5) COLLATE latin1_spanish_ci NOT NULL,
   `horaf` varchar(5) COLLATE latin1_spanish_ci NOT NULL,
@@ -825,6 +962,8 @@ CREATE TABLE `procesos` (
 
 
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `proclinea`
 --
@@ -835,14 +974,16 @@ CREATE TABLE `proclinea` (
   `codlinea` int(5) NOT NULL,
   `codarticulo` int(5) NOT NULL,
   `cantidad` decimal(6,2) NOT NULL,
-  `codunidadmedida` int(5) NOT NULL,
-  `precio` float(10,2) NOT NULL
+  `codunidadmedida` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `proclinea`
 --
 
+
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `proveedores`
@@ -871,7 +1012,33 @@ CREATE TABLE `proveedores` (
 --
 
 INSERT INTO `proveedores` (`codproveedor`, `nombre`, `nif`, `codpais`, `direccion`, `codprovincia`, `localidad`, `codentidad`, `cuentabancaria`, `codpostal`, `telefono`, `movil`, `email`, `web`, `borrado`) VALUES
-(1, 'My own Company', '', 0, 'My Address', 0, 'MyCity', 0, '', '00000', '', '', 'mail@mailto.com', '', '0');
+(1, 'GORDON FOOD ', '', 0, 'Miami Distribution Ctr ', 0, 'Miami', 0, '', '33167', '800-830-9767', '954-895-4997', 'jarrett.sammel@gfs.com', '', '0'),
+(2, 'Tapam llc', '', 0, '71st Street', 0, 'miami', 0, '', '33166', '', '', '', '', '0'),
+(3, 'SOUTH FLORIDA TRAINING CORP.', '', 0, '13 street', 0, 'miami', 0, '', '33172', '3059947817', '', '', '', '0'),
+(4, 'SYSCO', '', 0, '12500 sysco way', 0, 'medley', 0, '', '33178', '305-651-5421', '305-926-3189', 'dicembrino.alesandro@sfl.sysco.com', '', '0'),
+(5, 'RESTAURANT DEPOT', '', 0, '3500 davie rd', 0, '', 0, '', '33314', '', '', '', 'www.restaurantdepot.com', '0'),
+(6, 'tama corp.', '', 0, '7921 nw 21st st', 0, 'doral', 0, '', '33122', '305-592-1717', '', '', 'www.elpaisa.net', '0'),
+(7, 'DEL ROSARIO DISTRIBUTION', '', 0, '7341 nw 79th terrace', 0, 'medley', 0, '', '33166', '305-592-0050', '', 'info@delrosariodistribution.com', '', '0'),
+(8, 'BOLUFE SERVICES & SALES', '', 0, '', 0, '', 0, '', '', '954-513-8440', '305-746-7162', '', '', '0'),
+(9, 'BEITAR FRESH PRODUCTS', '', 0, '', 0, '', 0, '', '', '7886-306-0048', '', '', '', '0'),
+(10, 'PDP GROUP', '', 0, '8040NW 71ST', 0, 'MIAMI', 0, '', '33166', '786-357-8261', '786-331-7500', '', '', '0'),
+(11, 'ALIMENTOS AUSTRALES', '', 0, '13049 SW 122ND AVE', 0, 'MIAMI', 0, '', '', '305-238-7755', '', '', '', '0'),
+(12, 'INTERMARK FOODS, INC', '', 0, '1355 NW 97 AVE', 0, 'DORAL', 0, '', '33172', '305-718-8754', '', '', '', '0'),
+(13, 'SIGNATURE SEASONING', '', 0, 'POBOX 56438', 0, 'VIRGINIA BEACH', 0, '', '23456', '757-572-8995', '', 'SUSAN@SIGNATURESEASONINGS.COM', '', '0'),
+(14, 'ORSO', '', 0, '8420 NW 61ST STREET', 0, 'MIAMI', 0, '', '33166', '', '', '', '', '0'),
+(15, 'CHEF MERITO, INC', '', 0, '7915 SEPULVEDA BLVD', 0, 'VAN NUYS', 0, '', '91405', '818-787-0100', '', '', 'WWW.CHEFMERITO.COM', '0'),
+(16, 'MEDINA BAKING & POWDER PRODUCTS', '', 0, '1864 NW 22ND ST', 0, 'MIAMI', 0, '', '33142', '305-545-5436', '305-545-5437', 'SALES@MEDINABAKING.COM', 'WWW.MEDINABAKING.COM', '0'),
+(17, 'ABC BAKERY SUPPLIES & EQUIP', '', 0, '7200 NW 1ST AVE', 61, 'MIAMI', 0, '', '33150', '305-757-3885', '', '', '', '0'),
+(18, 'Produccion propia', '', 0, '', 0, '', 0, '', '', '', '', '', '', '0'),
+(19, 'Martin', '23456789-23', 0, 'puerto palo 23', 0, 'Trenquelauquen', 0, '', '', '', '', '', '', '1'),
+(20, 'All Florida Paper', '', 0, '', 0, '', 0, '', '', '', '', '', '', '0'),
+(21, 'PDP GROUP', '', 0, '', 0, '', 0, '', '', '', '', '', '', '1'),
+(22, 'TITOS COLOMBIAN FOOD', '', 0, '', 0, '', 0, '', '', '', '', '', '', '0'),
+(23, '', '', 0, '', 105, '', 0, '', '', '', '', '', '', '0'),
+(24, 'Culo', '', 0, '', 0, '', 0, '', '', '', '', '', '', '1');
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `provincias`
 --
@@ -1027,22 +1194,24 @@ INSERT INTO `provincias` (`codprovincia`, `codpais`, `stateCode`, `nombreprovinc
 
 CREATE TABLE `resourcesTable` (
   `id_resource` int(10) NOT NULL,
-  `resourceName` varchar(40) NOT NULL
+  `resourceName` varchar(40) NOT NULL,
+  `iconLink` varchar(200) NOT NULL,
+  `traslation_tag` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `resourcesTable`
 --
 
-INSERT INTO `resourcesTable` (`id_resource`, `resourceName`) VALUES
-(2, 'produccion'),
-(3, 'ventas'),
-(4, 'compras'),
-(5, 'contabilidad'),
-(6, 'recursosHumanos'),
-(7, 'configuracion'),
-(8, 'Settings'),
-(9, 'Dashboard');
+INSERT INTO `resourcesTable` (`id_resource`, `resourceName`, `iconLink`, `traslation_tag`) VALUES
+(2, 'produccion', 'produccion.svg', 'produccion'),
+(3, 'ventas', 'ventas.svg', 'ventas'),
+(4, 'compras', 'compras.svg', 'compras'),
+(5, 'contabilidad', 'contabilidad.svg', 'contabilidad'),
+(6, 'recursosHumanos', 'hr.svg', 'rrhh'),
+(7, 'configuracion', 'config.svg', 'config'),
+(8, 'Settings', '', ''),
+(9, 'Dashboard', '', '');
 
 -- --------------------------------------------------------
 
@@ -1062,19 +1231,31 @@ CREATE TABLE `resourcesToRolesTable` (
 --
 
 INSERT INTO `resourcesToRolesTable` (`id_srtr`, `id_resource`, `id_role`, `borrado`) VALUES
+(11, 1, 1, 1),
 (12, 3, 1, 0),
 (13, 2, 1, 0),
 (14, 7, 1, 0),
 (15, 6, 1, 0),
 (16, 5, 1, 0),
 (17, 4, 1, 0),
-(18, 6, 2, 0),
+(18, 6, 2, 1),
 (19, 4, 2, 1),
 (20, 3, 2, 1),
 (21, 2, 2, 1),
 (22, 8, 1, 0),
 (23, 9, 1, 0),
-(24, 8, 2, 0);
+(24, 8, 2, 1),
+(25, 1, 2, 1),
+(26, 7, 2, 1),
+(27, 9, 2, 1),
+(28, 5, 2, 0),
+(29, 2, 3, 0),
+(30, 3, 3, 0),
+(31, 4, 3, 1),
+(32, 5, 3, 0),
+(33, 6, 3, 0),
+(34, 7, 3, 0),
+(35, 8, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -1116,10 +1297,16 @@ CREATE TABLE `rolesToUsersTable` (
 --
 
 INSERT INTO `rolesToUsersTable` (`id_rtu`, `id_role`, `id_intUser`, `borrado`) VALUES
-(1, 1, 1, 0),
-(2, 2, 1, 0),
-(3, 3, 1, 0);
-
+(1, 1, 2, 0),
+(4, 3, 2, 1),
+(5, 2, 2, 1),
+(6, 1, 1, 0),
+(7, 3, 1, 1),
+(8, 1, 4, 1),
+(9, 3, 4, 1),
+(10, 2, 4, 0),
+(11, 2, 1, 1),
+(12, 2, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -1188,9 +1375,20 @@ INSERT INTO `subresourcesToRolesTable` (`id_srtr`, `id_subresource`, `id_role`, 
 (47, 31, 2, 0),
 (48, 30, 2, 0),
 (49, 33, 2, 0),
-(50, 120, 1, 0),
-(51, 110, 1, 0),
-(52, 100, 1, 0);
+(50, 3, 2, 1),
+(51, 22, 2, 0),
+(52, 23, 2, 0),
+(53, 24, 2, 0),
+(54, 110, 1, 0),
+(55, 120, 1, 0),
+(56, 100, 1, 0),
+(57, 10, 3, 1),
+(58, 11, 3, 0),
+(59, 13, 3, 0),
+(60, 14, 3, 0),
+(61, 110, 3, 0),
+(62, 33, 3, 1),
+(63, 112, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1201,48 +1399,52 @@ INSERT INTO `subresourcesToRolesTable` (`id_srtr`, `id_subresource`, `id_role`, 
 CREATE TABLE `subResourceTable` (
   `id_sresource` int(5) NOT NULL,
   `id_resource` int(10) NOT NULL,
-  `subResourceName` varchar(20) NOT NULL
+  `subResourceName` varchar(20) NOT NULL,
+  `iconLink` varchar(140) NOT NULL,
+  `traslation_tag` varchar(40) NOT NULL,
+  `subresourceLink` varchar(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subResourceTable`
 --
 
-INSERT INTO `subResourceTable` (`id_sresource`, `id_resource`, `subResourceName`) VALUES
-(3, 2, 'tiposDeArticulos'),
-(4, 2, 'articulos'),
-(5, 2, 'metaProcesos'),
-(6, 2, 'prcesosDeProduccion'),
-(7, 2, 'batchDeProduccion'),
-(8, 2, 'lotesDeProduccion'),
-(9, 2, 'estacionesDeTrabajo'),
-(10, 3, 'ventaMostrador'),
-(11, 3, 'facturas'),
-(12, 3, 'remitos'),
-(13, 3, 'facturarRemitos'),
-(14, 3, 'presupuestos'),
-(15, 4, 'facturas'),
-(16, 4, 'remitos'),
-(17, 4, 'facturarRemitos'),
-(18, 5, 'cobros'),
-(19, 5, 'pagos'),
-(20, 5, 'cajaDiaria'),
-(21, 5, 'libroDiario'),
-(22, 5, 'formasDePago'),
-(23, 5, 'impuestos'),
-(24, 5, 'entidadesBancarias'),
-(25, 6, 'partesDeTrabajo'),
-(26, 6, 'empleados'),
-(27, 7, 'etiquetas'),
-(28, 7, 'ubicaciones'),
-(29, 7, 'embalajes'),
-(30, 8, 'Copias de Seguridad'),
-(31, 8, 'Roles'),
-(32, 8, 'Usuarios'),
-(33, 9, 'Dashboard'),
-(100, 4, 'proveedores'),
-(110, 3, 'clientes'),
-(120, 2, 'Agrupar Procesos');
+INSERT INTO `subResourceTable` (`id_sresource`, `id_resource`, `subResourceName`, `iconLink`, `traslation_tag`, `subresourceLink`) VALUES
+(3, 2, 'tiposDeArticulos', 'tipos.svg', 'tipodart', './familias/index.php'),
+(4, 2, 'articulos', 'articulos.svg', 'articu', './articulos/index.php'),
+(5, 2, 'metaProcesos', 'metaproc.svg', 'metproc', './meta_procesos/index.php'),
+(6, 2, 'prcesosDeProduccion', 'procesos.svg', 'propru', './procesos/index.php'),
+(7, 2, 'batchDeProduccion', 'batch.svg', 'batchprod', './batch/index.php'),
+(8, 2, 'lotesDeProduccion', 'lotes.svg', 'lotdprod', './lotes/index.php'),
+(9, 2, 'estacionesDeTrabajo', 'estaciones.svg', 'estactra', './estaciones/index.php'),
+(10, 3, 'ventaMostrador', 'ventasmostrador.svg', 'vntmst', './ventas_mostrador/index.php'),
+(11, 3, 'facturas', 'factura.svg', 'factura', './facturas_clientes/index.php'),
+(12, 3, 'remitos', 'remito.svg', 'remitos', './albaranes_clientes/index.php'),
+(13, 3, 'facturarRemitos', 'facturarremito.svg', 'facturar_remitos', './lote_albaranes_clientes/index.php'),
+(14, 3, 'presupuestos', 'presupuesto.svg', 'presupuestos', './presupuestos_clientes/index.php'),
+(15, 4, 'facturas', 'factura-compras.svg', 'factura', './facturas_proveedores/index.php'),
+(16, 4, 'remitos', 'remito-compras.svg', 'remitos', './albaranes_proveedores/index.php'),
+(17, 4, 'facturarRemitos', 'facturarremito-compras.svg', 'facturar_remitos', './lote_albaranes_proveedores/index.php'),
+(18, 5, 'cobros', 'cobros.svg', 'cobros', './cobros/index.php'),
+(19, 5, 'pagos', 'pagos.svg', 'pagos', './pagos/index.php'),
+(20, 5, 'cajaDiaria', 'caja.svg', 'cjadiaria', './cerrarcaja/index.php'),
+(21, 5, 'libroDiario', 'librodiario.svg', 'librodrio', './librodiario/index.php'),
+(22, 5, 'formasDePago', 'formadepago.svg', 'forpago', './formaspago/index.php'),
+(23, 5, 'impuestos', 'impuestos.svg', 'impuestos', './impuestos/index.php'),
+(24, 5, 'entidadesBancarias', 'entidades.svg', 'entbcaria', './entidades/index.php'),
+(25, 6, 'partesDeTrabajo', 'hr.svg', 'ordentrabajo', './partes_trabajo/index.php'),
+(26, 6, 'empleados', 'empleados.svg', 'empleado', './trabajadores/index.php'),
+(27, 7, 'etiquetas', 'etiquetas.svg', 'etiquet', './etiquetas/index.php'),
+(28, 7, 'ubicaciones', 'ubicaciones.svg', 'ubica', './ubicaciones/index.php'),
+(29, 7, 'embalajes', 'embalajes.svg', 'embala', './embalajes/index.php'),
+(30, 8, 'Copias de Seguridad', '0', '', ''),
+(31, 8, 'Roles', '0', '', ''),
+(32, 8, 'Usuarios', '0', '', ''),
+(33, 9, 'Dashboard', '0', '', ''),
+(100, 4, 'proveedores', 'proveedores.svg', 'prov', './proveedores/index.php'),
+(110, 3, 'clientes', 'clientes.svg', 'clientes', './clientes/index.php'),
+(112, 3, 'ListaDePrecios', 'listaPrecios.svg', 'lstprecios', './lista_de_precios/index.php'),
+(120, 2, 'AgruparProcesos', 'agruparProcesos.svg', 'proagpru', './agrupar_procesos/index.php');
 
 -- --------------------------------------------------------
 
@@ -1320,7 +1522,7 @@ CREATE TABLE `ubicaciones` (
 --
 
 INSERT INTO `ubicaciones` (`codubicacion`, `nombre`, `borrado`) VALUES
-(1, 'Main location', '0');
+(1, 'My Place', '0');
 
 -- --------------------------------------------------------
 
@@ -1518,6 +1720,12 @@ ALTER TABLE `formapago`
   ADD PRIMARY KEY (`codformapago`);
 
 --
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD UNIQUE KEY `img_name` (`img_name`);
+
+--
 -- Indexes for table `impuestos`
 --
 ALTER TABLE `impuestos`
@@ -1534,6 +1742,12 @@ ALTER TABLE `intUsersTable`
 --
 ALTER TABLE `librodiario`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `listaDePrecios`
+--
+ALTER TABLE `listaDePrecios`
+  ADD PRIMARY KEY (`codLista`);
 
 --
 -- Indexes for table `lote`
@@ -1687,61 +1901,61 @@ ALTER TABLE `unidadesmedidas`
 -- AUTO_INCREMENT for table `albaranes`
 --
 ALTER TABLE `albaranes`
-  MODIFY `codalbaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codalbaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `albaranesptmp`
 --
 ALTER TABLE `albaranesptmp`
-  MODIFY `codalbaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codalbaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `albaranestmp`
 --
 ALTER TABLE `albaranestmp`
-  MODIFY `codalbaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codalbaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `codarticulo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codarticulo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `batch`
 --
 ALTER TABLE `batch`
-  MODIFY `codbatch` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codbatch` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `codcliente` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codcliente` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cobros`
 --
 ALTER TABLE `cobros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `embalajes`
 --
 ALTER TABLE `embalajes`
-  MODIFY `codembalaje` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codembalaje` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `entidades`
 --
 ALTER TABLE `entidades`
-  MODIFY `codentidad` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `codentidad` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `estaciones`
 --
 ALTER TABLE `estaciones`
-  MODIFY `codestacion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codestacion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `estado`
@@ -1753,25 +1967,25 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT for table `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `codfactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codfactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `facturasptmp`
 --
 ALTER TABLE `facturasptmp`
-  MODIFY `codfactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codfactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `facturastmp`
 --
 ALTER TABLE `facturastmp`
-  MODIFY `codfactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codfactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=640;
 
 --
 -- AUTO_INCREMENT for table `familias`
 --
 ALTER TABLE `familias`
-  MODIFY `codfamilia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `codfamilia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `formapago`
@@ -1783,7 +1997,7 @@ ALTER TABLE `formapago`
 -- AUTO_INCREMENT for table `impuestos`
 --
 ALTER TABLE `impuestos`
-  MODIFY `codimpuesto` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `codimpuesto` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `intUsersTable`
@@ -1795,25 +2009,31 @@ ALTER TABLE `intUsersTable`
 -- AUTO_INCREMENT for table `librodiario`
 --
 ALTER TABLE `librodiario`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `listaDePrecios`
+--
+ALTER TABLE `listaDePrecios`
+  MODIFY `codLista` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `metaprocesos`
 --
 ALTER TABLE `metaprocesos`
-  MODIFY `codproceso` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codproceso` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `metaprocesoslinea`
 --
 ALTER TABLE `metaprocesoslinea`
-  MODIFY `codrecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codrecord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pais`
@@ -1825,25 +2045,25 @@ ALTER TABLE `pais`
 -- AUTO_INCREMENT for table `presupuestos`
 --
 ALTER TABLE `presupuestos`
-  MODIFY `codpresupuesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codpresupuesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `presupuestostmp`
 --
 ALTER TABLE `presupuestostmp`
-  MODIFY `codpresupuesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codpresupuesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `proclinea`
 --
 ALTER TABLE `proclinea`
-  MODIFY `codproclinea` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `codproclinea` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `codproveedor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codproveedor` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `provincias`
@@ -1861,7 +2081,7 @@ ALTER TABLE `resourcesTable`
 -- AUTO_INCREMENT for table `resourcesToRolesTable`
 --
 ALTER TABLE `resourcesToRolesTable`
-  MODIFY `id_srtr` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_srtr` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `rolesTable`
@@ -1873,13 +2093,13 @@ ALTER TABLE `rolesTable`
 -- AUTO_INCREMENT for table `rolesToUsersTable`
 --
 ALTER TABLE `rolesToUsersTable`
-  MODIFY `id_rtu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_rtu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `subresourcesToRolesTable`
 --
 ALTER TABLE `subresourcesToRolesTable`
-  MODIFY `id_srtr` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_srtr` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `subResourceTable`
@@ -1897,7 +2117,7 @@ ALTER TABLE `tabbackup`
 -- AUTO_INCREMENT for table `tipoproceso`
 --
 ALTER TABLE `tipoproceso`
-  MODIFY `codtipo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `codtipo` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `trabajadores`
