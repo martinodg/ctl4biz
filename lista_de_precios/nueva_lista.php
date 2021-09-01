@@ -8,8 +8,26 @@
 		 
 		<script language="javascript">
 		$( document ).ready(function(){ 
+			$.get( "../funciones/BackendQueries/loadCboFamily.php" , { defaulSelect:"1"
+                                                                     },function ( data ) { 
+                                                                                        $('#cboFamily').html(data);   
+																						traducirOptions(); 
+                                                                                  }
+                );
 			var codlst = window.location.hash.substring(1);
-			alert(codlst);
+			if (codlst!=""){
+				$("#id").val(codlst);
+				$.getJSON("../funciones/BackendQueries/getPriceListData.php", {
+                    codList: codlst
+					},
+                	function(data) {
+                    		/*alert(data);*/
+                    		$('#nombre').val(data.nombre);
+							$('#porcentaje').val(data.porcentaje);
+					}
+				);
+
+			}
 		});
 
 		function cancelar() {
@@ -57,9 +75,56 @@
 					<button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
 					<button type="button" id="btncancelar"  onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/cancelar.svg" alt="cancelar" /> <span  id="tcancelar">Cancelar</span> </button>
 					<input id="accion" name="accion" value="alta" type="hidden">
-					<input id="id" name="id" value="" type="hidden">
+					<input id="id" name="Nid" value="" type="hidden">
 			  </div>
-			  </form>
+			  <div id="frameBusqueda" class="header">
+					<span  id="tbuscaart">Buequeda de Articulos</span> </div>
+					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
+						<tr>
+							<td><span  id="tflia">FAMILIA</span></td>
+							<td>
+						  		<select id="cboFamily" class="comboMedio" name="cboFamily">
+								</select> 
+							</td>
+					    </tr>
+						<tr>
+						  <td><span  id="tcodart">Codigo de Articulo</span></td>
+						  <td><input NAME="codarticulo" type="text" class="cajaMedia" id="codarticulo" size="6" maxlength="6"> 
+						</td>
+						
+						<tr>
+						  <td width="19%"><span  id="tnomb">Nombre</span></td>
+						  <td width="80%"><input NAME="Anombre" type="text" class="cajaGrande" id="nombre" size="50" maxlength="50"></td>
+					      <td width="1%" rowspan="14" align="left" valign="top"><ul id="lista-errores"></ul></td>
+					  </tr>		
+					</table>
+					<div id="cabeceraResultado" class="header">
+					<span  id="articu">Articulos</span> </div>
+				<div id="frmResultado">
+			  
+				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
+						<tr class="cabeceraTabla">
+							
+							<td width="10%"><span  id="tcodigo">CODIGO</span></td>
+							<td width="20%"><span  id="tipodart">FAMILIA</span></td>
+							<td width="40%"><span  id="tnomb">NOMBRE DEL ITEM</span></td>
+							<td width="10%"><span  id="ulticost">ULTIMO COSTO</span></td>
+							<td width="10%"><span  id="costref">COSTO DE REFERENCIA</span></td>
+							<td width="10%"><span  id="margen">MARGEN</span></td>
+							<td width="10%"><span  id="precioantimpuestos">PRECIO ANTES DE IMPUESTOS</span></td>
+							<td width="5%">&nbsp;</td>
+							<td width="5%">&nbsp;</td>
+							<td width="5%">&nbsp;</td>
+							<td width="5%">&nbsp;</td>
+						</tr>
+				</table>
+				</div>
+				
+				<input type="hidden" id="iniciopagina" name="iniciopagina">
+				
+			</form>
+			<div ID="div_datos" name="div_datos" > </div> 	
+			<div ID="div_datos2" name="div_datos2" > </div> 
 			 </div>
 		  </div>
 		</div>
