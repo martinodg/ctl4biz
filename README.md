@@ -11,6 +11,13 @@ cd ~/ctl4biz/DockerDocker;
 docker-compose build; 
 docker-compose up -d;
 ```
+#Resource : 
+* Website [http://localhost/](http://localhost/)
+* PHPMyAdmin [http://localhost:8080](http://localhost:8080/)
+#Database
++ Truncate tables on T_8d6846c85e8076b85318fd1054480811 database 
++ Import `~/ctl4biz/src/database1.sql` into T_8d6846c85e8076b85318fd1054480811
+  
 #Access Docker  and access the main root
 ```
 cd ~/ctl4biz/DockerDocker; 
