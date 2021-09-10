@@ -36,7 +36,8 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 		}
 //Perform when DOM is full loaded
 $( document ).ready(function(){
-            
+
+    //@todo cargar todos los selects con la misma peticion de unidades
 			//load stock mesure units combo
 			$.get( "../funciones/BackendQueries/getMeassuresUnits.php" , { articulo : document.getElementById('id').value,
                                                                    campo : 'codunidadmedida'
@@ -56,7 +57,7 @@ $( document ).ready(function(){
 			//load stock minimo mesure units combo
 			$.get( "../funciones/BackendQueries/getMeassuresUnits.php" , { articulo : document.getElementById('id').value,
                                                                    campo : 'codumunidades_caja'
-                                                              },function ( data ) { 
+                                                              },function ( data ) {
                                                                                         $('#umnunidades_caja').html(data);
                                                                                        
                                                                                   }
