@@ -1,3 +1,5 @@
 nextc/nextcloud-20.0.2.zip
 .idea
 Docker
+error_log
+*/error_log
