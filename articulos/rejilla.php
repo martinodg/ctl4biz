@@ -72,12 +72,12 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 
 	<body onload=inicio()>	
 		<div id="pagina">
-			<div id="zonaContenido">
+			<div id="zonaContenido"  style="margin-left:0">
 			<div align="center">
 			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 			<input type="hidden" name="numfilas" id="numfilas" value="<? echo $filas?>">
 				<? $iniciopagina=$_POST["iniciopagina"];
-				if (empty($iniciopagina)) { $iniciopagina=$_GET["iniciopagina"]; } else { $iniciopagina=$iniciopagina-1;}
+				if (empty($iniciopagina)) { $iniciopagina =  (isset($_GET["iniciopagina"])) ? intval($_GET["iniciopagina"]):0; } else { $iniciopagina=$iniciopagina-1;}
 				if (empty($iniciopagina)) { $iniciopagina=0; }
 				if ($iniciopagina>$filas) { $iniciopagina=0; }
 					if ($filas > 0) { ?>
@@ -86,7 +86,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 						   $res_resultado=mysqli_query($conexion,$sel_resultado);
 						   $contador=0;
 						   while ($contador < mysqli_num_rows($res_resultado)) { 
-						   		if ($i % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla";	}?>
+						   		if ($contador % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla";	}?>
 						<tr class="<?php echo $fondolinea?>">
 							<td class="aCentro" width="4%"><? echo $contador+1;?></td>
 							<td width="5%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codarticulo")?></div></td>
@@ -99,7 +99,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 							$nombre_familia=mysqli_result($rs_familia,0,"nombre");
 							echo $nombre_familia;			
 							?>
-							</div></td>
+                            </td>
 							<td class="aCentro" width="11%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"precio_tienda")?></div></td>
 							<td class="aCentro" width="5%"><? echo mysqli_result($res_resultado,$contador,"stock")?></td>
 							<td class="aCentro" width="5%"><? echo mysqli_result($res_resultado,$contador,"unidaddemedida")?></td>
