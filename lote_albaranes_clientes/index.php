@@ -116,9 +116,10 @@ if ($cadena_busqueda<>"") {
 			if (opciones==0)  {
 				alert("No hay albaranes seleccionados.");
 			} else {
+                //@todo traducir esto
 				if (confirm("Va a facturar "+opciones+" albaranes. Desea continuar?")) {
 					window.location.href="configurar_lote.php?cadena_busqueda="+cadena_busqueda+"&cadena_elegidos="+cadena_elegidos;
-					}
+                }
 			}
 		}
 		
