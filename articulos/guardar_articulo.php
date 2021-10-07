@@ -214,7 +214,7 @@ else {
 						<tr>
 							<td width="15%"><span  id="tcod">C&Oacute;DIGO</span></td>
 							<td width="58%"><?php echo $codarticulo?></td>
-					        <td width="27%" rowspan="11" align="center" valign="top"><img src="../fotos/<? echo $foto_name?>" width="160px" height="140px" border="1"></td>
+					        <td width="27%" rowspan="11" align="center" valign="top"><img src="<?php echo traerUrlImagenProducto($foto_name); ?>" width="160px" height="140px" border="1"></td>
 						</tr>
 						<tr>
 							<td width="15%"><span  id="trefren">Referencia</span></td>
