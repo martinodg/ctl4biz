@@ -1,4 +1,15 @@
 <?php
+/**
+ * Retorna la ruta de la imagen
+ * @param string $filename Url de la imagen
+ * @return string
+ * @throws Exception
+ */
+function traerUrlAvatar($username)
+{
+    sanitizarNombreDirectorio($username);
+    return retornarUrlAvatarsEmpresa().$username.'.png';
+}
 
 /**
  * Retorna la ruta de la imagen
@@ -29,11 +40,38 @@ function retornarNombreDirectorioItemsEmpresa()
  * @return string
  * @throws Exception
  */
+function retornarPathAvatarEmpresa (){
+    $directorioEmpresa = retornarPathEmpresa();
+    return $directorioEmpresa.DIRECTORY_SEPARATOR.'users'.DIRECTORY_SEPARATOR;
+}
+
+
+
+/**
+ * Retorna el path de los items de la empresa
+ * @return string
+ * @throws Exception
+ */
 function retornarPathItemEmpresa (){
     $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
     return $directorioEmpresa.DIRECTORY_SEPARATOR.'items'.DIRECTORY_SEPARATOR;
 }
 
+/**
+ * Retonrna la url del directorio de items para esta empresa
+ * @return string
+ * @throws Exception
+ */
+function retornarUrlAvatarsEmpresa (){
+    $directorioEmpresa = retornarUrlDiretorioEmpresa();
+    return $directorioEmpresa.'/users/';
+}
+
+/**
+ * Retonrna la url del directorio de items para esta empresa
+ * @return string
+ * @throws Exception
+ */
 function retornarUrlItemEmpresa (){
     $directorioEmpresa = retornarUrlDiretorioEmpresa();
     return $directorioEmpresa.'/items/';
@@ -58,7 +96,6 @@ function retornarUrlDiretorioEmpresa (){
     return '/img/'.$directorioEmpresa;
 }
 
-
 /**
  * @param array $fileResource $_FILES[valor]
  * @return array path  and filename
@@ -66,7 +103,6 @@ function retornarUrlDiretorioEmpresa (){
  */
 function cargarFotorticulo($codigoArticulo,$fileResource)
 {
-    $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
     $pathItemEmpresa = retornarPathItemEmpresa();
     $fileTmpPath = $fileResource['tmp_name'];
     $fileName = $fileResource['name'];
@@ -116,3 +152,51 @@ function checkImageSize($filePath, $requiredWith, $requiredHeight ){
     }
     return true;
 }
+
+/**
+ * Permite la carga de una imagen png como avatar del usuario
+ * @param  string $username nombre de usuario
+ * @param $fileResource
+ * @return string[]
+ * @throws Exception
+ */
+function cargarAvatarUsuario($username,$fileResource){
+    ini_set('display_errors', -1);
+    ini_set('display_startup_errors', -1);
+    error_reporting(E_ALL);
+
+    sanitizarNombreDirectorio($username);
+    $pathItemEmpresa = retornarPathAvatarEmpresa();
+    $fileTmpPath = $fileResource['tmp_name'];
+    $fileName = $fileResource['name'];
+    $fileNameCmps = explode('.', $fileName);
+    $fileExtension = strtolower(end($fileNameCmps));
+    checkExtension($fileExtension,['png']);
+    $newFileName =  $username. '.' . $fileExtension;
+    $filePath =$pathItemEmpresa.$newFileName;
+    if(file_exists($filePath)) {
+        unlink($filePath);
+    }
+    if(!move_uploaded_file($fileTmpPath, $filePath)) {
+        throw new Exception('El archivo no pudo ser movido');
+    }
+    return array(
+        'path' => $filePath,
+        'fileName' => $newFileName
+    );
+}
+
+/**
+ * Reemplaza los caracteres que tengan que ser convertidos para generar una url mas limpia
+ * @param string $nombreDirectorio Nombre del directorio  a crear
+ * @param int $max cantidad de caracteres
+ * @return string Nombre del directorio convertido
+ */
+function sanitizarNombreDirectorio(&$nombreDirectorio, $max = 40)
+{
+    $out = substr(preg_replace("/[^-\/+|\w ]/", '', $nombreDirectorio), 0, $max);
+    $out = strtolower(trim($out, '-'));
+
+    return  preg_replace("/[\/_| -]+/", '-', $out);
+}
+
