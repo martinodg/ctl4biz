@@ -365,7 +365,7 @@ $( document ).ready(function(){
 						  &#8364;</td>
 				      </tr>
 					  <tr>
-						  <td><span  id="timgfrmjpg">Imagen [Formato jpg]</span> [200x200]</td>
+						  <td><span  id="timgfrmjpg">Imagen</span> </td>
 					    <td width="55%"><input type="file" name="foto" id="foto" class="cajaMedia" accept="image/jpg" /></td>
 				        <td width="30%" align="center" valign="top"><img src="<?php echo traerUrlImagenProducto(mysqli_result($rs_query,0,"imagen"));?>" width="160px" height="140px" border="1"></td>
 					  </tr>

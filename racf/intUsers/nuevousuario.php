@@ -27,17 +27,22 @@
         }
 
         function creausuario() {
-            $.get( "guardarusuario.php" , { accion : 'alta',
-                                            name : document.getElementById('name').value,
-                                            email : document.getElementById('email-field').value,
-                                            password : document.getElementById('password-field').value
-                                        }, function ( data ) { 
-                                                            $('#div_datos').html( data );
-                                                            //location.href="index.php";
-                                                            }
-                );                            
+            $.ajax({
+                type: "POST",
+                async: false,
+                cache: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                url: "guardarusuario.php",
+                data: new FormData($( 'form[name=frmUser]')[0]),
+                success: function( data )
+                {
+                    $('#div_datos').html( data );
+                    location.href="index.php";
+                }
+            });
         }
-        
 
     </script>
 
@@ -54,6 +59,7 @@
             <div class="column2" style="background-color:#eee;">
                 <center>
                     <form name="frmUser" align="center">
+                        <input type="hidden" name="accion" value="alta" />
                         <div class="message">
                             <?php if(!empty($message)) { echo $message; } ?>
                         </div>
@@ -61,7 +67,6 @@
                         <span  id="nombre" class="loginText">Nombre de Usuario:</span><br>
                         <input class="input-wrapper" type="text" id="name" name="name">
                         <br> <br>
-
                         <span class="loginText">e-mail:</span><br>
                         <input id="email-field" class="input-wrapper" type="text" name="email">
                         <br> <br>
@@ -84,7 +89,14 @@
                 <center>
                     <br> <br>
 
-                   
+                    <span id="timgfrmavatar" class="loginText">Avatar</span><br>
+                    <div class="avatar-validation-wrapper">
+                        <input type="file" name="avatarfile" id="avatarfile" class="input" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible;">
+                        <div class="avatar-validation-icon-wrapper formatovalido"></div>
+                    </div>
+
+
+                    <br> <br>
                     <span  id="emailValidation" class="loginText">validacion de e-mail:</span><br>
                     <div class="email-validation-wrapper">
                         <input id="email-validation-field" type="text" class="input" name="email-validation" onpaste="return false;">
