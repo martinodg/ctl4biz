@@ -4,8 +4,8 @@ header('Pragma: no-cache');
 
 require_once("../conectar7.php"); 
 require_once("../mysqli_result.php");
-require_once("../funciones/fechas.php"); 
-
+require_once("../funciones/fechas.php");
+require_once("../funciones/cargaImagenes.php");
 
 
 $codarticulo=$_GET["codarticulo"];
@@ -365,9 +365,9 @@ $( document ).ready(function(){
 						  &#8364;</td>
 				      </tr>
 					  <tr>
-						  <td><span  id="timgfrmjpg">Imagen [Formato jpg]</span> [200x200]</td>
+						  <td><span  id="timgfrmjpg">Imagen</span> </td>
 					    <td width="55%"><input type="file" name="foto" id="foto" class="cajaMedia" accept="image/jpg" /></td>
-				        <td width="30%" align="center" valign="top"><img src="../fotos/<? echo mysqli_result($rs_query,0,"imagen")?>" width="160px" height="140px" border="1"></td>
+				        <td width="30%" align="center" valign="top"><img src="<?php echo traerUrlImagenProducto(mysqli_result($rs_query,0,"imagen"));?>" width="160px" height="140px" border="1"></td>
 					  </tr>
 					  							<tr>
 							<td><span  id="tcodbarr">Codigo de barras</span></td>

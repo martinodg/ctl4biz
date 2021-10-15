@@ -42,7 +42,9 @@
                     var codstatus="4";
                 }
             }
+            $('#estado').val(codstatus);
             //alert(codstatus);
+            /*
             $.get( "guardarusuario.php" , { accion : 'modificar',
                                             name : document.getElementById('name').value,
                                             email : document.getElementById('email-field').value,
@@ -52,7 +54,25 @@
                                                             $('#div_datos').html( data );
                                                             location.href="index.php";
                                                             }
-                );                            
+                );
+
+             */
+
+            $.ajax({
+                type: "POST",
+                async: false,
+                cache: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                url: "guardarusuario.php",
+                data: new FormData($( 'form[name=frmUser]')[0]),
+                success: function( data )
+                {
+                    $('#div_datos').html( data );
+                    location.href="index.php";
+                }
+            });
         }
         //search user
         function buscausuario(usuario) {
@@ -162,11 +182,12 @@
        
     <div id="cabeceraResultado" class="header"> 
     Detalles del Usuario</div>
-            <div class="column2" style="background-color:#eee;">
+            <div class="column2" style="background-color:#eee; height:350px;">
                 <center>
                     <form name="frmUser" align="center">
+                        <input type="hidden" name="accion" value="modificar" />
                         <div class="message">
-                            <?php if((isset($message))!="") { echo $message; } ?>
+                            <?php if(!empty($message)) { echo $message; } ?>
                         </div>
                         <br> <br>
                         <span  id="nombre" class="loginText">Nombre de Usuario:</span><br>
@@ -191,8 +212,15 @@
 
                 </center>
             </div>
-            <div class="column2" style="background-color:#eee;">
+            <div class="column2" style="background-color:#eee;height:350px;">
                 <center>
+                    <br> <br>
+                    <span id="timgfrmavatar" class="loginText">Avatar</span><br>
+                    <div class="avatar-validation-wrapper">
+                        <input type="file" name="avatarfile" id="avatarfile" class="input" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible;">
+                        <div class="avatar-validation-icon-wrapper formatovalido"></div>
+                    </div>
+
                     <br> <br>
 
                    
@@ -210,8 +238,11 @@
                         </div>
                     </div>
                     <br> <br> <br>
-                    <div><span  id="usuarioDesactivado" class="loginText">Inactivo </span><label class="switch"> <input type="checkbox" id="uActivo" name="uActivo" > <span class="slider round"></span> </label> <span  id="usuarioActivo" class="loginText">Activo</span></div>
+                    <div><span  id="usuarioDesactivado" class="loginText">Inactivo </span><label class="switch">
+                            <input type="checkbox" id="uActivo" name="uActivo" > <span class="slider round"></span> </label>
+                        <span  id="usuarioActivo" class="loginText">Activo</span></div>
 
+                    <input type="hidden" id="estado" name="estado" value="4">
                     <input type="hidden" id="language" name="language" value="0">
 
 

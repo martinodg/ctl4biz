@@ -4,7 +4,8 @@ header('Pragma: no-cache');
 
 require_once("../conectar7.php"); 
 require_once("../mysqli_result.php");
-require_once("../funciones/fechas.php"); 
+require_once("../funciones/fechas.php");
+require_once("../funciones/cargaImagenes.php");
 
 //require_once("../barcode/barcode.php");
 
@@ -15,6 +16,8 @@ $cadena_busqueda=$_GET["cadena_busqueda"];
 $query="SELECT a.*, (SELECT b1.nombre FROM unidadesmedidas b1 WHERE b1.codunidadmedida = a.codunidadmedida ) AS umstock, (SELECT b2.nombre FROM unidadesmedidas b2 WHERE b2.codunidadmedida = a.codumstock_minimo ) AS umstock_min, (SELECT b3.nombre FROM unidadesmedidas b3 WHERE b3.codunidadmedida = a.codumunidades_caja ) AS umunidades_caja FROM articulos a WHERE codarticulo='$codarticulo'";
 $rs_query=mysqli_query($conexion,$query);
 $codigobarras=mysqli_result($rs_query,0,"codigobarras");
+
+$directorioItemsEmpresa = '../'.$_SESSION[''];
 
 ?>
 
@@ -49,7 +52,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 						<tr>
 							<td width="22%"><span  id="tcodigo">CODIGO</span></td>
 						    <td width="38%"><? echo mysqli_result($rs_query,0,"codarticulo")?></td>
-					        <td width="40%" rowspan="11" align="center" valign="top"><img src="../fotos/<? echo mysqli_result($rs_query,0,"imagen")?>" width="160px" height="140px" border="1"></td>
+					        <td width="40%" rowspan="11" align="center" valign="top"><img src="<?php echo traerUrlImagenProducto(mysqli_result($rs_query,0,"imagen"));?>" width="160px" height="140px" border="1"></td>
 						</tr>
 						<tr>
 							<td width="22%"><span  id="trefren">Referencia</span></td>

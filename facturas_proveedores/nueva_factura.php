@@ -75,15 +75,15 @@ $codfacturatmp=mysqli_insert_id($conexion);
 		
 		function actualizar_importe()
 			{
-				var precio=document.getElementById("precio").value;
-				var cantidad=document.getElementById("cantidad").value;
-				var descuento=document.getElementById("descuento").value;
+				let precio=document.getElementById("precio").value;
+				let cantidad=document.getElementById("cantidad").value;
+				let descuento=document.getElementById("descuento").value;
 				descuento=descuento/100;
 				total=precio*cantidad;
 				descuento=total*descuento;
 				total=total-descuento;
-				var original=parseFloat(total);
-				var result=Math.round(original*100)/100 ;
+				let original=parseFloat(total);
+				let result=Math.round(original*100)/100 ;
 				document.getElementById("importe").value=result;
 			}
 			
@@ -107,7 +107,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				var entero=0;
 				var enteroo=0;
 		
-				if (document.getElementById("referencia").value=="") mensaje="  - Referencia\n";
+				//if (document.getElementById("referencia").value=="") mensaje="  - Referencia\n";
 				if (document.getElementById("descripcion").value=="") mensaje+="  - Descripcion\n";
 				if (document.getElementById("precio").value=="") { 
 							mensaje+="  - Falta el precio\n"; 
