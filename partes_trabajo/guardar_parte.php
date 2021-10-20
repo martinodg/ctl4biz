@@ -43,7 +43,7 @@ $act_albaran .= "WHERE codtrabajo='$codtrabajo'";
 #echo "SQL: $act_albaran <br>";
 	$mensaje="Los datos del parte de trabajo han sido modificados correctamente";
 	$cabecera1="Inicio >> Ventas &gt;&gt; Modificar Albar&aacute;n ";
-	$cabecera2="MODIFICAR ALBAR&Aacute;N ";
+	$cabecera2='<span  id="tmalbaran">MODIFICAR ALBAR&Aacute;N</span>';
 }
 
 if ($accion=="baja") {
