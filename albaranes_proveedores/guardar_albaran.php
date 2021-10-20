@@ -23,7 +23,7 @@ if ($accion=="alta") {
 			</script><?
 	} else {
 			$query_operacion="INSERT INTO albaranesp (codalbaran, codproveedor, codfactura, fecha, iva, estado) VALUES ('$codalbaran', '$codproveedor',  '0', '$fecha', '$iva', '1')";					
-			echo $query_operacion;
+			//echo $query_operacion;
 			$rs_operacion=mysqli_query($conexion,$query_operacion);
 			if ($rs_operacion) { $mensaje="El albar&aacute;n ha sido dado de alta correctamente"; }
 			$query_tmp="SELECT * FROM albalineaptmp WHERE codalbaran='$codalbarantmp' ORDER BY numlinea ASC";
