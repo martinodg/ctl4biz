@@ -132,7 +132,7 @@ if ($accion=="modificar") {
 	$baseimpuestos=0;
 	$preciototal=0;
 	$baseimponible=0;
-	if ($rs_query) { $mensaje="Los datos de la factura han sido modificados correctamente"; }
+	if ($rs_act) { $mensaje="Los datos de la factura han sido modificados correctamente"; }
 	$cabecera1="Inicio >> Compras &gt;&gt; Modificar Factura ";
 	$cabecera2="MODIFICAR FACTURA";
 }
@@ -140,10 +140,12 @@ if ($accion=="modificar") {
 if ($accion=="baja") {
 	$codfactura=$_GET["codfactura"];
 	$codproveedor=$_GET["codproveedor"];
-	$query="SELECT * FROM factulineap WHERE codfactura='$codfactura' AND codproveedor='$codproveedor' ORDER BY numlinea ASC";
+    //esto seria cuando acepta eliminarla INICIO
+	$query="SELECT * FROM factulineap WHERE codfactura='".$codfactura."' AND codproveedor='".$codproveedor."' ORDER BY numlinea ASC";
 	$rs_tmp=mysqli_query($conexion,$query);
 	$contador=0;
 	$baseimponible=0;
+    //retornando el stock de la factura eliminada
 	while ($contador < mysqli_num_rows($rs_tmp)) {
 		$codfamilia=mysqli_result($rs_tmp,$contador,"codfamilia");
 		$codigo=mysqli_result($rs_tmp,$contador,"codigo");
@@ -152,10 +154,17 @@ if ($accion=="baja") {
 		$rs_articulos=mysqli_query($conexion,$sel_articulos);
 		$contador++;
 	}
-	if ($rs_query) { $mensaje="La factura ha sido eliminada correctamente"; }
+    //borrando la factura
+    $query="DELETE FROM facturasp WHERE codfactura='".$codfactura."' AND codproveedor='".$codproveedor."'";
+    $rs_query=mysqli_query($conexion,$query);
+    $borrar_lineas="DELETE FROM factulineap WHERE codfactura='$codfactura' AND codproveedor='$codproveedor'";
+    $rs_borrar_lineas=mysqli_query($conexion,$borrar_lineas);
+    if ($rs_query) { $mensaje="La factura ha sido eliminada correctamente"; }
+    //esto seria cuando acepta eliminarla FIN
+    //datos de vista
 	$cabecera1="Inicio >> Compras &gt;&gt; Eliminar Factura";
 	$cabecera2="ELIMINAR FACTURA";
-	$query_mostrar="SELECT * FROM facturasp WHERE codfactura='$codfactura' AND codproveedor='$codproveedor'";
+	$query_mostrar="SELECT * FROM facturasp WHERE codfactura='".$codfactura."' AND codproveedor='".$codproveedor."'";
 	$rs_mostrar=mysqli_query($conexion,$query_mostrar);
 	$codproveedor=mysqli_result($rs_mostrar,0,"codproveedor");
 	$fecha=mysqli_result($rs_mostrar,0,"fecha");
@@ -291,13 +300,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 						</tr>
 					</table>
 			  </div>
-			  <? if ($accion=="baja") { 
-					  $query="DELETE FROM facturasp WHERE codfactura='$codfactura' AND codproveedor='$codproveedor'";
-						$rs_query=mysqli_query($conexion,$query);
-						$borrar_lineas="DELETE FROM factulineap WHERE codfactura='$codfactura' AND codproveedor='$codproveedor'";
-						$rs_borrar_lineas=mysqli_query($conexion,$borrar_lineas);
-				} ?>
-				<div id="botonBusqueda">
+			  <div id="botonBusqueda">
 					<div align="center">
 					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
 					  <? if ($accion<>"baja") { ?>
