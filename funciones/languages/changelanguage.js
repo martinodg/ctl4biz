@@ -608,6 +608,7 @@ function getTranslationText(name)
         "quitarLista": ["REMOVE FROM THE LIST","QUITAR DE LA LISTA", "polski", "italian", "portugues", "frances", "Aleman"],
         "agregarLista": ["ADD TO THE LIST","AGREGAR A LA LISTA", "polski", "italian", "portugues", "frances", "Aleman"],
         "guardarModificacion": ["Save modification","Guardar modificación", "polski", "italian", "portugues", "frances", "Aleman"],
+        "rolesEncontrados": ["No. of roles found","N de roles encontrados", "polski", "italian", "portugues", "frances", "Aleman"],
     };
     var trans ='traduccion no definida'
     var lang = getLanguajeIndex();
@@ -1087,6 +1088,7 @@ function langchange() {
     $("#tQuitarLista").text(getTranslationText('quitarLista'));
     $("#tAgregarLista").text(getTranslationText('agregarLista'));
     $("#tGuardarModificacion").text(getTranslationText('guardarModificacion'));
+    $("#tRolesEncontrados").text(getTranslationText('rolesEncontrados'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
