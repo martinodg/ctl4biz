@@ -208,7 +208,7 @@
             </div>
 
             <div id="botonBusqueda" align="right">
-                <button type="button" id="btnsubmit" onClick="modificausuario()" onMouseOver="style.cursor=cursor" disabled=""> <img src="../../img/disco.svg" alt="Nuevo" /> <span>Guardar modificacion</span> </button>
+                <button type="button" id="btnsubmit" onClick="modificausuario()" onMouseOver="style.cursor=cursor" disabled=""> <img src="../../img/disco.svg" alt="Nuevo" /> <span id="tGuardarModificacion" >Guardar modificacion</span> </button>
 
             </div>
 

@@ -158,7 +158,7 @@
             </div>
 
             <div id="botonBusqueda" align="right">
-                <button type="button" id="btnmodificar" onClick="modificarole()" onMouseOver="style.cursor=cursor"> <img src="../../img/disco.svg" alt="Modificar" /> <span>Guardar modificacion</span> </button>
+                <button type="button" id="btnmodificar" onClick="modificarole()" onMouseOver="style.cursor=cursor"> <img src="../../img/disco.svg" alt="Modificar" /> <span id="tGuardarModificacion" >Guardar modificacion</span> </button>
 
             </div>
 
