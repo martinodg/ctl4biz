@@ -8,7 +8,7 @@ define('AVATAR_DIRECTORY','users');
  */
 function generarUrlDB($fileName)
 {
-    $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
+    $directorioEmpresa = retornarNombreDirectorioEmpresa();
     return '../../img/'.$directorioEmpresa.'/'.AVATAR_DIRECTORY.'/'.$fileName;
 }
 
@@ -42,7 +42,7 @@ function traerUrlImagenProducto($filename)
  * @return string
  * @throws Exception
  */
-function retornarNombreDirectorioItemsEmpresa()
+function retornarNombreDirectorioEmpresa()
 {
     if(!isset($_SESSION['BaseDeDatos'])){
         throw new ErrorException('No esta definido el directorio de la empresa.');
@@ -88,7 +88,7 @@ function generarExistenciaDirectorio($directoryPath) {
  * @throws Exception
  */
 function retornarPathItemEmpresa (){
-    $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
+    $directorioEmpresa = retornarNombreDirectorioEmpresa();
     $path =  $directorioEmpresa.DIRECTORY_SEPARATOR.'items'.DIRECTORY_SEPARATOR;
     generarExistenciaDirectorio($path);
     return $path;
@@ -120,7 +120,7 @@ function retornarUrlItemEmpresa (){
  * @throws Exception
  */
 function retornarPathEmpresa (){
-    $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
+    $directorioEmpresa = retornarNombreDirectorioEmpresa();
     $path =  __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.$directorioEmpresa;
     generarExistenciaDirectorio($path);
     return $path;
@@ -131,7 +131,7 @@ function retornarPathEmpresa (){
  * @throws Exception
  */
 function retornarUrlDiretorioEmpresa (){
-    $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
+    $directorioEmpresa = retornarNombreDirectorioEmpresa();
     return '/img/'.$directorioEmpresa;
 }
 
