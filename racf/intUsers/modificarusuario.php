@@ -9,6 +9,21 @@
     <script type="text/javascript" src="../../funciones/languages/changelanguage.js"></script>
     <script type="text/javascript" src="../../funciones/login.js"></script>
     <script language="javascript">
+        // validate avatar
+        function valAvatar(){
+            var fileName = $("#avatarfile").val();
+            if(fileName.length > 0){
+                var idxDot = fileName.lastIndexOf(".") + 1;
+                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                if (["png"].includes(extFile)){
+                    return true;
+                } else {
+                    talert('seleccionarAvatar')
+                    $("#avatarfile").val("")
+                    return false;
+                }
+            }
+        }
         //get proceso code from Url hash on last page.
         var usuario = window.location.hash.substring(1);
         buscausuario(usuario);
@@ -28,6 +43,7 @@
             location.href="index.php";
         }
         function modificausuario() {
+            valAvatar();
             var status = $("#uActivo").prop('checked');
             if (status == true) {
                 var codstatus="4";

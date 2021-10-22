@@ -602,6 +602,11 @@ function getTranslationText(name)
         "detalleUsuario": ["User details","Detalles del Usuario", "polski", "italian", "portugues", "frances", "Aleman"],
         "listadoRoles": ["List of Roles","Listado de Roles", "polski", "italian", "portugues", "frances", "Aleman"],
         "detalleRol": ["Role details","Detalles del role", "polski", "italian", "portugues", "frances", "Aleman"],
+        "rolesAsignados": ["Roles Assigned to the User","Roles Asignados al Usuario", "polski", "italian", "portugues", "frances", "Aleman"],
+        "codigoRole": ["ROLE CODE","CODIGO DEL ROLE", "polski", "italian", "portugues", "frances", "Aleman"],
+        "nombreDelRol": ["ROLE NAME","NOMBRE DEL ROLE", "polski", "italian", "portugues", "frances", "Aleman"],
+        "quitarLista": ["REMOVE FROM THE LIST","QUITAR DE LA LISTA", "polski", "italian", "portugues", "frances", "Aleman"],
+        "agregarLista": ["ADD TO THE LIST","AGREGAR A LA LISTA", "polski", "italian", "portugues", "frances", "Aleman"],
     };
     var trans ='traduccion no definida'
     var lang = getLanguajeIndex();
@@ -1075,8 +1080,11 @@ function langchange() {
     $("#tseleccionarAvatar").text(getTranslationText('seleccionarAvatar'));
     $("#tDetalleUsuario").text(getTranslationText('detalleUsuario'));
     $("#tListadoRoles").text(getTranslationText('listadoRoles'));
-    $("#tDetalleRol").text(getTranslationText('detalleRol'));
-
+    $("#tRolesAsignados").text(getTranslationText('rolesAsignados'));
+    $("#tCodigoRole").text(getTranslationText('codigoRole'));
+    $("#tNombreDelRol").text(getTranslationText('nombreDelRol'));
+    $("#tQuitarLista").text(getTranslationText('quitarLista'));
+    $("#tAgregarLista").text(getTranslationText('qgregarLista'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula

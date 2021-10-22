@@ -37,14 +37,13 @@ require_once("../../conectar7.php");
     if ($tipoBusqueda=='listar') {
         echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
 
-        echo '                      <div id="cabeceraResultado" class="header"> 
-        Roles Asignados al Usuario </div>';
+        echo '                      <div id="cabeceraResultado" class="header"><span id="tRolesAsignados">Roles Asignados al Usuario</span></div>';
         echo '				<div id="frmResultado">';
         echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
         echo '					<tr class="cabeceraTabla">';
-        echo '						<td width="20%"><div align="center">CODIGO DEL ROLE</div></td>';
-        echo '						<td width="60%"><div align="center">NOMBRE DEL ROLE</div></td>';
-        echo '						<td width="20%"><div align="center">QUITAR DE LA LISTA</div></td>';
+        echo '						<td width="20%"><div align="center"><span id="tCodigoRole">CODIGO DEL ROLE</span></div></td>';
+        echo '						<td width="60%"><div align="center"><span id="tNombreDelRol">NOMBRE DEL ROLE</span></div></td>';
+        echo '						<td width="20%"><div align="center"><span id="tQuitarLista">QUITAR DE LA LISTA</span></div></td>';
         echo '					</tr>';
         echo '			</table>';
         echo '			</div>';
@@ -73,9 +72,9 @@ require_once("../../conectar7.php");
     echo '				<div id="frmResultado">';
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
-    echo '						<td width="20%"><div align="center">CODIGO DEL ROLE</div></td>';
-    echo '						<td width="60%"><div align="center">NOMBRE DEL ROLE</div></td>';
-    echo '						<td width="20%"><div align="center">AGREGAR A LA LISTA</div></td>';
+    echo '						<td width="20%"><div align="center"><span id="tCodigoRole">CODIGO DEL ROLE</span></div></td>';
+    echo '						<td width="60%"><div align="center"><span id="tNombreDelRol">NOMBRE DEL ROLE</span></div></td>';
+    echo '						<td width="20%"><div align="center"><span id="tAgregarLista">AGREGAR A LA LISTA</span></div></td>';
     echo '					</tr>';
     echo '			</table>';
     echo '			</div>';
