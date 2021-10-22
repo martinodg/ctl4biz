@@ -73,7 +73,7 @@
             <div class="column3" style="background-color:#eee;">
                 <center>
                 <br> <br>
-                        <span  id="nombre" class="loginText">Nombre de role:</span><br>
+                        <span  id="nombre" class="loginText"><span id="nombreRol">Nombre de role</span>:</span><br>
                         <input class="input-wrapper" type="text" id="name" name="name" >
                     
                 </center>

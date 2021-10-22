@@ -196,9 +196,9 @@
                         </div>
                     </div>
                     <br> <br> <br>
-                    <div><span  id="usuarioDesactivado" class="loginText">Inactivo </span><label class="switch">
+                    <div><span  id="usuarioDesactivado" class="loginText"><span id="tinactivo">Inactivo</span> </span><label class="switch">
                             <input type="checkbox" id="uActivo" name="uActivo" > <span class="slider round"></span> </label>
-                        <span  id="usuarioActivo" class="loginText">Activo</span></div>
+                        <span  id="usuarioActivo" class="loginText"><span id="tactivo">Activo</span></span></div>
 
                     <input type="hidden" id="estado" name="estado" value="4">
                     <input type="hidden" id="language" name="language" value="0">

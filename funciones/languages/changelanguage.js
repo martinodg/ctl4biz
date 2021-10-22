@@ -609,6 +609,11 @@ function getTranslationText(name)
         "agregarLista": ["ADD TO THE LIST","AGREGAR A LA LISTA", "polski", "italian", "portugues", "frances", "Aleman"],
         "guardarModificacion": ["Save modification","Guardar modificación", "polski", "italian", "portugues", "frances", "Aleman"],
         "rolesEncontrados": ["No. of roles found","N de roles encontrados", "polski", "italian", "portugues", "frances", "Aleman"],
+        "recursosAsignadosRoles": ["Resources Assigned to the Role","Recursos Asignados al Role", "polski", "italian", "portugues", "frances", "Aleman"],
+        "nombreRecurso": ["RESOURCE NAME","NOMBRE DEL RECURSO", "polski", "italian", "portugues", "frances", "Aleman"],
+        "nombreRol": ["Rol name","Nombre de role", "polski", "italian", "portugues", "frances", "Aleman"],
+        "activo": ["active","activo", "polski", "italian", "portugues", "frances", "Aleman"],
+        "inactivo": ["inactive","inactivo", "polski", "italian", "portugues", "frances", "Aleman"],
     };
     var trans ='traduccion no definida'
     var lang = getLanguajeIndex();
@@ -1089,6 +1094,11 @@ function langchange() {
     $("#tAgregarLista").text(getTranslationText('agregarLista'));
     $("#tGuardarModificacion").text(getTranslationText('guardarModificacion'));
     $("#tRolesEncontrados").text(getTranslationText('rolesEncontrados'));
+    $("#tRecursosAsignadosRoles").text(getTranslationText('recursosAsignadosRoles'));
+    $("#tNombreRecurso").text(getTranslationText('nombreRecurso'));
+    $("#nombreRol").text(getTranslationText('nombreRol'));
+    $("#tactivo").text(getTranslationText('activo'));
+    $("#tinactivo").text(getTranslationText('inactivo'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
