@@ -39,7 +39,6 @@ if ($accion=="modificar") {
 		$mensaje =  "No se ha podido cargar la imagen " . $e->getMessage() ;
 	}
 	$query.=" WHERE intUser_name='$nombre'";
-	die($query);
 	$rs_query=mysqli_query($conexion,$query);
 	if ($rs_query) { $mensaje="Los datos del usuario han sido modificados correctamente"; }
 	
