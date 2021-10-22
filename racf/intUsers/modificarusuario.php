@@ -76,42 +76,43 @@
         function buscausuario(usuario) {
             //alert(usuario);
             $.getJSON("./buscarUsuario.php", {
-                                                    criterio1 : 'id_intUser',
-                                                    parametro1 : usuario,
-                                                    paginainicio: '0',
-                                                    tipoBusqueda: 'modificar'
-                                                },
-                                                function(data) {
-                                                                //alert(data.nombre);
-                                                                $('#name').val(data.nombre);
-                                                                $('#password-field').val(data.clave);
-                                                                $('#email-field').val(data.mail);
-                                                                $('#password-validation-field').val(data.clave);
-                                                                $('#email-validation-field').val(data.mail);
-                                                                var uActivo = data.codestado;
-                                                                if (uActivo == "4") {
-                                                                    $('input[type="checkbox"]').attr('checked', true);
-                                                                } else {
-                                                                    $('input[type="checkbox"]').attr('checked', false);
-                                                                }
-                                                                //$('#div_datos').html( data );
-                                                                //calculaPaginacion();
-                                                                }
-                        );                        
+                criterio1 : 'id_intUser',
+                parametro1 : usuario,
+                paginainicio: '0',
+                tipoBusqueda: 'modificar'
+            },
+            function(data) {
+                //alert(data.nombre);
+                $('#name').val(data.nombre);
+                $('#password-field').val(data.clave);
+                $('#email-field').val(data.mail);
+                $('#password-validation-field').val(data.clave);
+                $('#email-validation-field').val(data.mail);
+                var uActivo = data.codestado;
+                if (uActivo == "4") {
+                    $('input[type="checkbox"]').attr('checked', true);
+                } else {
+                    $('input[type="checkbox"]').attr('checked', false);
+                }
+                //$('#div_datos').html( data );
+                //calculaPaginacion();
+                }
+            );
         }
         //procs search fucnction
         function buscaRole(usuario){
-                                    $.get( "buscarRole.php" , { criterio1 : 'id_intUser',
-                                                                    parametro1 : usuario,
-                                                                    tipoBusqueda: 'listar'
-                                                                    //paginainicio : document.getElementById('iniciopagina').value
-                                                              },function ( data ) { 
-                                                                                        $('#div_datos').html( data );
-                                                                                        //calculaPaginacion();
-                                                                                  }
-                                         );
-                                    
-                              }
+            $.get( "buscarRole.php" , {
+                criterio1 : 'id_intUser',
+                parametro1 : usuario,
+                tipoBusqueda: 'listar'
+                //paginainicio : document.getElementById('iniciopagina').value
+              },function ( data ) {
+                    $('#div_datos').html( data );
+                    langchange();
+                    //calculaPaginacion();
+              }
+             );
+        }
         function ABRole(idRole,id_intUser,action){
             //alert(idRole+action+id_intUser);
             $.get( "ABRole.php" , { role : idRole,
