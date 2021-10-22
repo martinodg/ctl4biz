@@ -88,7 +88,7 @@ function generarExistenciaDirectorio($directoryPath) {
  * @throws Exception
  */
 function retornarPathItemEmpresa (){
-    $directorioEmpresa = retornarNombreDirectorioEmpresa();
+    $directorioEmpresa = retornarPathEmpresa();
     $path =  $directorioEmpresa.DIRECTORY_SEPARATOR.'items'.DIRECTORY_SEPARATOR;
     generarExistenciaDirectorio($path);
     return $path;
@@ -140,7 +140,7 @@ function retornarUrlDiretorioEmpresa (){
  * @return array path  and filename
  * @throws Exception
  */
-function cargarFotorticulo($codigoArticulo,$fileResource)
+function cargarFotoArticulo($codigoArticulo, $fileResource)
 {
     $pathItemEmpresa = retornarPathItemEmpresa();
     $fileTmpPath = $fileResource['tmp_name'];
