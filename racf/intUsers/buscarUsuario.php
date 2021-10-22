@@ -31,14 +31,13 @@ require_once("../../conectar7.php");
     
     if ($tipoBusqueda=='listar') {
         echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
-
         echo '                      <div id="cabeceraResultado" class="header"> 
-        Listado de Usuarios </div>';
+        <span id="tListadoUsuario">Listado de Usuarios</span> </div>';
         echo '				<div id="frmResultado">';
         echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
         echo '					<tr class="cabeceraTabla">';
-        echo '						<td width="40%">NOMBRE DE USUARIO</td>';
-        echo '						<td width="40%">E-MAIL DEL USUARIO</td>';
+        echo '						<td width="40%"><span id="tnombre">NOMBRE DE USUARIO</span></td>';
+        echo '						<td width="40%"><span id="tEmailUsuario">E-MAIL DEL USUARIO</span></td>';
         echo '						<td width="10%"><span  id="testado">ESTADO</span></td>';
         echo '						<td width="10%"><span  id="tmodificar">MODIFICAR</span></td>';
         echo '					</tr>';
