@@ -20,7 +20,12 @@ require_once("../../conectar7.php");
 
 
     $donde="intUsersTable.codstatus=estado.codestado AND ";
-    if ($parametro1<>""){ $donde=$donde."intUsersTable.".$criterio1." LIKE '".$parametro1."%' AND ";}
+    if ($parametro1<>"")
+        if(is_numeric($parametro1)){
+            $donde=$donde."intUsersTable.".$criterio1."= ".intval($parametro1)." AND ";
+        }else{
+            $donde=$donde."intUsersTable.".$criterio1." LIKE '".$parametro1."%' AND ";
+        }
     if ($parametro2<>""){ $donde=$donde."intUsersTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
     if ($parametro3<>""){ $donde=$donde."intUsersTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
     $consulta="SELECT intUsersTable.id_intUser, intUsersTable.intUser_name, intUsersTable.user_name, estado.estado, intUsersTable.password, intUsersTable.codstatus FROM intUsersTable, estado WHERE ".$donde."intUsersTable.borrado=0 ORDER BY intUsersTable.intUser_name LIMIT ".$paginainicio.",10;";

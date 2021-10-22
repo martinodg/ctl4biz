@@ -6,7 +6,7 @@ require_once("../../funciones/cargaImagenes.php");
 
 
 $accion=$_POST["accion"];
-//$codusuario=$_POST["codusuario"];
+$codusuario=$_POST["codusuario"];
 $nombre=$_POST["name"];
 $mail=$_POST["email"];
 $password=$_POST["password"];
@@ -39,6 +39,7 @@ if ($accion=="modificar") {
 		$mensaje =  "No se ha podido cargar la imagen " . $e->getMessage() ;
 	}
 	$query.=" WHERE intUser_name='$nombre'";
+	die($query);
 	$rs_query=mysqli_query($conexion,$query);
 	if ($rs_query) { $mensaje="Los datos del usuario han sido modificados correctamente"; }
 	

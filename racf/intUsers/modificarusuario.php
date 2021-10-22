@@ -82,7 +82,9 @@
                 tipoBusqueda: 'modificar'
             },
             function(data) {
+                console.info(data);
                 //alert(data.nombre);
+                $('#uid').val(usuario);
                 $('#name').val(data.nombre);
                 $('#password-field').val(data.clave);
                 $('#email-field').val(data.mail);
@@ -144,6 +146,7 @@
                 <center>
                     <form name="frmUser" align="center">
                         <input type="hidden" name="accion" value="modificar" />
+                        <input type="hidden" id="uid" name="uid" value="" >
                         <div class="message">
                             <?php if(!empty($message)) { echo $message; } ?>
                         </div>
