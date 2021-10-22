@@ -16,8 +16,8 @@ require_once("../../conectar7.php");
 
     $donde="";
     if ($parametro1<>""){ $donde=$donde."rolesToUsersTable.".$criterio1." = '".$parametro1."' AND ";}
-    if ($parametro2<>""){ $donde=$donde."rolesTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
-    if ($parametro3<>""){ $donde=$donde."rolesTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
+    //if ($parametro2<>""){ $donde=$donde."rolesTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
+    //if ($parametro3<>""){ $donde=$donde."rolesTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
     $consulta="SELECT rolesToUsersTable.id_role , rolesToUsersTable.id_intUser, rolesTable.roleName FROM rolesTable, rolesToUsersTable WHERE ".$donde."rolesTable.id_role=rolesToUsersTable.id_role AND rolesToUsersTable.borrado=0;";
     //SELECT rolesToUsersTable.id_role, intUsersTable.id_intUser, rolesTable.roleName FROM intUsersTable, rolesTable, rolesToUsersTable WHERE intUsersTable.id_intUser='2' AND rolesToUsersTable.id_role=rolesTable.id_role 
     //ORDER BY intUsersTable.intUserName LIMIT ".$paginainicio.",10
@@ -26,12 +26,14 @@ require_once("../../conectar7.php");
     //if ($parametro1<>""){ $donde2=$donde2."intUsersTable.".$criterio1." <> '".$parametro1."' AND ";}
     $consulta2="SELECT rolesTable.id_role as id, rolesTable.roleName as name FROM rolesTable EXCEPT (SELECT rolesToUsersTable.id_role as id, rolesTable.roleName as name FROM rolesToUsersTable, rolesTable WHERE rolesToUsersTable.id_intUser=".$parametro1." AND rolesToUsersTable.borrado=0);";  
     //echo $consulta2;
-    
-    
-    
     $rs_tabla = mysqli_query($conexion,$consulta);
     $nr_usuarios= mysqli_num_rows($rs_tabla);
-    
+    //
+    $query_nroLineas="SELECT id_role FROM rolesTable";
+    $rs_nroLineas = mysqli_query($conexion,$query_nroLineas);
+    $nr_Lineas= mysqli_num_rows($rs_nroLineas);
+
+
     if ($tipoBusqueda=='listar') {
         echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
 
