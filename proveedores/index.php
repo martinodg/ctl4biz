@@ -227,7 +227,7 @@ if ($cadena_busqueda<>"") {
 							<td width="6%"><span  id="tcodigo">CODIGO</span></td>
 							<td width="38%"><span  id="tnomb">NOMBRE</span></td>
 							<td width="13%"><span  id="tnip">NIF/CIF</span></td>
-							<td width="19%"><span  id="ttelef">TELEFONO</span></td>
+							<td width="19%"><span  id="ttelef2">TELEFONO</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>

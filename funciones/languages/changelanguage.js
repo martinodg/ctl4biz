@@ -828,7 +828,7 @@ function langchange() {
     $("#tentiban").text(getTranslationText('entiban'));
     $("#tctabcaria").text(getTranslationText('ctabcaria'));
     $("#tcodpostal").text(getTranslationText('codpostal'));
-    $("#ttelef").text(getTranslationText('telef'));
+    $("#ttelef, #ttelef2").text(getTranslationText('telef'));
     $("#tmovil").text(getTranslationText('movil'));
     $("#tcorrelec").text(getTranslationText('correlec'));
     $("#tdirrcweb").text(getTranslationText('dirrcweb'));
