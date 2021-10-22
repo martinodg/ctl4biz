@@ -615,6 +615,7 @@ function getTranslationText(name)
         "activo": ["active","activo", "polski", "italian", "portugues", "frances", "Aleman"],
         "inactivo": ["inactive","inactivo", "polski", "italian", "portugues", "frances", "Aleman"],
         "msjProveedorSinArticulos": ["This supplier has not served any items so far","Este proveedor no ha servido ningún articulo hasta el momento", "polski", "italian", "portugues", "frances", "Aleman"],
+        "facRemito": ["Bill remittance","Facturar remito", "polski", "italian", "portugues", "frances", "Aleman"],
     };
     var trans ='traduccion no definida'
     var lang = getLanguajeIndex();
@@ -1101,6 +1102,7 @@ function langchange() {
     $("#tactivo").text(getTranslationText('activo'));
     $("#tinactivo").text(getTranslationText('inactivo'));
     $("#msjProveedorSinArticulos").text(getTranslationText('msjProveedorSinArticulos'));
+    $("#tfacRemito").text(getTranslationText('facRemito'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
