@@ -33,7 +33,7 @@ require_once("../../conectar7.php");
         echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
 
         echo '                      <div id="cabeceraResultado" class="header"> 
-        Listado de Roles </div>';
+        <span id="tListadoRoles">Listado de Roles</span> </div>';
         echo '				<div id="frmResultado">';
         echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
         echo '					<tr class="cabeceraTabla">';

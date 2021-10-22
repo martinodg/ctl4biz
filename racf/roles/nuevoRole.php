@@ -56,8 +56,8 @@
 <body>
     <div id="content_login">
        
-    <div id="cabeceraResultado" class="header"> 
-    Detalles del role</div>
+    <div id="cabeceraResultado" class="header">
+        <span id="tDetalleRol">Detalles del role</span></div>
             <div class="column3" style="background-color:#eee;">
                 <center>
                     <form name="frmUser" align="center">

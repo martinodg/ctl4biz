@@ -599,6 +599,9 @@ function getTranslationText(name)
         "listadoUsuario": ["List of Users", "Listado de Usuarios", "polski", "italian", "portugues", "frances", "Aleman"],
         "busquedaUsuario": ["Search for Users", "Busqueda de Usuarios", "polski", "italian", "portugues", "frances", "Aleman"],
         "seleccionarAvatar": ["You must select an avatar image","Debe seleccionar una imagen de avatar", "polski", "italian", "portugues", "frances", "Aleman"],
+        "detalleUsuario": ["User details","Detalles del Usuario", "polski", "italian", "portugues", "frances", "Aleman"],
+        "listadoRoles": ["List of Roles","Listado de Roles", "polski", "italian", "portugues", "frances", "Aleman"],
+        "detalleRol": ["Role details","Detalles del role", "polski", "italian", "portugues", "frances", "Aleman"],
     };
     var trans ='traduccion no definida'
     var lang = getLanguajeIndex();
@@ -1070,6 +1073,9 @@ function langchange() {
     $("#tListadoUsuario").text(getTranslationText('listadoUsuario'));
     $("#tbusquedaUsuario").text(getTranslationText('busquedaUsuario'));
     $("#tseleccionarAvatar").text(getTranslationText('seleccionarAvatar'));
+    $("#tDetalleUsuario").text(getTranslationText('detalleUsuario'));
+    $("#tListadoRoles").text(getTranslationText('listadoRoles'));
+    $("#tDetalleRol").text(getTranslationText('detalleRol'));
 
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado

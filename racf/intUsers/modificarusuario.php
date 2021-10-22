@@ -5,9 +5,8 @@
     <link rel='stylesheet' media='screen and (max-width: 700px)' href='../../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 959px)' href='../../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../../estilos/login.css' />
-
-        <script type="text/javascript" src="../../jquery/jquery331.js"></script>
-        <script type="text/javascript" src="../../funciones/languages/changelanguage.js"></script>
+    <script type="text/javascript" src="../../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../../funciones/languages/changelanguage.js"></script>
     <script type="text/javascript" src="../../funciones/login.js"></script>
     <script language="javascript">
         //get proceso code from Url hash on last page.
@@ -25,11 +24,9 @@
         function limpiar() {
             document.getElementById("formulario").reset();
         }
-
         function cancelar() {
             location.href="index.php";
         }
-
         function modificausuario() {
             var status = $("#uActivo").prop('checked');
             if (status == true) {
@@ -43,21 +40,6 @@
                 }
             }
             $('#estado').val(codstatus);
-            //alert(codstatus);
-            /*
-            $.get( "guardarusuario.php" , { accion : 'modificar',
-                                            name : document.getElementById('name').value,
-                                            email : document.getElementById('email-field').value,
-                                            password : document.getElementById('password-field').value,
-                                            estado : codstatus
-                                        }, function ( data ) { 
-                                                            $('#div_datos').html( data );
-                                                            location.href="index.php";
-                                                            }
-                );
-
-             */
-
             $.ajax({
                 type: "POST",
                 async: false,
@@ -125,46 +107,6 @@
                                                         }
                  );
         }
-        // validate mail function
-   /*     function valmail(){
-            var inputemail = $("#email-field").val();
-            var emailval =  $("#email-validation-field").val();
-            //alert(inputpass + "es igual a:?" + inputval);
-            console.log(inputemail + "es igual a:?" + emailval);
-            if (inputemail == emailval && emailval != "") {
-                $(".email-validation-icon-wrapper").removeClass("passdistinta");
-                $(".email-validation-icon-wrapper").addClass("passigual");
-                togglSub();
-            }
-            if (inputemail != emailval) {
-                $(".email-validation-icon-wrapper").removeClass("passigual");
-                $(".email-validation-icon-wrapper").addClass("passdistinta");
-                togglSub();
-            }
-
-        }
-
-   
-
-        // validate pass function
-        function valpass(){
-            //alert();
-            var inputpass = document.getElementById("password-field").value;
-            var inputval = document.getElementById("password-validation-field").value;
-            console.log(inputpass + "es igual a:?" + inputval);
-            if (inputpass == inputval && inputval != "") {
-                $(".validation-icon-wrapper").removeClass("passdistinta");
-                $(".validation-icon-wrapper").addClass("passigual");
-                togglSub();
-            }
-            if (inputpass != inputval) {
-                $(".validation-icon-wrapper").removeClass("passigual");
-                $(".validation-icon-wrapper").addClass("passdistinta");
-                togglSub();
-            }
-
-        }*/
-
         $(document).ready(function() {
             window.onload = function(){
             valmail();
@@ -180,8 +122,7 @@
 <body>
     <div id="content_login">
        
-    <div id="cabeceraResultado" class="header"> 
-    Detalles del Usuario</div>
+        <div id="cabeceraResultado" class="header"><span id="tDetalleUsuario">Detalles del Usuario</span></div>
             <div class="column2" style="background-color:#eee; height:350px;">
                 <center>
                     <form name="frmUser" align="center">
