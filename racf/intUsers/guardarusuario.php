@@ -20,7 +20,11 @@ if ($accion=="alta") {
 	}
 	$rolId=(empty($_POST["rolId"])) ? 4 : intval($_POST["rolId"]);
 	$query_operacion="INSERT INTO intUsersTable (intUser_name, user_name, password, codstatus, borrado, avatar)  VALUES ('$nombre','$mail', '$password', '$rolId', '0','".$avatarUrl."')";
-	$rs_operacion=mysqli_query($conexion,$query_operacion);
+	$rs_operacion=mysqli_query($conexion,$query_operacion) or trigger_error('Error al insertar el usuario:'.mysqli_error($conexion));
+	$usuarioId = mysqli_insert_id($conexion);
+	//rol
+	$query_operacion1="INSERT INTO `rolesToUsersTable` (`id_rtu`, `id_role`, `id_intUser`, `borrado`) VALUES (NULL,".$rolId.",".intval($usuarioId).",0)";
+	$rs_operacion=mysqli_query($conexion,$query_operacion1) or trigger_error('Error al insertar el rol:'.mysqli_error($conexion));
 	if ($rs_operacion) { $mensaje="El Usuario ha sido dado de alta correctamente"; }
 }
 
