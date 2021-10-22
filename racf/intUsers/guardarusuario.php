@@ -10,7 +10,7 @@ $accion=$_POST["accion"];
 $nombre=$_POST["name"];
 $mail=$_POST["email"];
 $password=$_POST["password"];
-$estado=(!isset($_POST["estado"])) ? 4:intval($_POST["estado"]);
+$estado=(!isset($_POST["estado"])) ? 1:intval($_POST["estado"]);
 if ($accion=="alta") {
 	try{
 		$avatar = salvarAvatarUsuario($nombre,'avatarfile');
