@@ -10,8 +10,8 @@ require_once("../../conectar7.php");
 
     $donde="";
     if ($parametro1<>""){ $donde=$donde."subresourcesToRolesTable.".$criterio1." = '".$parametro1."' AND ";}
-    if ($parametro2<>""){ $donde=$donde."rolesTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
-    if ($parametro3<>""){ $donde=$donde."rolesTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
+ //   if ($parametro2<>""){ $donde=$donde."rolesTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
+  //  if ($parametro3<>""){ $donde=$donde."rolesTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
     $consulta="SELECT resourcesTable.id_resource , resourcesTable.resourceName FROM resourcesTable;";
     //SELECT rolesToUsersTable.id_role, intUsersTable.id_intUser, rolesTable.roleName FROM intUsersTable, rolesTable, rolesToUsersTable WHERE intUsersTable.id_intUser='2' AND rolesToUsersTable.id_role=rolesTable.id_role 
     //ORDER BY intUsersTable.intUserName LIMIT ".$paginainicio.",10
@@ -28,13 +28,13 @@ require_once("../../conectar7.php");
     if ($tipoBusqueda=='listar') {
         echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
      
-        echo '<div id="cabeceraResultado" class="header" class="d-table">Recursos Asignados al Role </div>';
+        echo '<div id="cabeceraResultado" class="header" class="d-table"><span id="tRecursosAsignadosRoles">Recursos Asignados al Role</span></div>';
         echo '		<div id="frmResultado">';
         echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
         echo '              <thead>';        
         echo '					<tr class="ul-cabeceraTabla">';
-        echo '						<th>NOMBRE DEL RECURSO</th>';
-        echo '						<th>SELECCIONAR</th>';
+        echo '						<th><span id="tNombreRecurso">NOMBRE DEL RECURSO</span></th>';
+        echo '						<th><span id="tsel">SELECCIONAR</span></th>';
         echo '					</tr>';
         echo '              </thead>';
        
@@ -46,7 +46,7 @@ require_once("../../conectar7.php");
             $row = mysqli_fetch_row($rs_tabla);
             echo '<tbody>';
             echo '<tr class="resCategoria">';
-            echo '<td>'.$row[1].'</td>';
+            echo '<td align="center">'.$row[1].'</td>';
             $consultaCheckRecurso="SELECT resourcesToRolesTable.borrado FROM resourcesToRolesTable WHERE resourcesToRolesTable.id_role=$parametro1 AND resourcesToRolesTable.id_resource=$row[0];"; 
             //echo "<br>";
             //echo $consultaCheckRecurso;
@@ -60,8 +60,9 @@ require_once("../../conectar7.php");
             //echo $parametro1;
             //echo " Check code: ";
             //echo $ischeck;
-            if ($ischeck=='1') { $check="";
-                                $hiden="hiden";
+            if ($ischeck=='1') {
+                $check="";
+                $hiden="hiden";
             } else {
                 $check="checked";
                 $hiden="";
@@ -77,18 +78,14 @@ require_once("../../conectar7.php");
             while ($nr_recursos2 > 0) {
                 if ($nr_recursos2 % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }
                 $row2 = mysqli_fetch_row($rs_tabla2);
-              
-              
                 echo '<tr class="hrow'.$row[0].' '.$fondolinea.' '.$hiden.'" >';
-                echo '<td>'.$row2[1].'</td>';
-                $consultaCheckSubRecurso="SELECT subresourcesToRolesTable.borrado FROM subresourcesToRolesTable WHERE subresourcesToRolesTable.id_role=$parametro1 AND subresourcesToRolesTable.id_subresource=$row2[0];"; 
-            //echo "<br>";
-            //echo $consultaCheckSubRecurso;
-            //echo "<br>";
-            $checkSubresult=mysqli_query($conexion,$consultaCheckSubRecurso);
+                echo '<td  align="center">'.$row2[1].'</td>';
+                $consultaCheckSubRecurso="SELECT subresourcesToRolesTable.borrado FROM subresourcesToRolesTable WHERE subresourcesToRolesTable.id_role=$parametro1 AND subresourcesToRolesTable.id_subresource=$row2[0];";
+                $checkSubresult=mysqli_query($conexion,$consultaCheckSubRecurso);
             $answerQuery= mysqli_num_rows($checkSubresult);
             $checkrow2=mysqli_fetch_row($checkSubresult);
-            $ischeck2=$checkrow2[0];
+            //El echo de que no exista implica que no esta checkeado ?
+            $ischeck2=(isset($checkrow2))  ? $checkrow2[0]: 0;
             //echo " subrecurso: ";
             //echo $row2[0];
             //Echo " role: ";

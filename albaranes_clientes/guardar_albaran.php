@@ -53,7 +53,7 @@ if ($accion=="alta") {
 	$preciototal=0;
 	$baseimpuestos=0;
 	$cabecera1="Inicio >> Ventas &gt;&gt; Nuevo Albar&aacute;n ";
-	$cabecera2="INSERTAR ALBAR&Aacute;N ";
+	$cabecera2='<span  id="tinsalbaran">INSERTAR ALBAR&Aacute;N</span>';
 }
 
 if ($accion=="modificar") {
@@ -116,7 +116,7 @@ if ($accion=="modificar") {
 	$baseimpuestos=0;
 	if ($rs_query) { $mensaje="Los datos del albar&aacute;n han sido modificados correctamente"; }
 	$cabecera1="Inicio >> Ventas &gt;&gt; Modificar Albar&aacute;n ";
-	$cabecera2="MODIFICAR ALBAR&Aacute;N ";
+	$cabecera2='<span  id="tmalbaran">MODIFICAR ALBAR&Aacute;N</span>';
 }
 
 if ($accion=="baja") {
@@ -137,7 +137,7 @@ if ($accion=="baja") {
 	}
 	if ($rs_query) { $mensaje="El albar&aacute;n ha sido eliminado correctamente"; }
 	$cabecera1="Inicio >> Ventas &gt;&gt; Eliminar Albar&aacute;n";
-	$cabecera2="ELIMINAR ALBAR&Aacute;N";
+	$cabecera2='<span  id="eliminarRto">ELIMINAR ALBAR&Aacute;N</span>';
 	$query_mostrar="SELECT * FROM albaranes WHERE codalbaran='$codalbaran'";
 	$rs_mostrar=mysqli_query($conexion,$query_mostrar);
 	$codcliente=mysqli_result($rs_mostrar,0,"codcliente");
@@ -177,7 +177,7 @@ if ($accion=="convertir") {
 	}
 	$mensaje="El albar&aacute;n ha sido convertido correctamente";
 	$cabecera1="Inicio >> Ventas &gt;&gt; Convertir Albar&aacute;n";
-	$cabecera2="CONVERTIR ALBAR&Aacute;N";
+	$cabecera2='<span  id="tconvalbaran">CONVERTIR ALBAR&Aacute;N</span>';
 }
 
 ?>

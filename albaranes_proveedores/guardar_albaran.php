@@ -23,7 +23,7 @@ if ($accion=="alta") {
 			</script><?
 	} else {
 			$query_operacion="INSERT INTO albaranesp (codalbaran, codproveedor, codfactura, fecha, iva, estado) VALUES ('$codalbaran', '$codproveedor',  '0', '$fecha', '$iva', '1')";					
-			echo $query_operacion;
+			//echo $query_operacion;
 			$rs_operacion=mysqli_query($conexion,$query_operacion);
 			if ($rs_operacion) { $mensaje="El albar&aacute;n ha sido dado de alta correctamente"; }
 			$query_tmp="SELECT * FROM albalineaptmp WHERE codalbaran='$codalbarantmp' ORDER BY numlinea ASC";
@@ -65,7 +65,8 @@ if ($accion=="alta") {
 			$preciototal=0;
 			$baseimponible=0;
 			$cabecera1="Inicio >> Compras &gt;&gt; Nuevo Albar&aacute;n ";
-			$cabecera2="INSERTAR ALBAR&Aacute;N ";
+            $cabecera2='<span  id="tinsalbaran">INSERTAR ALBAR&Aacute;N</span>';
+
 		}
 } 
 
@@ -129,7 +130,7 @@ if ($accion=="modificar") {
 	$baseimponible=0;
 	if ($rs_query) { $mensaje="Los datos del albar&aacute;n han sido modificados correctamente"; }
 	$cabecera1="Inicio >> Compras &gt;&gt; Modificar Albar&aacute;n ";
-	$cabecera2="MODIFICAR ALBAR&Aacute;N ";
+	$cabecera2='<span  id="tmalbaran">MODIFICAR ALBAR&Aacute;N</span>';
 }
 
 if ($accion=="baja") {
@@ -149,7 +150,7 @@ if ($accion=="baja") {
 	}
 	if ($rs_query) { $mensaje="El albar&aacute;n ha sido eliminado correctamente"; }
 	$cabecera1="Inicio >> Compras &gt;&gt; Eliminar Albar&aacute;n";
-	$cabecera2="ELIMINAR ALBAR&Aacute;N";
+	$cabecera2='<span  id="eliminarRto">ELIMINAR ALBAR&Aacute;N</span>';
 	$query_mostrar="SELECT * FROM albaranesp WHERE codalbaran='$codalbaran' AND codproveedor='$codproveedor'";
 	$rs_mostrar=mysqli_query($conexion,$query_mostrar);
 	$codproveedor=mysqli_result($rs_mostrar,0,"codproveedor");
@@ -198,7 +199,7 @@ if ($accion=="convertir") {
 		}
 		$mensaje="El albar&aacute;n ha sido convertido correctamente";
 		$cabecera1="Inicio >> Compras &gt;&gt; Convertir Albar&aacute;n";
-		$cabecera2="CONVERTIR ALBAR&Aacute;N";
+		$cabecera2='<span  id="tconvalbaran">CONVERTIR ALBAR&Aacute;N</span>';
 	}
 }
 

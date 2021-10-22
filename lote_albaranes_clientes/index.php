@@ -246,7 +246,7 @@ if ($cadena_busqueda<>"") {
 			 	<div id="botonBusqueda">
                     <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span  id="tbuscar">Buscar</span> </button>
       		 	    <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
-					<button type="button" id="btnfacturarremito" onClick="facturar_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/convertir.svg" alt="facturar remito" /> <span>Facturar remito</span> </button>
+					<button type="button" id="btnfacturarremito" onClick="facturar_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/convertir.svg" alt="facturar remito" /> <span id="tfacRemito">Facturar remito</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>

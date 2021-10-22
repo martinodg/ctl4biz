@@ -54,7 +54,7 @@ if ($accion=="alta") {
 	$baseimponible=0;
 	$preciototal=0;
 	$cabecera1="Inicio >> Ventas &gt;&gt; Nueva Factura ";
-	$cabecera2="INSERTAR FACTURA ";
+	$cabecera2='<span  id="tinsfactura">INSERTAR FACTURA</span>';
 }
 
 if ($accion=="modificar") {
