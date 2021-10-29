@@ -18,7 +18,7 @@ if ($accion=="alta") {
 	} catch (Exception $e) {
 		throw  new ErrorException("No se ha podido cargar la imagen " . $e->getMessage() );
 	}
-	$rolId=(empty($_POST["rolId"])) ? 4 : intval($_POST["rolId"]);
+	$rolId=(empty($_POST["rolId"])) ? 3 : intval($_POST["rolId"]);
 	$query_operacion="INSERT INTO intUsersTable (intUser_name, user_name, password, codstatus, borrado, avatar)  VALUES ('$nombre','$mail', '$password', '$rolId', '0','".$avatarUrl."')";
 	$rs_operacion=mysqli_query($conexion,$query_operacion) or trigger_error('Error al insertar el usuario:'.mysqli_error($conexion));
 	$usuarioId = mysqli_insert_id($conexion);
