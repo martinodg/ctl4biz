@@ -2,7 +2,11 @@
 ob_start();
 define('FPDF_FONTPATH','font/');
 require ('mysqli_table.php');
-require_once("../conectar7.php");  require_once("../mysqli_result.php"); require_once("comunes.php");
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
+require_once("comunes.php");
+require_once("../funciones/changelanguage.php");
+$lang = new ChangeLanguage();
 $pdf=new PDF();
 $pdf->AddPage();
 //Nombre del Listado
@@ -10,7 +14,7 @@ $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',16);
 $pdf->SetY(40);
 $pdf->SetX(0);
-$pdf->MultiCell(290,6,"Listado de Proveedores",0,'C',0);
+$pdf->MultiCell(290,6,$lang->t('listado_proveedores'),0,'C',0);
 $pdf->Ln();    	
 //Restauracin de colores y fuentes
     $pdf->SetFillColor(224,235,255);
@@ -31,7 +35,7 @@ if ($codprovincia > "0") { $where.=" AND codprovincia='$codprovincia'"; }
 if ($localidad <> "") { $where.=" AND localidad like '%".$localidad."%'"; }
 if ($telefono <> "") { $where.=" AND telefono like '%".$telefono."%'"; }
 //Ttulos de las columnas
-$header=array('Nombre','NIF','Direccion','Localidad','Telefono');
+$header=array($lang->t('nombre'),$lang->tu('nif'),$lang->t('direccion'),$lang->t('localidad'),$lang->t('telefono'));
 //Colores, ancho de lnea y fuente en negrita
 $pdf->SetFillColor(200,200,200);
 $pdf->SetTextColor(0);

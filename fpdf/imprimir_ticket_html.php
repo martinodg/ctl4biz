@@ -2,6 +2,8 @@
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
+require_once("../funciones/changelanguage.php");
+$lang = new ChangeLanguage();
 $codfactura=$_GET["codfactura"];
 $pagado=$_GET["pagado"];
 $adevolver=$_GET["adevolver"];
@@ -12,7 +14,7 @@ $rs_factura=mysqli_query($conexion,$sel_facturas);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin t&iacute;tulo</title>
+<title>Ticket</title>
 <script language="javascript">
 function imprimir() {
 	window.print();
@@ -30,33 +32,33 @@ function imprimir() {
 
 <table width="85%" border="0">
   <tr>
-    <td><span class="Estilo3">CODEKA</span></td>
+    <td><span class="Estilo3"><?php echo $lang->t('codeka');?></span></td>
   </tr>
   <tr>
-    <td><span class="Estilo3">C/. XXXXXX </span></td>
+    <td><span class="Estilo3"><?php echo $lang->t('c_nro_ticket');?> </span></td>
   </tr>
   <tr>
-    <td><span class="Estilo3">Tel.: 0000000000 </span></td>
+    <td><span class="Estilo3"><?php echo $lang->t('tel');?>.: 0000000000 </span></td>
   </tr>
   <tr>
     <td><span class="Estilo3">00000-XXXXXXXX</span></td>
   </tr>
   <tr>
-    <td><span class="Estilo3">TICKET N.: <? echo $codfactura?></span></td>
+    <td><span class="Estilo3"><?php echo $lang->t('ticket_nro');?>.: <? echo $codfactura?></span></td>
   </tr>
   <tr>
-    <td><span class="Estilo3">FECHA: <? echo implota(mysqli_result($rs_factura,0,"fechacobro"))?></span></td>
+    <td><span class="Estilo3"><?php echo $lang->tu('fecha');?>: <? echo implota(mysqli_result($rs_factura,0,"fechacobro"))?></span></td>
   </tr>
   <tr>
-    <td><span class="Estilo3">FORMA PAGO: <? echo mysqli_result($rs_factura,0,"nombrefp")?></span></td>
+    <td><span class="Estilo3"><?php echo $lang->tu('form_pago');?>: <? echo mysqli_result($rs_factura,0,"nombrefp")?></span></td>
   </tr>
 </table>
 <table width="85%" border="0">
   <tr>
-    <td width="12%" class="Estilo3"><div align="center">CANT.</div></td>
-    <td width="64%" class="Estilo3"><div align="center">ARTICULO</div></td>
-    <td width="12%" class="Estilo3"><div align="center">Precio Unitario</div></td>
-    <td width="12%" class="Estilo3"><div align="center">Importe</div></td>
+    <td width="12%" class="Estilo3"><div align="center"><?php echo $lang->tu('cant');?>.</div></td>
+    <td width="64%" class="Estilo3"><div align="center"><?php echo $lang->tu('articulo');?></div></td>
+    <td width="12%" class="Estilo3"><div align="center"><?php echo $lang->tu('precio_unitario');?></div></td>
+    <td width="12%" class="Estilo3"><div align="center"><?php echo $lang->tu('importe');?></div></td>
 
   </tr>
 <?
@@ -93,29 +95,29 @@ $baseimponible=number_format($baseimponible,2,",",".");
 </table>
 <table width="85%" border="0">
   <tr>
-    <td class="Estilo3"><div align="right">Total: <? echo $baseimponible?> Euros</div></td>
+    <td class="Estilo3"><div align="right"><?php echo $lang->tc('gracias_visita');?>: <? echo $baseimponible?> <?php echo $lang->t('euros');?></div></td>
   </tr>
   <tr>
-    <td class="Estilo3"><div align="right">Total impuestos: <? echo $totalImpuestos?> Euros</div></td>
+    <td class="Estilo3"><div align="right"><?php echo $lang->tc('total_impuestos');?>: <? echo $totalImpuestos?>  <?php echo $lang->t('euros');?></div></td>
   </tr>
   <tr>
-    <td class="Estilo3"><div align="right">Total a pagar: <? echo $totalAPagar?> Euros</div></td>
+    <td class="Estilo3"><div align="right"><?php echo $lang->tc('total_pagar');?>: <? echo $totalAPagar?>  <?php echo $lang->t('euros');?></div></td>
   </tr>
 </table>
 <br />
 <table width="85%" border="0">
   <tr>
-    <td class="Estilo3"><div align="left">Pagado: <? echo number_format($pagado,2,",",".")?> Euros</div>      <div align="right"></div></td>
+    <td class="Estilo3"><div align="left"><?php echo $lang->tc('pagado');?>: <? echo number_format($pagado,2,",",".")?>  <?php echo $lang->t('euros');?></div>      <div align="right"></div></td>
   </tr>
   
   <tr>
-    <td class="Estilo3">A devolver: <? echo number_format($adevolver,2,",",".")?> Euros</td>
+    <td class="Estilo3"><?php echo $lang->tc('a_devolver');?>: <? echo number_format($adevolver,2,",",".")?>  <?php echo $lang->t('euros');?></td>
   </tr>
 </table>
 <br />
 <table width="85%" border="0">
   <tr>
-    <td class="Estilo3"><div align="center">Gracias por su visita</div></td>
+    <td class="Estilo3"><div align="center"><?php echo $lang->tu('gracias_visita');?></div></td>
   </tr>
 </table>
 </body>
