@@ -226,11 +226,11 @@ if ($accion=="convertir") {
 		}
 		
 		function imprimir(codalbaran,codproveedor) {
-			window.open("../fpdf/imprimir_albaran_proveedor.php?codalbaran="+codalbaran+"&codproveedor="+codproveedor);
+			window.open("../fpdf/imprimir_albaran_proveedor.php?codalbaran="+codalbaran+"&codproveedor="+codproveedor+"&lang="+getLanguajeCode());
 		}
 		
 		function imprimirf(codfactura,codproveedor) {
-			window.open("../fpdf/imprimir_factura_proveedor.php?codfactura="+codfactura+"&codproveedor="+codproveedor);
+			window.open("../fpdf/imprimir_factura_proveedor.php?codfactura="+codfactura+"&codproveedor="+codproveedor+"&lang="+getLanguajeCode());
 		}
 		
 		</script>

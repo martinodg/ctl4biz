@@ -194,7 +194,7 @@ if ($accion=="baja") {
 		}
 		
 		function imprimir(codfactura,codproveedor) {
-			window.open("../fpdf/imprimir_factura_proveedor.php?codfactura="+codfactura+"&codproveedor="+codproveedor);
+			window.open("../fpdf/imprimir_factura_proveedor.php?codfactura="+codfactura+"&codproveedor="+codproveedor+"&lang="+getLanguajeCode());
 		}
 		
 		</script>

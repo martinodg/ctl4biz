@@ -1142,6 +1142,12 @@ function getLanguajeIndex(){
     return localStorage.getItem('language');
 }
 
+function getLanguajeCode(){
+    var codes = ['en','es','pl','it','pt','fr','de'];
+    return codes[getLanguajeIndex()];
+}
+
+
 function setTranslation(lang){
     localStorage.setItem('language', lang);
 }

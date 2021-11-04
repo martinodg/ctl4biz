@@ -90,6 +90,8 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -105,11 +107,11 @@ $nif=mysqli_result($rs_trabajador,0,"nif");
 		}
 
 		function imprimir(codparte) {
-			window.open("../fpdf/imprimir_parte.php?codparte="+codparte);
+			window.open("../fpdf/imprimir_parte.php?codparte="+codparte+"&lang="+getLanguajeCode());
 		}
 
 		function imprimirf(codfactura) {
-			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura);
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
 		}
 
 		</script>

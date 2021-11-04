@@ -35,7 +35,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 		}
 		
 		function imprimir(codfactura) {
-			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura);
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
 		}
 		
 		</script>

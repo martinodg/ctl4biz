@@ -192,7 +192,7 @@ $lafila=mysqli_fetch_array($resultado);
 	
     $pdf->Cell(30,4,$lang->t('base_imponible'),1,0,'C',1);
 	$pdf->Cell(30,4,$lang->t('couta_iva'),1,0,'C',1);
-	$pdf->Cell(30,4,$lang->t('iva')1,0,'C',1);	
+	$pdf->Cell(30,4,$lang->t('iva'),1,0,'C',1);
 	$pdf->Cell(35,4,$lang->t('total'),1,0,'C',1);
 	$pdf->Ln(4);
 	

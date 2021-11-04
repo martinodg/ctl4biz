@@ -68,7 +68,7 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 			parent.location.href="eliminar_albaran.php?codalbaran=" + codalbaran + "&codproveedor=" + codproveedor + "&cadena_busqueda=<? echo $cadena_busqueda?>";
 		}
 		function imprimir(codalbaran,codproveedor) {
-			window.open("../fpdf/imprimir_albaran_proveedor.php?codalbaran="+codalbaran+ "&codproveedor=" + codproveedor);
+			window.open("../fpdf/imprimir_albaran_proveedor.php?codalbaran="+codalbaran+ "&codproveedor=" + codproveedor+"&lang="+getLanguajeCode());
 		}
 		function inicio() {
 			var numfilas=document.getElementById("numfilas").value;
