@@ -45,7 +45,7 @@ $hoy=date("d/m/Y");
 			var fechainicio=document.getElementById("fechainicio").value;
 			var fechafin=document.getElementById("fechafin").value;
 			var denominacion=document.getElementById("denominacion").value;
-			window.open("../fpdf/copiasseguridad.php?fechainicio="+fechainicio+"&denominacion="+denominacion+"&fechafin="+fechafin);
+			window.open("../fpdf/copiasseguridad.php?fechainicio="+fechainicio+"&denominacion="+denominacion+"&fechafin="+fechafin+"&lang="+getLanguajeCode());
 		}
 		
 		function paginar() {

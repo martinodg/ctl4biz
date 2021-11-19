@@ -334,7 +334,7 @@ require_once("../racf/purePhpVerify.php");
 		
 		function imprimir() {
 			var codfactura=$("#numfactura").val();
-			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura);
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
 		}
 		
 		function pagar() {
