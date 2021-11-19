@@ -49,7 +49,7 @@ if ($cadena_busqueda<>"") {
 		function imprimir() {
 			var codentidad=document.getElementById("codentidad").value;
 			var nombreentidad=document.getElementById("nombreentidad").value;
-			window.open("../fpdf/entidades.php?codentidad="+codentidad+"&nombreentidad="+nombreentidad);
+			window.open("../fpdf/entidades.php?codentidad="+codentidad+"&nombreentidad="+nombreentidad+"&lang="+getLanguajeCode());
 		}
 		
 		function buscar() {
