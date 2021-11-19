@@ -259,6 +259,7 @@ require_once("../racf/purePhpVerify.php");
                 alicuotaProducto1 = 0;
             }
 
+
 			//All the variables are rounded using Math.round() function to avoid errors on the float point operations.
 			var alicuotaProducto=Math.round(alicuotaProducto1*100)/100 ;
 			var impuestoProducto= (importe*alicuotaProducto)/100;
