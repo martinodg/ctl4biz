@@ -81,7 +81,6 @@ class ChangeLanguage
         'cod_ubicacion' => array('ingles','Cod. Ubicacion', "polski", "italian", "portugues", "frances", "Aleman"),
         'fecha' => array('ingles','Fecha', "polski", "italian", "portugues", "frances", "Aleman"),
         'fecha' => array('ingles','Fecha', "polski", "italian", "portugues", "frances", "Aleman"),
-
     );
 
 
