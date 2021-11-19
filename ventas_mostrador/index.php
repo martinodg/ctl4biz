@@ -252,6 +252,14 @@ require_once("../racf/purePhpVerify.php");
 			var importe1=parseFloat($('#importe').val());
 			var importe=Math.round(importe1*100)/100 ;
 			var alicuotaProducto1=parseFloat($('#impuesto').find('option:selected').text());
+            // alert(typeof(alicuotaProducto1));
+            if (alicuotaProducto1 != parseFloat(alicuotaProducto1)){
+                var msjiva = document.getElementById("tiva").innerHTML;
+                alert('Debe seleccionar el '+msjiva+', por defecto su valor sera 0');
+                alicuotaProducto1 = 0;
+            }
+
+
 			//All the variables are rounded using Math.round() function to avoid errors on the float point operations.
 			var alicuotaProducto=Math.round(alicuotaProducto1*100)/100 ;
 			var impuestoProducto= (importe*alicuotaProducto)/100;
