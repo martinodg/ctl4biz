@@ -192,9 +192,11 @@ require_once("../racf/purePhpVerify.php");
 				var vprecio=$('#iprecio').val();
 				var vimporte=$('#importe').val();
 				var vdscto=$('#descuento').val();
-				var vimpuesto=$('#impuesto').val();
-			
-				
+                var vimpuesto=parseFloat($('#impuesto').find('option:selected').text());
+                if (Number.isNaN(alicuotaProducto1)){
+                    talert('msg_impuesto_denifido');
+                    alicuotaProducto1 = 0;
+                }
 
 			$.get("../funciones/BackendQueries/insertInvoiceLines.php", { docType:"tempInvoice",
 						codFacturat: vcodFacturat,
@@ -205,20 +207,21 @@ require_once("../racf/purePhpVerify.php");
 						importe: vimporte, 
 						dscto: vdscto, 
 						impuesto: vimpuesto									                                          
-					}, function (data) { $("#div_datos").html(data);
-						getInvoiceLines('tempInvoice',vcodFacturat,0,0,0,1);
-						calculaTaxYTotal();
-						$('#icodfamilia').val('');
-						$('#icodArticulo').val('');
-						$('#cantidad').val('1');
-						$('#iprecio').val('');
-						$('#importe').val('');
-						$('#descuento').val('0');
-						$('#impuesto').val('');
-						$('#idescripcion').val('');
-						$('#icodbarras').val('');
-                    }
-            );           
+					}, function (data) {
+                        $("#div_datos").html(data);
+                            getInvoiceLines('tempInvoice',vcodFacturat,0,0,0,1);
+                            calculaTaxYTotal();
+                            $('#icodfamilia').val('');
+                            $('#icodArticulo').val('');
+                            $('#cantidad').val('1');
+                            $('#iprecio').val('');
+                            $('#importe').val('');
+                            $('#descuento').val('0');
+                            $('#impuesto').val('');
+                            $('#idescripcion').val('');
+                            $('#icodbarras').val('');
+                        }
+            );
 		}
 		function remove(id_line,bimporte,balicuotaProducto) {
 			var vcodfact = $('#codfacturatmp').val();
