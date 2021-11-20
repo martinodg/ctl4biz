@@ -192,8 +192,9 @@ require_once("../racf/purePhpVerify.php");
 				var vprecio=$('#iprecio').val();
 				var vimporte=$('#importe').val();
 				var vdscto=$('#descuento').val();
-                var vimpuesto=parseFloat($('#impuesto').find('option:selected').text());
-                if (Number.isNaN(vimpuesto)){
+                var vimpuesto=$('#impuesto').val();
+                var valimpuesto=parseFloat($('#impuesto').find('option:selected').text());
+                if (Number.isNaN(valimpuesto)){
                     talert('msg_impuesto_denifido');
                     return false;
                 }
@@ -221,7 +222,10 @@ require_once("../racf/purePhpVerify.php");
                             $('#idescripcion').val('');
                             $('#icodbarras').val('');
                         }
-            );
+            ).fail(function(error) {
+                console.info(error);
+                alert(error.message);
+            });
 		}
 		function remove(id_line,bimporte,balicuotaProducto) {
 			var vcodfact = $('#codfacturatmp').val();
@@ -496,7 +500,7 @@ require_once("../racf/purePhpVerify.php");
 							<td width="20%"><span  id="descri">DESCRIPCION</span></td>
 							<td width="10%"><span  id="tprecio">PRECIO</span></td>
 							<td width="10%"><span  id="tcant">CANTIDAD</span></td>
-							<td width="10%"><span ></span></td>
+							<td width="10%"><span  id="tundmed">UNIDAD</span></td>
 							<td width="10%"><span  id="tdcto">DCTO </span></td>						
 							<td width="10%"><span  id="timporte">IMPORTE</span></td>
 							<td width="10%"><span  id="tiva">IVA</span></td>
