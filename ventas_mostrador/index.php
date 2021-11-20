@@ -193,9 +193,9 @@ require_once("../racf/purePhpVerify.php");
 				var vimporte=$('#importe').val();
 				var vdscto=$('#descuento').val();
                 var vimpuesto=parseFloat($('#impuesto').find('option:selected').text());
-                if (Number.isNaN(alicuotaProducto1)){
+                if (Number.isNaN(vimpuesto)){
                     talert('msg_impuesto_denifido');
-                    alicuotaProducto1 = 0;
+                    return false;
                 }
 
 			$.get("../funciones/BackendQueries/insertInvoiceLines.php", { docType:"tempInvoice",
@@ -450,6 +450,7 @@ require_once("../racf/purePhpVerify.php");
 			  <!--div id="frmBusqueda"-->
 			  <div id="frameFiltroArticulos">
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
+                    <input type="hidden" name="icodfamilia" id="icodfamilia" value="" />
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
 					<td width="10%"><span  id="tcodbarr">Codigo barras</span> </td>

@@ -616,7 +616,7 @@ function getTranslationText(name)
         "inactivo": ["inactive","inactivo", "polski", "italian", "portugues", "frances", "Aleman"],
         "msjProveedorSinArticulos": ["This supplier has not served any items so far","Este proveedor no ha servido ningún articulo hasta el momento", "polski", "italian", "portugues", "frances", "Aleman"],
         "facRemito": ["Bill remittance","Facturar remito", "polski", "italian", "portugues", "frances", "Aleman"],
-        "msg_impuesto_denifido": ["english","Debe seleccionar el valor del impuesto, por defecto su valor sera 0", "polski", "italian", "portugues", "frances", "Aleman"],
+        "msg_impuesto_denifido": ["english","Debe seleccionar el valor del impuesto", "polski", "italian", "portugues", "frances", "Aleman"],
     };
     var trans ='traduccion no definida'
     var lang = getLanguajeIndex();
