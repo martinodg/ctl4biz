@@ -95,7 +95,7 @@ $baseimponible=number_format($baseimponible,2,",",".");
 </table>
 <table width="85%" border="0">
   <tr>
-    <td class="Estilo3"><div align="right"><?php echo $lang->tc('gracias_visita');?>: <? echo $baseimponible?> <?php echo $lang->t('euros');?></div></td>
+    <td class="Estilo3"><div align="right"><?php echo $lang->tc('total');?>: <? echo $baseimponible?> <?php echo $lang->t('euros');?></div></td>
   </tr>
   <tr>
     <td class="Estilo3"><div align="right"><?php echo $lang->tc('total_impuestos');?>: <? echo $totalImpuestos?>  <?php echo $lang->t('euros');?></div></td>

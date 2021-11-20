@@ -6,13 +6,13 @@ class ChangeLanguage
     const REQUEST_VAR = 'lang';
 
     /** @var string $_lang_code */
-    private $_lang_code;
+    private $_lang_code ;
 
     /** @var string $_lang_indice */
-    private $_lang_indice;
+    private $_lang_indice ;
 
-    /** @var string[] Codigos de idioma */
-    private $_codigos_validos = array('en', 'es', 'pl', 'it', 'pt', 'fr', 'de');
+    /** @var string[] Codigos de idioma  */
+    private $_codigos_validos = array('en','es','pl','it','pt','fr','de') ;
 
     /** @var array  palabras */
     private $_palabras = array(
@@ -46,7 +46,7 @@ class ChangeLanguage
         'stock' => array('Stock', 'Stock', "polski", "italian", "Estoque", "frances", "Aleman"),
         'total_costo_almacen' => array('ingles', 'Total Costo Almacen', "polski", "italian", "portugues", "frances", "Aleman"),
         'p_almacen' => array('ingles', 'P. Almacén', "polski", "italian", "portugues", "frances", "Aleman"),
-        'total_almacen' => array('ingles', '"Total Almacen"', "polski", "italian", "portugues", "frances", "Aleman"),
+        'total_almacen' => array('ingles', 'Total Almacen', "polski", "italian", "portugues", "frances", "Aleman"),
         'listado_articulos_por_familia' => array('List of Items by Family', 'Listado de Artículos por Familia', "polski", "italian", "Lista de Itens por Família", "frances", "Aleman"),
         'listado_articulos_proveedores' => array('List of Items by Supplier', 'Lista de Artículos por Proveedor', "polski", "italian", "Lista de Itens por Fornecedor", "frances", "Aleman"),
         'listado_articulo_ubicacion' => array('List of Items by Location', 'Listado de Artículos por Ubicación', "polski", "italian", "Lista de itens por localização", "frances", "Aleman"),
@@ -78,8 +78,7 @@ class ChangeLanguage
         'localidad' => array('ingles', 'Localidad', "polski", "italian", "portugues", "frances", "Aleman"),
         'direccion' => array('Address', 'Dirección', "polski", "italian", "Endereço", "frances", "Aleman"),
         'listado_ubicaciones' => array('List of Locations', 'Listado de Ubicaciones', "polski", "italian", "Lista de Locais", "frances", "Aleman"),
-        'cod_ubicacion' => array('Location Code', 'Código de Ubicación', "polski", "italian", "Código de localização", "frances", "Aleman")
-
+        'cod_ubicacion' => array('Location Code', 'Código de Ubicación', "polski", "italian", "Código de localização", "frances", "Aleman"),
     );
 
     public function __construct()
