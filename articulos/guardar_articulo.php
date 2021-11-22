@@ -1,171 +1,189 @@
 <?
 header('Cache-Control: no-cache');
-header('Pragma: no-cache'); 
+header('Pragma: no-cache');
 
-require_once("../conectar7.php"); 
+require_once("../conectar7.php");
 require_once("../mysqli_result.php");
-require_once("../funciones/fechas.php"); 
+require_once("../funciones/fechas.php");
+require_once("../funciones/cargaImagenes.php");
 
+function salvarFotoArticulo($codigoArticulo, $valorFile){
+    if(isset($_FILES[$valorFile])){
+        try{
+            $data = cargarFotoArticulo($codigoArticulo,$_FILES[$valorFile]);
+            return $data['fileName'];
+        } catch (Exception $e) {
+            echo "<h2>No se ha podido cargar la imagen " . $e->getMessage() . " </h2>\n";
+        }
+    }
+    return false;
+}
 //require_once("../barcode/barcode.php");
-function getumtext(int $valor) {
-	global $conexion;	
-	$getum_query="SELECT nombre FROM unidadesmedidas WHERE codunidadmedida=$valor";
-	$rs_getum=mysqli_query($conexion,$getum_query);
-	$txt=mysqli_fetch_array($rs_getum);
-	return $txt['nombre'];
+function getumtext(int $valor)
+{
+    global $conexion;
+    $getum_query = "SELECT nombre FROM unidadesmedidas WHERE codunidadmedida=$valor";
+    $rs_getum = mysqli_query($conexion, $getum_query);
+    $txt = mysqli_fetch_array($rs_getum);
+    return $txt['nombre'];
 }
-
-
-$accion=$_POST["accion"];
-if (!isset($accion)) { $accion=$_GET["accion"]; }
-
-$codigobarras=$_POST["codigobarras"];
-$referencia=$_POST["areferencia"];
-$codfamilia=$_POST["AcboFamilias"];
-$descripcion=$_POST["Adescripcion"];
-$codimpuesto=$_POST["AcboImpuestos"];
-$codproveedor1=$_POST["acboProveedores1"];
-$codproveedor2=$_POST["acboProveedores2"];
-$descripcion_corta=$_POST["adescripcion_corta"];
-$codubicacion=$_POST["AcboUbicacion"];
-$stock_minimo=$_POST["nstock_minimo"];
-$umstock_minimo=$_POST["umnstock_minimo"];
-$stock=$_POST["nstock"];
-$umstock=$_POST["umnstock"];
-$aviso_minimo=$_POST["aaviso_minimo"];
-$datos=$_POST["adatos"];
-$fecha=$_POST["fecha"];
-$fechalis=$fecha;
-if ($fecha<>"") { $fecha=explota($fecha); } else { $fecha="0000-00-00"; }
-$codembalaje=$_POST["AcboEmbalaje"];
-$unidades_caja=$_POST["nunidades_caja"];
-$umunidades_caja=$_POST["umnunidades_caja"];
-$precio_ticket=$_POST["aprecio_ticket"];
-$modif_descrip=$_POST["amodif_descrip"];
-$observaciones=$_POST["aobservaciones"];
-$precio_compra=$_POST["qprecio_compra"];
-$precio_almacen=$_POST["qprecio_almacen"];
-$precio_tienda=$_POST["qprecio_tienda"];
-//$pvp=$_POST["qpvp"];
-$precio_iva=$_POST["qprecio_iva"];
-
-
-$txtumstock=getumtext($umstock);
-$txtumstock_minimo=getumtext($umstock_minimo);
-$txtumunidades_caja=getumtext($umunidades_caja);
-
-
-if ($accion=="alta") {
-	
-		$consultaprevia = "SELECT max(codarticulo) as maximo FROM articulos";
-		$rs_consultaprevia=mysqli_query($conexion,$consultaprevia);
-		$codarticulo=mysqli_result($rs_consultaprevia,0,"maximo");
-		if ($codarticulo=="") { $codarticulo=0; }
-		$codarticulo++;
-		// need to add photo support feature, oldone removed since not working.
-		
-		$query_operacion="INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado) 
-						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0')";				
-		//echo $query_operacion;
-		$rs_operacion=mysqli_query($conexion,$query_operacion);
-		
-		$codarticulo=mysqli_insert_id($conexion);
-		
-		$codaux=$codarticulo;
-		while (strlen($codaux)<6) {
-			$codaux="0".$codaux;
-		}
-		// el 84 lo he puesto por lo de españa el 0000 representa el código de la empresa
-		$codigobarras="840000".$codaux;
-		$pares=$codigobarras[0] + $codigobarras[2] + $codigobarras[4] + $codigobarras[6] + $codigobarras[8] + $codigobarras[10];
-		$impares=$codigobarras[1] + $codigobarras[3] + $codigobarras[5] + $codigobarras[7] + $codigobarras[9] + $codigobarras[11];
-		$impares=$impares * 3;
-		$total=$impares + $pares;
-		$resto = $total % 10;
-			if($resto == 0){
-				$valor = 0;
-			}else{
-				$valor = 10 - $resto;
-			}
-		$codigobarras=$codigobarras."".$valor;
-		$sel_actualizar="UPDATE articulos SET codigobarras='$codigobarras' WHERE codarticulo='$codarticulo'";
-		$rs_actualizar=mysqli_query($conexion,$sel_actualizar);
-		
-		if ($rs_operacion) { $mensaje="El articulo ha sido dado de alta correctamente"; }
-		$cabecera1="Inicio >> Articulos &gt;&gt; Nuevo Articulo ";
-		$cabecera2="INSERTAR ARTICULO ";
-		
+$accion = $_POST["accion"];
+if (!isset($accion)) {
+    $accion = $_GET["accion"];
 }
-
-if ($accion=="modificar") {
-	$codarticulo=$_POST["id"];
-	$cadena="";
-	
-	if ($foto_name<>"")
-	 {   
-	   $foto_name="foto".$codarticulo.".jpg"; 
-	   unlink("../fotos/$foto_name");
-	   $cadena="imagen=".$foto_name;
-	   if (! copy ($foto, "../fotos/$foto_name")) 
-		{
-		  echo "<h2>No se ha podido copiar el archivo</h2>\n";
-		};
-	};
-	$query="UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', codumunidades_caja='$umunidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', ".$cadena." borrado=0 WHERE codarticulo='$codarticulo'";
-	$rs_query=mysqli_query($conexion,$query);
-	if ($rs_query) { $mensaje="Los datos del articulo han sido modificados correctamente"; }
-	$cabecera1="Inicio >> Articulos &gt;&gt; Modificar Articulo ";
-	$cabecera2="MODIFICAR ARTICULO ";
-	$sel_img="SELECT imagen,codigobarras FROM articulos WHERE codarticulo='$codarticulo'";
-	$rs_img=mysqli_query($conexion,$sel_img);
-	$foto_name=mysqli_result($rs_img,0,"imagen");
-	$codigobarras=mysqli_result($rs_img,0,"codigobarras");
+if ($accion == "baja") {
+    $codarticulo = $_GET["codarticulo"];
+    $query = "UPDATE articulos SET borrado=1 WHERE codarticulo='$codarticulo'";
+    $rs_query = mysqli_query($conexion, $query);
+    if ($rs_query) {
+        $mensaje = "El articulo ha sido eliminado correctamente";
+    }
+    $cabecera1 = "Inicio >> Articulos &gt;&gt; Eliminar Articulo ";
+    $cabecera2 = "ELIMINAR ARTICULO ";
+    $query_mostrar = "SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
+    $rs_mostrar = mysqli_query($conexion, $query_mostrar);
+    $codarticulo = mysqli_result($rs_mostrar, 0, "codarticulo");
+    $referencia = mysqli_result($rs_mostrar, 0, "referencia");
+    $codfamilia = mysqli_result($rs_mostrar, 0, "codfamilia");
+    $descripcion = mysqli_result($rs_mostrar, 0, "descripcion");
+    $codimpuesto = mysqli_result($rs_mostrar, 0, "impuesto");
+    $codproveedor1 = mysqli_result($rs_mostrar, 0, "codproveedor1");
+    $codproveedor2 = mysqli_result($rs_mostrar, 0, "codproveedor2");
+    $descripcion_corta = mysqli_result($rs_mostrar, 0, "descripcion_corta");
+    $codubicacion = mysqli_result($rs_mostrar, 0, "codubicacion");
+    $stock_minimo = mysqli_result($rs_mostrar, 0, "stock_minimo");
+    $stock = mysqli_result($rs_mostrar, 0, "stock");
+    $aviso_minimo = mysqli_result($rs_mostrar, 0, "aviso_minimo");
+    $datos = mysqli_result($rs_mostrar, 0, "datos_producto");
+    $fecha = mysqli_result($rs_mostrar, 0, "fecha_alta");
+    if ($fecha <> "0000-00-00") {
+        $fechalis = implota($fecha);
+    }
+    $codembalaje = mysqli_result($rs_mostrar, 0, "codembalaje");
+    $unidades_caja = mysqli_result($rs_mostrar, 0, "unidades_caja");
+    $precio_ticket = mysqli_result($rs_mostrar, 0, "precio_ticket");
+    $modif_descrip = mysqli_result($rs_mostrar, 0, "modificar_ticket");
+    $observaciones = mysqli_result($rs_mostrar, 0, "observaciones");
+    $precio_compra = mysqli_result($rs_mostrar, 0, "precio_compra");
+    $precio_almacen = mysqli_result($rs_mostrar, 0, "precio_almacen");
+    $precio_tienda = mysqli_result($rs_mostrar, 0, "precio_tienda");
+    //$pvp=mysqli_result($rs_mostrar,0,"precio_pvp");
+    $precio_iva = mysqli_result($rs_mostrar, 0, "precio_iva");
+    $foto_name = mysqli_result($rs_mostrar, 0, "imagen");
+    $codigobarras = mysqli_result($rs_mostrar, 0, "codigobarras");
 }
-
-if ($accion=="baja") {
-	$codarticulo=$_GET["codarticulo"];
-	$query="UPDATE articulos SET borrado=1 WHERE codarticulo='$codarticulo'";
-	$rs_query=mysqli_query($conexion,$query);
-	if ($rs_query) { $mensaje="El articulo ha sido eliminado correctamente"; }
-	$cabecera1="Inicio >> Articulos &gt;&gt; Eliminar Articulo ";
-	$cabecera2="ELIMINAR ARTICULO ";
-	$query_mostrar="SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
-	$rs_mostrar=mysqli_query($conexion,$query_mostrar);
-	$codarticulo=mysqli_result($rs_mostrar,0,"codarticulo");
-	$referencia=mysqli_result($rs_mostrar,0,"referencia");
-	$codfamilia=mysqli_result($rs_mostrar,0,"codfamilia");
-	$descripcion=mysqli_result($rs_mostrar,0,"descripcion");
-	$codimpuesto=mysqli_result($rs_mostrar,0,"impuesto");
-	$codproveedor1=mysqli_result($rs_mostrar,0,"codproveedor1");
-	$codproveedor2=mysqli_result($rs_mostrar,0,"codproveedor2");
-	$descripcion_corta=mysqli_result($rs_mostrar,0,"descripcion_corta");
-	$codubicacion=mysqli_result($rs_mostrar,0,"codubicacion");
-	$stock_minimo=mysqli_result($rs_mostrar,0,"stock_minimo");
-	$stock=mysqli_result($rs_mostrar,0,"stock");
-	$aviso_minimo=mysqli_result($rs_mostrar,0,"aviso_minimo");
-	$datos=mysqli_result($rs_mostrar,0,"datos_producto");
-	$fecha=mysqli_result($rs_mostrar,0,"fecha_alta");
-	if ($fecha<>"0000-00-00") { $fechalis=implota($fecha); }
-	$codembalaje=mysqli_result($rs_mostrar,0,"codembalaje");
-	$unidades_caja=mysqli_result($rs_mostrar,0,"unidades_caja");
-	$precio_ticket=mysqli_result($rs_mostrar,0,"precio_ticket");
-	$modif_descrip=mysqli_result($rs_mostrar,0,"modificar_ticket");
-	$observaciones=mysqli_result($rs_mostrar,0,"observaciones");
-	$precio_compra=mysqli_result($rs_mostrar,0,"precio_compra");
-	$precio_almacen=mysqli_result($rs_mostrar,0,"precio_almacen");
-	$precio_tienda=mysqli_result($rs_mostrar,0,"precio_tienda");
-	//$pvp=mysqli_result($rs_mostrar,0,"precio_pvp");
-	$precio_iva=mysqli_result($rs_mostrar,0,"precio_iva");
-	$foto_name=mysqli_result($rs_mostrar,0,"imagen");
-	$codigobarras=mysqli_result($rs_mostrar,0,"codigobarras");
+else {
+    $codigobarras = $_POST["codigobarras"];
+    $referencia = $_POST["areferencia"];
+    $codfamilia = $_POST["AcboFamilias"];
+    $descripcion = $_POST["Adescripcion"];
+    $codimpuesto = $_POST["AcboImpuestos"];
+    $codproveedor1 = $_POST["acboProveedores1"];
+    $codproveedor2 = $_POST["acboProveedores2"];
+    $descripcion_corta = $_POST["adescripcion_corta"];
+    $codubicacion = $_POST["AcboUbicacion"];
+    $stock_minimo = $_POST["nstock_minimo"];
+    $umstock_minimo = $_POST["umnstock_minimo"];
+    $stock = $_POST["nstock"];
+    $umstock = $_POST["umnstock"];
+    $aviso_minimo = $_POST["aaviso_minimo"];
+    $datos = $_POST["adatos"];
+    $fecha = $_POST["fecha"];
+    $fechalis = $fecha;
+    if ($fecha <> "") {
+        $fecha = explota($fecha);
+    } else {
+        $fecha = "0000-00-00";
+    }
+    $codembalaje = $_POST["AcboEmbalaje"];
+    $unidades_caja = $_POST["nunidades_caja"];
+    $umunidades_caja = $_POST["umnunidades_caja"];
+    $precio_ticket = $_POST["aprecio_ticket"];
+    $modif_descrip = $_POST["amodif_descrip"];
+    $observaciones = $_POST["aobservaciones"];
+    $precio_compra = $_POST["qprecio_compra"];
+    $precio_almacen = $_POST["qprecio_almacen"];
+    $precio_tienda = $_POST["qprecio_tienda"];
+    //$pvp=$_POST["qpvp"];
+    $precio_iva = $_POST["qprecio_iva"];
+    $txtumstock = getumtext($umstock);
+    $txtumstock_minimo = getumtext($umstock_minimo);
+    $txtumunidades_caja = getumtext($umunidades_caja);
+    if ($accion == "alta") {
+        $consultaprevia = "SELECT max(codarticulo) as maximo FROM articulos";
+        $rs_consultaprevia = mysqli_query($conexion, $consultaprevia);
+        $codarticulo = mysqli_result($rs_consultaprevia, 0, "maximo");
+        //@todo VerConMartin revisar esto, creo que se le podria dejar al autoincrement , si se hace por la imagen se la puede volver un md5 y en caso de precisarla con el codigo de igual manera se puede actulizar la fila despues de cargarla
+        if ($codarticulo == "") {
+            //@todo VerConMartin en caso de dejar esto creo que deberia ser 1
+            $codarticulo = 0;
+        }
+        $codarticulo++;
+        $imgUrl = '';
+        $aux = salvarFotoArticulo($codarticulo,'foto');
+        if($aux !== false){
+            $imgUrl = $aux;
+        }
+        $query_operacion = "INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado, imagen) 
+						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0','$imgUrl')";
+        $rs_operacion = mysqli_query($conexion, $query_operacion);
+        $codarticulo = mysqli_insert_id($conexion);
+        $codaux = $codarticulo;
+        while (strlen($codaux) < 6) {
+            $codaux = "0" . $codaux;
+        }
+        // el 84 lo he puesto por lo de españa el 0000 representa el código de la empresa
+        $codigobarras = "840000" . $codaux;
+        $pares = $codigobarras[0] + $codigobarras[2] + $codigobarras[4] + $codigobarras[6] + $codigobarras[8] + $codigobarras[10];
+        $impares = $codigobarras[1] + $codigobarras[3] + $codigobarras[5] + $codigobarras[7] + $codigobarras[9] + $codigobarras[11];
+        $impares = $impares * 3;
+        $total = $impares + $pares;
+        $resto = $total % 10;
+        if ($resto == 0) {
+            $valor = 0;
+        } else {
+            $valor = 10 - $resto;
+        }
+        $codigobarras = $codigobarras . "" . $valor;
+        $sel_actualizar = "UPDATE articulos SET codigobarras='$codigobarras' WHERE codarticulo='$codarticulo'";
+        $rs_actualizar = mysqli_query($conexion, $sel_actualizar);
+        if ($rs_operacion) {
+            $mensaje = "El articulo ha sido dado de alta correctamente";
+        }
+        $cabecera1 = "Inicio >> Articulos &gt;&gt; Nuevo Articulo ";
+        $cabecera2 = "INSERTAR ARTICULO ";
+    }
+    elseif ($accion == "modificar") {
+        $codarticulo = $_POST["id"];
+        $cadena = "";
+        $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', codumunidades_caja='$umunidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', " . $cadena . " borrado=0 ";
+        try {
+            if ($url = salvarFotoArticulo($codarticulo, 'foto')) {
+                $query .= ', imagen=' . $url;
+            }
+        } catch (Exception $e) {
+            echo "<h2>No se ha podido cargar la imagen " . $e->getMessage() . " </h2>\n";
+        }
+        $query .= " WHERE codarticulo='" . $codarticulo . "' ";
+        $rs_query = mysqli_query($conexion, $query);
+        if ($rs_query) {
+            $mensaje = "Los datos del articulo han sido modificados correctamente";
+        }
+        $cabecera1 = "Inicio >> Articulos &gt;&gt; Modificar Articulo ";
+        $cabecera2 = "MODIFICAR ARTICULO ";
+    }
+    $sel_img = "SELECT imagen,codigobarras FROM articulos WHERE codarticulo='$codarticulo'";
+    $rs_img = mysqli_query($conexion, $sel_img);
+    $foto_name = mysqli_result($rs_img, 0, "imagen");
+    $codigobarras = mysqli_result($rs_img, 0, "codigobarras");
 }
-
 ?>
 
 <html>
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;
@@ -197,7 +215,7 @@ if ($accion=="baja") {
 						<tr>
 							<td width="15%"><span  id="tcod">C&Oacute;DIGO</span></td>
 							<td width="58%"><?php echo $codarticulo?></td>
-					        <td width="27%" rowspan="11" align="center" valign="top"><img src="../fotos/<? echo $foto_name?>" width="160px" height="140px" border="1"></td>
+					        <td width="27%" rowspan="11" align="center" valign="top"><img src="<?php echo traerUrlImagenProducto($foto_name); ?>" width="160px" height="140px" border="1"></td>
 						</tr>
 						<tr>
 							<td width="15%"><span  id="trefren">Referencia</span></td>

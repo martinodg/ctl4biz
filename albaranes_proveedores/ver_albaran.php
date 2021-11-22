@@ -19,6 +19,8 @@ $iva=mysqli_result($rs_query,0,"iva");
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
@@ -36,7 +38,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 		}
 		
 		function imprimir(codalbaran,codproveedor) {
-			location.href="../fpdf/imprimir_albaran_proveedor.php?codalbaran="+codalbaran+"&codproveedor="+codproveedor;
+			location.href="../fpdf/imprimir_albaran_proveedor.php?codalbaran="+codalbaran+"&codproveedor="+codproveedor+"&lang="+getLanguajeCode();
 		}
 		
 		</script>

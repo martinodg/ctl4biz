@@ -285,7 +285,7 @@ require_once("../mysqli_result.php");
 				      </tr>
 					 
 					  <tr>
-						  <td><span  id="timgfrmjpg">Imagen [Formato jpg]</span> [200x200]</td>
+						  <td><span  id="timgfrmjpg">Imagen</span></td>
 						  <td><input type="file" name="foto" id="foto" class="cajaMedia" accept="image/jpg" /></td>
 				      </tr>
 					</table>

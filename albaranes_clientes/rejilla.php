@@ -52,11 +52,11 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 		
 		
 		function imprimir_etiquetas(codalbaran) {
-				window.open("../fpdf/codigocontinuo.php?codalbaran="+codalbaran);
+				window.open("../fpdf/codigocontinuo.php?codalbaran="+codalbaran+"&lang="+getLanguajeCode());
 		}
 		
 		function imprimir(codalbaran) {
-			window.open("../fpdf/imprimir_albaran.php?codalbaran="+codalbaran);
+			window.open("../fpdf/imprimir_albaran.php?codalbaran="+codalbaran+"&lang="+getLanguajeCode());
 		}
 		
 		function modificar_albaran(codalbaran,marcaestado) {

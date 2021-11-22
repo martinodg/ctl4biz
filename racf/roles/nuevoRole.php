@@ -56,8 +56,8 @@
 <body>
     <div id="content_login">
        
-    <div id="cabeceraResultado" class="header"> 
-    Detalles del role</div>
+    <div id="cabeceraResultado" class="header">
+        <span id="tDetalleRol">Detalles del role</span></div>
             <div class="column3" style="background-color:#eee;">
                 <center>
                     <form name="frmUser" align="center">
@@ -73,7 +73,7 @@
             <div class="column3" style="background-color:#eee;">
                 <center>
                 <br> <br>
-                        <span  id="nombre" class="loginText">Nombre de role:</span><br>
+                        <span  id="nombre" class="loginText"><span id="nombreRol">Nombre de role</span>:</span><br>
                         <input class="input-wrapper" type="text" id="name" name="name" >
                     
                 </center>
@@ -89,7 +89,7 @@
             </div>
 
             <div id="botonBusqueda" align="right">
-                <button type="button" id="btnmodificar" onClick="modificarole()" onMouseOver="style.cursor=cursor"> <img src="../../img/disco.svg" alt="Modificar" /> <span>Guardar modificacion</span> </button>
+                <button type="button" id="btnmodificar" onClick="modificarole()" onMouseOver="style.cursor=cursor"> <img src="../../img/disco.svg" alt="Modificar" /> <span id="tGuardarModificacion">Guardar modificacion</span> </button>
 
             </div>
 

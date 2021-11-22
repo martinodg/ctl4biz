@@ -80,7 +80,7 @@ if ($cadena_busqueda<>"") {
 			var provincia=document.getElementById("cboProvincias").value;
 			var localidad=document.getElementById("localidad").value;
 			var telefono=document.getElementById("telefono").value;
-			window.open("../fpdf/proveedores.php?codproveedor="+codproveedor+"&pais="+pais+"&nombre="+nombre+"&nif="+nif+"&provincia="+provincia+"&localidad="+localidad+"&telefono="+telefono);
+			window.open("../fpdf/proveedores.php?codproveedor="+codproveedor+"&pais="+pais+"&nombre="+nombre+"&nif="+nif+"&provincia="+provincia+"&localidad="+localidad+"&telefono="+telefono+"&lang="+getLanguajeCode());
 		}
 		
 		function buscar() {
@@ -227,7 +227,7 @@ if ($cadena_busqueda<>"") {
 							<td width="6%"><span  id="tcodigo">CODIGO</span></td>
 							<td width="38%"><span  id="tnomb">NOMBRE</span></td>
 							<td width="13%"><span  id="tnip">NIF/CIF</span></td>
-							<td width="19%"><span  id="ttelef">TELEFONO</span></td>
+							<td width="19%"><span  id="ttelef2">TELEFONO</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="6%">&nbsp;</td>

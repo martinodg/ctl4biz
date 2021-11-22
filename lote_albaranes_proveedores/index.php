@@ -222,13 +222,14 @@ if ($cadena_busqueda<>"") {
 					  </tr>
 						<tr>
 						  <td><span  id="tfchafin">Fecha de fin</span></td>
-						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $fechafin?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
+						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $fechafin?>" readonly>
+                              <img src="../img/calendario.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
 					inputField : "fechafin",
 					ifFormat   : "%d/%m/%Y",
-					button     : "Image1"
+					button     : "Image2"
 					  }
 					);
 		</script></td>
@@ -241,7 +242,7 @@ if ($cadena_busqueda<>"") {
 			 	<div id="botonBusqueda">
                       <button type="button" id="btnbuscar" onClick="buscar()"  onMouseOver="style.cursor=cursor"> <img src="../img/ver.svg" alt="buscar" /> <span  id="tbuscar">Buscar</span> </button>
         		 	  <button type="button" id="btnlimpiar"  onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
-                  	  <button type="button" id="btnfacturarremito" onClick="facturar_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/convertir.svg" alt="facturar remito" /> <span>Facturar remito</span> </button>
+                  	  <button type="button" id="btnfacturarremito" onClick="facturar_albaran()"  onMouseOver="style.cursor=cursor"> <img src="../img/convertir.svg" alt="facturar remito" /> <span id="tfacRemito">Facturar remito</span> </button>
 				</div>
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>

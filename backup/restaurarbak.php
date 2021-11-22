@@ -14,6 +14,7 @@ $hoy=date("d/m/Y");
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
 		function inicio() {
@@ -45,7 +46,7 @@ $hoy=date("d/m/Y");
 			var fechainicio=document.getElementById("fechainicio").value;
 			var fechafin=document.getElementById("fechafin").value;
 			var denominacion=document.getElementById("denominacion").value;
-			window.open("../fpdf/copiasseguridad.php?fechainicio="+fechainicio+"&denominacion="+denominacion+"&fechafin="+fechafin);
+			window.open("../fpdf/copiasseguridad.php?fechainicio="+fechainicio+"&denominacion="+denominacion+"&fechafin="+fechafin+"&lang="+getLanguajeCode());
 		}
 		
 		function paginar() {
@@ -93,13 +94,14 @@ $hoy=date("d/m/Y");
 					  </tr>
 					  <tr>
 						  <td><span  id="tfchafin">Fecha de fin</span></td>
-						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $hoy?>" readonly><img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
+						  <td><input id="fechafin" type="text" class="cajaPequena" NAME="fechafin" maxlength="10" value="<? echo $hoy?>" readonly>
+                              <img src="../img/calendario.svg" name="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" data-ttitle="cal" title="Calendario">
         <script type="text/javascript">
 					Calendar.setup(
 					  {
 					inputField : "fechafin",
 					ifFormat   : "%d/%m/%Y",
-					button     : "Image1"
+					button     : "Image2"
 					  }
 					);
 		</script>	</td>
