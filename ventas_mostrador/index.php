@@ -344,6 +344,15 @@ require_once("../racf/purePhpVerify.php");
 			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe,"miwin","width=700,height=500,scrollbars=yes");			
 		}
 		</script>
+        <style type="text/css">
+            #windowData{
+                border:1px solid;
+                height:300px;
+                width:auto;
+                overflow-y:scroll;
+                overflow-x:hidden;
+            }
+        </style>
 	</head>
 	<body>
 		<div id="pagina">
