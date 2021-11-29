@@ -22,7 +22,8 @@ require_once("../racf/purePhpVerify.php");
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">   
 		
-        
+        var desc_stock;
+        var cod_art;
 		var cursor;
 		if (document.all) {
 		// Está utilizando EXPLORER
@@ -193,6 +194,8 @@ require_once("../racf/purePhpVerify.php");
 				var vimporte=$('#importe').val();
 				var vdscto=$('#descuento').val();
 				var vimpuesto=$('#impuesto').val();
+                desc_stock = vcantidad;
+                cod_art = vcodArticulo;
 			
 				
 
@@ -349,7 +352,9 @@ require_once("../racf/purePhpVerify.php");
 			var codfactura=$("#numfactura").val();
 			var codcliente=$("#codcliente").val();
 			var importe=$("#preciototal").val();
-			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe,"miwin","width=700,height=500,scrollbars=yes");			
+            var dstock=desc_stock;
+            var codart=cod_art;
+			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe+"&descstock="+dstock+"&codart="+codart,"miwin","width=700,height=500,scrollbars=yes");
 		}
 		</script>
 	</head>

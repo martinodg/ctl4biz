@@ -1,4 +1,5 @@
-<? require_once("../conectar7.php"); 
+<?php
+require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 
 $codfactura=$_GET["codfactura"];
@@ -8,6 +9,15 @@ $importe=$_GET["importe"];
 $sel_clientes="SELECT nombre FROM clientes WHERE codcliente='$codcliente'";
 $rs_clientes=mysqli_query($conexion,$sel_clientes);
 $nombre_cliente=mysqli_result($rs_clientes,0,"nombre");
+
+
+$descstock=$_GET["descstock"];
+$codart=$_GET["codart"];
+
+//define stock actual
+$query_sctokActual="SELECT * FROM articulos WHERE codarticulo=$codart";
+$rs_query=mysqli_query($conexion,$query_sctokActual);
+$stockAct=mysqli_result($rs_query,0,"stock");//stock actual
 
 ?>
 
@@ -64,7 +74,12 @@ function imprimir(codfactura) {
 	location.href="../fpdf/imprimir_ticket_html.php?codfactura=" + codfactura + "&pagado=" + pagado + "&adevolver=" + adevolver;
 }
 
+function descontarAlstock(){
+            window.open("../funciones/descontandostock.php?cantdescontar="+"<?php echo $descstock ?>"+"&codigoarticulo="+"<?php echo $codart ?>");
+}
+
 function enviar() {
+    descontarAlstock();
 					$.getJSON('../funciones/BackendQueries/insertCollection.php', 
 															{codfactura:$("#codfactura").val(),
 															codcliente:$("#codcliente").val(),
@@ -93,6 +108,8 @@ function enviar() {
             );
 }
 </script>
+
+
 </head>
 
 <body>
