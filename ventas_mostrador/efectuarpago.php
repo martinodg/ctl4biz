@@ -87,11 +87,11 @@ function enviar() {
 															importevale:$("#importevale").val(),
 															numdocumento:$("#numdocumento").val(),
 															fechacobro:$("#fechacobro").val(),
-															fechacobro:$("#fechacobro").val(),
+															//fechacobro:$("#fechacobro").val(),
 															formapago:$("#formapago").val() 
 															},function(data) {
-																alert(data.answer);
-                            													if (data.answer==0){
+																//alert(data.answer);
+                            													if (data.answer == 0){
 																					talert('msgfacyacbr');
 																					$("#botticket").attr("disabled",false);
 																					$("#botaceptar").attr("disabled",true);
