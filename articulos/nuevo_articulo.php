@@ -99,6 +99,20 @@ require_once("../mysqli_result.php");
 								} ?>				
 								</select>							</td>
 				        </tr>
+                        <!--alias start-->
+                        <tr>
+                            <td><span>Alias 1</span></td>
+                            <td><input NAME="alias1" type="text" class="cajaPequena" id="aliasArt1" size="10" maxlength="10"></td>
+                        </tr>
+                        <tr>
+                            <td><span>Alias 2</span></td>
+                            <td><input NAME="alias2" type="text" class="cajaPequena" id="aliasArt2" size="10" maxlength="10"></td>
+                        </tr>
+                        <tr>
+                            <td><span>Alias 3</span></td>
+                            <td><input NAME="alias3" type="text" class="cajaPequena" id="aliasArt3" size="10" maxlength="10"></td>
+                        </tr>
+                        <!--alias end-->
 						<tr>
 							<td width="17%"><span  id="tdescri">Descripci&oacute;n</span></td>
 						    <td><textarea name="Adescripcion" cols="41" rows="2" id="descripcion" class="areaTexto"></textarea></td>
