@@ -41,6 +41,9 @@ require_once("../mysqli_result.php");
 		});
 /*----------------------------------------------------------------------------------------------------------------------*/
 		function limpiar() {
+			document.getElementById("aliasArt1").value="";
+			document.getElementById("aliasArt2").value="";
+			document.getElementById("aliasArt3").value="";
 			document.getElementById("referencia").value="";
 			document.getElementById("descripcion").value="";
 			document.getElementById("descripcion_corta").value="";
@@ -102,15 +105,15 @@ require_once("../mysqli_result.php");
                         <!--alias start-->
                         <tr>
                             <td><span>Alias 1</span></td>
-                            <td><input NAME="alias1" type="text" class="cajaPequena" id="aliasArt1" size="10" maxlength="10"></td>
+                            <td><input NAME="alias1" type="text" class="cajaPequena" id="aliasArt1" size="20" maxlength="10"></td>
                         </tr>
                         <tr>
                             <td><span>Alias 2</span></td>
-                            <td><input NAME="alias2" type="text" class="cajaPequena" id="aliasArt2" size="10" maxlength="10"></td>
+                            <td><input NAME="alias2" type="text" class="cajaPequena" id="aliasArt2" size="20" maxlength="10"></td>
                         </tr>
                         <tr>
                             <td><span>Alias 3</span></td>
-                            <td><input NAME="alias3" type="text" class="cajaPequena" id="aliasArt3" size="10" maxlength="10"></td>
+                            <td><input NAME="alias3" type="text" class="cajaPequena" id="aliasArt3" size="20" maxlength="10"></td>
                         </tr>
                         <!--alias end-->
 						<tr>
@@ -305,7 +308,7 @@ require_once("../mysqli_result.php");
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> ><span  id="taceptar">Aceptar</span></td> </button>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> <span  id="taceptar">Aceptar</span></td> </button>
 					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
                		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span  id="tcancelar">Cancelar</span> </button>
 				

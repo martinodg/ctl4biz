@@ -73,6 +73,9 @@ if ($accion == "baja") {
     $codigobarras = mysqli_result($rs_mostrar, 0, "codigobarras");
 }
 else {
+    $aliasArt1 = $_POST["alias1"];
+    $aliasArt2 = $_POST["alias2"];
+    $aliasArt3 = $_POST["alias3"];
     $codigobarras = $_POST["codigobarras"];
     $referencia = $_POST["areferencia"];
     $codfamilia = $_POST["AcboFamilias"];
@@ -120,13 +123,29 @@ else {
         }
         $codarticulo++;
         $imgUrl = '';
-        $aux = salvarFotoArticulo($codarticulo,'foto');
-        if($aux !== false){
+        $aux = salvarFotoArticulo($codarticulo, 'foto');
+        if ($aux !== false) {
             $imgUrl = $aux;
         }
         $query_operacion = "INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado, imagen) 
 						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0','$imgUrl')";
         $rs_operacion = mysqli_query($conexion, $query_operacion);
+        if (!empty($aliasArt1)){
+            $query_alias = "INSERT INTO alias_articulos (id_alias, codarticulo, alias) 
+                                VALUES ('', '$codarticulo', '$aliasArt1')";
+            $rs_alias = mysqli_query($conexion, $query_alias);
+        }
+        if (!empty($aliasArt2)){
+            $query_alias = "INSERT INTO alias_articulos (id_alias, codarticulo, alias) 
+                                VALUES ('', '$codarticulo', '$aliasArt2')";
+            $rs_alias = mysqli_query($conexion, $query_alias);
+        }
+        if (!empty($aliasArt3)){
+            $query_alias = "INSERT INTO alias_articulos (id_alias, codarticulo, alias) 
+                                VALUES ('', '$codarticulo', '$aliasArt3')";
+            $rs_alias = mysqli_query($conexion, $query_alias);
+        }
+
         $codarticulo = mysqli_insert_id($conexion);
         $codaux = $codarticulo;
         while (strlen($codaux) < 6) {
