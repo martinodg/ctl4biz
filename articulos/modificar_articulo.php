@@ -16,6 +16,11 @@ $query="SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
 $rs_query=mysqli_query($conexion,$query);
 $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 
+//para los alias
+$queryAlias="SELECT * FROM alias_articulos WHERE codarticulo='$codarticulo' ORDER BY id_alias ASC ";
+$rsAlias_query=mysqli_query($conexion,$queryAlias);
+$alias=mysqli_result($rsAlias_query,0,"id_alias");
+
 ?>
 <html>
 	<head>
@@ -69,6 +74,9 @@ $( document ).ready(function(){
 		}
 		
 		function limpiar() {
+			document.getElementById("aliasArt1").value="";
+			document.getElementById("aliasArt2").value="";
+			document.getElementById("aliasArt3").value="";
 			document.getElementById("codigobarras").value="";
 			document.getElementById("referencia").value="";
 			document.getElementById("descripcion").value="";
@@ -119,7 +127,20 @@ $( document ).ready(function(){
 						<td width="20%"><span  id="trefren">Referencia</span></td>
 						<?php $referencia=mysqli_result($rs_query,0,"referencia");?>
 					      <td colspan="2"><input name="areferencia" id="mreferencia" value="<?php echo mysqli_result($rs_query,0,"referencia")?>" maxlength="20" class="cajaGrande" type="text"></td>
-				          
+                        <!--alias start-->
+                        <tr>
+                            <td><span>Alias 1</span></td>
+                            <td colspan="2"><input NAME="alias1" type="text" class="cajaGrande" id="aliasArt1" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,0,"alias")?>"></td>
+                        </tr>
+                        <tr>
+                            <td><span>Alias 2</span></td>
+                            <td colspan="2"><input NAME="alias2" type="text" class="cajaGrande" id="aliasArt2" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,1,"alias")?>"></td>
+                        </tr>
+                        <tr>
+                            <td><span>Alias 3</span></td>
+                            <td colspan="2"><input NAME="alias3" type="text" class="cajaGrande" id="aliasArt3" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,2,"alias")?>"></td>
+                        </tr>
+                        <!--alias start-->
 						</tr>
 						<?php
 						$familia=mysqli_result($rs_query,0,"codfamilia");
