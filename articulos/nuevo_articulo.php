@@ -105,15 +105,15 @@ require_once("../mysqli_result.php");
                         <!--alias start-->
                         <tr>
                             <td><span>Alias 1</span></td>
-                            <td><input NAME="alias1" type="text" class="cajaPequena" id="aliasArt1" size="20" maxlength="10"></td>
+                            <td><input NAME="alias1" type="text" class="cajaGrande" id="aliasArt1" size="20" maxlength="20"></td>
                         </tr>
                         <tr>
                             <td><span>Alias 2</span></td>
-                            <td><input NAME="alias2" type="text" class="cajaPequena" id="aliasArt2" size="20" maxlength="10"></td>
+                            <td><input NAME="alias2" type="text" class="cajaGrande" id="aliasArt2" size="20" maxlength="20"></td>
                         </tr>
                         <tr>
                             <td><span>Alias 3</span></td>
-                            <td><input NAME="alias3" type="text" class="cajaPequena" id="aliasArt3" size="20" maxlength="10"></td>
+                            <td><input NAME="alias3" type="text" class="cajaGrande" id="aliasArt3" size="20" maxlength="20"></td>
                         </tr>
                         <!--alias end-->
 						<tr>

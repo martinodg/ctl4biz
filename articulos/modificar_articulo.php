@@ -130,15 +130,15 @@ $( document ).ready(function(){
                         <!--alias start-->
                         <tr>
                             <td><span>Alias 1</span></td>
-                            <td colspan="2"><input NAME="alias1" type="text" class="cajaGrande" id="aliasArt1" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,0,"alias")?>"></td>
+                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,0,"id_alias") ;?>]" type="text" class="cajaGrande" id="aliasArt1" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,0,"alias")?>"></td>
                         </tr>
                         <tr>
                             <td><span>Alias 2</span></td>
-                            <td colspan="2"><input NAME="alias2" type="text" class="cajaGrande" id="aliasArt2" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,1,"alias")?>"></td>
+                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,1,"id_alias") ;?>] type="text" class="cajaGrande" id="aliasArt2" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,1,"alias")?>"></td>
                         </tr>
                         <tr>
                             <td><span>Alias 3</span></td>
-                            <td colspan="2"><input NAME="alias3" type="text" class="cajaGrande" id="aliasArt3" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,2,"alias")?>"></td>
+                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,2,"id_alias") ;?>] type="text" class="cajaGrande" id="aliasArt3" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,2,"alias")?>"></td>
                         </tr>
                         <!--alias start-->
 						</tr>

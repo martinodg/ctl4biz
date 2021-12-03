@@ -130,9 +130,10 @@ else {
         $query_operacion = "INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado, imagen) 
 						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0','$imgUrl')";
         $rs_operacion = mysqli_query($conexion, $query_operacion);
+
         if (!empty($aliasArt1)){
-            $query_alias = "INSERT INTO alias_articulos (id_alias, codarticulo, alias) 
-                                VALUES ('', '$codarticulo', '$aliasArt1')";
+            $query_alias = "INSERT INTO alias_articulos ( codarticulo, alias) 
+                                VALUES ( '$codarticulo', '$aliasArt1')";
             $rs_alias = mysqli_query($conexion, $query_alias);
         }
         if (!empty($aliasArt2)){
@@ -141,8 +142,8 @@ else {
             $rs_alias = mysqli_query($conexion, $query_alias);
         }
         if (!empty($aliasArt3)){
-            $query_alias = "INSERT INTO alias_articulos (id_alias, codarticulo, alias) 
-                                VALUES ('', '$codarticulo', '$aliasArt3')";
+            $query_alias = "INSERT INTO alias_articulos ( codarticulo, alias) 
+                                VALUES ( '$codarticulo', '$aliasArt3')";
             $rs_alias = mysqli_query($conexion, $query_alias);
         }
 
@@ -172,7 +173,46 @@ else {
         $cabecera1 = "Inicio >> Articulos &gt;&gt; Nuevo Articulo ";
         $cabecera2 = "INSERTAR ARTICULO ";
     }
+    //############################### MODIFICAR ####################################################
     elseif ($accion == "modificar") {
+
+        $codarticulo=$_POST["id"];
+
+        if(!empty($_POST['alias'])){
+            $queryDeleteAlias = "SELECT * FROM alias_articulos WHERE alias_articulos.codarticulo = '$codarticulo'";
+            $resp_q = mysqli_query($conexion, $queryDeleteAlias);
+            $codArt_tablaAlias=mysqli_result($resp_q,0,'codarticulo');
+
+            foreach($_POST['alias'] as $id_alias => $valor ){
+                //insertar alias si no existen:
+                if(empty($codArt_tablaAlias) and !empty($valor)){
+                    $query_alias = "INSERT INTO alias_articulos (codarticulo, alias) 
+                                VALUES ('$codarticulo', '$valor')";
+                    $rs_alias = mysqli_query($conexion, $query_alias);
+                }
+                else {
+                    if (empty($valor)) {
+                        $queryDeleteAlias = "DELETE FROM alias_articulos WHERE alias_articulos.id_alias = '$id_alias'";
+                        $rs_query = mysqli_query($conexion, $queryDeleteAlias);
+                    } else {
+                        $queryAlias = "SELECT * FROM alias_articulos WHERE id_alias='$id_alias' ORDER BY id_alias ASC ";
+                        $rsAlias_query = mysqli_query($conexion, $queryAlias);
+                        $alias_bd = mysqli_result($rsAlias_query, 0, 'alias');
+                        $id_bd = mysqli_result($rsAlias_query, 0, 'id_alias');
+                        if (empty($id_bd) and !empty($valor)) {
+                            $query_alias = "INSERT INTO alias_articulos (codarticulo, alias) 
+                                    VALUES ('$codarticulo', '$valor')";
+                            $rs_alias = mysqli_query($conexion, $query_alias);
+                        }
+                        else {
+                            $queryUpdateAlias = "UPDATE alias_articulos SET alias='$valor' WHERE alias_articulos.id_alias = '$id_alias'";
+                            $rs_query = mysqli_query($conexion, $queryUpdateAlias);
+                        }
+                    }
+                }
+            }
+        }
+
         $codarticulo = $_POST["id"];
         $cadena = "";
         $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', codumunidades_caja='$umunidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', " . $cadena . " borrado=0 ";
@@ -248,6 +288,27 @@ else {
 							<td width="15%"><span  id="tflia">FAMILIA</span></td>
 							<td width="58%"><?php echo $nombrefamilia?></td>
 				        </tr>
+                        <!--ALIAS start-->
+                        <tr>
+                            <td width="15%"><span>ALIAS</span></td>
+                            <td width="58%">
+                            <?php
+                            $queryAlias="SELECT * FROM alias_articulos WHERE codarticulo='$codarticulo' ORDER BY id_alias ASC ";
+                            $respAlias_query=mysqli_query($conexion,$queryAlias);
+                            $cont=0;
+                            if (!empty($rsAlias_query)) {
+                                foreach ($respAlias_query as $id_alias => $alias) {
+                                    echo mysqli_result($respAlias_query, $cont, "alias"), '  ';
+                                    $cont++;
+                                }
+                            }
+                            else{
+                                echo 'No Existen Alias para este Articulo';
+                            }
+                            ?>
+                            </td>
+                        </tr>
+                        <!--ALIAS end-->
 						<tr>
 							<td width="15%"><span  id="tdescri">Descripci&oacute;n</span></td>
 						    <td width="58%"><?php echo $descripcion?></td>
