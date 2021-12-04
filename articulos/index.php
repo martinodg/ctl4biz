@@ -10,23 +10,27 @@ require_once("../mysqli_result.php");
 
 $cadena_busqueda=$_GET["cadena_busqueda"];
 
-if (!isset($cadena_busqueda)) { $cadena_busqueda=""; } else { $cadena_busqueda=str_replace("",",",$cadena_busqueda); }
+$query_familias="SELECT * FROM familias ORDER BY nombre ASC";
+$res_familias=mysqli_query($conexion,$query_familias);
 
-if ($cadena_busqueda<>"") {
-	$array_cadena_busqueda=split("~",$cadena_busqueda);
-	$codarticulo=$array_cadena_busqueda[1];
-	$referencia=$array_cadena_busqueda[2];
-	$codfamilia=$array_cadena_busqueda[3];
-	$descripcion=$array_cadena_busqueda[4];
-	$codproveedor=$array_cadena_busqueda[5];
-	$codubicacion=$array_cadena_busqueda[6];
-} else {
-	$codarticulo="";
-	$referencia="";
-	$codfamilia="";
-	$descripcion="";
-	$codproveedor="";
-	$codubicacion="";
+
+if (!isset($cadena_busqueda)) {
+    $cadena_busqueda="";
+    $codarticulo="";
+    $referencia="";
+    $codfamilia="";
+    $descripcion="";
+    $codproveedor="";
+    $codubicacion="";
+}
+else{
+    $array_cadena_busqueda = explode('~',$cadena_busqueda);
+    $codarticulo=$array_cadena_busqueda[1];
+    $referencia=$array_cadena_busqueda[2];
+    $codfamilia=$array_cadena_busqueda[3];
+    $descripcion=$array_cadena_busqueda[4];
+    $codproveedor=$array_cadena_busqueda[5];
+    $codubicacion=$array_cadena_busqueda[6];
 }
 
 ?>
@@ -143,7 +147,7 @@ if ($cadena_busqueda<>"") {
 								while ($contador < mysqli_num_rows($res_familias)) { 
 									if ( mysqli_result($res_familias,$contador,"codfamilia") == $familia) { ?>
 								<option value="<?php echo mysqli_result($res_familias,$contador,"codfamilia")?>" selected><?php echo mysqli_result($res_familias,$contador,"nombre")?></option>
-								<? } else { ?> 
+								<? } else { ?>
 								<option value="<?php echo mysqli_result($res_familias,$contador,"codfamilia")?>"><?php echo mysqli_result($res_familias,$contador,"nombre")?></option>
 								<? }
 								$contador++;
@@ -186,14 +190,14 @@ if ($cadena_busqueda<>"") {
 							<td><select id="cboUbicacion" name="cboUbicacion" class="comboGrande">
 							<option value="0" data-opttrad="todubic">Todas las ubicaciones</option>
 								<?php
-								while ($contador < mysqli_num_rows($res_ubicacion)) { 
+								while ($contador < mysqli_num_rows($res_ubicacion)) {
 									if ( mysqli_result($res_ubicacion,$contador,"codubicacion") == $ubicacion) { ?>
 								<option value="<?php echo mysqli_result($res_ubicacion,$contador,"codubicacion")?>" selected><?php echo mysqli_result($res_ubicacion,$contador,"nombre")?></option>
 								<? } else { ?> 
 								<option value="<?php echo mysqli_result($res_ubicacion,$contador,"codubicacion")?>"><?php echo mysqli_result($res_ubicacion,$contador,"nombre")?></option>
 								<? }
 								$contador++;
-								} ?>				
+								} ?>
 								</select>							</td>
 					    </tr>
 					</table>
