@@ -21,4 +21,10 @@ $stockActualizado = $stockAct - $descstock;
 
 $query_apdatestock="UPDATE articulos SET stock = $stockActualizado WHERE articulos.codarticulo = $codart";
 $rs_query=mysqli_query($conexion,$query_apdatestock);
+
+echo '<script language="javascript">alert("';
+echo 'Stock actual: ',$stockActualizado,' Cod. Art: ',$codart;
+echo '");</script>';
+
+echo "<script language='Javascript' type='text/javascript'>window.close();</script>";
 ?>
