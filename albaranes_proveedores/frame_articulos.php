@@ -220,9 +220,10 @@ if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%
         articulos_con_alias
         ORDER BY
         codfamilia ASC,
-        descripcion sASC;";
+        descripcion ASC;";
 	}
 	$rs_tabla = mysqli_query($conexion,$consulta);
+
 	$nrs=mysqli_num_rows($rs_tabla);
 
 ?>
