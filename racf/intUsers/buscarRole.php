@@ -16,8 +16,8 @@ require_once("../../conectar7.php");
 
     $donde="";
     if ($parametro1<>""){ $donde=$donde."rolesToUsersTable.".$criterio1." = '".$parametro1."' AND ";}
-    if ($parametro2<>""){ $donde=$donde."rolesTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
-    if ($parametro3<>""){ $donde=$donde."rolesTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
+    //if ($parametro2<>""){ $donde=$donde."rolesTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
+    //if ($parametro3<>""){ $donde=$donde."rolesTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
     $consulta="SELECT rolesToUsersTable.id_role , rolesToUsersTable.id_intUser, rolesTable.roleName FROM rolesTable, rolesToUsersTable WHERE ".$donde."rolesTable.id_role=rolesToUsersTable.id_role AND rolesToUsersTable.borrado=0;";
     //SELECT rolesToUsersTable.id_role, intUsersTable.id_intUser, rolesTable.roleName FROM intUsersTable, rolesTable, rolesToUsersTable WHERE intUsersTable.id_intUser='2' AND rolesToUsersTable.id_role=rolesTable.id_role 
     //ORDER BY intUsersTable.intUserName LIMIT ".$paginainicio.",10
@@ -26,23 +26,24 @@ require_once("../../conectar7.php");
     //if ($parametro1<>""){ $donde2=$donde2."intUsersTable.".$criterio1." <> '".$parametro1."' AND ";}
     $consulta2="SELECT rolesTable.id_role as id, rolesTable.roleName as name FROM rolesTable EXCEPT (SELECT rolesToUsersTable.id_role as id, rolesTable.roleName as name FROM rolesToUsersTable, rolesTable WHERE rolesToUsersTable.id_intUser=".$parametro1." AND rolesToUsersTable.borrado=0);";  
     //echo $consulta2;
-    
-    
-    
     $rs_tabla = mysqli_query($conexion,$consulta);
     $nr_usuarios= mysqli_num_rows($rs_tabla);
-    
+    //
+    $query_nroLineas="SELECT id_role FROM rolesTable";
+    $rs_nroLineas = mysqli_query($conexion,$query_nroLineas);
+    $nr_Lineas= mysqli_num_rows($rs_nroLineas);
+
+
     if ($tipoBusqueda=='listar') {
         echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
 
-        echo '                      <div id="cabeceraResultado" class="header"> 
-        Roles Asignados al Usuario </div>';
+        echo '                      <div id="cabeceraResultado" class="header"><span id="tRolesAsignados">Roles Asignados al Usuario</span></div>';
         echo '				<div id="frmResultado">';
         echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
         echo '					<tr class="cabeceraTabla">';
-        echo '						<td width="20%"><div align="center">CODIGO DEL ROLE</div></td>';
-        echo '						<td width="60%"><div align="center">NOMBRE DEL ROLE</div></td>';
-        echo '						<td width="20%"><div align="center">QUITAR DE LA LISTA</div></td>';
+        echo '						<td width="20%"><div align="center"><span id="tCodigoRole">CODIGO DEL ROLE</span></div></td>';
+        echo '						<td width="60%"><div align="center"><span id="tNombreDelRol">NOMBRE DEL ROLE</span></div></td>';
+        echo '						<td width="20%"><div align="center"><span id="tQuitarLista">QUITAR DE LA LISTA</span></div></td>';
         echo '					</tr>';
         echo '			</table>';
         echo '			</div>';
@@ -71,9 +72,9 @@ require_once("../../conectar7.php");
     echo '				<div id="frmResultado">';
     echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
     echo '					<tr class="cabeceraTabla">';
-    echo '						<td width="20%"><div align="center">CODIGO DEL ROLE</div></td>';
-    echo '						<td width="60%"><div align="center">NOMBRE DEL ROLE</div></td>';
-    echo '						<td width="20%"><div align="center">AGREGAR A LA LISTA</div></td>';
+    echo '						<td width="20%"><div align="center"><span id="tCodigoRole">CODIGO DEL ROLE</span></div></td>';
+    echo '						<td width="60%"><div align="center"><span id="tNombreDelRol">NOMBRE DEL ROLE</span></div></td>';
+    echo '						<td width="20%"><div align="center"><span id="tAgregarLista">AGREGAR A LA LISTA</span></div></td>';
     echo '					</tr>';
     echo '			</table>';
     echo '			</div>';

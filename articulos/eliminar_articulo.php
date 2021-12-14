@@ -5,6 +5,7 @@ header('Pragma: no-cache');
 require_once("../conectar7.php"); 
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
+require_once("../funciones/cargaImagenes.php");
 
 //require_once("../barcode/barcode.php");
 
@@ -21,6 +22,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
@@ -53,7 +55,7 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 						<tr>
                             <td width="22%"><span  id="tcodigo">Codigo</span>:</td>
 						    <td width="38%"><? echo mysqli_result($rs_query,0,"codarticulo")?></td>
-					        <td width="40%" rowspan="11" align="center" valign="top"><img src="../fotos/<? echo mysqli_result($rs_query,0,"imagen")?>" width="160px" height="140px" border="1"></td>
+					        <td width="40%" rowspan="11" align="center" valign="top"><img src="<?php echo traerUrlImagenProducto(mysqli_result($rs_query,0,"imagen")); ?>" width="160px" height="140px" border="1"></td>
 						</tr>
 						<tr>
 							<td width="22%"><span  id="trefren">Referencia</span></td>

@@ -205,11 +205,11 @@ if ($accion=="convertir") {
 		}
 
 		function imprimir(codpresupuesto) {
-			window.open("../fpdf/imprimir_presupuesto.php?codpresupuesto="+codpresupuesto);
+			window.open("../fpdf/imprimir_presupuesto.php?codpresupuesto="+codpresupuesto+"&lang="+getLanguajeCode());
 		}
 
 		function imprimirf(codfactura) {
-			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura);
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
 		}
 
 		</script>

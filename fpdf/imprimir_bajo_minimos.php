@@ -3,14 +3,14 @@
 
 define('FPDF_FONTPATH','font/');
 require('mysqli_table.php');
-
+$cadena = '';
 $empresa=$_POST["cmbempresa"];
 if ($empresa==0) { require_once("comunes.php"); }
 if ($empresa==1) { require_once("comunes2.php"); }
-
 require_once("../conectar7.php"); 
 require_once("../utiles/fecha_hispana.php");
-
+require_once("../funciones/changelanguage.php");
+$lang = new ChangeLanguage();
 $pdf=new PDF();
 $pdf->Open();
 $pdf->AddPage();
@@ -27,12 +27,12 @@ $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',16);
 $pdf->SetY(50);
 $pdf->SetX(0);
-$pdf->MultiCell(220,6,"Listado de Articulos bajo mnimos",0,'C',0);
+$pdf->MultiCell(220,6,$lang->t('listado_articulos_bajo_minimos'),0,'C',0);
 
 $pdf->Ln();    
 
 //Ttulos de las columnas
-$header=array('Item','Familia','Cod. Artculo','Descripcin','Costo','Stock','Bajo minimos');
+$header=array($lang->t('item'),$lang->t('familia'),$lang->t('cod_artculo'),$lang->t('descripcion'),$lang->t('costo'),$lang->t('stock'),$lang->t('bajo_minimos'));
 
 //Colores, ancho de lnea y fuente en negrita
     $pdf->SetFillColor(200,200,200);

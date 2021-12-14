@@ -7,6 +7,9 @@ require_once("../mysqli_result.php");
 <html>
 <head>
 <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../../funciones/languages/changelanguage.js"></script>
+
 </head>
 <script language="javascript">
 
@@ -85,7 +88,7 @@ if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%
   </table>
 		<?php 
 		}  else { 
-			echo "Este proveedor no ha servido ning&uacute;n art&iacute;culo hasta el momento";
+			echo '<span id="msjProveedorSinArticulos">Este proveedor no ha servido ning&uacute;n art&iacute;culo hasta el momento</span>';
 		} ?>
 <iframe id="frame_datos" name="frame_datos" width="0%" height="0" frameborder="0">
 	<ilayer width="0" height="0" id="frame_datos" name="frame_datos"></ilayer>

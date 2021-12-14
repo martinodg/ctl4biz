@@ -5,11 +5,25 @@
     <link rel='stylesheet' media='screen and (max-width: 700px)' href='../../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 701px) and (max-width: 959px)' href='../../estilos/login.css' />
     <link rel='stylesheet' media='screen and (min-width: 960px)' href='../../estilos/login.css' />
-
-        <script type="text/javascript" src="../../jquery/jquery331.js"></script>
-        <script type="text/javascript" src="../../funciones/languages/changelanguage.js"></script>
+    <script type="text/javascript" src="../../jquery/jquery331.js"></script>
+    <script type="text/javascript" src="../../funciones/languages/changelanguage.js"></script>
     <script type="text/javascript" src="../../funciones/login.js"></script>
     <script language="javascript">
+        // validate avatar
+        function valAvatar(){
+            var fileName = $("#avatarfile").val();
+            if(fileName.length > 0){
+                var idxDot = fileName.lastIndexOf(".") + 1;
+                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                if (["png"].includes(extFile)){
+                    return true;
+                } else {
+                    talert('seleccionarAvatar')
+                    $("#avatarfile").val("")
+                    return false;
+                }
+            }
+        }
         //get proceso code from Url hash on last page.
         var usuario = window.location.hash.substring(1);
         buscausuario(usuario);
@@ -25,12 +39,11 @@
         function limpiar() {
             document.getElementById("formulario").reset();
         }
-
         function cancelar() {
             location.href="index.php";
         }
-
         function modificausuario() {
+            valAvatar();
             var status = $("#uActivo").prop('checked');
             if (status == true) {
                 var codstatus="4";
@@ -42,58 +55,63 @@
                     var codstatus="4";
                 }
             }
-            //alert(codstatus);
-            $.get( "guardarusuario.php" , { accion : 'modificar',
-                                            name : document.getElementById('name').value,
-                                            email : document.getElementById('email-field').value,
-                                            password : document.getElementById('password-field').value,
-                                            estado : codstatus
-                                        }, function ( data ) { 
-                                                            $('#div_datos').html( data );
-                                                            location.href="index.php";
-                                                            }
-                );                            
+            $('#estado').val(codstatus);
+            $.ajax({
+                type: "POST",
+                async: false,
+                cache: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                url: "guardarusuario.php",
+                data: new FormData($( 'form[name=frmUser]')[0]),
+                success: function( data )
+                {
+                    $('#div_datos').html( data );
+                    location.href="index.php";
+                }
+            });
         }
         //search user
         function buscausuario(usuario) {
             //alert(usuario);
             $.getJSON("./buscarUsuario.php", {
-                                                    criterio1 : 'id_intUser',
-                                                    parametro1 : usuario,
-                                                    paginainicio: '0',
-                                                    tipoBusqueda: 'modificar'
-                                                },
-                                                function(data) {
-                                                                //alert(data.nombre);
-                                                                $('#name').val(data.nombre);
-                                                                $('#password-field').val(data.clave);
-                                                                $('#email-field').val(data.mail);
-                                                                $('#password-validation-field').val(data.clave);
-                                                                $('#email-validation-field').val(data.mail);
-                                                                var uActivo = data.codestado;
-                                                                if (uActivo == "4") {
-                                                                    $('input[type="checkbox"]').attr('checked', true);
-                                                                } else {
-                                                                    $('input[type="checkbox"]').attr('checked', false);
-                                                                }
-                                                                //$('#div_datos').html( data );
-                                                                //calculaPaginacion();
-                                                                }
-                        );                        
+                criterio1 : 'id_intUser',
+                parametro1 : usuario,
+                paginainicio: '0',
+                tipoBusqueda: 'modificar'
+            },
+            function(data) {
+                $('#name').val(data.nombre);
+                $('#password-field').val(data.clave);
+                $('#email-field').val(data.mail);
+                $('#password-validation-field').val(data.clave);
+                $('#email-validation-field').val(data.mail);
+                var uActivo = data.codestado;
+                if (uActivo == "4") {
+                    $('input[type="checkbox"]').attr('checked', true);
+                } else {
+                    $('input[type="checkbox"]').attr('checked', false);
+                }
+                //$('#div_datos').html( data );
+                //calculaPaginacion();
+                }
+            );
         }
         //procs search fucnction
         function buscaRole(usuario){
-                                    $.get( "buscarRole.php" , { criterio1 : 'id_intUser',
-                                                                    parametro1 : usuario,
-                                                                    tipoBusqueda: 'listar'
-                                                                    //paginainicio : document.getElementById('iniciopagina').value
-                                                              },function ( data ) { 
-                                                                                        $('#div_datos').html( data );
-                                                                                        //calculaPaginacion();
-                                                                                  }
-                                         );
-                                    
-                              }
+            $.get( "buscarRole.php" , {
+                criterio1 : 'id_intUser',
+                parametro1 : usuario,
+                tipoBusqueda: 'listar'
+                //paginainicio : document.getElementById('iniciopagina').value
+              },function ( data ) {
+                    $('#div_datos').html( data );
+                    langchange();
+                    //calculaPaginacion();
+              }
+             );
+        }
         function ABRole(idRole,id_intUser,action){
             //alert(idRole+action+id_intUser);
             $.get( "ABRole.php" , { role : idRole,
@@ -105,46 +123,6 @@
                                                         }
                  );
         }
-        // validate mail function
-   /*     function valmail(){
-            var inputemail = $("#email-field").val();
-            var emailval =  $("#email-validation-field").val();
-            //alert(inputpass + "es igual a:?" + inputval);
-            console.log(inputemail + "es igual a:?" + emailval);
-            if (inputemail == emailval && emailval != "") {
-                $(".email-validation-icon-wrapper").removeClass("passdistinta");
-                $(".email-validation-icon-wrapper").addClass("passigual");
-                togglSub();
-            }
-            if (inputemail != emailval) {
-                $(".email-validation-icon-wrapper").removeClass("passigual");
-                $(".email-validation-icon-wrapper").addClass("passdistinta");
-                togglSub();
-            }
-
-        }
-
-   
-
-        // validate pass function
-        function valpass(){
-            //alert();
-            var inputpass = document.getElementById("password-field").value;
-            var inputval = document.getElementById("password-validation-field").value;
-            console.log(inputpass + "es igual a:?" + inputval);
-            if (inputpass == inputval && inputval != "") {
-                $(".validation-icon-wrapper").removeClass("passdistinta");
-                $(".validation-icon-wrapper").addClass("passigual");
-                togglSub();
-            }
-            if (inputpass != inputval) {
-                $(".validation-icon-wrapper").removeClass("passigual");
-                $(".validation-icon-wrapper").addClass("passdistinta");
-                togglSub();
-            }
-
-        }*/
-
         $(document).ready(function() {
             window.onload = function(){
             valmail();
@@ -160,13 +138,13 @@
 <body>
     <div id="content_login">
        
-    <div id="cabeceraResultado" class="header"> 
-    Detalles del Usuario</div>
-            <div class="column2" style="background-color:#eee;">
+        <div id="cabeceraResultado" class="header"><span id="tDetalleUsuario">Detalles del Usuario</span></div>
+            <div class="column2" style="background-color:#eee; height:350px;">
                 <center>
                     <form name="frmUser" align="center">
+                        <input type="hidden" name="accion" value="modificar" />
                         <div class="message">
-                            <?php if((isset($message))!="") { echo $message; } ?>
+                            <?php if(!empty($message)) { echo $message; } ?>
                         </div>
                         <br> <br>
                         <span  id="nombre" class="loginText">Nombre de Usuario:</span><br>
@@ -191,8 +169,15 @@
 
                 </center>
             </div>
-            <div class="column2" style="background-color:#eee;">
+            <div class="column2" style="background-color:#eee;height:350px;">
                 <center>
+                    <br> <br>
+                    <span id="timgfrmavatar" class="loginText">Avatar</span><br>
+                    <div class="avatar-validation-wrapper">
+                        <input type="file" name="avatarfile" id="avatarfile" class="input" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible;">
+                        <div class="avatar-validation-icon-wrapper formatovalido"></div>
+                    </div>
+
                     <br> <br>
 
                    
@@ -210,8 +195,11 @@
                         </div>
                     </div>
                     <br> <br> <br>
-                    <div><span  id="usuarioDesactivado" class="loginText">Inactivo </span><label class="switch"> <input type="checkbox" id="uActivo" name="uActivo" > <span class="slider round"></span> </label> <span  id="usuarioActivo" class="loginText">Activo</span></div>
+                    <div><span  id="usuarioDesactivado" class="loginText"><span id="tinactivo">Inactivo</span> </span><label class="switch">
+                            <input type="checkbox" id="uActivo" name="uActivo" > <span class="slider round"></span> </label>
+                        <span  id="usuarioActivo" class="loginText"><span id="tactivo">Activo</span></span></div>
 
+                    <input type="hidden" id="estado" name="estado" value="4">
                     <input type="hidden" id="language" name="language" value="0">
 
 
@@ -219,7 +207,7 @@
             </div>
 
             <div id="botonBusqueda" align="right">
-                <button type="button" id="btnsubmit" onClick="modificausuario()" onMouseOver="style.cursor=cursor" disabled=""> <img src="../../img/disco.svg" alt="Nuevo" /> <span>Guardar modificacion</span> </button>
+                <button type="button" id="btnsubmit" onClick="modificausuario()" onMouseOver="style.cursor=cursor" disabled=""> <img src="../../img/disco.svg" alt="Nuevo" /> <span id="tGuardarModificacion" >Guardar modificacion</span> </button>
 
             </div>
 

@@ -52,7 +52,7 @@ if ($cadena_busqueda<>"") {
 		function imprimir() {
 			var codubicacion=document.getElementById("codubicacion").value;
 			var nombre=document.getElementById("nombre").value;
-			window.open("../fpdf/ubicaciones.php?codubicacion="+codubicacion+"&nombre="+nombre);
+			window.open("../fpdf/ubicaciones.php?codubicacion="+codubicacion+"&nombre="+nombre+"&lang="+getLanguajeCode());
 		}
 		
 		function buscar() {
