@@ -22,7 +22,8 @@ require_once("../racf/purePhpVerify.php");
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">   
 		
-        
+        var desc_stock;
+        var cod_art;
 		var cursor;
 		if (document.all) {
 		// Está utilizando EXPLORER
@@ -192,12 +193,11 @@ require_once("../racf/purePhpVerify.php");
 				var vprecio=$('#iprecio').val();
 				var vimporte=$('#importe').val();
 				var vdscto=$('#descuento').val();
-                var vimpuesto=$('#impuesto').val();
-                var valimpuesto=parseFloat($('#impuesto').find('option:selected').text());
-                if (Number.isNaN(valimpuesto)){
-                    talert('msg_impuesto_denifido');
-                    return false;
-                }
+				var vimpuesto=$('#impuesto').val();
+                desc_stock = vcantidad;
+                cod_art = vcodArticulo;
+
+				
 
 			$.get("../funciones/BackendQueries/insertInvoiceLines.php", { docType:"tempInvoice",
 						codFacturat: vcodFacturat,
@@ -356,7 +356,9 @@ require_once("../racf/purePhpVerify.php");
 			var codfactura=$("#numfactura").val();
 			var codcliente=$("#codcliente").val();
 			var importe=$("#preciototal").val();
-			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe,"miwin","width=700,height=500,scrollbars=yes");			
+            var dstock=desc_stock;
+            var codart=cod_art;
+			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe+"&descstock="+dstock+"&codart="+codart,"miwin","width=700,height=500,scrollbars=yes");
 		}
 		</script>
 	</head>
@@ -508,7 +510,7 @@ require_once("../racf/purePhpVerify.php");
 							<td width="20%"><span  id="descri">DESCRIPCION</span></td>
 							<td width="10%"><span  id="tprecio">PRECIO</span></td>
 							<td width="10%"><span  id="tcant">CANTIDAD</span></td>
-							<td width="10%"><span  id="tundmed">UNIDAD</span></td>
+							<td width="10%"><span ></span></td>
 							<td width="10%"><span  id="tdcto">DCTO </span></td>						
 							<td width="10%"><span  id="timporte">IMPORTE</span></td>
 							<td width="10%"><span  id="tiva">IVA</span></td>
