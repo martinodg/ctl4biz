@@ -1,9 +1,12 @@
 <?php
-<?php
 ob_start();
 define('FPDF_FONTPATH','font/');
 require ('mysqli_table.php');
-require_once("../conectar7.php");  require_once("../mysqli_result.php"); require_once("comunes.php");
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
+require_once("comunes.php");
+require_once("../funciones/changelanguage.php");
+$lang = new ChangeLanguage();
 $pdf=new PDF();
 $pdf->AddPage();
 $pdf->AddPage();
@@ -13,7 +16,7 @@ $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',16);
 $pdf->SetY(20);
 $pdf->SetX(0);
-$pdf->MultiCell(290,6,"Lista de Articulos Tienda",0,'C',0);
+$pdf->MultiCell(290,6,$lang->t('listado_articulos_tienda'),0,'C',0);
 
 $pdf->Ln();    
 	
@@ -37,7 +40,7 @@ $numero_articulos=mysqli_num_rows($rs_articulos);
 			$pdf->MultiCell(220,6,$row["nombre"],0,L,0);
 			
 			//Ttulos de las columnas
-			$header=array('Item','Familia','Referencia','Descripcion','P. Tienda');
+			$header=array($lang->t('item'),$lang->t('familia'),$lang->t('referencia'),$lang->t('descripcion'),$lang->t('p_tienda'));
 			
 			//Colores, ancho de lnea y fuente en negrita
 			$pdf->SetFillColor(200,200,200);

@@ -14,6 +14,7 @@ $hoy=date("d/m/Y");
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
 		function inicio() {
@@ -45,7 +46,7 @@ $hoy=date("d/m/Y");
 			var fechainicio=document.getElementById("fechainicio").value;
 			var fechafin=document.getElementById("fechafin").value;
 			var denominacion=document.getElementById("denominacion").value;
-			window.open("../fpdf/copiasseguridad.php?fechainicio="+fechainicio+"&denominacion="+denominacion+"&fechafin="+fechafin);
+			window.open("../fpdf/copiasseguridad.php?fechainicio="+fechainicio+"&denominacion="+denominacion+"&fechafin="+fechafin+"&lang="+getLanguajeCode());
 		}
 		
 		function paginar() {

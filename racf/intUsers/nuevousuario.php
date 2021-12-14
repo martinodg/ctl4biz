@@ -9,6 +9,19 @@
     <script type="text/javascript" src="../../funciones/languages/changelanguage.js"></script>
     <script type="text/javascript" src="../../funciones/login.js"></script>
     <script type="text/javascript">
+        // validate avatar
+        function valAvatar(){
+            var fileName = $("#avatarfile").val();
+            var idxDot = fileName.lastIndexOf(".") + 1;
+            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+            if (["png"].includes(extFile)){
+                return true;
+            } else {
+                talert('seleccionarAvatar')
+                $("#avatarfile").val("")
+                return false;
+            }
+        }
         function cancelar() {
             location.href="index.php";
         }
@@ -27,21 +40,23 @@
         }
 
         function creausuario() {
-            $.ajax({
-                type: "POST",
-                async: false,
-                cache: false,
-                contentType: false,
-                enctype: 'multipart/form-data',
-                processData: false,
-                url: "guardarusuario.php",
-                data: new FormData($( 'form[name=frmUser]')[0]),
-                success: function( data )
-                {
-                    $('#div_datos').html( data );
-                    location.href="index.php";
-                }
-            });
+            if(valAvatar()){
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    enctype: 'multipart/form-data',
+                    processData: false,
+                    url: "guardarusuario.php",
+                    data: new FormData($( 'form[name=frmUser]')[0]),
+                    success: function( data )
+                    {
+                        $('#div_datos').html( data );
+                        location.href="index.php";
+                    }
+                });
+            }
         }
 
     </script>

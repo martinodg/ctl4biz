@@ -20,7 +20,12 @@ require_once("../../conectar7.php");
 
 
     $donde="intUsersTable.codstatus=estado.codestado AND ";
-    if ($parametro1<>""){ $donde=$donde."intUsersTable.".$criterio1." LIKE '".$parametro1."%' AND ";}
+    if ($parametro1<>"")
+        if(is_numeric($parametro1)){
+            $donde=$donde."intUsersTable.".$criterio1."= ".intval($parametro1)." AND ";
+        }else{
+            $donde=$donde."intUsersTable.".$criterio1." LIKE '".$parametro1."%' AND ";
+        }
     if ($parametro2<>""){ $donde=$donde."intUsersTable.".$criterio2." LIKE '".$parametro2."%' AND ";}
     if ($parametro3<>""){ $donde=$donde."intUsersTable.".$criterio3." LIKE '".$parametro3."%' AND ";}
     $consulta="SELECT intUsersTable.id_intUser, intUsersTable.intUser_name, intUsersTable.user_name, estado.estado, intUsersTable.password, intUsersTable.codstatus FROM intUsersTable, estado WHERE ".$donde."intUsersTable.borrado=0 ORDER BY intUsersTable.intUser_name LIMIT ".$paginainicio.",10;";
@@ -31,14 +36,13 @@ require_once("../../conectar7.php");
     
     if ($tipoBusqueda=='listar') {
         echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
-
         echo '                      <div id="cabeceraResultado" class="header"> 
-        Listado de Usuarios </div>';
+        <span id="tListadoUsuario">Listado de Usuarios</span> </div>';
         echo '				<div id="frmResultado">';
         echo '			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
         echo '					<tr class="cabeceraTabla">';
-        echo '						<td width="40%">NOMBRE DE USUARIO</td>';
-        echo '						<td width="40%">E-MAIL DEL USUARIO</td>';
+        echo '						<td width="40%"><span id="tnombre">NOMBRE DE USUARIO</span></td>';
+        echo '						<td width="40%"><span id="tEmailUsuario">E-MAIL DEL USUARIO</span></td>';
         echo '						<td width="10%"><span  id="testado">ESTADO</span></td>';
         echo '						<td width="10%"><span  id="tmodificar">MODIFICAR</span></td>';
         echo '					</tr>';

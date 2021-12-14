@@ -1,6 +1,6 @@
 <?php
 $language="spanish";
-$Busqueda="Busqueda de Usuarios";
+$Busqueda='<span id="tbusquedaUsuario">Busqueda de Usuarios</span>';
 $id_resource='8';
 $id_sresource='32';
 require_once("../purePhpVerify.php");
@@ -37,22 +37,24 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
           //modify proc function
           //---------------------------------------------------------------------------------------------------           
           //procs search fucnction
-          function buscausuario(){
-                                    $.get( "buscarUsuario.php" , { criterio1 : 'codstatus',
-                                                                    parametro1 : document.getElementById('param1').value,
-                                                                    criterio2 : document.getElementById('crit2').value,
-                                                                    parametro2 : document.getElementById('param2').value,
-                                                                    criterio3 : document.getElementById('crit3').value,
-                                                                    parametro3 : document.getElementById('param3').value,
-                                                                    tipoBusqueda: 'listar',
-                                                                    paginainicio : document.getElementById('iniciopagina').value
-                                                              },function ( data ) { 
-                                                                                        $('#div_datos').html( data );
-                                                                                        calculaPaginacion();
-                                                                                  }
-                                         );
-                                    
-                              }
+          function buscausuario()
+          {
+                $.get( "buscarUsuario.php" , { criterio1 : 'codstatus',
+                                                parametro1 : document.getElementById('param1').value,
+                                                criterio2 : document.getElementById('crit2').value,
+                                                parametro2 : document.getElementById('param2').value,
+                                                criterio3 : document.getElementById('crit3').value,
+                                                parametro3 : document.getElementById('param3').value,
+                                                tipoBusqueda: 'listar',
+                                                paginainicio : document.getElementById('iniciopagina').value
+                                          },function ( data ) {
+                                                                    $('#div_datos').html( data );
+                                                                    calculaPaginacion();
+                                                                    langchange();
+                                                              }
+                     );
+
+          }
           //---------------------------------------------------------------------------------------------------         
           //modify proc function modificar('.$row[0].')
           function modificar(coduser) {
@@ -221,7 +223,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                 <tr>
-				<td width="50%" class="paginar" align="left">N de Usuarios encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                    <td width="50%" class="paginar" align="left"><span id="tnUsuariosEncontrados">N de Usuarios encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                 </tr>

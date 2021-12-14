@@ -58,7 +58,7 @@ if ($cadena_busqueda<>"") {
 			var provincia=document.getElementById("cboProvincias").value;
 			var localidad=document.getElementById("localidad").value;
 			var telefono=document.getElementById("telefono").value;
-			window.open("../fpdf/trabajadores.php?codtrabajador="+codtrabajador+"&nombre="+nombre+"&nif="+nif+"&provincia="+provincia+"&localidad="+localidad+"&telefono="+telefono);
+			window.open("../fpdf/trabajadores.php?codtrabajador="+codtrabajador+"&nombre="+nombre+"&nif="+nif+"&provincia="+provincia+"&localidad="+localidad+"&telefono="+telefono+"&lang="+getLanguajeCode());
 		}
 
 		function buscar() {

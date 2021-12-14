@@ -6,15 +6,11 @@ require_once("../conectar7.php");
 require_once("../funciones/fechas.php");
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
+require_once("../funciones/changelanguage.php");
+$lang = new ChangeLanguage();
 $pdf=new PDF();
 $pdf->AddPage();
-
-
 $pdf->Ln(25);
-
-
-
-  
 $codalbaran=$_GET["codalbaran"];
   
 $consulta = "Select * from albaranes,clientes where albaranes.codalbaran='$codalbaran' and albaranes.codcliente=clientes.codcliente";
@@ -30,7 +26,7 @@ $lafila=mysqli_fetch_array($resultado);
     $pdf->SetLineWidth(.2);
     $pdf->SetFont('Arial','B',10);	
 	
-    $pdf->Cell(40,65,'ALBARAN');
+    $pdf->Cell(40,65,$lang->t('albaran'));
 	$pdf->SetX(10);	
 
     $pdf->Cell(95);
@@ -70,10 +66,10 @@ $lafila=mysqli_fetch_array($resultado);
     $pdf->SetFont('Arial','B',8);
 	
     $pdf->Cell(80);
-    $pdf->Cell(30,4,"CIF/NIF",1,0,'C',1);
-	$pdf->Cell(30,4,"Cod. Cliente",1,0,'C',1);
-	$pdf->Cell(30,4,"Fecha",1,0,'C',1);	
-	$pdf->Cell(20,4,"Cod. Albaran",1,0,'C',1);
+    $pdf->Cell(30,4,$lang->t('cif_nif'),1,0,'C',1);
+	$pdf->Cell(30,4,$lang->t('cod_cliente'),1,0,'C',1);
+	$pdf->Cell(30,4,$lang->t('fecha'),1,0,'C',1);
+	$pdf->Cell(20,4,$lang->t('cod_albaran'),1,0,'C',1);
 	$pdf->Ln(4);
 	
 	$pdf->Cell(80);
@@ -101,12 +97,12 @@ $lafila=mysqli_fetch_array($resultado);
     $pdf->SetLineWidth(.2);
     $pdf->SetFont('Arial','B',8);
 	
-    $pdf->Cell(40,4,"Referencia",1,0,'C',1);
-	$pdf->Cell(80,4,"Descripcion",1,0,'C',1);
-	$pdf->Cell(20,4,"Cantidad",1,0,'C',1);	
-	$pdf->Cell(15,4,"Precio",1,0,'C',1);
-	$pdf->Cell(15,4,"% Desc.",1,0,'C',1);	
-	$pdf->Cell(20,4,"Importe",1,0,'C',1);
+    $pdf->Cell(40,4,$lang->t('referencia'),1,0,'C',1);
+	$pdf->Cell(80,4,$lang->t('descripcion'),1,0,'C',1);
+	$pdf->Cell(20,4,$lang->t('cantidad'),1,0,'C',1);	
+	$pdf->Cell(15,4,$lang->t('precio'),1,0,'C',1);
+	$pdf->Cell(15,4,$lang->t('p_desc'),1,0,'C',1);	
+	$pdf->Cell(20,4,$lang->t('importe'),1,0,'C',1);
 	$pdf->Ln(4);
 			
 			
@@ -194,10 +190,10 @@ $lafila=mysqli_fetch_array($resultado);
     $pdf->SetLineWidth(.2);
     $pdf->SetFont('Arial','B',8);
 	
-    $pdf->Cell(30,4,"Base imponible",1,0,'C',1);
-	$pdf->Cell(30,4,"Cuota IVA",1,0,'C',1);
-	$pdf->Cell(30,4,"IVA",1,0,'C',1);	
-	$pdf->Cell(35,4,"TOTAL",1,0,'C',1);
+    $pdf->Cell(30,4,$lang->t('base_imponible'),1,0,'C',1);
+	$pdf->Cell(30,4,$lang->t('couta_iva'),1,0,'C',1);
+	$pdf->Cell(30,4,$lang->t('iva'),1,0,'C',1);
+	$pdf->Cell(35,4,$lang->t('total'),1,0,'C',1);
 	$pdf->Ln(4);
 	
     $pdf->SetFillColor(255,255,255);
@@ -221,7 +217,7 @@ $lafila=mysqli_fetch_array($resultado);
 	$pdf->Cell(30,4,"$impo",1,0,'R',1);	
     $total=sprintf("%01.2f", $total);
 	$total2= number_format($total,2,",",".");	
-	$pdf->Cell(35,4,"$total2"." Euros",1,0,'R',1);
+	$pdf->Cell(35,4,"$total2"." ".$lang->t('euro'),1,0,'R',1);
 	$pdf->Ln(4);
 
 

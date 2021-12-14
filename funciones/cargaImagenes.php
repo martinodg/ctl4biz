@@ -1,14 +1,29 @@
 <?php
+define('AVATAR_DIRECTORY','users');
+
 /**
- * Retorna la ruta de la imagen
- * @param string $filename Url de la imagen
- * @return string
+ * Retornan la de la db
+ * @param string $fileName
  * @throws Exception
  */
-function traerUrlAvatar($username)
+function generarUrlDB($fileName)
 {
-    sanitizarNombreDirectorio($username);
-    return retornarUrlAvatarsEmpresa().$username.'.png';
+    $directorioEmpresa = retornarNombreDirectorioEmpresa();
+    return '../../img/'.$directorioEmpresa.'/'.AVATAR_DIRECTORY.'/'.$fileName;
+}
+
+/**
+ * Salvar
+ * @param $nombreUsuario
+ * @param $valorFile
+ * @return false|string[]
+ * @throws Exception
+ */
+function salvarAvatarUsuario($nombreUsuario, $valorFile){
+    if(isset($_FILES[$valorFile])){
+        return cargarAvatarUsuario($nombreUsuario,$_FILES[$valorFile]);
+    }
+    return false;
 }
 
 /**
@@ -27,10 +42,10 @@ function traerUrlImagenProducto($filename)
  * @return string
  * @throws Exception
  */
-function retornarNombreDirectorioItemsEmpresa()
+function retornarNombreDirectorioEmpresa()
 {
     if(!isset($_SESSION['BaseDeDatos'])){
-        throw new Exception('No esta definido el directorio de la empresa.');
+        throw new ErrorException('No esta definido el directorio de la empresa.');
     }
     return $_SESSION['BaseDeDatos'];
 }
@@ -42,10 +57,30 @@ function retornarNombreDirectorioItemsEmpresa()
  */
 function retornarPathAvatarEmpresa (){
     $directorioEmpresa = retornarPathEmpresa();
-    return $directorioEmpresa.DIRECTORY_SEPARATOR.'users'.DIRECTORY_SEPARATOR;
+    $path =  $directorioEmpresa.DIRECTORY_SEPARATOR.AVATAR_DIRECTORY.DIRECTORY_SEPARATOR;
+    generarExistenciaDirectorio($path);
+    return $path;
 }
 
-
+/**
+ * @param string $directoryPath
+ * @return string
+ * @throws ErrorException
+ */
+function generarExistenciaDirectorio($directoryPath) {
+    //revisar si el directorio existe
+    if(!file_exists($directoryPath)){
+        try{
+            $d =  mkdir($directoryPath,0777,true);
+            if($d === false){
+                throw  new ErrorException(sprintf('El directorio %s no pudo ser creado',$directoryPath),1,1);
+            }
+        }catch(Exception $e){
+            throw  new ErrorException(sprintf('El directorio %s no pudo ser creado : %s',$directoryPath,$e->getMessage()),1,1);
+        }
+    }
+    return strval($directoryPath);
+}
 
 /**
  * Retorna el path de los items de la empresa
@@ -53,8 +88,10 @@ function retornarPathAvatarEmpresa (){
  * @throws Exception
  */
 function retornarPathItemEmpresa (){
-    $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
-    return $directorioEmpresa.DIRECTORY_SEPARATOR.'items'.DIRECTORY_SEPARATOR;
+    $directorioEmpresa = retornarPathEmpresa();
+    $path =  $directorioEmpresa.DIRECTORY_SEPARATOR.'items'.DIRECTORY_SEPARATOR;
+    generarExistenciaDirectorio($path);
+    return $path;
 }
 
 /**
@@ -83,8 +120,10 @@ function retornarUrlItemEmpresa (){
  * @throws Exception
  */
 function retornarPathEmpresa (){
-    $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
-    return __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.$directorioEmpresa;
+    $directorioEmpresa = retornarNombreDirectorioEmpresa();
+    $path =  __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.$directorioEmpresa;
+    generarExistenciaDirectorio($path);
+    return $path;
 }
 
 /**
@@ -92,7 +131,7 @@ function retornarPathEmpresa (){
  * @throws Exception
  */
 function retornarUrlDiretorioEmpresa (){
-    $directorioEmpresa = retornarNombreDirectorioItemsEmpresa();
+    $directorioEmpresa = retornarNombreDirectorioEmpresa();
     return '/img/'.$directorioEmpresa;
 }
 
@@ -101,7 +140,7 @@ function retornarUrlDiretorioEmpresa (){
  * @return array path  and filename
  * @throws Exception
  */
-function cargarFotorticulo($codigoArticulo,$fileResource)
+function cargarFotoArticulo($codigoArticulo, $fileResource)
 {
     $pathItemEmpresa = retornarPathItemEmpresa();
     $fileTmpPath = $fileResource['tmp_name'];
@@ -161,10 +200,6 @@ function checkImageSize($filePath, $requiredWith, $requiredHeight ){
  * @throws Exception
  */
 function cargarAvatarUsuario($username,$fileResource){
-    ini_set('display_errors', -1);
-    ini_set('display_startup_errors', -1);
-    error_reporting(E_ALL);
-
     sanitizarNombreDirectorio($username);
     $pathItemEmpresa = retornarPathAvatarEmpresa();
     $fileTmpPath = $fileResource['tmp_name'];
@@ -182,7 +217,8 @@ function cargarAvatarUsuario($username,$fileResource){
     }
     return array(
         'path' => $filePath,
-        'fileName' => $newFileName
+        'fileName' => $newFileName,
+        'dbUrl' => generarUrlDB($newFileName),
     );
 }
 
