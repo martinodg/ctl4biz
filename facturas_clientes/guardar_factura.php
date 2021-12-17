@@ -54,7 +54,7 @@ if ($accion=="alta") {
 	$baseimponible=0;
 	$preciototal=0;
 	$cabecera1="Inicio >> Ventas &gt;&gt; Nueva Factura ";
-	$cabecera2="INSERTAR FACTURA ";
+	$cabecera2='<span  id="tinsfactura">INSERTAR FACTURA</span>';
 }
 
 if ($accion=="modificar") {
@@ -152,6 +152,9 @@ if ($accion=="baja") {
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;
 		if (document.all) {
@@ -167,7 +170,8 @@ if ($accion=="baja") {
 		}
 		
 		function imprimir(codfactura) {
-			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura);
+			//window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+"en");
 		}
 		
 		</script>

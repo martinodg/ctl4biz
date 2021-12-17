@@ -50,7 +50,7 @@ if ($cadena_busqueda<>"") {
 		function imprimir() {
 			var codfamilia=document.getElementById("codfamilia").value;
 			var nombre=document.getElementById("nombre").value;
-			window.open("../fpdf/familias.php?codfamilia="+codfamilia+"&nombre="+nombre);
+			window.open("../fpdf/familias.php?codfamilia="+codfamilia+"&nombre="+nombre+"&lang="+getLanguajeCode());
 		}
 		function buscar() {
 			var cadena;

@@ -22,7 +22,8 @@ require_once("../racf/purePhpVerify.php");
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">   
 		
-        
+        var desc_stock;
+        var cod_art;
 		var cursor;
 		if (document.all) {
 		// Está utilizando EXPLORER
@@ -193,7 +194,9 @@ require_once("../racf/purePhpVerify.php");
 				var vimporte=$('#importe').val();
 				var vdscto=$('#descuento').val();
 				var vimpuesto=$('#impuesto').val();
-			
+                desc_stock = vcantidad;
+                cod_art = vcodArticulo;
+
 				
 
 			$.get("../funciones/BackendQueries/insertInvoiceLines.php", { docType:"tempInvoice",
@@ -205,20 +208,24 @@ require_once("../racf/purePhpVerify.php");
 						importe: vimporte, 
 						dscto: vdscto, 
 						impuesto: vimpuesto									                                          
-					}, function (data) { $("#div_datos").html(data);
-						getInvoiceLines('tempInvoice',vcodFacturat,0,0,0,1);
-						calculaTaxYTotal();
-						$('#icodfamilia').val('');
-						$('#icodArticulo').val('');
-						$('#cantidad').val('1');
-						$('#iprecio').val('');
-						$('#importe').val('');
-						$('#descuento').val('0');
-						$('#impuesto').val('');
-						$('#idescripcion').val('');
-						$('#icodbarras').val('');
-                    }
-            );           
+					}, function (data) {
+                        $("#div_datos").html(data);
+                            getInvoiceLines('tempInvoice',vcodFacturat,0,0,0,1);
+                            calculaTaxYTotal();
+                            $('#icodfamilia').val('');
+                            $('#icodArticulo').val('');
+                            $('#cantidad').val('1');
+                            $('#iprecio').val('');
+                            $('#importe').val('');
+                            $('#descuento').val('0');
+                            $('#impuesto').val('');
+                            $('#idescripcion').val('');
+                            $('#icodbarras').val('');
+                        }
+            ).fail(function(error) {
+                console.info(error);
+                alert(error.message);
+            });
 		}
 		function remove(id_line,bimporte,balicuotaProducto) {
 			var vcodfact = $('#codfacturatmp').val();
@@ -342,14 +349,16 @@ require_once("../racf/purePhpVerify.php");
 		
 		function imprimir() {
 			var codfactura=$("#numfactura").val();
-			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura);
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
 		}
 		
 		function pagar() {
 			var codfactura=$("#numfactura").val();
 			var codcliente=$("#codcliente").val();
 			var importe=$("#preciototal").val();
-			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe,"miwin","width=700,height=500,scrollbars=yes");			
+            var dstock=desc_stock;
+            var codart=cod_art;
+			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe+"&descstock="+dstock+"&codart="+codart,"miwin","width=700,height=500,scrollbars=yes");
 		}
 		</script>
 	</head>
@@ -455,6 +464,7 @@ require_once("../racf/purePhpVerify.php");
 			  <!--div id="frmBusqueda"-->
 			  <div id="frameFiltroArticulos">
 				<form id="formulario_lineas" name="formulario_lineas" method="post" action="frame_lineas.php" target="frame_lineas">
+                    <input type="hidden" name="icodfamilia" id="icodfamilia" value="" />
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
 					<td width="10%"><span  id="tcodbarr">Codigo barras</span> </td>

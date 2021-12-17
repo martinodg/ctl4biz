@@ -50,6 +50,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
                                                               },function ( data ) { 
                                                                                         $('#div_datos').html( data );
                                                                                         calculaPaginacion();
+                                                                                        langchange();
                                                                                   }
                                          );
                                     
@@ -222,7 +223,7 @@ if ($language<>"spanish"){$Busqueda="Search for Users";}
 			  <div id="lineaResultado">
 			  <table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0>
                 <tr>
-				<td width="50%" class="paginar" align="left">N de roles encontrados <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+                    <td width="50%" class="paginar" align="left"><span id="tRolesEncontrados">N de roles encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
 				<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
 		          </select></td>
                 </tr>

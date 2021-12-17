@@ -13,7 +13,6 @@ function Header()
 //Pie de pgina
 function Footer()
 {
-  
     $this->SetFont('Arial','',6);
 	$this->SetY(-21);
 	$this->Cell(0,10,'Wolnosc Morza Sp.Z.O.O. - NIP 8992887392',0,0,'C');
