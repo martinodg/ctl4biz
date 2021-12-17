@@ -69,6 +69,37 @@ $directorioItemsEmpresa = '../'.$_SESSION[''];
 							<td width="22%"><span  id="tflia">FAMILIA</span></td>
 							<td width="38%"><?php echo $nombrefamilia?></td>
 				        </tr>
+                        <!--alias Start-->
+                        <?php
+                        $codigodearticulo = mysqli_result($rs_query,0,"codarticulo");
+                        $queryAlias="SELECT * FROM alias_articulos WHERE codarticulo='$codigodearticulo' ORDER BY id_alias ASC ";
+                        $rsAlias_query=mysqli_query($conexion,$queryAlias);
+                        $row_alias = mysqli_fetch_row($rsAlias_query);
+                        $long_array = count($row_alias);
+                        $alias=mysqli_result($rsAlias_query,0,"alias");
+                        ?>
+                       <tr>
+                            <td width="22%"><span  id="talias">ALIAS</span></td>
+                            <td width="38%">
+                                <?php
+                                if(empty($alias)){
+                                    echo 'Ninguno';
+                                }
+                                else {
+                                    $connt = 0;
+                                    while ($connt < $long_array) {
+                                        $alias = mysqli_result($rsAlias_query, $connt, "alias");
+                                        echo $alias;
+                                        $connt++;
+                                        if ($connt < $long_array - 1) {
+                                            echo " / ";//separador
+                                        }
+                                    }
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                        <!--alias End-->
 						<tr>
 							<td width="22%"><span  id="tdescri">Descripci&oacute;n</span></td>
 						    <td width="38%"><? echo mysqli_result($rs_query,0,"descripcion")?></td>
@@ -200,7 +231,7 @@ $directorioItemsEmpresa = '../'.$_SESSION[''];
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> ><span  id="taceptar">Aceptar</span></td> </button>
+					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"><img src="../img/ok.svg" alt="limpiar" /> <span  id="taceptar">Aceptar</span></td> </button>
 
 			  </div>
 			 </div>
