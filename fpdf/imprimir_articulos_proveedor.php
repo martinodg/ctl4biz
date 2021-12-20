@@ -1,9 +1,12 @@
 <?php
-<?php
 ob_start();
 define('FPDF_FONTPATH','font/');
 require ('mysqli_table.php');
-require_once("../conectar7.php");  require_once("../mysqli_result.php"); require_once("comunes.php");
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
+require_once("comunes.php");
+require_once("../funciones/changelanguage.php");
+$lang = new ChangeLanguage();
 $pdf=new PDF();
 $pdf->AddPage();
 $pdf->AddPage();
@@ -13,7 +16,7 @@ $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',16);
 $pdf->SetY(20);
 $pdf->SetX(0);
-$pdf->MultiCell(290,6,"Listado de Articulos por Proveedor",0,'C',0);
+$pdf->MultiCell(290,6,$lang->t('listado_articulos_proveedores'),0,'C',0);
 
 $pdf->Ln(8);    
 	
@@ -40,7 +43,16 @@ while ($row = mysqli_fetch_array($query))
 					$pdf->MultiCell(220,6,$row["nombre"],0,L,0);
 					
 					//Ttulos de las columnas
-					$header=array('Item','Cod. Articulo','Referencia','Descripcion','P. Tienda','P. Compra','Stock');
+                    $header=array(
+                        $lang->t('item'),
+                        $lang->t('cod_articulo'),
+                        $lang->t('referencia'),
+                        $lang->t('descripcion'),
+                        $lang->t('p_tienda'),
+                        $lang->t('p_compra'),
+                        $lang->t('stock')
+                    );
+
 					
 					//Colores, ancho de lnea y fuente en negrita
 					$pdf->SetFillColor(200,200,200);

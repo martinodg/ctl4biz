@@ -10,7 +10,7 @@ require_once("../funciones/cargaImagenes.php");
 function salvarFotoArticulo($codigoArticulo, $valorFile){
     if(isset($_FILES[$valorFile])){
         try{
-            $data = cargarFotorticulo($codigoArticulo,$_FILES[$valorFile]);
+            $data = cargarFotoArticulo($codigoArticulo,$_FILES[$valorFile]);
             return $data['fileName'];
         } catch (Exception $e) {
             echo "<h2>No se ha podido cargar la imagen " . $e->getMessage() . " </h2>\n";
@@ -183,6 +183,7 @@ else {
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		var cursor;

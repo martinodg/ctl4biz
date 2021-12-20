@@ -53,6 +53,7 @@
                                                     tipoBusqueda: 'modificar'
                                                 },
                                                 function(data) {
+                langchange();
                                                                 $('#code').val(data.codrole);
                                                                 $('#role_name').val(data.nombre);
                                                                 var rActivo = data.codestado;
@@ -72,7 +73,7 @@
                                                                     tipoBusqueda: 'listar'
                                                               },function ( data ) { 
                                                                                         $('#div_datos').html( data );
-                                                                                       
+                                            langchange();
                                                                                   }
                                          );
                                     
@@ -126,7 +127,7 @@
     <div id="content_login">
        
     <div id="cabeceraResultado" class="header"> 
-    Detalles del role</div>
+        <span id="tDetalleRol">Detalles del role</span></div>
             <div class="column3" style="background-color:#eee;">
                 <center>
                     <form name="frmUser" align="center">
@@ -142,7 +143,7 @@
             <div class="column3" style="background-color:#eee;">
                 <center>
                 <br> <br>
-                        <span  id="nombreDelRole" class="loginText">Nombre de role:</span><br>
+                    <span  id="nombreDelRole" class="loginText"><span id="nombreRol">Nombre de role</span>:</span><br>
                         <input class="input-wrapper" type="text" id="role_name" name="name" >
                     
                 </center>
@@ -150,7 +151,7 @@
             <div class="column3" style="background-color:#eee;">
                 <center>
                     <br> <br>
-                    <div><span  id="roleDesactivado" class="loginText">Inactivo </span><label class="switch"> <input type="checkbox" id="rActivo" name="rActivo" > <span class="slider round"></span> </label> <span  id="roleActivo" class="loginText">Activo</span></div>
+                    <div><span  id="roleDesactivado" class="loginText"><span id="tinactivo">Inactivo</span> </span><label class="switch"> <input type="checkbox" id="rActivo" name="rActivo" > <span class="slider round"></span> </label> <span  id="roleActivo" class="loginText"><span id="tactivo">Activo</span></span></div>
 
                     <input type="hidden" id="language" name="language" value="0">
 
@@ -158,7 +159,7 @@
             </div>
 
             <div id="botonBusqueda" align="right">
-                <button type="button" id="btnmodificar" onClick="modificarole()" onMouseOver="style.cursor=cursor"> <img src="../../img/disco.svg" alt="Modificar" /> <span>Guardar modificacion</span> </button>
+                <button type="button" id="btnmodificar" onClick="modificarole()" onMouseOver="style.cursor=cursor"> <img src="../../img/disco.svg" alt="Modificar" /> <span id="tGuardarModificacion" >Guardar modificacion</span> </button>
 
             </div>
 

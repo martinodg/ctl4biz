@@ -18,7 +18,7 @@ require_once("../mysqli_result.php");
         /* Ajax para completar comboBox cboProvincias basado en el pais elejido en comboBox cboPais */
         $( document ).ready(function(){
                 $('#cboPais').change(function(){
-                    console.log($(this));
+                    //console.log($(this));
                     $.get( "../funciones/BackendQueries/sel_provincias7.php" , { pais : $(this).val() } , function ( data ) {
                         $ ( '#cboProvincias' ) . html ( data ) ;
                     });

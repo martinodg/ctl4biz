@@ -44,7 +44,7 @@ if ($cadena_busqueda<>"") {
 		function imprimir() {
 			var codembalaje=document.getElementById("codembalaje").value;
 			var nombre=document.getElementById("nombre").value;
-			window.open("../fpdf/embalajes.php?codembalaje="+codembalaje+"&nombre="+nombre);
+			window.open("../fpdf/embalajes.php?codembalaje="+codembalaje+"&nombre="+nombre+"&lang="+getLanguajeCode());
 		}
 		
 		function buscar() {

@@ -5,3 +5,4 @@ error_log
 */error_log
 fotos/*
 img/T_*
+img/T_*/**/

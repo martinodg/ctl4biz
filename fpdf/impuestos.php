@@ -1,9 +1,12 @@
 <?php
-<?php
 ob_start();
 define('FPDF_FONTPATH','font/');
 require ('mysqli_table.php');
-require_once("../conectar7.php");  require_once("../mysqli_result.php"); require_once("comunes.php");
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
+require_once("comunes.php");
+require_once("../funciones/changelanguage.php");
+$lang = new ChangeLanguage();
 $pdf=new PDF();
 $pdf->AddPage();
 $pdf->AddPage();
@@ -13,7 +16,7 @@ $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',16);
 $pdf->SetY(40);
 $pdf->SetX(0);
-$pdf->MultiCell(290,6,"Listado de Tipos de Impuestos",0,'C',0);
+$pdf->MultiCell(290,6,$lang->t('listado_tipos_impuestos'),0,'C',0);
 
 $pdf->Ln();    
 	

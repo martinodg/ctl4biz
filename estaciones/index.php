@@ -49,7 +49,7 @@ if ($cadena_busqueda<>"") {
 		function imprimir() {
 			var codestacion=document.getElementById("codestacion").value;
 			var nombre=document.getElementById("nombre").value;
-			window.open("../fpdf/estaciones.php?codestacion="+codestacion+"&nombre="+nombre);
+			window.open("../fpdf/estaciones.php?codestacion="+codestacion+"&nombre="+nombre+"&lang="+getLanguajeCode());
 		}
 		function buscar() {
 			var cadena;

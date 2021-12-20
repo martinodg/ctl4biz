@@ -53,7 +53,7 @@ if ($cadena_busqueda<>"") {
 		function imprimir() {
 			var codimpuesto=document.getElementById("codimpuesto").value;
 			var nombre=document.getElementById("nombre").value;
-			window.open("../fpdf/impuestos.php?codimpuesto="+codimpuesto+"&nombre="+nombre);
+			window.open("../fpdf/impuestos.php?codimpuesto="+codimpuesto+"&nombre="+nombre+"&lang="+getLanguajeCode());
 		}
 		
 		function buscar() {

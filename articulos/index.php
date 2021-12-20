@@ -66,7 +66,7 @@ else{
 			var proveedores=document.getElementById("cboProveedores").value;			
 			var familia=document.getElementById("cboFamilias").value;
 			var ubicacion=document.getElementById("cboUbicacion").value;
-			window.open("../fpdf/articulos.php?codarticulo="+codarticulo+"&referencia="+referencia+"&descripcion="+descripcion+"&proveedores="+proveedores+"&familia="+familia+"&ubicacion="+ubicacion);
+			window.open("../fpdf/articulos.php?codarticulo="+codarticulo+"&referencia="+referencia+"&descripcion="+descripcion+"&proveedores="+proveedores+"&familia="+familia+"&ubicacion="+ubicacion+"&lang="+getLanguajeCode());
 		}
 		
 		function limpiar_busqueda() {
