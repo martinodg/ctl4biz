@@ -24,6 +24,7 @@ function getTranslationText(name)
         "AdminSeguridad": ["Security Administration", "Configuración de Seguridad", "administrowanie bezpieczeństwem"],
         "usuarios": ["Users", "Usuarios", "Użytkowników"],
         "recursos": ["Resources", "Recursos", "Rasoby"],
+        "datacompany": ["Data Company", "Datos de Compania", "Dane Firmy", "Dati aziendali"],
         "ventas_plus": ["Sales +", "Ventas +", "Uprzedaż +"],
         "ventas": ["Sales", "Ventas", "Sprzedaż"],
         "venta_a_mostrador": ["Point of Sales", "Venta en Mostrador", "Punkt sprzedaży"],
@@ -649,6 +650,7 @@ function langchange() {
     $("#usuarios,#tusuarios").text(getTranslationText('usuarios'));
     $("#roles,#troles").text(getTranslationText('roles'));
     $("#recursos,#trecursos").text(getTranslationText('recursos'));
+    $("#tdatacompany").text(getTranslationText('datacompany'));
     $("#ventas_plus").text(getTranslationText('ventas_plus'));
     $("#ventas").text(getTranslationText('ventas'));
     $("#venta_a_mostrador").text(getTranslationText('venta_a_mostrador'));
