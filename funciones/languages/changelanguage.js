@@ -24,7 +24,7 @@ function getTranslationText(name)
         "AdminSeguridad": ["Security Administration", "Configuración de Seguridad", "administrowanie bezpieczeństwem"],
         "usuarios": ["Users", "Usuarios", "Użytkowników"],
         "recursos": ["Resources", "Recursos", "Rasoby"],
-        "datacompany": ["Data Company", "Datos de Compania", "Dane Firmy", "Dati aziendali"],
+        "datacompany": ["Company Data", "Datos de Compania", "Dane Firmy", "Dati aziendali"],
         "ventas_plus": ["Sales +", "Ventas +", "Uprzedaż +"],
         "ventas": ["Sales", "Ventas", "Sprzedaż"],
         "venta_a_mostrador": ["Point of Sales", "Venta en Mostrador", "Punkt sprzedaży"],
