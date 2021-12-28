@@ -25,6 +25,7 @@ function getTranslationText(name)
         "usuarios": ["Users", "Usuarios", "Użytkowników"],
         "recursos": ["Resources", "Recursos", "Rasoby"],
         "datacompany": ["Company Data", "Datos de Compania", "Dane Firmy", "Dati aziendali"],
+        "nombreCompany": ["Company Name", "Nombre de la Compania", "Nazwa Firmy", "Nome della ditta"],
         "ventas_plus": ["Sales +", "Ventas +", "Uprzedaż +"],
         "ventas": ["Sales", "Ventas", "Sprzedaż"],
         "venta_a_mostrador": ["Point of Sales", "Venta en Mostrador", "Punkt sprzedaży"],
@@ -651,6 +652,7 @@ function langchange() {
     $("#roles,#troles").text(getTranslationText('roles'));
     $("#recursos,#trecursos").text(getTranslationText('recursos'));
     $("#tdatacompany").text(getTranslationText('datacompany'));
+    $("#nombreCompany").text(getTranslationText('nombreCompany'));
     $("#ventas_plus").text(getTranslationText('ventas_plus'));
     $("#ventas").text(getTranslationText('ventas'));
     $("#venta_a_mostrador").text(getTranslationText('venta_a_mostrador'));
@@ -833,7 +835,7 @@ function langchange() {
     $("#tentiban").text(getTranslationText('entiban'));
     $("#tctabcaria").text(getTranslationText('ctabcaria'));
     $("#tcodpostal").text(getTranslationText('codpostal'));
-    $("#ttelef, #ttelef2").text(getTranslationText('telef'));
+    $("#ttelef, #ttelef2, #telefCompany").text(getTranslationText('telef'));
     $("#tmovil").text(getTranslationText('movil'));
     $("#tcorrelec").text(getTranslationText('correlec'));
     $("#tdirrcweb").text(getTranslationText('dirrcweb'));
