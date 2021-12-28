@@ -4,6 +4,7 @@ function getTranslationText(name)
 {
     var traductions = {
         //"variable_name":["english","espanol","polski","italian","portugues","frances","Aleman",”español_UE],
+        "company": ["Company", "Compañia", "Spółka", "società", "companhia", "entreprise", "Begleitung"],
         "company_name": ["Company name", "Compañia", "Nazwa Firma", "Nome della ditta", "Nome da empresa", "Nom de la compagnie", "Name der Firma"],
         "nombre": ["Your name", "Nombre del usuario", "Nazwa Uzytkownika", "Il tuo nome", "Seu nome", "Votre nom", "Dein Name"],
         "nombcliente": ["Customer Name", "Nombre Cliente", "Nazwa klienta", "Nome do cliente", "nome do cliente", "Nom du client", "Kundenname"],
@@ -643,6 +644,7 @@ function langchange() {
     $("#details").text(getTranslationText('details'));
     $("#signin").text(getTranslationText('signin'));
     $("#companyCode").text(getTranslationText('companyCode'));
+    $("#company").text(getTranslationText('company'));
     $("#noMember").text(getTranslationText('noMember'));
     $("#copiasRespaldo,#tcopiasRespaldo").text(getTranslationText('copiasRespaldo'));
     $("#hacerrespaldo,#thacerrespaldo").text(getTranslationText('hacerrespaldo'));
