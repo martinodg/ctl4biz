@@ -13,6 +13,16 @@ function generarUrlDB($fileName)
 }
 
 /**
+ * Retorna el valor
+ * @param $valorFile
+ * @return bool
+ */
+function requestHasAvatar($valorFile):bool
+{
+    return !empty($_FILES[$valorFile]['name']);
+}
+
+/**
  * Salvar
  * @param $nombreUsuario
  * @param $valorFile
@@ -20,7 +30,7 @@ function generarUrlDB($fileName)
  * @throws Exception
  */
 function salvarAvatarUsuario($nombreUsuario, $valorFile){
-    if(isset($_FILES[$valorFile])){
+    if(requestHasAvatar($valorFile)){
         return cargarAvatarUsuario($nombreUsuario,$_FILES[$valorFile]);
     }
     return false;
