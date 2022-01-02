@@ -1,4 +1,5 @@
 <?
+$conexion = null;
 header('Cache-Control: no-cache');
 header('Pragma: no-cache');
 
@@ -71,6 +72,8 @@ if ($accion == "baja") {
     $precio_iva = mysqli_result($rs_mostrar, 0, "precio_iva");
     $foto_name = mysqli_result($rs_mostrar, 0, "imagen");
     $codigobarras = mysqli_result($rs_mostrar, 0, "codigobarras");
+    //@todo averiguar para que esta este parametro que tiraba un 500
+    $modificar_ticket= null;
 }
 else {
     $aliasArt1 = $_POST["alias1"];
@@ -116,7 +119,6 @@ else {
         $consultaprevia = "SELECT max(codarticulo) as maximo FROM articulos";
         $rs_consultaprevia = mysqli_query($conexion, $consultaprevia);
         $codarticulo = mysqli_result($rs_consultaprevia, 0, "maximo");
-        //@todo VerConMartin revisar esto, creo que se le podria dejar al autoincrement , si se hace por la imagen se la puede volver un md5 y en caso de precisarla con el codigo de igual manera se puede actulizar la fila despues de cargarla
         if ($codarticulo == "") {
             //@todo VerConMartin en caso de dejar esto creo que deberia ser 1
             $codarticulo = 0;
