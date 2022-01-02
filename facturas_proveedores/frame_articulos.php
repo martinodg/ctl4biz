@@ -32,52 +32,22 @@ $familia=$_POST["cmbfamilia"];
 $referencia=$_POST["referencia"];
 $descripcion=$_POST["descripcion"];
 $todos=$_POST["todos"];
-$where="1=1";
+$where=" borrado = 0 ";
 
-if ($familia<>0) { $where.=" AND articulos.codfamilia='$familia'"; }
-if ($referencia<>"") { $where.=" AND articulos.referencia like '%$referencia%'"; }
-if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%'"; }
+if ($familia<>0) { $where.=" AND codfamilia='$familia'"; }
+if ($referencia<>"") { $where.=" AND referencia like '%$referencia%'"; }
+if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; }
 
  ?>
 <body>
 <?
-
-if ($todos==1) {
-    $consulta="SELECT
-    articulos.*,
-    familias.nombre AS nombrefamilia,
-    unidadesmedidas.nombre AS nombreunidadmedida
-    FROM articulos
-    JOIN familias  
-    ON  familias.codfamilia =  articulos.codfamilia
-    JOIN unidadesmedidas  ON  unidadesmedidas.codunidadmedida =  articulos.codunidadmedida     
-    WHERE   
-        ".$where."
-        AND articulos.borrado = 0
-    ORDER BY
-        articulos.codfamilia ASC,
-        articulos.descripcion ASC";
-}
-if ($todos==0) {
-    $consulta="SELECT
-    artpro.precio AS pcosto,
-    articulos.*,
-    familias.nombre AS nombrefamilia,
-    unidadesmedidas.nombre AS nombreunidadmedida
-    FROM
-        articulos
-    JOIN artpro ON artpro.codarticulo = articulos.codarticulo AND artpro.codfamilia = articulos.codfamilia
-    JOIN familias ON familias.codfamilia = articulos.codfamilia
-    JOIN unidadesmedidas  ON  unidadesmedidas.codunidadmedida =  articulos.codunidadmedida
-    WHERE
-         ".$where."
-         AND artpro.codproveedor='".$codproveedor."' 
-         AND  articulos.borrado = 0
-    ORDER BY
-        articulos.codfamilia ASC,
-        articulos.descripcion ASC
-    ";
-}
+    if ($todos==1) {
+        $consulta="SELECT * FROM listado_articulos_alias  WHERE ".$where." ORDER BY  codfamilia ASC, descripcion ASC;";
+    }
+    if ($todos==0) {
+        $where .= " AND codproveedor='".$codproveedor."' ";
+        $consulta ="SELECT * FROM  listado_articulos_precios_alias WHERE ".$where."  ORDER BY codfamilia ASC,  descripcion ASC;";
+    }
 	$rs_tabla = mysqli_query($conexion,$consulta) or trigger_error("Query Failed! SQL: $consulta - Error: ".mysqli_error($conexion), E_USER_ERROR);
 	$nrs = mysqli_num_rows($rs_tabla);
 ?>

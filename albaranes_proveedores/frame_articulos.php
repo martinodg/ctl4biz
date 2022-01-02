@@ -35,192 +35,21 @@ $familia=$_POST["cmbfamilia"];
 $referencia=$_POST["referencia"];
 $descripcion=$_POST["descripcion"];
 $todos=$_POST["todos"];
-$where="";
+$where=" borrado = 0 ";
 
-if ($familia<>0) { $where.=" AND articulos.codfamilia='$familia'"; }
-if ($referencia<>"") { $where.=" AND articulos.referencia like '%$referencia%'"; }
-if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%'"; }
+if ($familia<>0) { $where.=" AND codfamilia='$familia'"; }
+if ($referencia<>"") { $where.=" AND referencia like '%$referencia%'"; }
+if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; }
 
  ?>
 <body>
 <?
 	if ($todos==1) {
-        $consulta="SELECT * FROM (
-            SELECT
-                articulos.codarticulo ,
-                articulos.codfamilia,
-                articulos.referencia,
-                articulos.descripcion,
-                articulos.impuesto,
-                articulos.codproveedor1,
-                articulos.codproveedor2,
-                articulos.codproveedor3,
-                articulos.codproveedor4,
-                articulos.descripcion_corta,
-                articulos.codubicacion,
-                articulos.stock,
-                articulos.codunidadmedida,
-                articulos.stock_minimo,
-                articulos.codumstock_minimo,
-                articulos.aviso_minimo,
-                articulos.datos_producto,
-                articulos.fecha_alta,
-                articulos.codembalaje,
-                articulos.unidades_caja,
-                articulos.codumunidades_caja,
-                articulos.precio_ticket,
-                articulos.modificar_ticket,
-                articulos.observaciones,
-                articulos.precio_compra,
-                articulos.precio_almacen,
-                articulos.precio_tienda,
-                articulos.precio_pvp,
-                articulos.precio_iva,
-                articulos.codigobarras,
-                articulos.imagen,
-                articulos.borrado,
-                familias.nombre AS nombrefamilia
-            FROM articulos
-            JOIN familias ON  articulos.codfamilia = familias.codfamilia 
-            WHERE articulos.borrado = 0
-            ".$where."
-            UNION 
-                SELECT
-                articulos.codarticulo ,
-                articulos.codfamilia,
-                articulos.referencia,
-                alias_articulos.alias AS descripcion,
-                articulos.impuesto,
-                articulos.codproveedor1,
-                articulos.codproveedor2,
-                articulos.codproveedor3,
-                articulos.codproveedor4,
-                articulos.descripcion_corta,
-                articulos.codubicacion,
-                articulos.stock,
-                articulos.codunidadmedida,
-                articulos.stock_minimo,
-                articulos.codumstock_minimo,
-                articulos.aviso_minimo,
-                articulos.datos_producto,
-                articulos.fecha_alta,
-                articulos.codembalaje,
-                articulos.unidades_caja,
-                articulos.codumunidades_caja,
-                articulos.precio_ticket,
-                articulos.modificar_ticket,
-                articulos.observaciones,
-                articulos.precio_compra,
-                articulos.precio_almacen,
-                articulos.precio_tienda,
-                articulos.precio_pvp,
-                articulos.precio_iva,
-                articulos.codigobarras,
-                articulos.imagen,
-                articulos.borrado,
-                familias.nombre AS nombrefamilia
-            FROM articulos   
-            JOIN familias ON  articulos.codfamilia = familias.codfamilia 
-            JOIN alias_articulos ON  alias_articulos.codarticulo = articulos.codarticulo
-            WHERE articulos.borrado = 0
-            ".$where."
-        ) 
-        articulos_con_alias
-        ORDER BY
-        codfamilia ASC,
-        descripcion ASC;";
+        $where .= " AND codproveedor='".$codproveedor."' ";
+        $consulta="SELECT * FROM listado_articulos_alias  WHERE ".$where." ORDER BY  codfamilia ASC, descripcion ASC;";
 	}
 	if ($todos==0) {
-        $consulta ="SELECT * FROM (
-            SELECT
-                artpro.precio AS pcosto,
-                articulos.codarticulo ,
-                articulos.codfamilia,
-                articulos.referencia,
-                articulos.descripcion,
-                articulos.impuesto,
-                articulos.codproveedor1,
-                articulos.codproveedor2,
-                articulos.codproveedor3,
-                articulos.codproveedor4,
-                articulos.descripcion_corta,
-                articulos.codubicacion,
-                articulos.stock,
-                articulos.codunidadmedida,
-                articulos.stock_minimo,
-                articulos.codumstock_minimo,
-                articulos.aviso_minimo,
-                articulos.datos_producto,
-                articulos.fecha_alta,
-                articulos.codembalaje,
-                articulos.unidades_caja,
-                articulos.codumunidades_caja,
-                articulos.precio_ticket,
-                articulos.modificar_ticket,
-                articulos.observaciones,
-                articulos.precio_compra,
-                articulos.precio_almacen,
-                articulos.precio_tienda,
-                articulos.precio_pvp,
-                articulos.precio_iva,
-                articulos.codigobarras,
-                articulos.imagen,
-                articulos.borrado,
-                familias.nombre AS nombrefamilia
-            FROM articulos
-            JOIN familias ON  articulos.codfamilia = familias.codfamilia 
-            JOIN artpro ON  articulos.codarticulo =  articulos.codarticulo 
-            WHERE articulos.borrado = 0        
-            AND artpro.codfamilia = articulos.codfamilia 
-            ".$where."
-            UNION     
-                SELECT
-                artpro.precio AS pcosto,
-                articulos.codarticulo ,
-                articulos.codfamilia,
-                articulos.referencia,
-                alias_articulos.alias AS descripcion,
-                articulos.impuesto,
-                articulos.codproveedor1,
-                articulos.codproveedor2,
-                articulos.codproveedor3,
-                articulos.codproveedor4,
-                articulos.descripcion_corta,
-                articulos.codubicacion,
-                articulos.stock,
-                articulos.codunidadmedida,
-                articulos.stock_minimo,
-                articulos.codumstock_minimo,
-                articulos.aviso_minimo,
-                articulos.datos_producto,
-                articulos.fecha_alta,
-                articulos.codembalaje,
-                articulos.unidades_caja,
-                articulos.codumunidades_caja,
-                articulos.precio_ticket,
-                articulos.modificar_ticket,
-                articulos.observaciones,
-                articulos.precio_compra,
-                articulos.precio_almacen,
-                articulos.precio_tienda,
-                articulos.precio_pvp,
-                articulos.precio_iva,
-                articulos.codigobarras,
-                articulos.imagen,
-                articulos.borrado,
-                familias.nombre AS nombrefamilia
-            FROM articulos   
-            JOIN familias ON  articulos.codfamilia = familias.codfamilia 
-            JOIN artpro ON  articulos.codarticulo =  articulos.codarticulo 
-            JOIN alias_articulos ON  alias_articulos.codarticulo = articulos.codarticulo
-            WHERE articulos.borrado = 0        
-            AND artpro.codfamilia = articulos.codfamilia 
-            ".$where."
-        ) 
-        articulos_con_alias
-        ORDER BY
-        codfamilia ASC,
-        descripcion ASC;";
+        $consulta ="SELECT * FROM  listado_articulos_precios_alias WHERE ".$where."  ORDER BY codfamilia ASC,  descripcion ASC;";
 	}
 	$rs_tabla = mysqli_query($conexion,$consulta);
 
