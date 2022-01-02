@@ -1,10 +1,8 @@
 <?php
+include_once(__DIR__.DIRECTORY_SEPARATOR.'enviroment.php');
 if(session_id() == '') {
     session_start();
 }
-ini_set('display_errors', 0);
-ini_set('display_startup_errors', 0);
-error_reporting(0);
 
 $Servidor="database";
 $BaseDeDatos= $_SESSION["BaseDeDatos"];
