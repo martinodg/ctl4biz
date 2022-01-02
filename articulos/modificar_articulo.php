@@ -378,7 +378,7 @@ $( document ).ready(function(){
 			  </div>
 			  <div id="lista-errores"></div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="Aceptar" /> ><span  id="taceptar">Aceptar</span></td> </button>
+					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="Aceptar" /> <span  id="taceptar">Aceptar</span></td> </button>
 					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
                		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span  id="tcancelar">Cancelar</span> </button>
 								

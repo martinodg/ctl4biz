@@ -244,7 +244,7 @@ $pdf->AddPage();
     $pdf->SetFont('Arial','B',8);
 
 
-$pdf->Cell(30,4,"Forma de pago",1,0,'C',1);
+$pdf->Cell(30,4,$lang->t('forma_pago'),1,0,'C',1);
     $pdf->Cell(30,4,$lang->t('base_imponible'),1,0,'C',1);
 	$pdf->Cell(30,4,$lang->t('couta_iva'),1,0,'C',1);
 	$pdf->Cell(30,4,$lang->t('iva'),1,0,'C',1);

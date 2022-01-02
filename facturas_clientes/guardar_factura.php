@@ -170,7 +170,8 @@ if ($accion=="baja") {
 		}
 		
 		function imprimir(codfactura) {
-			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
+			//window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+"en");
 		}
 		
 		</script>

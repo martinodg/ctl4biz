@@ -12,15 +12,15 @@
         // validate avatar
         function valAvatar(){
             var fileName = $("#avatarfile").val();
-            var idxDot = fileName.lastIndexOf(".") + 1;
-            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-            if (["png"].includes(extFile)){
-                return true;
-            } else {
-                talert('seleccionarAvatar')
-                $("#avatarfile").val("")
-                return false;
+            if(fileName.length > 0 && typeof fileName != "undefined"){
+                var idxDot = fileName.lastIndexOf(".") + 1;
+                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                if (!["png"].includes(extFile)){
+                    talert('seleccionarAvatar')
+                    return false;
+                }
             }
+            return true;
         }
         function cancelar() {
             location.href="index.php";
@@ -40,15 +40,15 @@
         }
 
         function creausuario() {
-            if(valAvatar()){
                 $.ajax({
                     type: "POST",
                     async: false,
                     cache: false,
                     contentType: false,
                     enctype: 'multipart/form-data',
-                    processData: false,
                     url: "guardarusuario.php",
+                    processData: false,
+
                     data: new FormData($( 'form[name=frmUser]')[0]),
                     success: function( data )
                     {
@@ -56,7 +56,6 @@
                         location.href="index.php";
                     }
                 });
-            }
         }
 
     </script>

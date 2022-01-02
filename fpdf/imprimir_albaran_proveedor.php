@@ -9,7 +9,6 @@ require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
 require_once("../funciones/changelanguage.php");
 $lang = new ChangeLanguage();
-
 $pdf=new PDF();
 $pdf->AddPage();
 

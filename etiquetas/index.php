@@ -26,7 +26,7 @@ require_once("../racf/purePhpVerify.php");
 			    talert('msgvlselartimp');
 				//alert ("Debe seleccionar un articulo antes de imprimir el codigo de barras");
 			} else {
-				window.open("../fpdf/codigo.php?codigo="+codigo);
+				window.open("../fpdf/codigo.php?codigo="+codigo+"&lang="+getLanguajeCode());
 			}
 		}
 		
