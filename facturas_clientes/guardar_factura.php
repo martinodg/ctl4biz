@@ -1,4 +1,5 @@
 <?
+$conexion = null;
 require_once("../conectar7.php"); 
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
@@ -115,7 +116,7 @@ if ($accion=="modificar") {
 	$baseimpuestos=0;
 	$baseimponible=0;
 	$preciototal=0;
-	if ($rs_query) { $mensaje="Los datos de la factura han sido modificados correctamente"; }
+	if ($rs_act) { $mensaje="Los datos de la factura han sido modificados correctamente"; }
 	$cabecera1="Inicio >> Ventas &gt;&gt; Modificar Factura ";
 	$cabecera2="MODIFICAR FACTURA ";
 }
@@ -170,9 +171,8 @@ if ($accion=="baja") {
 		}
 		
 		function imprimir(codfactura) {
-			//window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
-			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+"en");
-		}
+			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
+        }
 		
 		</script>
 	</head>
