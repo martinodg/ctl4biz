@@ -1,8 +1,14 @@
 <?php
+
+ini_set('display_errors', -1);
+ini_set('display_startup_errors', -1);
+error_reporting(E_ALL);
+
 header('Cache-Control: no-cache');
 header('Pragma: no-cache'); 
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
+
 ?>
 <html>
 <head>
@@ -29,25 +35,26 @@ $familia=$_POST["cmbfamilia"];
 $referencia=$_POST["referencia"];
 $descripcion=$_POST["descripcion"];
 $todos=$_POST["todos"];
-$where="1=1";
+$where=" borrado = 0 ";
 
-if ($familia<>0) { $where.=" AND articulos.codfamilia='$familia'"; }
-if ($referencia<>"") { $where.=" AND articulos.referencia like '%$referencia%'"; }
-if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%'"; }
+if ($familia<>0) { $where.=" AND codfamilia='$familia'"; }
+if ($referencia<>"") { $where.=" AND referencia like '%$referencia%'"; }
+if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; }
 
  ?>
 <body>
 <?
-
 	if ($todos==1) {
-		$consulta="SELECT articulos.*,familias.nombre as nombrefamilia FROM articulos,familias WHERE ".$where." AND articulos.codfamilia=familias.codfamilia AND articulos.borrado=0 ORDER BY articulos.codfamilia ASC,articulos.descripcion ASC";
+        $where .= " AND codproveedor='".$codproveedor."' ";
+        $consulta="SELECT * FROM listado_articulos_alias  WHERE ".$where." ORDER BY  codfamilia ASC, descripcion ASC;";
 	}
 	if ($todos==0) {
-		$consulta="SELECT artpro.precio as pcosto,articulos.*,familias.nombre as nombrefamilia FROM artpro,articulos,familias
-			WHERE ".$where." AND artpro.codarticulo=articulos.codarticulo AND artpro.codfamilia=articulos.codfamilia AND artpro.codproveedor='".$codproveedor."' AND articulos.codfamilia=familias.codfamilia AND articulos.borrado=0 ORDER BY articulos.codfamilia ASC,articulos.descripcion ASC";			
+        $consulta ="SELECT * FROM  listado_articulos_precios_alias WHERE ".$where."  ORDER BY codfamilia ASC,  descripcion ASC;";
 	}
 	$rs_tabla = mysqli_query($conexion,$consulta);
+
 	$nrs=mysqli_num_rows($rs_tabla);
+
 ?>
 <div id="tituloForm2" class="header">
 <form id="form1" name="form1">
