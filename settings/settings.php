@@ -96,6 +96,8 @@
         <button type="button" class="fullwidth" id="roles" onClick="window.location.href = '../racf/roles/index.php';" onMouseOver="style.cursor=cursor"> <img src="../img/roles.svg" alt="nuevo" /> <span  id="troles">Roles</span> </button>
         <br>
         <button type="button" class="fullwidth" id="recursos" onClick="window.location.href = '../racf/recursos/index.php';" onMouseOver="style.cursor=cursor"> <img src="../img/resources.svg" alt="nuevo" /> <span  id="trecursos">Recursos</span> </button>
+        <br>
+        <button type="button" class="fullwidth" id="tcompanydata" onClick="window.location.href = '../racf/companyData/index.php';" onMouseOver="style.cursor=cursor"><span id="tcompanydata">Datos de Compañia</span></button>
     </div>
             </div>
 		</div>		  			
