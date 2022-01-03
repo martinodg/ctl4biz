@@ -1,6 +1,5 @@
 <?php 
-require_once("../conectar7.php");  
-
+require_once("../conectar7.php");
 $fechahoy=date("Y-m-d");
 $sel_albaran="INSERT INTO facturasptmp (codfactura,fecha) VALUE ('','$fechahoy')";
 $rs_albaran=mysqli_query($conexion,$sel_albaran);
@@ -229,8 +228,10 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					<td width="5%"><span  id="tprecio">PRECIO</span></td>
 					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
 					<td width="5%"><span  id="tcant">CANTIDAD</span></td>
-					<td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
-					<td width="4%"><span  id="tdcto">Dcto.</span></td>
+                      <td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
+                      <td width="5%"><span  id="tunidad">Unidad Medida</span></td>
+                      <td width="5%"><input NAME="unidadmedida" type="text" class="cajaMinima" id="unidadmedida" size="10" maxlength="10" value="" disabled="disabled"></td>
+                    <td width="4%"><span  id="tdcto">Dcto.</span></td>
 					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
 					<td width="5%"><span  id="timporte">IMPORTE</span></td>
 					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" readonly> &#8364;</td>

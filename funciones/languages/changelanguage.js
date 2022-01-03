@@ -778,6 +778,7 @@ function langchange() {
     $("#tfchaalta").text(getTranslationText('fchaalta'));
     $("#tsindet").text(getTranslationText('sindet'));
     $("#tunidcaja").text(getTranslationText('unidcaja'));
+    $("#tunidad").text(getTranslationText('unidad'));
     $("#tpregpciotk").text(getTranslationText('pregpciotk'));
     $("#tembalaje").text(getTranslationText('embalaje'));
     $("#tmdesctick").text(getTranslationText('mdesctick'));

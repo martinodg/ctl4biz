@@ -13,12 +13,13 @@ require_once("../mysqli_result.php");
 </head>
 <script language="javascript">
 
-function pon_prefijo(codfamilia,pref,nombre,precio,codarticulo) {
+function pon_prefijo(codfamilia,pref,nombre,precio,codarticulo,unidadmedida) {
 	parent.opener.document.formulario_lineas.codfamilia.value=codfamilia;
 	parent.opener.document.formulario_lineas.referencia.value=pref;
 	parent.opener.document.formulario_lineas.descripcion.value=nombre;
 	parent.opener.document.formulario_lineas.precio.value=precio;
 	parent.opener.document.formulario_lineas.codarticulo.value=codarticulo;
+	parent.opener.document.formulario_lineas.unidadmedida.value=unidadmedida;
 	parent.opener.actualizar_importe();
 	parent.window.close();
 }
@@ -31,26 +32,24 @@ $familia=$_POST["cmbfamilia"];
 $referencia=$_POST["referencia"];
 $descripcion=$_POST["descripcion"];
 $todos=$_POST["todos"];
-$where="1=1";
+$where=" borrado = 0 ";
 
-if ($familia<>0) { $where.=" AND articulos.codfamilia='$familia'"; }
-if ($referencia<>"") { $where.=" AND articulos.referencia like '%$referencia%'"; }
-if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%'"; }
+if ($familia<>0) { $where.=" AND codfamilia='$familia'"; }
+if ($referencia<>"") { $where.=" AND referencia like '%$referencia%'"; }
+if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; }
 
  ?>
 <body>
 <?
-
-	if ($todos==1) {
-		$consulta="SELECT articulos.*,familias.nombre as nombrefamilia FROM articulos,familias WHERE ".$where." AND articulos.codfamilia=familias.codfamilia AND articulos.borrado=0 ORDER BY articulos.codfamilia ASC,articulos.descripcion ASC";
-	}
-	if ($todos==0) {
-		$consulta="SELECT artpro.precio as pcosto,articulos.*,familias.nombre as nombrefamilia FROM artpro,articulos,familias
-			WHERE ".$where." AND artpro.codarticulo=articulos.codarticulo AND artpro.codfamilia=articulos.codfamilia AND artpro.codproveedor='".$codproveedor."' AND articulos.codfamilia=familias.codfamilia AND articulos.borrado=0 ORDER BY articulos.codfamilia ASC,articulos.descripcion ASC";			
-	}
-	//echo $consulta;
-	$rs_tabla = mysqli_query($conexion,$consulta);
-	$nrs=mysqli_num_rows($rs_tabla);
+    if ($todos==1) {
+        $consulta="SELECT * FROM listado_articulos_alias  WHERE ".$where." ORDER BY  codfamilia ASC, descripcion ASC;";
+    }
+    if ($todos==0) {
+        $where .= " AND codproveedor='".$codproveedor."' ";
+        $consulta ="SELECT * FROM  listado_articulos_precios_alias WHERE ".$where."  ORDER BY codfamilia ASC,  descripcion ASC;";
+    }
+	$rs_tabla = mysqli_query($conexion,$consulta) or trigger_error("Query Failed! SQL: $consulta - Error: ".mysqli_error($conexion), E_USER_ERROR);
+	$nrs = mysqli_num_rows($rs_tabla);
 ?>
 <div id="tituloForm2" class="header">
 <form id="form1" name="form1">
@@ -70,6 +69,7 @@ if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%
 				$nombrefamilia=mysqli_result($rs_tabla,$i,"nombrefamilia");
 				$codarticulo=mysqli_result($rs_tabla,$i,"codarticulo");				
 				$descripcion=mysqli_result($rs_tabla,$i,"descripcion");
+                $unidad_medida=mysqli_result($rs_tabla,$i,"nombreunidadmedida");
 				if ($todos==0) { $precio=mysqli_result($rs_tabla,$i,"pcosto"); }
 				if ($todos==1) { $precio=mysqli_result($rs_tabla,$i,"precio_compra"); }
                 if ($i % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }?>
@@ -81,7 +81,7 @@ if ($descripcion<>"") { $where.=" AND articulos.descripcion like '%$descripcion%
 					<td>
         <div align="left"><?php echo utf8_encode($descripcion);?></div></td>
 					<td><div align="center"><?php echo $precio;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $referencia?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>',<? echo $codarticulo?>)"><img src="../img/convertir.svg" width="16px" height="16px" border="0" data-ttitle="tsel" title="Seleccionar"></a></div></td>
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $referencia?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>',<? echo $codarticulo?>,'<?php echo $unidad_medida?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" data-ttitle="tsel" title="Seleccionar"></a></div></td>
 				</tr>
 			<?php }
 		?>
