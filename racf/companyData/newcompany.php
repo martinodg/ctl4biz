@@ -70,7 +70,7 @@
 
 <body>
     <div id="content_login">
-        <div class="header"><span id="">NUEVA COMPAÑIA</span></div>
+        <div class="header"><span id="tcompanydata">DATOS DE COMPAÑIA</span></div>
 
 
             <div class="column2" style="background-color:#eee; height: 400px">
@@ -126,7 +126,7 @@
                     <input id=" " class="input-wrapper" type="text" name="email">
                     <br> <br>
 
-                    <span id="timgfrmavatar" class="loginText">Avatar - Logo</span><br>
+                    <span id="timgfrmavatar" class="loginText">Avatar - Logo (png)</span><br>
                     <div class="avatar-validation-wrapper">
                         <input type="file" name="avatarfile" id="avatarfile" class="input" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible;">
                         <div class="avatar-validation-icon-wrapper formatovalido"></div>
