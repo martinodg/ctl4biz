@@ -70,7 +70,7 @@
 
 <body>
     <div id="content_login">
-        <div class="header">NUEVA COMPAÑIA</div>
+        <div class="header"><span id="">NUEVA COMPAÑIA</span></div>
 
 
             <div class="column2" style="background-color:#eee; height: 400px">
@@ -80,13 +80,13 @@
                         <div class="message">
                             <?php if(!empty($message)) { echo $message; } ?>
                         </div>
-                        <span  id="nombreCompany" class="loginText">Nombre de Compania:</span><br>
+                        <span  id="tcompanyName" class="loginText">Nombre de Compania:</span><br>
                         <input class="input-wrapper" type="text" id="nameCompany" name="name">
                         <br> <br>
                         <span class="loginText">e-mail:</span><br>
                         <input id="emailCompany" class="input-wrapper" type="text" name="email">
                         <br> <br>
-                        <span id="telefCompany" class="loginText">Telefono:</span><br>
+                        <span id="ttelef" class="loginText">Telefono:</span><br>
                         <input id="telCompany" class="input-wrapper" type="text" name="email">
                         <br> <br>
                         <span id="pais" class="loginText">Pais:</span><br>
@@ -102,7 +102,7 @@
                     <input id="domicilioCompany" class="input-wrapper" type="text" name="email">
                     <br> <br>
 
-                    <span id="lenguaje" class="loginText">lenguaje</span><br>
+                    <span id="telgidi" class="loginText">Lenguaje</span><br>
                     <select name="" id="languageCompany" class="loginText input-wrapper">
                         <option value="en">Ingles</option>
                         <option value="es">Español</option>
@@ -114,7 +114,7 @@
                     </select>
                     <br> <br>
 
-                    <span id="moneda" class="loginText">Moneda</span><br>
+                    <span id="tmoneda" class="loginText">Moneda</span><br>
                     <select name="" id="monedaCompany" class="loginText input-wrapper">
                         <option value="eur" selected>EUR</option>
                         <option value="usd">USD</option>
