@@ -139,7 +139,7 @@
             </div>
 
             <div id="botonBusqueda" align="right">
-                <button type="button" id="btnsubmit" onClick="creausuario()" onMouseOver="style.cursor=cursor" disabled=""> <img src="../../img/nuevo.svg" alt="Nuevo" /> <span>Insertar Nueva Compañia</span> </button>
+                <button type="button" id="btnsubmit" onClick="creausuario()" onMouseOver="style.cursor=cursor" disabled=""> <img src="../../img/nuevo.svg" alt="Nuevo" /> <span id="tudate_company">Actualizar Compañia</span> </button>
 
             </div>
 

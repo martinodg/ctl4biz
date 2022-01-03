@@ -27,6 +27,7 @@ function getTranslationText(name)
         "usuarios": ["Users", "Usuarios", "Użytkowników"],
         "recursos": ["Resources", "Recursos", "Rasoby"],
         "companydata": ["Company Data", "Datos de Compañia", "Dane Firmy", "Dati aziendali"],
+        "act_company": ["Update Company", "Datos de Compañia", "zaktualizuj firmę", "aggiorna azienda", "société de mise à jour" , "Unternehmen aktualisieren"],
         "nombreCompany": ["Company Name", "Nombre de la Compañia", "Nazwa Firmy", "Nome della ditta"],
         "ventas_plus": ["Sales +", "Ventas +", "Uprzedaż +"],
         "ventas": ["Sales", "Ventas", "Sprzedaż"],
@@ -647,6 +648,7 @@ function langchange() {
     $("#signin").text(getTranslationText('signin'));
     $("#companyCode").text(getTranslationText('companyCode'));
     $("#company").text(getTranslationText('company'));
+    $("#tudate_company").text(getTranslationText('act_company'));
     $("#noMember").text(getTranslationText('noMember'));
     $("#copiasRespaldo,#tcopiasRespaldo").text(getTranslationText('copiasRespaldo'));
     $("#hacerrespaldo,#thacerrespaldo").text(getTranslationText('hacerrespaldo'));
