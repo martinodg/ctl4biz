@@ -37,6 +37,7 @@ function getTranslationText(name)
         "presupuestos": ["Budget", "Presupuestos", "budżet"],
         "contabilidad_plus": ["Book Keeping +", "Contabilidad +", "księgowość +"],
         "contabilidad": ["Book Keeping", "Contabilidad", "księgowość"],
+        "leyenda": ["Note", "Leyenda", "Aunta", "descrizione", "apunte", "apunte", "nota" , "Kein"],
         "codremito": ["Delivery Note Code", "Código de Remito", "kod listu przewozowego", "codice nota d invio", "código da nota de envio", "code du bon de livraison", "Versandscheincode"],
         "fecha": ["Date", "Fecha", "data"],
         "aceptar": ["Agree", "Aceptar", "Zgodzić się"],
@@ -546,6 +547,7 @@ function getTranslationText(name)
         "elgidi": ["Chose a Languaje", "Elija un idioma", "polski", "italian", "portugues", "frances", "Aleman"],
         "msgtrbnf": ["There is no worker with that code", "No existe ningun trabajador con ese codigo", "polski", "italian", "portugues", "frances", "Aleman"],
         "elmtrab": ["Remove worker", "ELIMINAR TRABAJADOR", "polski", "italian", "portugues", "frances", "Aleman"],
+        "tnombre_contacto": ["Contact name", "Nombre de Contacto", "Nazwa Kontaktu", "Nome del contatto", "nome de contato", "Nom du contact", "Kontaktname"],
         "movavi": ["Contact phone number", "Celular de contacto", "Telefoniczny numer kontaktowy", "Numero di  contatto telefonico", "Telefone para contato", "Numéro de téléphone de contact", "Kontakt Telefonnummer", "móvil avisos"],
         "correlecavs": ["emails notices", "Correo electrónico   CORREGIR   avisos", "polski", "italian", "portugues", "frances", "Aleman"],
         "modtrab": ["MODIFY EMPLOYEE", "MODIFICAR TRABAJADOR", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -620,6 +622,7 @@ function getTranslationText(name)
         "nombreRol": ["Rol name","Nombre de role", "polski", "italian", "portugues", "frances", "Aleman"],
         "activo": ["active","activo", "polski", "italian", "portugues", "frances", "Aleman"],
         "inactivo": ["inactive","inactivo", "polski", "italian", "portugues", "frances", "Aleman"],
+        "cod_fiscal": ["Fiscal Code","CUIT", "polski", "italian", "portugues", "frances", "Aleman"],
         "msjProveedorSinArticulos": ["This supplier has not served any items so far","Este proveedor no ha servido ningún articulo hasta el momento", "polski", "italian", "portugues", "frances", "Aleman"],
         "facRemito": ["Bill remittance","Facturar remito", "polski", "italian", "portugues", "frances", "Aleman"],
         "msg_impuesto_denifido": ["You must select the tax value","Debe seleccionar el valor del impuesto", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -636,6 +639,7 @@ function getTranslationText(name)
 //language change function
 function langchange() {
     $("#tcompanyName").text(getTranslationText('company_name'));
+    $("#tcontact_name").text(getTranslationText('tnombre_contacto'));
     $("#password,#tpassword").text(getTranslationText('password'));
     $("#passwordValidation").text(getTranslationText('passwordValidation'));
     $("#emailValidation").text(getTranslationText('emailValidation'));
@@ -1116,6 +1120,8 @@ function langchange() {
     $("#tinactivo").text(getTranslationText('inactivo'));
     $("#msjProveedorSinArticulos").text(getTranslationText('msjProveedorSinArticulos'));
     $("#tfacRemito").text(getTranslationText('facRemito'));
+    $("#leyenda").text(getTranslationText('leyenda'));
+    $("#tcod_fiscal").text(getTranslationText('cod_fiscal'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
