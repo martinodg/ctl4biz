@@ -73,14 +73,20 @@
         <div class="header"><span id="tcompanydata">DATOS DE COMPAÑIA</span></div>
 
 
-            <div class="column2" style="background-color:#eee; height: 400px">
+            <div class="column2" style="background-color:#eee; height: 600px">
                 <center>
-                    <form name="fromCompany" align="center">
+                    <form name="formCompany" align="center">
                         <input type="hidden" name="accion" value="alta" />
                         <div class="message">
                             <?php if(!empty($message)) { echo $message; } ?>
                         </div>
-                        <span  id="tcompanyName" class="loginText">Nombre de Compania:</span><br>
+                        <span  id="tcompanyName" class="loginText">Nombre de Contacto:</span><br>
+                        <input class="input-wrapper" type="text" id="nameContact" name="name">
+                        <br> <br>
+                        <span  id="tcod_fiscal" class="loginText">codigo fiscal:</span><br>
+                        <input class="input-wrapper" type="text" id="cfCompany" name="name">
+                        <br> <br>
+                        <span  id="tcontact_name" class="loginText">Nombre de Compañia:</span><br>
                         <input class="input-wrapper" type="text" id="nameCompany" name="name">
                         <br> <br>
                         <span class="loginText">e-mail:</span><br>
@@ -89,17 +95,18 @@
                         <span id="ttelef" class="loginText">Telefono:</span><br>
                         <input id="telCompany" class="input-wrapper" type="text" name="email">
                         <br> <br>
-                        <span id="pais" class="loginText">Pais:</span><br>
-                        <input id="paisCompany" class="input-wrapper" type="text" name="email">
+                        <span id="direccion" class="loginText">Domicilio:</span><br>
+                        <input id="domicilioCompany" class="input-wrapper" type="text" name="email">
                         <br> <br>
                         </div>
 
                 </center>
             </div>
-            <div class="column2" style="background-color:#eee; height: 400px">
+            <div class="column2" style="background-color:#eee; height: 600px">
                 <center>
-                    <span id="direccion" class="loginText">Domicilio:</span><br>
-                    <input id="domicilioCompany" class="input-wrapper" type="text" name="email">
+
+                    <span id="pais" class="loginText">Pais:</span><br>
+                    <input id="paisCompany" class="input-wrapper" type="text" name="email">
                     <br> <br>
 
                     <span id="telgidi" class="loginText">Lenguaje</span><br>
@@ -126,7 +133,10 @@
                     <input id=" " class="input-wrapper" type="text" name="email">
                     <br> <br>
 
-                    <span id="timgfrmavatar" class="loginText">Avatar - Logo (png)</span><br>
+                    <span id="leyenda" class="loginText">Leyenda:</span><br>
+                    <input id="domicilioCompany" class="input-wrapper" type="text" name="email">
+                    <br> <br>
+                    <span id="timgfrmavatar" class="loginText">Logo (png)</span><br>
                     <div class="avatar-validation-wrapper">
                         <input type="file" name="avatarfile" id="avatarfile" class="input" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible;">
                         <div class="avatar-validation-icon-wrapper formatovalido"></div>
