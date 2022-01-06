@@ -143,13 +143,29 @@ $logo= $row [12];//@todo cargar logo
                     <br> <br>
 
                     <span id="tmoneda" class="loginText">Moneda</span><br>
-                    <select class="loginText input-wrapper" id="monedaCompany" name="monedaCompany">
-                        <option value="eur" selected><?echo $moneda;?></option>
-                        <option value="usd">EUR</option>
-                        <option value="usd">USD</option>
-                        <option value="ars">ARS</option>
-                        <option value="oti">OTI</option>
-                    </select>
+
+                    <?
+                    $metaproceso=$_GET["metaproceso"];
+                    $nlinea=$_GET["nlinea"];
+                    $unmedida=$_GET["unmedida"];
+
+
+                    $query_monedas="SELECT * FROM monedas ORDER BY id_moneda ASC";
+                    $res_monedas=mysqli_query($conexion,$query_monedas);
+                    $nr_monedas= mysqli_num_rows($res_monedas);
+                    echo '<select id="monedaCompany" class="comboPequeno input-wrapper">';
+                    while ($nr_monedas > 0) {
+                        $row_moneda = mysqli_fetch_row($res_monedas);
+                        if ($row_moneda[0]==$moneda){
+                            echo '<option value="'.$row_moneda[0].'" selected >'.$row_moneda[1].'</option>';
+                        }else{
+                            echo '<option value="'.$row_moneda[0].'">'.$row_moneda[1].'</option>';
+
+                        }
+                        $nr_monedas--;
+                    }
+                    echo '</select> ';
+                    ?>
                     <br> <br>
 
                     <span id="zipcodigoCompany" class="loginText">Zip-codigo</span><br>
