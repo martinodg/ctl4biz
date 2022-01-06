@@ -2,8 +2,10 @@
 var cursor='hand';
 function getTranslationText(name)
 {
+
     var traductions = {
         //"variable_name":["english","espanol","polski","italian","portugues","frances","Aleman",”español_UE],
+        "company": ["Company", "Compañia", "Spółka", "società", "companhia", "entreprise", "Begleitung"],
         "company_name": ["Company name", "Compañia", "Nazwa Firma", "Nome della ditta", "Nome da empresa", "Nom de la compagnie", "Name der Firma"],
         "nombre": ["Your name", "Nombre del usuario", "Nazwa Uzytkownika", "Il tuo nome", "Seu nome", "Votre nom", "Dein Name"],
         "nombcliente": ["Customer Name", "Nombre Cliente", "Nazwa klienta", "Nome do cliente", "nome do cliente", "Nom du client", "Kundenname"],
@@ -24,6 +26,9 @@ function getTranslationText(name)
         "AdminSeguridad": ["Security Administration", "Configuración de Seguridad", "administrowanie bezpieczeństwem"],
         "usuarios": ["Users", "Usuarios", "Użytkowników"],
         "recursos": ["Resources", "Recursos", "Rasoby"],
+        "companydata": ["Company Data", "Datos de Compañia", "Dane Firmy", "Dati aziendali"],
+        "act_company": ["Update Company", "Datos de Compañia", "zaktualizuj firmę", "aggiorna azienda", "société de mise à jour" , "Unternehmen aktualisieren"],
+        "nombreCompany": ["Company Name", "Nombre de la Compañia", "Nazwa Firmy", "Nome della ditta"],
         "ventas_plus": ["Sales +", "Ventas +", "Uprzedaż +"],
         "ventas": ["Sales", "Ventas", "Sprzedaż"],
         "venta_a_mostrador": ["Point of Sales", "Venta en Mostrador", "Punkt sprzedaży"],
@@ -577,6 +582,7 @@ function getTranslationText(name)
         "relfrmpag": ["LIST OF WAYS TO PAY", "LISTADO DE FORMAS DE PAGO", "polski", "italian", "portugues", "frances", "Aleman"],
         "defgrupprc": ["Defining process group", "Definir grupo de procesos", "Definiowanie grupy procesów", "Definizione di gruppo di processo", "Definindo grupo de processos", "Définition de groupe de processus", "Definieren von Prozessgruppe"],
         "nomgrupprc": ["Group name", "Nombre del grupo", "Nazwa grupy", "Nome del gruppo", "Nome do grupo", "Nom de gruope", "Gruppenname"],
+        "mmoneda": ["Currency", "Divisa", "Waluta", "Moneta", "Moeda", "Devise", "Währung"],
         "lot": ["Lot", "Lote", "Los", "Lotto", "Lote", "Lot", "Menge"],
         "bat": ["Batch", "Partida", "Przesylka", "Partita", "remessa", "Pracelle", "Batch"],
         "prodnop": ["Item not in stock", "Producto no presente en Stock", "produkt niedostępny ", "prodotto non in stock", "produto não em estoque", "produit pas en stock", "Produkt nicht auf Lager"],
@@ -618,7 +624,7 @@ function getTranslationText(name)
         "facRemito": ["Bill remittance","Facturar remito", "polski", "italian", "portugues", "frances", "Aleman"],
         "msg_impuesto_denifido": ["You must select the tax value","Debe seleccionar el valor del impuesto", "polski", "italian", "portugues", "frances", "Aleman"],
     };
-    var trans ='traduccion no definida'
+    var trans ='traduccion no definida';
     var lang = getLanguajeIndex();
     if(typeof traductions[name]!== 'undefined' && typeof traductions[name][lang] !== 'undefined')
     {
@@ -641,6 +647,8 @@ function langchange() {
     $("#details").text(getTranslationText('details'));
     $("#signin").text(getTranslationText('signin'));
     $("#companyCode").text(getTranslationText('companyCode'));
+    $("#company").text(getTranslationText('company'));
+    $("#tudate_company").text(getTranslationText('act_company'));
     $("#noMember").text(getTranslationText('noMember'));
     $("#copiasRespaldo,#tcopiasRespaldo").text(getTranslationText('copiasRespaldo'));
     $("#hacerrespaldo,#thacerrespaldo").text(getTranslationText('hacerrespaldo'));
@@ -649,6 +657,8 @@ function langchange() {
     $("#usuarios,#tusuarios").text(getTranslationText('usuarios'));
     $("#roles,#troles").text(getTranslationText('roles'));
     $("#recursos,#trecursos").text(getTranslationText('recursos'));
+    $("#tcompanydata").text(getTranslationText('companydata'));
+    $("#nombreCompany").text(getTranslationText('nombreCompany'));
     $("#ventas_plus").text(getTranslationText('ventas_plus'));
     $("#ventas").text(getTranslationText('ventas'));
     $("#venta_a_mostrador").text(getTranslationText('venta_a_mostrador'));
@@ -832,7 +842,7 @@ function langchange() {
     $("#tentiban").text(getTranslationText('entiban'));
     $("#tctabcaria").text(getTranslationText('ctabcaria'));
     $("#tcodpostal").text(getTranslationText('codpostal'));
-    $("#ttelef, #ttelef2").text(getTranslationText('telef'));
+    $("#ttelef, #ttelef2, #telefCompany").text(getTranslationText('telef'));
     $("#tmovil").text(getTranslationText('movil'));
     $("#tcorrelec").text(getTranslationText('correlec'));
     $("#tdirrcweb").text(getTranslationText('dirrcweb'));
@@ -841,6 +851,7 @@ function langchange() {
     $("#tinscliente").text(getTranslationText('inscliente'));
     $("#tmsgsincliente").text(getTranslationText('msgsincliente'));
     $("#tvcliente").text(getTranslationText('vcliente'));
+    $("#tmoneda").text(getTranslationText('mmoneda'));
     $("#tmsgtdbprocobro").text(getTranslationText('msgtdbprocobro'));
     $("#tpendient").text(getTranslationText('pendient'));
     $("#tfcvencrt").text(getTranslationText('fcvencrt'));

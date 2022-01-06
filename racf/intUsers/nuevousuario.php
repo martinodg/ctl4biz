@@ -48,13 +48,16 @@
                     enctype: 'multipart/form-data',
                     url: "guardarusuario.php",
                     processData: false,
-
                     data: new FormData($( 'form[name=frmUser]')[0]),
                     success: function( data )
                     {
                         $('#div_datos').html( data );
                         location.href="index.php";
                     }
+                }).fail( function(data) {
+
+                   console.info(data);
+
                 });
         }
 
