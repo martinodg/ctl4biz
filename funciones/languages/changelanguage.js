@@ -26,7 +26,7 @@ function getTranslationText(name)
         "AdminSeguridad": ["Security Administration", "Configuración de Seguridad", "administrowanie bezpieczeństwem"],
         "usuarios": ["Users", "Usuarios", "Użytkowników"],
         "recursos": ["Resources", "Recursos", "Rasoby"],
-        "companydata": ["Company Data", "Datos de Compañia", "Dane Firmy", "Dati aziendali"],
+        "companydata": ["Company Data", "Datos de Compañia", "Dane Firmy", "Dati aziendali", "Dados da Empresa", "Les Données de la Compagnie","Firmen Daten"],
         "act_company": ["Update Company", "Datos de Compañia", "zaktualizuj firmę", "aggiorna azienda", "société de mise à jour" , "Unternehmen aktualisieren"],
         "nombreCompany": ["Company Name", "Nombre de la Compañia", "Nazwa Firmy", "Nome della ditta"],
         "ventas_plus": ["Sales +", "Ventas +", "Uprzedaż +"],
@@ -607,6 +607,7 @@ function getTranslationText(name)
         "listadoUsuario": ["List of Users", "Listado de Usuarios", "polski", "italian", "portugues", "frances", "Aleman"],
         "busquedaUsuario": ["Search for Users", "Busqueda de Usuarios", "polski", "italian", "portugues", "frances", "Aleman"],
         "seleccionarAvatar": ["You must select an avatar image","Debe seleccionar una imagen de avatar", "polski", "italian", "portugues", "frances", "Aleman"],
+        "seleccionarLogo": ["You must select an Logo image","Debe seleccionar una imagen de Logo", "polski", "italian", "portugues", "frances", "Aleman"],
         "detalleUsuario": ["User details","Detalles del Usuario", "polski", "italian", "portugues", "frances", "Aleman"],
         "listadoRoles": ["List of Roles","Listado de Roles", "polski", "italian", "portugues", "frances", "Aleman"],
         "detalleRol": ["Role details","Detalles del role", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -622,9 +623,11 @@ function getTranslationText(name)
         "nombreRol": ["Rol name","Nombre de role", "polski", "italian", "portugues", "frances", "Aleman"],
         "activo": ["active","activo", "polski", "italian", "portugues", "frances", "Aleman"],
         "inactivo": ["inactive","inactivo", "polski", "italian", "portugues", "frances", "Aleman"],
-        "cod_fiscal": ["Fiscal Code","CUIT", "polski", "italian", "portugues", "frances", "Aleman"],
+        "cod_fiscal": ["Fiscal Code","CUIT", "kod fiskalny", "Codice fiscale", "Código fiscal", "Code Fiscal", "Steuercode"],
         "msjProveedorSinArticulos": ["This supplier has not served any items so far","Este proveedor no ha servido ningún articulo hasta el momento", "polski", "italian", "portugues", "frances", "Aleman"],
         "facRemito": ["Bill remittance","Facturar remito", "polski", "italian", "portugues", "frances", "Aleman"],
+        "lang_elegido": ["English","Español", "Polskie", "italiano", "português", "français", "Deutsch"],
+        "tidioma": ["Language","Lenguaje", "Język", "Linguaggio", "Língua", "Langue", "Sprache"],
         "msg_impuesto_denifido": ["You must select the tax value","Debe seleccionar el valor del impuesto", "polski", "italian", "portugues", "frances", "Aleman"],
     };
     var trans ='traduccion no definida';
@@ -1104,6 +1107,7 @@ function langchange() {
     $("#tListadoUsuario").text(getTranslationText('listadoUsuario'));
     $("#tbusquedaUsuario").text(getTranslationText('busquedaUsuario'));
     $("#tseleccionarAvatar").text(getTranslationText('seleccionarAvatar'));
+    $("#tseleccionarLogo").text(getTranslationText('seleccionarLogo'));
     $("#tDetalleUsuario").text(getTranslationText('detalleUsuario'));
     $("#tListadoRoles").text(getTranslationText('listadoRoles'));
     $("#tRolesAsignados").text(getTranslationText('rolesAsignados'));
@@ -1122,6 +1126,8 @@ function langchange() {
     $("#tfacRemito").text(getTranslationText('facRemito'));
     $("#leyenda").text(getTranslationText('leyenda'));
     $("#tcod_fiscal").text(getTranslationText('cod_fiscal'));
+    $("#tlang_elegido").text(getTranslationText('lang_elegido'));
+    $("#tidioma").text(getTranslationText('tidioma'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
