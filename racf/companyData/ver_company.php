@@ -2,8 +2,28 @@
 if(session_id() == '') {
     session_start();
 }
-var_dump('---------',$_SESSION);
-var_dump('---------------------------------',$_SESSION['intUserName']);
+
+require_once("../../conectar7.php");
+require_once("../../funciones/cargaImagenes.php");
+
+$query_companyData="SELECT * FROM company_data WHERE id=0";
+$rs_companyData=mysqli_query($conexion,$query_companyData);
+$row = mysqli_fetch_row($rs_companyData);
+//datos de la compañia:
+$id= $row [0];
+$razon_soc= $row[1];
+$contact_name= $row [2];
+$telephone= $row [3];
+$email= $row [4];
+$country= $row [5];
+$language= $row [6];
+$address= $row [7];
+$zip_code= $row [8];
+$moneda= $row [9];
+$cod_fiscal= $row [10];
+$leyenda= $row [11];
+$logo= $row [12];//@todo cargar logo
+
 ?>
 
 <html>
@@ -58,7 +78,7 @@ var_dump('---------------------------------',$_SESSION['intUserName']);
                 data: new FormData($( 'form[name=formCompany]')[0]),
                 success: function( data ) {
                     $('#div_datos').html( data );
-                    location.href="guardarCompany.php";
+                    //location.href="guardarCompany.php";
                 }
             });
         }
@@ -81,22 +101,22 @@ var_dump('---------------------------------',$_SESSION['intUserName']);
                         <input type="hidden" id="accion" name="accion" value="modificar">
 
                         <span  id="tcompanyName" class="loginText">Nombre de Compañia:</span><br>
-                        <input class="input-wrapper" type="text" id="nameCompany" name="nameCompany">
+                        <input class="input-wrapper" type="text" id="nameCompany" name="nameCompany" value="<?echo $razon_soc;?>">
                         <br> <br>
                         <span  id="tcod_fiscal" class="loginText">codigo fiscal:</span><br>
-                        <input class="input-wrapper" type="text" id="cfCompany" name="cfCompany">
+                        <input class="input-wrapper" type="text" id="cfCompany" name="cfCompany" value="<?echo $cod_fiscal;?>">
                         <br> <br>
                         <span  id="tcontact_name" class="loginText">Nombre de Contacto:</span><br>
-                        <input class="input-wrapper" type="text" id="nameContact" name="nameContact">
+                        <input class="input-wrapper" type="text" id="nameContact" name="nameContact" value="<?echo $contact_name;?>">
                         <br> <br>
                         <span class="loginText">e-mail:</span><br>
-                        <input class="input-wrapper" type="text" id="emailCompany" name="emailCompany">
+                        <input class="input-wrapper" type="text" id="emailCompany" name="emailCompany" value="<?echo $email;?>">
                         <br> <br>
                         <span id="ttelef" class="loginText">Telefono:</span><br>
-                        <input class="input-wrapper" type="text" id="telCompany" name="telCompany">
+                        <input class="input-wrapper" type="text" id="telCompany" name="telCompany" value="<?echo $telephone;?>">
                         <br> <br>
                         <span id="direccion" class="loginText">Domicilio:</span><br>
-                        <input class="input-wrapper" type="text" id="domicilioCompany" name="domicilioCompany">
+                        <input class="input-wrapper" type="text" id="domicilioCompany" name="domicilioCompany" value="<?echo $address;?>">
                         <br> <br>
                         </div>
 
@@ -106,7 +126,7 @@ var_dump('---------------------------------',$_SESSION['intUserName']);
                 <center>
 
                     <span id="pais" class="loginText">Pais:</span><br>
-                    <input class="input-wrapper" type="text" id="paisCompany" name="paisCompany">
+                    <input class="input-wrapper" type="text" id="paisCompany" name="paisCompany" value="<?echo $country;?>">
                     <br> <br>
 
                     <span id="tidioma" class="loginText">Lenguaje</span><br>
@@ -124,7 +144,8 @@ var_dump('---------------------------------',$_SESSION['intUserName']);
 
                     <span id="tmoneda" class="loginText">Moneda</span><br>
                     <select class="loginText input-wrapper" id="monedaCompany" name="monedaCompany">
-                        <option value="eur" selected>EUR</option>
+                        <option value="eur" selected><?echo $moneda;?></option>
+                        <option value="usd">EUR</option>
                         <option value="usd">USD</option>
                         <option value="ars">ARS</option>
                         <option value="oti">OTI</option>
@@ -132,15 +153,15 @@ var_dump('---------------------------------',$_SESSION['intUserName']);
                     <br> <br>
 
                     <span id="zipcodigoCompany" class="loginText">Zip-codigo</span><br>
-                    <input class="input-wrapper" type="text" id="zipCompany" name="zipCompany">
+                    <input class="input-wrapper" type="text" id="zipCompany" name="zipCompany" value="<?echo $zip_code;?>">
                     <br> <br>
 
                     <span id="leyenda" class="loginText">Leyenda:</span><br>
-                    <input class="input-wrapper" type="text" id="leyenda" name="leyenda">
+                    <input class="input-wrapper" type="text" id="leyenda" name="leyenda" value="<?echo $leyenda;?>">
                     <br> <br>
                     <span id="timgfrmavatar" class="loginText">Logo (png)</span><br>
                     <div class="avatar-validation-wrapper">
-                        <input class="input" type="file" id="logofile" name="logofile" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible; color:orange;">
+                        <input class="input" type="file" id="logofile" name="logofile" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible; color:orange;" value="<?echo $logo;?>">
                         <div class="avatar-validation-icon-wrapper formatovalido"></div>
                     </div>
 
