@@ -1,4 +1,5 @@
 <?php
+$conexion = null;
 if(session_id() == '') {
     session_start();
 }
@@ -23,9 +24,6 @@ $moneda= $row [9];
 $cod_fiscal= $row [10];
 $leyenda= $row [11];
 $logo= $row [12];//@todo Cargar nombre del logo (ctl4bizlogo.jpg por default )
-if(empty($logo) or $logo==""){
-    $logo="ctl4bizlogo.jpg";
-}
 
 ?>
 
@@ -146,30 +144,16 @@ if(empty($logo) or $logo==""){
                     <br> <br>
 
                     <span id="tmoneda" class="loginText">Moneda</span><br>
-
+                    <select id="monedaCompany" name="monedaCompany" class="comboPequeno input-wrapper">
                     <?
-                    $metaproceso=$_GET["metaproceso"];
-                    $nlinea=$_GET["nlinea"];
-                    $unmedida=$_GET["unmedida"];
-
-
-                    $query_monedas="SELECT * FROM monedas ORDER BY id_moneda ASC";
-                    $res_monedas=mysqli_query($conexion,$query_monedas);
-                    $nr_monedas= mysqli_num_rows($res_monedas);
-                    echo '<select id="monedaCompany" name="monedaCompany" class="comboPequeno input-wrapper">';
-                    echo '<option value="'.$moneda.'" selected>'.$moneda.'</option>';
-                    while ($nr_monedas > 0) {
-                        $row_moneda = mysqli_fetch_row($res_monedas);
-                        if ($row_moneda[0]==$moneda){
-                            echo '<option value="'.$row_moneda[0].'" selected >'.$row_moneda[1].'</option>';
-                        }else{
-                            echo '<option value="'.$row_moneda[0].'">'.$row_moneda[1].'</option>';
-
-                        }
-                        $nr_monedas--;
+                    $res_monedas=mysqli_query($conexion,"SELECT * FROM monedas ORDER BY moneda ASC");
+                    while ($row_moneda = mysqli_fetch_array($res_monedas)) {
+                        $selected = ($row_moneda['id_moneda'] == $moneda) ? ' selected ':'';
+                        echo '<option value="'.$row_moneda['id_moneda'].'" '.$selected.' >'.$row_moneda['moneda'].'</option>';
                     }
-                    echo '</select> ';
+                    mysqli_free_result($res_monedas);
                     ?>
+                    </select>
                     <br> <br>
 
                     <span id="zipcodigoCompany" class="loginText">Zip-codigo</span><br>
@@ -182,7 +166,7 @@ if(empty($logo) or $logo==""){
                     <!--@todo Salvar el file: logo de la compañia-->
                     <span id="timgfrmavatar" class="loginText">Logo (<?echo $logo;?>)</span><br>
                     <div class="avatar-validation-wrapper">
-                        <input class="input" type="file" id="logofile" name="logofile" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible; color:orange;" value="<?echo $logo;?>">
+                        <input class="input" type="file" id="logofile" name="logofile"  style="font-size: 1.5em;top: auto;visibility: visible; color:orange;" />
                         <div class="avatar-validation-icon-wrapper formatovalido"></div>
                     </div>
 

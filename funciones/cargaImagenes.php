@@ -13,11 +13,23 @@ function generarUrlDB($fileName)
 }
 
 /**
+ * Retornan la de la db
+ * @param string $fileName
+ * @throws Exception
+ */
+function generarUrlEmpresaDB($fileName)
+{
+    $directorioEmpresa = retornarNombreDirectorioEmpresa();
+    return '../../img/'.$directorioEmpresa.'/'.$fileName;
+}
+
+
+/**
  * Retorna el valor
  * @param $valorFile
  * @return bool
  */
-function requestHasAvatar($valorFile):bool
+function requestHasFile($valorFile):bool
 {
     return !empty($_FILES[$valorFile]['name']);
 }
@@ -30,7 +42,7 @@ function requestHasAvatar($valorFile):bool
  * @throws Exception
  */
 function salvarAvatarUsuario($nombreUsuario, $valorFile){
-    if(requestHasAvatar($valorFile)){
+    if(requestHasFile($valorFile)){
         return cargarAvatarUsuario($nombreUsuario,$_FILES[$valorFile]);
     }
     return false;
@@ -246,3 +258,48 @@ function sanitizarNombreDirectorio(&$nombreDirectorio, $max = 40)
     return  preg_replace("/[\/_| -]+/", '-', $out);
 }
 
+/**
+ * Permite la carga de una imagen png como avatar del usuario
+ * @param  string $username nombre de usuario
+ * @param $fileResource
+ * @return string[]
+ * @throws Exception
+ */
+function cargarLogoCompania($fileResource,$fileName = 'logo', $extension='jpg'){
+    $pathItemEmpresa = retornarPathEmpresa();
+    $tmpName = $fileResource['name'];
+    $fileNameCmps = explode('.', $tmpName);
+    //valida que sea un jpg
+    $fileExtension = strtolower(end($fileNameCmps));
+    checkExtension($fileExtension,[$extension]);
+    //
+    $newFileName =  $fileName. '.'.$extension;
+    $filePath =$pathItemEmpresa.DIRECTORY_SEPARATOR.$newFileName;
+    if(file_exists($filePath)) {
+        //@todo salvarlo moviendolo con un timestamp  en el nombre
+        unlink($filePath);
+    }
+    if(!move_uploaded_file($fileResource['tmp_name'], $filePath)) {
+        throw new Exception('El archivo no pudo ser movido');
+    }
+    return array(
+        'path' => $filePath,
+        'fileName' => $newFileName,
+        'dbUrl' => generarUrlEmpresaDB($newFileName),
+    );
+}
+
+/**
+ * Salvar el logo de la compania
+ * @param string $valorFile Key en la que se envio el valor
+ * @param string  $fileName nombre del logo
+ * @param string  $extension extension del logo
+ * @return false|string[]
+ * @throws Exception
+ */
+function salvarLogoCompania($valorFile,$fileName = 'logo', $extension='jpg'){
+    if(requestHasFile($valorFile)){
+        return cargarLogoCompania($_FILES[$valorFile], $fileName,$extension);
+    }
+    return false;
+}
