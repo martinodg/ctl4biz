@@ -22,7 +22,10 @@ $zip_code= $row [8];
 $moneda= $row [9];
 $cod_fiscal= $row [10];
 $leyenda= $row [11];
-$logo= $row [12];//@todo cargar logo
+$logo= $row [12];//@todo Cargar nombre del logo (ctl4bizlogo.jpg por default )
+if(empty($logo) or $logo==""){
+    $logo="ctl4bizlogo.jpg";
+}
 
 ?>
 
