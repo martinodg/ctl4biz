@@ -1,12 +1,13 @@
 <?php
-session_start();
+if(session_id() == '') {
+    session_start();
+}
+require_once("../../conectar7.php");
+require_once("../../funciones/cargaImagenes.php");
 
-var_dump('-------------------------company_name:   ',$_SESSION['company_name']);
-echo "<br>";
-var_dump('-------------------------id:   ',$_SESSION['id']);
-echo "<br><br><br><br>";
 
-//$accion= $_POST["accion"];
+$accion = $_POST["accion"];
+
 $nameCompany= $_POST["nameCompany"];
 $cfCompany= $_POST["cfCompany"];
 $nameContact= $_POST["nameContact"];
@@ -15,15 +16,19 @@ $telCompany= $_POST["telCompany"];
 $domicilioCompany= $_POST["domicilioCompany"];
 $leyenda= $_POST["leyenda"];
 
-$paisCompany= "";//$_POST["paisCompany"];
-$languageCompany= "";//$_POST["languageCompany"];
-$monedaCompany= "";//$_POST["monedaCompany"];
-$zipCompany= "";//$_POST["zipCompany"];
-$logofile= "";//$_POST["logofile"];
+$paisCompany= $_POST["paisCompany"];
+$languageCompany= $_POST["languageCompany"];
+$monedaCompany= $_POST["monedaCompany"];
+$zipCompany= $_POST["zipCompany"];
+$logofile= $_POST["logofile"];//logo por default
+if(empty($logofile) or $logofile==""){
+    $logofile="ctl4bizlogo.jpg";
+}
 
-
-//$query_updateCompany = "UPDATE company_data SET razon_soc = '$nameCompany', contact_name = '$nameContact', contact_telephone = '$telCompany', main_email = '$emailCompany', country = '$paisCompany', language = '$languageCompany', address = '$domicilioCompany', zip_code = '$cfCompany', moneda = '$monedaCompany', cod_fiscal = '$cfCompany', leyenda = '$leyenda', logo = '$logofile' WHERE company_data.id = 0"
-//$rs_updateCompany = mysqli_query($conexion, $query_update);
-
+$query_updateCompany = "UPDATE company_data SET razon_soc = '$nameCompany', contact_name = '$nameContact', contact_telephone = '$telCompany', main_email = '$emailCompany', country = '$paisCompany', language = '$languageCompany', address = '$domicilioCompany', zip_code = '$cfCompany', moneda = '$monedaCompany', cod_fiscal = '$cfCompany', leyenda = '$leyenda', logo = '$logofile' WHERE company_data.id = 0";
+$rs_updateCompany = mysqli_query($conexion, $query_updateCompany);
+if($rs_updateCompany){
+    echo '<script>alert("DATOS ACTUALIZADOS");</script>';
+}
 
 ?>
