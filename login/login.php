@@ -1,9 +1,22 @@
 <?php
+$conexion = null;
 ini_set('display_errors', '0');
 //echo ini_get('display_errors');
 
 require_once("../conectar.php");
-
+/**
+ * Agrega los datos de la compania  al session
+ * @param $conexion2
+ */
+function agregarCompanydata($conexion2){
+    $company_id= 0;
+    $query_companyData = "SELECT monedas.moneda, monedas.simbolo FROM monedas JOIN company_data ON monedas.id_moneda = company_data.moneda_id WHERE company_data.id = ".$company_id;
+    $rs_companyData=mysqli_query($conexion2,$query_companyData);//@todo Buscar la forma de conectar ($conexion?) con la BASE de la tabla company_moneda
+    $row_company_data  = mysqli_fetch_array($rs_companyData);    ;
+    $_SESSION['company_currency_sign']= $row_company_data['simbolo'];
+    $_SESSION['company_currency_code']= $row_company_data['moneda'];
+    $_SESSION['company_id']= $company_id;
+}
 
 $companycode=$_POST["company_code"];
 $usuario=$_POST["user_name"];
@@ -38,14 +51,6 @@ if(count($_POST)>0) {
     $query_login="SELECT * FROM intUsersTable WHERE user_name='".$usuario."' and password='".$clave."';";
     $result_login = mysqli_query($conexion2,$query_login);
 
-    //se elige conexion2 (no rompe...), pero no toma los datos de la tabla company_data
-    $query_companyData="SELECT * FROM company_data WHERE id=0";
-    $rs_companyData=mysqli_query($conexion2,$query_companyData);//@todo Buscar la forma de conectar ($conexion?) con la BASE de la tabla company_moneda
-    $row_current = mysqli_fetch_row($rs_companyData);
-
-    $current= $row [3];
-    $company_id= "";//$row [0];
-
     if (!$result_login) {
         die('Query 2 failed');
         echo $query_login;
@@ -59,14 +64,11 @@ if(count($_POST)>0) {
             $_SESSION['intUserName'] = $row_login['intUser_name'];
             $_SESSION['id'] = $row_login['id_intUser'];
             $_SESSION['company_name']= $Company_name;
-            $_SESSION['company_current']= $current;
-            $_SESSION['company_id']= $company_id;
+            agregarCompanyData($conexion2);
         } else {
             $message = "Invalid Username or Comapany name!";
         }
     }
-
-
 }
 if(isset($_SESSION["intUser"])) {
     
