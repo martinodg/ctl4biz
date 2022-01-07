@@ -78,7 +78,7 @@ $logo= $row [12];//@todo cargar logo
                 data: new FormData($( 'form[name=formCompany]')[0]),
                 success: function( data ) {
                     $('#div_datos').html( data );
-                    //location.href="guardarCompany.php";
+                    // location.href="ver_company.php";
                 }
             });
         }
@@ -130,15 +130,15 @@ $logo= $row [12];//@todo cargar logo
                     <br> <br>
 
                     <span id="tidioma" class="loginText">Lenguaje</span><br>
-                    <select class="loginText input-wrapper" id="languageCompany" name="selectPais" >
-                        <option id="tlang_elegido" selected>idioma</option>
-                        <option value="en">Ingles</option>
-                        <option value="es">Español</option>
-                        <option value="pl">Polaco</option>
-                        <option value="it">Italiano</option>
-                        <option value="pt">Portugues</option>
-                        <option value="fr">Frances</option>
-                        <option value="de">Aleman</option>
+                    <select class="loginText input-wrapper" id="languageCompany" name="languageCompany" >
+                        <option value=<? echo $language;?> selected><? echo $language;?></option>
+                        <option value="Ingles">Ingles</option>
+                        <option value="Español">Español</option>
+                        <option value="Polsky">Polaco</option>
+                        <option value="Italiano">Italiano</option>
+                        <option value="Portugues">Portugues</option>
+                        <option value="Frances">Frances</option>
+                        <option value="Aleman">Aleman</option>
                     </select>
                     <br> <br>
 
@@ -153,7 +153,8 @@ $logo= $row [12];//@todo cargar logo
                     $query_monedas="SELECT * FROM monedas ORDER BY id_moneda ASC";
                     $res_monedas=mysqli_query($conexion,$query_monedas);
                     $nr_monedas= mysqli_num_rows($res_monedas);
-                    echo '<select id="monedaCompany" class="comboPequeno input-wrapper">';
+                    echo '<select id="monedaCompany" name="monedaCompany" class="comboPequeno input-wrapper">';
+                    echo '<option value="'.$moneda.'" selected>'.$moneda.'</option>';
                     while ($nr_monedas > 0) {
                         $row_moneda = mysqli_fetch_row($res_monedas);
                         if ($row_moneda[0]==$moneda){
@@ -175,7 +176,8 @@ $logo= $row [12];//@todo cargar logo
                     <span id="leyenda" class="loginText">Leyenda:</span><br>
                     <input class="input-wrapper" type="text" id="leyenda" name="leyenda" value="<?echo $leyenda;?>">
                     <br> <br>
-                    <span id="timgfrmavatar" class="loginText">Logo (png)</span><br>
+                    <!--@todo Salvar el file: logo de la compañia-->
+                    <span id="timgfrmavatar" class="loginText">Logo (<?echo $logo;?>)</span><br>
                     <div class="avatar-validation-wrapper">
                         <input class="input" type="file" id="logofile" name="logofile" accept="image/png" style="font-size: 1.5em;top: auto;visibility: visible; color:orange;" value="<?echo $logo;?>">
                         <div class="avatar-validation-icon-wrapper formatovalido"></div>
