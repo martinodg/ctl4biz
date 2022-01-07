@@ -5,6 +5,13 @@ if(session_id() == '') {
 require_once("../../conectar7.php");
 require_once("../../funciones/cargaImagenes.php");
 
+// datos que vienen de la SESSION
+$moneda_secssion= $_SESSION['company_current'];
+echo '$_SESSION[company_current]:    ',$moneda_secssion,'<br>';
+echo 'datos de la SESSION:','<br>';
+foreach ($_SESSION as $dato) {
+    echo $dato.'<br>';
+}
 
 $accion = $_POST["accion"];
 
