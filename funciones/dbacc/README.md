@@ -1,7 +1,9 @@
-API  para gestion de peticiones GRAFANA 
-Gestiona peticiones tomando  como parametro de la url 
-c = cliente id  de la tabla general de ctrl4b
-q = query que se busca ejecutar ( Ej: c => cobros , mp => medios de pago )
-Ej: http://localhost/funciones/api/index.php?c=40&q=mp
-Retorna una respuesta en json un error. 
-La respuesta en json seria consumida por grafana e interpretada en un grafico 
+#Gestor de querys sobre bases multiples 
+##instalacion 
+* Copiar config.ini.exmaple a config.ini 
+* Definir los datos de la base  , usuario y password en el archivo config.ini
+##Forma de uso . 
+* Seleccionar la/s tablas en la/s que se desea ejecutar el codigo SQL
+* Escribir el codigo SQL en el campo de texto 
+* Precionar enviar 
+* Se mostrara el resultado de las distintas ajecciones en el campo resultado 

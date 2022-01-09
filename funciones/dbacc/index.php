@@ -1,3 +1,9 @@
+<?php
+
+include_once(__DIR__.DIRECTORY_SEPARATOR.'api'.DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'Auth.php');
+$auth = Auth::fromConfig();
+$auth->basicAuth();
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -24,6 +30,7 @@
                         <label for="query" class="form-label">Query</label>
                         <textarea class="form-control" id="query"  name="query" required rows="6"></textarea>
                     </div>
+                    <input type="hidden" id="secret" value="<?php echo $auth->getToken();?>" />
                     <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Enviar</button>
                 </div>
             </fieldset>

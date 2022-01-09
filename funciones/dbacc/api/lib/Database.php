@@ -9,6 +9,7 @@ class Database
     private $dbPass     = "";
     private $charset    = 'utf8mb4';
     private $dsn;
+    private $uniqueUser;
 
     const LOGIN_DATABASE = 'login_data';
 
@@ -21,12 +22,13 @@ class Database
      * @param string $dbUsername
      * @param string $dbPass
      */
-    public function __construct( $host,  $dbname,  $dbUsername,  $dbPass)
+    public function __construct( $host,  $dbname,  $dbUsername,  $dbPass, $uniqueUser  = false)
     {
         $this->host = $host;
         $this->dbname = $dbname;
         $this->dbUsername = $dbUsername;
         $this->dbPass = $dbPass;
+        $this->uniqueUser = $uniqueUser;
     }
 
     /**
@@ -105,7 +107,7 @@ class Database
         }
         $user = $row->db_user;
         $pass = $row->db_password;
-        if(defined('USE_SAME_USER_ON_CLIENT') && USE_SAME_USER_ON_CLIENT){
+        if($this->uniqueUser){
             $user = $this->dbUsername;
             $pass = $this->dbPass;
         }

@@ -1,19 +1,34 @@
 function popularDb() {
-    $.getJSON('api/index.php', 'dbs', function (result) {
-        for (let i = 0; i < result.length; i++) {
-            let elem = $("<option></option>");
-            elem.attr("value", result[i].id);
-            elem.text(result[i].nombre);
-            elem.appendTo($("select#companyIds"));
-        }
-    });
+
+    $.getJSON(
+        {
+            dataType: "json",
+            url: 'api/index.php',
+            data: 'dbs',
+            headers: {
+                "Authorization": "Bearer " +$('#secret').val()
+            },
+            success: function (result) {
+                for (let i = 0; i < result.length; i++) {
+                    let elem = $("<option></option>");
+                    elem.attr("value", result[i].id);
+                    elem.text(result[i].nombre);
+                    elem.appendTo($("select#companyIds"));
+                }
+            }
+        });
 }
 
 function submitForm(event) {
     event.preventDefault();
-    $.post("api/index.php?q",
-        $("#frmQuery").serialize(),
-        function (jsonRows) {
+    $.ajax({
+        type: 'POST',
+        url: 'api/index.php?q',
+        data:  $("#frmQuery").serialize(),
+        headers: {
+            "Authorization": "Bearer " +$('#secret').val()
+        },
+        success:   function (jsonRows) {
             const dl = $("#msg > dl");
             dl.empty();
             jQuery.each(jsonRows, function (ind, jsonRow) {
@@ -26,7 +41,9 @@ function submitForm(event) {
                 dd.appendTo(dl);
             });
             $("#msg").show();
-        }, 'json');
+        },
+        dataType: 'json'
+    });
 }
 
 $(document).ready(function () {

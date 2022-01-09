@@ -1,6 +1,0 @@
-<?php
-define('SERVER','database');
-define('MAIN_DATABASE','database');
-define('USER','root');
-define('PASS','d8d33qq0');
-define('USE_SAME_USER_ON_CLIENT',true);
