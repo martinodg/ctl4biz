@@ -7,5 +7,11 @@ abstract class Query
      */
     abstract function getDql();
 
+    /**
+     * Procesa la peticon y contesta un array
+     * @param PDOStatement $stmt
+     * @return array
+     */
+    abstract function handleQuery($stmt);
 
 }

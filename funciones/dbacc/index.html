@@ -17,17 +17,21 @@
                 <div class="row">
                     <div class="mb-3">
                         <label for="companyIds" class="form-label">Database</label>
-                        <select class="form-control" id="companyIds" placeholder="all databases" required name="companyIds">
+                        <select class="form-control" id="companyIds" placeholder="all databases" multiple required name="companyIds[]">
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="query" class="form-label">Query</label>
-                        <textarea class="form-control" id="query"  name="query" required rows="6"> SELECT * FROM `company_data`</textarea>
+                        <textarea class="form-control" id="query"  name="query" required rows="6">  SELECT * FROM embalajes</textarea>
                     </div>
                     <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Enviar</button>
                 </div>
             </fieldset>
         </form>
+        <div class="mb-3" style="display: none;" id="msg">
+            <h1>Respuesta</h1>
+            <dl></dl>
+        </div>
     </div>
 </div>
 <!-- Optional JavaScript -->

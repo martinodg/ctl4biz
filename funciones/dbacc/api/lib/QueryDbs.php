@@ -47,14 +47,15 @@ class QueryDbs extends Query implements MultiDatabase
         return $this->companyId;
     }
 
-    /**
-     * @return string
-     */
-    public function getQuery()
-    {
-        return $this->query;
-    }
 
+    /**
+     * @inheritDoc
+     */
+    function handleQuery($stmt)
+    {
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 
 }

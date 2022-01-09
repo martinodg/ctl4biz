@@ -7,9 +7,4 @@ interface MultiDatabase
      * @return array
      */
     function getCompanyId();
-
-    /**
-     * @return string
-     */
-    public function getQuery();
 }

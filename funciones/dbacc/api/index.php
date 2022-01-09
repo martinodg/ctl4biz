@@ -3,8 +3,10 @@
 ini_set('display_errors', -1);
 ini_set('display_startup_errors', -1);
 ini_set('error_reporting', -1);
-require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config.php');
-define('LIB', __DIR__ . DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR );
+define('APP', __DIR__ . DIRECTORY_SEPARATOR );
+define('LIB', APP . DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR );
+
+require_once(APP . 'config.php');
 require_once(LIB . 'Router.php');
 require_once(LIB . 'Database.php');
 require_once(LIB . 'SelectQuery.php');
@@ -13,14 +15,20 @@ require_once(LIB . 'Query.php');
 require_once(LIB . 'QueryDbs.php');
 require_once(LIB . 'ListaDbs.php');
 
-if(!isset($Servidor, $BaseDeDatos, $Usuario, $Password)){
+if(
+    !defined('SERVER')
+    || !defined('MAIN_DATABASE')
+    || !defined('USER')
+    || !defined('PASS')
+
+){
     throw  new ErrorException('Db configuracion not defined.');
 }
 try{
-    $dbRoot = new Database($Servidor, $BaseDeDatos, $Usuario, $Password);
+    $dbRoot = new Database(SERVER, MAIN_DATABASE, USER, PASS);
+    $dbRoot->tryConnect();
     $router = new Router($_GET,$_POST);
-    $c = $router->getClient();
-    $respuesta =  $dbRoot->procesar($c);
+    $respuesta =  $dbRoot->procesar($router->getClient());
     header('Response ',200);
     header('Content-Type: application/json; charset=utf-8');
     die(json_encode($respuesta));

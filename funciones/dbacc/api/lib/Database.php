@@ -37,13 +37,19 @@ class Database
     public function procesar($cliente)
     {
         if($cliente instanceof SelectQuery){
-            return [['id'=>1,'nombre'=>'SFF'],['id'=>28,'nombre'=>'Mendivelzua S.A.']];$this->getJson($cliente);
+            $stmt = $this->query($cliente->getDql());
+            return $cliente->handleQuery($stmt);
         }elseif($cliente instanceof  MultiDatabase ){
-            $respuesta = [];
+            $respuesta  =  [];
             foreach ($cliente->getCompanyId() as $companyId){
-                $dbCliente = $this->fromRootConection($companyId);
-                $dbCliente->tryConnect();
-                $respuesta[] = $dbCliente->query($cliente->getQuery());
+                $dql = $cliente->getDql();
+                try{
+                    $dbCliente = $this->fromRootConection($companyId);
+                    $dbCliente->tryConnect();
+                    $respuesta[$companyId] = ['dql'=>$dql.'('.$companyId.')','response'=>$cliente->handleQuery( $dbCliente->query($dql))];
+                }catch (Exception $e){
+                    $respuesta[$companyId] =  ['dql'=>$dql.'('.$companyId.')','response'=>$e->getMessage()];
+                }
             }
             return $respuesta;
         }
@@ -63,19 +69,6 @@ class Database
         return $DBH;
     }
 
-    /**
-     * @param SelectQuery $query
-     * @return array
-     */
-    public function getJson( $query)
-    {
-        $data = array();
-        $stmt = $this->query($query->getDql());
-        while ($row = $stmt->fetch()) {
-            $data[] = $query->parseRow($row);
-        }
-        return $data;
-    }
 
     /**
      * Procesa un query
@@ -85,7 +78,7 @@ class Database
      */
     public function query($dql)
     {
-        $stmt =  $this->conecction->query($dql);
+        $stmt =  $this->conecction->prepare($dql);
         if (!$stmt) {
             $error = $this->conecction->errorInfo();
             throw new ErrorException(sprintf('Ocurrio un error al procesar el query %s ',$error[2]));
@@ -110,6 +103,14 @@ class Database
         if (!$row) {
             throw  new ErrorException('Client not found.',404);
         }
-        return  new Database($this->host,$row->id_company,$row->db_user,$row->db_password);
+        $user = $row->db_user;
+        $pass = $row->db_password;
+        if(defined('USE_SAME_USER_ON_CLIENT') && USE_SAME_USER_ON_CLIENT){
+            $user = $this->dbUsername;
+            $pass = $this->dbPass;
+        }
+        return  new Database($this->host,$row->id_company,$user,$pass);
     }
+
+
 }
