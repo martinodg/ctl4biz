@@ -45,7 +45,7 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
    
 //Query SQL
     $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY articulos.descripcion";     
-    echo $query;  
+    //echo $query;  
 	$rs_table = mysqli_query($conexion,$query);
     $linesNumber= mysqli_num_rows($rs_table);
                 while ($linesNumber > 0) {
