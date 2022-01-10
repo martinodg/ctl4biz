@@ -79,6 +79,9 @@ class ChangeLanguage
         'direccion' => array('Address', 'Dirección', 'Adres', 'Indirizzo', 'Endereço', 'Adresse', 'Anschrift'),
         'listado_ubicaciones' => array('List of Locations', 'Listado de Ubicaciones', 'Lista lokalizacji', 'Elenco delle località', 'Lista de Locais', 'Liste des emplacements', 'Liste der Standorte'),
         'cod_ubicacion' => array('Location Code', 'Código de Ubicación', 'Kod lokalizacji', 'Codice posizione', 'Código de localização', 'Code de localisation', 'Standortcode'),
+        'pagina' => array('Page', 'Pagina', 'Strona', 'Pagina', 'Página', 'Page', 'Seite'),
+        'cod_fiscal' => array('NIP','CUIT', 'kod fiskalny', 'Codice fiscale', 'Código fiscal', 'Code Fiscal', 'Steuercode'),
+        'cod_postal' => array('ZIP code', 'CP', 'kod pocztowy', 'codice postale', 'codigo postal', 'code postal', 'Plz'),
     );
 
     public function __construct()

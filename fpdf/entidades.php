@@ -1,5 +1,4 @@
 <?php
-<?php
 ob_start();
 define('FPDF_FONTPATH','font/');
 require ('mysqli_table.php');
