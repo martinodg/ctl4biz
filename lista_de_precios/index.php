@@ -57,7 +57,7 @@ require_once("../racf/purePhpVerify.php");
 		}*/
 
 		
-
+	
 		function paginar() {
 			document.getElementById("iniciopagina").value=document.getElementById("paginas").value;
 			//document.getElementById("form_busqueda").submit();
@@ -117,6 +117,9 @@ require_once("../racf/purePhpVerify.php");
 		function modify(id_list) {
 			location.href="nueva_lista.php" + "#" + id_list;
 		}
+
+		
+
 		</script>
 
 	</head>

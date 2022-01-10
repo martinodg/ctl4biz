@@ -5,10 +5,10 @@
 		<script type="text/javascript" src="../funciones/validar.js"></script>
 		<script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
-		 
+		<script type="text/javascript" src="../funciones/paginar.js"></script>
 		<script language="javascript">
 		$( document ).ready(function(){ 
-			$.get( "../funciones/BackendQueries/loadCboFamily.php" , { defaulSelect:"1"
+			$.get( "../funciones/BackendQueries/loadCboFamily.php" , { defaulSelect:"3"
                                                                      },function ( data ) { 
                                                                                         $('#cboFamily').html(data);   
 																						traducirOptions(); 
@@ -28,6 +28,29 @@
 				);
 
 			}
+			$('#cboFamily').change(function(){
+				var idcat=$(this).val();
+				var des=$('#descripcion').val();
+				var cda=$('#codarticulo').val();
+				//alert(idcat);
+				getItemList(idcat,cda,des);
+			});
+			$("#codarticulo").keyup( function() {
+				var cda=$(this).val();
+				var des=$('#descripcion').val();
+				var idcat=$('#cboFamily').val();
+				getItemList(idcat,cda,des);
+			});
+			
+			$('#descripcion').keyup(function(){
+				var des=$(this).val();
+				var cda=$('#codarticulo').val();
+				var idcat=$('#cboFamily').val();
+				//alert(des);
+				getItemList(idcat,cda,des);
+			});
+
+			getItemList(3);
 		});
 
 		function cancelar() {
@@ -46,6 +69,23 @@
 		// Está utilizando MOZILLA/NETSCAPE
 		cursor='pointer';
 		}
+		
+		function getItemList(id_category, codarticulo, descrip) {
+			$.get( "../funciones/BackendQueries/getItemList.php" , 
+					{ 
+						idCategory: id_category,
+						codarticulo: codarticulo,
+						descripcion: descrip,
+						toolSeleccionar: "1",
+ 						paginainicio: document.getElementById('iniciopagina').value                                               
+					},
+					function ( data ) { 
+                            $('#div_datos').html( data );
+			    			calculaPaginacion();
+                    }
+            );
+		}
+
 		
 		</script>
 	</head>
@@ -94,7 +134,7 @@
 						
 						<tr>
 						  <td width="19%"><span  id="tnomb">Nombre</span></td>
-						  <td width="80%"><input NAME="Anombre" type="text" class="cajaGrande" id="nombre" size="50" maxlength="50"></td>
+						  <td width="80%"><input NAME="Anombre" type="text" class="cajaGrande" id="descripcion" size="50" maxlength="50"></td>
 					      <td width="1%" rowspan="14" align="left" valign="top"><ul id="lista-errores"></ul></td>
 					  </tr>		
 					</table>
