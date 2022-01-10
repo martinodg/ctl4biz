@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="../funciones/paginar.js"></script>
 		<script language="javascript">
 		$( document ).ready(function(){ 
+			//load family item combo
 			$.get( "../funciones/BackendQueries/loadCboFamily.php" , { defaulSelect:"3"
                                                                      },function ( data ) { 
                                                                                         $('#cboFamily').html(data);   
