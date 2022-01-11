@@ -1,6 +1,10 @@
 <?php 
 header('Cache-Control: no-cache');
-header('Pragma: no-cache'); 
+header('Pragma: no-cache');
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
@@ -286,19 +290,19 @@ require_once("../mysqli_result.php");
 				        </tr>
 						<tr>
 						  <td><span  id="tpciocomp">Precio de compra</span></td>
-						  <td><input NAME="qprecio_compra" type="text" class="cajaPequena" id="precio_compra" size="10" maxlength="10"> &#8364;</td>
+						  <td><input NAME="qprecio_compra" type="text" class="cajaPequena" id="precio_compra" size="10" maxlength="10"> <?echo $moneda;?></td>
 				      </tr>
 					  	<tr>
 						  <td><span  id="tpalmacen">Precio de almac&eacute;n</span></td>
-						  <td><input NAME="qprecio_almacen" type="text" class="cajaPequena" id="precio_almacen" size="10" maxlength="10"> &#8364;</td>
+						  <td><input NAME="qprecio_almacen" type="text" class="cajaPequena" id="precio_almacen" size="10" maxlength="10"> <?echo $moneda;?></td>
 				      </tr>
 						<tr>
 						  <td><span  id="tptienda">Precio de tienda</span></td>
-						  <td><input NAME="qprecio_tienda" type="text" class="cajaPequena" id="precio_tienda" size="10" maxlength="10"> &#8364;</td>
+						  <td><input NAME="qprecio_tienda" type="text" class="cajaPequena" id="precio_tienda" size="10" maxlength="10"> <?echo $moneda;?></td>
 				      </tr>
 						<tr>
                             <td><span  id="tprcventpub">Precio venta al publico</span></td>
-						  <td><input NAME="qpvp" type="text" class="cajaPequena" id="pvp" size="10" maxlength="10"> &#8364;</td>
+						  <td><input NAME="qpvp" type="text" class="cajaPequena" id="pvp" size="10" maxlength="10"> <?echo $moneda;?></td>
 				      </tr>
 					 
 					  <tr>
