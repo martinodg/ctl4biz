@@ -1,8 +1,8 @@
 <?php
-include_once(__DIR__.DIRECTORY_SEPARATOR.'enviroment.php');
 if(session_id() == '') {
     session_start();
 }
+//include_once(__DIR__.DIRECTORY_SEPARATOR.'enviroment.php');
 
 $Servidor="database";
 $BaseDeDatos= $_SESSION["BaseDeDatos"];
