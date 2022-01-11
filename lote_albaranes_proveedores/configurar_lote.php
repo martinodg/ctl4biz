@@ -1,8 +1,13 @@
-<?php 
+<?php
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
- 
+
+$moneda= $_SESSION['company_currency_sign'];
 $cadena_elegidos=$_GET["cadena_elegidos"];
 $albaranes=substr($cadena_elegidos,1,strlen($cadena_elegidos)-2);
 $albaranes=str_replace("~",",",$albaranes);
@@ -63,9 +68,9 @@ $hoy=date("d/m/Y");
 							<td width="15%"><span  id="codalbaran">C&oacute;digo de albar&aacute;n</span> <? echo $contador+1;?></td>
 						    <td width="15%"><? echo mysqli_result($rs_albaranes,$contador,"codalbaran");?></td>
                             <td width="20%"><span  id="timpsiva">Importe sin iva</span></td>
-							<td width="15%"><? echo number_format($totalalbaransiniva,2,",",".");?> &#8364;</td>
+							<td width="15%"><? echo number_format($totalalbaransiniva,2,",",".").' '.$moneda;?></td>
 							<td width="20%"><span  id="timpciva">Importe con iva</span> (<? echo $iva?>%)</td>
-							<td width="15%"><? echo number_format($totalalbaran,2,",",".");?> &#8364;</td>
+							<td width="15%"><? echo number_format($totalalbaran,2,",",".").' '.$moneda;?></td>
 						</tr>
 					<? $totalfactura=$totalfactura+mysqli_result($rs_albaranes,$contador,"totalalbaran");
 					   $contador++;
@@ -82,9 +87,9 @@ $hoy=date("d/m/Y");
 							<td width="15%"></td>
 						    <td width="15%"></td>
 				            <td width="20%"><span  id="tfcsiva">Total facturaci&oacute;n sin iva</span></td>
-							<td width="15%"><? echo number_format($totalfacturasiniva,2,",",".");?> &#8364;</td>
+							<td width="15%"><? echo number_format($totalfacturasiniva,2,",",".").' '.$moneda;?></td>
 							<td width="20%"><span  id="tfcciva">Total facturaci&oacute;n con iva</span></td>
-							<td width="15%"><? echo number_format($totalfactura,2,",",".");?> &#8364;</td>
+							<td width="15%"><? echo number_format($totalfactura,2,",",".").' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td width="15%"><span  id="tcodfacabbr">Cod. Factura</span></td>
