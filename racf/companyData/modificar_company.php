@@ -79,7 +79,7 @@ $logo= $row [12];//@todo Cargar nombre del logo (ctl4bizlogo.jpg por default )
                 data: new FormData($( 'form[name=formCompany]')[0]),
                 success: function( data ) {
                     $('#div_datos').html( data );
-                    location.href="ver_company.php";
+                    location.href="modificar_company.php";
                 }
             });
         }
