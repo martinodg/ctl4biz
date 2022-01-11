@@ -3,6 +3,10 @@ $conexion = null;
 header('Cache-Control: no-cache');
 header('Pragma: no-cache');
 
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
@@ -416,15 +420,15 @@ else {
 						</tr>
 						<tr>
 							<td><span  id="tpciocomp">Precio de compra</span></td>
-							<td colspan="2"><?php echo $precio_compra?> &#8364;</td>
+							<td colspan="2"><?php echo $precio_compra.' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td><span  id="tpcioalma">Precio almac&eacute;n</span></td>
-							<td colspan="2"><?php echo $precio_almacen?> &#8364;</td>
+							<td colspan="2"><?php echo $precio_almacen.' '.$moneda;?></td>
 						</tr>												
 						<tr>
 							<td><span  id="tprectienda">Precio en tienda</span></td>
-							<td colspan="2"><?php echo $precio_tienda?> &#8364;</td>
+							<td colspan="2"><?php echo $precio_tienda.' '.$moneda;?></td>
 						</tr>
 						<!--<tr>
 							<td>Pvp</td>
@@ -432,7 +436,7 @@ else {
 						</tr>-->
 						<tr>
 							<td><span  id="tprcciva">Precio con iva</span></td>
-							<td colspan="2"><?php echo $precio_iva?> &#8364;</td>
+							<td colspan="2"><?php echo $precio_iva.' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td><span  id="tcodbarr">Codigo de barras</span></td>

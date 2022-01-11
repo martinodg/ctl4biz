@@ -1,4 +1,8 @@
 <?php
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
@@ -77,42 +81,42 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 					  </tr>
 					  <tr>
                           <td><span  id="tneto">Neto</span></td>
-						  <td><? echo number_format($neto,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($neto,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
                           <td>16 % <span  id="tiva">IVA</span></td>
-						  <td><? echo number_format($iva,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($iva,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
 						  <td><span  id="ttotal">Total</span></td>
-						  <td><? echo number_format($total,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($total,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
                           <td><span  id="ttotalcdo">Total contado</span></td>
-						  <td><? echo number_format($contado,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($contado,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
                           <td><span  id="ttotaltj">Total tarjetas</span></td>
-						  <td><? echo number_format($tarjeta,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($tarjeta,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
 						  <td><span  id="ttotal">Total</span></td>
-						  <td><? echo number_format($total,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($total,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
