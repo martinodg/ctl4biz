@@ -31,7 +31,7 @@ $where.=" ORDER BY facturas.codfactura DESC";
 //$query_busqueda="SELECT count(*) FROM facturas  WHERE facturas.borrado=0";
 
 $query_busqueda="SELECT count(*) as filas FROM facturas LEFT JOIN cobros ON facturas.codfactura=cobros.codfactura INNER JOIN clientes ON facturas.codcliente=clientes.codcliente WHERE facturas.borrado=0 AND ".$where;
-echo $query_busqueda;
+//echo $query_busqueda;
 $rs_busqueda=mysqli_query($conexion,$query_busqueda);
 $filas=mysqli_result($rs_busqueda,0,"filas");
 
