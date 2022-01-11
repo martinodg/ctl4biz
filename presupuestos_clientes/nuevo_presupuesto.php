@@ -1,5 +1,9 @@
 <?php
 require_once("../conectar7.php");
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 
 $fechahoy=date("Y-m-d");
 $sel_presupuesto="INSERT INTO presupuestostmp (codpresupuesto,fecha) VALUE ('','$fechahoy')";
@@ -231,13 +235,13 @@ $codpresupuestotmp=mysqli_insert_id($conexion);
 					<td><span  id="descri">descripcion</span></td>
 					<td width="19%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
 					<td width="5%"><span  id="tprecio">PRECIO</span></td>
-					<td width="11%"><input NAME="precio" type="text" class="cajaPequena" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> &#8364;</td>
+					<td width="11%"><input NAME="precio" type="text" class="cajaPequena" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> <?echo $moneda;?></td>
 					<td width="5%"><span  id="tcant">CANTIDAD</span></td>
 					<td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
 					<td width="4%"><span  id="tdcto">Dcto.</span></td>
 					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
 					<td width="5%"><span  id="timporte">IMPORTE</span></td>
-					<td width="11%"><input NAME="importe" type="text" class="cajaPequena" id="importe" size="10" maxlength="10" value="0" readonly> &#8364;</td>
+					<td width="11%"><input NAME="importe" type="text" class="cajaPequena" id="importe" size="10" maxlength="10" value="0" readonly> <?echo $moneda;?></td>
 					<td width="15%"><button type="button" id="btnagregar" onClick="validar()"  onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span  id="tagregar">Agregar</span> </button></td>
 				  </tr>
 				</table>
@@ -268,20 +272,17 @@ $codpresupuestotmp=mysqli_insert_id($conexion);
 			  <tr>
 			    <td width="27%" class="busqueda"><span  id="subtotal">Subtotal</span></td>
 				<td width="73%" align="right"><div align="center">
-			      <input class="cajaTotales" name="baseimponible" type="text" id="baseimponible" size="12" value=0 align="right" readonly>
-		        &#8364;</div></td>
+			      <input class="cajaTotales" name="baseimponible" type="text" id="baseimponible" size="12" value=0 align="right" readonly> <?echo $moneda;?></div></td>
 			  </tr>
 			  <tr>
 				<td class="busqueda"><span  id="tiva">IVA</span></td>
 				<td align="right"><div align="center">
-			      <input class="cajaTotales" name="baseimpuestos" type="text" id="baseimpuestos" size="12" align="right" value=0 readonly>
-		        &#8364;</div></td>
+			      <input class="cajaTotales" name="baseimpuestos" type="text" id="baseimpuestos" size="12" align="right" value=0 readonly> <?echo $moneda;?></div></td>
 			  </tr>
 			  <tr>
 				<td class="busqueda"><span  id="tpciototal">Precio Total</span></td>
 				<td align="right"><div align="center">
-			      <input class="cajaTotales" name="preciototal" type="text" id="preciototal" size="12" align="right" value=0 readonly>
-		        &#8364;</div></td>
+			      <input class="cajaTotales" name="preciototal" type="text" id="preciototal" size="12" align="right" value=0 readonly> <?echo $moneda;?></div></td>
 			  </tr>
 		</table>
 			  </div>
