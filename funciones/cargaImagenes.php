@@ -20,7 +20,7 @@ function generarUrlDB($fileName)
 function generarUrlEmpresaDB($fileName)
 {
     $directorioEmpresa = retornarNombreDirectorioEmpresa();
-    return '../../img/'.$directorioEmpresa.'/'.$fileName;
+    return '../img/'.$directorioEmpresa.'/'.$fileName;
 }
 
 
