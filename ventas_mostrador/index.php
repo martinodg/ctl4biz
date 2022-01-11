@@ -20,7 +20,8 @@ require_once("../racf/purePhpVerify.php");
 		<!-- <script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script> -->
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="../jquery/jquery331.js"></script>
-        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+		<script type="text/javascript" src="../funciones/paginar.js"></script>
+	        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">   
 		
         var desc_stock;
@@ -36,7 +37,7 @@ require_once("../racf/purePhpVerify.php");
         //INITIALIZE INVOICE NUMBER AND DATA
         initInvoice('tempInvoice');
         //load family item combo
-			$.get( "../funciones/BackendQueries/loadCboFamily.php" , { defaulSelect:"1"
+			$.get( "../funciones/BackendQueries/loadCboFamily.php" , { defaulSelect:"3"
                                                                      },function ( data ) { 
                                                                                         $('#cboFamily').html(data);    
                                                                                   }
@@ -89,7 +90,7 @@ require_once("../racf/purePhpVerify.php");
 			var id_cliente=$("#codcliente").val();
 			getClientData(id_cliente);
 
-			getItemList();
+			getItemList(3);
 
 			
 
@@ -158,10 +159,12 @@ require_once("../racf/purePhpVerify.php");
 						idCategory: id_category,
 						referencia: referenc,
 						descripcion: descrip,
-						toolSeleccionar: "1"                                               
+						toolSeleccionar: "1",
+ 						paginainicio: document.getElementById('iniciopagina').value                                               
 					},
 					function ( data ) { 
                             $('#windowData').html( data );
+			    calculaPaginacion();
                     }
             );
 		}
@@ -361,6 +364,20 @@ require_once("../racf/purePhpVerify.php");
             var codart=cod_art;
 			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe+"&descstock="+dstock+"&codart="+codart,"miwin","width=700,height=500,scrollbars=yes");
 		}
+
+
+
+//this function setup pagination and reload 
+        function paginar() {
+            //alert(document.getElementById("paginas").value);
+            document.getElementById("iniciopagina").value = document.getElementById("paginas").value;
+            var idCat= document.getElementById("cboFamily").value;
+	    var refrn= document.getElementById("referencia").value;
+	    var dscri= document.getElementById("descripcion") .value;
+	    getItemList(idCat,refrn,dscri);
+        }
+
+
 		</script>
 	</head>
 	<body>
@@ -389,7 +406,13 @@ require_once("../racf/purePhpVerify.php");
 				 			</tr>
 						</table>
 					  </form>	
-				  	</div>	
+				  	</div>
+					<table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
+                                		<tr>
+                                			<td width="50%" class="paginar" align="left"><span  id="tndartenctn">N de facturas encontradas</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" >
+                                			<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+                          					</select></td>
+                          		</table>	
 					<div  class="header">
 						<table>
 							<tr>
@@ -398,7 +421,7 @@ require_once("../racf/purePhpVerify.php");
 								<td width="15%"><div align="center"><span class="header" id="tdescri">Descripcion</span></div></td>
 								<td width="20%"><div align="center"><span class="header" id="tprecio">Precio</span></div></td>
 								<td width="18%"><div align="center"><span class="header" id="tundmed">Unidad</span></div></td>
-								<td width="15%"><div align="center"><span class="header" id="tflia">Impuesto</span></div></td>
+								<td width="15%"><div align="center"><span class="header" id="tiva">Impuesto</span></div></td>
 								<td width="12%">&nbsp;</td>
 		  					</tr>
 							<tr>
@@ -409,7 +432,9 @@ require_once("../racf/purePhpVerify.php");
 						  </br>
 						  </br>
 					</div>
-				  	<div id="windowData"></div>	
+					
+				  	<div id="windowData"></div>
+				 	<input type="hidden" id="iniciopagina" name="iniciopagina" value="0 ">
 				</div> 
 			</div>
 				<div align="center">

@@ -6,11 +6,10 @@ $errorMessage='';
 
 //build filters
 $where="";
-if(isset($_GET['idCategory'])) {$idCateogory=$_GET['idCategory'];
-    if($idCateogory>0){
-        $where=$where."articulos.codfamilia='$idCateogory' AND ";
-    }
-    
+if(isset($_GET['idCategory'])) {$idCategory=$_GET['idCategory'];
+    if($idCategory>0){
+        $where=$where."articulos.codfamilia='$idCategory' AND ";
+    }     
 }
 if(isset($_GET['referencia'])) {$referencia=$_GET['referencia'];
    // $donde=$donde."articulos.descripcion LIKE '".$nombrearticulo."%' AND ";
@@ -20,7 +19,16 @@ if(isset($_GET['descripcion'])) {$descripcion=$_GET['descripcion'];
     $where=$where."articulos.descripcion LIKE '%$descripcion%' AND ";
 }
 
+if(isset($_GET['paginainicio'])) {$paginainicio=$_GET['paginainicio'];
+}
 
+  $query_nroLineas="SELECT codarticulo FROM articulos WHERE $where articulos.borrado='0'";
+    //echo $query_nroLineas;
+
+        $rs_nroLineas = mysqli_query($conexion,$query_nroLineas);
+    $nr_Lineas= mysqli_num_rows($rs_nroLineas);
+    echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
+	//echo "nro lineas:".$nr_Lineas;
 //Set tools
 if(isset($_GET['toolVer'])) {$toolVer=$_GET['toolVer'];
     
@@ -37,10 +45,11 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
     
    
 //Query SQL
-    $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY articulos.descripcion";     
+    $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida AND articulos.borrado='0' AND articulos.codfamilia<>'0' ORDER BY articulos.descripcion LIMIT ".$paginainicio.",10;";     
     //echo $query;  
 	$rs_table = mysqli_query($conexion,$query);
     $linesNumber= mysqli_num_rows($rs_table);
+                echo '<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
                 while ($linesNumber > 0) {
                             if ($linesNumber % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }
                             $row = mysqli_fetch_row($rs_table);
@@ -59,8 +68,7 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
                             }else{$tool4="";}
 
 
-                            echo '<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
-                                echo '<tr class="'.$fondolinea.'">';
+                            echo '<tr class="'.$fondolinea.'">';
 							        echo '<td width="5%"><div align="center">'.$row[0].'</td>';
 							        echo '<td width="15%"><div align="center">'.$row[1].'</div></td>';
 							        echo '<td width="20%"><div align="center">'.$row[2].'</div></td>';
@@ -73,10 +81,10 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
                                     echo '<td width="3%"><div align="center">'.$tool4.'</div></td>';
 
                                 echo '</tr>';
-                             echo '</table>';
-                           
-                             $linesNumber--;
+                              $linesNumber--;
                 }
+                echo '</table>';
+                           
 
 mysqli_close($conexion); 
 ?>

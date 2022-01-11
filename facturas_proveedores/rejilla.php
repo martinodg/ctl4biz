@@ -1,5 +1,4 @@
 <?php
-$conexion= null;
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
@@ -15,10 +14,13 @@ if ($fechafin<>"") { $fechafin=explota($fechafin); }
 
 $cadena_busqueda=$_POST["cadena_busqueda"];
 
+$zerocodprov= sprintf("%08d",$codproveedor);
+//echo $zerocodprov;
+
 $where="1=1";
-if ($codproveedor <> "") { $where.=" AND facturasp.codproveedor='$codproveedor'"; }
+if ($codproveedor <> "") { $where.=" AND facturas.codproveedor=$codproveedor"; }
 if ($nombre <> "") { $where.=" AND proveedores.nombre like '%".$nombre."%'"; }
-if ($numfactura <> "") { $where.=" AND codfactura='$numfactura'"; }
+if ($numfactura <> "") { $where.=" AND (codfactura*1)='$numfactura'"; }
 if ($estado > "0") { $where.=" AND estado='$estado'"; }
 if (($fechainicio<>"") and ($fechafin<>"")) {
 	$where.=" AND fecha between '".$fechainicio."' AND '".$fechafin."'";
@@ -34,7 +36,8 @@ if (($fechainicio<>"") and ($fechafin<>"")) {
 
 $where.=" ORDER BY codfactura DESC";
 $query_busqueda="SELECT count(*) as filas FROM facturasp,proveedores WHERE facturasp.borrado=0 AND facturasp.codproveedor=proveedores.codproveedor AND ".$where;
-$rs_busqueda=mysqli_query($conexion,$query_busqueda) or trigger_error("Query Failed! SQL: $query_busqueda - Error: ".mysqli_error($conexion), E_USER_ERROR);;
+//echo $query_busqueda;
+$rs_busqueda=mysqli_query($conexion,$query_busqueda);
 $filas=mysqli_result($rs_busqueda,0,"filas");
 
 ?>
