@@ -21,7 +21,7 @@ require_once("../racf/purePhpVerify.php");
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="../jquery/jquery331.js"></script>
 		<script type="text/javascript" src="../funciones/paginar.js"></script>
-	        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">   
 		
         var desc_stock;
@@ -37,19 +37,15 @@ require_once("../racf/purePhpVerify.php");
         //INITIALIZE INVOICE NUMBER AND DATA
         initInvoice('tempInvoice');
         //load family item combo
-			$.get( "../funciones/BackendQueries/loadCboFamily.php" , { defaulSelect:"3"
+		$.get( "../funciones/BackendQueries/loadCboFamily.php" , { defaulSelect:"3"
                                                                      },function ( data ) { 
                                                                                         $('#cboFamily').html(data);    
-                                                                                  }
-                );
-				$.get( "../funciones/BackendQueries/loadCboTax.php" , { defaulSelect:"1"
+                                                                                  });
+        $.get( "../funciones/BackendQueries/loadCboTax.php" , { defaulSelect:"1"
                                                                      },function ( data ) { 
                                                                                         $('#impuesto').html(data);    
 																						$('#impuesto').attr('class', 'comboMedio');
-                                                                                  }
-                );
-
-				
+                                                                              });
 		//Perform when DOM is full loaded
 		$( document ).ready(function(){
 
@@ -100,8 +96,7 @@ require_once("../racf/purePhpVerify.php");
             	    $('.cboUnidadmedida').html(data);
             });
 		});
-		function actualizar_importe()
-			{
+		function actualizar_importe(){
 				var ai_precio=document.getElementById("iprecio").value;
 				var ai_cantidad=document.getElementById("cantidad").value;
 				var ai_descuento=document.getElementById("descuento").value;
@@ -350,12 +345,10 @@ require_once("../racf/purePhpVerify.php");
 		function salir() {
 			location.href="index.php";
 		}
-		
 		function imprimir() {
 			var codfactura=$("#numfactura").val();
 			window.open("../fpdf/imprimir_factura.php?codfactura="+codfactura+"&lang="+getLanguajeCode());
 		}
-		
 		function pagar() {
 			var codfactura=$("#numfactura").val();
 			var codcliente=$("#codcliente").val();
@@ -364,9 +357,6 @@ require_once("../racf/purePhpVerify.php");
             var codart=cod_art;
 			miPopup = window.open("efectuarpago.php?codfactura="+codfactura+"&codcliente="+codcliente+"&importe="+importe+"&descstock="+dstock+"&codart="+codart,"miwin","width=700,height=500,scrollbars=yes");
 		}
-
-
-
 //this function setup pagination and reload 
         function paginar() {
             //alert(document.getElementById("paginas").value);
@@ -376,7 +366,16 @@ require_once("../racf/purePhpVerify.php");
 	    var dscri= document.getElementById("descripcion") .value;
 	    getItemList(idCat,refrn,dscri);
         }
-
+        function abreVentana(){
+            miPopup = window.open("ventana_clientes.php","miwin","width=700,height=380,scrollbars=yes");
+            miPopup.focus();
+        }
+        function limpiarcaja() {
+            document.getElementById("icodbarras").value="";
+            document.getElementById("icodArticulo").value="";
+            document.getElementById("idescripcion").value="";
+            document.getElementById("descuento").value="";
+        }
 
 		</script>
 	</head>
