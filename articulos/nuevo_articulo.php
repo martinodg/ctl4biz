@@ -5,7 +5,6 @@ if(session_id() == '') {
     session_start();
 }
 $moneda= $_SESSION['company_currency_sign'];
-
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
  ?>

@@ -135,7 +135,7 @@ function enviar() {
 			            </tr>
 						<tr>
 							<td><span  id="timpvl">Importe vale</span></td>
-						    <td><input NAME="importevale" type="text" class="cajaPequena" id="importevale" size="10" maxlength="10" value="0"> <?echo $moneda;?> <img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Aplicar Vale" onClick="actualizarimporte()"></td>
+						    <td><input NAME="importevale" type="text" class="cajaPequena" id="importevale" size="10" maxlength="10" value="0"> <?echo $moneda;?><img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Aplicar Vale" onClick="actualizarimporte()"></td>
 			            </tr>
 						<tr>
 							<td><span  id="tapgr">A pagar</span></td>

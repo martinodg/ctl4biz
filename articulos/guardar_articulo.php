@@ -432,7 +432,7 @@ else {
 						</tr>
 						<!--<tr>
 							<td>Pvp</td>
-							<td colspan="2"><?php echo $pvp?> &#8364;</td>
+							<td colspan="2"><?php echo $pvp.$moneda;?></td>
 						</tr>-->
 						<tr>
 							<td><span  id="tprcciva">Precio con iva</span></td>

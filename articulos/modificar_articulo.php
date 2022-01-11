@@ -1,6 +1,10 @@
 <?php 
 header('Cache-Control: no-cache');
-header('Pragma: no-cache'); 
+header('Pragma: no-cache');
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 
 require_once("../conectar7.php"); 
 require_once("../mysqli_result.php");
@@ -363,27 +367,27 @@ $( document ).ready(function(){
 						<tr>
 						  <td><span  id="tpciocomp">Precio de compra</span></td>
 						  <td colspan="2"><input NAME="qprecio_compra" type="text" class="cajaPequena" id="precio_compra" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_compra")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>
 					  	<tr>
 						  <td><span  id="tpalmacen">Precio de almac&eacute;n</span></td>
 						  <td colspan="2"><input NAME="qprecio_almacen" type="text" class="cajaPequena" id="precio_almacen" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_almacen")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>
 						<tr>
 						  <td><span  id="tptienda">Precio de tienda</span></td>
 						  <td colspan="2"><input NAME="qprecio_tienda" type="text" class="cajaPequena" id="precio_tienda" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_tienda")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>
 					  	<!--<tr>
 						  <td>Pvp</td>
 						  <td colspan="2"><input NAME="qpvp" type="text" class="cajaPequena" id="pvp" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_pvp")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>-->
 					  <tr>
 						  <td><span  id="tprcciva">Precio con iva</span></td>
 						  <td colspan="2"><input NAME="qprecio_iva" type="text" class="cajaPequena" id="precio_iva" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_iva")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>
 					  <tr>
 						  <td><span  id="timgfrmjpg">Imagen</span> </td>

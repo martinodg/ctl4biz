@@ -249,7 +249,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 					<td><span  id="descri">descripcion</span></td>
 					<td width="19%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
 					<td width="5%"><span  id="tprecio">PRECIO</span></td>
-					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_impor<?echo $m <?echo $moneda;?></td>
+					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"> <?echo $moneda;?></td>
 					<td width="5%"><span  id="tcant">CANTIDAD</span></td>
 					<td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
 					<td width="4%"><span  id="tdcto">Dcto.</span></td>
@@ -286,7 +286,7 @@ $preciototal=$baseimponible+$baseimpuestos;
 			  <tr>
 			    <td width="27%" class="busqueda"><span  id="subtotal">Subtotal</span></td>
 				<td width="73%" align="right"><div align="center">
-			      <input class="cajaTotales" name="baseimponible" type="text" id="baseimponible" size="12" align="right" value="<? echo number_format($baseimponible,2)?>" re <?echo $moneda;?></div></td>
+			      <input class="cajaTotales" name="baseimponible" type="text" id="baseimponible" size="12" align="right" value="<? echo number_format($baseimponible,2)?>" readonly> <?echo $moneda;?></div></td>
 			  </tr>
 			  <tr>
 				<td class="busqueda"><span  id="tiva">IVA</span></td>
