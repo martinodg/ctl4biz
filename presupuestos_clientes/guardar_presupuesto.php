@@ -1,12 +1,12 @@
 <?
-
-require_once("../conectar7.php");
-require_once("../mysqli_result.php");
-require_once("../funciones/fechas.php");
 if(session_id() == '') {
     session_start();
 }
 $moneda= $_SESSION['company_currency_sign'];
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
+require_once("../funciones/fechas.php");
+
 $accion=$_POST["accion"];
 if (!isset($accion)) { $accion=$_GET["accion"]; }
 
