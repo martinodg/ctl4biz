@@ -142,7 +142,7 @@ function enviar() {
 						    <td><input NAME="apagar" type="text" class="cajaPequena" id="apagar" size="10" maxlength="10" value="<? echo $importe?>" readonly> <?echo $moneda;?></td>
 			            </tr>
 						<tr>
-							<td<span  id="tpagado">Pagado</span></td>
+							<td><span  id="tpagad">Dinero Entregado</span></td>
 						    <td><input NAME="pagado" type="text" class="cajaPequena" id="pagado" size="10" maxlength="10"> <?echo $moneda;?> <img src="../img/dinero.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Pagado" onClick="actualizarimportedevolver()"></td>
 			            </tr>
 						<tr>
