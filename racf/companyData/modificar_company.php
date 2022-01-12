@@ -67,7 +67,6 @@ $logo= $row [12];//@todo Cargar nombre del logo (ctl4bizlogo.jpg por default )
             location.href="../../settings/settings.php";
         }
         function modificarCompany() {
-            // valLogo();
             $.ajax({
                 type: "POST",
                 async: false,
@@ -77,8 +76,8 @@ $logo= $row [12];//@todo Cargar nombre del logo (ctl4bizlogo.jpg por default )
                 processData: false,
                 url: "guardarCompany.php",
                 data: new FormData($( 'form[name=formCompany]')[0]),
-                success: function( data ) {
-                    $('#div_datos').html( data );
+                success: function( data ) {;
+                    alert(data);
                     location.href="modificar_company.php";
                 }
             });
