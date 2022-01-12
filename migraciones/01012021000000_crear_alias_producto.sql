@@ -1,6 +1,3 @@
-
-
-
 START TRANSACTION;
 --
 -- Estructura de tabla para la tabla `alias_articulos`

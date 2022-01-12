@@ -1,4 +1,9 @@
-CREATE VIEW  listado_articulos_alias AS   
+START TRANSACTION;
+--
+--  Estructura  la vista  `listado_articulos_alias`
+--
+
+CREATE VIEW  listado_articulos_alias AS
 SELECT
     articulos.codarticulo ,
     articulos.codfamilia,
@@ -74,6 +79,9 @@ FROM articulos
 JOIN familias ON  articulos.codfamilia = familias.codfamilia 
 JOIN alias_articulos ON  alias_articulos.codarticulo = articulos.codarticulo;
 
+--
+-- Estructura  la vista `listado_articulos_precios_alias`
+--
 
 CREATE VIEW  listado_articulos_precios_alias AS 
 SELECT
@@ -160,3 +168,5 @@ JOIN artpro ON  articulos.codarticulo =  articulos.codarticulo
 JOIN alias_articulos ON  alias_articulos.codarticulo = articulos.codarticulo
 WHERE articulos.borrado = 0        
 AND artpro.codfamilia = articulos.codfamilia ;
+
+COMMIT;
