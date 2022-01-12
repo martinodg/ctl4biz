@@ -1,7 +1,5 @@
 <?php
 $conexion = null;
-ini_set('display_errors', '0');
-//echo ini_get('display_errors');
 
 require_once("../conectar.php");
 /**
@@ -11,8 +9,8 @@ require_once("../conectar.php");
 function agregarCompanydata($conexion2){
     $company_id= 0;
     $query_companyData = "SELECT monedas.moneda, monedas.simbolo FROM monedas JOIN company_data ON monedas.id_moneda = company_data.moneda_id WHERE company_data.id = ".$company_id;
-    $rs_companyData=mysqli_query($conexion2,$query_companyData);//@todo Buscar la forma de conectar ($conexion?) con la BASE de la tabla company_moneda
-    $row_company_data  = mysqli_fetch_array($rs_companyData);    ;
+    $rs_companyData=mysqli_query($conexion2,$query_companyData)  or die('Error: '.mysqli_error($conexion2).' query: '.$query_companyData);  ;
+    $row_company_data  = mysqli_fetch_array($rs_companyData);
     $_SESSION['company_currency_sign']= $row_company_data['simbolo'];
     $_SESSION['company_currency_code']= $row_company_data['moneda'];
     $_SESSION['company_id']= $company_id;
