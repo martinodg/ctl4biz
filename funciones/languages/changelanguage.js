@@ -629,6 +629,7 @@ function getTranslationText(name)
         "lang_elegido": ["English","Español", "Polskie", "italiano", "português", "français", "Deutsch"],
         "tidioma": ["Language","Lenguaje", "Język", "Linguaggio", "Língua", "Langue", "Sprache"],
         "msg_impuesto_denifido": ["You must select the tax value","Debe seleccionar el valor del impuesto", "polski", "italian", "portugues", "frances", "Aleman"],
+        "dineroentregado": ["Money Delivered","Dinero Entregado", "pieniądze dostarczone", "denaro consegnato", "dinheiro entregue", "argent livré", "Aleman"],
     };
     var trans ='traduccion no definida';
     var lang = getLanguajeIndex();
@@ -1128,6 +1129,7 @@ function langchange() {
     $("#tcod_fiscal").text(getTranslationText('cod_fiscal'));
     $("#tlang_elegido").text(getTranslationText('lang_elegido'));
     $("#tidioma").text(getTranslationText('tidioma'));
+    $("#tdineroEnt").text(getTranslationText('dineroentregado'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
