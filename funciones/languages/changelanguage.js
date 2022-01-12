@@ -142,6 +142,8 @@ function getTranslationText(name)
         "pciototal": ["Total price", "Precio total", "cena całkowita", "prezzo totale", "preço total", "prix total", "Gesamtpreis"],
         "factura": ["Invoice", "Factura", "rachunki", "fatture", "contas", "factures", "Banknoten"],
         "buscafc": ["Search invoices", "Buscar facturas", "Wyszukiwanie faktur", "ricerca fatture", "Pesquisa faturas", "Rechercher factures", "Suchen Rechnungen"],
+        "buscafcpurchases": ["Search invoice off purchases", "Buscar facturas", "Wyszukiwanie faktur", "ricerca fatture", "Pesquisa faturas", "Rechercher factures", "Suchen Rechnungen"],
+        "buscafcsales": ["Search Sales invoices", "Buscar factura de compras", "Znajdź fakturę zakupu", "Trova fattura di acquisto", "Encontrar fatura de compra", "Trouver la facture d'achat", "Kaufrechnung finden"],
         "nrofc": ["Invoice number", "Número de factura ", "numer rachunku", "disegno di legge numero", "número da conta", "numéro de facture", "Rechnungsnummer"],
         "estado": ["Condition", "Estado", "stan: schorzenie", "condizione", "doença", "état", "Bedingung"],
         "todosest": ["All states", "Todos los estados", "Wszystkie kraje", "tutti gli stati", "todos os estados", "tous les états", "alle Staaten"],
@@ -318,6 +320,8 @@ function getTranslationText(name)
         "artbajomin": ["Following articles are under minimun", "Los siguientes artículos están bajo mínimo", "polski", "italian", "portugues", "frances", "Aleman"],
         "codfactura": ["Invoice Code", "Código de factura", "polski", "italian", "portugues", "frances", "Aleman"],
         "balbaran": ["Search delivery note", "Buscar Remito", "polski", "italian", "portugues", "frances", "Aleman"],
+        "balbaranpurchases": ["Search delivery note to purchases", "Buscar Remito de Compra", "Znajdź dowód zakupu", "Trova una ricevuta di acquisto", "Encontrar um recibo de compra", "Trouver un reçu d'achat", "Kaufbeleg finden"],
+        "balbaransales": ["Search delivery note to sale", "Buscar Remito de venta", "Wyszukaj dowód dostawy do sprzedaży", "Cerca ricevuta di vendita", "Pesquisar recibo de venda", "rechercher un reçu de vente", "Lieferschein zum Verkauf suchen"],
         "balbaranes": ["Search delivery notes", "Buscar Remitos", "polski", "italian", "portugues", "frances", "Aleman"],
         "relalbaranes": ["List of delivery notes", "Listado de Remitos", "polski", "italian", "portugues", "frances", "Aleman"],
         "insalbaran": ["Insert Delivery Note", "Insertar remito", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -751,6 +755,8 @@ function langchange() {
     $("#referenc,#treferenc").text(getTranslationText('referenc'));
     $("#impr,#timpr").text(getTranslationText('impr'));
     $("#balbaran").text(getTranslationText('balbaran'));
+    $("#balbaranpurchases").text(getTranslationText('balbaranpurchases'));
+    $("#balbaransales").text(getTranslationText('balbaransales'));
     $("#tbalbaranes").text(getTranslationText('balbaranes'));
     $("#relalbaranes,#trelalbaranes").text(getTranslationText('relalbaranes'));
     $("#insalbaran,#tinsalbaran").text(getTranslationText('insalbaran'));
@@ -904,6 +910,8 @@ function langchange() {
     $("#telfac").text(getTranslationText('elfac'));
     $("#tartimpmin").text(getTranslationText('artimpmin'));
     $("#tbuscafc").text(getTranslationText('buscafc'));
+    $("#tbuscafcpurchases").text(getTranslationText('buscafcpurchases'));
+    $("#tbuscafcsales").text(getTranslationText('buscafcsales'));
     $("#tinsfactura").text(getTranslationText('insfactura'));
     $("#tvfactura").text(getTranslationText('vfactura'));
     $("#tmdfac").text(getTranslationText('mdfac'));
