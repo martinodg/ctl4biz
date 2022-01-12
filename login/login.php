@@ -15,11 +15,11 @@ function agregarCompanydata($conexion2){
     $_SESSION['company_currency_code']= $row_company_data['moneda'];
     $_SESSION['company_id']= $company_id;
 }
-
+if(!empty($_POST)){
 $companycode=$_POST["company_code"];
 $usuario=$_POST["user_name"];
 $clave=$_POST["password"];
-
+}
 if(session_id() == '') {
     session_start();
 }
@@ -44,7 +44,7 @@ if(count($_POST)>0) {
         }
     }
     mysqli_close($conexion);
-   
+
     $conexion2=mysqli_connect('database',$Usuario_DB,$Password_DB,$BaseDeDatos) or die("Error: El servidor no puede conectar con la base de datos");
     $query_login="SELECT * FROM intUsersTable WHERE user_name='".$usuario."' and password='".$clave."';";
     $result_login = mysqli_query($conexion2,$query_login);
