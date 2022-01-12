@@ -10,8 +10,9 @@
  echo "<option value=0 data-opttrad=tdsfam>Todos los tipos</option>";
  while ($rowfamilia=mysqli_fetch_row($queryfamilia))
    { 
-       if ($anterior==$rowfamilia[0]) { 
-        echo" <option value=".$rowfamilia[0]." selected>".utf8_encode($rowfamilia[1])."</option>";
+//       if ($anterior==$rowfamilia[0]) { 
+      if ($rowfamilia[0]==$defaulSelect)  {
+      echo" <option value=".$rowfamilia[0]." selected>".utf8_encode($rowfamilia[1])."</option>";
  	} else { 
         echo" <option value=".$rowfamilia[0].">".utf8_encode($rowfamilia[1])."</option>";
  	}   

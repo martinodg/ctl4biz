@@ -77,8 +77,10 @@
 						idCategory: id_category,
 						codarticulo: codarticulo,
 						descripcion: descrip,
-						toolSeleccionar: "1",
- 						paginainicio: document.getElementById('iniciopagina').value                                               
+						toolModificar: "1",
+ 						paginainicio: document.getElementById('iniciopagina').value,
+						tipoLista: "listaPrecio",
+						codLista: document.getElementById('id').value,                                        
 					},
 					function ( data ) { 
                             $('#div_datos').html( data );
@@ -104,7 +106,7 @@
 					      <td width="1%" rowspan="14" align="left" valign="top"><ul id="lista-errores"></ul></td>
 					  </tr>		
 					  <tr>
-						  <td><span  id="porcdefault">Porcentaje Predefinido</span></td>
+						  <td><span  id="margendefault">Margen general</span></td>
 						  <td><input NAME="Rporcentaje" type="text" class="cajaMedia" id="porcentaje" size="6" maxlength="6"> %</td>
 						  
 
@@ -139,20 +141,23 @@
 					      <td width="1%" rowspan="14" align="left" valign="top"><ul id="lista-errores"></ul></td>
 					  </tr>		
 					</table>
+					<table class="fuente8" width="80%" cellspacing=0 cellpadding=3 border=0>
+			  	<tr>
+				<td width="50%" class="paginar" align="left"><span  id="tnrolstpen">N de listas encontrados</span> <input id="filas" type="text" class="cajaPequena" NAME="filas" maxlength="5" readonly></td>
+				<td width="50%" class="paginar" align="right"><span  id="tmostra">Mostrados</span> <select name="paginas" id="paginas" onChange="paginar()">
+		          </select></td>
+			  </table>
 					<div id="cabeceraResultado" class="header">
 					<span  id="articu">Articulos</span> </div>
 				<div id="frmResultado">
-			  
+			   
 				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 						<tr class="cabeceraTabla">
 							
 							<td width="10%"><span  id="tcodigo">CODIGO</span></td>
 							<td width="20%"><span  id="tipodart">FAMILIA</span></td>
 							<td width="40%"><span  id="tnomb">NOMBRE DEL ITEM</span></td>
-							<td width="10%"><span  id="ulticost">ULTIMO COSTO</span></td>
-							<td width="10%"><span  id="costref">COSTO DE REFERENCIA</span></td>
 							<td width="10%"><span  id="margen">MARGEN</span></td>
-							<td width="10%"><span  id="precioantimpuestos">PRECIO ANTES DE IMPUESTOS</span></td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>
 							<td width="5%">&nbsp;</td>

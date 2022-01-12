@@ -590,6 +590,7 @@ function getTranslationText(name)
         "nrolstpen": ["Number of price list found", "Nro.de listas de precios encontradas", "Liczba znalezionych cenników", "Numero di listino trovato", "Número da lista de preços encontrada", "Nombre de listes de prix trouvées", "Nummer der gefundenen Preisliste"],
         "insnuelst": ["INSERT NEW PRICE LIST", "INSERTAR NUEVA LISTA DE PRECIOS", "NOWY CENNIK", "NUOVO LISTINO PREZZI", "NOVA LISTA DE PREÇOS", "NOUVELLE LISTE DE PRIX", "NEUE PREISLISTE"],
         "porcdefault": ["DEFAULT PERCENTAGE", "PORCENTAJE PREDEFINIDO", "DOMYŚLNA WARTOŚĆ PROCENTOWA", "PERCENTUALE PREDEFINITA", "PORCENTAGEM PADRÃO", "POURCENTAGE PAR DÉFAUT", "STANDARDPROZENTSATZ"],
+        "margendefault": ["LIST DEFAULT PROFIT", "MARGEN DE LA LISTA", "DOMYŚLNY ZYSK Z LISTY", "PROFITTO PREDEFINITO", "LUCRO PADRÃO da LISTA", "PROFIT PAR DÉFAUT de la LISTE", "DEFAULT PROFIT der LISTE"],
         "margen": ["Profit margin", "Margen de ganancia", "Marża zysku", "Margine di profitto", "Margem de lucro", "Marge bénéficiaire", "Gewinnmarge"],
         "ulticost": ["Last cost", "Ultimo costo", "Marża zysku", "Margine di profitto", "Margem de lucro", "Marge bénéficiaire", "letzte Kosten"],
         "costref": ["Reference Cost", "Costo de referencia", "Marża zysku", "Margine di profitto", "Margem de lucro", "Marge bénéficiaire", "Gewinnmarge"],
@@ -1083,6 +1084,7 @@ function langchange() {
     $("#tnrolstpen,#nrolstpen").text(getTranslationText('nrolstpen'));
     $("#tinsnuelst").text(getTranslationText('insnuelst'));
     $("#tporcdefault,#porcdefault").text(getTranslationText('porcdefault'));
+    $("#tmargendefault,#margendefault").text(getTranslationText('margendefault'));
     $("#tmargen,#margen").text(getTranslationText('margen'));
     $("#tnUsuariosEncontrados").text(getTranslationText('nUsuariosEncontrados'));
     $("#tListadoUsuario").text(getTranslationText('listadoUsuario'));

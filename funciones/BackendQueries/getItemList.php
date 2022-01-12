@@ -5,6 +5,9 @@ $errorMessage='';
 // Get arguments 
 
 //build filters
+if(isset($_GET['tipoLista'])) {$tipoLista=$_GET['tipoLista'];}
+if(isset($_GET['codLista'])) {$codLista=$_GET['codLista'];}
+
 $where="";
 if(isset($_GET['idCategory'])) {$idCateogory=$_GET['idCategory'];
     if($idCateogory>0){
@@ -44,7 +47,33 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
     
    
 //Query SQL
-    $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY articulos.descripcion";     
+    switch($tipoLista){
+        case "listaPrecio":
+            //reformat where for join query
+            $where='';
+            if($idCateogory>0){
+                $where=$where."codf='$idCateogory' AND ";
+            }
+            if(!empty($codarticulo)){
+                $where=$where."(cda*1)='$codarticulo' AND ";
+            }
+            if(!empty($descripcion)){
+                $where=$where."dsc LIKE '%$descripcion%' AND ";
+            }
+            $query="SELECT * FROM
+            (SELECT articulos.codarticulo as cda, familias.nombre, articulos.descripcion as dsc, 
+                   margenPorArticulo.porcentaje,  articulos.codfamilia as codf, margenPorArticulo.codlista as codlst
+            FROM articulos 
+            LEFT JOIN familias
+            ON articulos.codfamilia=familias.codfamilia 
+            LEFT JOIN margenPorArticulo
+            ON articulos.codarticulo=margenPorArticulo.codarticulo and margenPorArticulo.codlista=$codLista)reslt WHERE $where 1=1;";     
+            break;
+        default:
+            $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY articulos.descripcion";     
+            break;
+    }
+    
     //echo $query;  
 	$rs_table = mysqli_query($conexion,$query);
     $linesNumber= mysqli_num_rows($rs_table);
@@ -65,20 +94,34 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
                                 $tool4="<a href=#><img src=../img/eliminar.svg width=16 height=16 border=0  onClick=remove(&#39;$row[0]&#39;) ></a>";
                             }else{$tool4="";}
 
-
+                            
+                            
                             echo '<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
                                 echo '<tr class="'.$fondolinea.'">';
-							        echo '<td width="5%"><div align="center">'.$row[0].'</td>';
-							        echo '<td width="15%"><div align="center">'.$row[1].'</div></td>';
-							        echo '<td width="20%"><div align="center">'.$row[2].'</div></td>';
-                                    echo '<td width="18%"><div align="center">'.$row[3].'</div></td>';
-                                    echo '<td width="15%"><div align="center">'.$row[4].'</div></td>';
-                                    echo '<td width="15%"><div align="center">'.$row[5].'</div></td>';
-                                    echo '<td width="3%"><div align="center">'.$tool1.'</div></td>';
-                                    echo '<td width="3%"><div align="center">'.$tool2.'</div></td>';
-                                    echo '<td width="3%"><div align="center">'.$tool3.'</div></td>';
-                                    echo '<td width="3%"><div align="center">'.$tool4.'</div></td>';
-
+                                switch($tipoLista){
+                                    case "listaPrecio":
+                                        echo '<td width="10%"><div align="center">'.$row[0].'</td>';
+                                        echo '<td width="20%"><div align="center">'.$row[1].'</div></td>';
+                                        echo '<td width="40%"><div align="center">'.$row[2].'</div></td>';
+                                        echo '<td width="10%"><div align="center">'.$row[3].'</div></td>';
+                                        echo '<td width="5%"><div align="center">'.$tool1.'</div></td>';
+                                        echo '<td width="5%"><div align="center">'.$tool2.'</div></td>';
+                                        echo '<td width="5%"><div align="center">'.$tool3.'</div></td>';
+                                        echo '<td width="5%"><div align="center">'.$tool4.'</div></td>';
+                                        break;
+                                    default:
+                                        echo '<td width="5%"><div align="center">'.$row[0].'</td>';
+                                        echo '<td width="15%"><div align="center">'.$row[1].'</div></td>';
+                                        echo '<td width="20%"><div align="center">'.$row[2].'</div></td>';
+                                        echo '<td width="18%"><div align="center">'.$row[3].'</div></td>';
+                                        echo '<td width="15%"><div align="center">'.$row[4].'</div></td>';
+                                        echo '<td width="15%"><div align="center">'.$row[5].'</div></td>';   
+                                        echo '<td width="3%"><div align="center">'.$tool1.'</div></td>';
+                                        echo '<td width="3%"><div align="center">'.$tool2.'</div></td>';
+                                        echo '<td width="3%"><div align="center">'.$tool3.'</div></td>';
+                                        echo '<td width="3%"><div align="center">'.$tool4.'</div></td>';
+                                        break;
+                            }
                                 echo '</tr>';
                              echo '</table>';
                            
