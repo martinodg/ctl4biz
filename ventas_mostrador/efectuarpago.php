@@ -143,7 +143,7 @@ function enviar() {
 			            </tr>
 						<tr>
 							<td><span  id="tdineroEnt">Dinero Entregado</span></td>
-						    <td><input NAME="pagado" type="text" class="cajaPequena" id="pagado" size="10" maxlength="10"> <?echo $moneda;?></td>
+						    <td><input NAME="pagado" type="text" class="cajaPequena" id="pagado" size="10" maxlength="10" onchange="actualizarimportedevolver()"> <?echo $moneda;?></td>
 			            </tr>
 						<tr>
 							<td><span  id="tadevolver">A devolver</span></td>
