@@ -15,7 +15,6 @@ $cadena_busqueda=$_POST["cadena_busqueda"];
 $sel_facturas="SELECT max(cobros.codfactura) as maximo, min(cobros.codfactura) as minimo, sum(totalfactura) as totalfac, facturas.impuestos FROM cobros INNER JOIN facturas ON cobros.codfactura=facturas.codfactura WHERE fechacobro='$fechainicio'";
 $rs_facturas=mysqli_query($conexion,$sel_facturas);
 $impuesto=mysqli_result($rs_facturas,0,"impuestos");
-var_dump($impuesto);
 
 if (mysqli_num_rows($rs_facturas) > 0 ) {
 	$minimo=mysqli_result($rs_facturas,0,"minimo");
