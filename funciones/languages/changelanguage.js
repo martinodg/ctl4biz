@@ -199,7 +199,6 @@ function getTranslationText(name)
         "nromovenc": ["Number of movements found", "Nro. de movimientos encontrados", "Ilość ruchów znaleziono", "No. Di movimenti trovato", "Número de movimentos encontrado", "Nombre de mouvements trouvés", "Anzahl der Bewegungen gefunden"],
         "compvta": ["Buys and sells", "Compra / venta", "Kup i sprzedaj", "comprare e vendere", "comprar e vender", "acheter et vendre", "kaufen und verkaufen"],
         "comerc": ["Commercial", "comercial", "Reklama w telewizji", "commerciale", "comercial", "commercial", "kommerziell"],
-        "comerc": ["commercial", "comercial", "Reklama w telewizji", "commerciale", "comercial", "commercial", "kommerziell"],
         "forpago": ["payment method", "forma de pago", "sposób zapłaty", "modo per pagare", "forma de pagamento", "façon de payer", "Weg zur Bezahlung"],
         "nrodocum": ["Document’s number", "No. de documento", "Ilość dokumentów", "N. DEL DOCUMENTO", "Nº de documento", "Nombre de documents", "Anzahl Dokument"],
         "rrhh_plus": ["Human Resources +", "Recursos humanos +", "zasoby ludzkie +", "risorse umane +", "recursos humanos +", "ressources humaines +", "Humanressourcen +"],
@@ -641,7 +640,7 @@ function getTranslationText(name)
     {
         trans = traductions[name][lang];
     }
-    return trans;
+    return name;
 }
 
 //language change function
