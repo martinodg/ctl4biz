@@ -12,9 +12,10 @@ if ($fechainicio<>"") { $fechainicio=explota($fechainicio); }
 
 $cadena_busqueda=$_POST["cadena_busqueda"];
 
-//$sel_facturas="SELECT max(codfactura) as maximo, min(codfactura) as minimo, sum(totalfactura) as totalfac FROM facturas WHERE fecha='$fechainicio'";
-$sel_facturas="SELECT max(cobros.codfactura) as maximo, min(cobros.codfactura) as minimo, sum(totalfactura) as totalfac FROM cobros INNER JOIN facturas ON cobros.codfactura=facturas.codfactura WHERE fechacobro='$fechainicio'";
+$sel_facturas="SELECT max(cobros.codfactura) as maximo, min(cobros.codfactura) as minimo, sum(totalfactura) as totalfac, facturas.impuestos FROM cobros INNER JOIN facturas ON cobros.codfactura=facturas.codfactura WHERE fechacobro='$fechainicio'";
 $rs_facturas=mysqli_query($conexion,$sel_facturas);
+$impuesto=mysqli_result($rs_facturas,0,"impuestos");
+var_dump($impuesto);
 
 if (mysqli_num_rows($rs_facturas) > 0 ) {
 	$minimo=mysqli_result($rs_facturas,0,"minimo");
@@ -25,7 +26,7 @@ if (mysqli_num_rows($rs_facturas) > 0 ) {
 	$maximo=0;
 	$total=0;
 }
-$neto=$total/1.16;
+$neto=$total/(1+intval($impuesto)/100);
 $iva=$total-$neto;
 
 $sel_cobros="SELECT sum(importe) as suma,codformapago FROM cobros WHERE fechacobro='$fechainicio' GROUP BY codformapago ORDER BY codformapago ASC";
@@ -87,7 +88,7 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-                          <td>16 % <span  id="tiva">IVA</span></td>
+                          <td><?echo $impuesto;?> % <span  id="tiva">IVA</span></td>
 						  <td><? echo number_format($iva,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
