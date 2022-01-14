@@ -10,6 +10,8 @@ $fechahoy=date("Y-m-d");
 $sel_fact="INSERT INTO facturastmp (codfactura,fecha) VALUE ('','$fechahoy')";
 $rs_fact=mysqli_query($conexion,$sel_fact);
 $codfacturatmp=mysqli_insert_id($conexion);
+$consultaImpuesto="select * from impuestos where borrado=0 order by nombre ASC";
+$queryImpuestos=mysqli_query($conexion,$consultaImpuesto);
 ?>
 <html>
 	<head>
@@ -86,7 +88,7 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				}
 			}	
 		
-		function validar() 
+		function validar()
 			{
 				var mensaje="";
 				var entero=0;
@@ -140,11 +142,12 @@ $codfacturatmp=mysqli_insert_id($conexion);
 			}
 			
 		function cambio_iva() {
+            //@todo Rvisar calculos con el TAX
 			var original=parseFloat(document.getElementById("baseimponible").value);
 			var result=Math.round(original*100)/100 ;
 			document.getElementById("baseimponible").value=result;
-	
-			document.getElementById("baseimpuestos").value=parseFloat(result * parseFloat(document.getElementById("iva").value / 100));
+
+			document.getElementById("baseimpuestos").value=parseFloat(result * parseFloat(document.getElementById("impuesto").value / 100));
 			var original1=parseFloat(document.getElementById("baseimpuestos").value);
 			var result1=Math.round(original1*100)/100 ;
 			document.getElementById("baseimpuestos").value=result1;
@@ -186,8 +189,23 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					  }
 					);
 		</script></td>
-				            <td width="3%"><span  id="tiva">IVA</span></td>
-				            <td width="64%"><input NAME="iva" type="text" class="cajaPequena" id="iva" size="5" maxlength="5" value="16" onChange="cambio_iva()"> %</td>
+                            <td width="3%"><span  id="tiva">IVA</span></td>
+                            <td>
+                                <select id="impuesto" class="comboMedio ivaImpuesto" name="impuesto" onChange="cambio_iva()" >
+                                    <option value=0 data-opttrad=tdstax>Seleccionar un impuesto</option>;
+                                    <?
+                                    while ($rowImpuesto=mysqli_fetch_row($queryImpuestos))
+                                    {
+                                        if ($anterior==$rowImpuesto[0]) {
+                                            echo" <option value=".$rowImpuesto[0]." selected>".utf8_encode($rowImpuesto[2])."</option>";
+                                        } else {
+                                            echo" <option value=".$rowImpuesto[0].">".utf8_encode($rowImpuesto[2])."</option>";
+                                        }
+                                    };
+                                    ?>
+                                </select>
+                                <span> %</span>
+                            </td>
 						</tr>
 					</table>										
 			  </div>
