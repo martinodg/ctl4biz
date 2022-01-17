@@ -1,0 +1,8 @@
+# pack-refs with: peeled fully-peeled sorted 
+63e8f0d88b91e3aa3814cd4ccc51c622af4c9f01 refs/heads/Language-control
+12c0ec75bebb75c873bc4590e953026743d11133 refs/heads/develop
+cfb410921452c4f0c62a5d8271c2046123ab8365 refs/heads/feature/4-73
+12c0ec75bebb75c873bc4590e953026743d11133 refs/heads/feature/4-83
+d0ce8249b46feae9189f3f3da7b1468b24660613 refs/heads/feature/getText
+f1d5b11175c1c0546b2f5a67cc290c229c46c7a7 refs/heads/main
+e04143f61dd57ad3193ff760a702a0d980982da8 refs/heads/point-of-sales-feature
