@@ -37,7 +37,7 @@ try {
 				if (!$rs_articulo_stock) {
 					throw new ErrorException(sprintf('El stock del producto %d no tiene existe', $codigo_producto));
 				}
-				$fila_articulo = mysqli_fetch_assoc($rs_articulos_vendidos);
+				$fila_articulo = mysqli_fetch_assoc($rs_articulo_stock);
 				$stock = intval($fila_articulo['stock']);
 				if ($stock <  $cantidad_producto_vendido ) {
 					throw new ErrorException(sprintf('El stock del producto %d es de %d y se vendio %d', $codigo_producto, $stock, $cantidad_producto_vendido));
@@ -46,7 +46,7 @@ try {
 			}
 			$rs_query = mysqli_query($conexion, $query_update_stock);
 			/* liberar el conjunto de resultados */
-			mysqli_free_result($query_update_stock);
+			//mysqli_free_result($query_update_stock);
 		}
 
 		$sel_insert = "INSERT INTO cobros (id,codfactura,codcliente,importe,codformapago,numdocumento,fechacobro,observaciones) VALUES ('','$codfactura','$codcliente','$importe','$formapago','$numdocumento','$fechacobro','')";

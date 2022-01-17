@@ -1,4 +1,8 @@
-<?php 
+<?php
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
@@ -108,7 +112,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						<? $pendiente=$totalfactura-$aportaciones; ?>
 						<tr>
                             <td width="15%"><span  id="tpndpagar">Pendiente por pagar</span></td>
-						    <td width="43%"><input type="text" name="pendiente" id="pendiente" value="<? echo number_format($pendiente,2,".","")?>" readonly="yes" class="cajaTotales"> &#8364;</td>
+						    <td width="43%"><input type="text" name="pendiente" id="pendiente" value="<? echo number_format($pendiente,2,".","")?>" readonly="yes" class="cajaTotales"> <?echo $moneda;?></td>
 					        <td width="42%" rowspan="14" align="left" valign="top"></td>
 						</tr>
 						<tr>
@@ -159,7 +163,7 @@ $aportaciones=mysqli_result($rs_cobros,0,"aportaciones");
 						</tr>
 						<tr>
 							<td width="15%"><span  id="timporte">IMPORTE</span></td>
-						    <td width="35%"><input id="Rimporte" type="text" class="cajaPequena" NAME="Rimporte" maxlength="12"> &#8364;</td>
+						    <td width="35%"><input id="Rimporte" type="text" class="cajaPequena" NAME="Rimporte" maxlength="12"> <?echo $moneda;?></td>
 					        <td width="50%" rowspan="14" align="left" valign="top"></td>
 						</tr>	
 						<?php

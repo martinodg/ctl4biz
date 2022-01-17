@@ -1,4 +1,8 @@
 <?php
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
@@ -8,9 +12,9 @@ if ($fechainicio<>"") { $fechainicio=explota($fechainicio); }
 
 $cadena_busqueda=$_POST["cadena_busqueda"];
 
-//$sel_facturas="SELECT max(codfactura) as maximo, min(codfactura) as minimo, sum(totalfactura) as totalfac FROM facturas WHERE fecha='$fechainicio'";
-$sel_facturas="SELECT max(cobros.codfactura) as maximo, min(cobros.codfactura) as minimo, sum(totalfactura) as totalfac FROM cobros INNER JOIN facturas ON cobros.codfactura=facturas.codfactura WHERE fechacobro='$fechainicio'";
+$sel_facturas="SELECT max(cobros.codfactura) as maximo, min(cobros.codfactura) as minimo, sum(totalfactura) as totalfac, facturas.impuestos FROM cobros INNER JOIN facturas ON cobros.codfactura=facturas.codfactura WHERE fechacobro='$fechainicio'";
 $rs_facturas=mysqli_query($conexion,$sel_facturas);
+$impuesto=mysqli_result($rs_facturas,0,"impuestos");
 
 if (mysqli_num_rows($rs_facturas) > 0 ) {
 	$minimo=mysqli_result($rs_facturas,0,"minimo");
@@ -21,7 +25,7 @@ if (mysqli_num_rows($rs_facturas) > 0 ) {
 	$maximo=0;
 	$total=0;
 }
-$neto=$total/1.16;
+$neto=$total/(1+intval($impuesto)/100);
 $iva=$total-$neto;
 
 $sel_cobros="SELECT sum(importe) as suma,codformapago FROM cobros WHERE fechacobro='$fechainicio' GROUP BY codformapago ORDER BY codformapago ASC";
@@ -77,42 +81,42 @@ if (mysqli_num_rows($rs_cobros) > 1) { $tarjeta=mysqli_result($rs_cobros,1,"suma
 					  </tr>
 					  <tr>
                           <td><span  id="tneto">Neto</span></td>
-						  <td><? echo number_format($neto,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($neto,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
-                          <td>16 % <span  id="tiva">IVA</span></td>
-						  <td><? echo number_format($iva,2,",",".")?> &#8364;</td>
+                          <td><?echo $impuesto;?> % <span  id="tiva">IVA</span></td>
+						  <td><? echo number_format($iva,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
 						  <td><span  id="ttotal">Total</span></td>
-						  <td><? echo number_format($total,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($total,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
                           <td><span  id="ttotalcdo">Total contado</span></td>
-						  <td><? echo number_format($contado,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($contado,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
                           <td><span  id="ttotaltj">Total tarjetas</span></td>
-						  <td><? echo number_format($tarjeta,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($tarjeta,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
 					  </tr>
 					  <tr>
 						  <td><span  id="ttotal">Total</span></td>
-						  <td><? echo number_format($total,2,",",".")?> &#8364;</td>
+						  <td><? echo number_format($total,2,",",".")?> <?echo $moneda;?></td>
 						  <td></td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
