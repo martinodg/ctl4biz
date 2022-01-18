@@ -1,9 +1,4 @@
 <?php
-$Servidor = null;
-$Usuario = null;
-$Password = null;
-$conexion = null;
-
 require_once("../conectar.php");
 $compania = $_POST["company_name"];
 $nombre = $_POST["name"];
