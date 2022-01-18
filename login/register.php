@@ -46,7 +46,6 @@ if (mysqli_num_rows($result) > 0) {
         </script>";
     exit;
 } else {
-
     //Create Id Company, Database user and password which will be inserted on the Database 
     $id_company = "T_" . strToMD5($compania . "_" . $emilio);
     $DB_user = strToMD5($compania);
@@ -153,8 +152,8 @@ APPND_TXT;
          echo "error happend on internal user creation <br>" . $conn3->error."<br>";
          echo $sql5;
      }
- $conn3->close();*/
-    error_log($output);
+    $conn3->close();
+    */
     //Go to login page
      echo"<script>
             alert('The account was created correctly, it will be redirected to login.  You can access with the email and password entered.');

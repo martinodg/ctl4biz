@@ -1,6 +1,4 @@
 <?php
-$conexion = null;
-
 require_once("../conectar.php");
 /**
  * Agrega los datos de la compania  al session
