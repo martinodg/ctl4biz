@@ -2136,8 +2136,268 @@ ALTER TABLE `ubicaciones`
 --
 ALTER TABLE `unidadesmedidas`
   MODIFY `codunidadmedida` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-COMMIT;
 
+
+--
+-- Estructura de tabla para la tabla `alias_articulos`
+--
+
+CREATE TABLE `alias_articulos` (
+                                   `id_alias` int(11) NOT NULL,
+                                   `codarticulo` int(11) NOT NULL,
+                                   `alias` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `alias_articulos`
+--
+ALTER TABLE `alias_articulos`
+    ADD PRIMARY KEY (`id_alias`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `alias_articulos`
+--
+ALTER TABLE `alias_articulos`
+    MODIFY `id_alias` int(11) NOT NULL AUTO_INCREMENT;
+
+
+--
+--  Estructura  la vista  `listado_articulos_alias`
+--
+
+CREATE VIEW  listado_articulos_alias AS
+SELECT
+    articulos.codarticulo ,
+    articulos.codfamilia,
+    articulos.referencia,
+    articulos.descripcion,
+    articulos.impuesto,
+    articulos.codproveedor1,
+    articulos.codproveedor2,
+    articulos.codproveedor3,
+    articulos.codproveedor4,
+    articulos.descripcion_corta,
+    articulos.codubicacion,
+    articulos.stock,
+    articulos.codunidadmedida,
+    articulos.stock_minimo,
+    articulos.codumstock_minimo,
+    articulos.aviso_minimo,
+    articulos.datos_producto,
+    articulos.fecha_alta,
+    articulos.codembalaje,
+    articulos.unidades_caja,
+    articulos.codumunidades_caja,
+    articulos.precio_ticket,
+    articulos.modificar_ticket,
+    articulos.observaciones,
+    articulos.precio_compra,
+    articulos.precio_almacen,
+    articulos.precio_tienda,
+    articulos.precio_pvp,
+    articulos.precio_iva,
+    articulos.codigobarras,
+    articulos.imagen,
+    articulos.borrado,
+    familias.nombre AS nombrefamilia
+FROM articulos
+         JOIN familias ON  articulos.codfamilia = familias.codfamilia
+UNION
+SELECT
+    articulos.codarticulo ,
+    articulos.codfamilia,
+    articulos.referencia,
+    alias_articulos.alias AS descripcion,
+    articulos.impuesto,
+    articulos.codproveedor1,
+    articulos.codproveedor2,
+    articulos.codproveedor3,
+    articulos.codproveedor4,
+    articulos.descripcion_corta,
+    articulos.codubicacion,
+    articulos.stock,
+    articulos.codunidadmedida,
+    articulos.stock_minimo,
+    articulos.codumstock_minimo,
+    articulos.aviso_minimo,
+    articulos.datos_producto,
+    articulos.fecha_alta,
+    articulos.codembalaje,
+    articulos.unidades_caja,
+    articulos.codumunidades_caja,
+    articulos.precio_ticket,
+    articulos.modificar_ticket,
+    articulos.observaciones,
+    articulos.precio_compra,
+    articulos.precio_almacen,
+    articulos.precio_tienda,
+    articulos.precio_pvp,
+    articulos.precio_iva,
+    articulos.codigobarras,
+    articulos.imagen,
+    articulos.borrado,
+    familias.nombre AS nombrefamilia
+FROM articulos
+         JOIN familias ON  articulos.codfamilia = familias.codfamilia
+         JOIN alias_articulos ON  alias_articulos.codarticulo = articulos.codarticulo;
+
+--
+-- Estructura  la vista `listado_articulos_precios_alias`
+--
+
+CREATE VIEW  listado_articulos_precios_alias AS
+SELECT
+    artpro.codproveedor,
+    artpro.precio AS pcosto,
+    articulos.codarticulo ,
+    articulos.codfamilia,
+    articulos.referencia,
+    articulos.descripcion,
+    articulos.impuesto,
+    articulos.codproveedor1,
+    articulos.codproveedor2,
+    articulos.codproveedor3,
+    articulos.codproveedor4,
+    articulos.descripcion_corta,
+    articulos.codubicacion,
+    articulos.stock,
+    articulos.codunidadmedida,
+    articulos.stock_minimo,
+    articulos.codumstock_minimo,
+    articulos.aviso_minimo,
+    articulos.datos_producto,
+    articulos.fecha_alta,
+    articulos.codembalaje,
+    articulos.unidades_caja,
+    articulos.codumunidades_caja,
+    articulos.precio_ticket,
+    articulos.modificar_ticket,
+    articulos.observaciones,
+    articulos.precio_compra,
+    articulos.precio_almacen,
+    articulos.precio_tienda,
+    articulos.precio_pvp,
+    articulos.precio_iva,
+    articulos.codigobarras,
+    articulos.imagen,
+    articulos.borrado,
+    familias.nombre AS nombrefamilia
+FROM articulos
+         JOIN familias ON  articulos.codfamilia = familias.codfamilia
+         JOIN artpro ON  articulos.codarticulo =  articulos.codarticulo
+WHERE articulos.borrado = 0
+  AND artpro.codfamilia = articulos.codfamilia
+UNION
+SELECT
+    artpro.codproveedor,
+    artpro.precio AS pcosto,
+    articulos.codarticulo ,
+    articulos.codfamilia,
+    articulos.referencia,
+    alias_articulos.alias AS descripcion,
+    articulos.impuesto,
+    articulos.codproveedor1,
+    articulos.codproveedor2,
+    articulos.codproveedor3,
+    articulos.codproveedor4,
+    articulos.descripcion_corta,
+    articulos.codubicacion,
+    articulos.stock,
+    articulos.codunidadmedida,
+    articulos.stock_minimo,
+    articulos.codumstock_minimo,
+    articulos.aviso_minimo,
+    articulos.datos_producto,
+    articulos.fecha_alta,
+    articulos.codembalaje,
+    articulos.unidades_caja,
+    articulos.codumunidades_caja,
+    articulos.precio_ticket,
+    articulos.modificar_ticket,
+    articulos.observaciones,
+    articulos.precio_compra,
+    articulos.precio_almacen,
+    articulos.precio_tienda,
+    articulos.precio_pvp,
+    articulos.precio_iva,
+    articulos.codigobarras,
+    articulos.imagen,
+    articulos.borrado,
+    familias.nombre AS nombrefamilia
+FROM articulos
+         JOIN familias ON  articulos.codfamilia = familias.codfamilia
+         JOIN artpro ON  articulos.codarticulo =  articulos.codarticulo
+         JOIN alias_articulos ON  alias_articulos.codarticulo = articulos.codarticulo
+WHERE articulos.borrado = 0
+  AND artpro.codfamilia = articulos.codfamilia ;
+
+
+--
+-- Estructura de tabla para la tabla `monedas`
+--
+
+CREATE TABLE `monedas` (
+                           `id_moneda` int(11) NOT NULL,
+                           `moneda` varchar(255) NOT NULL,
+                           `simbolo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `monedas`
+--
+
+INSERT INTO `monedas` (`id_moneda`, `moneda`, `simbolo`) VALUES
+                                                             (1, 'ARS', '&#36;'),
+                                                             (2, 'USD', '&#36;'),
+                                                             (3, 'EUR', '&#8364;'),
+                                                             (4, 'PLN', '&#8484;&#10990;');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `monedas`
+--
+ALTER TABLE `monedas`
+    ADD PRIMARY KEY (`id_moneda`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `monedas`
+--
+ALTER TABLE `monedas`
+    MODIFY `id_moneda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+
+--
+-- Actualizacion de las tabla company_data
+--
+ALTER TABLE `company_data`
+    ADD `razon_soc` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL AFTER `id`,
+    ADD `moneda_id` INT(11) NOT NULL AFTER `zip_code`,
+    ADD `cod_fiscal` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ,
+    ADD `leyenda` TEXT CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+    ADD `logo` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ;
+
+
+--
+-- Poniendo las monedas en EUR
+--
+UPDATE `company_data` SET `moneda_id` = '3' WHERE `company_data`.`id` = 0;
+
+COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
