@@ -1155,8 +1155,6 @@ function traducirVista()
     $(document).ready(function() {
         var lang = getLanguajeIndex();
         langchange();
-
-        console.info(lang);
     });
 }
 
