@@ -1,4 +1,9 @@
-<? require_once("../conectar7.php");
+<?
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
+require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 
 $codfactura=$_GET["codfactura"];
@@ -126,23 +131,23 @@ function enviar() {
 			            </tr>
 						<tr>
 							<td><span  id="timporte">IMPORTE</span></td>
-						    <td><input NAME="importe" type="text" class="cajaPequena" id="importe" size="10" maxlength="10" value="<? echo $importe?>" readonly> &#8364;</td>
+						    <td><input NAME="importe" type="text" class="cajaPequena" id="importe" size="10" maxlength="10" value="<? echo $importe?>" readonly> <?echo $moneda;?></td>
 			            </tr>
 						<tr>
 							<td><span  id="timpvl">Importe vale</span></td>
-						    <td><input NAME="importevale" type="text" class="cajaPequena" id="importevale" size="10" maxlength="10" value="0"> &#8364; <img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Aplicar Vale" onClick="actualizarimporte()"></td>
+						    <td><input NAME="importevale" type="text" class="cajaPequena" id="importevale" size="10" maxlength="10" value="0"> <?echo $moneda;?><img src="../img/disco.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Aplicar Vale" onClick="actualizarimporte()"></td>
 			            </tr>
 						<tr>
 							<td><span  id="tapgr">A pagar</span></td>
-						    <td><input NAME="apagar" type="text" class="cajaPequena" id="apagar" size="10" maxlength="10" value="<? echo $importe?>" readonly> &#8364;</td>
+						    <td><input NAME="apagar" type="text" class="cajaPequena" id="apagar" size="10" maxlength="10" value="<? echo $importe?>" readonly> <?echo $moneda;?></td>
 			            </tr>
 						<tr>
-							<td<span  id="tpagado">Pagado</span></td>
-						    <td><input NAME="pagado" type="text" class="cajaPequena" id="pagado" size="10" maxlength="10"> &#8364; <img src="../img/dinero.svg" name="Image2" id="Image2" width="16" height="16" border="0" id="Image2" onMouseOver="this.style.cursor='pointer'" title="Pagado" onClick="actualizarimportedevolver()"></td>
+							<td><span  id="tdineroEnt">Dinero Entregado</span></td>
+						    <td><input NAME="pagado" type="text" class="cajaPequena" id="pagado" size="10" maxlength="10" onchange="actualizarimportedevolver()"> <?echo $moneda;?></td>
 			            </tr>
 						<tr>
 							<td><span  id="tadevolver">A devolver</span></td>
-						    <td><input NAME="adevolver" type="text" class="cajaPequena" id="adevolver" size="10" maxlength="10" readonly> &#8364;</td>
+						    <td><input NAME="adevolver" type="text" class="cajaPequena" id="adevolver" size="10" maxlength="10" readonly> <?echo $moneda;?></td>
 			            </tr>
 						<?
 						$query_fp="SELECT * FROM formapago WHERE borrado=0 ORDER BY nombrefp ASC";

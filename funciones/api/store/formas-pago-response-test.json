@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Credit Card",
+    "importe": 1128.2000122070312,
+    "fechaCobro": "1631145600"
+  },
+  {
+    "nombre": "Credit Card",
+    "importe": 2470,
+    "fechaCobro": "1633046400"
+  },
+  {
+    "nombre": "Cash",
+    "importe": 230,
+    "fechaCobro": "1636502400"
+  },
+  {
+    "nombre": "Cash",
+    "importe": 2300,
+    "fechaCobro": "1637798400"
+  }
+]

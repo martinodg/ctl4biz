@@ -2,6 +2,10 @@
 header('Cache-Control: no-cache');
 header('Pragma: no-cache');
 
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
@@ -71,8 +75,13 @@ if ($accion == "baja") {
     $precio_iva = mysqli_result($rs_mostrar, 0, "precio_iva");
     $foto_name = mysqli_result($rs_mostrar, 0, "imagen");
     $codigobarras = mysqli_result($rs_mostrar, 0, "codigobarras");
+    //@todo averiguar para que esta este parametro que tiraba un 500
+    $modificar_ticket= null;
 }
 else {
+    $aliasArt1 = $_POST["alias1"];
+    $aliasArt2 = $_POST["alias2"];
+    $aliasArt3 = $_POST["alias3"];
     $codigobarras = $_POST["codigobarras"];
     $referencia = $_POST["areferencia"];
     $codfamilia = $_POST["AcboFamilias"];
@@ -113,20 +122,36 @@ else {
         $consultaprevia = "SELECT max(codarticulo) as maximo FROM articulos";
         $rs_consultaprevia = mysqli_query($conexion, $consultaprevia);
         $codarticulo = mysqli_result($rs_consultaprevia, 0, "maximo");
-        //@todo VerConMartin revisar esto, creo que se le podria dejar al autoincrement , si se hace por la imagen se la puede volver un md5 y en caso de precisarla con el codigo de igual manera se puede actulizar la fila despues de cargarla
         if ($codarticulo == "") {
             //@todo VerConMartin en caso de dejar esto creo que deberia ser 1
             $codarticulo = 0;
         }
         $codarticulo++;
         $imgUrl = '';
-        $aux = salvarFotoArticulo($codarticulo,'foto');
-        if($aux !== false){
+        $aux = salvarFotoArticulo($codarticulo, 'foto');
+        if ($aux !== false) {
             $imgUrl = $aux;
         }
         $query_operacion = "INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado, imagen) 
 						VALUES ('', '$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0','$imgUrl')";
         $rs_operacion = mysqli_query($conexion, $query_operacion);
+
+        if (!empty($aliasArt1)){
+            $query_alias = "INSERT INTO alias_articulos ( codarticulo, alias) 
+                                VALUES ( '$codarticulo', '$aliasArt1')";
+            $rs_alias = mysqli_query($conexion, $query_alias);
+        }
+        if (!empty($aliasArt2)){
+            $query_alias = "INSERT INTO alias_articulos (id_alias, codarticulo, alias) 
+                                VALUES ('', '$codarticulo', '$aliasArt2')";
+            $rs_alias = mysqli_query($conexion, $query_alias);
+        }
+        if (!empty($aliasArt3)){
+            $query_alias = "INSERT INTO alias_articulos ( codarticulo, alias) 
+                                VALUES ( '$codarticulo', '$aliasArt3')";
+            $rs_alias = mysqli_query($conexion, $query_alias);
+        }
+
         $codarticulo = mysqli_insert_id($conexion);
         $codaux = $codarticulo;
         while (strlen($codaux) < 6) {
@@ -153,7 +178,46 @@ else {
         $cabecera1 = "Inicio >> Articulos &gt;&gt; Nuevo Articulo ";
         $cabecera2 = "INSERTAR ARTICULO ";
     }
+    //############################### MODIFICAR ####################################################
     elseif ($accion == "modificar") {
+
+        $codarticulo=$_POST["id"];
+
+        if(!empty($_POST['alias'])){
+            $queryDeleteAlias = "SELECT * FROM alias_articulos WHERE alias_articulos.codarticulo = '$codarticulo'";
+            $resp_q = mysqli_query($conexion, $queryDeleteAlias);
+            $codArt_tablaAlias=mysqli_result($resp_q,0,'codarticulo');
+
+            foreach($_POST['alias'] as $id_alias => $valor ){
+                //insertar alias si no existen:
+                if(empty($codArt_tablaAlias) and !empty($valor)){
+                    $query_alias = "INSERT INTO alias_articulos (codarticulo, alias) 
+                                VALUES ('$codarticulo', '$valor')";
+                    $rs_alias = mysqli_query($conexion, $query_alias);
+                }
+                else {
+                    if (empty($valor)) {
+                        $queryDeleteAlias = "DELETE FROM alias_articulos WHERE alias_articulos.id_alias = '$id_alias'";
+                        $rs_query = mysqli_query($conexion, $queryDeleteAlias);
+                    } else {
+                        $queryAlias = "SELECT * FROM alias_articulos WHERE id_alias='$id_alias' ORDER BY id_alias ASC ";
+                        $rsAlias_query = mysqli_query($conexion, $queryAlias);
+                        $alias_bd = mysqli_result($rsAlias_query, 0, 'alias');
+                        $id_bd = mysqli_result($rsAlias_query, 0, 'id_alias');
+                        if (empty($id_bd) and !empty($valor)) {
+                            $query_alias = "INSERT INTO alias_articulos (codarticulo, alias) 
+                                    VALUES ('$codarticulo', '$valor')";
+                            $rs_alias = mysqli_query($conexion, $query_alias);
+                        }
+                        else {
+                            $queryUpdateAlias = "UPDATE alias_articulos SET alias='$valor' WHERE alias_articulos.id_alias = '$id_alias'";
+                            $rs_query = mysqli_query($conexion, $queryUpdateAlias);
+                        }
+                    }
+                }
+            }
+        }
+
         $codarticulo = $_POST["id"];
         $cadena = "";
         $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', codumunidades_caja='$umunidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', " . $cadena . " borrado=0 ";
@@ -230,6 +294,27 @@ else {
 							<td width="15%"><span  id="tflia">FAMILIA</span></td>
 							<td width="58%"><?php echo $nombrefamilia?></td>
 				        </tr>
+                        <!--ALIAS start-->
+                        <tr>
+                            <td width="15%"><span>ALIAS</span></td>
+                            <td width="58%">
+                            <?php
+                            $queryAlias="SELECT * FROM alias_articulos WHERE codarticulo='$codarticulo' ORDER BY id_alias ASC ";
+                            $respAlias_query=mysqli_query($conexion,$queryAlias);
+                            $cont=0;
+                            if (!empty($rsAlias_query)) {
+                                foreach ($respAlias_query as $id_alias => $alias) {
+                                    echo mysqli_result($respAlias_query, $cont, "alias"), '  ';
+                                    $cont++;
+                                }
+                            }
+                            else{
+                                echo 'No Existen Alias para este Articulo';
+                            }
+                            ?>
+                            </td>
+                        </tr>
+                        <!--ALIAS end-->
 						<tr>
 							<td width="15%"><span  id="tdescri">Descripci&oacute;n</span></td>
 						    <td width="58%"><?php echo $descripcion?></td>
@@ -334,23 +419,23 @@ else {
 						</tr>
 						<tr>
 							<td><span  id="tpciocomp">Precio de compra</span></td>
-							<td colspan="2"><?php echo $precio_compra?> &#8364;</td>
+							<td colspan="2"><?php echo $precio_compra.' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td><span  id="tpcioalma">Precio almac&eacute;n</span></td>
-							<td colspan="2"><?php echo $precio_almacen?> &#8364;</td>
+							<td colspan="2"><?php echo $precio_almacen.' '.$moneda;?></td>
 						</tr>												
 						<tr>
 							<td><span  id="tprectienda">Precio en tienda</span></td>
-							<td colspan="2"><?php echo $precio_tienda?> &#8364;</td>
+							<td colspan="2"><?php echo $precio_tienda.' '.$moneda;?></td>
 						</tr>
 						<!--<tr>
 							<td>Pvp</td>
-							<td colspan="2"><?php echo $pvp?> &#8364;</td>
+							<td colspan="2"><?php echo $pvp.$moneda;?></td>
 						</tr>-->
 						<tr>
 							<td><span  id="tprcciva">Precio con iva</span></td>
-							<td colspan="2"><?php echo $precio_iva?> &#8364;</td>
+							<td colspan="2"><?php echo $precio_iva.' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td><span  id="tcodbarr">Codigo de barras</span></td>

@@ -1,9 +1,16 @@
 <?php
+$companyData = null;
 ob_start();
 define('FPDF_FONTPATH','font/');
 require ('mysqli_table.php');
-require_once("../conectar7.php");  require_once("../mysqli_result.php"); require_once("comunes.php");
+require_once("../conectar7.php");
+require_once("../mysqli_result.php");
+require_once("comunes.php");
+require_once("../funciones/companyData.php");
+require_once("../funciones/changelanguage.php");
+$lang = new ChangeLanguage();
 $pdf=new PDF();
+$pdf->setCompanyData($companyData);
 $pdf->AddPage();
 //Nombre del Listado
 $pdf->SetFillColor(255,255,255);

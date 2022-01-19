@@ -47,7 +47,8 @@ body {
 }
 
 .company {
-     display: block padding: 20px;
+     display: block;
+    padding: 20px;
     box-sizing: border-box;
     background: #ccc;
     top: 30px;
@@ -170,7 +171,8 @@ body {
 }
 
 #page-nav ul li {
-    display: block padding: 20px;
+    display: block;
+    padding: 20px;
     box-sizing: border-box;
     background: #ccc;
     font-size: 20px;
@@ -184,7 +186,7 @@ body {
 }
 
 #page-nav ul:hover {
-    background: rgb(211, 94, 94):
+    background: rgb(211, 94, 94);
 }
 .hiden {
     display: none;

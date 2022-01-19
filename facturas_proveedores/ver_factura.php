@@ -1,4 +1,8 @@
 <?
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 require_once("../conectar7.php"); 
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
@@ -89,6 +93,7 @@ $iva=mysqli_result($rs_query,0,"iva");
 							<td width="21%"><span  id="referenc">REFERENCIA</span></td>
 							<td width="40%"><span  id="descri">descripcion</span></td>
 							<td width="8%"><span  id="tcant">CANTIDAD</span></td>
+							<td width="8%"><span  id="unimed">MEDIDA</span></td>
 							<td width="8%"><span  id="tprecio">PRECIO</span></td>
 							<td width="8%"><span  id="tdctop">DCTO %</span></td>
 							<td width="8%"><span  id="timporte">IMPORTE</span></td>
@@ -96,12 +101,20 @@ $iva=mysqli_result($rs_query,0,"iva");
 					</table>
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
 					  <? $sel_lineas="SELECT * FROM factulineap,articulos WHERE factulineap.codfactura='$codfactura' AND factulineap.codproveedor='$codproveedor' AND factulineap.codigo=articulos.codarticulo AND factulineap.codfamilia=articulos.codfamilia ORDER BY factulineap.numlinea ASC";
-$rs_lineas=mysqli_query($conexion,$sel_lineas);
+                        $rs_lineas=mysqli_query($conexion,$sel_lineas);
 						for ($i = 0; $i < mysqli_num_rows($rs_lineas); $i++) {
 							$numlinea=mysqli_result($rs_lineas,$i,"numlinea");
 							$codfamilia=mysqli_result($rs_lineas,$i,"codfamilia");
 							$codarticulo=mysqli_result($rs_lineas,$i,"codarticulo");
 							$referencia=mysqli_result($rs_lineas,$i,"referencia");
+                            //cod uni med
+                            $codunimed="SELECT codunidadmedida FROM articulos WHERE codarticulo=$codarticulo";
+                            $consulta_cod_unimed= mysqli_query($conexion,$codunimed);
+                            $cod_uni_medida=mysqli_result($consulta_cod_unimed,0,"codunidadmedida");
+                            $consulta_unimedida= "SELECT nombre FROM unidadesmedidas WHERE codunidadmedida= $cod_uni_medida";
+                            $rs_linea_unimed=mysqli_query($conexion,$consulta_unimedida);
+                            $uni_medida=mysqli_result($rs_linea_unimed,0,"nombre");
+
 							$descripcion=mysqli_result($rs_lineas,$i,"descripcion");
 							$cantidad=mysqli_result($rs_lineas,$i,"cantidad");
 							$precio=mysqli_result($rs_lineas,$i,"precio");
@@ -113,6 +126,7 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 										<td width="21%"><? echo $referencia?></td>
 										<td width="40%"><? echo $descripcion?></td>
 										<td width="8%" class="aCentro"><? echo $cantidad?></td>
+										<td width="8%" class="aCentro"><? echo $uni_medida?></td>
 										<td width="8%" class="aCentro"><? echo $precio?></td>
 										<td width="8%" class="aCentro"><? echo $descuento?></td>
 										<td width="8%" class="aCentro"><? echo $importe?></td>
@@ -128,15 +142,15 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 					<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 						<tr>
 							<td width="15%"><span  id="tbaseimp">Base imponible</span></td>
-							<td width="15%"><?php echo number_format($baseimponible,2);?> &#8364;</td>
+							<td width="15%"><?php echo number_format($baseimponible,2).' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td width="15%"><span  id="tiva">IVA</span></td>
-							<td width="15%"><?php echo number_format($baseimpuestos,2);?> &#8364;</td>
+							<td width="15%"><?php echo number_format($baseimpuestos,2).' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td width="15%"><span  id="ttotal">Total</span></td>
-							<td width="15%"><?php echo $preciototal?> &#8364;</td>
+							<td width="15%"><?php echo $preciototal.' '.$moneda;?></td>
 						</tr>
 					</table>
 			  </div>

@@ -2,8 +2,10 @@
 var cursor='hand';
 function getTranslationText(name)
 {
+
     var traductions = {
         //"variable_name":["english","espanol","polski","italian","portugues","frances","Aleman",”español_UE],
+        "company": ["Company", "Compañia", "Spółka", "società", "companhia", "entreprise", "Begleitung"],
         "company_name": ["Company name", "Compañia", "Nazwa Firma", "Nome della ditta", "Nome da empresa", "Nom de la compagnie", "Name der Firma"],
         "nombre": ["Your name", "Nombre del usuario", "Nazwa Uzytkownika", "Il tuo nome", "Seu nome", "Votre nom", "Dein Name"],
         "nombcliente": ["Customer Name", "Nombre Cliente", "Nazwa klienta", "Nome do cliente", "nome do cliente", "Nom du client", "Kundenname"],
@@ -24,6 +26,9 @@ function getTranslationText(name)
         "AdminSeguridad": ["Security Administration", "Configuración de Seguridad", "administrowanie bezpieczeństwem"],
         "usuarios": ["Users", "Usuarios", "Użytkowników"],
         "recursos": ["Resources", "Recursos", "Rasoby"],
+        "companydata": ["Company Data", "Datos de Compañia", "Dane Firmy", "Dati aziendali", "Dados da Empresa", "Les Données de la Compagnie","Firmen Daten"],
+        "act_company": ["Update Company", "Datos de Compañia", "zaktualizuj firmę", "aggiorna azienda", "société de mise à jour" , "Unternehmen aktualisieren"],
+        "nombreCompany": ["Company Name", "Nombre de la Compañia", "Nazwa Firmy", "Nome della ditta"],
         "ventas_plus": ["Sales +", "Ventas +", "Uprzedaż +"],
         "ventas": ["Sales", "Ventas", "Sprzedaż"],
         "venta_a_mostrador": ["Point of Sales", "Venta en Mostrador", "Punkt sprzedaży"],
@@ -32,6 +37,7 @@ function getTranslationText(name)
         "presupuestos": ["Budget", "Presupuestos", "budżet"],
         "contabilidad_plus": ["Book Keeping +", "Contabilidad +", "księgowość +"],
         "contabilidad": ["Book Keeping", "Contabilidad", "księgowość"],
+        "leyenda": ["Note", "Leyenda", "Aunta", "descrizione", "apunte", "apunte", "nota" , "Kein"],
         "codremito": ["Delivery Note Code", "Código de Remito", "kod listu przewozowego", "codice nota d invio", "código da nota de envio", "code du bon de livraison", "Versandscheincode"],
         "fecha": ["Date", "Fecha", "data"],
         "aceptar": ["Agree", "Aceptar", "Zgodzić się"],
@@ -76,11 +82,11 @@ function getTranslationText(name)
         "tipodart": ["Item Family", "Tipo de artículo", "Typ przedmiotu", "Tipo di elemento", "Tipo de item", "Type délément", "Gegenstandsart"],
         "lotdprod": ["Production Lots", "Lotes de producción", "partie produkcyjne", "lotti di produzione", "lotes de produção", "lots de production", "Produktionschargen"],
         "batchprod": ["Production Batches", "Batch de producción", "produkcja partii", "lotto di produzione", "produção em lotes", "production par lots", "Serienfertigung"],
-        "btipoar": ["Type of article", "Buscar tipo de artículo", "Rodzaj artykułu", "Tipo di articolo", "Tipo de artigo", "Type de larticle", "Artikeltyp"],
-        "codtpar": ["Article type code", "Código de tipo de artículo", "Kod typu artykuł", "articolo codice tipo", "artigo código de tipo", "article type de code", "Typencode Artikel"],
+        "btipoar": ["Types of article", "Buscar tipos de artículos", "Rodzaj artykułu", "Tipo di articolo", "Pesquisar tipos de artigo", "Rechercher des types d'articles", "Artikeltypen suchen"],
+        "codtpar": ["Article type code", "Código de tipo de artículo", "Wyszukaj typy artykułów", "Cerca tipi di articoli", "artigo código de tipo", "article type de code", "Typencode Artikel"],
         "nvotpo": ["New kind", "Nuevo tipo", "nowy rodzaj", "nuovo tipo", "novo tipo", "nouveau type", "neue Art"],
         "tnvorto": ["New delivery note", "Nuevo remito", "nowy dowód dostawy", "nuova bolla di consegna", "nova nota de entrega", "nouveau bon de livraison", "neuer Lieferschein"],
-        "nrotipen": ["Number of types founded", "N. de tipos encontrados", "Znaleziono rodzaje N.", "Tipi N. trovati", "N. tipos encontrados", "N. types trouvés", "N. Typen gefunden"],
+        "nrotipen": ["Number of types found", "N. de tipos encontrados", "Znaleziono rodzaje N.", "Tipi N. trovati", "N. tipos encontrados", "N. types trouvés", "N. Typen gefunden"],
         "reltipar": ["List of types of ítems ", "Listado de tipo de artículos", "szt Typ związku", "elementi di tipo rapporto", "itens de tipo de relacionamento", "des éléments de type de relation", "Beziehungstyp Artikel"],
         "codart": ["Item code", "Código de artículo", "kod produktu", "codice articolo", "Código do item", "code de larticle", "Produktcode"],
         "todflia": ["All families", "Todas las familias", "Każda rodzina", "ogni famiglia", "cada família", "chaque famille", "Jede Familie"],
@@ -136,6 +142,8 @@ function getTranslationText(name)
         "pciototal": ["Total price", "Precio total", "cena całkowita", "prezzo totale", "preço total", "prix total", "Gesamtpreis"],
         "factura": ["Invoice", "Factura", "rachunki", "fatture", "contas", "factures", "Banknoten"],
         "buscafc": ["Search invoices", "Buscar facturas", "Wyszukiwanie faktur", "ricerca fatture", "Pesquisa faturas", "Rechercher factures", "Suchen Rechnungen"],
+        "buscafcpurchases": ["Search invoice off purchases", "Buscar facturas", "Wyszukiwanie faktur", "ricerca fatture", "Pesquisa faturas", "Rechercher factures", "Suchen Rechnungen"],
+        "buscafcsales": ["Search Sales invoices", "Buscar factura de compras", "Znajdź fakturę zakupu", "Trova fattura di acquisto", "Encontrar fatura de compra", "Trouver la facture d'achat", "Kaufrechnung finden"],
         "nrofc": ["Invoice number", "Número de factura ", "numer rachunku", "disegno di legge numero", "número da conta", "numéro de facture", "Rechnungsnummer"],
         "estado": ["Condition", "Estado", "stan: schorzenie", "condizione", "doença", "état", "Bedingung"],
         "todosest": ["All states", "Todos los estados", "Wszystkie kraje", "tutti gli stati", "todos os estados", "tous les états", "alle Staaten"],
@@ -191,7 +199,6 @@ function getTranslationText(name)
         "nromovenc": ["Number of movements found", "Nro. de movimientos encontrados", "Ilość ruchów znaleziono", "No. Di movimenti trovato", "Número de movimentos encontrado", "Nombre de mouvements trouvés", "Anzahl der Bewegungen gefunden"],
         "compvta": ["Buys and sells", "Compra / venta", "Kup i sprzedaj", "comprare e vendere", "comprar e vender", "acheter et vendre", "kaufen und verkaufen"],
         "comerc": ["Commercial", "comercial", "Reklama w telewizji", "commerciale", "comercial", "commercial", "kommerziell"],
-        "comerc": ["commercial", "comercial", "Reklama w telewizji", "commerciale", "comercial", "commercial", "kommerziell"],
         "forpago": ["payment method", "forma de pago", "sposób zapłaty", "modo per pagare", "forma de pagamento", "façon de payer", "Weg zur Bezahlung"],
         "nrodocum": ["Document’s number", "No. de documento", "Ilość dokumentów", "N. DEL DOCUMENTO", "Nº de documento", "Nombre de documents", "Anzahl Dokument"],
         "rrhh_plus": ["Human Resources +", "Recursos humanos +", "zasoby ludzkie +", "risorse umane +", "recursos humanos +", "ressources humaines +", "Humanressourcen +"],
@@ -312,6 +319,8 @@ function getTranslationText(name)
         "artbajomin": ["Following articles are under minimun", "Los siguientes artículos están bajo mínimo", "polski", "italian", "portugues", "frances", "Aleman"],
         "codfactura": ["Invoice Code", "Código de factura", "polski", "italian", "portugues", "frances", "Aleman"],
         "balbaran": ["Search delivery note", "Buscar Remito", "polski", "italian", "portugues", "frances", "Aleman"],
+        "balbaranpurchases": ["Search delivery note to purchases", "Buscar Remito de Compra", "Znajdź dowód zakupu", "Trova una ricevuta di acquisto", "Encontrar um recibo de compra", "Trouver un reçu d'achat", "Kaufbeleg finden"],
+        "balbaransales": ["Search delivery note to sale", "Buscar Remito de venta", "Wyszukaj dowód dostawy do sprzedaży", "Cerca ricevuta di vendita", "Pesquisar recibo de venda", "rechercher un reçu de vente", "Lieferschein zum Verkauf suchen"],
         "balbaranes": ["Search delivery notes", "Buscar Remitos", "polski", "italian", "portugues", "frances", "Aleman"],
         "relalbaranes": ["List of delivery notes", "Listado de Remitos", "polski", "italian", "portugues", "frances", "Aleman"],
         "insalbaran": ["Insert Delivery Note", "Insertar remito", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -391,10 +400,10 @@ function getTranslationText(name)
         "descartado": ["Discarded", "Descartado", "polski", "italian", "portugues", "frances", "Aleman"],
         "detcrrcaja": ["Daily cash closing detail", "Detalle de cierre de caja", "polski", "italian", "portugues", "frances", "Aleman"],
         "delticktnro": ["Bill number", "Del ticket nº", "polski", "italian", "portugues", "frances", "Aleman"],
-        "codpostal": ["ZIP code", "Código postal", "polski", "italian", "portugues", "frances", "Aleman"],
+        "codpostal": ["ZIP code", "Código postal", "kod pocztowy", "codice postale", "codigo postal", "code postal", "Plz"],
         "movil": ["celular phone ", "móvil", "polski", "italian", "portugues", "frances", "Aleman"],
         "inscliente": ["Add item", "Insertar cliente", "polski", "italian", "portugues", "frances", "Aleman"],
-        "selprovincia": ["Select State", "Seleccione una provincia", "polski", "italian", "portugues", "frances", "Aleman"],
+        "selprovincia": ["Select State", "Seleccione una provincia", "polski", "italian", "portugues", "frances", "Postleitzahl"],
         "selfrmpago": ["Select way to pay", "Seleccione una forma de pago", "polski", "italian", "portugues", "frances", "Aleman"],
         "msgsincliente": [" There is no customer that meets the search criteria ", "No hay ningún cliente que cumpla con los criterios de búsqueda", "polski", "italian", "portugues", "frances", "Aleman"],
         "vcliente": ["See customer", "Ver cliente", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -541,6 +550,7 @@ function getTranslationText(name)
         "elgidi": ["Chose a Languaje", "Elija un idioma", "polski", "italian", "portugues", "frances", "Aleman"],
         "msgtrbnf": ["There is no worker with that code", "No existe ningun trabajador con ese codigo", "polski", "italian", "portugues", "frances", "Aleman"],
         "elmtrab": ["Remove worker", "ELIMINAR TRABAJADOR", "polski", "italian", "portugues", "frances", "Aleman"],
+        "tnombre_contacto": ["Contact name", "Nombre de Contacto", "Nazwa Kontaktu", "Nome del contatto", "nome de contato", "Nom du contact", "Kontaktname"],
         "movavi": ["Contact phone number", "Celular de contacto", "Telefoniczny numer kontaktowy", "Numero di  contatto telefonico", "Telefone para contato", "Numéro de téléphone de contact", "Kontakt Telefonnummer", "móvil avisos"],
         "correlecavs": ["emails notices", "Correo electrónico   CORREGIR   avisos", "polski", "italian", "portugues", "frances", "Aleman"],
         "modtrab": ["MODIFY EMPLOYEE", "MODIFICAR TRABAJADOR", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -577,6 +587,7 @@ function getTranslationText(name)
         "relfrmpag": ["LIST OF WAYS TO PAY", "LISTADO DE FORMAS DE PAGO", "polski", "italian", "portugues", "frances", "Aleman"],
         "defgrupprc": ["Defining process group", "Definir grupo de procesos", "Definiowanie grupy procesów", "Definizione di gruppo di processo", "Definindo grupo de processos", "Définition de groupe de processus", "Definieren von Prozessgruppe"],
         "nomgrupprc": ["Group name", "Nombre del grupo", "Nazwa grupy", "Nome del gruppo", "Nome do grupo", "Nom de gruope", "Gruppenname"],
+        "mmoneda": ["Currency", "Divisa", "Waluta", "Moneta", "Moeda", "Devise", "Währung"],
         "lot": ["Lot", "Lote", "Los", "Lotto", "Lote", "Lot", "Menge"],
         "bat": ["Batch", "Partida", "Przesylka", "Partita", "remessa", "Pracelle", "Batch"],
         "prodnop": ["Item not in stock", "Producto no presente en Stock", "produkt niedostępny ", "prodotto non in stock", "produto não em estoque", "produit pas en stock", "Produkt nicht auf Lager"],
@@ -600,6 +611,7 @@ function getTranslationText(name)
         "listadoUsuario": ["List of Users", "Listado de Usuarios", "polski", "italian", "portugues", "frances", "Aleman"],
         "busquedaUsuario": ["Search for Users", "Busqueda de Usuarios", "polski", "italian", "portugues", "frances", "Aleman"],
         "seleccionarAvatar": ["You must select an avatar image","Debe seleccionar una imagen de avatar", "polski", "italian", "portugues", "frances", "Aleman"],
+        "seleccionarLogo": ["You must select an Logo image","Debe seleccionar una imagen de Logo", "polski", "italian", "portugues", "frances", "Aleman"],
         "detalleUsuario": ["User details","Detalles del Usuario", "polski", "italian", "portugues", "frances", "Aleman"],
         "listadoRoles": ["List of Roles","Listado de Roles", "polski", "italian", "portugues", "frances", "Aleman"],
         "detalleRol": ["Role details","Detalles del role", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -615,11 +627,15 @@ function getTranslationText(name)
         "nombreRol": ["Rol name","Nombre de role", "polski", "italian", "portugues", "frances", "Aleman"],
         "activo": ["active","activo", "polski", "italian", "portugues", "frances", "Aleman"],
         "inactivo": ["inactive","inactivo", "polski", "italian", "portugues", "frances", "Aleman"],
+        "cod_fiscal": ["Fiscal Code","CUIT", "kod fiskalny", "Codice fiscale", "Código fiscal", "Code Fiscal", "Steuercode"],
         "msjProveedorSinArticulos": ["This supplier has not served any items so far","Este proveedor no ha servido ningún articulo hasta el momento", "polski", "italian", "portugues", "frances", "Aleman"],
         "facRemito": ["Bill remittance","Facturar remito", "polski", "italian", "portugues", "frances", "Aleman"],
+        "lang_elegido": ["English","Español", "Polskie", "italiano", "português", "français", "Deutsch"],
+        "tidioma": ["Language","Lenguaje", "Język", "Linguaggio", "Língua", "Langue", "Sprache"],
         "msg_impuesto_denifido": ["You must select the tax value","Debe seleccionar el valor del impuesto", "polski", "italian", "portugues", "frances", "Aleman"],
+        "dineroentregado": ["Money Delivered","Dinero Entregado", "pieniądze dostarczone", "denaro consegnato", "dinheiro entregue", "argent livré", "Aleman"],
     };
-    var trans ='traduccion no definida'
+    var trans =name;
     var lang = getLanguajeIndex();
     if(typeof traductions[name]!== 'undefined' && typeof traductions[name][lang] !== 'undefined')
     {
@@ -631,6 +647,7 @@ function getTranslationText(name)
 //language change function
 function langchange() {
     $("#tcompanyName").text(getTranslationText('company_name'));
+    $("#tcontact_name").text(getTranslationText('tnombre_contacto'));
     $("#password,#tpassword").text(getTranslationText('password'));
     $("#passwordValidation").text(getTranslationText('passwordValidation'));
     $("#emailValidation").text(getTranslationText('emailValidation'));
@@ -642,6 +659,8 @@ function langchange() {
     $("#details").text(getTranslationText('details'));
     $("#signin").text(getTranslationText('signin'));
     $("#companyCode").text(getTranslationText('companyCode'));
+    $("#company").text(getTranslationText('company'));
+    $("#tudate_company").text(getTranslationText('act_company'));
     $("#noMember").text(getTranslationText('noMember'));
     $("#copiasRespaldo,#tcopiasRespaldo").text(getTranslationText('copiasRespaldo'));
     $("#hacerrespaldo,#thacerrespaldo").text(getTranslationText('hacerrespaldo'));
@@ -650,6 +669,8 @@ function langchange() {
     $("#usuarios,#tusuarios").text(getTranslationText('usuarios'));
     $("#roles,#troles").text(getTranslationText('roles'));
     $("#recursos,#trecursos").text(getTranslationText('recursos'));
+    $("#tcompanydata").text(getTranslationText('companydata'));
+    $("#nombreCompany").text(getTranslationText('nombreCompany'));
     $("#ventas_plus").text(getTranslationText('ventas_plus'));
     $("#ventas").text(getTranslationText('ventas'));
     $("#venta_a_mostrador").text(getTranslationText('venta_a_mostrador'));
@@ -734,6 +755,8 @@ function langchange() {
     $("#referenc,#treferenc").text(getTranslationText('referenc'));
     $("#impr,#timpr").text(getTranslationText('impr'));
     $("#balbaran").text(getTranslationText('balbaran'));
+    $("#balbaranpurchases").text(getTranslationText('balbaranpurchases'));
+    $("#balbaransales").text(getTranslationText('balbaransales'));
     $("#tbalbaranes").text(getTranslationText('balbaranes'));
     $("#relalbaranes,#trelalbaranes").text(getTranslationText('relalbaranes'));
     $("#insalbaran,#tinsalbaran").text(getTranslationText('insalbaran'));
@@ -773,6 +796,7 @@ function langchange() {
     $("#tfchaalta").text(getTranslationText('fchaalta'));
     $("#tsindet").text(getTranslationText('sindet'));
     $("#tunidcaja").text(getTranslationText('unidcaja'));
+    $("#tunidad").text(getTranslationText('unidad'));
     $("#tpregpciotk").text(getTranslationText('pregpciotk'));
     $("#tembalaje").text(getTranslationText('embalaje'));
     $("#tmdesctick").text(getTranslationText('mdesctick'));
@@ -832,7 +856,7 @@ function langchange() {
     $("#tentiban").text(getTranslationText('entiban'));
     $("#tctabcaria").text(getTranslationText('ctabcaria'));
     $("#tcodpostal").text(getTranslationText('codpostal'));
-    $("#ttelef, #ttelef2").text(getTranslationText('telef'));
+    $("#ttelef, #ttelef2, #telefCompany").text(getTranslationText('telef'));
     $("#tmovil").text(getTranslationText('movil'));
     $("#tcorrelec").text(getTranslationText('correlec'));
     $("#tdirrcweb").text(getTranslationText('dirrcweb'));
@@ -841,6 +865,7 @@ function langchange() {
     $("#tinscliente").text(getTranslationText('inscliente'));
     $("#tmsgsincliente").text(getTranslationText('msgsincliente'));
     $("#tvcliente").text(getTranslationText('vcliente'));
+    $("#tmoneda").text(getTranslationText('mmoneda'));
     $("#tmsgtdbprocobro").text(getTranslationText('msgtdbprocobro'));
     $("#tpendient").text(getTranslationText('pendient'));
     $("#tfcvencrt").text(getTranslationText('fcvencrt'));
@@ -885,6 +910,8 @@ function langchange() {
     $("#telfac").text(getTranslationText('elfac'));
     $("#tartimpmin").text(getTranslationText('artimpmin'));
     $("#tbuscafc").text(getTranslationText('buscafc'));
+    $("#tbuscafcpurchases").text(getTranslationText('buscafcpurchases'));
+    $("#tbuscafcsales").text(getTranslationText('buscafcsales'));
     $("#tinsfactura").text(getTranslationText('insfactura'));
     $("#tvfactura").text(getTranslationText('vfactura'));
     $("#tmdfac").text(getTranslationText('mdfac'));
@@ -1090,6 +1117,7 @@ function langchange() {
     $("#tListadoUsuario").text(getTranslationText('listadoUsuario'));
     $("#tbusquedaUsuario").text(getTranslationText('busquedaUsuario'));
     $("#tseleccionarAvatar").text(getTranslationText('seleccionarAvatar'));
+    $("#tseleccionarLogo").text(getTranslationText('seleccionarLogo'));
     $("#tDetalleUsuario").text(getTranslationText('detalleUsuario'));
     $("#tListadoRoles").text(getTranslationText('listadoRoles'));
     $("#tRolesAsignados").text(getTranslationText('rolesAsignados'));
@@ -1106,6 +1134,11 @@ function langchange() {
     $("#tinactivo").text(getTranslationText('inactivo'));
     $("#msjProveedorSinArticulos").text(getTranslationText('msjProveedorSinArticulos'));
     $("#tfacRemito").text(getTranslationText('facRemito'));
+    $("#leyenda").text(getTranslationText('leyenda'));
+    $("#tcod_fiscal").text(getTranslationText('cod_fiscal'));
+    $("#tlang_elegido").text(getTranslationText('lang_elegido'));
+    $("#tidioma").text(getTranslationText('tidioma'));
+    $("#tdineroEnt").text(getTranslationText('dineroentregado'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula

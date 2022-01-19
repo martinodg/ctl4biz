@@ -1,6 +1,10 @@
 <?php 
 header('Cache-Control: no-cache');
-header('Pragma: no-cache'); 
+header('Pragma: no-cache');
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 
 require_once("../conectar7.php"); 
 require_once("../mysqli_result.php");
@@ -15,6 +19,11 @@ $cadena_busqueda=$_GET["cadena_busqueda"];
 $query="SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
 $rs_query=mysqli_query($conexion,$query);
 $codigobarras=mysqli_result($rs_query,0,"codigobarras");
+
+//para los alias
+$queryAlias="SELECT * FROM alias_articulos WHERE codarticulo='$codarticulo' ORDER BY id_alias ASC ";
+$rsAlias_query=mysqli_query($conexion,$queryAlias);
+$alias=mysqli_result($rsAlias_query,0,"id_alias");
 
 ?>
 <html>
@@ -69,6 +78,9 @@ $( document ).ready(function(){
 		}
 		
 		function limpiar() {
+			document.getElementById("aliasArt1").value="";
+			document.getElementById("aliasArt2").value="";
+			document.getElementById("aliasArt3").value="";
 			document.getElementById("codigobarras").value="";
 			document.getElementById("referencia").value="";
 			document.getElementById("descripcion").value="";
@@ -119,7 +131,20 @@ $( document ).ready(function(){
 						<td width="20%"><span  id="trefren">Referencia</span></td>
 						<?php $referencia=mysqli_result($rs_query,0,"referencia");?>
 					      <td colspan="2"><input name="areferencia" id="mreferencia" value="<?php echo mysqli_result($rs_query,0,"referencia")?>" maxlength="20" class="cajaGrande" type="text"></td>
-				          
+                        <!--alias start-->
+                        <tr>
+                            <td><span>Alias 1</span></td>
+                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,0,"id_alias") ;?>]" type="text" class="cajaGrande" id="aliasArt1" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,0,"alias")?>"></td>
+                        </tr>
+                        <tr>
+                            <td><span>Alias 2</span></td>
+                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,1,"id_alias") ;?>] type="text" class="cajaGrande" id="aliasArt2" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,1,"alias")?>"></td>
+                        </tr>
+                        <tr>
+                            <td><span>Alias 3</span></td>
+                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,2,"id_alias") ;?>] type="text" class="cajaGrande" id="aliasArt3" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,2,"alias")?>"></td>
+                        </tr>
+                        <!--alias start-->
 						</tr>
 						<?php
 						$familia=mysqli_result($rs_query,0,"codfamilia");
@@ -342,27 +367,27 @@ $( document ).ready(function(){
 						<tr>
 						  <td><span  id="tpciocomp">Precio de compra</span></td>
 						  <td colspan="2"><input NAME="qprecio_compra" type="text" class="cajaPequena" id="precio_compra" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_compra")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>
 					  	<tr>
 						  <td><span  id="tpalmacen">Precio de almac&eacute;n</span></td>
 						  <td colspan="2"><input NAME="qprecio_almacen" type="text" class="cajaPequena" id="precio_almacen" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_almacen")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>
 						<tr>
 						  <td><span  id="tptienda">Precio de tienda</span></td>
 						  <td colspan="2"><input NAME="qprecio_tienda" type="text" class="cajaPequena" id="precio_tienda" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_tienda")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>
 					  	<!--<tr>
 						  <td>Pvp</td>
 						  <td colspan="2"><input NAME="qpvp" type="text" class="cajaPequena" id="pvp" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_pvp")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>-->
 					  <tr>
 						  <td><span  id="tprcciva">Precio con iva</span></td>
 						  <td colspan="2"><input NAME="qprecio_iva" type="text" class="cajaPequena" id="precio_iva" size="10" maxlength="10" value="<?php echo mysqli_result($rs_query,0,"precio_iva")?>">
-						  &#8364;</td>
+						  <?echo $moneda;?></td>
 				      </tr>
 					  <tr>
 						  <td><span  id="timgfrmjpg">Imagen</span> </td>

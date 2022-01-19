@@ -31,7 +31,16 @@ if(isset($_GET['codarticulo'])) {$codarticulo=$_GET['codarticulo'];
         $where=$where."(articulos.codarticulo*1)='$codarticulo' AND ";
     }
 }
-//Set tools
+if(isset($_GET['paginainicio'])) {
+    $paginainicio=$_GET['paginainicio'];
+}
+
+  $query_nroLineas="SELECT codarticulo FROM articulos WHERE $where articulos.borrado='0'";
+  $rs_nroLineas = mysqli_query($conexion,$query_nroLineas);
+   $nr_Lineas= mysqli_num_rows($rs_nroLineas);
+    echo '<input type="hidden" id="nroLineas" name="numeroLineas" value="'.$nr_Lineas.'">';
+	//echo "nro lineas:".$nr_Lineas;
+//Set tools$query_nroLineas
 if(isset($_GET['toolVer'])) {$toolVer=$_GET['toolVer'];
     
 }else{$toolVer=0;}
@@ -67,13 +76,13 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
             LEFT JOIN familias
             ON articulos.codfamilia=familias.codfamilia 
             LEFT JOIN margenPorArticulo
-            ON articulos.codarticulo=margenPorArticulo.codarticulo and margenPorArticulo.codlista=$codLista)reslt WHERE $where 1=1;";     
+            ON articulos.codarticulo=margenPorArticulo.codarticulo and margenPorArticulo.codlista=$codLista)reslt WHERE $where 1=1;";
             break;
         default:
-            $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY articulos.descripcion";     
+            $query="SELECT articulos.codarticulo, familias.nombre, articulos.descripcion, articulos.precio_pvp, unidadesmedidas.nombre, articulos.impuesto FROM articulos, unidadesmedidas, familias WHERE $where articulos.codfamilia=familias.codfamilia AND articulos.codunidadmedida=unidadesmedidas.codunidadmedida ORDER BY articulos.descripcion";
             break;
     }
-    
+
     //echo $query;  
 	$rs_table = mysqli_query($conexion,$query);
     $linesNumber= mysqli_num_rows($rs_table);
@@ -94,8 +103,8 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
                                 $tool4="<a href=#><img src=../img/eliminar.svg width=16 height=16 border=0  onClick=remove(&#39;$row[0]&#39;) ></a>";
                             }else{$tool4="";}
 
-                            
-                            
+
+
                             echo '<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">';
                                 echo '<tr class="'.$fondolinea.'">';
                                 switch($tipoLista){
@@ -115,7 +124,7 @@ if(isset($_GET['toolEliminar'])) {$toolEliminar=$_GET['toolEliminar'];
                                         echo '<td width="20%"><div align="center">'.$row[2].'</div></td>';
                                         echo '<td width="18%"><div align="center">'.$row[3].'</div></td>';
                                         echo '<td width="15%"><div align="center">'.$row[4].'</div></td>';
-                                        echo '<td width="15%"><div align="center">'.$row[5].'</div></td>';   
+                                        echo '<td width="15%"><div align="center">'.$row[5].'</div></td>';
                                         echo '<td width="3%"><div align="center">'.$tool1.'</div></td>';
                                         echo '<td width="3%"><div align="center">'.$tool2.'</div></td>';
                                         echo '<td width="3%"><div align="center">'.$tool3.'</div></td>';

@@ -1,4 +1,8 @@
 <?
+if(session_id() == '') {
+    session_start();
+}
+$moneda= $_SESSION['company_currency_sign'];
 require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php"); 
@@ -125,15 +129,15 @@ $rs_lineas=mysqli_query($conexion,$sel_lineas);
 					<table width="25%" border=0 align="right" cellpadding=3 cellspacing=0 class="fuente8">
 						<tr>
 							<td width="15%"><span  id="tbaseimp">Base imponible</span></td>
-							<td width="15%"><?php echo number_format($baseimponible,2);?> &#8364;</td>
+							<td width="15%"><?php echo number_format($baseimponible,2).' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td width="15%"><span  id="tiva">IVA</span></td>
-							<td width="15%"><?php echo number_format($baseimpuestos,2);?> &#8364;</td>
+							<td width="15%"><?php echo number_format($baseimpuestos,2).' '.$moneda;?></td>
 						</tr>
 						<tr>
 							<td width="15%"><span  id="ttotal">Total</span></td>
-							<td width="15%"><?php echo $preciototal?> &#8364;</td>
+							<td width="15%"><?php echo $preciototal.' '.$moneda;?></td>
 						</tr>
 					</table>
 			  </div>

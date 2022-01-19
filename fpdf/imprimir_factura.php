@@ -1,14 +1,16 @@
 <?php
+
 define('FPDF_FONTPATH','font/');
+$companyData=null;
 require('mysqli_table.php');
 require_once("comunes.php");
 require_once("../conectar7.php");
 require_once("../funciones/fechas.php");
-require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/changelanguage.php");
+require_once("../funciones/companyData.php");
 $lang = new ChangeLanguage();
-$pdf=new PDF();
+$pdf=new PDF('P',  'mm', 'A4', $companyData,$lang);
 $pdf->AddPage();
 $pdf->Ln(20);
 $codfactura=$_GET["codfactura"];
@@ -274,7 +276,7 @@ $pdf->Cell(30,4,$lang->t('forma_pago'),1,0,'C',1);
 	$pdf->Cell(30,4,"$impo",1,0,'R',1);
     $total=sprintf("%01.2f", $total);
 	$total2= number_format($total,2,",",".");
-	$pdf->Cell(35,4,"$total2"." ".$lang->t('euros'),1,0,'R',1);
+	$pdf->Cell(35,4,"$total2"." ".$companyData['moneda'],1,0,'R',1);
 	$pdf->Ln(4);
 
 
