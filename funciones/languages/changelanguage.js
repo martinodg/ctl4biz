@@ -634,13 +634,13 @@ function getTranslationText(name)
         "msg_impuesto_denifido": ["You must select the tax value","Debe seleccionar el valor del impuesto", "polski", "italian", "portugues", "frances", "Aleman"],
         "dineroentregado": ["Money Delivered","Dinero Entregado", "pieniądze dostarczone", "denaro consegnato", "dinheiro entregue", "argent livré", "Aleman"],
     };
-    var trans ='traduccion no definida';
+    var trans =name;
     var lang = getLanguajeIndex();
     if(typeof traductions[name]!== 'undefined' && typeof traductions[name][lang] !== 'undefined')
     {
         trans = traductions[name][lang];
     }
-    return name;
+    return trans;
 }
 
 //language change function
@@ -1155,6 +1155,8 @@ function traducirVista()
     $(document).ready(function() {
         var lang = getLanguajeIndex();
         langchange();
+
+        console.info(lang);
     });
 }
 
