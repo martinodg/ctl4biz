@@ -1176,14 +1176,27 @@ function getLanguajeIndex(){
     return localStorage.getItem('language');
 }
 
+function getLanguajeCodes(){
+   return ['en','es','pl','it','pt','fr','de'];
+}
+
 function getLanguajeCode(){
-    var codes = ['en','es','pl','it','pt','fr','de'];
+    var codes = getLanguajeCodes();
     return codes[getLanguajeIndex()];
 }
 
+function getIndexByLanguajeCode(code){
+    var codes = getLanguajeCodes();
+   return codes.findIndex(function(findCode){ return findCode === code});
+}
 
 function setTranslation(lang){
     localStorage.setItem('language', lang);
+}
+
+function setTranslationByLangCode(code){
+    var lang = getIndexByLanguajeCode(code);
+    setTranslation(lang);
 }
 
 function talert(trad)

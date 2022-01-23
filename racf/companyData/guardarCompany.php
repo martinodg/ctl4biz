@@ -40,6 +40,14 @@ try {
     $query_updateCompany .= " WHERE company_data.id = 0";
     $rs_updateCompany = mysqli_query($conexion, $query_updateCompany) or trigger_error("Query Failed! SQL: $query_updateCompany - Error: ".mysqli_error($conexion), E_USER_ERROR);
     if ($rs_updateCompany) {
+
+//buscar moneda y actualizar session
+        $company_id= 0;
+        $query_companyData = "SELECT monedas.moneda, monedas.simbolo FROM monedas JOIN company_data ON monedas.id_moneda = company_data.moneda_id WHERE company_data.id = ".$company_id;
+        $rs_companyData=mysqli_query($conexion,$query_companyData)  or die('Error: '.mysqli_error($conexion).' query: '.$query_companyData);  ;
+        $row_company_data  = mysqli_fetch_array($rs_companyData);
+        $_SESSION['company_currency_sign']= $row_company_data['simbolo'];
+        $_SESSION['company_currency_code']= $row_company_data['moneda'];
         echo $l->t('actualizacion_completa');
     }
 }catch(Exception $e){

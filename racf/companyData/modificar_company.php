@@ -26,6 +26,8 @@ $leyenda= $row ['leyenda'];
 $logo= $row ['logo'];
 ?>
 
+
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,9 +37,9 @@ $logo= $row ['logo'];
     <script type="text/javascript" src="../../jquery/jquery331.js"></script>
     <script type="text/javascript" src="../../funciones/languages/changelanguage.js"></script>
     <script type="text/javascript" src="../../funciones/login.js"></script>
-    <script type="text/javascript" src="../funciones/languages/langNavLogin.js"></script>
+    <script type="text/javascript" src="../../funciones/languages/langNavLogin.js"></script>
     <script type="text/javascript">
-
+        setTranslationByLangCode('<?php echo $language;?>')
         var cursor;
         if (document.all) {
             // Está utilizando EXPLORER
@@ -130,13 +132,13 @@ $logo= $row ['logo'];
 
                     <span id="tidioma" class="loginText">Lenguaje</span><br>
                     <select class="loginText input-wrapper" id="languageCompany" name="languageCompany" >
-                        <option <?php echo ($language =="Ingles") ?  'selected':'';?>  value="Ingles">Ingles</option>
-                        <option <?php echo ($language =="Español") ?  'selected':'';?>  value="Español">Español</option>
-                        <option <?php echo ($language =="Polsky") ?  'selected':'';?>  value="Polsky">Polsky</option>
-                        <option <?php echo ($language =="Italiano") ?  'selected':'';?>  value="Italiano">Italiano</option>
-                        <option <?php echo ($language =="Portugues") ?  'selected':'';?>  value="Portugues">Portugues</option>
-                        <option <?php echo ($language =="Frances") ?  'selected':'';?>  value="Frances">Frances</option>
-                        <option <?php echo ($language =="Aleman") ?  'selected':'';?>  value="Aleman">Aleman</option>
+                        <option <?php echo ($language =="en") ?  'selected':'';?>  value="en">Ingles</option>
+                        <option <?php echo ($language =="es") ?  'selected':'';?>  value="es">Español</option>
+                        <option <?php echo ($language =="pl") ?  'selected':'';?>  value="pl">Polsky</option>
+                        <option <?php echo ($language =="it") ?  'selected':'';?>  value="it">Italiano</option>
+                        <option <?php echo ($language =="pt") ?  'selected':'';?>  value="pt">Portugues</option>
+                        <option <?php echo ($language =="fr") ?  'selected':'';?>  value="fr">Frances</option>
+                        <option <?php echo ($language =="de") ?  'selected':'';?>  value="de">Aleman</option>
                     </select>
                     <br> <br>
 
