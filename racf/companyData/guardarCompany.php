@@ -38,7 +38,7 @@ try {
         $query_updateCompany .= ", logo = '$logoUrl'";
     }
     $query_updateCompany .= " WHERE company_data.id = 0";
-    $rs_updateCompany = mysqli_query($conexion, $query_updateCompany);
+    $rs_updateCompany = mysqli_query($conexion, $query_updateCompany) or trigger_error("Query Failed! SQL: $query_updateCompany - Error: ".mysqli_error($conexion), E_USER_ERROR);
     if ($rs_updateCompany) {
         echo $l->t('actualizacion_completa');
     }

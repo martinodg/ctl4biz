@@ -7,24 +7,23 @@ if(session_id() == '') {
 require_once("../../conectar7.php");
 require_once("../../funciones/cargaImagenes.php");
 
-$query_companyData="SELECT * FROM company_data WHERE id=0";
-$rs_companyData=mysqli_query($conexion,$query_companyData);
-$row = mysqli_fetch_row($rs_companyData);
+$query_companyData="SELECT id, 	razon_soc, contact_name,contact_telephone,main_email,country,	language,address,	zip_code,moneda_id,cod_fiscal,leyenda,logo FROM company_data WHERE id=0";
+$rs_companyData=mysqli_query($conexion,$query_companyData)or trigger_error("Query Failed! SQL: $query_companyData - Error: ".mysqli_error($conexion), E_USER_ERROR);
+$row = mysqli_fetch_array($rs_companyData) ;
 //datos de la compañia:
-$id= $row [0];
-$razon_soc= $row[1];
-$contact_name= $row [2];
-$telephone= $row [3];
-$email= $row [4];
-$country= $row [5];
-$language= $row [6];
-$address= $row [7];
-$zip_code= $row [8];
-$moneda= $row [9];
-$cod_fiscal= $row [10];
-$leyenda= $row [11];
-$logo= $row [12];//@todo Cargar nombre del logo (ctl4bizlogo.jpg por default )
-
+$id= $row ['id'];
+$razon_soc= $row['razon_soc'];
+$contact_name= $row ['contact_name'];
+$telephone= $row ['contact_telephone'];
+$email= $row ['main_email'];
+$country= $row ['country'];
+$language= $row ['language'];
+$address= $row ['address'];
+$zip_code= $row ['zip_code'];
+$moneda= $row ['moneda_id'];
+$cod_fiscal= $row ['cod_fiscal'];
+$leyenda= $row ['leyenda'];
+$logo= $row ['logo'];
 ?>
 
 <html>
@@ -131,14 +130,13 @@ $logo= $row [12];//@todo Cargar nombre del logo (ctl4bizlogo.jpg por default )
 
                     <span id="tidioma" class="loginText">Lenguaje</span><br>
                     <select class="loginText input-wrapper" id="languageCompany" name="languageCompany" >
-                        <option value=<? echo $language;?> selected><? echo $language;?></option>
-                        <option value="Ingles">Ingles</option>
-                        <option value="Español">Español</option>
-                        <option value="Polsky">Polaco</option>
-                        <option value="Italiano">Italiano</option>
-                        <option value="Portugues">Portugues</option>
-                        <option value="Frances">Frances</option>
-                        <option value="Aleman">Aleman</option>
+                        <option <?php echo ($language =="Ingles") ?  'selected':'';?>  value="Ingles">Ingles</option>
+                        <option <?php echo ($language =="Español") ?  'selected':'';?>  value="Español">Español</option>
+                        <option <?php echo ($language =="Polsky") ?  'selected':'';?>  value="Polsky">Polsky</option>
+                        <option <?php echo ($language =="Italiano") ?  'selected':'';?>  value="Italiano">Italiano</option>
+                        <option <?php echo ($language =="Portugues") ?  'selected':'';?>  value="Portugues">Portugues</option>
+                        <option <?php echo ($language =="Frances") ?  'selected':'';?>  value="Frances">Frances</option>
+                        <option <?php echo ($language =="Aleman") ?  'selected':'';?>  value="Aleman">Aleman</option>
                     </select>
                     <br> <br>
 

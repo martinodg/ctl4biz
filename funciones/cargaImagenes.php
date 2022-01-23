@@ -265,18 +265,17 @@ function sanitizarNombreDirectorio(&$nombreDirectorio, $max = 40)
  * @return string[]
  * @throws Exception
  */
-function cargarLogoCompania($fileResource,$fileName = 'logo', $extension='jpg'){
+function cargarLogoCompania($fileResource,$fileName = 'logo', $extension='jpg,jpeg,png,svg'){
     $pathItemEmpresa = retornarPathEmpresa();
     $tmpName = $fileResource['name'];
     $fileNameCmps = explode('.', $tmpName);
     //valida que sea un jpg
     $fileExtension = strtolower(end($fileNameCmps));
-    checkExtension($fileExtension,[$extension]);
+    checkExtension($fileExtension,explode(',',$extension));
     //
     $newFileName =  $fileName. '.'.$extension;
     $filePath =$pathItemEmpresa.DIRECTORY_SEPARATOR.$newFileName;
     if(file_exists($filePath)) {
-        //@todo salvarlo moviendolo con un timestamp  en el nombre
         unlink($filePath);
     }
     if(!move_uploaded_file($fileResource['tmp_name'], $filePath)) {
@@ -297,7 +296,7 @@ function cargarLogoCompania($fileResource,$fileName = 'logo', $extension='jpg'){
  * @return false|string[]
  * @throws Exception
  */
-function salvarLogoCompania($valorFile,$fileName = 'logo', $extension='jpg'){
+function salvarLogoCompania($valorFile,$fileName = 'logo', $extension='jpg,jpeg,png,svg'){
     if(requestHasFile($valorFile)){
         return cargarLogoCompania($_FILES[$valorFile], $fileName,$extension);
     }
