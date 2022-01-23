@@ -27,7 +27,13 @@ $codfacturatmp=mysqli_insert_id($conexion);
 		// Está utilizando MOZILLA/NETSCAPE
 		cursor='pointer';
 		}
-		
+
+        $.get( "../funciones/BackendQueries/loadCboTax.php" , { defaulSelect:"1"
+        },function ( data ) {
+            console.info(data);
+            $('#iva').html(data);
+        });
+
 		var miPopup
 		function abreVentana(){
 			var bi=document.getElementById("baseimponible").value;
@@ -208,7 +214,16 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					);
 		</script></td>
 				            <td width="3%"><span  id="tiva">IVA</span></td>
-				            <td width="64%"><input NAME="iva" type="text" class="cajaPequena" id="iva" size="5" maxlength="5" value="16" onChange="cambio_iva()"> %</td>
+				            <td width="64%">
+
+                                <select id="iva" class="cboImpuesto, comboMedio" name="iva" onChange="cambio_iva()" >
+
+                                </select>
+                                <!--
+                                <input NAME="iva" type="text" class="cajaPequena" id="iva" size="5" maxlength="5" value="16" onChange="cambio_iva()">
+                                -->
+
+                                %</td>
 						</tr>
 					</table>										
 			  </div>
