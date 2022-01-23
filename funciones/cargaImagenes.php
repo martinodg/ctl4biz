@@ -260,7 +260,7 @@ function sanitizarNombreDirectorio(&$nombreDirectorio, $max = 40)
 
 /**
  * Permite la carga de una imagen png como avatar del usuario
- * @param  string $username nombre de usuario
+ * @param  string $fileName nombre de usuario
  * @param $fileResource
  * @return string[]
  * @throws Exception
@@ -273,7 +273,7 @@ function cargarLogoCompania($fileResource,$fileName = 'logo', $extension='jpg,jp
     $fileExtension = strtolower(end($fileNameCmps));
     checkExtension($fileExtension,explode(',',$extension));
     //
-    $newFileName =  $fileName. '.'.$extension;
+    $newFileName =  $fileName. '.'.$fileExtension;
     $filePath =$pathItemEmpresa.DIRECTORY_SEPARATOR.$newFileName;
     if(file_exists($filePath)) {
         unlink($filePath);
