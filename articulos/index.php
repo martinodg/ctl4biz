@@ -217,29 +217,13 @@ else{
 		          </select></td>
 			  </table>
 				</div>
-                    <div id="cabeceraResultado" class="header" ><span  id="ttrealcionart">Relación de articulos</span></div>
+                    <div id="cabeceraResultado" class="header" ><span  id="ttrealcionart">Listado de articulos</span></div>
 				<div id="frmResultado">
-				<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
-						<tr class="cabeceraTabla">
-							<td width="4%"><span  id="titem">ITEM</span></td>
-							<td width="5%"><span  id="tcodigo">CODIGO</span></td>
-							<td width="19%"><span  id="referenc">REFERENCIA</span></td>
-							<td width="25%"><span  id="tdescri">DESCRIPCION</span></td>
-							<td width="11%"><span  id="tflia">FAMILIA</span></td>
-							<td width="11%"><span  id="tpreciot">PRECIO T.</span></td>
-							<td width="5%"><span  id="tstock">Stock</span></td>
-                            <td width="5%"><span  id="tundmed">Und./medida</span></td>
-							<td width="5%">&nbsp;</td>
-							<td width="5%">&nbsp;</td>
-							<td width="5%">&nbsp;</td>
-							
-						</tr>
-				</table>
 				</div>
 				<input type="hidden" id="iniciopagina" name="iniciopagina">
 				<input type="hidden" id="cadena_busqueda" name="cadena_busqueda">
 			</form>
-				<div id="lineaResultado">
+				<div id="lineaResultado" style="background: #251d1d;">
 					<iframe width="100%" height="300" id="frame_rejilla" name="frame_rejilla" frameborder="0">
 						<ilayer width="100%" height="300" id="frame_rejilla" name="frame_rejilla"></ilayer>
 					</iframe>
