@@ -30,7 +30,6 @@ $codfacturatmp=mysqli_insert_id($conexion);
 
         $.get( "../funciones/BackendQueries/loadCboTax.php" , { defaulSelect:"1"
         },function ( data ) {
-            console.info(data);
             $('#iva').html(data);
         });
 
@@ -95,6 +94,38 @@ $codfacturatmp=mysqli_insert_id($conexion);
 				let result=Math.round(original*100)/100 ;
 				document.getElementById("importe").value=result;
 			}
+
+        function actualizar_precio()
+        {
+            let totalDescontado = parseFloat(document.getElementById("importe").value);
+            let cantidad = parseInt(document.getElementById("cantidad").value);
+            let descuento = document.getElementById("descuento").value;
+            console.info(isNaN(descuento), descuento);
+            if( descuento.length === 0 || isNaN(descuento)){
+                descuento  = 1 ;
+            }else{
+                descuento = parseInt(descuento);
+            }
+            //totaldescontado = totalBruto * 1-(porcentajeDescuento/100) => totalBruto = totaldescontado/1-(porcentajeDescuento/100)
+            let totalBruto= totalDescontado / ( 1-descuento/100 );
+            let precioUnitario=totalBruto/cantidad;
+            console.info(totalBruto, totalDescontado,cantidad, descuento, precioUnitario);
+             precioUnitario=Math.round(precioUnitario*100)/100 ;
+            document.getElementById("precio").value=precioUnitario;
+            //
+        }
+        function actualizar_por_descuento_o_cantidad()
+        {
+            //todo determinar en base a quien es el que esta lleno de los 2
+            let precio=document.getElementById("precio").value;
+            let totaldescontado=document.getElementById("importe").value;
+            if(precio === '') {
+                actualizar_importe();
+            }else if(totaldescontado > 0 ){
+                actualizar_precio();
+            }
+        }
+
 			
 		function validar_cabecera()
 			{
@@ -245,15 +276,15 @@ $codfacturatmp=mysqli_insert_id($conexion);
 					<td><span  id="descri">descripcion</span></td>
 					<td width="19%"><input NAME="descripcion" type="text" class="cajaMedia" id="descripcion" size="30" maxlength="30" readonly></td>
 					<td width="5%"><span  id="tprecio">PRECIO</span></td>
-					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onChange="actualizar_importe()"><? echo $moneda; ?></td>
+					<td width="11%"><input NAME="precio" type="text" class="cajaPequena2" id="precio" size="10" maxlength="10" onkeydown="actualizar_importe()"><? echo $moneda; ?></td>
 					<td width="5%"><span  id="tcant">CANTIDAD</span></td>
-                      <td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" value="1" onChange="actualizar_importe()"></td>
+                      <td width="5%"><input NAME="cantidad" type="text" class="cajaMinima" id="cantidad" size="10" maxlength="10" onChange="actualizar_por_descuento_o_cantidad()" value="1" onChange="actualizar_importe()"></td>
                       <td width="5%"><span  id="tunidad">Unidad Medida</span></td>
                       <td width="5%"><input NAME="unidadmedida" type="text" class="cajaMinima" id="unidadmedida" size="10" maxlength="10" value="" disabled="disabled"></td>
                     <td width="4%"><span  id="tdcto">Dcto.</span></td>
-					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_importe()"> %</td>
+					<td width="9%"><input NAME="descuento" type="text" class="cajaMinima" id="descuento" size="10" maxlength="10" onChange="actualizar_por_descuento_o_cantidad()"> %</td>
 					<td width="5%"><span  id="timporte">IMPORTE</span></td>
-					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" readonly><? echo $moneda; ?></td>
+					<td width="11%"><input NAME="importe" type="text" class="cajaPequena2" id="importe" size="10" maxlength="10" value="0" onkeydown="actualizar_precio()" ><? echo $moneda; ?></td>
 					<td width="15%"><button type="button" id="btnagregar" onClick="validar()"  onMouseOver="style.cursor=cursor"> <img src="../img/agregar.svg" alt="agregar" /> <span  id="tagregar">Agregar</span> </button></td>
 				  </tr>
 				</table>
