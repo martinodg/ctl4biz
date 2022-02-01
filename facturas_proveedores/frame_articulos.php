@@ -69,7 +69,12 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; }
 				$nombrefamilia=mysqli_result($rs_tabla,$i,"nombrefamilia");
 				$codarticulo=mysqli_result($rs_tabla,$i,"codarticulo");				
 				$descripcion=mysqli_result($rs_tabla,$i,"descripcion");
-                $unidad_medida=mysqli_result($rs_tabla,$i,"nombreunidadmedida");
+                $unidad_medida=mysqli_result($rs_tabla,$i,"codunidadmedida");
+                if($unidad_medida){
+                    $consulta_unimedida = "SELECT nombre FROM unidadesmedidas";
+                    $rs_uni = mysqli_query($conexion, $consulta_unimedida);
+                    $nombreunidad_medidad = mysqli_result($rs_uni,$unidad_medida,"nombre");
+                }
 				if ($todos==0) { $precio=mysqli_result($rs_tabla,$i,"pcosto"); }
 				if ($todos==1) { $precio=mysqli_result($rs_tabla,$i,"precio_compra"); }
                 if ($i % 2) { $fondolinea="itemParTabla"; } else { $fondolinea="itemImparTabla"; }?>
@@ -81,7 +86,7 @@ if ($descripcion<>"") { $where.=" AND descripcion like '%$descripcion%'"; }
 					<td>
         <div align="left"><?php echo utf8_encode($descripcion);?></div></td>
 					<td><div align="center"><?php echo $precio;?></div></td>
-					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $referencia?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>',<? echo $codarticulo?>,'<?php echo $unidad_medida?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" data-ttitle="tsel" title="Seleccionar"></a></div></td>
+					<td align="center"><div align="center"><a href="javascript:pon_prefijo(<?php echo $codfamilia?>,'<?php echo $referencia?>','<?php echo str_replace('"','',$descripcion)?>','<?php echo $precio?>',<? echo $codarticulo?>,'<?php echo $nombreunidad_medidad?>')"><img src="../img/convertir.svg" width="16px" height="16px" border="0" data-ttitle="tsel" title="Seleccionar"></a></div></td>
 				</tr>
 			<?php }
 		?>
