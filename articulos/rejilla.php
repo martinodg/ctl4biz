@@ -75,6 +75,19 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 			<div id="zonaContenido"  style="margin-left:0">
 			<div align="center">
 			<table class="fuente8" width="100%" cellspacing=0 cellpadding=3 border=0 ID="Table1">
+                <tr class="cabeceraTabla">
+                    <td width="4%"><span  id="titem">ITEM</span></td>
+                    <td width="5%"><span  id="tcodigo">CODIGO</span></td>
+                    <td width="19%"><span  id="referenc">REFERENCIA</span></td>
+                    <td width="20%"><span  id="tdescri">DESCRIPCION</span></td>
+                    <td width="11%"><span  id="tflia">FAMILIA</span></td>
+                    <td width="11%"><span  id="tpreciot">PRECIO T.</span></td>
+                    <td width="5%"><span  id="tstock">Stock</span></td>
+                    <td width="5%"><span  id="tundmed">Und./medida</span></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="7%">&nbsp;</td>
+                </tr>
 			<input type="hidden" name="numfilas" id="numfilas" value="<? echo $filas?>">
 				<? $iniciopagina=$_POST["iniciopagina"];
 				if (empty($iniciopagina)) { $iniciopagina =  (isset($_GET["iniciopagina"])) ? intval($_GET["iniciopagina"]):0; } else { $iniciopagina=$iniciopagina-1;}

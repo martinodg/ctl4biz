@@ -26,8 +26,7 @@ if(count($_POST)>0) {
    
     $query_DB="SELECT db_user, db_password, id_company, company_name FROM login_data WHERE master_user='".$usuario."' or id_company='".$companycode."';";
     $result = mysqli_query($conexion,$query_DB);
-
-    if (!$result) {
+    if (!$result || mysqli_num_rows($result) == 0 ) {
         die('Query 1 failed');
     }else{
         $row  = mysqli_fetch_array($result);
