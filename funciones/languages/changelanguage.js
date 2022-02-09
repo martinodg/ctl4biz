@@ -96,7 +96,7 @@ function getTranslationText(name)
         "todubic": ["All locations", "Todas las ubicaciones", "Wszystkie lokacje", "tutti i posti", "Todos os locais", "toutes les zones géographiques", "alle Orte"],
         "preciot": ["Price T.", "Precio T.", "Cena T.", "Prezzo T.", "Preço T.", "Prix ​​T.", "Preis T."],
         "stock": ["Stock", "Stock", "Zbiory", "azione", "estoque", "Stock", "Lager"],
-        "unidad": ["Meassur. Un.", "Unidad de medida", "/ jednostka pomiarowa", "Unità / misurazione", "/ unidade de medição", "unité / mesure", "Einheit / Mess"],
+        "unidad": ["Meassur. Un.", "Unidad de medida", "jednostka pomiarowa", "Unità / misurazione", "/ unidade de medição", "unité / mesure", "Einheit / Mess"],
         "metproc": ["Meta processes", "Meta procesos", "procesy docelowe", "processi di destinazione", "processos alvo", "processus cibles", "Soll-Prozesse"],
         "bmetproc": ["Meta processes search ", "Búsqueda de meta procesos", "Meta Proces wyszukiwania", "Ricerca di meta processi", "Pesquisa de meta processo ", "Recherche de méta processus", "Suche nach metaprozess"],
         "bgrupproc": ["Processes Groups search ", "Búsqueda de grupos de procesos", "Szukaj grup procesow", "Ricerca di Gruppi di Processi", "Pesquisa de grupo de processo", "Rechercher des groupes des processus", "Suche nach prozessgruppen"],

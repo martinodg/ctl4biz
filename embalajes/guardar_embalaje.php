@@ -6,10 +6,12 @@ $accion=$_POST["accion"];
 if (!isset($accion)) { $accion=$_GET["accion"]; }
 
 $nombre=$_POST["Anombre"];
+$cantidad=$_POST["Acantidad"];
+$coduniMedida=$_POST["Aunimedida"];
 
 if ($accion=="alta") {
-	$query_operacion="INSERT INTO embalajes (codembalaje, nombre, borrado) 
-					VALUES ('', '$nombre', '0')";					
+    $query_operacion="INSERT INTO embalajes (codembalaje, nombre, cantidad, codunidadmedida, borrado) 
+					VALUES ('', '$nombre', '$cantidad', '$coduniMedida', '0')";
 	$rs_operacion=mysqli_query($conexion,$query_operacion);
 	if ($rs_operacion) { $mensaje="El embalaje ha sido dado de alta correctamente"; }
 	$cabecera1="Inicio >> Embalajes &gt;&gt; Nuevo Embalaje ";
@@ -57,8 +59,10 @@ if ($accion=="baja") {
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<script language="javascript">
-		
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
+        <script language="javascript">
+
 		function aceptar() {
 			location.href="index.php";
 		}
@@ -92,7 +96,20 @@ if ($accion=="baja") {
 						<tr>
 							<td width="15%"><span  id="tnomb">Nombre</span></td>
 						    <td width="85%" colspan="2"><?php echo $nombre?></td>
-					    </tr>						
+					    </tr>
+                        <tr>
+                            <td width="15%"><span id="tcant">Cantidad</span></td>
+                            <td width="85%" colspan="2"><?php echo $cantidad?></td>
+                        </tr>
+                        <tr>
+                            <?php
+                            $q_nameUniMedida="SELECT nombre FROM `unidadesmedidas` WHERE `codunidadmedida` = $coduniMedida";
+                            $rs_nameUniMedida=mysqli_query($conexion,$q_nameUniMedida);
+                            $nameUniMedida=mysqli_result($rs_nameUniMedida,0,"nombre");
+                            ?>
+                            <td width="15%"><span id="tunidad">Unidad de Medida</span></td>
+                            <td width="85%" colspan="2"><?php echo $nameUniMedida?></td>
+                        </tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
