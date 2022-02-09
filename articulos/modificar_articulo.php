@@ -1,16 +1,11 @@
-<?php 
+<?php
 header('Cache-Control: no-cache');
 header('Pragma: no-cache');
-if(session_id() == '') {
-    session_start();
-}
-$moneda= $_SESSION['company_currency_sign'];
 
-require_once("../conectar7.php"); 
+require_once("../conectar7.php");
 require_once("../mysqli_result.php");
 require_once("../funciones/fechas.php");
 require_once("../funciones/cargaImagenes.php");
-
 
 $codarticulo=$_GET["codarticulo"];
 $cadena_busqueda=$_GET["cadena_busqueda"];
@@ -23,7 +18,8 @@ $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 //para los alias
 $queryAlias="SELECT * FROM alias_articulos WHERE codarticulo='$codarticulo' ORDER BY id_alias ASC ";
 $rsAlias_query=mysqli_query($conexion,$queryAlias);
-$alias=mysqli_result($rsAlias_query,0,"id_alias");
+$alias = mysqli_fetch_array($rsAlias_query);
+
 
 ?>
 <html>
@@ -107,6 +103,35 @@ $( document ).ready(function(){
 			document.formulario.Aprecio_ticket.options[0].selected = true;
 			document.formulario.Amodif_descrip.options[0].selected = true;
 		}
+
+        $(document).ready(function(){
+            //Funcion que gestion la creacion de campos de alias
+            var maxCampos = 15; //Limitación de incremento de campos de entrada
+            var addButton = $('.add_button'); //Añadir selector de botón
+            var wrapper = $('#campo_alias'); //Campo de entrada
+            //var campoHTML = '<div class="alia_add" style="margin-bottom: 10px;"><input type="text"  class="cajaGrande" name="alias[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field"><img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" style="cursor:pointer; margin-left: 5px;"></a></div>'; //New input field html
+            var campoHTML = '<div class="alia_add" style="margin-bottom: 10px;"><input type="text"  class="cajaGrande" name="alias[]" value=""/><button type="button" onMouseOver="style.cursor=cursor"  class="remove_button" title="Remove field" style="cursor:pointer; margin-left: 5px; padding-bottom: 3px;"><img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1"></button></div>'; //New input field html
+            //<button type="button" onMouseOver="style.cursor=cursor"  class="remove_button" title="Remove field"><img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" style="cursor:pointer; margin-left: 5px;"></button>
+            var x = 1; //El contador de campo inicial es 1
+            $(addButton).click(function(){ //Una vez que se hace clic en el botón Agregar
+                if(x < maxCampos){ //Comprobar el número máximo de campos de entrada
+                    x++; //Incrementar contador de campo
+                    $(wrapper).append(campoHTML); // Add CAMPO html
+                }
+            });
+            $(wrapper).on('click', '.remove_button', function(e){ //Una vez que se hace clic en el botón Eliminar
+                e.preventDefault();
+                $(this).parent('.alia_add').remove(); //Remueve el campo html
+                x--; //Contador de campo decrementor
+            });
+        });
+
+        function delete_alias(id_alias) {
+            fila = document.getElementById(id_alias);
+            alias = document.getElementsByClassName(id_alias);
+            alias.value="";
+            fila.remove();
+        }
 		
 		</script>
 	</head>
@@ -128,24 +153,52 @@ $( document ).ready(function(){
 				          <td colspan="1"><?php echo '<img src="../funciones/barcode/barcode.php?s=ean-13&wq=1&d='.$codigobarras.'">'; ?></td>
 						</tr>
 						<tr>
-						<td width="20%"><span  id="trefren">Referencia</span></td>
-						<?php $referencia=mysqli_result($rs_query,0,"referencia");?>
-					      <td colspan="2"><input name="areferencia" id="mreferencia" value="<?php echo mysqli_result($rs_query,0,"referencia")?>" maxlength="20" class="cajaGrande" type="text"></td>
+                            <td width="20%"><span  id="trefasdren">Referencia</span></td>
+                            <?php $referencia=mysqli_result($rs_query,0,"referencia");?>
+                              <td colspan="2"><input name="areferencia" id="mreferencia" value="<?php echo mysqli_result($rs_query,0,"referencia")?>" maxlength="20" class="cajaGrande" type="text"></td>
+
                         <!--alias start-->
                         <tr>
-                            <td><span>Alias 1</span></td>
-                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,0,"id_alias") ;?>]" type="text" class="cajaGrande" id="aliasArt1" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,0,"alias")?>"></td>
+                            <td><span id="new-alias">Nuevos Alias</span></td>
+                            <td id="campo_alias">
+                                <div class="alia_add">
+                                    <button class="add_button" type="button" onMouseOver="style.cursor=cursor" style="text-decoration: none; color: #ffff;">
+                                        <img src="../img/agregar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor=pointer"><span id="add-alias"> AGREGAR ALIAS</span>
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
-                        <tr>
-                            <td><span>Alias 2</span></td>
-                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,1,"id_alias") ;?>] type="text" class="cajaGrande" id="aliasArt2" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,1,"alias")?>"></td>
-                        </tr>
-                        <tr>
-                            <td><span>Alias 3</span></td>
-                            <td colspan="2"><input NAME="alias[<?php echo mysqli_result($rsAlias_query,2,"id_alias") ;?>] type="text" class="cajaGrande" id="aliasArt3" size="20" maxlength="20" value="<?php echo mysqli_result($rsAlias_query,2,"alias")?>"></td>
-                        </tr>
-                        <!--alias start-->
-						</tr>
+                        <?php
+                        $connt =0;
+                        $aliasName = array();
+                        $rowAlias = mysqli_result($rsAlias_query,$connt,"alias");
+                        if (!empty($rowAlias)){
+                            while (!empty(mysqli_result($rsAlias_query,$connt,"alias"))){
+                                $aliasnombre =mysqli_result($rsAlias_query,$connt,"alias");
+                                $aliasid =mysqli_result($rsAlias_query,$connt,"id_alias");
+                                $aliasName[$connt] = $aliasnombre;
+                                $aliasId[$connt] = $aliasid;?>
+                                <tr id="<?php echo $aliasid; ?>">
+                                    <td><span id="talias">Alias</span></td>
+                                    <td id="campo_alias">
+                                        <div class="alia_add">
+                                            <input id="<?php echo $aliasid; ?>" type="text" name="alias[<?php echo $aliasid; ?>]" value="<?php echo $aliasnombre; ?>"  class="cajaGrande"/>
+                                            <button type="button" onMouseOver="style.cursor=cursor"  onclick="delete_alias(<?php echo $aliasid; ?>)" style="cursor:pointer; padding-bottom: 3px;">
+                                                <img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" style="cursor:pointer; margin-left: 5px;">
+                                            </button>
+                                        <?php //echo '<a href="javascript:void(0);" class="remove_button" title="Remove field" style="text-decoration: none;"><img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" style="cursor:pointer; margin-left: 5px;"></a>';
+                                     echo '
+                                        </div>
+                                    </td>
+                                </tr>';
+                                $connt++;
+                            }
+                        }else{
+                            echo 'No Existen Alias para este Articulo';
+                        }
+                            ?>
+                            <!--alias end-->
+
 						<?php
 						$familia=mysqli_result($rs_query,0,"codfamilia");
 					  	$query_familias="SELECT * FROM familias WHERE borrado=0 ORDER BY nombre ASC";
