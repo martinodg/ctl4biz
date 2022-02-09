@@ -1,4 +1,4 @@
-<?php require_once("../conectar7.php"); ?>
+<?php require_once("../conectar7.php");?>
 <html>
 <head>
     <title>Principal</title>
@@ -27,6 +27,15 @@
             document.getElementById("unidad").value="";
         }
 
+        //Perform when DOM is full loaded
+        $( document ).ready(function(){
+
+            //load process combo
+            $.get("../funciones/BackendQueries/getMeassuresUnits.php", function(data) {
+                $('.cboUnidadmedida').html(data);
+            });
+        });
+
     </script>
 </head>
 <body>
@@ -48,7 +57,10 @@
                         </tr>
                         <tr>
                             <td><span id="tunidad">Unidad de Medida</span></td>
-                            <td><input NAME="Aunidad de medida" type="text" class="cajaGrande" id="unidad" size="50" maxlength="50"></td>
+                            <td>
+                                <select id="inidad" class="cboUnidadmedida" name="Aunimedida" >
+                                </select>
+                            </td>
                         </tr>
                     </table>
             </div>
