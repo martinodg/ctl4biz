@@ -45,10 +45,7 @@ require_once("../mysqli_result.php");
 		});
 /*----------------------------------------------------------------------------------------------------------------------*/
 		function limpiar() {
-            //@todo Marcelo usando selectores buscar todos los inputs que esten bajo un tr de clase add_alias y pasar su valor a vacio
-			/*document.getElementById("aliasArt1").value="";
-			document.getElementById("aliasArt2").value="";
-			document.getElementById("aliasArt3").value="";*/
+			document.getElementById("campo_alias").value="";
 			document.getElementById("referencia").value="";
 			document.getElementById("descripcion").value="";
 			document.getElementById("descripcion_corta").value="";
@@ -80,7 +77,7 @@ require_once("../mysqli_result.php");
             var addButton = $('.add_button'); //Añadir selector de botón
             var wrapper = $('#campo_alias'); //Campo de entrada
             var campoHTML = '<div class="alia_add" style="margin-bottom: 10px;"><input type="text"  class="cajaGrande" name="alias[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field" style="text-decoration: none;"><img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" style="cursor:pointer; margin-left: 5px;"></a></div>'; //New input field html
-            var x = 1; //El contador de campo inicial es 1
+            var x = 0; //El contador de campo inicial es 1
             $(addButton).click(function(){ //Una vez que se hace clic en el botón Agregar
                 if(x < maxCampos){ //Comprobar el número máximo de campos de entrada
                     x++; //Incrementar contador de campo
@@ -128,13 +125,12 @@ require_once("../mysqli_result.php");
 				        </tr>
                         <!--alias start-->
                         <tr>
-                            <td><span>Alias</span></td>
+                            <td><span id="talias">Alias</span></td>
                             <td id="campo_alias">
                                 <div class="alia_add">
-                                    <button type="button" onMouseOver="style.cursor=cursor">
-                                        <a href="javascript:void(0);" class="add_button" title="Add field" style="text-decoration: none; color: #ffff;"><img src="../img/agregar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'"> AGREGAR ALIAS </a>
+                                    <button class="add_button" type="button" onMouseOver="style.cursor=cursor" style="text-decoration: none; color: #ffff;">
+                                        <img src="../img/agregar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'"><span id="add-alias"> AGREGAR ALIAS</span>
                                     </button>
-                                    <!--<input type="text" name="alias[]" value=""  class="cajaGrande"/>-->
                                 </div>
                             </td>
                         </tr>

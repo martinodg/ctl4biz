@@ -633,6 +633,9 @@ function getTranslationText(name)
         "tidioma": ["Language","Lenguaje", "Język", "Linguaggio", "Língua", "Langue", "Sprache"],
         "msg_impuesto_denifido": ["You must select the tax value","Debe seleccionar el valor del impuesto", "polski", "italian", "portugues", "frances", "Aleman"],
         "dineroentregado": ["Money Delivered","Dinero Entregado", "pieniądze dostarczone", "denaro consegnato", "dinheiro entregue", "argent livré", "Aleman"],
+        "ttalias": ["Alias","Alias", "Alias", "Alias", "Alias", "Alias", "Alias"],
+        "taddalias": ["Add Aliases","Agregar Alias", "Alias", "Aggiungi Alias", "Adicionar Aliases", "Ajouter des Alias", "Aliase hinzufügen"],
+        "tnewalias": ["New Aliases","Nuevos Alias", "Nowe aliasy", "Nuovi alias", "Novos pseudônimos", "Nouveaux alias", "Neue Aliase"]
     };
     var trans =name;
     var lang = getLanguajeIndex();
@@ -1137,6 +1140,9 @@ function langchange() {
     $("#tlang_elegido").text(getTranslationText('lang_elegido'));
     $("#tidioma").text(getTranslationText('tidioma'));
     $("#tdineroEnt").text(getTranslationText('dineroentregado'));
+    $("#talias").text(getTranslationText('ttalias'));
+    $("#add-alias").text(getTranslationText('taddalias'));
+    $("#new-alias").text(getTranslationText('tnewalias'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
