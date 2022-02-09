@@ -635,7 +635,8 @@ function getTranslationText(name)
         "dineroentregado": ["Money Delivered","Dinero Entregado", "pieniądze dostarczone", "denaro consegnato", "dinheiro entregue", "argent livré", "Aleman"],
         "ttalias": ["Alias","Alias", "Alias", "Alias", "Alias", "Alias", "Alias"],
         "taddalias": ["Add Aliases","Agregar Alias", "Alias", "Aggiungi Alias", "Adicionar Aliases", "Ajouter des Alias", "Aliase hinzufügen"],
-        "tnewalias": ["New Aliases","Nuevos Alias", "Nowe aliasy", "Nuovi alias", "Novos pseudônimos", "Nouveaux alias", "Neue Aliase"]
+        "tnewalias": ["New Aliases","Nuevos Alias", "Nowe aliasy", "Nuovi alias", "Novos pseudônimos", "Nouveaux alias", "Neue Aliase"],
+        "tnombre": ["Name","Nombre", "Nazwa", "Nome", "Nome", "Nom", "Name"]
     };
     var trans =name;
     var lang = getLanguajeIndex();
@@ -1143,6 +1144,7 @@ function langchange() {
     $("#talias").text(getTranslationText('ttalias'));
     $("#add-alias").text(getTranslationText('taddalias'));
     $("#new-alias").text(getTranslationText('tnewalias'));
+    $("#tnomb").text(getTranslationText('tnombre'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
