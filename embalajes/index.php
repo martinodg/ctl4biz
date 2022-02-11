@@ -9,7 +9,7 @@ $cadena_busqueda=$_GET["cadena_busqueda"];
 if (!isset($cadena_busqueda)) { $cadena_busqueda=""; } else { $cadena_busqueda=str_replace("",",",$cadena_busqueda); }
 
 if ($cadena_busqueda<>"") {
-	$array_cadena_busqueda=split("~",$cadena_busqueda);
+	$array_cadena_busqueda=explode("~",$cadena_busqueda);
 	$codembalaje=$array_cadena_busqueda[1];
 	$nombre=$array_cadena_busqueda[2];
 } else {

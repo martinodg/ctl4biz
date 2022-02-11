@@ -70,7 +70,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
                 <tr class="cabeceraTabla">
                     <td class="aCentro" width="12%"><span id="titem">ITEM</span></td>
                     <td class="aCentro" width="12%"><span id="tcodio">CODIGO</span></td>
-                    <td width="30%"><span id="tnomb">NOMBRE</span></td>
+                    <td width="20%"><span id="tnomb">NOMBRE</span></td>
+                    <td width="10%"><span  id="tcant">Cantidad</span></td>
                     <td class="aCentro" width="20%"><span id="tunidad">UNIDAD DE MEDIDA</span></td>
                     <td width="6%">&nbsp;</td>
                     <td width="6%">&nbsp;</td>
@@ -96,7 +97,8 @@ $filas=mysqli_result($rs_busqueda,0,"filas");
 						<tr class="<?php echo $fondolinea?>">
 							<td class="aCentro" width="12%"><? echo $contador+1;?></td>
 							<td width="12%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"codembalaje")?></div></td>
-							<td width="30%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
+							<td width="20%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"nombre")?></div></td>
+							<td width="10%"><div align="center"><? echo mysqli_result($res_resultado,$contador,"cantidad")?></div></td>
 							<td width="20%"><div align="center"><? echo mysqli_result($rs_queryUnimedida,0,"nombre");?></div></td>
 							<td width="6%"><div align="center"><a href="#"><img src="../img/modificar.svg" width="16" height="16" border="0" onClick="modificar_embalaje(<?php echo mysqli_result($res_resultado,$contador,"codembalaje")?>)" data-ttitle="modificar" title="Modificar"></a></div></td>
 							<td width="6%"><div align="center"><a href="#"><img src="../img/ver.svg" width="16" height="16" border="0" onClick="ver_embalaje(<?php echo mysqli_result($res_resultado,$contador,"codembalaje")?>)" data-ttitle="visualizar" title="Visualizar"></a></div></td>
