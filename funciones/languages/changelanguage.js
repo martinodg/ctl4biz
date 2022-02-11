@@ -40,7 +40,7 @@ function getTranslationText(name)
         "leyenda": ["Note", "Leyenda", "Aunta", "descrizione", "apunte", "apunte", "nota" , "Kein"],
         "codremito": ["Delivery Note Code", "Código de Remito", "kod listu przewozowego", "codice nota d invio", "código da nota de envio", "code du bon de livraison", "Versandscheincode"],
         "fecha": ["Date", "Fecha", "data"],
-        "aceptar": ["Agree", "Aceptar", "Zgodzić się"],
+        "aceptar": ["Agree", "Aceptar", "Zgodzić się","essere d'accordo","aceitar","être d'accord","zustimmen"],
         "buscarremito": ["Search Derivery Note", "Buscar Remito", "Szukaj odnoszą", "Cerca riferimento", "Busca referem", "Recherche reportez-vous", "Suchen beziehen"],
         "cod_cliente": ["Client Code", "Código de Cliente", "kod klienta", "codice client", "Código do cliente", "code client", "Client-Code"],
         "facturados": ["Invoiced", "Facturados", "zafakturowanymi", "fatturate", "facturado", "facturé", "fakturieren"],
@@ -96,7 +96,7 @@ function getTranslationText(name)
         "todubic": ["All locations", "Todas las ubicaciones", "Wszystkie lokacje", "tutti i posti", "Todos os locais", "toutes les zones géographiques", "alle Orte"],
         "preciot": ["Price T.", "Precio T.", "Cena T.", "Prezzo T.", "Preço T.", "Prix ​​T.", "Preis T."],
         "stock": ["Stock", "Stock", "Zbiory", "azione", "estoque", "Stock", "Lager"],
-        "unidad": ["Meassur. Un.", "Unidad de medida", "/ jednostka pomiarowa", "Unità / misurazione", "/ unidade de medição", "unité / mesure", "Einheit / Mess"],
+        "unidad": ["Meassur. Un.", "Unidad de medida", "jednostka pomiarowa", "Unità / misurazione", "/ unidade de medição", "unité / mesure", "Einheit / Mess"],
         "metproc": ["Meta processes", "Meta procesos", "procesy docelowe", "processi di destinazione", "processos alvo", "processus cibles", "Soll-Prozesse"],
         "bmetproc": ["Meta processes search ", "Búsqueda de meta procesos", "Meta Proces wyszukiwania", "Ricerca di meta processi", "Pesquisa de meta processo ", "Recherche de méta processus", "Suche nach metaprozess"],
         "bgrupproc": ["Processes Groups search ", "Búsqueda de grupos de procesos", "Szukaj grup procesow", "Ricerca di Gruppi di Processi", "Pesquisa de grupo de processo", "Rechercher des groupes des processus", "Suche nach prozessgruppen"],
@@ -635,7 +635,10 @@ function getTranslationText(name)
         "dineroentregado": ["Money Delivered","Dinero Entregado", "pieniądze dostarczone", "denaro consegnato", "dinheiro entregue", "argent livré", "Aleman"],
         "ttalias": ["Alias","Alias", "Alias", "Alias", "Alias", "Alias", "Alias"],
         "taddalias": ["Add Aliases","Agregar Alias", "Alias", "Aggiungi Alias", "Adicionar Aliases", "Ajouter des Alias", "Aliase hinzufügen"],
-        "tnewalias": ["New Aliases","Nuevos Alias", "Nowe aliasy", "Nuovi alias", "Novos pseudônimos", "Nouveaux alias", "Neue Aliase"]
+        "tnewalias": ["New Aliases","Nuevos Alias", "Nowe aliasy", "Nuovi alias", "Novos pseudônimos", "Nouveaux alias", "Neue Aliase"],
+        "tnombre": ["Name","Nombre", "Nazwa", "Nome", "Nome", "Nom", "Name"],
+        "selectunimedida": ["Choose unit of measure","Seleccionar Unidad de Medida", "wybierz jednostkę miary", "scegli l'unità di misura", "escolha a unidade de medida", "choisir l'unité de mesure", "choose unit of measure"],
+        "tvolver": ["Return","Volver", "Powrót", "Restituzione", "Retorna", "Revenir", "Rückkehr"]
     };
     var trans =name;
     var lang = getLanguajeIndex();
@@ -1143,6 +1146,9 @@ function langchange() {
     $("#talias").text(getTranslationText('ttalias'));
     $("#add-alias").text(getTranslationText('taddalias'));
     $("#new-alias").text(getTranslationText('tnewalias'));
+    $("#tnomb").text(getTranslationText('tnombre'));
+    $("#tselectunimedida").text(getTranslationText('selectunimedida'));
+    $("#tvolver").text(getTranslationText('tvolver'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula

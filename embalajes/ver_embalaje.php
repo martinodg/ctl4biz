@@ -14,6 +14,8 @@ $rs_query=mysqli_query($conexion,$query);
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
 		var cursor;
@@ -25,7 +27,7 @@ $rs_query=mysqli_query($conexion,$query);
 		cursor='pointer';
 		}
 		
-		function aceptar() {
+		function volver() {
 			location.href="index.php?cadena_busqueda=<? echo $cadena_busqueda?>";
 		}
 		
@@ -35,7 +37,7 @@ $rs_query=mysqli_query($conexion,$query);
 		<div id="pagina">
 			<div id="zonaContenido">
 				<div align="center">
-                    <div id="tituloForm" class="header"><span  id="vembalaje">VER EMBALAJE</span></div>
+                    <div id="tituloForm" class="header"><span id="tvembalaje">VER EMBALAJE</span></div>
 				<div id="frmBusqueda">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 						<tr>
@@ -45,11 +47,24 @@ $rs_query=mysqli_query($conexion,$query);
 						<tr>
 							<td width="15%"><span  id="tnomb">Nombre</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_query,0,"nombre")?></td>
-					    </tr>						
+					    </tr>
+                        <tr>
+                            <td width="15%"><span  id="tcant">Cantidad</span></td>
+                            <td width="85%" colspan="2"><?php echo mysqli_result($rs_query,0,"cantidad")?></td>
+                        </tr>
+                        <tr>
+                            <?php
+                            $cod_uniMedida = mysqli_result($rs_query,0,"codunidadmedida");
+                            $consulta_uniMedida = mysqli_query($conexion,"SELECT nombre FROM `unidadesmedidas` WHERE codunidadmedida = $cod_uniMedida");
+                            $uniMedida = mysqli_result($consulta_uniMedida,0,'nombre');
+                            ?>
+                            <td width="15%"><span  id="tunidad">Unidad de Medida</span></td>
+                            <td width="85%" colspan="2"><?php echo $uniMedida; ?></td>
+                        </tr>
 					</table>
 			  </div>
 				<div id="botonBusqueda">
-					<button type="button" id="btnaceptar" onClick="aceptar()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span  id="taceptar">Aceptar</span> </button>
+					<button type="button" id="btnaceptar" onClick="volver()" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="aceptar" /> <span id="tvolver">Volver</span> </button>
 					</div>
 			  </div>
 		  </div>
