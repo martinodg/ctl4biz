@@ -15,15 +15,15 @@ $rs_query=mysqli_query($conexion,$query);
         <script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
-		
+
 		function cancelar() {
 			location.href="index.php?cadena_busqueda=<? echo $cadena_busqueda?>";
 		}
-		
+
 		function limpiar() {
 			document.getElementById("nombre").value="";
 		}
-		
+
 		var cursor;
 		if (document.all) {
 		// Está utilizando EXPLORER
@@ -62,12 +62,12 @@ $rs_query=mysqli_query($conexion,$query);
 				        </tr>
                         <tr>
                             <td width="15%"><span id="tcant">Cantidad</span></td>
-                            <td width="43%"><input NAME="Anombre" type="text" class="cajaGrande" id="nombre" size="45" maxlength="45" value="<?php echo mysqli_result($rs_query,0,"cantidad")?>"></td>
+                            <td width="43%"><input NAME="Acantidad" type="text" class="cajaGrande" id="nombre" size="45" maxlength="45" value="<?php echo mysqli_result($rs_query,0,"cantidad")?>"></td>
                         </tr>
                         <!---->
                         <tr>
                             <?php
-                            $qury_unidadmedida = mysqli_query($conexion,"SELECT * FROM unidadesmedidas WHERE 1;");
+                            $query_unidadmedida = mysqli_query($conexion,"SELECT * FROM unidadesmedidas WHERE 1;");
                             $query_codUniMedida="SELECT * FROM embalajes WHERE codembalaje = $codembalaje ORDER BY nombre ASC";
                             $consulta_codunimedida=mysqli_query($conexion,$query_codUniMedida);
                             $cod_unimedida = mysqli_result($consulta_codunimedida,0,"codunidadmedida");
@@ -78,17 +78,16 @@ $rs_query=mysqli_query($conexion,$query);
                             ?>
                             <td width="11%"><span id="tunidad">Unidad de Medida</span></td>
                             <td colspan="2">
-                                <select id="cboFamilias" name="AcboFamilias" class="comboGrande">
-                                    <option value="0" data-opttrad="selecflia">Seleccione una familia</option>
+                                <select id="cboFamilias" name="Aunimedida" class="comboGrande">
+                                    <option value="0"><span id="tselectunimedida">Seleccione Unidad de Medida</span></option>
                                     <?php
-                                    while ($contador < mysqli_num_rows($qury_unidadmedida)) {
+                                    while ($contador < mysqli_num_rows($query_unidadmedida)) {
                                         if ($cod_unimedida==mysqli_result($consulta_codunimedida,$contador,"codunidadmedida")) {?>
-                                            <option value="<?php echo mysqli_result($qury_unidadmedida,$contador,"codunidadmedida")?>" selected="selected"><?php echo mysqli_result($qury_unidadmedida,intval($cod_unimedida),"nombre");?></option>
+                                            <option value="<?php echo mysqli_result($query_unidadmedida,$contador,"codunidadmedida")?>" selected="selected"><?php echo mysqli_result($query_unidadmedida,$cod_unimedida,"nombre");?></option>
                                         <? } else { ?>
-                                            <option value="<?php echo mysqli_result($qury_unidadmedida,$contador,"codunidadmedida")?>"><?php echo mysqli_result($qury_unidadmedida,$contador,"nombre")?></option>
+                                            <option value="<?php echo mysqli_result($query_unidadmedida,$contador,"codunidadmedida")?>"><?php echo mysqli_result($query_unidadmedida,$contador,"nombre")?></option>
                                         <? }
                                         $contador++;
-                                        var_dump($contador,'<br>');
                                     }
                                     ?>
                                 </select>
