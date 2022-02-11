@@ -10,8 +10,12 @@ $cantidad=$_POST["Acantidad"];
 $coduniMedida=$_POST["Aunimedida"];
 
 if ($accion=="alta") {
+    $q_nameUniMedida="SELECT nombre FROM `unidadesmedidas` WHERE `codunidadmedida` = '$coduniMedida'";
+    $rs_nameUniMedida=mysqli_query($conexion,$q_nameUniMedida);
+    $nameUniMedida=mysqli_result($rs_nameUniMedida,0,"nombre");
     $query_operacion="INSERT INTO embalajes (codembalaje, nombre, cantidad, codunidadmedida, borrado) 
 					VALUES ('', '$nombre', '$cantidad', '$coduniMedida', '0')";
+
 	$rs_operacion=mysqli_query($conexion,$query_operacion);
 	if ($rs_operacion) { $mensaje="El embalaje ha sido dado de alta correctamente"; }
 	$cabecera1="Inicio >> Embalajes &gt;&gt; Nuevo Embalaje ";
@@ -23,18 +27,29 @@ if ($accion=="alta") {
 
 if ($accion=="modificar") {
 	$codembalaje=$_POST["Zid"];
-	$query="UPDATE embalajes SET nombre='$nombre', borrado=0 WHERE codembalaje='$codembalaje'";
+	$query="UPDATE embalajes SET  codembalaje='$codembalaje', nombre='$nombre', cantidad='$cantidad', codunidadmedida='$coduniMedida', borrado=0 WHERE codembalaje='$codembalaje'";
 	$rs_query=mysqli_query($conexion,$query);
 	if ($rs_query) { $mensaje="Los datos del embalaje han sido modificados correctamente"; }
 	$cabecera1="Inicio >> Embalajes &gt;&gt; Modificar Embalaje ";
-	$cabecera2="MODIFICAR EMBALAJE ";
+    $cabecera2="<span id='tmodembalaje'>MODIFICAR EMBALAJE</span>";
+
+    $q_nameUniMedida = "SELECT * FROM `unidadesmedidas` WHERE `codunidadmedida` = '$coduniMedida'";
+    $rs_nameUniMedida = mysqli_query($conexion, $q_nameUniMedida);
+    $nameUniMedida = mysqli_result($rs_nameUniMedida, 0, "nombre");
 }
 
 if ($accion=="baja") {
 	$codembalaje=$_GET["codembalaje"];
+    $nameUniMedida=$_GET["codunimedida"];
+
 	$query_comprobar="SELECT * FROM articulos WHERE codembalaje='$codembalaje' AND borrado=0";
-	$rs_comprobar=mysqli_query($conexion,$query_comprobar);
-	if (mysqli_num_rows($rs_comprobar) > 0 ) {
+    $rs_comprobar=mysqli_query($conexion,$query_comprobar);
+
+    $query_embalajes="SELECT * FROM embalajes WHERE codembalaje='$codembalaje' AND borrado=0";
+    $rs_consultaEmbalajes=mysqli_query($conexion,$query_embalajes);
+    $cantidad = mysqli_result($rs_consultaEmbalajes,0,'cantidad');
+
+    if (mysqli_num_rows($rs_comprobar) > 0 ) {
 		?><script>
 			alert ("No se puede eliminar este embalaje porque tiene articulos asociados.");
 			location.href="eliminar_ubicacion.php?codubicacion=<? echo $codubicacion?>";
@@ -102,13 +117,8 @@ if ($accion=="baja") {
                             <td width="85%" colspan="2"><?php echo $cantidad?></td>
                         </tr>
                         <tr>
-                            <?php
-                            $q_nameUniMedida="SELECT nombre FROM `unidadesmedidas` WHERE `codunidadmedida` = $coduniMedida";
-                            $rs_nameUniMedida=mysqli_query($conexion,$q_nameUniMedida);
-                            $nameUniMedida=mysqli_result($rs_nameUniMedida,0,"nombre");
-                            ?>
                             <td width="15%"><span id="tunidad">Unidad de Medida</span></td>
-                            <td width="85%" colspan="2"><?php echo $nameUniMedida?></td>
+                            <td width="85%" colspan="2"><?php echo $nameUniMedida;?></td>
                         </tr>
 					</table>
 			  </div>
