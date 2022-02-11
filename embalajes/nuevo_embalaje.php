@@ -58,7 +58,7 @@
                         <tr>
                             <td><span id="tunidad">Unidad de Medida</span></td>
                             <td>
-                                <select id="inidad" class="cboUnidadmedida" name="Aunimedida" >
+                                <select id="unidad" class="cboUnidadmedida" name="Aunimedida" >
                                 </select>
                             </td>
                         </tr>

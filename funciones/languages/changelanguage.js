@@ -636,7 +636,9 @@ function getTranslationText(name)
         "ttalias": ["Alias","Alias", "Alias", "Alias", "Alias", "Alias", "Alias"],
         "taddalias": ["Add Aliases","Agregar Alias", "Alias", "Aggiungi Alias", "Adicionar Aliases", "Ajouter des Alias", "Aliase hinzufügen"],
         "tnewalias": ["New Aliases","Nuevos Alias", "Nowe aliasy", "Nuovi alias", "Novos pseudônimos", "Nouveaux alias", "Neue Aliase"],
-        "tnombre": ["Name","Nombre", "Nazwa", "Nome", "Nome", "Nom", "Name"]
+        "tnombre": ["Name","Nombre", "Nazwa", "Nome", "Nome", "Nom", "Name"],
+        "selectunimedida": ["Choose unit of measure","Seleccionar Unidad de Medida", "wybierz jednostkę miary", "scegli l'unità di misura", "escolha a unidade de medida", "choisir l'unité de mesure", "choose unit of measure"],
+        "tvolver": ["Return","Volver", "Powrót", "Restituzione", "Retorna", "Revenir", "Rückkehr"]
     };
     var trans =name;
     var lang = getLanguajeIndex();
@@ -1145,6 +1147,8 @@ function langchange() {
     $("#add-alias").text(getTranslationText('taddalias'));
     $("#new-alias").text(getTranslationText('tnewalias'));
     $("#tnomb").text(getTranslationText('tnombre'));
+    $("#tselectunimedida").text(getTranslationText('selectunimedida'));
+    $("#tvolver").text(getTranslationText('tvolver'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
