@@ -40,7 +40,7 @@ function getTranslationText(name)
         "leyenda": ["Note", "Leyenda", "Aunta", "descrizione", "apunte", "apunte", "nota" , "Kein"],
         "codremito": ["Delivery Note Code", "Código de Remito", "kod listu przewozowego", "codice nota d invio", "código da nota de envio", "code du bon de livraison", "Versandscheincode"],
         "fecha": ["Date", "Fecha", "data"],
-        "aceptar": ["Agree", "Aceptar", "Zgodzić się"],
+        "aceptar": ["Agree", "Aceptar", "Zgodzić się","essere d'accordo","aceitar","être d'accord","zustimmen"],
         "buscarremito": ["Search Derivery Note", "Buscar Remito", "Szukaj odnoszą", "Cerca riferimento", "Busca referem", "Recherche reportez-vous", "Suchen beziehen"],
         "cod_cliente": ["Client Code", "Código de Cliente", "kod klienta", "codice client", "Código do cliente", "code client", "Client-Code"],
         "facturados": ["Invoiced", "Facturados", "zafakturowanymi", "fatturate", "facturado", "facturé", "fakturieren"],

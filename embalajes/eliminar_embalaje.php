@@ -5,8 +5,15 @@ require_once("../mysqli_result.php");
 $codembalaje=$_GET["codembalaje"];
 $cadena_busqueda=$_GET["cadena_busqueda"];
 
-$query="SELECT * FROM embalajes WHERE codembalaje='$codembalaje'";
+$query="SELECT * FROM embalajes WHERE codembalaje='$codembalaje' AND borrado=0";
 $rs_query=mysqli_query($conexion,$query);
+
+$cod_unimedida = mysqli_result($rs_query,0,'codunidadmedida');
+
+$query_unimedida ="SELECT * FROM unidadesmedidas WHERE codunidadmedida='$cod_unimedida'";
+$rs_queryUnimedida = mysqli_query($conexion,$query_unimedida);
+
+$uniMedida = mysqli_result($rs_queryUnimedida,0,'nombre');
 
 ?>
 
@@ -14,6 +21,8 @@ $rs_query=mysqli_query($conexion,$query);
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="../jquery/jquery331.js"></script>
+        <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
 		
 		var cursor;
@@ -26,7 +35,7 @@ $rs_query=mysqli_query($conexion,$query);
 		}
 		
 		function aceptar(codembalaje) {
-			location.href="guardar_embalaje.php?codembalaje=" + codembalaje + "&accion=baja" + "&cadena_busqueda=<? echo $cadena_busqueda?>";
+			location.href="guardar_embalaje.php?codembalaje=" + codembalaje +"&codunimedida=<? echo $uniMedida;?>" + "&accion=baja" + "&cadena_busqueda=<? echo $cadena_busqueda?>";
 		}
 		
 		function cancelar() {
@@ -49,6 +58,19 @@ $rs_query=mysqli_query($conexion,$query);
 						<tr>
 							<td width="15%"><span  id="tnomb">Nombre</span></td>
 						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_query,0,"nombre")?></td>
+					    </tr>
+                        <tr>
+							<td width="15%"><span  id="tcant">Cantidad</span></td>
+						    <td width="85%" colspan="2"><?php echo mysqli_result($rs_query,0,"cantidad")?></td>
+					    </tr>
+                        <tr>
+                            <?php
+                            $cod_uniMedida = mysqli_result($rs_query,0,"codunidadmedida");
+                            $consulta_uniMedida = mysqli_query($conexion,"SELECT nombre FROM `unidadesmedidas` WHERE codunidadmedida = $cod_uniMedida");
+                            $uniMedida = mysqli_result($consulta_uniMedida,0,'nombre');
+                            ?>
+							<td width="15%"><span id="tunidad">Unidad de Medida</span></td>
+						    <td width="85%" colspan="2" name="Aunimedida"><?php echo $uniMedida; ?></td>
 					    </tr>
 					</table>
 			  </div>
