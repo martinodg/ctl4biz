@@ -372,7 +372,7 @@ function getTranslationText(name)
         "ubicacion": ["Location", "Ubicación", "polski", "italian", "portugues", "frances", "Aleman"],
         "avisominimo": ["Minimun stock alert", "Alerta de stock mínimo", "polski", "italian", "portugues", "frances", "Aleman"],
         "sindet": ["Not defined", "Sin determinar", "polski", "italian", "portugues", "frances", "Aleman"],
-        "embalaje": ["Packing", "Embalaje", "polski", "italian", "portugues", "frances", "Aleman"],
+        "embalaje": ["Packaging", "Embalaje", "opakowanie", "confezione", "embalagem", "emballage", "Verpackung"],
         "mdesctick": ["Modify bill", "Modificar descrip. ticket", "polski", "italian", "portugues", "frances", "Aleman"],
         "prectienda": ["Shop price", "Precio en tienda", "polski", "italian", "portugues", "frances", "Aleman"],
         "prcciva": ["Price plus tax", "Precio con iva", "polski", "italian", "portugues", "frances", "Aleman"],
@@ -635,10 +635,12 @@ function getTranslationText(name)
         "dineroentregado": ["Money Delivered","Dinero Entregado", "pieniądze dostarczone", "denaro consegnato", "dinheiro entregue", "argent livré", "Aleman"],
         "ttalias": ["Alias","Alias", "Alias", "Alias", "Alias", "Alias", "Alias"],
         "taddalias": ["Add Aliases","Agregar Alias", "Alias", "Aggiungi Alias", "Adicionar Aliases", "Ajouter des Alias", "Aliase hinzufügen"],
+        "taddembalaje": ["Add Packaging","Agregar Embalaje", "Dodaj opakowanie", "Aggiungi imballaggio", "Adicionar embalagem", "Ajouter un emballage", "Verpackung hinzufügen"],
         "tnewalias": ["New Aliases","Nuevos Alias", "Nowe aliasy", "Nuovi alias", "Novos pseudônimos", "Nouveaux alias", "Neue Aliase"],
         "tnombre": ["Name","Nombre", "Nazwa", "Nome", "Nome", "Nom", "Name"],
         "selectunimedida": ["Choose unit of measure","Seleccionar Unidad de Medida", "wybierz jednostkę miary", "scegli l'unità di misura", "escolha a unidade de medida", "choisir l'unité de mesure", "choose unit of measure"],
-        "tvolver": ["Return","Volver", "Powrót", "Restituzione", "Retorna", "Revenir", "Rückkehr"]
+        "tvolver": ["Return","Volver", "Powrót", "Restituzione", "Retorna", "Revenir", "Rückkehr"],
+        "tsinembalaje": ["Unboxed","Sin Embalaje", "Rozpakowany", "Senza Scatola", "Desembalado", "Déballé", "Ausgepackt"]
     };
     var trans =name;
     var lang = getLanguajeIndex();
@@ -964,7 +966,7 @@ function langchange() {
     $("#tnombart").text(getTranslationText('nombart'));
     $("#tinicar").text(getTranslationText('inicar'));
     $("#tdefmtprc").text(getTranslationText('defmtprc'));
-    $("#tdefgrupprc,#defgrupprc").text(getTranslationText('defgrupprc')); 
+    $("#tdefgrupprc,#defgrupprc").text(getTranslationText('defgrupprc'));
     $("#tnomgrupprc,#nomgrupprc").text(getTranslationText('nomgrupprc'));
     $("#ttipproc").text(getTranslationText('tipproc'));
     $("#tmsgermdproc").text(getTranslationText('msgermdproc'));
@@ -1105,7 +1107,7 @@ function langchange() {
     $("#tdefinir").text(getTranslationText('definir'));
     $("#tsalir").text(getTranslationText('salir'));
     $("#tagregmatpimas,#agregmatpimas").text(getTranslationText('agregmatpimas'));
-    $("#tagregprocgrup,#agregprocgrup").text(getTranslationText('agregprocgrup')); 
+    $("#tagregprocgrup,#agregprocgrup").text(getTranslationText('agregprocgrup'));
     $("#tlot,#lot").text(getTranslationText('lot'));
     $("#tbat,#bat").text(getTranslationText('bat'));
     $("#tprodnop,#prodnop").text(getTranslationText('prodnop'));
@@ -1145,10 +1147,12 @@ function langchange() {
     $("#tdineroEnt").text(getTranslationText('dineroentregado'));
     $("#talias").text(getTranslationText('ttalias'));
     $("#add-alias").text(getTranslationText('taddalias'));
+    $("#add-embalaje").text(getTranslationText('taddembalaje'));
     $("#new-alias").text(getTranslationText('tnewalias'));
     $("#tnomb").text(getTranslationText('tnombre'));
     $("#tselectunimedida").text(getTranslationText('selectunimedida'));
     $("#tvolver").text(getTranslationText('tvolver'));
+    $("#tsembalaje").text(getTranslationText('tsinembalaje'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula
