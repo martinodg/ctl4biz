@@ -1,4 +1,4 @@
-<?php 
+<?php
 header('Cache-Control: no-cache');
 header('Pragma: no-cache');
 if(session_id() == '') {
@@ -21,80 +21,101 @@ require_once("../mysqli_result.php");
 		<script type="text/javascript" src="../jquery/jquery331.js"></script>
         <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
 		<script language="javascript">
-		
-		function cancelar() {
-			location.href="index.php";
-		}
-		
-		var cursor;
-		if (document.all) {
-		// Está utilizando EXPLORER
-		cursor='hand';
-		} else {
-		// Está utilizando MOZILLA/NETSCAPE
-		cursor='pointer';
-		}
+            // script Embalajes
+            $(document).ready(function(){
+                var maxCampos = 15; //Limitación de incremento de campos de entrada
+                var addButton = $('.add_button_embalaje'); //Añadir selector de botón
+                var wrapper = $('#campo_embalaje'); //Campo de entrada
+                var campoHTML = '<div class="pack_add" style="margin-bottom: 10px;"><select id="cboEmbalaje" name="AEmbalajes[]" class="comboGrande cboEmbalajes"></select><a href="javascript:void(0);" class="remove_button" title="Remove field" style="text-decoration: none;"><img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" style="cursor:pointer; margin-left: 5px;"></a></div>'; //New input field html
 
-		//Perform when DOM is full loaded
-		$( document ).ready(function(){
-            
-			//load process combo
-			$.get("../funciones/BackendQueries/getMeassuresUnits.php", function(data) {
-            	    $('.cboUnidadmedida').html(data);
+                var x = 0; //El contador de campo inicial es 1
+                $(addButton).click(function(){ //Una vez que se hace clic en el botón Agregar
+                    if(x < maxCampos){ //Comprobar el número máximo de campos de entrada
+                        x++; //Incrementar contador de campo
+                        $(wrapper).append(campoHTML); // Add CAMPO html
+                    }
+                });
+                $(wrapper).on('click', '.remove_button', function(e){ //Una vez que se hace clic en el botón Eliminar
+                    e.preventDefault();
+                    $(this).parent('.pack_add').remove(); //Remueve el campo html
+                    x--; //Contador de campo decrementor
+                });
             });
-		});
-/*----------------------------------------------------------------------------------------------------------------------*/
-		function limpiar() {
-			document.getElementById("campo_alias").value="";
-			document.getElementById("referencia").value="";
-			document.getElementById("descripcion").value="";
-			document.getElementById("descripcion_corta").value="";
-			document.getElementById("stock_minimo").value="";
-			document.getElementById("stock").value="";
-			document.getElementById("datos").value="";
-			document.getElementById("fecha").value="";
-			document.getElementById("unidades_caja").value="";
-			document.getElementById("observaciones").value="";
-			document.getElementById("precio_compra").value="";
-			document.getElementById("precio_almacen").value="";
-			document.getElementById("precio_tienda").value="";
-			//document.getElementById("pvp").value="";
-			document.getElementById("precio_iva").value="";
-			document.getElementById("foto").value="";
-			document.formulario.cboFamilias.options[0].selected = true;
-			document.formulario.cboImpuestos.options[0].selected = true;
-			document.formulario.cboProveedores1.options[0].selected = true;
-			document.formulario.cboProveedores2.options[0].selected = true;
-			document.formulario.cboUbicacion.options[0].selected = true;
-			document.formulario.cboEmbalaje.options[0].selected = true;
-			document.formulario.Aaviso_minimo.options[0].selected = true;
-			document.formulario.Aprecio_ticket.options[0].selected = true;
-			document.formulario.Amodif_descrip.options[0].selected = true;
-		}
-        // script de alias
-        $(document).ready(function(){
-            var maxCampos = 15; //Limitación de incremento de campos de entrada
-            var addButton = $('.add_button'); //Añadir selector de botón
-            var wrapper = $('#campo_alias'); //Campo de entrada
-            var campoHTML = '<div class="alia_add" style="margin-bottom: 10px;"><input type="text"  class="cajaGrande" name="alias[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field" style="text-decoration: none;"><img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" style="cursor:pointer; margin-left: 5px;"></a></div>'; //New input field html
-            var x = 0; //El contador de campo inicial es 1
-            $(addButton).click(function(){ //Una vez que se hace clic en el botón Agregar
-                if(x < maxCampos){ //Comprobar el número máximo de campos de entrada
-                    x++; //Incrementar contador de campo
-                    $(wrapper).append(campoHTML); // Add CAMPO html
-                }
+
+            function cancelar() {
+                location.href="index.php";
+            }
+
+            var cursor;
+            if (document.all) {
+            // Está utilizando EXPLORER
+            cursor='hand';
+            } else {
+            // Está utilizando MOZILLA/NETSCAPE
+            cursor='pointer';
+            }
+
+            //Perform when DOM is full loaded
+            $( document ).ready(function(){
+
+                //load process combo
+                $.get("../funciones/BackendQueries/getMeassuresUnits.php", function(data) {
+                        $('.cboUnidadmedida').html(data);
+                });
             });
-            $(wrapper).on('click', '.remove_button', function(e){ //Una vez que se hace clic en el botón Eliminar
-                e.preventDefault();
-                $(this).parent('.alia_add').remove(); //Remueve el campo html
-                x--; //Contador de campo decrementor
+    /*----------------------------------------------------------------------------------------------------------------------*/
+            function limpiar() {
+                document.getElementById("campo_alias").value="";
+                document.getElementById("referencia").value="";
+                document.getElementById("descripcion").value="";
+                document.getElementById("descripcion_corta").value="";
+                document.getElementById("stock_minimo").value="";
+                document.getElementById("stock").value="";
+                document.getElementById("datos").value="";
+                document.getElementById("fecha").value="";
+                document.getElementById("unidades_caja").value="";
+                document.getElementById("observaciones").value="";
+                document.getElementById("precio_compra").value="";
+                document.getElementById("precio_almacen").value="";
+                document.getElementById("precio_tienda").value="";
+                //document.getElementById("pvp").value="";
+                document.getElementById("precio_iva").value="";
+                document.getElementById("foto").value="";
+                document.formulario.cboFamilias.options[0].selected = true;
+                document.formulario.cboImpuestos.options[0].selected = true;
+                document.formulario.cboProveedores1.options[0].selected = true;
+                document.formulario.cboProveedores2.options[0].selected = true;
+                document.formulario.cboUbicacion.options[0].selected = true;
+                document.formulario.cboEmbalaje.options[0].selected = true;
+                document.formulario.Aaviso_minimo.options[0].selected = true;
+                document.formulario.Aprecio_ticket.options[0].selected = true;
+                document.formulario.Amodif_descrip.options[0].selected = true;
+            }
+            // script de alias
+            $(document).ready(function(){
+                var maxCampos = 15; //Limitación de incremento de campos de entrada
+                var addButton = $('.add_button'); //Añadir selector de botón
+                var wrapper = $('#campo_alias'); //Campo de entrada
+                var campoHTML = '<div class="alia_add" style="margin-bottom: 10px;"><input type="text"  class="cajaGrande" name="alias[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field" style="text-decoration: none;"><img src="../img/eliminar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" style="cursor:pointer; margin-left: 5px;"></a></div>'; //New input field html
+                var x = 0; //El contador de campo inicial es 1
+                $(addButton).click(function(){ //Una vez que se hace clic en el botón Agregar
+                    if(x < maxCampos){ //Comprobar el número máximo de campos de entrada
+                        x++; //Incrementar contador de campo
+                        $(wrapper).append(campoHTML); // Add CAMPO html
+                    }
+                });
+                $(wrapper).on('click', '.remove_button', function(e){ //Una vez que se hace clic en el botón Eliminar
+                    e.preventDefault();
+                    $(this).parent('.alia_add').remove(); //Remueve el campo html
+                    x--; //Contador de campo decrementor
+                });
             });
-        });
+
 		</script>
 	</head>
 	<body>
 		<div id="pagina">
-			<div id="zonaContenido"> 
+			<div id="zonaContenido">
 				<div align="center">
                     <div id="tituloForm" class="header"><span  id="tinsart">INSERTAR ARTICULO</span></div>
 				<div id="frmBusqueda">
@@ -114,13 +135,13 @@ require_once("../mysqli_result.php");
 						<tr>
 							<td width="17%"><span  id="tflia">FAMILIA</span></td>
 							<td><select id="cboFamilias" name="AcboFamilias" class="comboGrande">
-							
+
 								<option value="0" data-opttrad="selecflia">Seleccione una familia</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_familias)) { ?>
 								<option value="<?php echo mysqli_result($res_familias,$contador,"codfamilia")?>"><?php echo mysqli_result($res_familias,$contador,"nombre")?></option>
 								<? $contador++;
-								} ?>				
+								} ?>
 								</select>							</td>
 				        </tr>
                         <!--alias start-->
@@ -147,13 +168,13 @@ require_once("../mysqli_result.php");
 						<tr>
 							<td width="17%"><span  id="timpuesto">Impuesto</span></td>
 							<td><select id="cboImpuestos" name="rcboImpuestos" class="comboMedio">
-							
+
 								<option value="0" data-opttrad="selecimp">Seleccione un impuesto</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_impuesto)) { ?>
 								<option value="<?php echo mysqli_result($res_impuesto,$contador,"valor")?>"><?php echo mysqli_result($res_impuesto,$contador,"valor")?></option>
 								<? $contador++;
-								} ?>				
+								} ?>
 								</select> %							</td>
 				        </tr>
 						<?php
@@ -166,14 +187,14 @@ require_once("../mysqli_result.php");
 							<td><select id="cboProveedores1" name="acboProveedores1" class="comboGrande">
 							<option value="0" data-opttrad="todprov">Todos los proveedores</option>
 								<?php
-								while ($contador < mysqli_num_rows($res_proveedores)) { 
+								while ($contador < mysqli_num_rows($res_proveedores)) {
 									if ( mysqli_result($res_proveedores,$contador,"codproveedor") == $proveedor) { ?>
 								<option value="<?php echo mysqli_result($res_proveedores,$contador,"codproveedor")?>" selected><?php echo mysqli_result($res_proveedores,$contador,"nif")?> -- <?php echo mysqli_result($res_proveedores,$contador,"nombre")?></option>
-								<? } else { ?> 
+								<? } else { ?>
 								<option value="<?php echo mysqli_result($res_proveedores,$contador,"codproveedor")?>"><?php echo mysqli_result($res_proveedores,$contador,"nif")?> -- <?php echo mysqli_result($res_proveedores,$contador,"nombre")?></option>
 								<? }
 								$contador++;
-								} ?>				
+								} ?>
 								</select>							</td>
 					    </tr>
 					<?php
@@ -186,14 +207,14 @@ require_once("../mysqli_result.php");
 							<td><select id="cboProveedores2" name="acboProveedores2" class="comboGrande">
 							<option value="0" data-opttrad="todprov">Todos los proveedores</option>
 								<?php
-								while ($contador < mysqli_num_rows($res_proveedores)) { 
+								while ($contador < mysqli_num_rows($res_proveedores)) {
 									if ( mysqli_result($res_proveedores,$contador,"codproveedor") == $proveedor) { ?>
 								<option value="<?php echo mysqli_result($res_proveedores,$contador,"codproveedor")?>" selected><?php echo mysqli_result($res_proveedores,$contador,"nif")?> -- <?php echo mysqli_result($res_proveedores,$contador,"nombre")?></option>
-								<? } else { ?> 
+								<? } else { ?>
 								<option value="<?php echo mysqli_result($res_proveedores,$contador,"codproveedor")?>"><?php echo mysqli_result($res_proveedores,$contador,"nif")?> -- <?php echo mysqli_result($res_proveedores,$contador,"nombre")?></option>
 								<? }
 								$contador++;
-								} ?>				
+								} ?>
 								</select>							</td>
 					    </tr>
 						<tr>
@@ -210,14 +231,14 @@ require_once("../mysqli_result.php");
 							<td><select id="cboUbicacion" name="AcboUbicacion" class="comboGrande">
 							<option value="0" data-opttrad="todubic">Todas las ubicaciones</option>
 								<?php
-								while ($contador < mysqli_num_rows($res_ubicacion)) { 
+								while ($contador < mysqli_num_rows($res_ubicacion)) {
 									if ( mysqli_result($res_ubicacion,$contador,"codubicacion") == $ubicacion) { ?>
 								<option value="<?php echo mysqli_result($res_ubicacion,$contador,"codubicacion")?>" selected><?php echo mysqli_result($res_ubicacion,$contador,"nombre")?></option>
-								<? } else { ?> 
+								<? } else { ?>
 								<option value="<?php echo mysqli_result($res_ubicacion,$contador,"codubicacion")?>"><?php echo mysqli_result($res_ubicacion,$contador,"nombre")?></option>
 								<? }
 								$contador++;
-								} ?>				
+								} ?>
 								</select>							</td>
 					    </tr>
                         <tr>
@@ -250,43 +271,29 @@ require_once("../mysqli_result.php");
 						<tr>
 							<td><span  id="tfchaalta">Fecha de alta</span></td>
 							<td><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" readonly> <img src="../img/calendario.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
-        <script type="text/javascript">
-					Calendar.setup(
-					  {
-					inputField : "fecha",
-					ifFormat   : "%d/%m/%Y",
-					button     : "Image1"
-					  }
-					);
-		</script></td>
+                            <script type="text/javascript">
+                                        Calendar.setup(
+                                          {
+                                        inputField : "fecha",
+                                        ifFormat   : "%d/%m/%Y",
+                                        button     : "Image1"
+                                          }
+                                        );
+                            </script>
+                            </td>
 					    </tr>
-						 <?php
-					  	$query_embalaje="SELECT codembalaje,nombre FROM embalajes WHERE borrado=0 ORDER BY nombre ASC";
-						$res_embalaje=mysqli_query($conexion,$query_embalaje);
-						$contador=0;
-					  ?>
-						<tr>
-							<td><span  id="tembalaje">Embalaje</span></td>
-							<td><select id="cboEmbalaje" name="AEmbalajes" class="comboGrande">
-							<option value="0"data-opttrad="tdsembalajes">Todos los embalajes</option>
-								<?php
-								while ($contador < mysqli_num_rows($res_embalaje)) { 
-									if ( mysqli_result($res_embalaje,$contador,"codembalaje") == $embalaje) { ?>
-								<option value="<?php echo mysqli_result($res_embalaje,$contador,"codembalaje")?>" selected><?php echo mysqli_result($res_embalaje,$contador,"nombre")?></option>
-								<? } else { ?> 
-								<option value="<?php echo mysqli_result($res_embalaje,$contador,"codembalaje")?>"><?php echo mysqli_result($res_embalaje,$contador,"nombre")?></option>
-								<? }
-								$contador++;
-								} ?>				
-								</select>							</td>
-					    </tr>
-						<tr>
-						 <td><span  id="tunidcaja">Unidades por caja</span></td>
-						  <td><input NAME="nunidades_caja" type="text" class="cajaPequena" id="unidades_caja" size="10" maxlength="10">  
-						  <select id="umnunidades_caja" class="cboUnidadmedida" name="umnunidades_caja" >
-                                
-								</select> </td>
-				      </tr>
+                        <!--add Packaging Start-->
+                        <tr>
+                            <td><span id="tembalaje">Embalajes</span></td>
+                            <td id="campo_embalaje">
+                                <div class="pack_add">
+                                    <button class="add_button_embalaje" type="button" onMouseOver="style.cursor=cursor" onclick="definirUnimedida()" style="text-decoration: none; color: #ffff;">
+                                        <img src="../img/agregar.svg" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'"><span id="add-embalaje"> AGREGAR EMBALAJE</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!--add Packaging end-->
 					  <tr>
 						 <td><span  id="tpregpciotk">Preguntar precio ticket</span></td>
 						  <td><select name="aprecio_ticket" id="precio_ticket" class="comboPequeno">
@@ -321,7 +328,7 @@ require_once("../mysqli_result.php");
                             <td><span  id="tprcventpub">Precio venta al publico</span></td>
 						  <td><input NAME="qpvp" type="text" class="cajaPequena" id="pvp" size="10" maxlength="10"> <?echo $moneda;?></td>
 				      </tr>
-					 
+
 					  <tr>
 						  <td><span  id="timgfrmjpg">Imagen</span></td>
 						  <td><input type="file" name="foto" id="foto" class="cajaMedia" accept="image/jpg" /></td>
@@ -332,11 +339,11 @@ require_once("../mysqli_result.php");
 					<button type="button" id="btnaceptar" onClick="validar(formulario,true)" onMouseOver="style.cursor=cursor"> <img src="../img/ok.svg" alt="limpiar" /> <span  id="taceptar">Aceptar</span></td> </button>
 					<button type="button" id="btnlimpiar" onClick="limpiar()" onMouseOver="style.cursor=cursor"> <img src="../img/limpiar.svg" alt="limpiar" /> <span  id="tlimpiar">Limpiar</span> </button>
                		<button type="button" id="btncancelar" onClick="cancelar()" onMouseOver="style.cursor=cursor"> <img src="../img/borrar.svg" alt="nuevo" /> <span  id="tcancelar">Cancelar</span> </button>
-				
-					<input type="hidden" name="id" id="id" value="">					
+
+					<input type="hidden" name="id" id="id" value="">
 			  </div>
-			  </form>	
-			 </div>			
+			  </form>
+			 </div>
 		  </div>
 		</div>
 	</body>
