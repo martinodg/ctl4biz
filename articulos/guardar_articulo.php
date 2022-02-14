@@ -79,20 +79,21 @@ if ($accion == "baja") {
     $modificar_ticket= null;
 }
 else {
+    //
+    $codembalaje = $_POST['AEmbalajes'];
     $aliasEnviados = $_POST["alias"];
     $codigobarras = $_POST["codigobarras"];
     $referencia = $_POST["areferencia"];
     $codfamilia = $_POST["AcboFamilias"];
     $descripcion = $_POST["Adescripcion"];
-    $codimpuesto = $_POST["AcboImpuestos"];
+    $codimpuesto = $_POST["rcboImpuestos"];
     $codproveedor1 = $_POST["acboProveedores1"];
     $codproveedor2 = $_POST["acboProveedores2"];
     $descripcion_corta = $_POST["adescripcion_corta"];
     $codubicacion = $_POST["AcboUbicacion"];
+    $cod_unimedida = $_POST["Aunimedida"];
     $stock_minimo = $_POST["nstock_minimo"];
-    $umstock_minimo = $_POST["umnstock_minimo"];
     $stock = $_POST["nstock"];
-    $umstock = $_POST["umnstock"];
     $aviso_minimo = $_POST["aaviso_minimo"];
     $datos = $_POST["adatos"];
     $fecha = $_POST["fecha"];
@@ -102,7 +103,7 @@ else {
     } else {
         $fecha = "0000-00-00";
     }
-    $codembalaje = $_POST["AcboEmbalaje"];
+    $codembalaje = $_POST["AEmbalaje"];
     $unidades_caja = $_POST["nunidades_caja"];
     $umunidades_caja = $_POST["umnunidades_caja"];
     $precio_ticket = $_POST["aprecio_ticket"];
@@ -113,8 +114,8 @@ else {
     $precio_tienda = $_POST["qprecio_tienda"];
     //$pvp=$_POST["qpvp"];
     $precio_iva = $_POST["qprecio_iva"];
-    $txtumstock = getumtext($umstock);
-    $txtumstock_minimo = getumtext($umstock_minimo);
+    $txtumstock = getumtext($cod_unimedida);
+    $txtumstock_minimo = getumtext($cod_unimedida);
     $txtumunidades_caja = getumtext($umunidades_caja);
     if ($accion == "alta") {
         $consultaprevia = "SELECT max(codarticulo) as maximo FROM articulos";
@@ -131,8 +132,7 @@ else {
             $imgUrl = $aux;
         }
         $query_operacion = "INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado, imagen) 
-						VALUES ('$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$umstock', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$unidades_caja', '$umunidades_caja', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0','$imgUrl')";
-        $rs_operacion = mysqli_query($conexion, $query_operacion);
+VALUES ('','$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$cod_unimedida', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0','$imgUrl')";        $rs_operacion = mysqli_query($conexion, $query_operacion);
         //recorrer todos los valores de alias para determinar cuales son los que existen , cuales los que se creadon, cuales los que se borraron
         if (!empty($aliasEnviados)){
             $values = array();
