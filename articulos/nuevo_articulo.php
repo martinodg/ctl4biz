@@ -111,6 +111,14 @@ require_once("../mysqli_result.php");
                 });
             });
 
+            function definirUnimedida(){
+                var unidadmedida = $('#unidad > option:selected').val();
+                //alert(unidadmedida);
+                $.get("../funciones/BackendQueries/getPackaging.php?unidadmedida=" + unidadmedida + "&campo= codembalaje", function(data) {
+                    $('.cboEmbalajes').html(data);
+                });
+            }
+
 		</script>
 	</head>
 	<body>
