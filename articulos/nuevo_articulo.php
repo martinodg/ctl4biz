@@ -220,20 +220,22 @@ require_once("../mysqli_result.php");
 								} ?>				
 								</select>							</td>
 					    </tr>
-						<tr>
-						 <td><span  id="tstock">Stock</span></td>
-						  <td><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10"> 
-						  <select id="umnstock" class="cboUnidadmedida" name="umnstock" >
-                                
-								</select> </td>
-				      </tr>
-					  	<tr>
-						 <td><span  id="tstkmin">Stock m&iacute;nimo</span></td>
-						  <td><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8">  
-						  <select id="umnstock_minimo" class="cboUnidadmedida" name="umnstock_minimo">
-                                
-								</select> </td>
-				      </tr>
+                        <tr>
+                            <td><span id="tunidad">Unidad de Medida</span></td>
+                            <td>
+                                <select id="unidad" class="cboUnidadmedida" name="Aunimedida">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span  id="tstock">Stock</span></td>
+                            <td><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10"></td>
+                        </tr>
+                        <tr>
+                            <td><span  id="tstkmin">Stock m&iacute;nimo</span></td>
+                            <td><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="10" maxlength="8"></td>
+                        </tr>
+                        <tr>
 					  	<tr>
 						 <td><span  id="tavisominimo">Aviso M&iacute;nimo</span></td>
 						  <td><select name="aaviso_minimo" id="aviso_minimo" class="comboPequeno">
