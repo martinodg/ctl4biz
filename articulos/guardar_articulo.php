@@ -64,7 +64,6 @@ if ($accion == "baja") {
         $fechalis = implota($fecha);
     }
     $codembalaje = mysqli_result($rs_mostrar, 0, "codembalaje");
-    $unidades_caja = mysqli_result($rs_mostrar, 0, "unidades_caja");
     $precio_ticket = mysqli_result($rs_mostrar, 0, "precio_ticket");
     $modif_descrip = mysqli_result($rs_mostrar, 0, "modificar_ticket");
     $observaciones = mysqli_result($rs_mostrar, 0, "observaciones");
@@ -104,8 +103,6 @@ else {
         $fecha = "0000-00-00";
     }
     $codembalaje = $_POST["AEmbalaje"];
-    $unidades_caja = $_POST["nunidades_caja"];
-    $umunidades_caja = $_POST["umnunidades_caja"];
     $precio_ticket = $_POST["aprecio_ticket"];
     $modif_descrip = $_POST["amodif_descrip"];
     $observaciones = $_POST["aobservaciones"];
@@ -116,7 +113,6 @@ else {
     $precio_iva = $_POST["qprecio_iva"];
     $txtumstock = getumtext($cod_unimedida);
     $txtumstock_minimo = getumtext($cod_unimedida);
-    $txtumunidades_caja = getumtext($umunidades_caja);
     if ($accion == "alta") {
         $consultaprevia = "SELECT max(codarticulo) as maximo FROM articulos";
         $rs_consultaprevia = mysqli_query($conexion, $consultaprevia);
@@ -131,8 +127,8 @@ else {
         if ($aux !== false) {
             $imgUrl = $aux;
         }
-        $query_operacion = "INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, unidades_caja, codumunidades_caja, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado, imagen) 
-VALUES ('','$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$cod_unimedida', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0','$imgUrl')";        $rs_operacion = mysqli_query($conexion, $query_operacion);
+        $query_operacion = "INSERT INTO articulos (codarticulo, codfamilia, referencia, descripcion, impuesto, codproveedor1, codproveedor2, descripcion_corta, codubicacion, stock, codunidadmedida, stock_minimo, codumstock_minimo, aviso_minimo, datos_producto, fecha_alta, codembalaje, precio_ticket, modificar_ticket, observaciones, precio_compra, precio_almacen, precio_tienda, precio_iva, codigobarras, borrado, imagen) 
+						VALUES ('','$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codproveedor1', '$codproveedor2', '$descripcion_corta', '$codubicacion', '$stock', '$cod_unimedida', '$stock_minimo', '$umstock_minimo', '$aviso_minimo', '$datos', '$fecha', '$codembalaje', '$precio_ticket', '$modificar_ticket', '$observaciones', '$precio_compra', '$precio_almacen', '$precio_tienda', '$precio_iva', '', '0','$imgUrl')";
         //recorrer todos los valores de alias para determinar cuales son los que existen , cuales los que se creadon, cuales los que se borraron
         if (!empty($aliasEnviados)){
             $values = array();
@@ -192,8 +188,7 @@ VALUES ('','$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codpr
 
         $codarticulo = $_POST["id"];
         $cadena = "";
-        $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', unidades_caja='$unidades_caja', codumunidades_caja='$umunidades_caja', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', " . $cadena . " borrado=0 ";
-        try {
+        $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', " . $cadena . " borrado=0 ";        try {
             if ($url = salvarFotoArticulo($codarticulo, 'foto')) {
                 $query .= ', imagen=' . $url;
             }
@@ -372,11 +367,6 @@ VALUES ('','$codfamilia', '$referencia', '$descripcion', '$codimpuesto', '$codpr
 							<td width="15%"><span  id="tembalaje">Embalaje</span></td>
 							<td colspan="2"><?php echo $nombreembalaje?></td>
 					    </tr>
-						<tr>
-							<td><span  id="tunidcaja">Unidades por caja</span></td>
-							<?php echo "<td>".$unidades_caja." ".$txtumunidades_caja."</td>";?>
-							
-						</tr>
 						<tr>
 							<td><span  id="tpregpciotk">Preguntar precio ticket</span></td>
 							<td colspan="2"><?php if ($precio_ticket==0) { echo "No"; } else { echo "Si"; }?></td>
