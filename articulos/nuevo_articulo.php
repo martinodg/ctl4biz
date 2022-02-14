@@ -223,7 +223,7 @@ require_once("../mysqli_result.php");
                         <tr>
                             <td><span id="tunidad">Unidad de Medida</span></td>
                             <td>
-                                <select id="unidad" class="cboUnidadmedida" name="Aunimedida">
+                                <select id="unidad" class="cboUnidadmedida" name="Aunimedida" onchange="definirUnimedida()">
                                 </select>
                             </td>
                         </tr>
