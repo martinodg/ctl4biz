@@ -175,15 +175,16 @@ require_once("../mysqli_result.php");
 					  ?>
 						<tr>
 							<td width="17%"><span  id="timpuesto">Impuesto</span></td>
-							<td><select id="cboImpuestos" name="rcboImpuestos" class="comboMedio">
-
+							<td>
+                                <select id="cboImpuestos" name="rcboImpuestos" class="comboMedio">
 								<option value="0" data-opttrad="selecimp">Seleccione un impuesto</option>
 								<?php
 								while ($contador < mysqli_num_rows($res_impuesto)) { ?>
 								<option value="<?php echo mysqli_result($res_impuesto,$contador,"valor")?>"><?php echo mysqli_result($res_impuesto,$contador,"valor")?></option>
 								<? $contador++;
 								} ?>
-								</select> %							</td>
+								</select> %
+                            </td>
 				        </tr>
 						<?php
 					  	$query_proveedores="SELECT codproveedor,nombre,nif FROM proveedores WHERE borrado=0 ORDER BY nombre ASC";
