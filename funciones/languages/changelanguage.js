@@ -640,7 +640,8 @@ function getTranslationText(name)
         "tnombre": ["Name","Nombre", "Nazwa", "Nome", "Nome", "Nom", "Name"],
         "selectunimedida": ["Choose unit of measure","Seleccionar Unidad de Medida", "wybierz jednostkę miary", "scegli l'unità di misura", "escolha a unidade de medida", "choisir l'unité de mesure", "choose unit of measure"],
         "tvolver": ["Return","Volver", "Powrót", "Restituzione", "Retorna", "Revenir", "Rückkehr"],
-        "tsinembalaje": ["Unboxed","Sin Embalaje", "Rozpakowany", "Senza Scatola", "Desembalado", "Déballé", "Ausgepackt"]
+        "tsinembalaje": ["Unboxed","Sin Embalaje", "Rozpakowany", "Senza Scatola", "Desembalado", "Déballé", "Ausgepackt"],
+        "tnew-embalaje": ["New Packaging","Nuevos Embalajes", "Nowe Opakowanie", "Nuova Confezione", "Nova Embalagem", "Nouvel Emballage", "Neue Verpackung"]
     };
     var trans =name;
     var lang = getLanguajeIndex();
@@ -1153,6 +1154,7 @@ function langchange() {
     $("#tselectunimedida").text(getTranslationText('selectunimedida'));
     $("#tvolver").text(getTranslationText('tvolver'));
     $("#tsembalaje").text(getTranslationText('tsinembalaje'));
+    $("#tnew-embalaje").text(getTranslationText('tnew-embalaje'));
 
     //@todo revisar si no es conveniente utilizar span#[id] asumiendo que todos sean span por si se repite el id en algun lado
     //@todo contemplar la capitalizacion de los textos por css para poner todo en minuscula

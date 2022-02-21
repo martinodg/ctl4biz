@@ -40,6 +40,7 @@ $accion = $_POST["accion"];
 if (!isset($accion)) {
     $accion = $_GET["accion"];
 }
+//############################### BAJA ####################################################
 if ($accion == "baja") {
     $codarticulo = $_GET["codarticulo"];
     $query = "UPDATE articulos SET borrado=1 WHERE codarticulo='$codarticulo'";
@@ -79,7 +80,8 @@ if ($accion == "baja") {
     $precio_iva = mysqli_result($rs_mostrar, 0, "precio_iva");
     $foto_name = mysqli_result($rs_mostrar, 0, "imagen");
     $codigobarras = mysqli_result($rs_mostrar, 0, "codigobarras");
-} else {
+}
+else {
     $codembalaje = $_POST['AEmbalajes'];
     $aliasEnviados = $_POST["alias"];
     $embalajesEnviados = $_POST["AEmbalajes"];
@@ -159,6 +161,11 @@ if ($accion == "baja") {
                 $errores[] = printf("Error al actualizar el logo  : %s\n", mysqli_error($conexion));
             }
         }
+        /*unidad de medida*/
+        $unimedida_query = "SELECT nombre FROM unidadesmedidas WHERE codunidadmedida=$cod_unimedida";
+        $rs_unimedida = mysqli_query($conexion, $unimedida_query);
+        $unidadMedida = mysqli_result($rs_unimedida, 0, 'nombre');
+        /**/
         //creacion del codigo de barras
         $codaux = $codarticulo;
         while (strlen($codaux) < 6) {
@@ -185,22 +192,22 @@ if ($accion == "baja") {
         $mensaje = "El articulo ha sido dado de alta correctamente";
         $cabecera1 = "Inicio >> Articulos &gt;&gt; Nuevo Articulo ";
         $cabecera2 = "INSERTAR ARTICULO ";
-    } //############################### MODIFICAR ####################################################
+    }
+    //############################### MODIFICAR ###############################################
     elseif ($accion == "modificar") {
         $codarticulo = $_POST["id"];
+        $codimpuesto = $_POST['cboImpuestos'];
         //borro todos los alias que tiene
         $query_alias = "DELETE FROM  alias_articulos WHERE codarticulo='$codarticulo' ";
         $rs_alias = mysqli_query($conexion, $query_alias);
         if ($rs_alias === false) {
             $errores[] = printf("Error al eliminar los alias   : %s\n", mysqli_error($conexion));
         }
-        //Creo todos los alias que manda
+        /*insert alias*/
         if (!empty($aliasEnviados)) {
             $values = array();
-            foreach ($aliasEnviados as $alias) {
-                if ($alias != "") {
-                    $values[] = "( '$codarticulo', '$alias')";
-                }
+            foreach ($aliasEnviados as $alia) {
+                $values[] = "( '$codarticulo', '$alia')";
             }
             $query_alias = "INSERT INTO alias_articulos ( codarticulo, alias) VALUES " . implode(',', $values);
             $rs_alias = mysqli_query($conexion, $query_alias);
@@ -208,23 +215,44 @@ if ($accion == "baja") {
                 $errores[] = printf("Error al actualizar el logo  : %s\n", mysqli_error($conexion));
             }
         }
-        $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$umstock', stock_minimo='$stock_minimo',codumstock_minimo='$umstock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', borrado=0 ";
-        try {
-            if ($url = salvarFotoArticulo($codarticulo, 'foto')) {
-                $query .= ', imagen=' . $url;
+        /*insert embalajes*/
+        if (!empty($embalajesEnviados)) {
+            $values = array();
+            $embalajesEnviados = array_unique($embalajesEnviados);
+            foreach ($embalajesEnviados as $embalaje) {
+                $values[] = "( '$codarticulo', '$embalaje')";
             }
-        } catch (Exception $e) {
-            $errores[] = sprintf("No se ha podido cargar la imagen %s", $e->getMessage());
+            $query_embalajes = "INSERT INTO articulosEmbalajes ( codarticulo, codembalaje) VALUES " . implode(',', $values);
+            $rs_embalajes = mysqli_query($conexion, $query_embalajes);
+            if ($rs_embalajes === false) {
+                $errores[] = printf("Error al actualizar el logo  : %s\n", mysqli_error($conexion));
+            }
         }
-        $query .= " WHERE codarticulo='" . $codarticulo . "' ";
-        $rs_query = mysqli_query($conexion, $query);
-        $mensaje = "Los datos del articulo han sido modificados correctamente";
-        if ($rs_query === false) {
-            $errores[] = printf("Error al modificar el articulo : %s\n", mysqli_error($conexion));
+        else{
+            $emb = mysqli_query($conexion, "SELECT embalajes.nombre FROM embalajes INNER JOIN articulosEmbalajes ON embalajes.codembalaje=articulosEmbalajes.codembalaje WHERE articulosEmbalajes.codarticulo=$codarticulo");
         }
-        $cabecera1 = "Inicio >> Articulos &gt;&gt; Modificar Articulo ";
-        $cabecera2 = "MODIFICAR ARTICULO ";
-    }
+        /*unidad de medida*/
+        $unimedida_query = "SELECT nombre FROM unidadesmedidas WHERE codunidadmedida=$cod_unimedida";
+        $rs_unimedida = mysqli_query($conexion, $unimedida_query);
+        $unidadMedida = mysqli_result($rs_unimedida, 0, 'nombre');
+
+            $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$cod_unimedida', stock_minimo='$stock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', borrado=0 ";
+            try {
+                if ($url = salvarFotoArticulo($codarticulo, 'foto')) {
+                    $query .= ', imagen=' . $url;
+                }
+            } catch (Exception $e) {
+                $errores[] = sprintf("No se ha podido cargar la imagen %s", $e->getMessage());
+            }
+            $query .= " WHERE codarticulo='" . $codarticulo . "' ";
+            $rs_query = mysqli_query($conexion, $query);
+            $mensaje = "Los datos del articulo han sido modificados correctamente";
+            if ($rs_query === false) {
+                $errores[] = printf("Error al modificar el articulo : %s\n", mysqli_error($conexion));
+            }
+            $cabecera1 = "Inicio >> Articulos &gt;&gt; Modificar Articulo ";
+            $cabecera2 = "MODIFICAR ARTICULO ";
+        }
 }
 if (count($errores)) {
     $mensaje = 'Ocurrio un error al procesar el Articulo ';
@@ -364,13 +392,16 @@ $codigobarras = mysqli_result($rs_img, 0, "codigobarras");
                         <td width="58%"><?php echo $nombreubicacion ?></td>
                     </tr>
                     <tr>
+                        <td><span id="tunidad">Unidad de Medida</span></td>
+                        <?php echo "<td>$unidadMedida</td>"; ?>
+                    </tr>
+                    <tr>
                         <td><span id="tstock">Stock</span></td>
-                        <?php echo "<td>" . $stock . " " . $txtumstock . "</td>"; ?>
+                        <?php echo "<td>".$stock."</td>"; ?>
                     </tr>
                     <tr>
                         <td><span id="tstkmin">Stock minimo</span></td>
-                        <?php echo "<td>" . $stock_minimo . " " . $txtumstock_minimo . "</td>"; ?>
-
+                        <?php echo "<td>".$stock_minimo."</td>"; ?>
                     </tr>
                     <tr>
                         <td><span id="tavisominimo">Aviso M&iacute;nimo</span></td>
@@ -392,16 +423,20 @@ $codigobarras = mysqli_result($rs_img, 0, "codigobarras");
                         <td width="15%"><span id="tembalaje">Embalaje</span></td>
                         <td>
                             <?php
+
                             $cont = 0;
                             if (!empty($embalajesEnviados)) {
                                 foreach ($embalajesEnviados as $embalajename => $embalaje) {
-                                    $respEmbalaje_query = mysqli_query($conexion, "SELECT * FROM embalajes WHERE codembalaje='$embalaje' ORDER BY codembalaje ASC ");
-                                    $name_embalaje = mysqli_result($respEmbalaje_query, 0, 'nombre');
-                                    echo $name_embalaje, '  ';
+                                    echo $embalaje,'  ';
                                     $cont++;
                                 }
-                            } else {
-                                echo 'No Existen Embalajes para este Articulo';
+                            }
+                            else {
+                                while ($emb>=$cont-1){
+                                    $nombreEnvalajes = mysqli_result($emb,$cont,'nombre');
+                                    echo $nombreEnvalajes,'  ';
+                                    $cont++;
+                                }
                             }
                             ?>
                         </td>

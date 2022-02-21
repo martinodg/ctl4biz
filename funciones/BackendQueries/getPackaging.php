@@ -7,6 +7,9 @@ if (isset($_GET["unidadmedida"])) {
 if (isset($_GET["campo"])) {
     $campo = $_GET["campo"];
 }
+if (isset($_GET["idEmbalaje_remove"])) {
+    $idEmbalaje_remove = $_GET["idEmbalaje_remove"];
+}
 
 if (isset($campo) & isset($unidadmedida)) {
     $query_value = "SELECT $campo FROM `embalajes` WHERE codunidadmedida='$cod_unidadmedida' AND borrado = 0;";
@@ -32,6 +35,10 @@ if ($nr_embalajes) {
     }
 } else {
     echo '<option value="">Sin Embalajes para</option>';
+}
+
+if (isset($idEmbalaje_remove)){
+    $remove_embalaje = mysqli_query($conexion,"DELETE FROM articulosEmbalajes WHERE articulosEmbalajes.codembalaje = $idEmbalaje_remove");
 }
 ?>
 
