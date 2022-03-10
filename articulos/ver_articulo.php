@@ -16,8 +16,8 @@ require_once("../funciones/cargaImagenes.php");
 $codarticulo=$_GET["codarticulo"];
 $cadena_busqueda=$_GET["cadena_busqueda"];
 
-//$query="SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
-$query="SELECT a.*, (SELECT b1.nombre FROM unidadesmedidas b1 WHERE b1.codunidadmedida = a.codunidadmedida ) AS umstock, (SELECT b2.nombre FROM unidadesmedidas b2 WHERE b2.codunidadmedida = a.codumstock_minimo ) AS umstock_min, (SELECT b3.nombre FROM unidadesmedidas b3 WHERE b3.codunidadmedida = a.codumunidades_caja ) AS umunidades_caja FROM articulos a WHERE codarticulo='$codarticulo'";
+$query="SELECT * FROM articulos WHERE codarticulo='$codarticulo'";
+//$query="SELECT a.*, (SELECT b1.nombre FROM unidadesmedidas b1 WHERE b1.codunidadmedida = a.codunidadmedida ) AS umstock, (SELECT b2.nombre FROM unidadesmedidas b2 WHERE b2.codunidadmedida = a.codumstock_minimo ) AS umstock_min, (SELECT b3.nombre FROM unidadesmedidas b3 WHERE b3.codunidadmedida = a.codumunidades_caja ) AS umunidades_caja FROM articulos a WHERE codarticulo='$codarticulo'";
 $rs_query=mysqli_query($conexion,$query);
 $codigobarras=mysqli_result($rs_query,0,"codigobarras");
 
@@ -29,6 +29,7 @@ $directorioItemsEmpresa = '../'.$_SESSION[''];
 <head>
     <title>Principal</title>
     <link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../jquery/jquery331.js"></script>
     <script type="text/javascript" src="../funciones/languages/changelanguage.js"></script>
     <script language="javascript">
         var cursor;
@@ -110,7 +111,7 @@ $directorioItemsEmpresa = '../'.$_SESSION[''];
                         <td width="38%"><?php echo $nombreproveedor?></td>
                     </tr>
                     <tr>
-                        <td width="22%"><span  id="tdesccorta">Descripci&oacute;n corta</span></td>
+                        <td width="22%"><span  id="tdesccorta">Descripcion corta</span></td>
                         <td width="38%"><?php echo mysqli_result($rs_query,0,"descripcion_corta")?></td>
                     </tr>
                     <?php
@@ -158,13 +159,22 @@ $directorioItemsEmpresa = '../'.$_SESSION[''];
                     }
                     ?>
                     <tr>
-                        <td width="22%"><span  id="tembalaje">Embalaje</span></td>
-                        <td colspan="2"><?php echo $nombreembalaje?></td>
+                        <td width="22%"><span  id="tembalaje">Embalajes</span></td>
+                        <td>
+                    <? $contador = 0;
+                    $query_embalajes = "SELECT embalajes.nombre, embalajes.codembalaje FROM embalajes INNER JOIN articulosEmbalajes ON embalajes.codembalaje=articulosEmbalajes.codembalaje WHERE articulosEmbalajes.codarticulo=$codarticulo";
+                    $rs_embalajes = mysqli_query($conexion, $query_embalajes);
+                    if (empty(mysqli_result($rs_embalajes, $contador, "nombre"))){
+                        echo '<span id="tsindet">vacio</span>';
+                    }
+                    while (!empty(mysqli_result($rs_embalajes, $contador, "nombre"))){
+                        $name_embalaje = mysqli_result($rs_embalajes, $contador, 'nombre');?>
+                        <?php echo $name_embalaje,'  ';
+                        $contador++;
+                    }?>
+                        </td>
                     </tr>
-                    <tr>
-                        <td><span  id="tunidcaja">Unidades por caja</span></td>
-                        <td colspan="2"><?php echo mysqli_result($rs_query,0,"unidades_caja")?> <?php echo mysqli_result($rs_query,0,"umunidades_caja")?></td>
-                    </tr>
+                    <!--add Packaging end-->
                     <tr>
                         <td><span  id="tpregpciotk">Preguntar precio ticket</span></td>
                         <td colspan="2"><?php if (mysqli_result($rs_query,0,"precio_ticket")==0) { echo "No"; } else { echo "Si"; }?></td>
