@@ -227,12 +227,13 @@ else {
             }
             $query_embalajes = "INSERT INTO articulosEmbalajes ( codarticulo, codembalaje) VALUES " . implode(',', $values);
             $rs_embalajes = mysqli_query($conexion, $query_embalajes);
+            $emb = mysqli_query($conexion, "SELECT embalajes.nombre, embalajes.codembalaje FROM embalajes INNER JOIN articulosEmbalajes ON embalajes.codembalaje=articulosEmbalajes.codembalaje WHERE articulosEmbalajes.codarticulo=$codarticulo");
             if ($rs_embalajes === false) {
                 $errores[] = printf("Error al actualizar el logo  : %s\n", mysqli_error($conexion));
             }
         }
         else{
-            $emb = mysqli_query($conexion, "SELECT embalajes.nombre FROM embalajes INNER JOIN articulosEmbalajes ON embalajes.codembalaje=articulosEmbalajes.codembalaje WHERE articulosEmbalajes.codarticulo=$codarticulo");
+            $emb = mysqli_query($conexion, "SELECT embalajes.nombre, embalajes.codembalaje FROM embalajes INNER JOIN articulosEmbalajes ON embalajes.codembalaje=articulosEmbalajes.codembalaje WHERE articulosEmbalajes.codarticulo=$codarticulo");
         }
         /*unidad de medida*/
         $unimedida_query = "SELECT nombre FROM unidadesmedidas WHERE codunidadmedida=$cod_unimedida";
@@ -426,30 +427,18 @@ $codigobarras = mysqli_result($rs_img, 0, "codigobarras");
                         <td width="15%"><span id="tembalaje">Embalaje</span></td>
                         <td>
                             <?php
-                            if($rs_find_packaging){
-                                $embalajesEnviados=[];
-                                while ($row = mysqli_fetch_array($rs_find_packaging)){
-                                    array_push($embalajesEnviados, $row["codembalaje"]);
-                                }
-                            }
-                            else{
-                                $packaging_in_BD=false;
-                            }
-                            /**/
-                            $cont = 0;
-                            if (!empty($embalajesEnviados)) {
-                                $embalajesEnviados = array_unique($embalajesEnviados);
-                                foreach ($embalajesEnviados as $namePacking => $packing_code) {
-                                    $find_packing_name = mysqli_query($conexion,"SELECT nombre FROM `embalajes` WHERE codembalaje=$packing_code");
-                                    $packing_name = mysqli_result($find_packing_name,0,"nombre");
+                            if (!empty(mysqli_fetch_array($emb)) or !empty($embalajesEnviados)){
+                                $cont=0;
+                                foreach ($emb as $namePacking => $packing_code) {
+                                    $packing_name = mysqli_result($emb,$cont,"nombre");
                                     echo $packing_name,'  ';
                                     $cont++;
                                 }
-                            }else{
-                                if($packaging_in_BD==false){
-                                    echo "<span id='tsindet'>No definido</span>";
-                                }
-                            }?>
+                            }
+                            else{
+                                echo "<span id='tsindet'>No definido</span>";
+                            }
+                            ?>
                         </td>
                     </tr>
                     <tr>
