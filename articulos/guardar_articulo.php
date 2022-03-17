@@ -215,6 +215,9 @@ else {
                 $errores[] = printf("Error al actualizar el logo  : %s\n", mysqli_error($conexion));
             }
         }
+        /*check packaging database*/
+        $query_check_embalajes_db = "SELECT * FROM `articulosEmbalajes` WHERE codarticulo=$codarticulo";
+        $rs_find_packaging = mysqli_query($conexion,$query_check_embalajes_db);
         /*insert embalajes*/
         if (!empty($embalajesEnviados)) {
             $values = array();
@@ -236,23 +239,23 @@ else {
         $rs_unimedida = mysqli_query($conexion, $unimedida_query);
         $unidadMedida = mysqli_result($rs_unimedida, 0, 'nombre');
 
-            $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$cod_unimedida', stock_minimo='$stock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', borrado=0 ";
-            try {
-                if ($url = salvarFotoArticulo($codarticulo, 'foto')) {
-                    $query .= ', imagen=' . $url;
-                }
-            } catch (Exception $e) {
-                $errores[] = sprintf("No se ha podido cargar la imagen %s", $e->getMessage());
+        $query = "UPDATE articulos SET codfamilia='$codfamilia', codigobarras='$codigobarras', referencia='$referencia', descripcion='$descripcion', impuesto='$codimpuesto', codproveedor1='$codproveedor1', codproveedor2='$codproveedor2', descripcion_corta='$descripcion_corta', codubicacion='$codubicacion', stock='$stock',codunidadmedida='$cod_unimedida', stock_minimo='$stock_minimo', aviso_minimo='$aviso_minimo', datos_producto='$datos', fecha_alta='$fecha', codembalaje='$codembalaje', precio_ticket='$precio_ticket', modificar_ticket='$modif_descrip', observaciones='$observaciones', precio_compra='$precio_compra', precio_almacen='$precio_almacen', precio_tienda='$precio_tienda', precio_iva='$precio_iva', borrado=0 ";
+        try {
+            if ($url = salvarFotoArticulo($codarticulo, 'foto')) {
+                $query .= ', imagen=' . $url;
             }
-            $query .= " WHERE codarticulo='" . $codarticulo . "' ";
-            $rs_query = mysqli_query($conexion, $query);
-            $mensaje = "Los datos del articulo han sido modificados correctamente";
-            if ($rs_query === false) {
-                $errores[] = printf("Error al modificar el articulo : %s\n", mysqli_error($conexion));
-            }
-            $cabecera1 = "Inicio >> Articulos &gt;&gt; Modificar Articulo ";
-            $cabecera2 = "MODIFICAR ARTICULO ";
+        } catch (Exception $e) {
+            $errores[] = sprintf("No se ha podido cargar la imagen %s", $e->getMessage());
         }
+        $query .= " WHERE codarticulo='" . $codarticulo . "' ";
+        $rs_query = mysqli_query($conexion, $query);
+        $mensaje = "Los datos del articulo han sido modificados correctamente";
+        if ($rs_query === false) {
+            $errores[] = printf("Error al modificar el articulo : %s\n", mysqli_error($conexion));
+        }
+        $cabecera1 = "Inicio >> Articulos &gt;&gt; Modificar Articulo ";
+        $cabecera2 = "MODIFICAR ARTICULO ";
+    }
 }
 if (count($errores)) {
     $mensaje = 'Ocurrio un error al procesar el Articulo ';
@@ -423,22 +426,30 @@ $codigobarras = mysqli_result($rs_img, 0, "codigobarras");
                         <td width="15%"><span id="tembalaje">Embalaje</span></td>
                         <td>
                             <?php
-
+                            if($rs_find_packaging){
+                                $embalajesEnviados=[];
+                                while ($row = mysqli_fetch_array($rs_find_packaging)){
+                                    array_push($embalajesEnviados, $row["codembalaje"]);
+                                }
+                            }
+                            else{
+                                $packaging_in_BD=false;
+                            }
+                            /**/
                             $cont = 0;
                             if (!empty($embalajesEnviados)) {
-                                foreach ($embalajesEnviados as $embalajename => $embalaje) {
-                                    echo $embalaje,'  ';
+                                $embalajesEnviados = array_unique($embalajesEnviados);
+                                foreach ($embalajesEnviados as $namePacking => $packing_code) {
+                                    $find_packing_name = mysqli_query($conexion,"SELECT nombre FROM `embalajes` WHERE codembalaje=$packing_code");
+                                    $packing_name = mysqli_result($find_packing_name,0,"nombre");
+                                    echo $packing_name,'  ';
                                     $cont++;
                                 }
-                            }
-                            else {
-                                while ($emb>=$cont-1){
-                                    $nombreEnvalajes = mysqli_result($emb,$cont,'nombre');
-                                    echo $nombreEnvalajes,'  ';
-                                    $cont++;
+                            }else{
+                                if($packaging_in_BD==false){
+                                    echo "<span id='tsindet'>No definido</span>";
                                 }
-                            }
-                            ?>
+                            }?>
                         </td>
                     </tr>
                     <tr>

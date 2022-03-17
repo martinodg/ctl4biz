@@ -345,7 +345,7 @@ $rs_embalajes = mysqli_query($conexion, $query_embalajes);
                         </tr>
                         <tr>
                             <td><span id="tdesccorta">Descripci&oacute;n corta</span></td>
-                            <td colspan="2"><input NAME="descripcion_corta" id="descripcion_corta" type="text"
+                            <td colspan="2"><input NAME="adescripcion_corta" id="adescripcion_corta" type="text"
                                                    class="cajaGrande" maxlength="30"
                                                    value="<?php echo mysqli_result($rs_query, 0, "descripcion_corta") ?>">
                             </td>
